@@ -1,0 +1,85 @@
+
+
+.apptable {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    border: none;
+}
+  
+.apptable td{
+    border: 1px solid rgb(238, 235, 235);
+    text-shadow: 0.3px 0.3px 0.3px rgb(0, 0, 0, 0.3);
+}
+//.apptable tr th:nth-child(even) {background: rgb(13, 96, 126);}
+.apptable tr:nth-child(even){background-color: whitesmoke;}
+
+  
+.apptable th {
+    padding: 10px auto;
+    background-color: teal;
+    color: whitesmoke;
+    font-weight: 600;
+    border: 1px solid white;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.search {
+    padding: 7px 15px; 
+    border-radius: 8px; 
+    border: solid 2px rgb(191, 190, 192);
+}
+
+.search:focus {
+    outline: #679aaf;
+    box-shadow: 2px 2px 4px rgb(21, 87, 122);
+}
+
+.rebtn {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    border: none;
+    outline: none;
+    background-color: #0b4da9;
+    border-radius: 10px;
+    padding: 5px 11px;
+    color: white;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+#info-block section {
+    border: 2px solid silver;
+    border-radius: 10px;
+    margin: 25px 10px 0 0;
+    //box-shadow: 2px 2px 15px 2px rgb(0, 0, 0, 0.3);
+}
+
+.file-marker > div {
+    padding: 0 15px;
+    height: 100%;
+    width: 100%;
+    margin-top: -0.8em;
+}
+.box-title {
+    background: white none repeat scroll 0 0;
+    display: inline-block;
+    margin-left: 1em;
+    font-size: 22px;
+    font-weight: 500;
+    color: rgb(9, 104, 45);
+    text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+.text1{
+font-family: "Poppins", sans-serif !important;
+font-size: 23px;
+}
+.text2{
+    font-family: "Poppins", sans-serif !important;
+    font-size: 25px; 
+}
+
+
+

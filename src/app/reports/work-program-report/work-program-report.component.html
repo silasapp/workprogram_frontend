@@ -1,0 +1,68 @@
+<div id="info-block">
+  <section class="file-marker">
+    <div>
+      <div class="box-title">
+        {{title}}
+      </div>
+
+
+      <div style="margin: 1% 1% 1% 1%;">
+        <div>
+          <div class="row">
+            <div style="width: 225px;">
+              <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Year of Work Programme</span>
+              <select id="time" class="form-select" (change)="fetchsummary($event)">
+                <option selected disabled>--Select Year-- </option>
+                <option *ngFor="let val of year" value={{val}}>{{val}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <div id="report">
+        <div class="form-group" *ngIf="executiveSummary !== ''">
+          <h2 class="text1">Executive Summary</h2>
+          <textarea class="form-control bg-white" rows="20" id="comment" disabled>{{executiveSummary}}</textarea>
+        </div>
+
+        <div class="mt-5">
+          <h2 class="text2"> Part A: {{currentSelectedYear}} Performance </h2>
+        </div>
+
+        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+          <table #myTable class="apptable" cellPadding="10" cellSpacing="15">
+            <thead>
+              <tr>
+                <th *ngFor="let h of columns">
+                  {{h.header}}
+                </th>
+              </tr>
+            </thead>
+            <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+              <tr *ngFor="let row of arrayRows">
+                <td *ngFor="let h of columns">
+                  {{row[h.columnDef]}}
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+        <div class="mb-5">
+          <h2>Production Distribution on Monthly Basis</h2>
+          <div id="firstchart" style="width: 100%; height: 700px"></div>
+        </div>
+        <div>
+          <h2>Percentage Oil Production By Contract Type</h2>
+          <div id="secondchart" style="width: 100%; height: 500px"></div>
+        </div>
+        <div>
+          <div id="thirdchart" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

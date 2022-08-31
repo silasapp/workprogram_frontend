@@ -1,0 +1,102 @@
+.child-icon {
+    font-size: 15px;
+    margin-right: 10px;
+    color: yellowgreen;
+}
+.child-div {
+    padding: 7px 10px 7px 0;
+}
+.divmid {
+    display: flex;
+    align-items: center;
+}
+.divcent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.expand-icon {
+    font-size: 30px;
+    margin-left: 7px;
+}
+
+.sidebar-box {
+    width: 19.1%;
+    display: flex;
+    height: 93vh;
+    position: fixed;
+    margin-top: 7vh;
+}
+
+.active {
+    background-color: rgb(7, 60, 80) !important;
+    color: yellowgreen !important;
+}
+.layout-box {
+    display: flex;
+    //background-color: #1d7732;
+    background-color: rgb(9, 79, 104);
+    // padding-bottom: 100px;
+    overflow-y: auto;
+    padding-top: 40px;
+}
+.layout-child {
+    font-size: 14px;
+    color: whitesmoke;
+    background-color: rgb(7, 60, 80);
+    padding-left: 35px;
+    width: 100%;
+    flex-wrap: wrap;
+    border-bottom: solid 1px teal;
+}
+.layout-icon {
+    font-size: 26px;
+    margin-right: 15px;
+    color: yellowgreen;
+
+}
+
+.layout-div:hover {
+    background-color: rgb(7, 60, 80);
+    color: yellowgreen;
+}
+
+.layout-div {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: whitesmoke;
+}
+.layout-logo {
+    width: 90px;
+    height: 60px;
+}
+.page-size {
+    width: 80%;
+    margin: 7vh 0 0 20%;
+}
+.layout-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.3);
+    color: goldenrod;
+    height: 7vh;
+    width: 100vw;
+    position: fixed;
+    padding-right: 30px;
+    z-index: 999;
+}
+.layout-line {
+    border-bottom: solid 1px teal;
+    width: 100%;
+}
+
+.layout-pad {
+    padding: 15px 20px;
+}
+
+.alterbtn {
+    background-color: rgb(9, 79, 104);
+}

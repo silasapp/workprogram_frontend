@@ -1,0 +1,263 @@
+.me {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(214, 214, 214);
+    color: darkgray;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.divcent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smalljust {
+    padding-left: 10px;
+}
+
+.dropwp {
+    font-weight: 500;
+    color: darkslategrey;
+}
+.wptable{
+width: 100%;
+}
+.inpute {
+    //box-sizing: border-box;
+    padding: 3px;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: darkslategrey;
+  }
+
+select {
+    //box-sizing: border-box;
+    width: 100%;
+    padding: 0.4em 4em 0.4em 2em;
+    border: none;
+    outline: none;
+    //border: 1px solid #eee;
+    font: inherit;
+    text-overflow: ellipsis;
+    line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: right 15px top 1em, right 10px top 1em;
+    background-size: 5px 5px, 5px 5px;
+  }
+
+.labelwp {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.inputtopshadow {
+  width: 100%;
+  box-shadow: 1px 1px 4px 1px rgb(0, 128, 128, 0.4);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+
+.inputshadow {
+    width: 100%;
+    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.wkpactive {
+    border-radius: 5px 5px 0 0;
+    border-left: 2px solid silver;
+    border-top: 2px solid silver;
+    border-right: 2px solid silver;
+    border-bottom: 5px solid teal;
+    color: teal;
+    font-weight: 600;
+}
+
+.wppage {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.quarterspace {
+    width: 100%;
+    padding-top: 2%;
+    text-align: center;
+    //border-right: solid 3px white;
+    box-shadow: 2px 0.5px 6px 2px rgb(0, 0, 0, 0.3);
+    margin-right: 5px;
+}
+.quarterbar {
+    height: 6px;
+    width: 100%;
+    background-color: rgb(119, 120, 124);
+}
+.topdeputy {
+    background-color: white;
+    box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    margin-right: 2%;
+}
+
+.deputyactive {
+    box-shadow: 4px 4px 10px 4px rgb(0, 0, 0, 0.3);
+    border-bottom: 5px solid green;
+}
+
+.wptablebox {
+    overflow: hidden;
+    overflow-x: auto;
+    box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+    margin: 50px 0 20px 0;
+    background-color: white;
+}
+
+.submitbtn {
+    padding: 13px 20px;
+    background-color: teal;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 4px 2px rgb(0, 0, 0, 0.3);
+}
+
+.quarterbox {
+    display: flex;
+    margin: 0 auto;
+    //box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3);
+    border-radius: 5px;
+    //background-image: linear-gradient(140deg, white, rgb(219, 218, 218));
+    //background-color: red;
+}
+
+.quartertop {
+    width: 96%;
+    padding: 6px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3) inset;
+    border-radius: 5px;
+}
+
+.apptable {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    border: none;
+}
+
+.apptable td{
+    padding: 10px 0;
+    border: 1px solid rgb(238, 235, 235);
+    text-shadow: 0.3px 0.3px 0.3px rgb(0, 0, 0, 0.3);
+}
+//.apptable tr th:nth-child(even) {background: rgb(13, 96, 126);}
+.apptable tr:nth-child(even){background-color: whitesmoke;}
+
+
+.apptable th {
+    padding: 5px 15px;
+    background-color: teal;
+    color: whitesmoke;
+    font-weight: 600;
+    border: 1px solid white;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.currencywp {
+  color: grey;
+  font-weight: 600;
+}
+
+.inpdiv {
+  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+  width: 100%;
+  border-radius: 20px;
+  padding: 7px 10px;
+}
+
+.inpdivcurrency {
+  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+  width: 100%;
+  border-radius: 20px;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.wpwidth {
+  display: flex;
+  width: 100%;
+}
+
+.toprow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.rowbox {
+  width: 30%;
+  margin-top: auto;
+}
+
+.quarterbtn {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.currquarter {
+  border-left: solid 5px rgb(112, 162, 12);
+  border-right: solid 5px rgb(112, 162, 12);
+  border-bottom: solid 5px rgb(112, 162, 12);
+  box-shadow: 4px 4px 10px 4px rgba(21, 107, 178, 0.5);
+}
+.currfilled {
+  background-color: teal;
+  color: white;
+}
+.curractive {
+    border-left: solid 5px yellowgreen;
+    border-right: solid 5px yellowgreen;
+    border-bottom: solid 5px yellowgreen;
+    box-shadow: 4px 4px 10px 4px rgba(21, 107, 178, 0.3)
+}
+
+.nextbtn {
+  background-color: rgb(9, 79, 104);
+  color: white;
+  border: none;
+  padding: 15px 60px;
+  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.whiteback {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+  padding: 20px;
+}

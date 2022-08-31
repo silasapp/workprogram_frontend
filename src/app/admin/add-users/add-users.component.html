@@ -1,0 +1,133 @@
+<div id="info-block">
+  <section class="file-marker">
+    <div>
+      <div class="box-title">
+        {{title}}
+      </div>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div style="margin: 1% 1% 1% 1%;">
+        <div>
+          <div class="row mt-5">
+            <div class="col-sm-4">
+              <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Role</span>
+              <select id="time" class="form-select">
+                <option selected disabled>--select role--</option>
+                <option *ngFor="let val of genk.role" value={{val.value}}>{{val.value}}</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Company Unique Id</span>
+              <input type="text" class="form-control" formControlName="companY_ID">
+            </div>
+          </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Company Name</span>
+      <input type="text" class="form-control" formControlName="companY_NAME">
+    </div>
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">E-mail</span>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Password</span>
+      <input type="text" class="form-control" formControlName="passwords">
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Name</span>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Designation</span>
+      <input type="text" class="form-control" formControlName="designation">
+    </div>
+    <div class="col-sm-4">
+      <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Phone NO.</span>
+      <input type="text" class="form-control" formControlName="phonE_NO">
+    </div>
+  </div>
+
+        </div>
+        <br>
+        <div class="container text-align-center d-flex mb-5">
+          <button class="btn px-5" style="background-color: teal; color: white" type="submit">Add User</button>
+      </div>
+      </div>
+      </form>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
+        <div>
+          <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
+            class="search">
+        </div>
+        <div style="width: 225px;">
+          <select id="time" class="form-select" (change)="resize($event)">
+            <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
+          </select>
+        </div>
+
+        <div style="display: flex;">
+          <button (click)="genk.printData(myTable)" class="rebtn">
+            <mat-icon style="font-size: 20px;">print</mat-icon> Print
+          </button>
+          <button (click)="genk.tableToCSV(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+            <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+          </button>
+          <button (click)="genk.copyTable(myTable)" class="rebtn"
+            style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+            <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
+          </button>
+        </div>
+      </div>
+
+      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+        <table #myTable class="apptable" cellPadding="10" cellSpacing="15">
+          <thead>
+            <tr>
+              <th *ngFor="let h of columns">
+                {{h.header}}
+              </th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+            <tr *ngFor="let row of arrayRows">
+              <td *ngFor="let h of columns">
+                {{row[h.columnDef]}}
+              </td>
+              <td><button [ngClass]="row.status_ === 'Activated' ? 'btn btn-success btn-sm' : 'btn btn-danger btn-sm' "
+                  value={{row.status_}}>{{row.status_}}</button></td>
+              <td><button class="btn btn-primary btn-sm" (click)="openDialog($event)" value={{row.id}}>Update</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div
+        style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
+        <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
+        <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
+            style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; border-radius: 50px; outline: dodgerblue;"
+            #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+            (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
+
+        <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
+          mat-raised-button>Next</button>
+        <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
+          <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

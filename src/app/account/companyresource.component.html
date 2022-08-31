@@ -1,0 +1,155 @@
+<div style="padding: 2% 0">
+    <form [formGroup]="companyResourceForm" autocomplete="off" (ngSubmit)="submit()">
+        <div style="width: 80%; border: solid 1px grey; background-color: white; margin: auto; border-radius: 50px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);">
+            <div class="overlapbox" style="width: 100%">
+                <img style="height: 28vh; width: 100%; filter: blur(2px); border-radius: 50px 50px 0 0;" src="assets/nuprcback.jpg">
+                <div class="overlapdiv">
+                    <div style="display: flex; align-items: center;">
+                        <img src="assets/NUPRC-logo.png">
+                        <span style="font-size: 28px; font-weight: 600; color: white; line-height: 120%; margin: auto;">
+                            Nigerian Upstream Petroleum Resources Commission
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="width: 100%; padding: 3% 2% 5% 2%;">
+                <div style="text-align: center; margin: 0 0 5% 0;">
+                    <div style="font-size:20px; font-weight: 700; color: darkslategrey;">WORK PROGRAMME DATA UPLOAD - 2022 / 2023) </div>
+                    <div style="color: rgb(149, 104, 20); font-weight: 700; margin-top: 10px;">{{companyName}}&nbsp; &nbsp; {{'-'}} &nbsp; &nbsp; {{companyCode}}</div>
+                </div>
+                <div>
+                    <div style="margin-bottom: 3%; display: flex; width: 100%;">
+                        <div style="width: 50%; margin-left: 5%;">
+                            <div style="width: 80%;">
+                                <div>
+                                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Name</span>
+                                </div>
+                                <div style="width: 100%;">
+                                    <input style="width:100%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #resName class="myformsq" placeholder="Enter Name"
+                                        formControlName="Name" [value]="name"
+                                        (change)="name = genk.hook(resName.value.toString())">
+                                </div>
+                            </div>
+                            <div *ngIf="submitted" class="eroce">
+                                <span *ngIf="!f['Name'].valid">
+                                    Name is required
+                                </span>
+                            </div>
+                        </div>
+        
+                        <div style="width: 50%;">
+                            <div style="width: 80%;">
+                                <div>
+                                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Designation</span>
+                                </div>
+                                <div style="width: 100%;">
+                                    <input style="width:100%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #resDegn class="myformsq" placeholder="Enter Designation" formControlName="Designation" [value]="designation" (change)="designation = genk.hook(resDegn.value.toString())">
+                                </div>
+                            </div>
+                            <div *ngIf="submitted" class="eroce">
+                                <span *ngIf="!f['Designation'].valid">
+                                    Designation is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="width: 50%;">
+                            <div style="width: 80%;">
+                                <div>
+                                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Phone No.</span>
+                                </div>
+                                <div style="width: 100%;">
+                                    <input style="width:100%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #resPhone class="myformsq" placeholder="Enter Phone"
+                                        formControlName="Phone" [value]="phone"
+                                        (change)="phone = genk.hook(resPhone.value.toString())">
+                                </div>
+                            </div>
+                            <div *ngIf="submitted" class="eroce">
+                                <span *ngIf="!f['Phone'].valid">
+                                    Phone number is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+    
+                    <div style="margin-bottom: 3%; display: flex; width: 100%;">
+                        <div style="width: 50%; margin-left: 5%;">
+                            <div style="width: 80%;">
+                                <div>
+                                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Login Email</span>
+                                </div>
+                                <div style="width: 100%;">
+                                    <input style="width:100%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #resEmail class="myformsq" placeholder="Enter Email" formControlName="Email" [value]="email" (change)="email = genk.hook(resEmail.value.toString())">
+                                </div>
+                            </div>
+                            <div *ngIf="submitted" class="eroce">
+                                <span *ngIf="!f['Email'].valid">
+                                    Email is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="width: 50%;">
+                            <div style="width: 80%;">
+                                <div>
+                                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Login Password</span>
+                                </div>
+                                <div style="width: 100%;">
+                                    <input style="width:100%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #resPassword class="myformsq" placeholder="Enter Password"
+                                        formControlName="Password" [value]="password"
+                                        (change)="password = genk.hook(resPassword.value.toString())">
+                                </div>
+                            </div>
+                            <div *ngIf="submitted" class="eroce">
+                                <span *ngIf="!f['Password'].valid">
+                                    Password is required
+                                </span>
+                            </div>
+                        </div>
+        
+                        <div style="width: 50%;">
+                            <div style="width: 80%;">
+                                <div style="width: 100%; padding-top: 20px;">
+                                    <input width="100%" type="submit" value="Create User"
+                                        style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 15%; border-radius: 10px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        
+        <div style="width: 70%; margin: 3% auto 6% auto;">
+            <div *ngIf="isEmpty">No records added</div>
+            <table *ngIf="!isEmpty" class="apptable">
+                <tr>
+                  <th>Company Name</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Designation</th>
+                  <th>Phone No.</th>
+                  <th>Date Created</th>
+                  <th></th>
+                </tr>
+                <tr *ngFor="let data of infodata">
+                  <td>{{data.companY_NAME}}</td>
+                  <td>{{data.name}}</td>
+                  <td>{{data.email}}</td>
+                  <td>{{data.designation}}</td>
+                  <td>{{data.phonE_NO}}</td>
+                  <td>{{data.date_Created | date: 'dd MMM, y'}}</td>
+                  <td><span (click)="deleteCompanyResource(data.id)" style="background-color: rgb(226, 60, 38); color: white; padding: 10px 20px; border-radius: 5px; font-weight: 700;">Delete</span></td>
+                </tr>
+              </table>
+        </div>
+    </div>
+</div>

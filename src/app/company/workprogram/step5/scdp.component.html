@@ -1,0 +1,837 @@
+<div
+    style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+    <div [formGroup]="SCDP_CSR_Form">
+        <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
+            <span>SUSTAINABLE COMMUNITY DEVELOPMENT PROJECT & CSR</span>
+        </div><br>
+        <hr size="10">
+        <br>
+        <div style="display: flex; width: 100%;">
+            <label class="labelwp">
+                Sustainable Development / Community Project/ Program</label>
+        </div>
+        <br>
+        <hr size="5">
+
+        <div style="display: flex; width: 100%;">
+
+            <div style="width: 30%;">
+                <label class="labelwp">Description of Projects [PLANNED]</label><br>
+                <div style="display: flex;">
+                    <div
+                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                        <input type="text" class="inpute" formControlName="description_of_Projects_Actual" [(ngModel)]="scdp_csr_Body.description_of_Projects_Actual">
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 30%;margin-left: 5%; ">
+                <label class="labelwp">Description of project [Actual]</label>
+                <div style="display: flex; width: 100%;">
+                    <div
+                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                        <input type="text" class="inpute" formControlName="description_of_Projects_Planned" [(ngModel)]="scdp_csr_Body.description_of_Projects_Planned">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div style="text-align: center;">
+            <button (click)="SDCP_CSR_Submit()" class="submitbtn">Add Actual & Planned Projects</button>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_9" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_9">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_9">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_CSR($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+   
+    <br>
+    <hr size="10">
+    <br><br>
+
+    <div [formGroup]="SCDP_Question_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">MOU Information</label>
+    </div>
+    <hr size="5">
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;"><br>
+            <label class="labelwp">Have you submitted all MoUs to NUPRC?</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <select class="input" type="inpute" formControlName="have_you_submitted_all_MoUs_to_DPR" [(ngModel)]="scdp_question_Body.have_you_submitted_all_MoUs_to_DPR">
+                    <option selected disabled>---- Please Select an Option----</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div style="width: 30%;"><br>
+            <label class="labelwp">If NO, Give Reason</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="if_NO_why" [(ngModel)]="scdp_question_Body.if_NO_why">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Do you have an MOU with the communities for all your assets?</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <select class="input" type="inpute" formControlName="do_you_have_an_MOU_with_the_communities_for_all_your_assets" [(ngModel)]="scdp_question_Body.do_you_have_an_MOU_with_the_communities_for_all_your_assets">
+                    <option selected disabled>---- Please Select a Option----</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No"</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Do you have in place, MOU with oil spill responders?</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <select class="input" type="inpute" formControlName="mOUResponderInPlace" [(ngModel)]="scdp_question_Body.mOUResponderInPlace">
+                    <option selected disabled>---- Please Select an Option----</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Upload evidence of MOU with responders</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="file" formControlName="mOUResponderFilePath" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+                (change)="saveResponderDoc($event)" class="inpute">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Upload OSCP document</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="file" formControlName="mOUOSCPFilePath" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+                (change)="saveOSCPDoc($event)" class="inpute">
+         </div>
+        </div>
+    </div>
+    <br>
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Question_Submit()" class="submitbtn">Save MOU Information</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_Question($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr size="10">
+    <br><br>
+
+    <div [formGroup]="SCDP_MOU_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">Project Details</label>
+    </div>
+    <hr size="5">
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Type of project been executed</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="type_of_project_excuted" [(ngModel)]="scdp_mou_Body.type_of_project_excuted">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Project Location</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="project_Location" [(ngModel)]="scdp_mou_Body.project_Location">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Year GMoU was signed</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_mou_Body.year_GMou_was_signed">
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Component of project</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="component_of_project" [(ngModel)]="scdp_mou_Body.component_of_project">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Actual Budget Total ($)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_mou_Body.actual_Budget_Total_Dollars">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Status of project</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <select class="input" type="inpute" formControlName="status_Of_Project" [(ngModel)]="scdp_mou_Body.status_Of_Project">
+                    <option selected disabled>---- Please Select a Category----</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display:flex; width: 100%; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Beneficiary Community</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Community" [(ngModel)]="scdp_mou_Body.beneficiary_Community">
+            </div>
+        </div>
+        <div style="width: 30%; margin-left: 5%; ">
+            <label class="labelwp">Upload GMoU</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="file" formControlName="gMOUFilePath" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+                (change)="saveGMOUDoc($event)" class="inpute">
+
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_MOU_Submit()" class="submitbtn">Save MOU Projects</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_2" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_2">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_2">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_MOU($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr size="10">
+    <br><br>
+    <br>
+
+
+    <div [formGroup]="SCDP_CapitalProjects_Form">
+        <div style="display: flex; width: 100%;">
+        <label class="labelwp">Capital Projects</label>
+    </div>
+    <hr size="5">
+    <div style="width: 30%;">
+        <label class="labelwp">Please provide values for Actual and Proposed year</label>
+        <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+            <select class="input" type="inpute" formControlName="actual_proposed" [(ngModel)]="scdp_capitalprojects_Body.actual_proposed">
+                <option selected disabled>---- Please Select value ----</option>
+                <option value="Actual">Actual</option>
+                <option value="Proposed">Proposed</option>
+            </select>
+        </div>
+    </div><br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Project Title</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="cSR_" [(ngModel)]="scdp_capitalprojects_Body.cSR_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Planned Budget Total ($)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_capitalprojects_Body.budget_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Actual (Budget)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_capitalprojects_Body.actual_Spent">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div style="display:flex; width: 100%; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Percentage Completion</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_capitalprojects_Body.percentage_Completion_">
+            </div>
+        </div>
+        <div style="width: 30%; margin-left: 5%; ">
+            <label class="labelwp">Beneficiary Communities</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Communities" [(ngModel)]="scdp_capitalprojects_Body.beneficiary_Communities">
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Capital_Submit()" class="submitbtn">Add Capital Projects</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_3" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_3">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_3">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_MOU($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <hr size="10">
+    <br><br>
+    <br>
+
+    <div [formGroup]="SCDP_Scholarship_CSR_Form">
+        <div style="display: flex; width: 100%;">
+        <label class="labelwp">Scholarships</label>
+    </div>
+    <hr size="5">
+    <div style="width: 30%;">
+        <label class="labelwp">Please provide values for Actual and Proposed year</label>
+        <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+            <select class="input" type="inpute" formControlName="actual_proposed" [(ngModel)]="scdp_scholarship_csr_Body.actual_proposed">
+                <option selected disabled>---- Please Select value ----</option>
+                <option value="Actual">Actual</option>
+                <option value="Proposed">Proposed</option>
+            </select>
+        </div>
+    </div><br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Project Title</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="cSR_" [(ngModel)]="scdp_scholarship_csr_Body.cSR_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Planned Budget Total ($)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_scholarship_csr_Body.budget_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Actual (Budget)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_scholarship_csr_Body.actual_Spent">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div style="display:flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Percentage Completion</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_scholarship_csr_Body.percentage_Completion_">
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Beneficiary (Host) </label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Communities_host" [(ngModel)]="scdp_scholarship_csr_Body.beneficiary_Communities_host">
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Beneficiary (National)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Communities_National" [(ngModel)]="scdp_scholarship_csr_Body.beneficiary_Communities_National">
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Scholarship_CSR_Submit()" class="submitbtn">Add Scholarship</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_4" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_4">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_4">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_CSR($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr size="10">
+    <br><br>
+
+
+    <div [formGroup]="SCDP_Scholarship_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">Scholarship Schemes</label>
+    </div>
+    <hr size="5">
+   
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Name of community</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="nameOfCommunity" [(ngModel)]="scdp_scholarship_Body.nameOfCommunity">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Year GMoU was signed</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_scholarship_Body.year_GMou_was_signed">
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Scholarship year</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="scholarshipYear" [(ngModel)]="scdp_scholarship_Body.scholarshipYear">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Components of scholarship (Primary etc)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="componentOfScholarship" [(ngModel)]="scdp_scholarship_Body.componentOfScholarship">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Actual budget total (USD)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_scholarship_Body.actual_Budget_Total_Dollars">
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Upload beneficiaries & contact</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="file" formControlName="sSUploadFilePath" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+                (change)="saveBenefDoc($event)" class="inpute">
+            </div>
+        </div>
+
+    </div>
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Scholarship_Submit()" class="submitbtn">Add Scheme</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_5" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_5">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_5">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_Sch($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+   
+    <br>
+    <hr size="10">
+    <br><br>
+    <div [formGroup]="SCDP_TrainingSkills_CSR_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">Trainings and Skill Acquisition</label>
+    </div>
+    <hr size="5">
+    <div style="width: 30%;">
+        <label class="labelwp">Please provide values for Actual and Proposed year</label>
+        <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+            <select class="input" type="inpute" formControlName="actual_proposed" [(ngModel)]="scdp_trainingskills_csr_Body.actual_proposed">
+                <option selected disabled>---- Please Select Option ----</option>
+                <option value="Actual">Actual</option>
+                <option value="Proposed">Proposed</option>
+            </select>
+        </div>
+    </div><br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Project Title</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="cSR_" [(ngModel)]="scdp_trainingskills_csr_Body.cSR_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Planned (Budget)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_trainingskills_csr_Body.budget_">
+            </div>
+        </div>
+        <div style="width: 30%;margin-left: 5%; ">
+            <label class="labelwp">Actual (Budget)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_trainingskills_csr_Body.actual_Spent">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Percentage Completion</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_trainingskills_csr_Body.percentage_Completion_">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Beneficiary (Host)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Communities_host" [(ngModel)]="scdp_trainingskills_csr_Body.beneficiary_Communities_host">
+            </div>
+        </div>
+        
+        <div style="width: 30%;">
+            <label class="labelwp">Beneficiary (National)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="beneficiary_Communities_National" [(ngModel)]="scdp_trainingskills_csr_Body.beneficiary_Communities_National">
+            </div>
+        </div>
+
+    </div>
+
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Training_Skills_CSR_Submit()" class="submitbtn">Add Trainings & Skill Acquisition</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_6" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_6">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_6">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_HSE_SDCP_TrainingSkills($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr size="10">
+    <br><br>
+
+    <div [formGroup]="SCDP_TrainingDetails_CSR_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">Training Details</label>
+    </div>
+    <hr size="5">
+
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Name of Community</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="nameOfCommunity" [(ngModel)]="scdp_trainingdetails_csr_Body.nameOfCommunity">
+
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Year GMoU was signed</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_trainingdetails_csr_Body.year_GMou_was_signed">
+            </div>
+        </div>
+        <div style="width: 30%; ">
+            <label class="labelwp">Training year</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="trainingYear" [(ngModel)]="scdp_trainingdetails_csr_Body.trainingYear">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <div style="display: flex; width: 100%; justify-content: space-between; ">
+
+        <div style="width: 30%;">
+            <label class="labelwp">Components of Training</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="text" class="inpute" formControlName="componentOfTraining" [(ngModel)]="scdp_trainingdetails_csr_Body.componentOfTraining">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Actual budget total (USD)</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                <input type="number" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_trainingdetails_csr_Body.actual_Budget_Total_Dollars">
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Project Status</label>
+            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+               <select class="input" type="inpute" formControlName="statusOfTraining" [(ngModel)]="scdp_trainingdetails_csr_Body.statusOfTraining">
+                    <option selected disabled>---- Please Select Category ----</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+    <div style="width: 30%;">
+        <label class="labelwp">Upload Beneficiaries & Contact</label>
+        <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+            <input type="file" formControlName="tSUploadFilePath" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+            (change)="saveBenefDoc_2($event)" class="inpute">        </div>
+    </div>
+
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Training_Details_CSR_Submit()" class="submitbtn">Add Trainings</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_7" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_7">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_7">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_HSE_SDCP_TrainingSCR($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+   
+    <br>
+    <hr size="10">
+<br>
+    <div [formGroup]="SCDP_Pictures_CSR_Form">
+    <div style="display: flex; width: 100%;">
+        <label class="labelwp">Pictures For Community Development Projects</label>
+    </div>
+    <hr size="5">
+    <div style="width: 30%;">
+        <label class="labelwp">Only jpeg , png , bmp,gif images / pictures are required</label>
+        <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+            <input type="file" formControlName="uploaded_presentation" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+            (change)="savePictureDoc($event)" class="inpute">         </div>
+    </div>
+
+    <br><br>
+    <div style="text-align: center;">
+        <button (click)="SDCP_Pictures_Submit()" class="submitbtn">Click Here To Upload Picture</button>
+    </div>
+    </div>
+    <br>
+    <div *ngIf="isTabVisible_8" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_8">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_8">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_SDCP_Pictures($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+   
+    <br>
+    <hr size="10">
+    <br><br>
+
+    <div style="display: flex; width: 100%; justify-content: space-around;">
+        <div style="text-align: center;">
+            <button class="submitbtn">Previous</button>
+        </div>
+        <div style="text-align: center;">
+            <button class="submitbtn">Save & Continue Later</button>
+        </div>
+        <div style="text-align: center;">
+            <button class="submitbtn" (click)="Submit_WorkProgram()">Click Here to Submit</button>
+        </div>
+    </div>
+    </div>

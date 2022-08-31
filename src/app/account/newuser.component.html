@@ -1,0 +1,40 @@
+<div style="margin-top: 5%">
+    <form [formGroup]="newUserForm" autocomplete="off" (ngSubmit)="submit()">
+        <div style="width: 60%; border: solid 1px grey; background-color: white; margin: auto; border-radius: 50px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);">
+            <div class="overlapbox" style="width: 100%">
+                <img style="height: 28vh; width: 100%; filter: blur(1px); border-radius: 50px 50px 0 0;" src="assets/nuprcback.jpg">
+                <div class="overlapdiv">
+                    <div style="display: flex; align-items: center;">
+                        <img src="assets/NUPRC-logo.png">
+                        <span style="font-size: 28px; font-weight: 600; color: white; line-height: 120%; margin: auto;">
+                            Nigerian Upstream Petroleum Resources Commission
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="width: 100%;">
+                <div style="text-align: center; margin: 3% 0 10% 0">
+                    <span style="font-size:20px; font-weight: 700; color: darkslategrey;">WORK PROGRAMME DATA UPLOAD -
+                        (2022 / 2023) </span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 5%;">
+                    <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8); margin-right: 3%;"> Company
+                        Code: </span>
+                    <input #compcode name="Company Code" class="myformsq" placeholder="Enter Company Code" style="width:50%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" formControlName="CompanyCode" [value]="companyCode" (change)="companyCode = genk.hook(compcode.value.toString())">
+                </div>
+                <div *ngIf="submitted" class="eroce">
+                    <span *ngIf="!f['CompanyCode'].valid">
+                        Company Code is required
+                    </span>
+                </div>
+                <div style="text-align: center; margin-bottom: 5%;">
+                    <input type="submit" value="Verify Code"
+                        style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 10%; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

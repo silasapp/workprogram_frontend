@@ -1,0 +1,83 @@
+<div style="padding-top: 5%; height: 100vh;">
+    <form [formGroup]="changeCodeForm" autocomplete="off" (ngSubmit)="submit()">
+        <div style="width: 60%; border: solid 1px grey; background-color: white; margin: auto; border-radius: 50px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);">
+            <div class="overlapbox" style="width: 100%">
+                <img style="height: 28vh; width: 100%; filter: blur(2px); border-radius: 50px 50px 0 0;" src="assets/nuprcback.jpg">
+                <div class="overlapdiv">
+                    <div style="display: flex; align-items: center;">
+                        <img src="assets/NUPRC-logo.png">
+                        <span style="font-size: 28px; font-weight: 600; color: white; line-height: 120%; margin: auto;">
+                            Nigerian Upstream Petroleum Resources Commission
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="width: 100%;">
+                <div style="text-align: center; margin: 3% 0 5% 0">
+                    <span style="font-size:20px; font-weight: 700; color: darkslategrey;">WORK PROGRAMME DATA UPLOAD -
+                        (2022 / 2023) </span>
+                </div>
+                <div>
+                    <div style="margin-bottom: 3%;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 300px; text-align: end; margin: 0 5% 0 0;">
+                                <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Company Code: </span>
+                            </div>
+                            <div style="width: 100%;">
+                                <input style="width:70%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #compcode name="Company Code" class="myformsq" placeholder="Enter Company Code"
+                                    formControlName="CompanyCode" [value]="companyCode"
+                                    (change)="companyCode = genk.hook(compcode.value.toString())">
+                            </div>
+                        </div>
+                        <div *ngIf="submitted" class="eroce">
+                            <span *ngIf="!f['CompanyCode'].valid">
+                                Company Code is required
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div style="margin-bottom: 3%;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 300px; text-align: end; margin-right: 5%;">
+                                <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">Email: </span>
+                            </div>
+                            <div style="width: 100%;">
+                                <input style="width:70%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #compemail class="myformsq" placeholder="Enter Company Code" formControlName="Email" [value]="email" (change)="email = genk.hook(compemail.value.toString())">
+                            </div>
+                        </div>
+                        <div *ngIf="submitted" class="eroce">
+                            <span *ngIf="!f['Email'].valid">
+                                Email is required
+                            </span>
+                        </div>
+                    </div>
+    
+                    
+                    <div style="margin-bottom: 3%;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 300px; text-align: end; margin-right: 5%;">
+                                <span style="font-weight: 800; font-size:15px; color: rgb(27, 124, 8);">New Company Code: </span>
+                            </div>
+                            <div style="width: 100%;">
+                                <input style="width:70%; box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);" #newcompcode class="myformsq" placeholder="Enter New Company Code" formControlName="NewCompanyCode" [value]="newCompanyCode" (change)="newCompanyCode = genk.hook(newcompcode.value.toString())">
+                            </div>
+                        </div>
+                        <div *ngIf="submitted" class="eroce">
+                            <span *ngIf="!f['NewCompanyCode'].valid">
+                                New Company Code is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 5%;">
+                    <input type="submit" value="Change Company Code"
+                        style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 10%; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

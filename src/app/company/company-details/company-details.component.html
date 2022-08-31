@@ -1,0 +1,95 @@
+
+<div class="container mt-5">
+    <form [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <h1>Company Details </h1>
+    
+    <div class="bg-success">
+        <hr size="5">
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Company Name</h2>
+                </div>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" formControlName="companyId" hidden>
+                    
+                    <input type="text" class="form-control" formControlName="companyName"></div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Company Email</h2>
+                </div>
+                <div class="col-sm-6"><input type="email" class="form-control" formControlName="companyEmail"></div>
+            </div>
+        </div>
+    
+        <div class="bg-success">
+            <hr size="5">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Address of Company</h2>
+                </div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="address_of_Company"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>CEO's Name</h2>
+                </div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="name_of_MD_CEO"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2> CEO's Phone number</h2>
+                </div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_NO_of_MD_CEO"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Contact person</h2>
+                </div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="contact_Person"></div>
+            </div>
+        </div><div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Contact Person's Number</h2>
+                </div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_No"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Contact Person's Email</h2>
+                </div>
+                <div class="col-sm-6"><input type="email" class="form-control" formControlName="email_Address"></div>
+            </div>
+        </div>
+    
+    
+    <div class="bg-success">
+        <hr size="5">
+    </div>
+    
+    <div class="container text-align-center d-flex justify-content-center p-5">
+        <div class="col-sm-4">
+        <input type="submit" value="Submit" class="form-control text-white alterbtn">
+        </div>
+    </div>
+    </div>
+    </form>
+    </div>

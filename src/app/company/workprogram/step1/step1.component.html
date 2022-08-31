@@ -1,0 +1,18 @@
+<div style="margin: 0 10px 0 0">
+    <div style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3); margin-bottom: 10px; padding-top: 5px;">
+        <div style="display: flex; justify-content: space-around; font-size: 16px; font-weight: 500;">
+            <div style="padding: 10px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'concessionsituation']" routerLinkActive="wkpactive">
+                <span>Concession Situation</span>
+            </div>
+            <div style="padding: 10px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'geophysicalactivities']" routerLinkActive="wkpactive">
+                <span>Geophysical Activities</span>
+            </div>
+            <div style=" padding: 10px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'drillingoperation']" routerLinkActive="wkpactive">
+                <span>Drilling Operations</span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; background-color: rgb(217, 219, 220);">
+        <router-outlet></router-outlet>
+    </div>
+</div>

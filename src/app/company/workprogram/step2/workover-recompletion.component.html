@@ -1,0 +1,155 @@
+<div [formGroup]="WorkoverForm" (ngSubmit)="submit()"
+  style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+  <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
+    <span>WORKOVERS & RECOMPLETION JOBS ON QUARTERLY BASIS</span><br><br>
+  </div>
+
+  <div>
+    <div class="quarterbox">
+      <div class="quarterspace" [ngClass]="quaterIWClassOne" (click)="changeIWQuater(1, btn)">
+        <div style="margin-bottom: 20px;">
+          <span><span style="font-size: 25px;">1</span> Quarter</span>
+        </div>
+
+      </div>
+      <div class="quarterspace" [ngClass]="quaterIWClassTwo" (click)="changeIWQuater(2, btn)">
+        <div style="margin-bottom: 20px;">
+          <span><span style="font-size: 25px;">2</span> Quarter</span>
+        </div>
+
+      </div>
+      <div class="quarterspace" [ngClass]="quaterIWClassThree" (click)="changeIWQuater(3, btn)">
+        <div style="margin-bottom: 20px;">
+          <span><span style="font-size: 25px;">3</span> Quarter</span>
+        </div>
+
+      </div>
+      <div class="quarterspace" [ngClass]="quaterIWClassFour" (click)="changeIWQuater(4, btn)">
+        <div style="margin-bottom: 20px;">
+          <span> <span style="font-size: 25px;">4</span> Quarter</span>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div>
+      <div class="toprow">
+        <div style="width: 30%;">
+          <label class="labelwp">Actual No. of Completion </label>
+          <div style="display: flex;">
+            <div
+              style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+              <input (keypress)="genk.restrictData($event)" formControlName="current_year_Actual_Number_data"
+                [(ngModel)]="workoverBody.current_year_Actual_Number_data" class="inpute">
+            </div>
+          </div>
+        </div>
+        <div style="width: 30%;">
+          <label class="labelwp">Proposed No. Wells(s) For Completion</label>
+          <div style="display: flex;">
+            <div
+              style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+              <input (keypress)="genk.restrictData($event)" formControlName="proposed_year_data"
+                [(ngModel)]="workoverBody.proposed_year_data" class="inpute">
+            </div>
+          </div>
+        </div>
+        <div style="width: 30%;">
+          <label class="labelwp">Proposed No. Days Spent For Completion</label>
+          <div style="display: flex;">
+            <div
+              style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+              <input (keypress)="genk.restrictData($event)" formControlName="daysForCompletion"
+                [(ngModel)]="workoverBody.daysForCompletion" class="inpute">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="toprow">
+        <div style="width: 30%;">
+          <div style="font-weight: 500; margin-bottom: 5px">
+            <span>Budget Allocation (NGN & USD)</span>
+          </div>
+
+          <div style="width: 100%; display: flex;">
+
+            <div style="width: 98%; margin-right: 2%;">
+              <label class="labelwp">NGN</label>
+              <div style="display: flex;">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">&#x20A6;</span>
+                  <input type="text" formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="workoverBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
+                    [value]="workoverBody.budeget_Allocation_NGN" class="inpute">
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 98%">
+              <label class="labelwp">USD</label>
+              <div style="display: flex;">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">$</span>
+                  <input type="text" formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="workoverBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
+                    [value]="workoverBody.budeget_Allocation_USD" class="inpute">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin-top: auto;">
+          <label class="labelwp">Do you have approval for the
+            workover/recompletion?</label>
+          <div style="display: flex; width: 100%;">
+            <div class="inputshadow">
+              <select class="dropwp" formControlName="do_you_have_approval_for_the_workover_recompletion"
+                [(ngModel)]="workoverBody.do_you_have_approval_for_the_workover_recompletion">
+                <option selected disabled>--Select a Option -- </option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div style="width: 30%; margin-top: auto;">
+          <label class="labelwp"> Well Type </label>
+          <div style="display: flex; width: 100%;">
+            <div class="inputshadow">
+              <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="workoverBody.oil_or_gas_wells"
+                (change)="getFieldWell($event)">
+                <option selected disabled>--Select a Option -- </option>
+                <option value="GAS WELL">GAS WELL</option>
+                <option value="OIL WELL">OIL WELL</option>
+                <option value="CONDENSATE WELL">CONDENSATE WELL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div>
+        <div style="width: 30%;">
+          <label class="labelwp">Remarks</label>
+          <div style="display: flex;">
+            <div
+              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+              <textarea formControlName="remarks" [(ngModel)]="workoverBody.remarks" class="inpute" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div>
+        <div style="text-align: center;">
+          <button #btn class="quarterbtn" (click)="submit()">Save Quarter 1</button>
+        </div>
+      </div>
+    </div>
+  </div>

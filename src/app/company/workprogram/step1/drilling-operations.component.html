@@ -1,0 +1,586 @@
+<div style="background-color: white; border-radius: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); padding: 20px 20px 0 20px;">
+  <div
+    style="font-size: 20px; font-weight: 500; text-align: center; margin-bottom: 20px; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
+    <span>DRILLING OPERATIONS ON QUARTERLY BASIS</span>
+  </div>
+  <br>
+  <div>
+    <span style="font-weight: 600; color: teal; font-size: 17px;">Categories of Wells Drilled</span><br>
+    <small style="color: rgb(255, 157, 0); font-weight: 500;">Note*: &nbsp; Fill only for quarters for which you have data</small>
+  </div><br>
+  <div>
+    <div>
+      <div>
+        <div class="quarterbox">
+          <div class="quarterspace" [ngClass]="quaterACClassOne" (click)="changeACQuater(1, btn, btn2, btn3)">
+            <div style="margin-bottom: 20px;">
+              <span><span style="font-size: 25px;">1</span> Quarter</span>
+            </div>
+
+          </div>
+          <div class="quarterspace" [ngClass]="quaterACClassTwo" (click)="changeACQuater(2, btn, btn2, btn3)">
+            <div style="margin-bottom: 20px;">
+              <span><span style="font-size: 25px;">2</span> Quarter</span>
+            </div>
+
+          </div>
+          <div class="quarterspace" [ngClass]="quaterACClassThree" (click)="changeACQuater(3, btn, btn2, btn3)">
+            <div style="margin-bottom: 20px;">
+              <span><span style="font-size: 25px;">3</span> Quarter</span>
+            </div>
+
+          </div>
+          <div class="quarterspace" [ngClass]="quaterACClassFour" (click)="changeACQuater(4, btn, btn2, btn3)">
+            <div style="margin-bottom: 20px;">
+              <span> <span style="font-size: 25px;">4</span> Quarter</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div>
+        <div>
+          <div [formGroup]="CategoryForm">
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%;">
+                <label class="labelwp">Well Name</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="wellName" [(ngModel)]="categoryBody.wellName" class="inpute">
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Actual/Proposed</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="actual_Proposed" [(ngModel)]="categoryBody.actual_Proposed">
+                      <option selected disabled>-- Select an Option --</option>
+                      <option value="Actual">Actual</option>
+                      <option value="Proposed">Proposed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Category</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="category" [(ngModel)]="categoryBody.category">
+                      <option selected disabled>-- Select Category --</option>
+                      <option value="1st Appraisal">1st Appraisal</option>
+                      <option value="2nd Appraisal">2nd Appraisal</option>
+                      <option value="Development">Development</option>
+                      <option value="Exploration">Exploration</option>
+                      <option value="NIL">NIL</option>
+                      <option value="Ordinary Appraisal (3rd & other Appraisal)">Ordinary Appraisal(3rd & other
+                        Appraisal)
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%;">
+                <label class="labelwp">Well Type</label>
+                <div style="display: flex; width: 100%;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="dropwp" formControlName="well_type" [(ngModel)]="categoryBody.well_type">
+                      <option selected disabled>---- Please Select Well Type ----</option>
+                      <option value="Cuttings Re-Injections">Cuttings Re-Injections</option>
+                      <option value="Gas Injector">Gas Injector</option>
+                      <option value="Gas Producer">Gas Producer</option>
+                      <option value="NIL">NIL</option>
+                      <option value="Oil Producer">Oil Producer</option>
+                      <option value="Potable Water">Potable Water</option>
+                      <option value="Water Injector">Water Injector</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%">
+                <label class="labelwp">Well Trajectory</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="well_trajectory" [(ngModel)]="categoryBody.well_trajectory">
+                      <option selected disabled>---- Please Select Trajectory ----
+                      </option>
+                      <option value="Deviated">Deviated</option>
+                      <option value="Horizontal">Horizontal/option>
+                      <option value="NIL">NIL</option>
+                      <option value="Vertical">Vertical</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%">
+                <label class="labelwp">Spud Date</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="date" formControlName="spud_date" [(ngModel)]="categoryBody.spud_date" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <br>
+            <br>
+
+
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Cored</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="cored" [(ngModel)]="categoryBody.cored">
+                      <option selected disabled>-- Select an Option -- &nbsp; &nbsp;</option>
+                      <option value="YES">YES</option>
+                      <option value="NO">NO</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Cored Depth Interval (meters)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="core_Depth_Interval"
+                      [(ngModel)]="categoryBody.core_Depth_Interval" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">Core Cost (USD)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="core_Cost_USD" [(ngModel)]="categoryBody.core_Cost_USD"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Any New Discoveries?</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="any_New_Discoveries"
+                      [(ngModel)]="categoryBody.any_New_Discoveries">
+                      <option selected disabled>-- Select an Option -- &nbsp; &nbsp;</option>
+                      <option value="YES">YES</option>
+                      <option value="NO">NO</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">State of Field(s) Where Discoveries Was Made?</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="state_the_field_where_Discovery_was_made"
+                      [(ngModel)]="categoryBody.state_the_field_where_Discovery_was_made" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">Hydrocarbon Interval(s)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="hydrocarbon_Counts"
+                      [(ngModel)]="categoryBody.hydrocarbon_Counts" class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div style="display: flex; width: 100%;  justify-content: end;">
+              <div style="width: 30%; margin-right: 5%;">
+                <label class="labelwp">Upload File and Discovery</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="file" formControlName="discoveryFile"
+                      accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx" (change)="saveDiscoveryDoc($event)"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="f['discoveryFile'].invalid">
+                <span *ngIf="f['discoveryFile'].errors['incorrect']">
+                  Error! File size should not exceed 50mb!
+                </span>
+                <span *ngIf="f['discoveryFile'].errors['format']">
+                  Error! This audio format is currently not supported. Try (.mp3/.m4a/.wav/.ogg).
+                </span>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">Upload File on hydrocarbon interval(s)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="file" formControlName="hydrocarbonFile"
+                      accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx" (change)="saveHydroDoc($event)"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="f['hydrocarbonFile'].invalid">
+                <span *ngIf="f['hydrocarbonFile'].errors['incorrect']">
+                  Error! File size should not exceed 50mb!
+                </span>
+                <span *ngIf="f['hydrocarbonFile'].errors['format']">
+                  Error! This audio format is currently not supported. Try (.mp3/.m4a/.wav/.ogg).
+                </span>
+              </div>
+            </div>
+            <br>
+
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp"> Total Actual Well Cost(USD) </label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="well_cost" [(ngModel)]="categoryBody.well_cost" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Processing Fee</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="processing_Fees_Paid"
+                      [(ngModel)]="categoryBody.processing_Fees_Paid">
+                      <option selected disabled>--Select an Option --</option>
+                      <option value="NO">NO</option>
+                      <option value="YES">YES</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">No. of Days to Total Depth (TD)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="number_of_Days_to_Total_Depth"
+                      [(ngModel)]="categoryBody.number_of_Days_to_Total_Depth" class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Terrain</label>
+                <div style="display: flex; width: 100%;">
+                  <div class="inputshadow">
+                    <select class="dropwp" formControlName="terrain" [(ngModel)]="categoryBody.terrain">
+                      <option selected disabled>-- Select an Terrain -- &nbsp; &nbsp;</option>
+                      <option value="Continrental Shelf">Continrental Shelf</option>
+                      <option value="Deep Offshore">Deep Offshore</option>
+                      <option value="Onshore">Onshore</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Water Depth(meters)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="water_depth" [(ngModel)]="categoryBody.water_depth"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">True Vertical Depth (Total Depth)(meters)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="true_vertical_depth"
+                      [(ngModel)]="categoryBody.true_vertical_depth" class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div style="display: flex; width: 100%;  justify-content: space-between;">
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Measured Depth (total depth) (meters)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="measured_depth" [(ngModel)]="categoryBody.measured_depth"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp"> Depth Reference (elevation) (meters)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="depth_refrence" [(ngModel)]="categoryBody.depth_refrence"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%;">
+                <label class="labelwp">Rig Type</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="rig_type" [(ngModel)]="categoryBody.rig_type" class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div style="display: flex; width: 100%;  justify-content:space-between;">
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Rig Name</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="rig_Name" [(ngModel)]="categoryBody.rig_Name" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Target Reservoir</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="target_reservoir" [(ngModel)]="categoryBody.target_reservoir"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Location Name</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="location_name" [(ngModel)]="categoryBody.location_name"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="toprow">
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Basin</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="basin" [(ngModel)]="categoryBody.basin" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp">Proposed Well Name(s)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="propose_well_names"
+                      [(ngModel)]="categoryBody.propose_well_names" class="inpute">
+                  </div>
+                </div>
+              </div>
+
+              <div style="width: 30%; margin-top: auto;">
+                <label class="labelwp"> Actual Name(s)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="actual_wells_name" [(ngModel)]="categoryBody.actual_wells_name"
+                      class="inpute">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="toprow">
+
+              <div style="width: 30%;">
+                <label class="labelwp">Comments</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <textarea rows="2" formControlName="comments" [(ngModel)]="categoryBody.comments" type="text"
+                      class="inpute"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <button #btn class="submitbtn" (click)="saveCategoryQuarter()">Save Quarter 1</button>
+            </div>
+            <br>
+          </div>
+
+
+          <div>
+            <span style="font-weight: 600; color: teal; font-size: 17px;">Actual Well Name and Cost Per Well</span><br>
+            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time. Enter N/A or Zero(0) for cost, if none drillied</small>
+          </div><br>
+
+
+          <div [formGroup]="CostForm" style="display: flex; width: 100%;  justify-content: space-between;">
+            <div style="width: 30%; margin-top: auto;">
+              <label class="labelwp">Actual Well Name</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="well_name" [(ngModel)]="costBody.well_name" class="inpute">
+                </div>
+              </div>
+            </div>
+
+
+
+            <div style="width: 30%; margin-top: auto;">
+              <label class="labelwp"> Cost Per Well (USD)</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="well_cost" [(ngModel)]="costBody.well_cost" class="inpute">
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 30%;">
+              <label class="labelwp">Surface Cordinates for each Well in Degrees (x,y)</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="surface_cordinates_for_each_well_in_degrees"
+                    [(ngModel)]="costBody.surface_cordinates_for_each_well_in_degrees" class="inpute">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div style="text-align: right;">
+            <button #btn2 class="submitbtn" (click)="saveWellCost()">Save Quarter 1</button>
+          </div>
+
+          <div>
+            <span style="font-weight: 600; color: teal; font-size: 17px;">Proposed Well Name and Cost Per Well</span><br>
+            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time. Enter N/A or Zero(0) for cost, if none drillied</small>
+          </div><br>
+
+
+          <div [formGroup]="CostProposedForm" style="display: flex; width: 100%;  justify-content: space-between;">
+            <div style="width: 30%; margin-top: auto;">
+              <label class="labelwp">Proposed Well Name</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="well_name" [(ngModel)]="costProposedBody.well_name"
+                    class="inpute">
+                </div>
+              </div>
+            </div>
+
+
+
+            <div style="width: 30%; margin-top: auto;">
+              <label class="labelwp"> Cost Per Well (USD)</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="well_cost" [(ngModel)]="costProposedBody.well_cost"
+                    class="inpute">
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 30%;">
+              <label class="labelwp">Surface Cordinates for each Well in Degrees (x,y)</label>
+              <div style="display: flex;">
+                <div
+                  style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <input type="text" formControlName="surface_cordinates_for_each_well_in_degrees"
+                    [(ngModel)]="costProposedBody.surface_cordinates_for_each_well_in_degrees" class="inpute">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div style="text-align: right; margin-bottom: 5px;">
+            <button #btn3 class="submitbtn" (click)="saveCostProposed()">Save Quarter 1</button>
+          </div>
+          <div style="height: 50px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div style="text-align: center;">
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']"
+    class="nextbtn">Next</button>
+</div>

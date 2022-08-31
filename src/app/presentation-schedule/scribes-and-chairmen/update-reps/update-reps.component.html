@@ -1,0 +1,62 @@
+<div class="">
+    <div class="">
+      <div class="">
+        <div class="">
+          <div class="">
+            <div class="">
+                <h2>Update Divisional Representative</h2>
+              </div>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form class="m-4" [formGroup]="repsForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name Of Divisional Rep </mat-label>
+              <mat-select formControlName="id" (selectionChange)="setCompanyRep($event)">
+                <mat-option disabled="disabled">--Please Select Name--</mat-option>
+                 <mat-option *ngFor="let rep of companyRepsList" [value]="rep.id"> {{rep.diV_REP_NAME}}</mat-option>
+              </mat-select>
+              <mat-icon matSuffix>face</mat-icon> 
+             
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Division of Representative</mat-label>
+              <input matInput formControlName="division" required>
+               <mat-icon matSuffix>location_on</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email Of DIvisional Representative</mat-label>
+              <input matInput formControlName="representativE_EMAIL">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+       
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row" align="end">
+              <button mat-raised-button color="primary" [type]="submit" [disabled]="!repsForm.valid"
+                [mat-dialog-close]="1" (click)="onSubmit()" style="margin-right: 20px;">Update Divisional Rep</button>
+              <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

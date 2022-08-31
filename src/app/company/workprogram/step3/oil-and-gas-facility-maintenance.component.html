@@ -1,0 +1,581 @@
+<div
+    style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+    <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
+        <span>OIL AND GAS FACILITY MAINTENANCE</span>
+    </div><br><hr size="10"><br><br>
+    <div [formGroup]="oilAndGasForm">
+    <div
+        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
+        <span>MAJOR PROJECTS AND UPGRADES</span>
+    </div>
+    <hr size="5">
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%;">
+            <label class="labelwp">Please provide values for Actual and Proposed year</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="actual_Proposed" [(ngModel)]="oilAndGasBody.actual_Proposed">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Actual Year">Actual</option>
+                        <option value="Proposed Year">Proposed</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%;">
+            <label class="labelwp">Major Projects</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="major_Projects" [(ngModel)]="oilAndGasBody.major_Projects">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Name</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="name" [(ngModel)]="oilAndGasBody.name">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Objective / Drivers</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="objective_Drivers_" [(ngModel)]="oilAndGasBody.objective_Drivers_">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Completion Status (%)</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="completion_Status" [(ngModel)]="oilAndGasBody.completion_Status">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Conceptual</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="conceptual" [(ngModel)]="oilAndGasBody.conceptual">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Feed</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="feed" [(ngModel)]="oilAndGasBody.feed">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Detailed Engineering</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="detailed_Engineering" [(ngModel)]="oilAndGasBody.detailed_Engineering">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Construction / Commissioning</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="construction_Commissioning_" [(ngModel)]="oilAndGasBody.construction_Commissioning_">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Product Offtakers</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="production_Product_Offtakers" [(ngModel)]="oilAndGasBody.production_Product_Offtakers">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Challenges</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="challenges" [(ngModel)]="oilAndGasBody.challenges">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Project Timeline</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="project_Timeline" [(ngModel)]="oilAndGasBody.project_Timeline">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%;">
+            <label class="labelwp">Approval / License / Permits</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="approval_License_Permits" [(ngModel)]="oilAndGasBody.approval_License_Permits">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto, 0, 0">
+            <label class="labelwp">New Technology</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="new_Technology_" [(ngModel)]="oilAndGasBody.new_Technology_">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <label class="labelwp">Has it been adopted by NUPRC</label>
+            <div style="width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="has_it_been_adopted_by_DPR_" [(ngModel)]="oilAndGasBody.has_it_been_adopted_by_DPR_">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Comment</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="comment_" [(ngModel)]="oilAndGasBody.comment_">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto, 0, 0">
+            <label class="labelwp">Planned, ongoing and routine maintenance ?</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute" formControlName="planned_ongoing_and_routine_maintenance" [(ngModel)]="oilAndGasBody.planned_ongoing_and_routine_maintenance">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Project Stage</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="project_Stage" [(ngModel)]="oilAndGasBody.project_Stage">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp"> Nigerian Content Value</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="nigerian_Content_Value" [(ngModel)]="oilAndGasBody.nigerian_Content_Value">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="display:flex;width: 100%; justify-content: space-between; ">
+        <div style="width: 30%">
+            <div style="font-weight: 500; margin-bottom: 5px">
+                <span>BUDGET PERFORMANCE ( Actual Expenditure)</span>
+            </div>
+
+            <div style="width: 100%; display: flex;">
+
+                <div style="width: 98%; margin-right: 2%;">
+                    <label class="labelwp">NGN</label>
+                    <div style="display: flex;">
+                        <div
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                            <input type="number" class="inpute" formControlName="actual_capital_expenditure_Current_year_NGN" [(ngModel)]="oilAndGasBody.actual_capital_expenditure_Current_year_NGN">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 98%">
+                    <label class="labelwp">USD</label>
+                    <div style="display: flex;">
+                        <div
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                            <input type="number" class="inpute" formControlName="actual_capital_expenditure_Current_year_USD" [(ngModel)]="oilAndGasBody.actual_capital_expenditure_Current_year_USD">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0; ">
+            <div style="font-weight: 500; margin-bottom: 5px">
+                <span>BUDGET PERFORMANCE ( Proposed Expenditure)</span>
+            </div>
+
+            <div style="width: 100%; display: flex; ">
+
+                <div style="width: 98%; margin-right: 2%;">
+                    <label class="labelwp">NGN</label>
+                    <div style="display: flex;">
+                        <div
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                            <input type="number" class="inpute" formControlName="proposed_Capital_Expenditure_NGN" [(ngModel)]="oilAndGasBody.proposed_Capital_Expenditure_NGN">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 98%">
+                    <label class="labelwp">USD</label>
+                    <div style="display: flex;">
+                        <div
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                            <input type="number" class="inpute" formControlName="proposed_Capital_Expenditure_USD" [(ngModel)]="oilAndGasBody.proposed_Capital_Expenditure_USD">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div>
+        <div style="text-align: center;">
+            <button class="submitbtn" (click)="saveOilGas()">Add Major Projects & Updates</button>
+        </div>
+        <br>
+    </div>
+
+    </div>
+    <div *ngIf="isTabVisible" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_OilGas($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <hr size="10"><br><br>
+
+    <div [formGroup]="newTechnologyForm">
+    <div
+        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
+        <span>New Technology and Conformity Assessment</span>
+    </div>
+    <hr size="5">
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Name</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="name" [(ngModel)]="newTechnologyBody.name">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Objective</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="objective" [(ngModel)]="newTechnologyBody.objective">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Existing Alternatives</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="existing_Alternatives" [(ngModel)]="newTechnologyBody.existing_Alternatives">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto, 0, 0">
+            <label class="labelwp">NUPRC Consent/ Approval Status</label>
+            <div style="display: flex; width: 100%;">
+                <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                    <select class="input" type="inpute"formControlName="dpR_Consent" [(ngModel)]="newTechnologyBody.dpR_Consent">
+                        <option selected disabled>---- Please Select an Option ----</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Cost (USD)</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="cost" [(ngModel)]="newTechnologyBody.cost">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Benefits</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="benefits" [(ngModel)]="newTechnologyBody.benefits">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Challenges</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="challenges" [(ngModel)]="newTechnologyBody.challenges">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Timeline</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="timeline" [(ngModel)]="newTechnologyBody.timeline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <br><br>
+    <div>
+        <div style="text-align: center;">
+            <button class="submitbtn" (click)="saveTechnology()">Update New Technology</button>
+        </div>
+        <br>
+    </div>
+    </div>
+    <div *ngIf="isTabVisible_2" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_2">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_2">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Technology($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <hr size="10"><br><br>
+
+    <div [formGroup]="facilitiesProjectPerformanceForm">
+
+    <div
+        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
+        <span>Facilities Project Performance</span>
+    </div>
+    <hr size="5">
+
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">List of Projects</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="text" class="inpute" formControlName="list_of_Projects" [(ngModel)]="facilitiesProjectPerformanceBody.list_of_Projects">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Planned Completion Status (%)</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="planned_completion" [(ngModel)]="facilitiesProjectPerformanceBody.planned_completion">
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0;">
+            <label class="labelwp">Actual Completion Status (%)</label>
+            <div style="display: flex;">
+                <div
+                    style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+                    <input type="number" class="inpute" formControlName="actual_completion" [(ngModel)]="facilitiesProjectPerformanceBody.actual_completion">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <br><br>
+    <div>
+        <div style="text-align: center;">
+            <button class="submitbtn" (click)="saveFacility()">Add Performance Projects</button>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="isTabVisible_3" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader_3">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue_3">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Facility($event)" value={{y.value.id}}>Delete</button>
+                           
+                        </td>
+                    </tr>
+
+                
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <br><br>
+    <hr size="5">
+
+    <div style="display: flex; width:100%; justify-content: space-between ; " >
+        <div>
+            <div style="text-align: center;">
+                <button class="submitbtn" >Previous</button>
+            </div>
+        </div>
+    
+        <div>
+            <div style="text-align: center;">
+                <button class="submitbtn" >Save & Continue Later</button>
+            </div>
+        </div>
+    
+        <div>
+            <div style="text-align: center;">
+                <button class="submitbtn">Save & Continue</button>
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>
+
