@@ -21,9 +21,10 @@ export class GenericService {
   company_details = 'company-details';
   register = 'register';
   presentation = 'presentation';
-  schedule: 'presentationschedule'
-  performance = 'performance_evaluation'
-  workprogram = 'workprogram'
+  schedule: 'presentationschedule';
+  performance = 'performance_evaluation';
+  workprogram = 'workprogram';
+  generalReport = 'generalreport';
 
   reportYear: string;
   submitted = false;

@@ -35,7 +35,9 @@ export class GeneralReportComponent implements OnInit {
       this.auth = authenticationService;
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.yearList()
+  }
 
   toggle_presentation_evaluation(evac: HTMLDivElement) {
 

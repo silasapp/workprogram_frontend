@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Colum } from './colum';
+import { ExecutiveSummaryComponent } from './executive-summary.component';
 import { SeismicActivitiesApprovedComponent } from './seismic-activities.component';
 
 const routes: Routes = [
@@ -8,8 +9,13 @@ const routes: Routes = [
   path: '',
   component: Colum
 },
-{path: 'seismic',
-component: SeismicActivitiesApprovedComponent
+{
+  path: 'seismic',
+  component: SeismicActivitiesApprovedComponent
+},
+{
+  path: 'executivesummary',
+  component: ExecutiveSummaryComponent
 }
 ];
 

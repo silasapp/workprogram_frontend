@@ -41,13 +41,13 @@
       <div class="sidebar-box">
           <div class="layout-box">
               <div>
-                  <div *ngIf="genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.dashboard]" routerLinkActive="active">
+                  <div *ngIf="genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.generalReport, 'executivesummary']" routerLinkActive="active">
                       <span class="material-icons layout-icon">dashboard</span>
-                      <span>Dashboard</span>
+                      <span>Executive Summary</span>
                   </div>
-                  <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'select-date']" routerLinkActive="active">
+                  <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.generalReport, 'seismic']" routerLinkActive="active">
                       <span class="material-icons layout-icon">event</span>
-                      <span>Presentation Date Time</span>
+                      <span>Seismic Activities</span>
                   </div>
                   <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'upload-presentation']" routerLinkActive="active">
                       <span class="material-icons layout-icon">upload</span>

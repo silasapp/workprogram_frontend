@@ -72,7 +72,7 @@
 }
 .page-size {
   width: 80%;
-  margin: 7vh 0 0 20%;
+  margin: 14vh 0 0 20%;
 }
 .layout-top {
   display: flex;
@@ -110,4 +110,12 @@
 
 .alterbtn {
   background-color: rgb(9, 79, 104);
+}
+
+.spaceit {
+  display: block;
+  white-space: pre-wrap;
+}
+.spaceit::first-letter {
+text-transform: uppercase;
 }

@@ -40,4 +40,10 @@ getYearList(url){
   )
 }
 
+getExecutiveReport(year: string){
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_General_SummaryReport`, {params: {year: year}})
+  .pipe(retry(this.num)
+  )
+}
+
 }

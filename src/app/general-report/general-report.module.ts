@@ -12,13 +12,15 @@ import { NgChartsModule } from 'ng2-charts';
 import { Colum } from './colum';
 import { SeismicActivitiesApprovedComponent } from './seismic-activities.component';
 import { GeneralReportComponent } from './general-report.component';
+import { ExecutiveSummaryComponent } from './executive-summary.component';
 
 
 @NgModule({
   declarations: [
     Colum,
     SeismicActivitiesApprovedComponent,
-    GeneralReportComponent
+    GeneralReportComponent,
+    ExecutiveSummaryComponent
   ],
   imports: [
     CommonModule,

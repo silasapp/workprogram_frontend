@@ -6,48 +6,18 @@ import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
   selector: 'app-ndr-report',
-  templateUrl: './seismic-activities.component.html',
-  styleUrls: ['../reports/ndr-report.component.scss'],
+  templateUrl: './executive-summary.component.html',
+  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
-  data: any[];
-  baselist: any[] = [];
-  valuelist: any[] = [];
-  chartArray: any[] = [];
+export class ExecutiveSummaryComponent implements OnInit {
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'SEISMIC ACTIVITIES';
+    title = '';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
-    listyear = [];
-
-    columns = [
-      {
-          "columnDef": "companyName",
-          "header": "COMPANY NAME"
-      },
-      {
-          "columnDef": "omL_Name",
-          "header": "BLOCK"
-      },
-      {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
-      },
-      {
-      "columnDef": "name_of_Contractor",
-      "header": "NAME_OF_CONTRACTOR"
-      },
-      {
-          "columnDef": "quantum_Approved",
-          "header": "QUANTUM APPROVED (SQ.KM)"
-      },
-      {
-          "columnDef": "quantum",
-          "header": "QUANTUM ACQUIRED (SQ.KM)"
-      }]
+    data: any;
 
     constructor(private report: ReportService, private workprogram: WorkProgramService, private cd: ChangeDetectorRef, private gen: GenericService){
         this.genk = gen;
@@ -57,7 +27,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
+      this.getData();
       this.genk.sizePerPage = this.genk.sizeten;
     }
 
@@ -74,26 +44,13 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.cd.markForCheck();
       }
 
-
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
+    getData() {
+      this.report.getExecutiveReport(this.genk.reportYear)
+          .subscribe(res => {
+              this.data = res.summary_1;
               this.cd.markForCheck();
           });
-  }
+    }
 
 
     goNext() {
@@ -134,41 +91,14 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
 
   getSeismic(e) {
-    let valist: any[] = [];
     let value = e.target.value;
     this.workprogram.getSeismicActivities(value)
       .subscribe(res => {
-        debugger;
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
-        for(var list of this.data) {
-            this.baselist.push(list.companyName);
-        }
-        this.baselist = Array.from(new Set(this.baselist));
-
-        for(var i = 0; i < this.baselist.length; i++) {
-            let valarray = this.data.filter(x => x.companyName == this.baselist[i]);
-            for(var item of valarray) {
-              valist.push(item.quantum_Approved);
-            }
-            this.valuelist.push(this.sumArray(valist))
-            this.chartArray.push({base: this.baselist[i], value: this.valuelist[i]});
-        }
-debugger;
-        let chartarray  = this.chartArray;
-        console.log(this.chartArray + '\n');
-
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
-        this.cd.markForCheck();
+            this.cd.markForCheck();
       });
-  }
-
-  sumArray(arr: any[]) {
-    var total = 0;
-    for (var i in arr) {
-      total += arr[i];
-    }
-    return total;
   }
 }
