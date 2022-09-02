@@ -15,6 +15,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   baselist: any[] = [];
   valuelist: any[] = [];
   chartArray: any[] = [];
+  selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
     title = 'SEISMIC ACTIVITIES';
@@ -22,6 +23,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     selectedPage = 1;
     arrayRows = [];
     listyear = [];
+    isTableOpt = false;
+    isSpecifyColumns = false;
 
     columns = [
       {
@@ -48,6 +51,33 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
           "columnDef": "quantum",
           "header": "QUANTUM ACQUIRED (SQ.KM)"
       }]
+
+
+      repcolumns = [
+        {
+            "columnDef": "companyName",
+            "header": "COMPANY NAME"
+        },
+        {
+            "columnDef": "omL_Name",
+            "header": "BLOCK"
+        },
+        {
+          "columnDef": "terrain",
+          "header": "TERRAIN"
+        },
+        {
+        "columnDef": "name_of_Contractor",
+        "header": "NAME_OF_CONTRACTOR"
+        },
+        {
+            "columnDef": "quantum_Approved",
+            "header": "QUANTUM APPROVED (SQ.KM)"
+        },
+        {
+            "columnDef": "quantum",
+            "header": "QUANTUM ACQUIRED (SQ.KM)"
+        }]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService, private cd: ChangeDetectorRef, private gen: GenericService){
         this.genk = gen;
@@ -136,24 +166,26 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   getSeismic(e) {
     let valist: any[] = [];
     let value = e.target.value;
+    let baseval = 'companyName';
+    let valtype = 'quantum_Approved';
     this.workprogram.getSeismicActivities(value)
       .subscribe(res => {
-        debugger;
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
         for(var list of this.data) {
-            this.baselist.push(list.companyName);
+            this.baselist.push(list[baseval]);
         }
         this.baselist = Array.from(new Set(this.baselist));
 
         for(var i = 0; i < this.baselist.length; i++) {
-            let valarray = this.data.filter(x => x.companyName == this.baselist[i]);
+          //debugger;
+            let valarray = this.data.filter(x => x[baseval] == this.baselist[i]);
             for(var item of valarray) {
-              valist.push(item.quantum_Approved);
+              valist.push(item[valtype]);
             }
             this.valuelist.push(this.sumArray(valist))
             this.chartArray.push({base: this.baselist[i], value: this.valuelist[i]});
+            valist = [];
         }
-debugger;
         let chartarray  = this.chartArray;
         console.log(this.chartArray + '\n');
 
@@ -170,5 +202,43 @@ debugger;
       total += arr[i];
     }
     return total;
+  }
+
+  togOptions() {
+    if (!this.isTableOpt) {
+      this.isTableOpt = true;
+    } else {
+      this.isTableOpt = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  togSpecifyColumns() {
+    if (!this.isSpecifyColumns) {
+      this.isSpecifyColumns = true;
+      this.columns = this.repcolumns;
+      this.selectedColumns = [];
+    } else {
+      this.isSpecifyColumns = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  pickColumn(value: string, checked: boolean) {
+    if (checked) {
+      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      this.selectedColumns.push(val);
+    }
+    else {
+      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+      this.selectedColumns = remainingArr;
+    }
+    this.cd.markForCheck;
+  }
+
+  selectColumns() {
+    this.columns = this.selectedColumns;
+    this.isSpecifyColumns = false;
+    this.cd.markForCheck();
   }
 }

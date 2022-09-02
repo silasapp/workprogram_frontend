@@ -36,14 +36,23 @@
           <button (click)="genk.printData(myTable)" class="rebtn">
             <mat-icon style="font-size: 20px;">print</mat-icon> Print
           </button>
-          <button (click)="genk.tableToCSV(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+          <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
             <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
           </button>
           <button (click)="genk.copyTable(myTable)" class="rebtn"
             style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
             <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
           </button>
+          <button (click)="togOptions()" mat-mini-fab style="background-color: whitesmoke; color: black; font-weight: 500; margin-left: 15px;">
+            <mat-icon>more_vert</mat-icon>
+          </button>
         </div>
+      </div>
+
+      <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 90%; margin: 0 auto 5px auto;">
+        <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
+          <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
+        </button>
       </div>
 
       <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 91.4%; margin: auto;">
@@ -51,7 +60,7 @@
           <thead>
             <tr>
               <th *ngFor="let h of columns">
-                {{h.header}}
+                {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
               </th>
             </tr>
           </thead>
@@ -85,4 +94,21 @@
         </div>
       </div>
     </div>
+</div>
+
+<div *ngIf="isTableOpt" class="modal" (click)="togOptions()">
+  <div class="modaltent">
+    <div class="modalbox" (click)="togSpecifyColumns()">
+      <span>Select Specific columns</span>
+    </div>
+    <div class="modalbox">
+      <span>Show Graph</span>
+    </div>
+    <div class="modalbox">
+      <span>Show Pie Chart</span>
+    </div>
+    <div class="modalbox">
+      <span>Show Bar Chart</span>
+    </div>
+  </div>
 </div>

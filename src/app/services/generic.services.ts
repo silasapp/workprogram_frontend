@@ -175,12 +175,53 @@ contractType = [
       // Combine each column value with comma
       csv_data.push(csvrow.join(","));
     }
+  }
 
-    // Combine each row data with new line character
-    let new_csv_data = csv_data.join('\n');
+    tableToCSVReport(table: HTMLTableElement) {
 
-    // Call this function to download csv file
-    this.downloadCSVFile(new_csv_data);
+      // Variable to store the final csv data
+      let csv_data = [];
+      let lastChildList = [];
+      debugger;
+
+      let row1 = table.getElementsByTagName('tr')[0];
+
+        // Get each column data
+        let coles = row1.querySelectorAll('th');
+        for (var i = 0; i < coles.length; i++) {
+            lastChildList.push(coles[i].lastChild);
+            coles[i].removeChild(coles[i].lastChild);
+        }
+
+      // Get each row data
+      let rows = table.getElementsByTagName('tr');
+      for (var i = 0; i < rows.length; i++) {
+
+        // Get each column data
+        let cols = rows[i].querySelectorAll('td,th');
+
+        // Stores each csv row data
+        let csvrow = [];
+        for (var j = 0; j < cols.length; j++) {
+
+          // Get the text data of each cell
+          // of a row and push it to csvrow
+          csvrow.push(cols[j].innerHTML);
+        }
+
+        // Combine each column value with comma
+        csv_data.push(csvrow.join(","));
+      }
+
+      // Combine each row data with new line character
+      let new_csv_data = csv_data.join('\n');
+
+      // Call this function to download csv file
+      this.downloadCSVFile(new_csv_data);
+
+      for (var i = 0; i < coles.length; i++) {
+        coles[i].appendChild(lastChildList[i]);
+      }
 
   }
 
