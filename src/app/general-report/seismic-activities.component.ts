@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GenericService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
@@ -11,10 +11,9 @@ import { WorkProgramService } from '../services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeismicActivitiesApprovedComponent implements OnInit {
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   data: any[];
-  baselist: any[] = [];
-  valuelist: any[] = [];
-  chartArray: any[] = [];
+
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
@@ -25,6 +24,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
+    reporttext: string;
 
     columns = [
       {
@@ -89,6 +89,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       this.data = [];
       this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
+      this.getSeismic();
+      this.getSeismicReportText();
     }
 
     public get pageIndex(): number {
@@ -163,46 +165,26 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-  getSeismic(e) {
-    let valist: any[] = [];
-    let value = e.target.value;
-    let baseval = 'companyName';
-    let valtype = 'quantum_Approved';
-    this.workprogram.getSeismicActivities(value)
+  getSeismic() {
+
+    this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
-        for(var list of this.data) {
-            this.baselist.push(list[baseval]);
-        }
-        this.baselist = Array.from(new Set(this.baselist));
-
-        for(var i = 0; i < this.baselist.length; i++) {
-          //debugger;
-            let valarray = this.data.filter(x => x[baseval] == this.baselist[i]);
-            for(var item of valarray) {
-              valist.push(item[valtype]);
-            }
-            this.valuelist.push(this.sumArray(valist))
-            this.chartArray.push({base: this.baselist[i], value: this.valuelist[i]});
-            valist = [];
-        }
-        let chartarray  = this.chartArray;
-        console.log(this.chartArray + '\n');
-
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
-        this.cd.markForCheck();
       });
   }
 
-  sumArray(arr: any[]) {
-    var total = 0;
-    for (var i in arr) {
-      total += arr[i];
-    }
-    return total;
+  getSeismicReportText() {
+    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
+      .subscribe(res => {
+        this.reporttext = res.data;
+            this.cd.markForCheck();
+      });
   }
+
+
 
   togOptions() {
     if (!this.isTableOpt) {
@@ -240,5 +222,40 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     this.columns = this.selectedColumns;
     this.isSpecifyColumns = false;
     this.cd.markForCheck();
+  }
+
+  plotDoublePieChart() {
+    debugger;
+    if (this.selectedColumns.length > 2) {
+      alert('Can not plot this chart');
+    }
+    else {
+      if (this.selectedColumns.length === 2) {
+        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        this.report.plotDoublePieChart(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+      }
+    }
+  }
+
+  plotDoubleBarChart() {
+    debugger;
+    let totalString = "";
+    if (this.selectedColumns.length > 2) {
+      alert('Can not plot this chart');
+    }
+    else {
+      if (this.selectedColumns.length === 2) {
+        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        for (var i = 0; i < chartdata.length; i++) {
+          totalString += chartdata[i].base;
+        }
+        if (totalString.length > 70) {
+          this.report.plotDoubleBarChartHorizontal(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+        }
+        else {
+          this.report.plotDoubleBarChart(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+        }
+      }
+    }
   }
 }

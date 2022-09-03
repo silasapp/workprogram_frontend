@@ -1000,4 +1000,13 @@ getSeismicActivities(year: string) {
   )
 }
 
+getSeismicActivitiesReportText(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/EXECUTIVE_SUMMARY_REPORT2`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
 }

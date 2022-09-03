@@ -1,4 +1,4 @@
-import { Component, Inject, NgZone, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import 'chart.js';
 
@@ -8,16 +8,18 @@ import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5percent from "@amcharts/amcharts5/percent";
-import { isPlatformBrowser } from '@angular/common';
+//import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
     templateUrl: 'colum.html',
-    styleUrls: ['../app.component.scss']
+    styleUrls: ['../app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
 export class Colum {
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   private root!: am5.Root;
   title = 'ng2-charts-demo';
 
@@ -33,19 +35,19 @@ export class Colum {
   public pieChartLegend = true;
   public pieChartPlugins = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private zone: NgZone) {}
+  //constructor(@Inject(PLATFORM_ID) private platformId: Object, private zone: NgZone) {}
 
-  browserOnly(f: () => void) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.zone.runOutsideAngular(() => {
-        f();
-      });
-    }
-  }
+  // browserOnly(f: () => void) {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     this.zone.runOutsideAngular(() => {
+  //       f();
+  //     });
+  //   }
+  // }
 
   ngAfterViewInit() {
     // Chart code goes in here
-    this.browserOnly(() => {
+    //this.browserOnly(() => {
       // let root = am5.Root.new("chartdiv");
 
       // root.setThemes([am5themes_Animated.new(root)]);
@@ -128,7 +130,7 @@ export class Colum {
       // });
 
 
-      var root = am5.Root.new("chartdiv");
+      var root = am5.Root.new(this.myChart.nativeElement);
 
 
 // Set themes
@@ -149,7 +151,7 @@ var chart = root.container.children.push(am5percent.PieChart.new(root, {
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
 var series = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "value",
-  categoryField: "category"
+  categoryField: "base"
 }));
 
 // series.slices.template.adapters.add("fill", function (fill, target) {
@@ -160,13 +162,13 @@ var series = chart.series.push(am5percent.PieSeries.new(root, {
 // Set data
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
 series.data.setAll([
-  { value: 10, category: "Russsia", color: "#E7907E"},
-  { value: 9, category: "USA", color: "green" },
-  { value: 6, category: "UK", color: "#36D5EE" },
-  { value: 5, category: "France", color: "orange" },
-  { value: 4, category: "Finland", color: "#87D52F" },
-  { value: 3, category: "Germany", color: "#BCABBE" },
-  { value: 1, category: "Spain", color: "silver" },
+  { value: 10, base: "Russsia", color: "#E7907E"},
+  { value: 9, base: "USA", color: "green" },
+  { value: 6, base: "UK", color: "#36D5EE" },
+  { value: 5, base: "France", color: "orange" },
+  { value: 4, base: "Finland", color: "#87D52F" },
+  { value: 3, base: "Germany", color: "#BCABBE" },
+  { value: 1, base: "Spain", color: "silver" },
 ]);
 
 
@@ -190,7 +192,7 @@ menu: am5plugins_exporting.ExportingMenu.new(root, {})
 });
 
 
-    });
+    //});
   }
 
 }
