@@ -7,17 +7,18 @@ import { WorkProgramService } from '../services/workprogram.service';
 @Component({
   selector: 'app-ndr-report',
   templateUrl: './seismic-activities.component.html',
-  styleUrls: ['../reports/ndr-report.component.scss'],
+  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeismicActivitiesApprovedComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
 
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'SEISMIC ACTIVITIES';
+    title = '1.1 Seismic Data Acquisition Activities for 2021';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
@@ -25,6 +26,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     isTableOpt = false;
     isSpecifyColumns = false;
     reporttext: string;
+    isChart = false;
 
     columns = [
       {
@@ -225,35 +227,57 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   }
 
   plotDoublePieChart() {
-    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     }
     else {
+      debugger;
+
+      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+      const node = document.createElement("div");
+      node.style.width = '100%';
+      node.style.height = '500px';
+      this.myChartBox.nativeElement.appendChild(node);
+      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+      let sele1 = this.selectedColumns[0].columnDef;
+      let sele2 = this.selectedColumns[1].columnDef;
+
+      this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
-        this.report.plotDoublePieChart(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+        let reportdata = this.data;
+        let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
       }
     }
   }
 
   plotDoubleBarChart() {
-    debugger;
     let totalString = "";
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     }
     else {
+
+      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+      const node = document.createElement("div");
+      node.style.width = '100%';
+      node.style.height = '500px';
+      this.myChartBox.nativeElement.appendChild(node);
+      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+      let sele1 = this.selectedColumns[0].columnDef;
+      let sele2 = this.selectedColumns[1].columnDef;
+
+      this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
         let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
         for (var i = 0; i < chartdata.length; i++) {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
         else {
-          this.report.plotDoubleBarChart(this.myChart.nativeElement, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata)
+          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
       }
     }

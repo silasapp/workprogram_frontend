@@ -1,112 +1,145 @@
 <div>
-    <div>
-      <div style="padding: 10px;">
-        <div class="rep-title">
-          {{title}}
+  <div>
+    <div style="display: flex; width: 50%; justify-content: space-between; margin: 1% 2% 0 1.5%;">
+      <div style="display: flex; align-items: center; box-shadow: 0.5px 0.5px 1px rgb(0, 0, 0, 0.5); width: 41%; padding: 3%; background-color: white;">
+        <div style="width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="material-icons layout-icon" style="font-size: 35px; color: orange;">dashboard</span>
+            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">10308</span>
+          </div>
+          <div style="text-align: end; margin-top: 5%;">
+            <span style="color: rgb(9, 79, 104);">Total Quantum Approved</span>
+          </div>
         </div>
       </div>
-
-
-      <div style="padding: 0 10px 20px 10px">
-        <div style="overflow: hidden; overflow-y: auto;">
-          <div class="spaceit" style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{reporttext}}</div>
-        </div>
-      </div>
-
-
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; width: 90%; margin: 0 auto 5px auto; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4);">
-        <div style="margin-left: 10px" class="inpdiv">
-          <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
-            class="inpute">
-        </div>
-        <div style="width: 225px;" class="inpdiv">
-          <select id="time" class="inpute" (change)="resize($event)">
-            <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
-          </select>
-        </div>
-
-        <div style="display: flex;">
-          <button (click)="genk.printData(myTable)" class="rebtn">
-            <mat-icon style="font-size: 20px;">print</mat-icon> Print
-          </button>
-          <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
-            <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
-          </button>
-          <button (click)="genk.copyTable(myTable)" class="rebtn"
-            style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
-            <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
-          </button>
-          <button (click)="togOptions()" mat-mini-fab style="background-color: whitesmoke; color: black; font-weight: 500; margin-left: 15px;">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </div>
-      </div>
-
-      <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 90%; margin: 0 auto 5px auto;">
-        <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
-          <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
-        </button>
-      </div>
-
-      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 91.4%; margin: auto;">
-        <table #myTable class="apptable" cellPadding="10">
-          <thead>
-            <tr>
-              <th *ngFor="let h of columns">
-                {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
-              </th>
-            </tr>
-          </thead>
-          <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-            <tr *ngFor="let row of arrayRows">
-              <td *ngFor="let h of columns">
-                {{row[h.columnDef]}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-
-      <div style="width: 95%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0;">
-        <div style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4);">
-          <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
-            <mat-icon>keyboard_double_arrow_left</mat-icon>
-          </button>
-          <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
-          <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
-              style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;"
-              #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
-              (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
-
-          <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
-            mat-raised-button>Next</button>
-          <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
-            <mat-icon>keyboard_double_arrow_right</mat-icon>
-          </button>
+      <div style="display: flex; align-items: center; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); width: 41%; padding: 3%; background-color: white;">
+        <div style="width: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="material-icons layout-icon" style="font-size: 35px; color: rgb(0, 200, 255);">event</span>
+            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">12408</span>
+          </div>
+          <div style="text-align: end; margin-top: 5%;">
+            <span style="color: rgb(9, 79, 104);">Total Quantum Acquired</span>
+          </div>
         </div>
       </div>
     </div>
-</div>
 
-<div *ngIf="isTableOpt" class="modal" (click)="togOptions()">
-  <div class="modaltent">
-    <div class="modalbox" (click)="togSpecifyColumns()">
-      <span>Select Specific columns</span>
-    </div>
-    <div class="modalbox">
-      <span>Show Graph</span>
-    </div>
-    <div class="modalbox" (click)="plotDoublePieChart()">
-      <span>Show Pie Chart</span>
-    </div>
-    <div class="modalbox" (click)="plotDoubleBarChart()">
-      <span>Show Bar Chart</span>
+      <div>
+        <div style="box-shadow: 0.5px 0.5px 1px rgb(0, 0, 0, 0.5); padding: 1%; background-color: white; margin: 3% 1% 2% 1.5%">
+          <div style="padding: 0 10px 10px 0;">
+            <div style="font-size: 18px; font-weight: 600; color: rgb(9, 79, 104);">
+              {{title}}
+            </div>
+          </div>
+
+
+          <div style="padding: 0 10px 0 0">
+            <div style="overflow: hidden; overflow-y: auto;">
+              <div class="spaceit" style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{reporttext}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin: 0 1% 5px 1%">
+          <span style="color: rgb(248, 108, 48); font-weight: 500; font-size: 17px;">Table 3. 2021 3D Seismic Data Approved and Acquired</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
+          <div style="margin-left: 10px" class="inpdiv">
+            <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
+              class="inpute">
+          </div>
+          <div style="width: 225px;" class="inpdiv">
+            <select id="time" class="inpute" (change)="resize($event)">
+              <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
+            </select>
+          </div>
+
+          <div style="display: flex;">
+            <button (click)="genk.printData(myTable)" class="rebtn" style="background-color: rgb(9, 96, 127);">
+              <mat-icon style="font-size: 20px;">print</mat-icon> Print
+            </button>
+            <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+              <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+            </button>
+            <button (click)="genk.copyTable(myTable)" class="rebtn"
+              style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+              <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
+            </button>
+            <button (click)="togOptions()" mat-mini-fab style="background-color: whitesmoke; color: black; font-weight: 500; margin-left: 15px;">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
+          <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
+            <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
+          </button>
+        </div>
+
+        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
+          <table #myTable class="apptablereport" cellPadding="10">
+            <thead>
+              <tr>
+                <th *ngFor="let h of columns">
+                  {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
+                </th>
+              </tr>
+            </thead>
+            <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+              <tr *ngFor="let row of arrayRows">
+                <td *ngFor="let h of columns">
+                  {{row[h.columnDef]}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div style="width: 95%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0;">
+          <div style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); background-color: white;">
+            <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
+              <mat-icon>keyboard_double_arrow_left</mat-icon>
+            </button>
+            <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
+            <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
+                style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;"
+                #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+                (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
+
+            <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
+              mat-raised-button>Next</button>
+            <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
+              <mat-icon>keyboard_double_arrow_right</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div *ngIf="isTableOpt" class="modal" (click)="togOptions()">
+    <div class="modaltent">
+      <div class="modalbox" (click)="togSpecifyColumns()">
+        <span>Select Specific columns</span>
+      </div>
+      <div class="modalbox">
+        <span>Show Graph</span>
+      </div>
+      <div class="modalbox" (click)="plotDoublePieChart()">
+        <span>Show Pie Chart</span>
+      </div>
+      <div class="modalbox" (click)="plotDoubleBarChart()">
+        <span>Show Bar Chart</span>
+      </div>
     </div>
   </div>
-</div>
 
 
-<div style=" padding: 0 0 0 20px">
-  <div #mychart style="width: 100%; height: 500px"></div>
+  <div #mychartbox style="display: none; width: 96%; margin: 3% auto; padding: 0 0 0 20px; box-shadow:  0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); background-color: white;">
+    <div #mychart style="width: 100%; height: 500px;"></div>
+  </div>
+
 </div>

@@ -332,7 +332,10 @@ formatChartData(data: any[], baseval: string, valtype: string) {
     this.chartArray.push({ base: this.baselist[i], value: this.valuelist[i] });
     valist = [];
   }
-  return this.chartArray;
+  this.baselist = [];
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
 }
 
 sumArray(arr: any[]) {
