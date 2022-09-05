@@ -13,12 +13,14 @@ import { Colum } from './colum';
 import { SeismicActivitiesApprovedComponent } from './seismic-activities.component';
 import { GeneralReportComponent } from './general-report.component';
 import { ExecutiveSummaryComponent } from './executive-summary.component';
+import { SeismicDataApprovedPreviousComponent } from './seismic-data-approved-previous.component';
 
 
 @NgModule({
   declarations: [
     Colum,
     SeismicActivitiesApprovedComponent,
+    SeismicDataApprovedPreviousComponent,
     GeneralReportComponent,
     ExecutiveSummaryComponent
   ],

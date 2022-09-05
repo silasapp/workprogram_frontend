@@ -15,7 +15,7 @@ import { SWPStrategicPlansComponent } from './strategicplans.component';
 import { SWPLegalProceedingsComponent } from './legalproceedings.component';
 
 @NgModule({
-  declarations: [  
+  declarations: [
     Step4Component,
     SWPNigeriaContentComponent,
     SWPStrategicPlansComponent,

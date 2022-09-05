@@ -6,11 +6,11 @@ import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
   selector: 'app-ndr-report',
-  templateUrl: './seismic-activities.component.html',
+  templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
+export class SeismicDataApprovedPreviousComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -18,8 +18,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
+    title = 'Seismic Data Approved and Acquired Previous Year';
+    tableTitle = 'Table 4. 2020 3D Seismic Data Approved and Acquired';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
@@ -93,7 +93,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
       this.getSeismic();
-      this.getSeismicReportText();
     }
 
     public get pageIndex(): number {
@@ -172,17 +171,9 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.seismic_Data_Approved_and_Acquired as any[];
+        this.data = res.seismic_Data_Approved_and_Acquired_PREVIOUS as any[];
             this.assignDataRows();
             this.assignPageNum();
-            this.cd.markForCheck();
-      });
-  }
-
-  getSeismicReportText() {
-    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
-      .subscribe(res => {
-        this.reporttext = res.data;
             this.cd.markForCheck();
       });
   }

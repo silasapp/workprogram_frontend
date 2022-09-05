@@ -1,3 +1,4 @@
+
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/services';
 

@@ -3,50 +3,40 @@
     <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
         <span>STRATEGIC PLANS</span>
     </div><br> <hr size="10">
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
+
+    <div [formGroup]="strategicplansForm">
+        <div style="display: flex; width: 100%;  justify-content: space-between;">
         <div style="width: 30%;">
             <label class="labelwp">Strategic Plans</label>
             <div style="display: flex; width: 100%;">
                 <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                    <select class="input" type="inpute">
-                        <option selected disabled>---- Please Select Activities ----</option>
+                    <select class="inpute" formControlName="activities" [value]="strategicplansBody.activities" (change)="changeActivities($event)">
                         <option value="Appraisal Drilling (#)">Appraisal Drilling(#)</option>
                         <option value="Budget (CAPEX) -$MM">Budget (CAPEX) -$MM</option>
                         <option value="Budget (OPEX) -$MM">Budget (OPEX) -$MM</option>
                         <option value="Development Drilling (#)">Development Drilling (#)</option>
-                        <option value="Environmental Studies (List of Studies/Fields)">Environmental Studies (List of
-                            Studies/Fields)</option>
+                        <option value="Environmental Studies (List of Studies/Fields)">Environmental Studies (List of Studies/Fields)</option>
                         <option value="Exploration Drilling(#)">Exploration Drilling(#)</option>
-                        <option value="Facility Upgrades & Maintenance(List of Facilities) ">Facility Upgrades &
-                            Maintenance(List of Facilities)</option>
+                        <option value="Facility Upgrades & Maintenance(List of Facilities) ">Facility Upgrades & Maintenance(List of Facilities)</option>
                         <option value="Gas Production Forecast (MMSCF/DAY)">Gas Production Forecast (MMSCF/DAY)</option>
                         <option value="Gas Utilisation (% of Produced)">Gas Utilisation (% of Produced)</option>
-                        <option value="Geo-Mechanical Studies (List Of Studies)">Geo-Mechanical Studies (List Of
-                            Studies)</option>
+                        <option value="Geo-Mechanical Studies (List Of Studies)">Geo-Mechanical Studies (List Of Studies)</option>
                         <option value="New FacilitiesProjects">New FacilitiesProjects</option>
-                        <option value="Produced Water Management (List of Projects)">Produced Water Management (List of
-                            Projects)</option>
+                        <option value="Produced Water Management (List of Projects)">Produced Water Management (List of Projects)</option>
                         <option value="Production Forecast (kbopd)">Production Forecast (kbopd)</option>
                         <option value="Prospect Maturation (MMBbls) ">Prospect Maturation (MMBbls)</option>
                         <option value="Reserve Growth Plan (MMBbls)">Reserve Growth Plan (MMBbls)</option>
                         <option value="Reservior Studies (List of Studies)">Reservior Studies (List of Studies)</option>
                         <option value="Safety Studies (List of Studies)">Safety Studies (List of Studies)</option>
-                        <option value="Seismic Acquisation (Quantum Processed-Sq.km) ">Seismic Acquisation (Quantum
-                            Processed-Sq.km)</option>
-                        <option value="Seismic Processing (Quantum Processed-Sq.km)">Seismic Processing (Quantum
-                            Processed-Sq.km)</option>
-                        <option value="Seismic Reprocessing (Quantum Processed-Sq.km)">Seismic Reprocessing (Quantum
-                            Processed-Sq.km)</option>
+                        <option value="Seismic Acquisation (Quantum Processed-Sq.km) ">Seismic Acquisation (Quantum Processed-Sq.km)</option>
+                        <option value="Seismic Processing (Quantum Processed-Sq.km)">Seismic Processing (Quantum Processed-Sq.km)</option>
+                        <option value="Seismic Reprocessing (Quantum Processed-Sq.km)">Seismic Reprocessing (Quantum Processed-Sq.km)</option>
                         <option value="Special Studies (List of Studies)">Special Studies (List of Studies)</option>
-                        <option value="Staff Deposition (Senior Staff, Nigerians as % of Total)">Staff Deposition
-                            (Senior Staff, Nigerians as % of Total)</option>
-                        <option value="Staff Deposition (Top Management), Nigerians as % of Total)">Staff Deposition
-                            (Top Management), Nigerians as % of Total)</option>
-                        <option value="Succession Plan (#Expatriate/ #Nigerian Understudies)">Succession Plan
-                            (#Expatriate/ #Nigerian Understudies)</option>
-                        <option value="Well Intervention (Workover, Recompletion) ">Well Intervention (Workover,
-                            Recompletion)</option>
+                        <option value="Staff Deposition (Senior Staff, Nigerians as % of Total)">Staff Deposition (Senior Staff, Nigerians as % of Total)</option>
+                        <option value="Staff Deposition (Top Management), Nigerians as % of Total)">Staff Deposition (Top Management), Nigerians as % of Total)</option>
+                        <option value="Succession Plan (#Expatriate/ #Nigerian Understudies)">Succession Plan (#Expatriate/ #Nigerian Understudies)</option>
+                        <option value="Well Intervention (Workover, Recompletion) ">Well Intervention (Workover, Recompletion)</option>
                     </select>
                 </div>
             </div>
@@ -59,7 +49,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_1_Q1" [(ngModel)]="strategicplansBody.n_1_Q1"  class="inpute">
                 </div>
             </div>
         </div>
@@ -69,7 +59,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_1_Q2" [(ngModel)]="strategicplansBody.n_1_Q2" class="inpute">
                 </div>
             </div>
         </div>
@@ -79,7 +69,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_1_Q3" [(ngModel)]="strategicplansBody.n_1_Q3" class="inpute">
                 </div>
             </div>
         </div>
@@ -89,7 +79,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_1_Q4" [(ngModel)]="strategicplansBody.n_1_Q4" class="inpute">
                 </div>
             </div>
         </div>
@@ -102,7 +92,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_2_Q1" [(ngModel)]="strategicplansBody.n_2_Q1" class="inpute">
                 </div>
             </div>
         </div>
@@ -112,18 +102,18 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_2_Q2" [(ngModel)]="strategicplansBody.n_2_Q2" class="inpute">
                 </div>
             </div>
         </div>
-        
+
 
         <div style="width: 30%; margin: auto 2% 0;">
                 <label class="labelwp">Q3 2023</label>
                 <div style="display: flex;">
                     <div
                         style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                        <input type="number" class="inpute">
+                        <input formControlName="n_2_Q3" [(ngModel)]="strategicplansBody.n_2_Q3" class="inpute">
                     </div>
                 </div>
         </div>
@@ -133,7 +123,7 @@
                     <div style="display: flex;">
                         <div
                             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                            <input type="number" class="inpute">
+                            <input formControlName="n_2_Q4" [(ngModel)]="strategicplansBody.n_2_Q4" class="inpute">
                         </div>
                     </div>
         </div>
@@ -145,7 +135,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_3_Q1" [(ngModel)]="strategicplansBody.n_3_Q1" class="inpute">
                 </div>
             </div>
         </div>
@@ -155,7 +145,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_3_Q2" [(ngModel)]="strategicplansBody.n_3_Q2" class="inpute">
                 </div>
             </div>
         </div>
@@ -165,7 +155,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_3_Q3" [(ngModel)]="strategicplansBody.n_3_Q3" class="inpute">
                 </div>
             </div>
         </div>
@@ -175,7 +165,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_3_Q4" [(ngModel)]="strategicplansBody.n_3_Q4" class="inpute">
                 </div>
             </div>
         </div>
@@ -188,7 +178,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_4_Q1" [(ngModel)]="strategicplansBody.n_4_Q1" class="inpute">
                 </div>
             </div>
         </div>
@@ -198,18 +188,18 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_4_Q2" [(ngModel)]="strategicplansBody.n_4_Q2" class="inpute">
                 </div>
             </div>
         </div>
-        
+
 
         <div style="width: 30%; margin: auto 2% 0;">
                 <label class="labelwp">Q3 2025</label>
                 <div style="display: flex;">
                     <div
                         style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                        <input type="number" class="inpute">
+                        <input formControlName="n_4_Q3" [(ngModel)]="strategicplansBody.n_4_Q3" class="inpute">
                     </div>
                 </div>
         </div>
@@ -219,7 +209,7 @@
                     <div style="display: flex;">
                         <div
                             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                            <input type="number" class="inpute">
+                            <input formControlName="n_4_Q4" [(ngModel)]="strategicplansBody.n_4_Q4" class="inpute">
                         </div>
                     </div>
         </div>
@@ -232,7 +222,7 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_5_Q1" [(ngModel)]="strategicplansBody.n_5_Q1" class="inpute">
                 </div>
             </div>
         </div>
@@ -242,18 +232,18 @@
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                    <input type="number" class="inpute">
+                    <input formControlName="n_5_Q2" [(ngModel)]="strategicplansBody.n_5_Q2" class="inpute">
                 </div>
             </div>
         </div>
-        
+
 
         <div style="width: 30%; margin: auto 2% 0;">
                 <label class="labelwp">Q3 2026</label>
                 <div style="display: flex;">
                     <div
                         style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                        <input type="number" class="inpute">
+                        <input formControlName="n_5_Q3" [(ngModel)]="strategicplansBody.n_5_Q3" class="inpute">
                     </div>
                 </div>
         </div>
@@ -263,7 +253,7 @@
                     <div style="display: flex;">
                         <div
                             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                            <input type="number" class="inpute">
+                            <input formControlName="n_5_Q4" [(ngModel)]="strategicplansBody.n_5_Q4" class="inpute">
                         </div>
                     </div>
         </div>
@@ -272,8 +262,37 @@
     <br><br>
     <div>
         <div style="text-align: center;">
-            <button class="submitbtn">Submit Stragetic Plans</button>
+            <button class="submitbtn" (click)="saveStrategicPlansOnCompanyBases()">Submit Stragetic Plans</button>
         </div>
         <br>
     </div>
-    <hr size="10"><br><br>
+    </div>
+    <div *ngIf="isTabVisible" class="wptablebox">
+        <div class="apptable">
+            <table class="wptable" >
+                <thead >
+                    <tr *ngFor="let h of columnHeader">
+                        <th *ngFor="let d of h | keyvalue">
+                            {{d.key | titlecase}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody #myTbody *ngFor="let item of columnValue">
+                    <tr *ngFor="let y of item | keyvalue">
+                        <td *ngFor="let x of y.value | keyvalue">
+                        {{x.value}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_HSE_Technical($event)" value={{y.value.id}}>Delete</button>
+
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+<br>

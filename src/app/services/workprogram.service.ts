@@ -908,14 +908,14 @@ map((response) => {
 }
 
 
-getNigeriaContentTraining(year: string, omlName: string) {
-return this.http.get<any>(`${environment.apiUrl}/workprogramme/NIGERIA_CONTENT_Training`, {params: {year: year, omlName: omlName}})
-.pipe(retry(this.num),
-map((response) => {
-  return response
-})
-)
-}
+// getNigeriaContentTraining(year: string, omlName: string) {
+// return this.http.get<any>(`${environment.apiUrl}/workprogramme/NIGERIA_CONTENT_Training`, {params: {year: year, omlName: omlName}})
+// .pipe(retry(this.num),
+// map((response) => {
+//   return response
+// })
+// )
+// }
 
 getNigeriaUpload(year: string, omlName: string) {
 return this.http.get<any>(`${environment.apiUrl}/workprogramme/NIGERIA_CONTENT_Upload_Succession_Plan`, {params: {year: year, omlName: omlName}})
@@ -946,23 +946,23 @@ map((response) => {
 
 
 
-saveLegalLitigation(conbody: LEGAL_LITIGATION, year: string, omlName: string) {
-  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_legal_litigation`, conbody, {params: {year: year, omlName: omlName}})
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+// saveLegalLitigation(conbody: LEGAL_LITIGATION, year: string, omlName: string) {
+//   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_legal_litigation`, conbody, {params: {year: year, omlName: omlName}})
+//   .pipe(retry(this.num),
+//   map((response) => {
+//     return response
+//   })
+//   )
+// }
 
-saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
-  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_legal_arbitration`, conbody, {params: {year: year, omlName: omlName}})
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+// saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
+//   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_legal_arbitration`, conbody, {params: {year: year, omlName: omlName}})
+//   .pipe(retry(this.num),
+//   map((response) => {
+//     return response
+//   })
+//   )
+// }
 
 getLegalLitigation(year: string, omlName: string) {
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/get_form_four_legal_proceedings`, {params: {year: year, omlName: omlName}})
@@ -973,23 +973,23 @@ getLegalLitigation(year: string, omlName: string) {
   )
 }
 
-getNigeriaContent(year: string, omlName: string){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_nigeria_content_training`, {params: {year: year, omlName: omlName}})
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+// getNigeriaContent(year: string, omlName: string){
+//   return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_nigeria_content_training`, {params: {year: year, omlName: omlName}})
+//   .pipe(retry(this.num),
+//   map((response) => {
+//     return response
+//   })
+//   )
+// }
 
-saveNigeriaContent(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, id, actionToDo){
-  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, {params: {year: year, omlName: omlName, id, actionToDo}})
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+// saveNigeriaContent(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, id, actionToDo){
+//   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, {params: {year: year, omlName: omlName, id, actionToDo}})
+//   .pipe(retry(this.num),
+//   map((response) => {
+//     return response
+//   })
+//   )
+// }
 
 getSeismicActivities(year: string) {
   return this.http.get<any>(`${environment.apiUrl}/report/GET_SEISMIC_DATA_REPORT`, {params: {year: year}})
@@ -1008,5 +1008,98 @@ getSeismicActivitiesReportText(year: string) {
   })
   )
 }
+
+
+getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`, {params: {omlName: omlName, fieldName:fieldName, year:year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+  }
+
+  // getNigeriaUpload(year: string, omlName: string, fieldName: string,) {
+  // return this.http.get<any>(`${environment.apiUrl}/workprogramme/NIGERIA_CONTENT_Upload_Succession_Plan`, {params: {omlName: omlName, fieldName:fieldName, year:year}})
+  // .pipe(retry(this.num),
+  // map((response) => {
+  //   return response
+  // })
+  // )
+  // }
+
+  getStrategicPlans(year: string, fieldName: string, omlName: string){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_FOUR_STRATEGIC_PLANS`, {params: {omlName: omlName, fieldName:fieldName, year:year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+  }
+
+  saveStrategicPlans(conbody: STRATEGIC_PLANS_ON_COMPANY_BASES, year: string, fieldName: string, omlName: string){
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/POST_STRATEGIC_PLANS_ON_COMPANY_BASES`, conbody, {params: {omlName: omlName, fieldName: fieldName, year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+  }
+
+
+
+  saveLegalLitigation(conbody: LEGAL_LITIGATION, year: string, omlName: string, fieldName: string) {
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/POST_LEGAL_LITIGATION`, conbody, {params: {omlName: omlName, fieldName: fieldName, year: year}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_legal_arbitration`, conbody, {params: {year: year, omlName: omlName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  getlegalLitigation(year: string, fieldName: string, omlName: string) {
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_FOUR_LEGAL_PROCEEDINGS`, {params: {omlName: omlName, fieldName: fieldName, year: year}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  getNigeriaContent(year: string, omlName: string, fieldName: string){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_nigeria_content_training`, {params: { omlName: omlName, fieldName:fieldName, year: year}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  saveNigeriaContent(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, id, actionToDo){
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, {params: {year: year, omlName: omlName, id, actionToDo}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  saveAddStaffDisposition(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, fieldName: string){
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
 
 }

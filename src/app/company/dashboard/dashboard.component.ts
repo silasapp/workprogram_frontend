@@ -56,6 +56,7 @@ ngAfterViewInit(){
 
   firstChart() {
     if (this.isBrowser) {
+      debugger;
       am5.array.each(am5.registry.rootElements, function(root) {
         if (root.dom.id == "firstchart") {
           root.dispose();
