@@ -101,8 +101,8 @@ export class ConcessionsfieldsComponent implements OnInit {
             this.loadTable_Field(res.companyFields);
             this.allFields = res.companyFields;
           }
-            this.fieldBody = fieldInfo;
-            this.concessionBody = concessionInfo;
+            // this.fieldBody = fieldInfo;
+            // this.concessionBody = concessionInfo;
       })
     }
 
@@ -198,12 +198,14 @@ export class ConcessionsfieldsComponent implements OnInit {
           let actionToDo = '';
          let id='';
 
+         debugger;
           for (let item in this.fieldBody) {
              if (item != 'field_ID' ) {
               fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
             }
-            else{
-              actionToDo='UPDATE'; id = this.fieldBody[item]?.toString();
+             if ( this.fieldBody[item]?.toString() != "undefined"){
+              actionToDo='UPDATE';
+              id = this.fieldBody[item]?.toString();
             }
           }
 

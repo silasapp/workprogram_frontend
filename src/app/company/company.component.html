@@ -40,7 +40,7 @@
                         <span class="material-icons layout-icon">table_chart</span>
                         <span>Work Programme</span>
                     </div>
-                  
+
                     <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, 'concessionsfields']" routerLinkActive="active">
                         <span class="material-icons layout-icon">table_chart</span>
                         <span>Concessions & Fields</span>
@@ -385,21 +385,21 @@
                             <span class="divmid" style="width: 100%;">Adminstration<span class="material-icons expand-icon" style="margin-left: auto">{{reportAdminstration=='more'?'expand_more' : 'expand_less'  }}</span></span>
                         </div>
                         <div *ngIf="isAdminstration" class="layout-child">
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'upload-code']">
+                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'upload_code']">
                                 <span class="material-icons child-icon">ac_unit</span>
                                 <span>Upload Code</span>
                             </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'add-users']">
+                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'add_users']">
                                 <span class="material-icons child-icon">ac_unit</span>
                                 <span>Add Users/ Companies</span>
                             </div>
-                            
+
                             <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'add_concession']">
                                 <span class="material-icons child-icon">ac_unit</span>
                                 <span>Add Concession</span>
                             </div>
-                          
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'uploaded-company']">
+
+                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'uploaded_company']">
                                 <span class="material-icons child-icon">ac_unit</span>
                                 <span>Uploaded Company Details</span>
                             </div>
