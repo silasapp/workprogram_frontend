@@ -110,6 +110,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
+        debugger;
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         //console.log(conInfo);
         if (!conInfo) {
@@ -173,9 +174,10 @@ export class SWPConcessionSituationComponent implements OnInit {
     //     salel[this.genk.upperText(item)] = this.concessionBody[item].toString() ?? '';
     //   }
     // }
-
-    this.workprogram
-      .concessionSituation(this.concessionBody, this.genk.wpYear, this.genk.OmlName)
-      .subscribe();
+    console.log(this.concessionBody);
+    this.workprogram.concessionSituation(this.concessionBody, this.genk.wpYear, this.genk.OmlName)
+      .subscribe( res => {
+        this.modalService.logNotice("Success", res.message, 'success');
+      });
   }
 }
