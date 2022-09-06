@@ -16,7 +16,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     FieldDevelopmeentExcessiveReserveForm: FormGroup;
     UnitizationForm: FormGroup;
     unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION = {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION;
-   
+
     fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE = {} as FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE;
     fielddevelopmentBody: FIELD_DEVELOPMENT_PLAN = {} as FIELD_DEVELOPMENT_PLAN;
     wkpYear: string;
@@ -53,6 +53,7 @@ PUANameDoc: string;
 
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP2';
     this.FieldDevelopmentForm = new FormGroup(
     {
       how_many_fields_in_concession: new FormControl(this.fielddevelopmentBody.how_many_fields_in_concession,[Validators.required]),
@@ -65,7 +66,7 @@ PUANameDoc: string;
       uploaded_approved_FDP_Document: new FormControl(this.fielddevelopmentBody.uploaded_approved_FDP_Document, [Validators.required]),
       are_they_oil_or_gas_wells: new FormControl(this.fielddevelopmentBody.are_they_oil_or_gas_wells, [Validators.required]),
       status: new FormControl(this.fielddevelopmentBody.status, [Validators.required]),
-      
+
     },{});
 
     this.FieldDevelopmeentExcessiveReserveForm = new FormGroup(
@@ -124,12 +125,12 @@ PUANameDoc: string;
         if (res.unitization) {
           this.unitizationBody = res.unitization;
         }
-        
+
 
         this.cd.markForCheck();
       });
   }
- 
+
   saveUUAODoc(DeFile: any) {
     this.UUOAFile = <File>DeFile.target.files[0];
     if (!this.UUOAFile) {
@@ -147,7 +148,7 @@ PUANameDoc: string;
     //let dockind = this.gen.getExt(this.discoveryFile.name);
   }
 
- 
+
   submit() {
     return null;
   }

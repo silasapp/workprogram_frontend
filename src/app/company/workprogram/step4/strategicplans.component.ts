@@ -42,6 +42,7 @@ wkpYear: string;
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP4';
     this.strategicplansForm = new FormGroup(
       {
         activities: new FormControl(this.strategicplansBody.activities),
@@ -71,11 +72,13 @@ wkpYear: string;
   }
 
   getStrategicPlansOnCompanyBases() {
-    debugger;
     this.workprogram.getStrategicPlans(this.genk.wpYear, this.genk.fieldName, this.genk.OmlName).subscribe(result => {
       if (result.strategicPlans) {
         this.strategicData = result.strategicPlans;
         this.strategicplansBody = result.strategicPlans[0];
+        if (result.strategicPlans.length > 0) {
+          this.genk.isStep4 = true;
+        }
       }
       this.cd.markForCheck();
     });

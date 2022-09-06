@@ -37,7 +37,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
         year: new FormControl(this.concessionBody.year, [Validators.required]),
@@ -141,6 +141,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
+          this.genk.isStep1 = true;
           this.cd.markForCheck();
           this.loadTable();
         }

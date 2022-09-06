@@ -39,6 +39,7 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.genk.activeStep = 'STEP2';
     this.WorkoverForm = new FormGroup(
       {
         current_year_Actual_Number_data: new FormControl(this.workoverBody.current_year_Actual_Number_data, [Validators.required]),
@@ -49,7 +50,7 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
         do_you_have_approval_for_the_workover_recompletion: new FormControl(this.workoverBody.do_you_have_approval_for_the_workover_recompletion, [Validators.required]),
         remarks: new FormControl(this.workoverBody.remarks, [Validators.required]),
         daysForCompletion: new FormControl(this.workoverBody.daysForCompletion, [Validators.required]),
-        
+
       }, {});
       this.getWorkover();
   }
@@ -163,6 +164,10 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
 
       this.workprogram.getWorkover(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
+        if (res.workoverRecompletion.length > 0) {
+          this.genk.isStep2 = true;
+          this.cd.markForCheck();
+        }
         //debugger;
          this.quaterIWOneData = res.workoverRecompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? {} as WORKOVERS_RECOMPLETION_JOB1;
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
@@ -202,9 +207,8 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
       this.modalService.logNotice("Success", res.popText, 'success');
     });
   }
-  
+
   getFieldWell(event){
-    debugger;
     this.genk.fieldWell = event.target.value;
   }
 }

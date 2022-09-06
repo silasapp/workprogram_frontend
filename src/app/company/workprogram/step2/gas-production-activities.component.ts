@@ -41,6 +41,7 @@ export class SWPGasProductionComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP2';
     this.GasProductionForm = new FormGroup(
       {
         current_Actual_Year: new FormControl(this.gasproductionBody.current_Actual_Year, [Validators.required]),

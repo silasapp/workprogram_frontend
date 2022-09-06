@@ -15,7 +15,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   exploratoryActivitiesForm: FormGroup;
   developmentDrillingForm: FormGroup;
   facilitiesDevelopmentForm: FormGroup;
-  productionCostForm: FormGroup;  
+  productionCostForm: FormGroup;
   budgetBody: budgetActualExpenditure = {} as budgetActualExpenditure;
   exploratoryBody: exploratoryActivities = {} as exploratoryActivities;
   developmentDrillingBody: developmentDrillingActivities = {} as developmentDrillingActivities;
@@ -30,7 +30,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  
+
   columnHeader_2 = [];
   columnValue_2 = [];
   isTabVisible_2 = false;
@@ -65,8 +65,8 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       let developmentDrillingInfo = this.developmentDrillingBody as developmentDrillingActivities;
       let facilitiesDevelopmentInfo = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
       let productionCostInfo = this.productionCostBody as productionCost;
-      
-      
+
+
       if(res.budgetActualExpenditure != null && res.budgetActualExpenditure.length > 0){
        budgetInfo = res.budgetActualExpenditure[0] as budgetActualExpenditure;
        this.loadTable_Budget(res.budgetActualExpenditure);
@@ -95,6 +95,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP3';
     this.budgetActualExpenditureForm = new FormGroup({
       budget_for_Direct_Exploration_and_Production_Activities_NGN: new FormControl(this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN, Validators.required),
       budget_for_Direct_Exploration_and_Production_Activities_USD: new FormControl(this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD, Validators.required),
@@ -148,7 +149,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       indirecT_COST_Actual : new FormControl(this.productionCostBody.indirecT_COST_Actual, Validators.required),
     }
 );
-  
+
 }
 
 loadTable_Budget(data) {
@@ -162,7 +163,7 @@ loadTable_Budget(data) {
     acc[key] = value == null ? '' : value;
     return acc;
   }, {});
-  
+
     this.columnHeader.push(data[0]);
     this.columnValue.push(result);
  }
@@ -185,14 +186,14 @@ loadTable_Budget(data) {
   this.workprogram
     .post_Budget(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Budget(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      }        
+      }
     })
 }
 
@@ -207,7 +208,7 @@ loadTable_Exploratory(data) {
     acc[key] = value == null ? '' : value;
     return acc;
   }, {});
-  
+
     this.columnHeader_2.push(data[0]);
     this.columnValue_2.push(result);
  }
@@ -230,14 +231,14 @@ loadTable_Exploratory(data) {
   this.workprogram
     .post_Exploratory(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Budget(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      }        
+      }
     })
 }
 
@@ -252,7 +253,7 @@ loadTable_Development(data) {
     acc[key] = value == null ? '' : value;
     return acc;
   }, {});
-  
+
     this.columnHeader_3.push(data[0]);
     this.columnValue_3.push(result);
  }
@@ -273,14 +274,14 @@ loadTable_Development(data) {
   this.workprogram
     .post_Development(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Development(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      }        
+      }
     })
 }
 loadTable_Facility(data) {
@@ -294,7 +295,7 @@ loadTable_Facility(data) {
     acc[key] = value == null ? '' : value;
     return acc;
   }, {});
-  
+
     this.columnHeader_4.push(data[0]);
     this.columnValue_4.push(result);
  }
@@ -315,14 +316,14 @@ loadTable_Facility(data) {
   this.workprogram
     .post_Facility(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Facility(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      }        
+      }
     })
 }
 
@@ -337,7 +338,7 @@ loadTable_Production(data) {
     acc[key] = value == null ? '' : value;
     return acc;
   }, {});
-  
+
     this.columnHeader_5.push(data[0]);
     this.columnValue_5.push(result);
  }
@@ -358,14 +359,14 @@ loadTable_Production(data) {
   this.workprogram
     .post_Production(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Production(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      }        
+      }
     })
 }
 filter(data){
@@ -404,16 +405,16 @@ saveBudgetActualExpenditure(){
   this.workprogram
     .post_Budget(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
     .subscribe(res => {
-      
+
       if(res.statusCode == 300){
         this.modalService.logNotice("Error", res.message, 'error');
       }
       else{
       this.loadTable_Budget(res.data);
       this.modalService.logNotice("Success", res.message, 'success');
-      } 
+      }
     })
-    } 
+    }
 
     saveExploratory(){
       let budgetInfo = {} as exploratoryActivities;
@@ -423,22 +424,22 @@ saveBudgetActualExpenditure(){
       for (let item in this.exploratoryBody) {
         if (item != 'id' && item != 'field_ID') {
           budgetInfo[this.genk.upperText(item)] = this.exploratoryBody[item]?.toString() ?? '';
-    
+
         }
       }
       this.workprogram
         .post_Exploratory(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
-          
+
           if(res.statusCode == 300){
             this.modalService.logNotice("Error", res.message, 'error');
           }
           else{
           this.loadTable_Exploratory(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          } 
+          }
         })
-        } 
+        }
 
   saveDevelopmentDrilling() {
       let budgetInfo = {} as developmentDrillingActivities;
@@ -446,25 +447,25 @@ saveBudgetActualExpenditure(){
       this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
       this.developmentDrillingBody.omL_Name= this.genk.OmlName;
       for (let item in this.developmentDrillingBody) {
-        
+
         if (item != 'id' && item != 'field_ID') {
           budgetInfo[this.genk.upperText(item)] = this.developmentDrillingBody[item]?.toString() ?? '';
-    
+
         }
       }
       this.workprogram
         .post_Development(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
-          
+
           if(res.statusCode == 300){
             this.modalService.logNotice("Error", res.message, 'error');
           }
           else{
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_Development(res.data);
-          } 
+          }
         })
-        } 
+        }
 
 
     saveFacilitiesDevelopment() {
@@ -475,22 +476,22 @@ saveBudgetActualExpenditure(){
     for (let item in this.facilitiesDevelopmentBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] = this.facilitiesDevelopmentBody[item]?.toString() ?? '';
-  
+
       }
     }
     this.workprogram
       .post_Facility(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
       .subscribe(res => {
-        
+
         if(res.statusCode == 300){
           this.modalService.logNotice("Error", res.message, 'error');
         }
         else{
         this.loadTable_Facility(res.data);
         this.modalService.logNotice("Success", res.message, 'success');
-        } 
+        }
       })
-      } 
+      }
 
   saveProductionCost() {
       let budgetInfo = {} as productionCost;
@@ -500,23 +501,23 @@ saveBudgetActualExpenditure(){
       for (let item in this.productionCostBody) {
         if (item != 'id' && item != 'field_ID') {
           budgetInfo[this.genk.upperText(item)] = this.productionCostBody[item]?.toString() ?? '';
-    
+
         }
       }
       this.workprogram
         .post_Production(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
-          
+
           if(res.statusCode == 300){
             this.modalService.logNotice("Error", res.message, 'error');
           }
           else{
           this.loadTable_Production(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          } 
+          }
         })
-        } 
-  
+        }
+
 
   onSubmit() {
     return null;

@@ -45,6 +45,7 @@ export class SWPReserveUpdateComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP2';
     this.ReserveUpdatePreceedingForm = new FormGroup(
       {
         year_of_WP: new FormControl(this.statusOfReservesPreceeding.year_of_WP,[Validators.required]),

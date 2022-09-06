@@ -60,6 +60,7 @@ isTabVisible = false;
   }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP1';
     this.getGeophysical("QUARTER 1");
 
     this.AcquisitionForm = new FormGroup(

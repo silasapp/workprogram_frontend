@@ -43,6 +43,14 @@ export class GenericService {
   Field_List = [];
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   hseTechnicalSafety: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW = {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
+  isStep1 = false;
+  isStep2 = false;
+  isStep3 = false;
+  isStep4 = false;
+  isStep5 = false;
+  activeStep = 'STEP1';
+
+
   year = [
     { value: "2020" },
     { value: "2021" }
@@ -510,5 +518,7 @@ contractType = [
   goToTop() {
     window.scrollTo(0, 0);
   }
+
+
 
 }

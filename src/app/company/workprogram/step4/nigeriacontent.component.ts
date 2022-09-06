@@ -49,6 +49,7 @@ export class SWPNigeriaContentComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP4';
     this.staffdispositionForm = new FormGroup(
       {
         actual_Proposed_Year: new FormControl(this.staffdispositionBody.actual_Proposed_Year, [Validators.required]),

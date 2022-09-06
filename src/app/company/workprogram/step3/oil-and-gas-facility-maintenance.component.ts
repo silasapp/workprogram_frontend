@@ -48,10 +48,11 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         this.getBudgetData();
       }
     )
-    
+
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP3';
     this.oilAndGasForm = new FormGroup({
       major_Projects : new FormControl(this.oilAndGasBody.major_Projects, Validators.required),
       name : new FormControl(this.oilAndGasBody.name, Validators.required),
@@ -90,13 +91,13 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       benefits : new FormControl(this.newTechnologyBody.benefits, Validators.required),
       challenges : new FormControl(this.newTechnologyBody.challenges, Validators.required),
       timeline : new FormControl(this.newTechnologyBody.timeline, Validators.required),
-      
+
     });
     this.facilitiesProjectPerformanceForm = new FormGroup({
       list_of_Projects : new FormControl(this.facilitiesProjectPerformanceBody.list_of_Projects, Validators.required),
       planned_completion : new FormControl(this.facilitiesProjectPerformanceBody.planned_completion, Validators.required),
       actual_completion : new FormControl(this.facilitiesProjectPerformanceBody.actual_completion, Validators.required),
-  
+
     });
     this.getBudgetData();
     }
@@ -107,7 +108,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         let oilInfo = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
         let techInfo = this.newTechnologyBody as newTechnologyAndConformityAssessment;
         let facInfo = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
-        
+
         debugger;
         if(res.oilAndGasProjects != null && res.oilAndGasProjects.length > 0){
          oilInfo = res.oilAndGasProjects[0] as oilAndGasFacilityMaintenanceProject;
@@ -131,14 +132,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
 
       this.columnHeader=[];
       this.columnValue=[];
-    
+
      if(data != null){
       data= this.filter(data);
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader.push(data[0]);
         this.columnValue.push(result);
      }
@@ -153,9 +154,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       this.isTabVisible = true;
       this.cd.markForCheck();
     }
-    
+
      Delete_OilGas(event){
-    
+
       let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
     debugger;
       this.workprogram
@@ -168,22 +169,22 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           else{
           this.loadTable_OilGas(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          }        
+          }
         })
     }
-    
+
     loadTable_Technology(data) {
-    
+
       this.columnHeader_2=[];
       this.columnValue_2=[];
-    
+
      if(data != null){
       data= this.filter(data);
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_2.push(data[0]);
         this.columnValue_2.push(result);
      }
@@ -198,9 +199,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       this.isTabVisible_2 = true;
       this.cd.markForCheck();
     }
-    
+
      Delete_Technology(event){
-    
+
       let info = this.newTechnologyBody as newTechnologyAndConformityAssessment;
     debugger;
       this.workprogram
@@ -213,22 +214,22 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           else{
           this.loadTable_Technology(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          }        
+          }
         })
     }
-  
+
     loadTable_Facility(data) {
-    
+
       this.columnHeader_3=[];
       this.columnValue_3=[];
-    
+
      if(data != null){
       data= this.filter(data);
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_3.push(data[0]);
         this.columnValue_3.push(result);
      }
@@ -243,9 +244,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       this.isTabVisible_3 = true;
       this.cd.markForCheck();
     }
-    
+
      Delete_Facility(event){
-    
+
       let info = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
     debugger;
       this.workprogram
@@ -258,7 +259,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           else{
           this.loadTable_Facility(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          }        
+          }
         })
     }
 
@@ -293,7 +294,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       for (let item in this.oilAndGasBody) {
          if (item != 'id' && item != 'field_ID') {
           budgetInfo[this.genk.upperText(item)] = this.oilAndGasBody[item]?.toString() ?? '';
-    
+
         }
       }
       this.workprogram
@@ -306,10 +307,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           else{
           this.loadTable_OilGas(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          } 
+          }
         })
-        } 
-    
+        }
+
         saveTechnology(){
           let budgetInfo = {} as newTechnologyAndConformityAssessment;
           this.newTechnologyBody.companyNumber = 0;
@@ -319,7 +320,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           for (let item in this.newTechnologyBody) {
              if (item != 'id' && item != 'field_ID') {
               budgetInfo[this.genk.upperText(item)] = this.newTechnologyBody[item]?.toString() ?? '';
-        
+
             }
           }
           this.workprogram
@@ -332,10 +333,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
               else{
               this.loadTable_Technology(res.data);
               this.modalService.logNotice("Success", res.message, 'success');
-              } 
+              }
             })
-            } 
-    
+            }
+
             saveFacility(){
               let budgetInfo = {} as facilitiesProjectPerformance;
               this.facilitiesProjectPerformanceBody.companyNumber = 0;
@@ -345,7 +346,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
               for (let item in this.facilitiesProjectPerformanceBody) {
                  if (item != 'id' && item != 'field_ID') {
                   budgetInfo[this.genk.upperText(item)] = this.facilitiesProjectPerformanceBody[item]?.toString() ?? '';
-            
+
                 }
               }
               this.workprogram
@@ -358,8 +359,8 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
                   else{
                   this.loadTable_Facility(res.data);
                   this.modalService.logNotice("Success", res.message, 'success');
-                  } 
+                  }
                 })
-                } 
-   
+                }
+
 }

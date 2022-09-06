@@ -39,6 +39,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP2';
     this.InitialForm = new FormGroup(
       {
         current_year_Actual_Number: new FormControl(this.initialBody.current_year_Actual_Number, [Validators.required]),

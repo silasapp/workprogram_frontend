@@ -68,6 +68,7 @@ discoveryNameDoc: string;
     this.cd.markForCheck();
     }
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP1';
     this.getDrilling("QUARTER 1");
     this.CategoryForm = new FormGroup(
       {

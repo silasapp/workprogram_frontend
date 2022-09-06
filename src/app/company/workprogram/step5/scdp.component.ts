@@ -66,7 +66,7 @@ PictureNameDoc: string;
   scdp_trainingdetails_csr_Body: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME ={} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
   scdp_pictures_Body: PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT ={} as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
 
-  
+
   //#region table columns declaration
   columnHeader = [];
   columnValue = [];
@@ -110,7 +110,7 @@ PictureNameDoc: string;
     private auth: AuthenticationService,
     private gen: GenericService,
     private modalService: ModalService
-  ) 
+  )
   {
     this.genk = gen;
     this.modalService.concessionSitu
@@ -121,10 +121,11 @@ PictureNameDoc: string;
   }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP5';
     this.SCDP_CSR_Form = new FormGroup(
       {
         description_of_Projects_Actual: new FormControl(this.scdp_csr_Body.description_of_Projects_Actual, [Validators.required]),
-        description_of_Projects_Planned: new FormControl(this.scdp_csr_Body.description_of_Projects_Planned, [Validators.required]) 
+        description_of_Projects_Planned: new FormControl(this.scdp_csr_Body.description_of_Projects_Planned, [Validators.required])
       }, {});
 
       this.SCDP_Question_Form = new FormGroup(
@@ -157,7 +158,7 @@ PictureNameDoc: string;
               // cSR_: new FormControl(this.scdp_capitalprojects_Body., [Validators.required]),
               percentage_Completion_: new FormControl(this.scdp_capitalprojects_Body.percentage_Completion_, [Validators.required]),
             }, {});
-          
+
           this.SCDP_Scholarship_Form = new FormGroup(
             {
               actual_Budget_Total_Dollars: new FormControl(this.scdp_scholarship_Body.actual_Budget_Total_Dollars, [Validators.required]),
@@ -166,7 +167,7 @@ PictureNameDoc: string;
               scholarshipYear: new FormControl(this.scdp_scholarship_Body.scholarshipYear, [Validators.required]),
               year_GMou_was_signed: new FormControl(this.scdp_scholarship_Body.year_GMou_was_signed, [Validators.required]),
               sSUploadFilePath: new FormControl(this.scdp_scholarship_Body.sSUploadFilePath, [Validators.required])
-              
+
             }, {});
             this.SCDP_Scholarship_CSR_Form = new FormGroup(
               {
@@ -198,15 +199,15 @@ PictureNameDoc: string;
                     trainingYear: new FormControl(this.scdp_trainingdetails_csr_Body.trainingYear, [Validators.required]),
                     year_GMou_was_signed: new FormControl(this.scdp_trainingdetails_csr_Body.year_GMou_was_signed, [Validators.required]),
                     nameOfCommunity: new FormControl(this.scdp_trainingdetails_csr_Body.nameOfCommunity, [Validators.required]),
-                    tSUploadFilePath: new FormControl(this.scdp_trainingdetails_csr_Body.tSUploadFilePath, [Validators.required]),        
-                    // tSUploadFilename: new FormControl(this.scdp_trainingdetails_csr_Body.tSUploadFilename, [Validators.required])        
+                    tSUploadFilePath: new FormControl(this.scdp_trainingdetails_csr_Body.tSUploadFilePath, [Validators.required]),
+                    // tSUploadFilename: new FormControl(this.scdp_trainingdetails_csr_Body.tSUploadFilename, [Validators.required])
                   }, {});
                   this.SCDP_Pictures_CSR_Form = new FormGroup(
                     {
-                      uploaded_presentation: new FormControl(this.scdp_pictures_Body.uploaded_presentation, [Validators.required])                
+                      uploaded_presentation: new FormControl(this.scdp_pictures_Body.uploaded_presentation, [Validators.required])
                     }, {});
   }
-  
+
 //#region Documents Upload Section
 saveResponderDoc(DeFile: any) {
   this.ResponderFile = <File>DeFile.target.files[0];
@@ -332,8 +333,8 @@ savePictureDoc(DeFile: any) {
         this.modalService.logNotice("Success", res.message, 'success');
         this.loadTable_SDCP_CSR(res.data);
         }
-       });  
-      } 
+       });
+      }
   SDCP_Question_Submit(){
     const formDat: FormData = new FormData();
     this.scdp_question_Body.id=0;
@@ -441,7 +442,7 @@ SDCP_Capital_Submit(){
         }
   })
   }
-  
+
   SDCP_Scholarship_CSR_Submit(){
     let info = {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
     this.scdp_scholarship_csr_Body.id =  0;
@@ -487,7 +488,7 @@ SDCP_Capital_Submit(){
           this.modalService.logNotice("Error", res.message, 'error');
         }
         else{
-        this.modalService.logNotice("Success", res.message, 'success'); 
+        this.modalService.logNotice("Success", res.message, 'success');
         this.loadTable_SDCP_TrainingSkills(res.data);
         }
       });  }
@@ -517,7 +518,7 @@ SDCP_Capital_Submit(){
   })
 
 }
-  
+
   SDCP_Pictures_Submit(){
     const formDat: FormData = new FormData();
     this.scdp_pictures_Body.id=0;
@@ -556,7 +557,7 @@ SDCP_Capital_Submit(){
       let scdp_csr_Info = this.scdp_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL;
       let scdp_question_Info = this.scdp_question_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION;
       let scdp_mou_Info = this.scdp_mou_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_MOU;
-      let scdp_capital_Info = this.scdp_capitalprojects_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW; 
+      let scdp_capital_Info = this.scdp_capitalprojects_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
       let scdp_scholarship_Info = this.scdp_scholarship_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
       let scdp_scholarship_csr_Info = this.scdp_scholarship_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
       let scdp_trainingskills_csr_Info = this.scdp_trainingskills_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
@@ -578,7 +579,7 @@ SDCP_Capital_Submit(){
       }
       if(res.scdp_capitalprojects_Body != null && res.hseSustainable_Capital.length > 0){
         scdp_capital_Info = res.hseSustainable_Capital[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
-        this.loadTable_SDCP_Capital(res.hseSustainable_Capital); 
+        this.loadTable_SDCP_Capital(res.hseSustainable_Capital);
       }
       if(res.hseSustainable_Schorlarship != null && res.hseSustainable_Schorlarship.length > 0){
         scdp_scholarship_Info = res.hseSustainable_Schorlarship[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
@@ -588,7 +589,7 @@ SDCP_Capital_Submit(){
         scdp_scholarship_csr_Info = res.hseSustainable_Schorlarship_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
         this.loadTable_SDCP_ScholarshipCSR(res.hseSustainable_Schorlarship_CSR);
       }
-     
+
       if(res.hseSustainable_Training_CSR != null && res.hseSustainable_Training_CSR.length > 0){
         scdp_trainingskills_csr_Info = res.hseSustainable_Training_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
         this.loadTable_SDCP_TrainingSkills(res.hseSustainable_Training_CSR);
@@ -603,18 +604,18 @@ SDCP_Capital_Submit(){
       }
       this.scdp_csr_Body = scdp_csr_Info;
       this.scdp_question_Body = scdp_question_Info;
-      this.scdp_scholarship_Body = scdp_scholarship_Info; 
+      this.scdp_scholarship_Body = scdp_scholarship_Info;
       this.scdp_scholarship_csr_Body = scdp_scholarship_csr_Info;
-      this.scdp_mou_Body= scdp_mou_Info; 
+      this.scdp_mou_Body= scdp_mou_Info;
       this.scdp_capitalprojects_Body = scdp_capital_Info;
       this.scdp_trainingskills_csr_Body= scdp_trainingskills_csr_Info;
       this.scdp_trainingdetails_csr_Body= scdp_trainingdetails_csr_Info;
       this.scdp_pictures_Body = scdp_pictures_Info;
-      
-      
+
+
     })
   }
-  
+
   loadTable_SDCP_Question(data) {
 
     this.columnHeader=[];
@@ -626,11 +627,11 @@ SDCP_Capital_Submit(){
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    
+
       this.columnHeader.push(data[0]);
       this.columnValue.push(result);
-        
-  
+
+
    }
    else{
     for (let item1 in this.SCDP_Question_Form.controls) {
@@ -670,11 +671,11 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_2.push(data[0]);
         this.columnValue_2.push(result);
-          
-    
+
+
      }
      else{
     for (let item1 in this.SCDP_MOU_Form.controls) {
@@ -703,7 +704,7 @@ debugger;
         }
       })  }
 
-  
+
   loadTable_SDCP_Capital(data) {
     this.columnHeader_3=[];
     this.columnValue_3=[];
@@ -713,11 +714,11 @@ debugger;
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    
+
       this.columnHeader_3.push(data[0]);
       this.columnValue_3.push(result);
-        
-  
+
+
    }
    else{for (let item1 in this.SCDP_CapitalProjects_Form.controls) {
       if (item1 != 'comment') {
@@ -745,7 +746,7 @@ debugger;
    }
 
 
-  
+
   loadTable_SDCP_ScholarshipCSR(data) {
     this.columnHeader_4=[];
     this.columnValue_4=[];
@@ -755,11 +756,11 @@ debugger;
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    
+
       this.columnHeader_4.push(data[0]);
       this.columnValue_4.push(result);
-        
-  
+
+
    }
    else{for (let item1 in this.SCDP_Scholarship_CSR_Form.controls) {
       if (item1 != 'comment') {
@@ -774,7 +775,7 @@ debugger;
 
   Delete_HSE_SDCP_ScholarshipCSR(event){
     this.workprogram
-      .post_SDCP_Scholarship_CSR(null, this.genk.wpYear, this.genk.OmlName,'', event.target.value, "DELETE") 
+      .post_SDCP_Scholarship_CSR(null, this.genk.wpYear, this.genk.OmlName,'', event.target.value, "DELETE")
        .subscribe(res => {
 
         if(res.statusCode == 300){
@@ -784,7 +785,7 @@ debugger;
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_SDCP_ScholarshipCSR(res.data);
         }
-      
+
       })
    }
 
@@ -798,11 +799,11 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_5.push(data[0]);
         this.columnValue_5.push(result);
-          
-    
+
+
      }
      else{
     for (let item1 in this.SCDP_Scholarship_Form.controls) {
@@ -839,11 +840,11 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_6.push(data[0]);
         this.columnValue_6.push(result);
-          
-    
+
+
      }
      else{
     for (let item1 in this.SCDP_TrainingSkills_CSR_Form.controls) {
@@ -867,7 +868,7 @@ debugger;
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_SDCP_TrainingSkills(res.data);
         }
-        
+
       })
    }
 
@@ -880,11 +881,11 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_7.push(data[0]);
         this.columnValue_7.push(result);
-          
-    
+
+
      }
      else{
     for (let item1 in this.SCDP_TrainingDetails_CSR_Form.controls) {
@@ -919,7 +920,7 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_8.push(data[0]);
         this.columnValue_8.push(result);
      }
@@ -957,7 +958,7 @@ debugger;
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
-      
+
         this.columnHeader_9.push(data[0]);
         this.columnValue_9.push(result);
      }

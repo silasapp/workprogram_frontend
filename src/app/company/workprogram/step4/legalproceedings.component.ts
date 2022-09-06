@@ -43,6 +43,7 @@ wkpYear: string;
   }
 
 ngOnInit(): void {
+  this.genk.activeStep = 'STEP4';
   this.letigationForm = new FormGroup(
     {
       anyLitigation: new FormControl(this.letigationBody.anyLitigation, [Validators.required]),

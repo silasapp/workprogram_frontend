@@ -63,6 +63,7 @@ YPFNameDoc: string;
    }
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP2';
     this.ProductionOilForm = new FormGroup({
       oil_Royalty_Payment: new FormControl(this.productionoilBody.oil_Royalty_Payment,[Validators.required]),
       actual_year: new FormControl(this.productionoilBody.actual_year,[Validators.required]),

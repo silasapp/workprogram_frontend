@@ -46,24 +46,28 @@ export class SWPBudgetProposalComponent implements OnInit {
     .subscribe(res => {
       let budgetInfo = this.budgetProposalBody as budgetProposal;
       let capexInfo = this.capexOpexBody as capexOpex;
-      
+
       debugger;
       if(res.budgetProposalComponents != null && res.budgetProposalComponents.length > 0){
        budgetInfo = res.budgetProposalComponents[0] as budgetProposal;
        this.loadTable_Budget(res.budgetProposalComponents);
+       this.genk.isStep3 = true;
       }
       if(res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0){
         capexInfo = res.budgetCapexOpex[0] as capexOpex;
         this.loadTable_Opex(res.budgetCapexOpex);
+        this.genk.isStep3 = true;
       }
-      
+
       this.budgetProposalBody = budgetInfo;
-      this.capexOpexBody = capexInfo; 
+      this.capexOpexBody = capexInfo;
+      this.cd.markForCheck();
     })
   }
 
 
   ngOnInit(): void {
+    this.genk.activeStep = 'STEP3';
     this.budgetProposalForm = new FormGroup({
       budget_for_Direct_Exploration_and_Production_Activities_Naira: new FormControl(this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira, Validators.required),
       budget_for_Direct_Exploration_and_Production_Activities_Dollars: new FormControl(this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars, Validators.required),
@@ -79,7 +83,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       remarks: new FormControl(this.capexOpexBody.remarks, Validators.required)
     });
 
-   
+
   }
 
 
@@ -87,14 +91,14 @@ export class SWPBudgetProposalComponent implements OnInit {
 
     this.columnHeader=[];
     this.columnValue=[];
-  
+
    if(data != null){
     data= this.filter(data);
     var result = Object.entries(data).reduce((acc, [key, value]) => {
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    
+
       this.columnHeader.push(data[0]);
       this.columnValue.push(result);
    }
@@ -109,9 +113,9 @@ export class SWPBudgetProposalComponent implements OnInit {
     this.isTabVisible = true;
     this.cd.markForCheck();
   }
-  
+
    Delete_Budget(event){
-  
+
     let info = this.budgetProposalBody as budgetProposal;
   debugger;
     this.workprogram
@@ -124,22 +128,22 @@ export class SWPBudgetProposalComponent implements OnInit {
         else{
         this.loadTable_Budget(res.data);
         this.modalService.logNotice("Success", res.message, 'success');
-        }        
+        }
       })
   }
-  
+
   loadTable_Opex(data) {
-  
+
     this.columnHeader_2=[];
     this.columnValue_2=[];
-  
+
    if(data != null){
     data= this.filter(data);
     var result = Object.entries(data).reduce((acc, [key, value]) => {
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    
+
       this.columnHeader_2.push(data[0]);
       this.columnValue_2.push(result);
    }
@@ -154,9 +158,9 @@ export class SWPBudgetProposalComponent implements OnInit {
     this.isTabVisible_2 = true;
     this.cd.markForCheck();
   }
-  
+
    Delete_Opex(event){
-  
+
     let info = this.capexOpexBody as capexOpex;
   debugger;
     this.workprogram
@@ -169,7 +173,7 @@ export class SWPBudgetProposalComponent implements OnInit {
         else{
         this.loadTable_Budget(res.data);
         this.modalService.logNotice("Success", res.message, 'success');
-        }        
+        }
       })
   }
 
@@ -204,7 +208,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     for (let item in this.budgetProposalBody) {
             if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] = this.budgetProposalBody[item]?.toString() ?? '';
-  
+
       }
     }
     this.workprogram
@@ -217,10 +221,10 @@ export class SWPBudgetProposalComponent implements OnInit {
         else{
         this.loadTable_Budget(res.data);
         this.modalService.logNotice("Success", res.message, 'success');
-        } 
+        }
       })
-      } 
-  
+      }
+
       saveOpex(){
         let budgetInfo = {} as capexOpex;
         this.capexOpexBody.companyNumber = 0;
@@ -230,7 +234,7 @@ export class SWPBudgetProposalComponent implements OnInit {
         for (let item in this.capexOpexBody) {
           if (item != 'id' && item != 'field_ID') {
             budgetInfo[this.genk.upperText(item)] = this.capexOpexBody[item]?.toString() ?? '';
-      
+
           }
         }
         this.workprogram
@@ -243,8 +247,8 @@ export class SWPBudgetProposalComponent implements OnInit {
             else{
             this.loadTable_Opex(res.data);
             this.modalService.logNotice("Success", res.message, 'success');
-            } 
+            }
           })
-          } 
-  
+          }
+
 }

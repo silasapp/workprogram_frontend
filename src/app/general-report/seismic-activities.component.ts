@@ -232,8 +232,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       alert('Can not plot this chart');
     }
     else {
-      debugger;
-
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';
