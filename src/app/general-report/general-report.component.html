@@ -68,7 +68,28 @@
                     </div>
                   </div>
 
-                  <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'upload-presentation']" routerLinkActive="active">
+                  <div class="layout-line layout-padsect">
+                    <div class="layout-divcap layout-pad">
+                      <span>Seismic Processing and Reprocessing</span>
+                    </div>
+                    <div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismic']" routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Processing and Reprocessing Activities</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismicprevious']" routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Processing and Reprocessing Previous Year</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'c']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Processing and Reprocessing 2yrs ago</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'upload-presentation']" routerLinkActive="active">
                       <span class="material-icons layout-icon">upload</span>
                       <span>Upload Presentation</span>
                   </div>
@@ -88,7 +109,7 @@
                   <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, 'resetpassword']" routerLinkActive="active">
                       <span class="material-icons layout-icon">enhanced_encryption</span>
                       <span>Password Reset</span>
-                  </div>
+                  </div> -->
 
 
 

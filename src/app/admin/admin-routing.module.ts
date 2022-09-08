@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddConcessionComponent } from './add-concession/add-concession.component';
+import { AddConcessionComponent } from './add-concession.component';
 import { AddUsersComponent } from './add-users/add-users.component';
-import { UploadedCompanyComponent } from './uploaded-company/uploaded-company.component';
+import { UploadCodeComponent } from './upload-code/uploadcode.component';
+import { UploadedCompanyComponent } from './uploaded-company.component';
+
 
 const routes: Routes = [
 
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: 'add_concession',
     component: AddConcessionComponent
+  },
+  {
+    path: 'upload_code',
+    component: UploadCodeComponent
+  },
+  {
+    path: 'report_editor',
+    component: UploadCodeComponent
   }
 ];
 

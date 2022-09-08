@@ -70,7 +70,6 @@ export class BoardComponent implements OnInit {
     });
   }
 
-
   changeConcessionField(e) {
     this.field = e.target.value;
     this.genk.fieldName = this.field;

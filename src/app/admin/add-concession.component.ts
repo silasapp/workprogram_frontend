@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-concession',
   templateUrl: './add-concession.component.html',
-  styleUrls: ['../admin.component.scss']
+  styleUrls: ['./admin.component.scss']
 })
 export class AddConcessionComponent implements OnInit {
   genk: GenericService;

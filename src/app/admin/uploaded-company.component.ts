@@ -6,7 +6,7 @@ import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-uploaded-company',
   templateUrl: './uploaded-company.component.html',
-  styleUrls: ['../admin.component.scss']
+  styleUrls: ['./admin.component.scss']
 })
 export class UploadedCompanyComponent implements OnInit {
 

@@ -1,15 +1,13 @@
-<div id="info-block">
-  <section class="file-marker">
+<div>
       <div class="box-title">
         <h2>{{title}}</h2>
         <hr>
       </div>
-      <div class="row" >
-      <div class="col-md-6 col-lg-6 col-sm-6 concessionTable">
+      <div>
+      <div>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
         <div>
-          <input #myInput (keyup)='genk.searchTable(myInput, myTable)' type='text' placeholder="Search Table"
-            class="search">
+          <input #myInput (keyup)='genk.searchTable(myInput, myTable)' type='text' placeholder="Search Table" class="search">
         </div>
         <div style="width: 225px;">
           <select id="time" class="form-select" (change)="resize($event)">
@@ -249,5 +247,4 @@
       </form>
       </div>
     </div>
-  </section>
 </div>

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddUsersComponent } from './add-users/add-users.component';
-import { AddConcessionComponent } from './add-concession/add-concession.component';
-import { UploadedCompanyComponent } from './uploaded-company/uploaded-company.component';
+import { AddConcessionComponent } from './add-concession.component';
+import { UploadedCompanyComponent } from './uploaded-company.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,15 +15,13 @@ import { UpdateUserComponent } from './add-users/update-user/update-user.compone
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { UploadCodeComponent } from './upload-code/uploadcode.component';
+import { ReportEditorComponent } from './report-editor/reporteditor.component';
+
+
 
 
 @NgModule({
-  declarations: [
-    AddUsersComponent,
-    AddConcessionComponent,
-    UploadedCompanyComponent,
-    UpdateUserComponent
-  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -37,6 +35,15 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatSelectModule,
     MatButtonModule
+  ],
+  declarations: [
+    AddUsersComponent,
+    AddConcessionComponent,
+    UploadedCompanyComponent,
+    UpdateUserComponent,
+    UploadCodeComponent,
+    ReportEditorComponent,
+
   ]
 })
 export class AdminModule { }

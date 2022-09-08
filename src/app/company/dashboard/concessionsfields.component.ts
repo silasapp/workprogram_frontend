@@ -7,9 +7,9 @@ import { FieldDetails, ConcessionDetails } from 'src/app/models/company-details'
 
 
 @Component({
-    templateUrl: 'concessionsfields.component.html',
-    styleUrls: [ '../../account/login.component.scss', '../company.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: 'concessionsfields.component.html',
+  styleUrls: ['../../account/login.component.scss', '../company.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
@@ -23,316 +23,358 @@ export class ConcessionsfieldsComponent implements OnInit {
   arrayRows = [];
   data: any[];
   year = [];
-  company : any[];
+  company: any[];
   concessionFieldForm: FormGroup;
   concessionBody: ConcessionDetails = {} as ConcessionDetails;
-  allConcessionsData=[];
+  allConcessionsData = [];
 
-  allConcessions:[];
+  allConcessions: [];
   allFields: [];
 
   fieldBody: FieldDetails = {} as FieldDetails;
-  fieldForm:FormGroup;
-  c_ColumnHeader= [];
-  c_ColumnValue= [];
-  f_ColumnHeader= [];
-  f_ColumnValue=[];
+  fieldForm: FormGroup;
+  c_ColumnHeader = [];
+  c_ColumnValue = [];
+  f_ColumnHeader = [];
+  f_ColumnValue = [];
   c_isTabVisible: boolean;
   f_isTabVisible: boolean;
 
-    constructor(private adminservice: AdminService,
+  columns = [
+    //   {
+    //     "columnDef": "company_Name",
+    //     "header": "CName"
+    // },
+    {
+      "columnDef": "area",
+      "header": "AREA"
+    },
+    {
+      "columnDef": "concession_Held",
+      "header": "CONCESSION HELD"
+    },
+    {
+      "columnDef": "consession_Type",
+      "header": "CONSESSION TYPE"
+    },
+    {
+      "columnDef": "contract_Type",
+      "header": "CONTRACT TYPE"
+    },
+    {
+      "columnDef": "equity_distribution",
+      "header": "EQUITY DISTRIBUTION"
+    },
+    {
+      "columnDef": "geological_location",
+      "header": "GEOLOGICAL LOCATION"
+    }
+  ]
+
+  constructor(private adminservice: AdminService,
     private cd: ChangeDetectorRef,
     private gen: GenericService,
     private modalService: ModalService
 
-    ){
-      this.genk = gen;
-      this.cdr = cd;
-      this.genk.sizePerPage = this.genk.sizeten;
-    }
+  ) {
+    this.genk = gen;
+    this.cdr = cd;
+    this.genk.sizePerPage = this.genk.sizeten;
+  }
 
-    ngOnInit() : void {
-      this.data = [];
-      this.genk.sizePerPage = this.genk.sizeten;
+  ngOnInit(): void {
+    this.data = [];
+    this.genk.sizePerPage = this.genk.sizeten;
 
-      this.concessionFieldForm = new FormGroup(
-        {
-          concession_Held: new FormControl(this.concessionBody.concession_Held, [Validators.required]),
-          area: new FormControl(this.concessionBody.area, [Validators.required]),
-          contract_Type: new FormControl(this.concessionBody.contract_Type, [Validators.required]),
-          terrain: new FormControl(this.concessionBody.terrain, [Validators.required]),
-          consession_Type: new FormControl(this.concessionBody.consession_Type, [Validators.required]),
-          concession_Unique_ID: new FormControl(this.concessionBody.concession_Unique_ID, [Validators.required]),
-          date_of_Expiration: new FormControl(this.concessionBody.date_of_Expiration, [Validators.required]),
-          equity_distribution: new FormControl(this.concessionBody.equity_distribution, [Validators.required]),
-          comment: new FormControl(this.concessionBody.comment, [Validators.required]),
-          geological_location: new FormControl(this.concessionBody.geological_location, [Validators.required]),
-          year_of_Grant_Award: new FormControl(this.concessionBody.year_of_Grant_Award, [Validators.required]),
-          status_: new FormControl(this.concessionBody.status_, [Validators.required]),
-          consession_Id: new FormControl(this.concessionBody.consession_Id, [Validators.required]),
+    this.concessionFieldForm = new FormGroup(
+      {
+        concession_Held: new FormControl(this.concessionBody.concession_Held, [Validators.required]),
+        area: new FormControl(this.concessionBody.area, [Validators.required]),
+        contract_Type: new FormControl(this.concessionBody.contract_Type, [Validators.required]),
+        terrain: new FormControl(this.concessionBody.terrain, [Validators.required]),
+        consession_Type: new FormControl(this.concessionBody.consession_Type, [Validators.required]),
+        concession_Unique_ID: new FormControl(this.concessionBody.concession_Unique_ID, [Validators.required]),
+        date_of_Expiration: new FormControl(this.concessionBody.date_of_Expiration, [Validators.required]),
+        equity_distribution: new FormControl(this.concessionBody.equity_distribution, [Validators.required]),
+        comment: new FormControl(this.concessionBody.comment, [Validators.required]),
+        geological_location: new FormControl(this.concessionBody.geological_location, [Validators.required]),
+        year_of_Grant_Award: new FormControl(this.concessionBody.year_of_Grant_Award, [Validators.required]),
+        status_: new FormControl(this.concessionBody.status_, [Validators.required]),
+        consession_Id: new FormControl(this.concessionBody.consession_Id, [Validators.required]),
 
-        }, {});
-
-
-      this.fieldForm = new FormGroup(
-        {
-          field_ID: new FormControl(this.fieldBody.field_ID, [Validators.required]),
-          field_Name: new FormControl(this.fieldBody.field_Name, [Validators.required]),
-          concession_Name: new FormControl(this.fieldBody.concession_Name, [Validators.required]),
-        }, {});
-     this.getConcessionFields();
-     }
+      }, {});
 
 
-     getConcessionFields() {
-      this.adminservice.getConcessionFields()
+    this.fieldForm = new FormGroup(
+      {
+        field_ID: new FormControl(this.fieldBody.field_ID, [Validators.required]),
+        field_Name: new FormControl(this.fieldBody.field_Name, [Validators.required]),
+        concession_Name: new FormControl(this.fieldBody.concession_Name, [Validators.required]),
+      }, {});
+    this.getConcessionFields();
+  }
+
+
+  getConcessionFields() {
+    this.adminservice.getConcessionFields()
       .subscribe(res => {
         let concessionInfo = {} as ConcessionDetails;
         let fieldInfo = {} as FieldDetails;
-        if(res.companyConcessions != null && res.companyConcessions.length > 0) {
+        if (res.companyConcessions != null && res.companyConcessions.length > 0) {
           concessionInfo = res.companyConcessions[0] as ConcessionDetails;
           concessionInfo.date_of_Expiration = this.genk.formDate(concessionInfo.date_of_Expiration);
           concessionInfo.year_of_Grant_Award = this.genk.formDate(concessionInfo.year_of_Grant_Award);
           this.loadTable_Concession(res.companyConcessions);
           this.allConcessions = res.companyConcessions;
-          }
-          if(res.companyFields != null && res.companyFields.length > 0){
-            fieldInfo = res.companyFields[0] as FieldDetails;
-            this.loadTable_Field(res.companyFields);
-            this.allFields = res.companyFields;
-          }
-            // this.fieldBody = fieldInfo;
-            // this.concessionBody = concessionInfo;
+        }
+        if (res.companyFields != null && res.companyFields.length > 0) {
+          fieldInfo = res.companyFields[0] as FieldDetails;
+          this.loadTable_Field(res.companyFields);
+          this.allFields = res.companyFields;
+        }
+        // this.fieldBody = fieldInfo;
+        // this.concessionBody = concessionInfo;
       })
-    }
+  }
 
-    public get pageIndex(): number {
-      return (this.selectedPage - 1) * this.genk.sizePerPage;
-    }
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
 
-    assignPageNum() {
-      this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    }
+  assignPageNum() {
+    this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+  }
 
-    assignDataRows() {
-      this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-      this.cd.markForCheck();
-    }
+  assignDataRows() {
+    this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+    this.cd.markForCheck();
+  }
 
-    fetchdata(e){
+  fetchdata(e) {
 
-     this.adminservice.getConcessions(e.target.value).subscribe(
-        (res) => {
-          this.data = res.data
-          this.assignDataRows();
-          this.assignPageNum();
-          this.cd.markForCheck();
-          }
-      )
-    }
-
-    goNext() {
-      this.selectedPage++;
-      this.assignDataRows();
-    }
-
-    goPrev() {
-      this.selectedPage--;
-      this.assignDataRows();
-    }
-
-    firstPage() {
-      this.selectedPage = 1;
-      this.assignDataRows();
-    }
-
-    lastPage() {
-      this.selectedPage = this.pagenum;
-      this.assignDataRows();
-    }
-
-    changePage(value: string) {
-      this.selectedPage = Number(value);
-      this.assignDataRows();
-    }
-
-    resize(e) {
-      let value = e.target.value;
-      if (value === 'all') {
-        value = this.pagenum * this.genk.sizePerPage
+    this.adminservice.getConcessions(e.target.value).subscribe(
+      (res) => {
+        this.data = res.data
+        this.assignDataRows();
+        this.assignPageNum();
+        this.cd.markForCheck();
       }
-      this.genk.sizePerPage = Number(value);
-      this.assignDataRows();
-      this.assignPageNum();
-      this.cd.markForCheck();
+    )
+  }
+
+  goNext() {
+    this.selectedPage++;
+    this.assignDataRows();
+  }
+
+  goPrev() {
+    this.selectedPage--;
+    this.assignDataRows();
+  }
+
+  firstPage() {
+    this.selectedPage = 1;
+    this.assignDataRows();
+  }
+
+  lastPage() {
+    this.selectedPage = this.pagenum;
+    this.assignDataRows();
+  }
+
+  changePage(value: string) {
+    this.selectedPage = Number(value);
+    this.assignDataRows();
+  }
+
+  resize(e) {
+    let value = e.target.value;
+    if (value === 'all') {
+      value = this.pagenum * this.genk.sizePerPage
     }
+    this.genk.sizePerPage = Number(value);
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
+  }
 
-    ConcessionSubmit(){
+  ConcessionSubmit() {
 
-      let concessionInfo = {} as ConcessionDetails;
-      let actionToDo = '';
-      let id='';
+    let concessionInfo = {} as ConcessionDetails;
+    let actionToDo = '';
+    let id = '';
 
-      for (let item in this.concessionBody) {
-         if (item != 'consession_Id') {
-          concessionInfo[this.genk.upperText(item)] = this.concessionBody[item]?.toString() ?? '';
-        }
-        else{
-          actionToDo='UPDATE'; id = this.concessionBody[item]?.toString();
-        }
+    for (let item in this.concessionBody) {
+      if (item != 'consession_Id') {
+        concessionInfo[this.genk.upperText(item)] = this.concessionBody[item]?.toString() ?? '';
       }
-      this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
-        .subscribe(res => {
-          if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-          }
-          else{
+      else {
+        actionToDo = 'UPDATE'; id = this.concessionBody[item]?.toString();
+      }
+    }
+    this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
+      .subscribe(res => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice("Error", res.message, 'error');
+        }
+        else {
           this.loadTable_Concession(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
-          }
-        })
         }
+      })
+  }
 
-        FieldSubmit(){
-          let fieldInfo = {} as FieldDetails;
-          let actionToDo = '';
-         let id='';
+  FieldSubmit() {
+    let fieldInfo = {} as FieldDetails;
+    let actionToDo = '';
+    let id = '';
 
-         debugger;
-          for (let item in this.fieldBody) {
-             if (item != 'field_ID' ) {
-              fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
-            }
-             if ( this.fieldBody[item]?.toString() != "undefined"){
-              actionToDo='UPDATE';
-              id = this.fieldBody[item]?.toString();
-            }
-          }
+    debugger;
+    for (let item in this.fieldBody) {
+      if (item != 'field_ID') {
+        fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
+      }
+      if (this.fieldBody[item]?.toString() != "undefined") {
+        actionToDo = 'UPDATE';
+        id = this.fieldBody[item]?.toString();
+      }
+    }
 
-          this.adminservice.Post_FieldDetails(fieldInfo, id,actionToDo)
-            .subscribe(res => {
+    this.adminservice.Post_FieldDetails(fieldInfo, id, actionToDo)
+      .subscribe(res => {
 
-              if(res.statusCode == 300){
-                this.modalService.logNotice("Error", res.message, 'error');
-              }
-              else{
-              this.modalService.logNotice("Success", res.message, 'success');
-              this.loadTable_Field(res.data);
-              }
-            })
-          }
+        if (res.statusCode == 300) {
+          this.modalService.logNotice("Error", res.message, 'error');
+        }
+        else {
+          this.modalService.logNotice("Success", res.message, 'success');
+          this.loadTable_Field(res.data);
+        }
+      })
+  }
 
 
   loadTable_Concession(data) {
-    this.c_ColumnHeader=[];
-    this.c_ColumnValue=[];
+    debugger;
+    this.c_ColumnHeader = [];
+    this.c_ColumnValue = [];
+    let datae = data;
 
-   if(data != null){
-    data= this.filter(data);
-    var result = Object.entries(data).reduce((acc, [key, value]) => {
-      acc[key] = value == null ? '' : value;
-      return acc;
-    }, {});
+    if (data != null) {
+      let quik = {};
+      for (var i = 0; i < datae.length; i++) {
+        for (var i = 0; i < this.columns.length; i++) {
+          //datae[i][this.columns[i].columnDef]
+          quik[this.columns[i].columnDef] = datae[i][this.columns[i].columnDef];
+        }
+        this.c_ColumnValue.push(quik);
+        quik = {};
+      }
+      data = this.filter(data);
+      var result = Object.entries(data).reduce((acc, [key, value]) => {
+        acc[key] = value == null ? '' : value;
+        return acc;
+      }, {});
 
       this.c_ColumnHeader.push(data[0]);
-      this.c_ColumnValue.push(result);
-   }
-   else{
-    for (let item1 in this.concessionFieldForm.controls) {
-      if (item1 != 'comment') {
-        this.c_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
-        this.c_ColumnValue.push(this.concessionBody[item1]);
-      }
+      //this.c_ColumnValue.push(result);
     }
+    else {
+      for (let item1 in this.concessionFieldForm.controls) {
+        if (item1 != 'comment') {
+          this.c_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+          this.c_ColumnValue.push(this.concessionBody[item1]);
+        }
+      }
     }
 
     this.c_isTabVisible = true;
     this.cd.markForCheck();
   }
 
-   Delete_Concession(event){
+  Delete_Concession(event) {
 
     let info = this.concessionBody as ConcessionDetails;
     this.adminservice
       .Post_ConcessionDetails(info, event.target.value, "DELETE")
       .subscribe(res => {
 
-        if(res.statusCode == 300){
+        if (res.statusCode == 300) {
           this.modalService.logNotice("Error", res.message, 'error');
         }
-        else{
-        this.loadTable_Concession(res.data);
-        this.modalService.logNotice("Success", res.message, 'success');
+        else {
+          this.loadTable_Concession(res.data);
+          this.modalService.logNotice("Success", res.message, 'success');
         }
       })
   }
-  Edit_Concession(event){
+  Edit_Concession(event) {
     let info = this.allConcessions as ConcessionDetails[];
-    let con= info.filter(element => element.consession_Id == event.target.value);
+    let con = info.filter(element => element.consession_Id == event.target.value);
 
     this.concessionBody = con[0];
 
   }
 
-  Edit_Field(event){
+  Edit_Field(event) {
     let info = this.allFields as FieldDetails[];
-    let con= info.filter(element => element.field_ID == event.target.value);
+    let con = info.filter(element => element.field_ID == event.target.value);
 
     this.fieldBody = con[0];
 
   }
-  loadTable_Field(data ) {
+  loadTable_Field(data) {
 
-    this.f_ColumnHeader=[];
-    this.f_ColumnValue=[];
+    this.f_ColumnHeader = [];
+    this.f_ColumnValue = [];
 
-   if(data != null){
-    //data= this.filter(data);
-    var result = Object.entries(data).reduce((acc, [key, value]) => {
-      acc[key] = value == null ? '' : value;
-      return acc;
-    }, {});
+    if (data != null) {
+      //data= this.filter(data);
+      var result = Object.entries(data).reduce((acc, [key, value]) => {
+        acc[key] = value == null ? '' : value;
+        return acc;
+      }, {});
 
       this.f_ColumnHeader.push(data[0]);
       this.f_ColumnValue.push(result);
 
 
-   }
-   else{
-    for (let item1 in this.fieldForm.controls) {
-      if (item1 != 'comment') {
-        this.f_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
-        this.f_ColumnValue.push(this.fieldBody[item1]);
-      }
     }
+    else {
+      for (let item1 in this.fieldForm.controls) {
+        if (item1 != 'comment') {
+          this.f_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+          this.f_ColumnValue.push(this.fieldBody[item1]);
+        }
+      }
     }
 
     this.f_isTabVisible = true;
     this.cd.markForCheck();
   }
 
-   Delete_Field(event){
+  Delete_Field(event) {
     let info = this.fieldBody as FieldDetails;
 
     this.adminservice.Post_FieldDetails(info, event.target.value, "DELETE")
       .subscribe(res => {
 
-        if(res.statusCode == 300){
+        if (res.statusCode == 300) {
           this.modalService.logNotice("Error", res.message, 'error');
         }
-        else{
-        this.modalService.logNotice("Success", res.message, 'success');
-        this.loadTable_Field(res.data);
+        else {
+          this.modalService.logNotice("Success", res.message, 'success');
+          this.loadTable_Field(res.data);
         }
       })
   }
-  filter(data){
+  filter(data) {
     const resultArray = Object.keys(data).map(index => {
       let person = data[index];
       return person;
-  });
+    });
 
-  resultArray.forEach(element => {
+    resultArray.forEach(element => {
       this.allConcessionsData.push(element['concession_Held']);
       delete element['company_ID'];
       delete element['companyNumber'];
@@ -349,16 +391,16 @@ export class ConcessionsfieldsComponent implements OnInit {
       delete element['year'];
       delete element['comment'];
       delete element['concessionName'],
-      delete element['deleteD_BY'],
-      delete element['deleteD_DATE'],
-      delete element['deleteD_STATUS'],
-      delete element['emaiL_REMARK']
+        delete element['deleteD_BY'],
+        delete element['deleteD_DATE'],
+        delete element['deleteD_STATUS'],
+        delete element['emaiL_REMARK']
 
-     });
-  return resultArray;
+    });
+    return resultArray;
   }
 
-  Alert(title: string, text: string, icon: any){
+  Alert(title: string, text: string, icon: any) {
     Swal.fire({
       title: title,
       text: text,
