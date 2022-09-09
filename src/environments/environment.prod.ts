@@ -1,3 +1,3 @@
 export const environment = {
-  production: true, apiUrl: 'https://localhost:7129/api'
+  production: true, apiUrl: 'https://workprogramtest.azurewebsites.net/api'
 };
