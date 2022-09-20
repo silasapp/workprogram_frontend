@@ -8,7 +8,7 @@ import { FieldDetails, ConcessionDetails } from 'src/app/models/company-details'
 
 @Component({
   templateUrl: 'concessionsfields.component.html',
-  styleUrls: [ '../company.component.scss', '../../reports/ndr-report.component.scss'],
+  styleUrls: [ './concessionsfields.component.scss', '../../reports/ndr-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -39,6 +39,8 @@ export class ConcessionsfieldsComponent implements OnInit {
   f_ColumnValue = [];
   c_isTabVisible: boolean;
   f_isTabVisible: boolean;
+  isAddConcession = false;
+  isAddField = false;
 
   columns = [
     //   {
@@ -151,10 +153,9 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   fetchdata(e) {
-
     this.adminservice.getConcessions(e.target.value).subscribe(
       (res) => {
-        this.data = res.data
+        this.data = res.data;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
@@ -221,10 +222,12 @@ export class ConcessionsfieldsComponent implements OnInit {
           this.loadTable_Concession(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
         }
+        this.togAddConcession();
       })
   }
 
   FieldSubmit() {
+    //debugger;
     let fieldInfo = {} as FieldDetails;
     let actionToDo = '';
     let id = '';
@@ -250,7 +253,8 @@ export class ConcessionsfieldsComponent implements OnInit {
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_Field(res.data);
         }
-      })
+        this.togAddField();
+      });
   }
 
 
@@ -402,6 +406,24 @@ export class ConcessionsfieldsComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Okay'
     })
+  }
+
+  togAddConcession() {
+    if(!this.isAddConcession) {
+      this.isAddConcession = true;
+    } else {
+      this.isAddConcession = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  togAddField() {
+    if(!this.isAddField) {
+      this.isAddField = true;
+    } else {
+      this.isAddField = false;
+    }
+    this.cd.markForCheck();
   }
 
 }

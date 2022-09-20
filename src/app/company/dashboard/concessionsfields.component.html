@@ -1,19 +1,21 @@
 <div>
   <br>
   <div style="margin-top: 1%; text-align: center;">
-    <span
-      style="background-color: white; padding: 0.5% 2%; border-radius: 20px; font-size: 22px; font-weight: 600; color: rgb(71, 70, 70)">{{title}}</span>
+    <span style="background-color: white; padding: 0.5% 2%; border-radius: 20px; font-size: 22px; font-weight: 600; color: rgb(71, 70, 70)">{{title}}</span>
   </div>
   <br>
 </div>
+
+
 <div>
-
-
   <div style="display: flex;">
     <div style="width: 60%;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
         <div>
-          <button>Add Concession</button>
+          <button (click)="togAddConcession()" style="display: flex; align-items: center; border: none; background-color: goldenrod; padding: 5px 10px; border-radius: 10px;">
+            <span class="material-icons">add</span>
+            Add Concession
+          </button>
         </div>
         <div>
           <input #myInput (keyup)='genk.searchTable(myInput, myTable)' type='text' placeholder="Search Table"
@@ -71,9 +73,6 @@
                   class="submitbtn">Delete</button>
               </td>
             </tr>
-
-
-
           </tbody>
           <!-- <tbody #myTbody *ngFor="let item of c_ColumnValue">
                   <tr *ngFor="let y of item | keyvalue">
@@ -113,8 +112,14 @@
 
 
     <div style="margin-left: auto;">
-      <div
-        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+        <div>
+          <button (click)="togAddField()" style="display: flex; align-items: center; border: none; background-color: goldenrod; padding: 5px 10px; border-radius: 10px;">
+            <span class="material-icons">add</span>
+            Add Field
+          </button>
+        </div>
+
         <div>
           <input #myInput2 (keyup)='genk.searchTable(myInput2, myTable2)' type='text' placeholder="Search Table"
             class="search">
@@ -146,7 +151,6 @@
               <th *ngFor="let d of h | keyvalue">
                 {{d.key | titlecase}}
               </th>
-
             </tr>
           </thead>
           <tbody #myTbody2 *ngFor="let item of f_ColumnValue">
@@ -185,10 +189,14 @@
     </div>
   </div>
   <hr>
-  <div class="row">
-    <div class="col-md-6 col-lg-6 col-sm-6 concessionForm">
-      <form [formGroup]='concessionFieldForm' (ngSubmit)="ConcessionSubmit()">
-        <div style="margin: 1% 1% 1% 1%;">
+  <div>
+    <div *ngIf="isAddConcession" class="modal">
+      <div [formGroup]='concessionFieldForm' (ngSubmit)="ConcessionSubmit()" class="modalbig">
+        <div style="display: flex; align-items: center; background-color: rgb(53, 67, 67); color: white; text-align: center; font-weight: 500; font-size: 17px;">
+          <div style="width: 95%; padding: 7px 0 0 3%;"><span>Add Concession</span></div>
+          <div (click)="togAddConcession()" style="background-color: red; padding: 7px 0; width: 5%;"><span style="color: white;" class="material-icons">close</span></div>
+        </div>
+        <div style="padding: 0 20px;">
           <div>
             <div class="row mt-5">
               <div class="col-sm-4">
@@ -201,12 +209,12 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Name</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Concession Name</span>
                 <input type="text" class="form-control" formControlName="concession_Held"
                   [(ngModel)]="concessionBody.concession_Held">
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Equity Distribution</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Equity Distribution</span>
                 <input type="text" class="form-control" formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution">
               </div>
@@ -214,11 +222,11 @@
 
             <div class="row mt-5">
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Area (Km2)</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Area (Km2)</span>
                 <input type="text" class="form-control" formControlName="area" [(ngModel)]="concessionBody.area">
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Contract Type</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Contract Type</span>
                 <select id="time" class="form-select" formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type">
                   <option selected disabled>--Please Select Categories--
@@ -227,7 +235,7 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date / Year of Award Grant
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Date / Year of Award Grant
                 </span>
                 <input type="date" class="form-control" formControlName='year_of_Grant_Award'
                   [(ngModel)]="concessionBody.year_of_Grant_Award">
@@ -236,25 +244,25 @@
 
             <div class="row mt-5">
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date of Expiration</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Date of Expiration</span>
                 <input type="date" class="form-control" formControlName="date_of_Expiration"
                   [(ngModel)]="concessionBody.date_of_Expiration">
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Geological
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Geological
                   location/terrain</span>
                 <input type="text" class="form-control" formControlName="geological_location"
                   [(ngModel)]="concessionBody.geological_location">
               </div>
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Comment</span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Comment</span>
                 <textarea class="form-control" formControlName="comment"
                   [(ngModel)]="concessionBody.comment"></textarea>
               </div>
             </div>
             <div class="row mt-5">
               <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Code </span>
+                <span style="font-size: 15px; color: rgb(34, 56, 56);">Concession Code </span>
                 <input type="text" class="form-control" formControlName="concession_Unique_ID"
                   [(ngModel)]="concessionBody.concession_Unique_ID">
                 <input type="number" style="display:none;" class="form-control" formControlName="consession_Id"
@@ -263,41 +271,41 @@
 
               </div>
             </div>
-
           </div>
-          <div class="container d-flex mt-5">
-            <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;">Add Concession</button>
+          <div style="text-align: center;">
+            <button (click)="ConcessionSubmit()" type="submit" style="background-color: teal; color:#fff; padding: 10px 30px; border-radius: 5px; border: none;">Submit</button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
-    <div class="col-md-2 col-lg-2 col-sm-2"></div>
-    <div class="col-md-4 col-lg-4 col-sm-4 fieldForm">
-      <form [formGroup]='fieldForm' (ngSubmit)="FieldSubmit()">
-        <div style="margin: 1% 1% 1% 1%;">
-          <div class="row mt-5">
-            <div class="col-sm-4">
+    <div *ngIf="isAddField" class="modal">
+      <div [formGroup]="fieldForm" (ngSubmit)="FieldSubmit()" class="modalbig">
+        <div style="display: flex; align-items: center; background-color: rgb(53, 67, 67); color: white; text-align: center; font-weight: 500; font-size: 17px;">
+          <div style="width: 85%; padding: 7px 0 0 3%;"><span>Add Field</span></div>
+          <div (click)="togAddField()" style="background-color: red; padding: 7px 0; width: 15%;"><span style="color: white;" class="material-icons">close</span></div>
+        </div>
+        <div>
+          <div style="padding: 20px;">
+            <div>
               <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession</span>
               <select class="form-select" formControlName="concession_Name" [(ngModel)]="fieldBody.concession_Name">
-                <option selected disabled>--Please Select concession--
-                <option>
+                <option selected disabled>--Please Select concession--<option>
                 <option *ngFor="let val of allConcessionsData" value={{val}}>{{val}}</option>
               </select>
             </div>
-            <div class="col-sm-4">
+            <br>
+            <div>
               <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Field Name</span>
               <input type="text" class="form-control" formControlName="field_Name" [(ngModel)]="fieldBody.field_Name">
-              <input type="number" style="display: none;" class="form-control" formControlName="field_ID"
-                [(ngModel)]="fieldBody.field_ID">
-
+              <input type="number" style="display: none;" class="form-control" formControlName="field_ID" [(ngModel)]="fieldBody.field_ID">
             </div>
           </div>
 
-          <div class="container d-flex mt-5">
-            <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;">Add Field</button>
+          <div style="text-align: center;">
+            <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;" (click)="FieldSubmit()">Add Field</button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

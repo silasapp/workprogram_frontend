@@ -17,11 +17,14 @@ export class ModalService {
     public reloado = this.reload.asObservable();
     private concessionSituCom = new Subject<boolean>();
     public concessionSitu = this.concessionSituCom.asObservable();
+    private generalReportCom = new Subject<boolean>();
+    public generalReport = this.generalReportCom.asObservable();
     public head: any;
     public body: any;
     public icon: any;
     public isNonBlocker = false;
     public concessionHeld: string;
+    //public generalReportYear: string;
 
     public logYawa(body: any, head: any) {
         this.head = head;
@@ -73,5 +76,10 @@ export class ModalService {
     public logConcessionSituation(data: string) {
       this.concessionHeld = data;
       this.concessionSituCom.next(true);
+    }
+
+    public logGeneralReportYear() {
+      //this.generalReportYear = year;
+      this.generalReportCom.next(true);
     }
 }

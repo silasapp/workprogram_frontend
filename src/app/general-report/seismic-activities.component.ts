@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GenericService } from 'src/app/services';
+import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
@@ -28,6 +28,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     isSpecifyColumns = false;
     reporttext: string;
     isChart = false;
+    quantumApprovedTotal = 0;
+    quantumTotal = 0;
 
     columns = [
       {
@@ -82,10 +84,15 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
             "header": "QUANTUM ACQUIRED (SQ.KM)"
         }]
 
-    constructor(private report: ReportService, private workprogram: WorkProgramService, private cd: ChangeDetectorRef, private gen: GenericService){
+    constructor(private report: ReportService, private workprogram: WorkProgramService,
+      private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.generalReport
+        .subscribe(res => {
+          this.getSeismic();
+        });
     }
 
     ngOnInit() {
@@ -173,6 +180,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
+        this.quantumApprovedTotal = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
+        this.quantumTotal = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

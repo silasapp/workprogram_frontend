@@ -84,7 +84,11 @@ plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
     marginBottom: 15
   }));
 
-  legend.data.setAll(series.dataItems);
+  if (data.length < 21) {
+    legend.data.setAll(series.dataItems);
+  }
+
+
 
   series.appear(1000, 100);
   let exporting = am5plugins_exporting.Exporting.new(root, {
@@ -303,7 +307,7 @@ plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 }
 
 formatChartData(data: any[], baseval: string, valtype: string) {
-  debugger;
+
   let valist: any[] = [];
 
   for (var list of data) {
@@ -323,6 +327,7 @@ formatChartData(data: any[], baseval: string, valtype: string) {
     });
 
     if (isNumber) {
+      let mee = this.sumArray(valist);
       this.valuelist.push(this.sumArray(valist))
     } else {
       this.valuelist.push(valist.length)
@@ -330,9 +335,12 @@ formatChartData(data: any[], baseval: string, valtype: string) {
 
 
     this.chartArray.push({ base: this.baselist[i], value: this.valuelist[i] });
+    //debugger;
     valist = [];
   }
+  //debugger;
   this.baselist = [];
+  this.valuelist = [];
   let arr = this.chartArray;
   this.chartArray = [];
   return arr;
@@ -342,6 +350,17 @@ sumArray(arr: any[]) {
   var total = 0;
   for (var i in arr) {
     total += arr[i];
+  }
+  return total;
+}
+
+sumColumn(items: any[], columnName: string) {
+  //debugger;
+  var total = 0;
+  for (var item in items) {
+    if (!isNaN(items[item][columnName] && parseFloat(items[item][columnName])) ) {
+      total += items[item][columnName];
+    }
   }
   return total;
 }

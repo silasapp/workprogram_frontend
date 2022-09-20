@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GenericService } from 'src/app/services';
+import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
@@ -82,10 +82,15 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
             "header": "QUANTUM ACQUIRED (SQ.KM)"
         }]
 
-    constructor(private report: ReportService, private workprogram: WorkProgramService, private cd: ChangeDetectorRef, private gen: GenericService){
+    constructor(private report: ReportService, private workprogram: WorkProgramService,
+      private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.generalReport
+        .subscribe(res => {
+          this.getSeismic();
+        });
     }
 
     ngOnInit() {
@@ -224,7 +229,6 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     }
     else {
       debugger;
-
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';
