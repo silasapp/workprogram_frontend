@@ -101,6 +101,7 @@ initForm() {
     }
   
     fetchdata(){
+      debugger;
      this.adminservice.fetch("get_users").subscribe(
         (res) => {
           this.data = res.data.companiesList
@@ -158,6 +159,7 @@ initForm() {
   }
 
   onSubmit() {
+    debugger;
     this.adminservice.addUser(this.userForm.getRawValue()).subscribe(
       (res) => {
         if(res.statusCode == 200){
@@ -166,7 +168,7 @@ initForm() {
         else{
           this.Alert("Error",res.message, "error")
         }
-        this.fetchdata();
+       // this.fetchdata();
         this.initForm();
       }
     )

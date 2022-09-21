@@ -83,6 +83,7 @@ export class UploadedCompanyComponent implements OnInit {
     }
   
     fetchdata(){
+      debugger;
      this.admin.fetch("get_companycodes").subscribe(
         (res) => {
           this.data = this.arrangeDate(res.data as any[]);

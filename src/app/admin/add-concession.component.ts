@@ -106,7 +106,7 @@ initForm() {
       )
     }
   fetchCompany(){
-    this.adminservice.fetch("get_companylist").subscribe(
+       this.adminservice.fetch("get_companylist").subscribe(
       (res) => {
         this.company = res.data;
         this.cd.markForCheck();
@@ -152,6 +152,7 @@ initForm() {
     
 
   onSubmit() {
+ 
     this.adminservice.addConcession(this.concessionForm.getRawValue()).subscribe(
       (res) => {
         if(res.statusCode == 200){
