@@ -35,7 +35,7 @@ export class UploadCodeComponent implements OnInit {
   CompanyCodeFile?: File = null;
   CompanyCodeNewName: string;
   CompanyCodeNameDoc: string;
-  playerName: string;
+  
 
 
   //#region form groups declaration

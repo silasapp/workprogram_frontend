@@ -99,6 +99,7 @@ initForm() {
      this.adminservice.getConcessions(e.target.value).subscribe(
         (res) => {
           this.data = res.data
+       
           this.assignDataRows();
           this.assignPageNum();
           this.cd.markForCheck();
@@ -152,9 +153,11 @@ initForm() {
     
 
   onSubmit() {
- 
+
     this.adminservice.addConcession(this.concessionForm.getRawValue()).subscribe(
+      
       (res) => {
+       
         if(res.statusCode == 200){
           this.Alert("Success", res.message,  "success")
         }

@@ -49,9 +49,10 @@ export class AdminService {
 
 
   updateUser(e: any, id_: any) {
+    debugger;
     var id = parseInt(id_);
-    return this.http.post<any>(`${environment.apiUrl}/admin/activate_deactivate`,
-      { statuS_: e.statuS_, id: id },
+     return this.http.put<any>(`${environment.apiUrl}/admin/activate_deactivate`, '',
+     {params: { status: e.statuS_, id: id }},
     )
       .pipe(retry(this.num),
         map((response) => {
@@ -94,6 +95,7 @@ export class AdminService {
   }
 
   addCompanyConcession(e: any) {
+    
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_admin_concessions_information`,
       {})
       .pipe(

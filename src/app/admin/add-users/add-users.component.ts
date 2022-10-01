@@ -102,9 +102,10 @@ initForm() {
   
     fetchdata(){
       debugger;
-     this.adminservice.fetch("get_users").subscribe(
+     this.adminservice.fetch("Get_Companies").subscribe(
         (res) => {
-          this.data = res.data.companiesList
+          debugger
+          this.data = res.data;
           this.assignDataRows();
           this.assignPageNum();
           this.cd.markForCheck();

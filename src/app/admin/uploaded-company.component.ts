@@ -20,7 +20,7 @@ export class UploadedCompanyComponent implements OnInit {
   year = [];
     columns = [
       {
-          "columnDef": "companyname",
+          "columnDef": "company_name",
           "header": "COMPANY NAME"
       },
       {
@@ -84,7 +84,7 @@ export class UploadedCompanyComponent implements OnInit {
   
     fetchdata(){
       debugger;
-     this.admin.fetch("get_companycodes").subscribe(
+     this.admin.fetch("get_companylist").subscribe(
         (res) => {
           this.data = this.arrangeDate(res.data as any[]);
           this.assignDataRows();
