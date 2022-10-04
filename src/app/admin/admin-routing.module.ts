@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddConcessionComponent } from './add-concession.component';
 import { AddUsersComponent } from './add-users/add-users.component';
-// import { ParameterConfigComponent } from './parameterconfig/parameter.component';
+import { ParameterConfigComponent } from './parameterconfig/parameter.component';
 import { UploadCodeComponent } from './upload-code/uploadcode.component';
 import { UploadedCompanyComponent } from './uploaded-company.component';
 
@@ -33,11 +33,11 @@ const routes: Routes = [
   {
     path: 'report_editor',
     component: UploadCodeComponent
+  },
+  {
+    path: 'parameter_config',
+    component: ParameterConfigComponent
   }
-  // {
-  //   path: 'parameter_config',
-  //   component: ParameterConfigComponent
-  // }
   
 ];
 

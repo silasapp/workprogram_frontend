@@ -133,7 +133,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="aCQUISITION_planned"
-                                                                        [(ngModel)]="exploratoryBody.acquisitioN_planned">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -145,7 +145,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="aCQUISITION_Actual"
-                                                                        [(ngModel)]="exploratoryBody.acquisitioN_Actual">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -166,7 +166,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="pROCESSING_planned"
-                                                                        [(ngModel)]="exploratoryBody.processinG_planned">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -178,7 +178,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="pROCESSING_Actual"
-                                                                        [(ngModel)]="exploratoryBody.processinG_Actual">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -199,7 +199,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="rEPROCESSING_planned"
-                                                                        [(ngModel)]="exploratoryBody.reprocessinG_planned">
+                                                                      >
                                                         </div>
                                                 </div>
                                         </div>
@@ -211,7 +211,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="rEPROCESSING_Actual"
-                                                                        [(ngModel)]="exploratoryBody.reprocessinG_Actual">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -239,7 +239,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="eXPLORATION_planned"
-                                                                        [(ngModel)]="exploratoryBody.exploratioN_planned">
+                                                                    >
                                                         </div>
                                                 </div>
                                         </div>
@@ -249,9 +249,7 @@
                                                 <div style="display: flex;">
                                                         <div
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="eXPLORATION_Actual"
-                                                                        [(ngModel)]="exploratoryBody.exploratioN_Actual">
+                                                                <input ty>
                                                         </div>
                                                 </div>
                                         </div>
@@ -272,7 +270,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="aPPRAISAL_planned"
-                                                                        [(ngModel)]="exploratoryBody.appraisaL_planned">
+                                                                     >
                                                         </div>
                                                 </div>
                                         </div>
@@ -284,7 +282,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="aPPRAISAL_Actual"
-                                                                        [(ngModel)]="exploratoryBody.appraisaL_Actual">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -294,198 +292,18 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveExploratory() ">Save Exploratory</button>
+                                <button class="submitbtn">Save Exploratory</button>
                             </div>
                         <br>
                 </div>
 
                 <br>
         </div>
-        <div *ngIf="isTabVisible_2" class="wptablebox">
-                <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_2">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_2">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Exploratory($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
-                </div>
-            </div>
-        <br>
-        <hr size="10">
-        <div [formGroup]="developmentDrillingForm">
-                <div
-                        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
-                        <span>DEVELOPMENT DRILLING ACTIVITIES</span>
-                </div>
-                <hr size="5"><br>
-                <div style="display: flex; justify-content: center; color: black;">
-                        <span>DRILLING, WORKOVER AND COMPLETION (MMUSD)</span>
-                </div><br>
-                <br>
-                <div style="display:flex;width: 100%; justify-content: space-between; ">
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>DEVELOPMENT</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="dEVELOPMENT_planned"
-                                                                        [(ngModel)]="developmentDrillingBody.developmenT_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="dEVELOPMENT_Actual"
-                                                                        [(ngModel)]="developmentDrillingBody.developmenT_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>WORKOVER</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="wORKOVER_planned"
-                                                                        [(ngModel)]="developmentDrillingBody.workoveR_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="wORKOVER_Actual"
-                                                                        [(ngModel)]="developmentDrillingBody.workoveR_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>COMPLETION</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="cOMPLETION_planned"
-                                                                        [(ngModel)]="developmentDrillingBody.completioN_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="cOMPLETION_Actual"
-                                                                        [(ngModel)]="developmentDrillingBody.completioN_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                </div>
-                <br><br>
-                <div>
-                        <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveDevelopmentDrilling() ">Save Development Drilling Activities</button>
-                            </div>
-                        <br>
-                </div>
-
-                
-        </div>
-        <div *ngIf="isTabVisible_3" class="wptablebox">
-                <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_3">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_3">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Development($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
-                </div>
-            </div>
-        <br>
-
+        
         <hr size="10">
 
         <br>
-        <div [formGroup]="facilitiesDevelopmentForm">
+        <div >
                 <div
                         style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
                         <span>FACILITIES DEVELOPMENT PROJECT</span>
@@ -510,7 +328,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="concepT_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.concepT_planned">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -522,7 +340,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="concepT_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.concepT_Actual">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -543,7 +361,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="feeD_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.feeD_planned">
+                                                                    >
                                                         </div>
                                                 </div>
                                         </div>
@@ -555,7 +373,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="feeD_COST_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.feeD_COST_Actual">
+                                                                      >
                                                         </div>
                                                 </div>
                                         </div>
@@ -576,7 +394,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="detaileD_ENGINEERING_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.detaileD_ENGINEERING_planned">
+                                                                      >
                                                         </div>
                                                 </div>
                                         </div>
@@ -588,7 +406,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="detaileD_ENGINEERING_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.detaileD_ENGINEERING_Actual">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -613,196 +431,19 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="procuremenT_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.procuremenT_planned">
+                                                                     >
                                                         </div>
                                                 </div>
                                         </div>
 
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="procuremenT_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.procuremenT_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
 
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>CONSTRUCTION/ FABRICATION</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="constructioN_FABRICATION_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.constructioN_FABRICATION_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="constructioN_FABRICATION_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.constructioN_FABRICATION_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>INSTALLATION</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="installatioN_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.installatioN_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="installatioN_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.installatioN_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                </div>
-                <br>
-                <div style="display:flex;width: 100%; justify-content: space-between; ">
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>UPGRADE/ MAINTENANCE</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp">Planned</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="upgradE_MAINTENANCE_planned"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.upgradE_MAINTENANCE_planned">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                        <div style="width: 98%">
-                                                <label class="labelwp">Actual</label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="upgradE_MAINTENANCE_Actual"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.upgradE_MAINTENANCE_Actual">
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div style="width: 30%">
-                                <div style="font-weight: 500; margin-bottom: 5px">
-                                        <span>DECOMMISSIONING AND ABANDONMENT (MMUSD)</span>
-                                </div>
-
-                                <div style="width: 100%; display: flex;">
-
-                                        <div style="width: 98%; margin-right: 2%;">
-                                                <label class="labelwp"></label>
-                                                <div style="display: flex;">
-                                                        <div
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
-                                                                        formControlName="decommissioninG_ABANDONMENT"
-                                                                        [(ngModel)]="facilitiesDevelopmentBody.decommissioninG_ABANDONMENT">
-                                                        </div>
-                                                </div>
-                                        </div>
-
-                                </div>
-                        </div>
-
-                </div>
-                <br>
-
-                <br><br>
-                <div>
-                        <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveFacilitiesDevelopment() ">Save Facilities Development</button>
-                            </div>
-                        <br>
-                </div>
-
-        </div>
-        <div *ngIf="isTabVisible_4" class="wptablebox">
-                <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_4">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_4">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Facility($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
-                </div>
-            </div>
      
         <br>
 
         <hr size="10">
 
         <br>
-        <div [formGroup]="productionCostForm">
+        <div >
                 <div
                         style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
                         <span>PRODUCTION COST</span>
@@ -826,7 +467,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="direcT_COST_planned"
-                                                                        [(ngModel)]="productionCostBody.direcT_COST_planned">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -838,7 +479,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="direcT_COST_Actual"
-                                                                        [(ngModel)]="productionCostBody.direcT_COST_Actual">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -859,7 +500,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="indirecT_COST_planned"
-                                                                        [(ngModel)]="productionCostBody.indirecT_COST_planned">
+                                                                       >
                                                         </div>
                                                 </div>
                                         </div>
@@ -871,7 +512,7 @@
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
                                                                 <input type="number" class="inpute"
                                                                         formControlName="indirecT_COST_Actual"
-                                                                        [(ngModel)]="productionCostBody.indirecT_COST_Actual">
+                                                                        >
                                                         </div>
                                                 </div>
                                         </div>
@@ -881,30 +522,30 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveProductionCost() ">Save Production Cost</button>
+                                <button class="submitbtn">Save Production Cost</button>
                             </div>
                         <br>
                 </div>
 
         </div>
-        <div *ngIf="isTabVisible_5" class="wptablebox">
+        <div  class="wptablebox">
                 <div class="apptable">
                     <table class="wptable" >
                         <thead >
-                            <tr *ngFor="let h of columnHeader_5">
-                                <th *ngFor="let d of h | keyvalue">
+                            <tr >
+                                <th *ngFor=" keyvalue">
                                     {{d.key | titlecase}}
                                 </th>
     
                             </tr>
                         </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_5">
-                            <tr *ngFor="let y of item | keyvalue">
+                        <tbody #myTbody >
+                            <tr *ngFor=" keyvalue">
                                 <td *ngFor="let x of y.value | keyvalue">
                                 {{x.value}}
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Production($event)" value={{y.value.id}}>Delete</button>
+                                    <button class="btn btn-danger btn-sm submitbtn" value={{y.value.id}}>Delete</button>
                                    
                                 </td>
                             </tr>
