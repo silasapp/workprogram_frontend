@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
@@ -6,11 +5,11 @@ import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
   selector: 'app-ndr-report',
-  templateUrl: './seismic-activities.component.html',
+  templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
+export class MonthlyOilProductionComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -18,72 +17,47 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
+    title = 'MONTHLY PRODUCTION';
+    reporttext: string;
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-    reporttext: string;
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    barone = 'Total Quantum Approved';
-    bartwo = 'Total Quantum Acquired';
+    barone = 'TOTAL ANNUAL PRODUCTION';
+    bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
 
     columns = [
       {
-          "columnDef": "companyName",
-          "header": "COMPANY NAME"
+        "columnDef": "production_month",
+        "header": "MONTH"
       },
       {
-          "columnDef": "omL_Name",
-          "header": "BLOCK"
+        "columnDef": "annual_Total_Production_by_company",
+        "header": "PRODUCTION (BBLS)"
       },
       {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
-      },
-      {
-      "columnDef": "name_of_Contractor",
-      "header": "NAME_OF_CONTRACTOR"
-      },
-      {
-          "columnDef": "quantum_Approved",
-          "header": "QUANTUM APPROVED (SQ.KM)"
-      },
-      {
-          "columnDef": "quantum",
-          "header": "QUANTUM ACQUIRED (SQ.KM)"
+        "columnDef": "annual_Avg_Daily_Production",
+        "header": "AVERAGE DAILY PRODUCTION (BOPD)"
       }]
 
 
       repcolumns = [
         {
-            "columnDef": "companyName",
-            "header": "COMPANY NAME"
+          "columnDef": "production_month",
+          "header": "MONTH"
         },
         {
-            "columnDef": "omL_Name",
-            "header": "BLOCK"
+          "columnDef": "annual_Total_Production_by_company",
+          "header": "PRODUCTION (BBLS)"
         },
         {
-          "columnDef": "terrain",
-          "header": "TERRAIN"
-        },
-        {
-        "columnDef": "name_of_Contractor",
-        "header": "NAME_OF_CONTRACTOR"
-        },
-        {
-            "columnDef": "quantum_Approved",
-            "header": "QUANTUM APPROVED (SQ.KM)"
-        },
-        {
-            "columnDef": "quantum",
-            "header": "QUANTUM ACQUIRED (SQ.KM)"
+          "columnDef": "annual_Avg_Daily_Production",
+          "header": "AVERAGE DAILY PRODUCTION (BOPD)"
         }]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
@@ -93,21 +67,24 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.genk.sizePerPage = this.genk.sizeten;
         this.modalService.generalReport
         .subscribe(res => {
-          this.getSeismic();
+          this.getCrudeOilProduction();
         });
     }
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getSeismic();
-      this.getSeismicReportText();
+      this.getCrudeOilProduction();
     }
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
-      }
+    }
+
+    public get tableTitle(): string {
+      return `Figure 3: ${this.genk.reportYear} Production Distribution on Monthly basis`;
+    }
+
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -119,28 +96,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
-
-
-    goNext() {
+      goNext() {
         this.selectedPage++;
         this.assignDataRows();
       }
@@ -176,25 +132,13 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.cd.markForCheck();
       }
 
-
-  getSeismic() {
-
-    this.workprogram.getSeismicActivities(this.genk.reportYear)
+  getCrudeOilProduction() {
+    this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.seismic_Data_Approved_and_Acquired as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-      });
-  }
-
-  getSeismicReportText() {
-    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
-      .subscribe(res => {
-        this.reporttext = res.data;
-            this.cd.markForCheck();
+        this.data = res.crude_Oil_Monthly_Production as any[];
+        this.assignDataRows();
+        this.assignPageNum();
+        this.cd.markForCheck();
       });
   }
 
@@ -292,4 +236,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
     }
   }
+
+
 }

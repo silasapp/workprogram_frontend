@@ -5,10 +5,10 @@
         <div style="width: 100%;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="material-icons layout-icon" style="font-size: 35px; color: orange;">dashboard</span>
-            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">20655</span>
+            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">{{totalone}}</span>
           </div>
           <div style="text-align: end; margin-top: 5%;">
-            <span style="color: rgb(9, 79, 104);">Total Quantum Approved</span>
+            <span style="color: rgb(9, 79, 104);">{{barone}}</span>
           </div>
         </div>
       </div>
@@ -16,10 +16,10 @@
         <div style="width: 100%;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="material-icons layout-icon" style="font-size: 35px; color: rgb(0, 200, 255);">event</span>
-            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">4920</span>
+            <span style="font-size: 30px; font-weight: 600; color: rgb(9, 79, 104);">{{totaltwo}}</span>
           </div>
           <div style="text-align: end; margin-top: 5%;">
-            <span style="color: rgb(9, 79, 104);">Total Quantum Acquired</span>
+            <span style="color: rgb(9, 79, 104);">{{bartwo}}</span>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
               </tr>
             </thead>
             <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-              <tr *ngFor="let row of arrayRows">
+              <tr *ngFor="let row of arrayRows;">
                 <td *ngFor="let h of columns">
                   {{row[h.columnDef]}}
                 </td>

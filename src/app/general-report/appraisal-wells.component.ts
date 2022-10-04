@@ -10,7 +10,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
+export class AppraisalWellsComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -18,22 +18,26 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
+    title = 'APPRAISAL WELLS';
+    tableTitle = 'TABLE 9: Appraisal wells drilled in 2021';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-    reporttext: string;
+    reporttext: string = 'A total of (10) appraisal wells were drilled during the year 2021 --Table 9 below shows the details';
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    barone = 'Total Quantum Approved';
-    bartwo = 'Total Quantum Acquired';
+    barone = 'Total Days to Total Depth';
+    bartwo = 'Total Well Cost';
 
     columns = [
+      {
+        "columnDef": "sn",
+        "header": "S/N"
+      },
       {
           "columnDef": "companyName",
           "header": "COMPANY NAME"
@@ -47,20 +51,40 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         "header": "TERRAIN"
       },
       {
-      "columnDef": "name_of_Contractor",
-      "header": "NAME_OF_CONTRACTOR"
+        "columnDef": "contract_Type",
+        "header": "CONTRACT TYPE"
       },
       {
-          "columnDef": "quantum_Approved",
-          "header": "QUANTUM APPROVED (SQ.KM)"
+        "columnDef": "category",
+        "header": "WELL CLASSIFICATION"
       },
       {
-          "columnDef": "quantum",
-          "header": "QUANTUM ACQUIRED (SQ.KM)"
+        "columnDef": "spud_date",
+        "header": "SPUD DATE"
+      },
+      {
+        "columnDef": "well_name",
+        "header": "WELL NAME"
+      },
+      {
+      "columnDef": "well_Status_and_Depth",
+      "header": "WELL STATUS $ DEPTH"
+      },
+      {
+          "columnDef": "number_of_Days_to_Total_Depth",
+          "header": "NO OF DAYS TO TD"
+      },
+      {
+          "columnDef": "well_cost",
+          "header": "WELL COST (USD)"
       }]
 
 
       repcolumns = [
+        {
+          "columnDef": "sn",
+          "header": "S/N"
+        },
         {
             "columnDef": "companyName",
             "header": "COMPANY NAME"
@@ -74,17 +98,34 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
           "header": "TERRAIN"
         },
         {
-        "columnDef": "name_of_Contractor",
-        "header": "NAME_OF_CONTRACTOR"
+          "columnDef": "contract_Type",
+          "header": "CONTRACT TYPE"
         },
         {
-            "columnDef": "quantum_Approved",
-            "header": "QUANTUM APPROVED (SQ.KM)"
+          "columnDef": "category",
+          "header": "WELL CLASSIFICATION"
         },
         {
-            "columnDef": "quantum",
-            "header": "QUANTUM ACQUIRED (SQ.KM)"
-        }]
+          "columnDef": "spud_date",
+          "header": "SPUD DATE"
+        },
+        {
+          "columnDef": "well_name",
+          "header": "WELL NAME"
+        },
+        {
+        "columnDef": "well_Status_and_Depth",
+        "header": "WELL STATUS $ DEPTH"
+        },
+        {
+            "columnDef": "number_of_Days_to_Total_Depth",
+            "header": "NO OF DAYS TO TD"
+        },
+        {
+            "columnDef": "well_cost",
+            "header": "WELL COST (USD)"
+        }
+      ]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
       private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
@@ -93,21 +134,19 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.genk.sizePerPage = this.genk.sizeten;
         this.modalService.generalReport
         .subscribe(res => {
-          this.getSeismic();
+          this.getAppraisalWells();
         });
     }
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getSeismic();
-      this.getSeismicReportText();
+      this.getAppraisalWells();
     }
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
-      }
+    }
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -119,28 +158,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
-
-
-    goNext() {
+      goNext() {
         this.selectedPage++;
         this.assignDataRows();
       }
@@ -177,28 +195,25 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-  getSeismic() {
+  getAppraisalWells() {
 
-    this.workprogram.getSeismicActivities(this.genk.reportYear)
+    this.workprogram.getAppraisalWells(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.seismic_Data_Approved_and_Acquired as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
+        this.data = res as any[];
+        let count = this.data.length;
+          let reptext = this.reporttext.split(' ')[3];
+          this.reporttext = this.reporttext.replace(reptext, count.toString());
+
+        this.cd.markForCheck();
+        this.data = this.report.addSn(this.data);
+        this.totalone = Math.round(this.report.sumColumn(this.data, 'number_of_Days_to_Total_Depth'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'well_cost'));
+        this.data = this.report.arrangeDate(this.data, 'spud_date');
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
       });
   }
-
-  getSeismicReportText() {
-    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
-      .subscribe(res => {
-        this.reporttext = res.data;
-            this.cd.markForCheck();
-      });
-  }
-
-
 
   togOptions() {
     if (!this.isTableOpt) {
@@ -243,6 +258,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       alert('Can not plot this chart');
     }
     else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';

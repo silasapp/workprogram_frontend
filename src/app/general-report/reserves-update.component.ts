@@ -10,7 +10,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
+export class ReserveUpdateComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -18,73 +18,81 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
+    title = 'RESERVES UPDATE';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-    reporttext: string;
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    barone = 'Total Quantum Approved';
-    bartwo = 'Total Quantum Acquired';
+    barone = 'TOTAL OIL (BBLLS)';
+    bartwo = 'TOTAL CONDENSATE (BBLLS)';
 
     columns = [
       {
-          "columnDef": "companyName",
-          "header": "COMPANY NAME"
+        "columnDef": "company_Reserves_Year",
+        "header": "YEAR"
       },
       {
-          "columnDef": "omL_Name",
-          "header": "BLOCK"
+        "columnDef": "total_Company_Reserves_Oil",
+        "header": "OIL (BBLLS)"
       },
       {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
+        "columnDef": "total_Company_Reserves_Condensate",
+        "header": "CONDENSATE (BBLLS)"
       },
       {
-      "columnDef": "name_of_Contractor",
-      "header": "NAME_OF_CONTRACTOR"
+        "columnDef": "total_oil_plus_condensate",
+        "header": "OIL + CONDENSATE (TOTAL) (BBLLS)"
       },
       {
-          "columnDef": "quantum_Approved",
-          "header": "QUANTUM APPROVED (SQ.KM)"
+          "columnDef": "total_Company_Reserves_AG",
+          "header": "ASSOCIATED GAS (AG) (TCF)"
       },
       {
-          "columnDef": "quantum",
-          "header": "QUANTUM ACQUIRED (SQ.KM)"
-      }]
+        "columnDef": "total_Company_Reserves_NAG",
+        "header": "NON-ASSOCIATED GAS (NAG) (TCF)"
+      },
+      {
+        "columnDef": "total_AG_NAG",
+        "header": "AG + NAG (TCF)"
+      }
+    ]
 
 
       repcolumns = [
         {
-            "columnDef": "companyName",
-            "header": "COMPANY NAME"
+          "columnDef": "company_Reserves_Year",
+          "header": "YEAR"
         },
         {
-            "columnDef": "omL_Name",
-            "header": "BLOCK"
+          "columnDef": "total_Company_Reserves_Oil",
+          "header": "OIL (BBLLS)"
         },
         {
-          "columnDef": "terrain",
-          "header": "TERRAIN"
+          "columnDef": "total_Company_Reserves_Condensate",
+          "header": "CONDENSATE (BBLLS)"
         },
         {
-        "columnDef": "name_of_Contractor",
-        "header": "NAME_OF_CONTRACTOR"
+          "columnDef": "total_oil_plus_condensate",
+          "header": "OIL + CONDENSATE (TOTAL) (BBLLS)"
         },
         {
-            "columnDef": "quantum_Approved",
-            "header": "QUANTUM APPROVED (SQ.KM)"
+            "columnDef": "total_Company_Reserves_AG",
+            "header": "ASSOCIATED GAS (AG) (TCF)"
         },
         {
-            "columnDef": "quantum",
-            "header": "QUANTUM ACQUIRED (SQ.KM)"
-        }]
+          "columnDef": "total_Company_Reserves_NAG",
+          "header": "NON-ASSOCIATED GAS (NAG) (TCF)"
+        },
+        {
+          "columnDef": "total_AG_NAG",
+          "header": "AG + NAG (TCF)"
+        }
+      ]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
       private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
@@ -93,21 +101,28 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.genk.sizePerPage = this.genk.sizeten;
         this.modalService.generalReport
         .subscribe(res => {
-          this.getSeismic();
+          this.getReservesUpdatestWells();
         });
     }
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getSeismic();
-      this.getSeismicReportText();
+      this.getReservesUpdatestWells();
     }
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
-      }
+    }
+
+    public get reporttext(): string {
+      return 'The table below shows reserves update as at 1st January ' + this.genk.reportYear;
+    }
+
+    public get tableTitle(): string {
+      return 'Table 11 Reserves as at 1st January ' + this.genk.reportYear;
+    }
+
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -119,28 +134,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
-
-
-    goNext() {
+      goNext() {
         this.selectedPage++;
         this.assignDataRows();
       }
@@ -177,23 +171,16 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-  getSeismic() {
-
-    this.workprogram.getSeismicActivities(this.genk.reportYear)
+  getReservesUpdatestWells() {
+    this.workprogram.getReservesUpdatestWells(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.seismic_Data_Approved_and_Acquired as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
+        this.data = res as any[];
+        let count = this.data.length;
+        this.totalone = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Oil'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Condensate'));
+        this.cd.markForCheck();
             this.assignDataRows();
             this.assignPageNum();
-            this.cd.markForCheck();
-      });
-  }
-
-  getSeismicReportText() {
-    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
-      .subscribe(res => {
-        this.reporttext = res.data;
             this.cd.markForCheck();
       });
   }
@@ -243,6 +230,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       alert('Can not plot this chart');
     }
     else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';

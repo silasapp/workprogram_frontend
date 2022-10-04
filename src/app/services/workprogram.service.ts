@@ -1009,6 +1009,60 @@ getSeismicActivitiesReportText(year: string) {
   )
 }
 
+getExplorationWells(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Exploration_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+getAppraisalWells(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Appraisal_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+getDevelopmentWells(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Development_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+getReservesUpdatestWells(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Reserves_Updates_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+getCrudeOilProduction(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Crude_Oil_Production_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+getOilProductionText(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Crude_Oil_Production_Report_Content`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
 
 getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
   return this.http.get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`, {params: {omlName: omlName, fieldName:fieldName, year:year}})

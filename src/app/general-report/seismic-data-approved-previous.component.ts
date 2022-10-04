@@ -28,6 +28,10 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     isSpecifyColumns = false;
     reporttext: string;
     isChart = false;
+    totalone = 0;
+    totaltwo = 0;
+    barone = 'Total Quantum Approved';
+    bartwo = 'Total Quantum Acquired';
 
     columns = [
       {
@@ -95,7 +99,6 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
       this.getSeismic();
     }
@@ -112,27 +115,6 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
         this.cd.markForCheck();
       }
-
-
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
 
 
     goNext() {
@@ -177,6 +159,8 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired_PREVIOUS as any[];
+        this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

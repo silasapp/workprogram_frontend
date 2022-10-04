@@ -9,6 +9,7 @@ import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5percent from "@amcharts/amcharts5/percent";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -359,10 +360,27 @@ sumColumn(items: any[], columnName: string) {
   var total = 0;
   for (var item in items) {
     if (!isNaN(items[item][columnName] && parseFloat(items[item][columnName])) ) {
-      total += items[item][columnName];
+      total += Number(items[item][columnName]);
     }
   }
   return total;
+}
+
+arrangeDate(mydata: any[], columnName: string) {
+  let i = 0;
+  while (i < mydata.length) {
+    let datePipe = new DatePipe("en-US");
+    mydata[i][columnName] = datePipe.transform(mydata[i][columnName], 'dd MMM, y');
+    i++;
+  }
+  return mydata;
+}
+
+addSn(data: any[]) {
+  for (var i = 0; i < data.length; i++) {
+    data[i].sn = i + 1;
+  }
+  return data;
 }
 
 }
