@@ -9,6 +9,7 @@ import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5percent from "@amcharts/amcharts5/percent";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +85,11 @@ plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
     marginBottom: 15
   }));
 
-  legend.data.setAll(series.dataItems);
+  if (data.length < 21) {
+    legend.data.setAll(series.dataItems);
+  }
+
+
 
   series.appear(1000, 100);
   let exporting = am5plugins_exporting.Exporting.new(root, {
@@ -303,7 +308,7 @@ plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 }
 
 formatChartData(data: any[], baseval: string, valtype: string) {
-  debugger;
+
   let valist: any[] = [];
 
   for (var list of data) {
@@ -323,6 +328,7 @@ formatChartData(data: any[], baseval: string, valtype: string) {
     });
 
     if (isNumber) {
+      let mee = this.sumArray(valist);
       this.valuelist.push(this.sumArray(valist))
     } else {
       this.valuelist.push(valist.length)
@@ -330,9 +336,12 @@ formatChartData(data: any[], baseval: string, valtype: string) {
 
 
     this.chartArray.push({ base: this.baselist[i], value: this.valuelist[i] });
+    //debugger;
     valist = [];
   }
+  //debugger;
   this.baselist = [];
+  this.valuelist = [];
   let arr = this.chartArray;
   this.chartArray = [];
   return arr;
@@ -344,6 +353,34 @@ sumArray(arr: any[]) {
     total += arr[i];
   }
   return total;
+}
+
+sumColumn(items: any[], columnName: string) {
+  //debugger;
+  var total = 0;
+  for (var item in items) {
+    if (!isNaN(items[item][columnName] && parseFloat(items[item][columnName])) ) {
+      total += Number(items[item][columnName]);
+    }
+  }
+  return total;
+}
+
+arrangeDate(mydata: any[], columnName: string) {
+  let i = 0;
+  while (i < mydata.length) {
+    let datePipe = new DatePipe("en-US");
+    mydata[i][columnName] = datePipe.transform(mydata[i][columnName], 'dd MMM, y');
+    i++;
+  }
+  return mydata;
+}
+
+addSn(data: any[]) {
+  for (var i = 0; i < data.length; i++) {
+    data[i].sn = i + 1;
+  }
+  return data;
 }
 
 }

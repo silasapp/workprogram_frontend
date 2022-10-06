@@ -8,7 +8,7 @@ import { FieldDetails, ConcessionDetails } from 'src/app/models/company-details'
 
 @Component({
   templateUrl: 'concessionsfields.component.html',
-  styleUrls: ['../../account/login.component.scss', '../company.component.scss'],
+  styleUrls: [ './concessionsfields.component.scss', '../../reports/ndr-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -39,6 +39,8 @@ export class ConcessionsfieldsComponent implements OnInit {
   f_ColumnValue = [];
   c_isTabVisible: boolean;
   f_isTabVisible: boolean;
+  isAddConcession = false;
+  isAddField = false;
 
   columns = [
     //   {
@@ -62,8 +64,8 @@ export class ConcessionsfieldsComponent implements OnInit {
       "header": "CONTRACT TYPE"
     },
     {
-      "columnDef": "equity_distribution",
-      "header": "EQUITY DISTRIBUTION"
+      "columnDef": "consession_Id",
+      "header": "ID"
     },
     {
       "columnDef": "geological_location",
@@ -151,10 +153,9 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   fetchdata(e) {
-
     this.adminservice.getConcessions(e.target.value).subscribe(
       (res) => {
-        this.data = res.data
+        this.data = res.data;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
@@ -221,15 +222,17 @@ export class ConcessionsfieldsComponent implements OnInit {
           this.loadTable_Concession(res.data);
           this.modalService.logNotice("Success", res.message, 'success');
         }
+        this.togAddConcession();
       })
   }
 
   FieldSubmit() {
+    //debugger;
     let fieldInfo = {} as FieldDetails;
     let actionToDo = '';
     let id = '';
 
-    debugger;
+    //debugger;
     for (let item in this.fieldBody) {
       if (item != 'field_ID') {
         fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
@@ -250,7 +253,8 @@ export class ConcessionsfieldsComponent implements OnInit {
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_Field(res.data);
         }
-      })
+        this.togAddField();
+      });
   }
 
 
@@ -258,26 +262,19 @@ export class ConcessionsfieldsComponent implements OnInit {
     debugger;
     this.c_ColumnHeader = [];
     this.c_ColumnValue = [];
-    let datae = data;
+    let datae: any[] = data;
 
     if (data != null) {
-      let quik = {};
-      for (var i = 0; i < datae.length; i++) {
-        for (var i = 0; i < this.columns.length; i++) {
-          //datae[i][this.columns[i].columnDef]
-          quik[this.columns[i].columnDef] = datae[i][this.columns[i].columnDef];
-        }
-        this.c_ColumnValue.push(quik);
-        quik = {};
-      }
+    const res = datae.map(data => this.columns.reduce((o, k) => (o[k.columnDef] = data[k.columnDef], o), {}));
+
       data = this.filter(data);
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
 
-      this.c_ColumnHeader.push(data[0]);
-      //this.c_ColumnValue.push(result);
+      this.c_ColumnHeader = this.columns;
+      this.c_ColumnValue = res;
     }
     else {
       for (let item1 in this.concessionFieldForm.controls) {
@@ -409,6 +406,24 @@ export class ConcessionsfieldsComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Okay'
     })
+  }
+
+  togAddConcession() {
+    if(!this.isAddConcession) {
+      this.isAddConcession = true;
+    } else {
+      this.isAddConcession = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  togAddField() {
+    if(!this.isAddField) {
+      this.isAddField = true;
+    } else {
+      this.isAddField = false;
+    }
+    this.cd.markForCheck();
   }
 
 }

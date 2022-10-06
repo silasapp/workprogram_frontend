@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, GenericService } from '../services';
+import { AuthenticationService, GenericService, ModalService } from '../services';
 import { ReportService } from '../services/report.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class GeneralReportComponent implements OnInit {
 
 
   constructor(private gen: GenericService,
+    private modal: ModalService,
     private report: ReportService,
     private authenticationService: AuthenticationService,
     private router: Router,
@@ -109,12 +110,14 @@ export class GeneralReportComponent implements OnInit {
     this.report.getYearList("concessionsituationyearlist")
         .subscribe((res: any[]) => {
             this.listyear = res;
+            this.genk.reportYear = this.listyear[0]
             this.cd.markForCheck();
         });
 }
 
 getYear(e) {
   this.genk.reportYear = e.target.value;
+  this.modal.logGeneralReportYear()
   this.cd.markForCheck();
 }
 

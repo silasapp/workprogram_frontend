@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GenericService } from 'src/app/services';
+import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
@@ -28,6 +28,10 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     isSpecifyColumns = false;
     reporttext: string;
     isChart = false;
+    totalone = 0;
+    totaltwo = 0;
+    barone = 'Total Quantum Approved';
+    bartwo = 'Total Quantum Acquired';
 
     columns = [
       {
@@ -82,15 +86,19 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
             "header": "QUANTUM ACQUIRED (SQ.KM)"
         }]
 
-    constructor(private report: ReportService, private workprogram: WorkProgramService, private cd: ChangeDetectorRef, private gen: GenericService){
+    constructor(private report: ReportService, private workprogram: WorkProgramService,
+      private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.generalReport
+        .subscribe(res => {
+          this.getSeismic();
+        });
     }
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
       this.getSeismic();
     }
@@ -107,27 +115,6 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
         this.cd.markForCheck();
       }
-
-
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
 
 
     goNext() {
@@ -172,6 +159,8 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired_PREVIOUS as any[];
+        this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
@@ -224,7 +213,6 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     }
     else {
       debugger;
-
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';

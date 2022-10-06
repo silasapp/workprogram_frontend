@@ -10,7 +10,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SeismicActivitiesApprovedComponent implements OnInit {
+export class SeismicProcessingCurrentComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -18,8 +18,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
+    title = 'Seismic Data Approved and 2 Years ago';
+    tableTitle = 'Table 5. 2019 3D Seismic Data Approved and Acquired';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
@@ -31,7 +31,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     totalone = 0;
     totaltwo = 0;
     barone = 'Total Quantum Approved';
-    bartwo = 'Total Quantum Acquired';
+    bartwo = 'Total Quantum Processed'
 
     columns = [
       {
@@ -55,8 +55,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
           "header": "QUANTUM APPROVED (SQ.KM)"
       },
       {
-          "columnDef": "quantum",
-          "header": "QUANTUM ACQUIRED (SQ.KM)"
+          "columnDef": "geo_Quantum_of_Data",
+          "header": "QUANTUM PROCESSED (SQ.KM)"
       }]
 
 
@@ -82,8 +82,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
             "header": "QUANTUM APPROVED (SQ.KM)"
         },
         {
-            "columnDef": "quantum",
-            "header": "QUANTUM ACQUIRED (SQ.KM)"
+            "columnDef": "geo_Quantum_of_Data",
+            "header": "QUANTUM PROCESSED (SQ.KM)"
         }]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
@@ -99,10 +99,8 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
       this.getSeismic();
-      this.getSeismicReportText();
     }
 
     public get pageIndex(): number {
@@ -117,27 +115,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
         this.cd.markForCheck();
       }
-
-
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
 
 
     goNext() {
@@ -181,19 +158,12 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.seismic_Data_Approved_and_Acquired as any[];
+        this.data = res.seismic_Data_Processing_and_Reprocessing_Activities_CURRENT as any[];
+        this.reporttext = res.geophysicaL_ACTIVITIES_PROCESSING_DESCRIPTION;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'geo_Quantum_of_Data'));
             this.assignDataRows();
             this.assignPageNum();
-            this.cd.markForCheck();
-      });
-  }
-
-  getSeismicReportText() {
-    this.workprogram.getSeismicActivitiesReportText(this.genk.reportYear)
-      .subscribe(res => {
-        this.reporttext = res.data;
             this.cd.markForCheck();
       });
   }
@@ -243,6 +213,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       alert('Can not plot this chart');
     }
     else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';

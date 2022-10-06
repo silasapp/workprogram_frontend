@@ -26,7 +26,7 @@
         <div style="display: flex; align-items: center;">
           <span style="font-size: 15px; font-weight: 600; color: rgb(34, 56, 56); margin-right: 10px; color: whitesmoke; text-shadow: 1.5px 1.5px 2px rgb(0, 0, 0, 0.3);">YEAR OF UPLOAD</span>
           <div class="inpdiv" style="background-color: white">
-            <select id="time" class="inpute" (change)="getYear($event)">
+            <select id="time" class="inpute" [value]="genk.reportYear" (change)="getYear($event)">
               <option selected disabled>--Select Year-- </option>
               <option class="font500" *ngFor="let val of listyear" value={{val}}>{{val}}</option>
             </select>
@@ -60,7 +60,7 @@
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Data Approved Previous Year</span>
                       </div>
-                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'c']"
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismic2yrsago']"
                         routerLinkActive="activel">
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Data Approved 2yrs ago</span>
@@ -73,18 +73,64 @@
                       <span>Seismic Processing and Reprocessing</span>
                     </div>
                     <div>
-                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismic']" routerLinkActive="activel">
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismicprocessingcurrent']" routerLinkActive="activel">
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Processing and Reprocessing Activities</span>
                       </div>
-                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismicprevious']" routerLinkActive="activel">
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismicprocessingprevious']" routerLinkActive="activel">
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Processing and Reprocessing Previous Year</span>
                       </div>
-                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'c']"
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'seismic2yrsago']"
                         routerLinkActive="activel">
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Processing and Reprocessing 2yrs ago</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'exploration']" routerLinkActive="activel">
+                    <span class="material-icons layout-icon">dashboard</span>
+                    <span>Exploration Wells</span>
+                  </div>
+
+                  <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'appraisal']" routerLinkActive="activel">
+                    <span class="material-icons layout-icon">dashboard</span>
+                    <span>Appraisal Wells</span>
+                  </div>
+
+                  <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'development']" routerLinkActive="activel">
+                    <span class="material-icons layout-icon">dashboard</span>
+                    <span>Development Wells</span>
+                  </div>
+
+                  <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'reservesupdate']" routerLinkActive="activel">
+                    <span class="material-icons layout-icon">dashboard</span>
+                    <span>Reserves Update</span>
+                  </div>
+
+                  <!-- <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'oilproduction']" routerLinkActive="activel">
+                    <span class="material-icons layout-icon">dashboard</span>
+                    <span>Oil Production</span>
+                  </div> -->
+
+                  <div class="layout-line layout-padsect">
+                    <div class="layout-divcap layout-pad">
+                      <span>Oil Production</span>
+                    </div>
+                    <div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'oilproduction']" routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Oil Production</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'oilproductioncontract']" routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Oil Production of Contract Basis</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'monthlyoilproduction']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Monthly Oil Production</span>
                       </div>
                     </div>
                   </div>
