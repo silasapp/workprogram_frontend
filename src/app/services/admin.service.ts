@@ -19,7 +19,20 @@ export class AdminService {
     return this.http.get<any>(`${environment.apiUrl}/admin/${url}`)
       .pipe(retry(this.num),
         map((response) => {
+        
           response.data = this.gen.lowerArray(response.data);
+          return response
+        })
+      )
+  }
+
+
+  fetchparconfig() {
+    return this.http.get<any>(`${environment.apiUrl}/admin/get_parametersconfiguration`)
+      .pipe(retry(this.num),
+        map((response) => {
+          
+          //response.data = this.gen.lowerArray(response.data);
           return response
         })
       )

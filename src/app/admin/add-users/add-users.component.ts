@@ -21,7 +21,7 @@ export class AddUsersComponent implements OnInit {
   arrayRows = [];
   data: any[];
   year = [];
-  userForm: FormGroup
+  userForm: FormGroup;
 
     columns = [
       {

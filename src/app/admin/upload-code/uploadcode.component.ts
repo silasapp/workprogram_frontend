@@ -2,12 +2,13 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPANY_CODE } from 'src/app/models/admin.model';
 import { CodeFields } from 'src/app/models/company-details';
 import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service'
 
 import Swal from 'sweetalert2';
-import { COMPANY_CODE } from './companycode.model';
+
 
 @Component({
   selector: 'app-add-concession',
