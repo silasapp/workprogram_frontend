@@ -38,6 +38,18 @@ export class AdminService {
       )
   }
 
+  addDataDuration_pw(dataDuration_pw_FormBody: FormData, action: string) {
+    debugger;
+    return this.http.post<any>(`${environment.apiUrl}/admin/get_parametersconfiguration`, dataDuration_pw_FormBody, { params: { action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+
+          //response.data = this.gen.lowerArray(response.data);
+          return response
+        })
+      )
+  }
+  
 
   getUser(id_: string) {
     var id = parseInt(id_);

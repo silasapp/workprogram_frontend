@@ -19,6 +19,7 @@
                                 <span>Date Duration ( Presentation Window )</span>
                         </div>
                         
+                        <form [formGroup]="dataDuration_pw_Form" (ngSubmit)="addParamemterConfig()">
 
                         <div style="width: 100%; display: flex;">
                         
@@ -27,7 +28,7 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute">
+                                                        <input type="date" class="inpute form-control" formControlName="start_date">
                                                 </div>
                                         </div>
                                 </div>
@@ -37,12 +38,13 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute">
+                                                        <input type="date" class="inpute form-control" formControlName="end_date">
                                                 </div>
                                         </div>
                                 </div>
                         
                         </div>
+                        </form>
                         <br>
                         
                         
