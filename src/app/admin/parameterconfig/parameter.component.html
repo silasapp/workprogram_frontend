@@ -18,48 +18,54 @@
 
                                 <span>Date Duration ( Presentation Window )</span>
                         </div>
-                        
-                        <form [formGroup]="dataDuration_pw_Form" (ngSubmit)="addParamemterConfig()">
+
+                        <form [formGroup]="dataDuration_pw_Form" (ngSubmit)="addDataDuration_pw()">
+
+                                <div style="width: 100%; display: flex;">
+
+                                        <div style="width: 70%; margin-right: 10%;">
+                                                <label class="labelwp">Start Date</label>
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="date" class="inpute form-control"
+                                                                        formControlName="start_date">
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <div style="width: 70%">
+                                                <label class="labelwp">End Date</label>
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="date" class="inpute form-control"
+                                                                        formControlName="end_date">
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                </div>
+
+                                <br>
+
+
+                                <div style="width: 100%; text-align: center;">
+
+                                        <input type="submit" class="btn btn-success round col-md-offset-4"
+                                                value="Update Presentation Window"
+                                                style="width:330px;margin-left: 0px;">
+
+                                </div>
+                        </form>
 
                         <div style="width: 100%; display: flex;">
-                        
-                                <div style="width: 70%; margin-right: 10%;">
-                                        <label class="labelwp">Start Date</label>
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute form-control" formControlName="start_date">
-                                                </div>
-                                        </div>
-                                </div>
-                        
-                                <div style="width: 70%">
-                                        <label class="labelwp">End Date</label>
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute form-control" formControlName="end_date">
-                                                </div>
-                                        </div>
-                                </div>
-                        
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
                         </div>
-                        </form>
-                        <br>
-                        
-                        
-                        <div style="width: 100%; text-align: center;">
-                        
-                                <input type="submit" class="btn btn-success round col-md-offset-4" value="Update Presentation Window" style="width:330px;margin-left: 0px;">
-                        
-                        </div>
-                        
-                        <div style="width: 100%; display: flex;">
-                                <span class="demacation" style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                        </div>
-                        
-                        
+
+
                         <div style="width: 100%; display: flex;">
                                 <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
                                                         margin: 0 auto;">
@@ -74,21 +80,22 @@
                                                                 </th>
                                                         </tr>
                                                 </thead>
-                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
                                                         <tr *ngFor="let row of parameterconfigBody.startEndDate">
                                                                 <td>
-                        
+
                                                                         {{row.start_date}}
                                                                 </td>
                                                                 <td>
                                                                         {{row.end_date}}
-                        
+
                                                                 </td>
-                        
-                        
+
+
                                                         </tr>
                                                 </tbody>
-                        
+
                                         </table>
                                 </div>
                         </div>
@@ -103,46 +110,52 @@
 
                                 <span>Date Duration ( Data upload Window )</span>
                         </div>
-                        
+
+                        <form [formGroup]="dataDuration_duw_Form" (ngSubmit)="addDataDuration_duw()">
+                                <div style="width: 100%; display: flex;">
+
+                                        <div style="width: 70%; margin-right: 10%;">
+                                                <label class="labelwp">Start Date</label>
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="date" class="inpute form-control"
+                                                                        formControlName="start_date" value="start_date">
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <div style="width: 70%">
+                                                <label class="labelwp">End Date</label>
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="date" class="inpute form-control"
+                                                                        formControlName="end_date" value="end_date">
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                </div>
+                                <br>
+
+
+                                <div style="width: 100%; text-align: center;">
+
+                                        <input type="submit" value="Update Data Upload Window"
+                                                class="btn btn-success round col-md-offset-4"
+                                                style="width:330px;margin-left: 0px;">
+
+                                </div>
+                        </form>
 
                         <div style="width: 100%; display: flex;">
-                        
-                                <div style="width: 70%; margin-right: 10%;">
-                                        <label class="labelwp">Start Date</label>
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute">
-                                                </div>
-                                        </div>
-                                </div>
-                        
-                                <div style="width: 70%">
-                                        <label class="labelwp">End Date</label>
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="date" class="inpute">
-                                                </div>
-                                        </div>
-                                </div>
-                        
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
                         </div>
-                        <br>
-                        
-                        
-                        <div style="width: 100%; text-align: center;">
-                        
-                                <input type="submit" value="Update Data Upload Window" class="btn btn-success round col-md-offset-4" style="width:330px;margin-left: 0px;">
-                        
-                        </div>
-                        
-                        <div style="width: 100%; display: flex;">
-                                <span class="demacation" style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                        </div>
-                        
-                        
+
+
                         <div style="width: 100%; display: flex;">
                                 <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
                                                         margin: 0 auto;">
@@ -157,21 +170,22 @@
                                                                 </th>
                                                         </tr>
                                                 </thead>
-                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
                                                         <tr *ngFor="let row of parameterconfigBody.startEndDateUpload">
                                                                 <td>
-                        
+
                                                                         {{row.start_date}}
                                                                 </td>
                                                                 <td>
                                                                         {{row.end_date}}
-                        
+
                                                                 </td>
-                        
-                        
+
+
                                                         </tr>
                                                 </tbody>
-                        
+
                                         </table>
                                 </div>
                         </div>
@@ -184,7 +198,8 @@
 
                                 <span>Meeting Room</span>
                         </div>
-                        
+
+                        <form [formGroup]="meetingroom_Form" (ngSubmit)="addMeetingRoom()">
 
                         <div style="width: 100%; display: flex;">
 
@@ -193,29 +208,34 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="meeting_rooms">
                                                 </div>
                                         </div>
                                 </div>
 
 
-                                
-                                
+
+
                         </div>
                         <br>
 
-                        
+
                         <div style="width: 100%; text-align: center;">
 
-                                <input type="submit" value=" Add Meeting Room"  class="btn btn-success round col-md-offset-4" style="width:330px;width:330px;margin-left: 0px;">
-                                
+                                <input type="submit" value=" Add Meeting Room"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
                         </div>
+
+                </form>
                         <div style="width: 100%; display: flex;">
-                                <span class="demacation" style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
                         </div>
-                        
-                        
+
+
                         <div style="width: 100%; display: flex;">
                                 <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
                                                         margin: 0 auto;">
@@ -226,647 +246,694 @@
                                                                         Meeting Rooms
                                                                 </th>
                                                                 <th style="width: 30%;">
-                                                                                &nbsp;
-                                                                        
+                                                                        &nbsp;
+
                                                                 </th>
                                                         </tr>
                                                 </thead>
-                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
                                                         <tr *ngFor="let row of parameterconfigBody.meetingRooms">
                                                                 <td>
-                        
+
                                                                         {{row.meetinG_ROOM}}
                                                                 </td>
-                                                                  <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                        
-                        
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
                                                         </tr>
                                                 </tbody>
-                        
+
                                         </table>
                                 </div>
                         </div>
-                        
+
                 </div>
 
         </div>
         <br><br>
-       
+
         <br>
 
         <hr size="5">
-       
-                
-                
-                <div style="display:flex;width: 100%; justify-content: space-between; ">
-                        <div style="width: 30%">
-                
-                
-                                <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                
-                                        <span>Email Notification Scheduled Days</span>
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                
-                                        <div style="width: 98%; margin-right: 2%;">
-                
-                                                <div style="display: flex;">
-                                                        <div class="inpdiv"
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="text" class="inpute">
-                                                        </div>
+
+
+
+        <div style="display:flex;width: 100%; justify-content: space-between; ">
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Email Notification Scheduled Days</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
                                                 </div>
                                         </div>
-                
-                
-                
-                
                                 </div>
-                                <br>
-                
-                
-                                <div style="width: 100%; text-align: center;">
-                
-                                        <input type="submit" value="  Add Scheduled Days" class="btn btn-success round col-md-offset-4"
-                                                style="width:330px;width:330px;margin-left: 0px;">
-                
-                                </div>
-                                <div style="width: 100%; display: flex;">
-                                        <span class="demacation"
-                                                style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                                        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                margin: 0 auto;">
-                                                <table #codeTable class="apptable" cellPadding="10px">
-                                                        <thead>
-                                                                <tr>
-                                                                        <th style="width: 70%;">
-                                                                                Email Notification Days
-                                                                        </th>
-                                                                        <th style="width: 30%;">
-                                                                                &nbsp;
-                                                                                &nbsp;
-                                                                        </th>
-                                                                </tr>
-                                                        </thead>
-                                                        <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                <tr *ngFor="let row of parameterconfigBody.meetingRooms">
-                                                                        <td>
-                                
-                                                                                {{row.meetinG_ROOM}}
-                                                                        </td>
-                                                                         <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                
-                                
-                                                                </tr>
-                                                        </tbody>
-                
-                                                </table>
-                                        </div>
-                                </div>
-                
+
+
+
+
                         </div>
-                
-                        <div style="width: 30%">
-                
-                
-                                <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                
-                                        <span> Contract Type</span>
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                
-                                        <div style="width: 98%; margin-right: 2%;">
-                
-                                                <div style="display: flex;">
-                                                        <div class="inpdiv"
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="text" class="inpute">
-                                                        </div>
-                                                </div>
-                                        </div>
-                
-                
-                
-                
-                                </div>
-                                <br>
-                
-                
-                                <div style="width: 100%; text-align: center;">
-                
-                                        <input type="submit" value="Add Contract Type" class="btn btn-success round col-md-offset-4"
-                                                style="width:330px;width:330px;margin-left: 0px;">
-                
-                                </div>
-                                <div style="width: 100%; display: flex;">
-                                        <span class="demacation"
-                                                style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                                        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                margin: 0 auto;">
-                                                <table #codeTable class="apptable" cellPadding="10px">
-                                                        <thead>
-                                                                <tr>
-                                                                        <th style="width: 70%;">
-                                                                                Contract Type
-                                                                        </th>
-                                                                        <th style="width: 30%;">
-                                                                                &nbsp;
-                                                                                &nbsp;
-                                                                        </th>
-                                                                </tr>
-                                                        </thead>
-                                                        <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                <tr *ngFor="let row of parameterconfigBody.adminCategories">
-                                                                        <td>
-                                
-                                                                                {{row.categories}}
-                                                                        </td>
-                                                                         <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                
-                                
-                                                                </tr>
-                                                        </tbody>
-                
-                                                </table>
-                                        </div>
-                                </div>
-                
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="  Add Scheduled Days"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
                         </div>
-                
-                        <div style="width: 30%">
-                
-                
-                                <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                
-                                        <span>Data Type</span>
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                
-                                        <div style="width: 98%; margin-right: 2%;">
-                
-                                                <div style="display: flex;">
-                                                        <div class="inpdiv"
-                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="text" class="inpute">
-                                                        </div>
-                                                </div>
-                                        </div>
-                
-                
-                
-                
-                                </div>
-                                <br>
-                
-                
-                                <div style="width: 100%; text-align: center;">
-                
-                                        <input type="submit" value="Add Type of Data Acquired"
-                                                class="btn btn-success round col-md-offset-4"
-                                                style="width:330px;width:330px;margin-left: 0px;">
-                
-                                </div>
-                                <div style="width: 100%; display: flex;">
-                                        <span class="demacation"
-                                                style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                
-                                </div>
-                
-                
-                                <div style="width: 100%; display: flex;">
-                                        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                margin: 0 auto;">
-                                                <table #codeTable class="apptable" cellPadding="10px">
-                                                        <thead>
-                                                                <tr>
-                                                                        <th style="width: 70%;">
-                                                                                Type of Data Acquired
-                                                                        </th>
-                                                                        <th style="width: 30%;">
-                                                                                &nbsp;
-                                                                                &nbsp;
-                                                                        </th>
-                                                                </tr>
-                                                        </thead>
-                                                        <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                <tr *ngFor="let row of parameterconfigBody.dataTypes">
-                                                                        <td>
-                                
-                                                                                {{row.dataType}}
-                                                                        </td>
-                                                                         <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                
-                                
-                                                                </tr>
-                                                        </tbody>
-                
-                                                </table>
-                                        </div>
-                                </div>
-                
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
                         </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th style="width: 70%;">
+                                                                        Email Notification Days
+                                                                </th>
+                                                                <th style="width: 30%;">
+                                                                        &nbsp;
+                                                                        &nbsp;
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.meetingRooms">
+                                                                <td>
+
+                                                                        {{row.meetinG_ROOM}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
                 </div>
-              
-                <br>
-                <br><br>
-       
-                <br>
-        
-                <hr size="5">
-               
-                        
-                        
-                        <div style="display:flex;width: 100%; justify-content: space-between; ">
-                                <div style="width: 30%">
-                        
-                        
-                                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                        
-                                                <span>Penalties</span>
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                        
-                                                <div style="width: 70%; margin-right: 10%;">
-                                                        <label class="labelwp">No Show Penalty</label>
-                                                        <div style="display: flex;">
-                                                                <div class="inpdiv"
-                                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                        <input type="text" class="inpute">
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        
-                                                <div style="width: 70%">
-                                                        <label class="labelwp">No Submission Penalty</label>
-                                                        <div style="display: flex;">
-                                                                <div class="inpdiv"
-                                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                        <input type="text" class="inpute">
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        
-                        
-                        
-                        
-                        
-                                        </div>
-                                        <br>
-                        
-                        
-                                        <div style="width: 100%; text-align: center;">
-                        
-                                                <input type="submit" value="Update Penalties" class="btn btn-success round col-md-offset-4"
-                                                        style="width:330px;width:330px;margin-left: 0px;">
-                        
-                                        </div>
-                                        <div style="width: 100%; display: flex;">
-                                                <span class="demacation"
-                                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                        margin: 0 auto;">
-                                                        <table #codeTable class="apptable" cellPadding="10px">
-                                                                <thead>
-                                                                        <tr>
-                                                                                <th >
-                                                                                        No Show Penalty
-                                                                                </th>
-                                                                                <th >
-                                                                                        No Submission Penalty
-                                                                                </th>
-                                                                        </tr>
-                                                                </thead>
-                                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                        <tr *ngFor="let row of parameterconfigBody.penalties">
-                                                                                <td>
-                                        
-                                                                                        {{row.nO_SHOW}}
-                                                                                </td>
-                                                                                <td>
-                                                                                        {{row.nO_SUBMISSION}}
-                                        
-                                                                                </td>
-                                        
-                                        
-                                                                        </tr>
-                                                                </tbody>
-                        
-                                                        </table>
-                                                </div>
-                                        </div>
-                        
-                                </div>
-                        
-                                <div style="width: 30%">
-                        
-                        
-                                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                        
-                                                <span>Categories of Presentation</span>
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                        
-                                                <div style="width: 98%; margin-right: 2%;">
-                        
-                                                        <div style="display: flex;">
-                                                                <div class="inpdiv"
-                                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                        <input type="text" class="inpute">
-                                                                </div>
-                                                        </div>
-                                                </div>
-                        
-                        
-                        
-                        
-                                        </div>
-                                        <br>
-                        
-                        
-                                        <div style="width: 100%; text-align: center;">
-                        
-                                                <input type="submit" value="Add Categories of Presentation" class="btn btn-success round col-md-offset-4"
-                                                        style="width:330px;width:330px;margin-left: 0px;">
-                        
-                                        </div>
-                                        <div style="width: 100%; display: flex;">
-                                                <span class="demacation"
-                                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                        margin: 0 auto;">
-                                                        <table #codeTable class="apptable" cellPadding="10px">
-                                                                <thead>
-                                                                        <tr >
-                                                                                <th>
-                                        
-                                                                                        Categories of Presentation
-                                                                                </th>
-                                                                                <th>
-                                                                                        &nbsp;
-                                        
-                                                                                </th>
-                                        
-                                        
-                                                                        </tr>
-                                                                </thead>
-                                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                        <tr *ngFor="let row of parameterconfigBody.presentationCategories">
-                                                                                <td>
-                                        
-                                                                                        {{row.categories}}
-                                                                                </td>
-                                                                                <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                        
-                                        
-                                                                        </tr>
-                                                                </tbody>
-                        
-                                                        </table>
-                                                </div>
-                                        </div>
-                        
-                                </div>
-                        
-                                <div style="width: 30%">
-                        
-                        
-                                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                        
-                                                <span>Well Categories</span>
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                        
-                                                <div style="width: 98%; margin-right: 2%;">
-                        
-                                                        <div style="display: flex;">
-                                                                <div class="inpdiv"
-                                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                        <input type="text" class="inpute">
-                                                                </div>
-                                                        </div>
-                                                </div>
-                        
-                        
-                        
-                        
-                                        </div>
-                                        <br>
-                        
-                        
-                                        <div style="width: 100%; text-align: center;">
-                        
-                                                <input type="submit" value="Add Well Categories"
-                                                        class="btn btn-success round col-md-offset-4"
-                                                        style="width:330px;width:330px;margin-left: 0px;">
-                        
-                                        </div>
-                                        <div style="width: 100%; display: flex;">
-                                                <span class="demacation"
-                                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                        margin: 0 auto;">
-                                                        <table #codeTable class="apptable" cellPadding="10px">
-                                                                <thead>
-                                                                        <tr>
-                                                                                <th style="width: 70%;">
-                                                                                        Well Categories
-                                                                                </th>
-                                                                                <th style="width: 30%;">
-                                                                                        &nbsp;
-                                                                                        &nbsp;
-                                                                                </th>
-                                                                        </tr>
-                                                                </thead>
-                                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                        <tr *ngFor="let row of parameterconfigBody.wellCategories">
-                                                                                <td>
-                                        
-                                                                                        {{row.welltype}}
-                                                                                </td>
-                                                                                 <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                        
-                                        
-                                                                        </tr>
-                                                                </tbody>
-                        
-                                                        </table>
-                                                </div>
-                                        </div>
-                        
-                                </div>
+
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span> Contract Type</span>
                         </div>
-                      
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+
+                        </div>
                         <br>
 
 
-                        <hr size="5">
-               
-                        
-                        
-                        <div style="display:flex;width: 100%; justify-content: space-between; ">
-                                <div style="width: 30%; margin: auto;">
-                        
-                        
-                                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
-                        
-                                                <span>Super Admin</span>
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                        
-                                                <div style="width: 98%; margin-right: 2%;">
-                        
-                                                        <div style="display: flex;">
-                                                                <div class="inpdiv"
-                                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                
-                                                                       
-                                                                        <input type="text" class="inpute">
-                                                                </div>
-                                                        </div>
+                        <div style="width: 100%; text-align: center;">
 
-                                                     
-                                                </div>
-                        
-                        
-                        
-                        
-                                        </div>
-                                        <br>
-                        
-                        
-                                        <div style="width: 100%; text-align: center;">
-                        
-                                                <input type="submit" value="Add Super Admin" class="btn btn-success round col-md-offset-4"
-                                                        style="width:330px;width:330px;margin-left: 0px;">
-                        
-                                        </div>
-                                        <div style="width: 100%; display: flex;">
-                                                <span class="demacation"
-                                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
-                        
-                                        </div>
-                        
-                        
-                                        <div style="width: 100%; display: flex;">
-                                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
-                                                                                        margin: 0 auto;">
-                                                        <table #codeTable class="apptable" cellPadding="10px">
-                                                                <thead>
-                                                                        <tr>
-                                                                                <th >
-                                                                                        Super Admin
-                                                                                </th>
-                                                                                <th >
-                                                                                        &nbsp;
-                                                                                </th>
-                                                                        </tr>
-                                                                </thead>
-                                                                <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                                        <tr *ngFor="let row of parameterconfigBody.superAdmins">
-                                                                                <td>
-                                        
-                                                                                        {{row.email_}}
-                                                                                </td>
-                                                                                 <td>
-                                                                                        <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
-                                                                                        value="{{row.id}}"  style="background-color: white; color: red;
-                                                                                         BORDER: 2px solid;" class="submitbtn"><mat-icon>delete_sweep</mat-icon> 
-                                                                                       </button>
-                                        
-                                                                                </td>
-                                        
-                                        
-                                                                        </tr>
-                                                                </tbody>
-                        
-                                                        </table>
-                                                </div>
-                                        </div>
-                        
-                                </div>
-                        
-                                
+                                <input type="submit" value="Add Contract Type"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
                         </div>
-                      
-                        <br>
-        
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
 
-      
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th style="width: 70%;">
+                                                                        Contract Type
+                                                                </th>
+                                                                <th style="width: 30%;">
+                                                                        &nbsp;
+                                                                        &nbsp;
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.adminCategories">
+                                                                <td>
+
+                                                                        {{row.categories}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Data Type</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+
+                        </div>
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="Add Type of Data Acquired"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
+                        </div>
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th style="width: 70%;">
+                                                                        Type of Data Acquired
+                                                                </th>
+                                                                <th style="width: 30%;">
+                                                                        &nbsp;
+                                                                        &nbsp;
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.dataTypes">
+                                                                <td>
+
+                                                                        {{row.dataType}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+        </div>
+
+        <br>
+        <br><br>
+
+        <br>
+
+        <hr size="5">
+
+
+
+        <div style="display:flex;width: 100%; justify-content: space-between; ">
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Penalties</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 70%; margin-right: 10%;">
+                                        <label class="labelwp">No Show Penalty</label>
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div style="width: 70%">
+                                        <label class="labelwp">No Submission Penalty</label>
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+
+
+                        </div>
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="Update Penalties"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
+                        </div>
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                        margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th>
+                                                                        No Show Penalty
+                                                                </th>
+                                                                <th>
+                                                                        No Submission Penalty
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.penalties">
+                                                                <td>
+
+                                                                        {{row.nO_SHOW}}
+                                                                </td>
+                                                                <td>
+                                                                        {{row.nO_SUBMISSION}}
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Categories of Presentation</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+
+                        </div>
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="Add Categories of Presentation"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
+                        </div>
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                        margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th>
+
+                                                                        Categories of Presentation
+                                                                </th>
+                                                                <th>
+                                                                        &nbsp;
+
+                                                                </th>
+
+
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr
+                                                                *ngFor="let row of parameterconfigBody.presentationCategories">
+                                                                <td>
+
+                                                                        {{row.categories}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+
+                <div style="width: 30%">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Well Categories</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+
+                        </div>
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="Add Well Categories"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
+                        </div>
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                        margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th style="width: 70%;">
+                                                                        Well Categories
+                                                                </th>
+                                                                <th style="width: 30%;">
+                                                                        &nbsp;
+                                                                        &nbsp;
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.wellCategories">
+                                                                <td>
+
+                                                                        {{row.welltype}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+        </div>
+
+        <br>
+
+
+        <hr size="5">
+
+
+
+        <div style="display:flex;width: 100%; justify-content: space-between; ">
+                <div style="width: 30%; margin: auto;">
+
+
+                        <div style="font-weight: 500; margin-bottom: 5px" class="config-head">
+
+                                <span>Super Admin</span>
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+
+                                <div style="width: 98%; margin-right: 2%;">
+
+                                        <div style="display: flex;">
+                                                <div class="inpdiv"
+                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+
+
+                                                        <input type="text" class="inpute">
+                                                </div>
+                                        </div>
+
+
+                                </div>
+
+
+
+
+                        </div>
+                        <br>
+
+
+                        <div style="width: 100%; text-align: center;">
+
+                                <input type="submit" value="Add Super Admin"
+                                        class="btn btn-success round col-md-offset-4"
+                                        style="width:330px;width:330px;margin-left: 0px;">
+
+                        </div>
+                        <div style="width: 100%; display: flex;">
+                                <span class="demacation"
+                                        style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
+
+                        </div>
+
+
+                        <div style="width: 100%; display: flex;">
+                                <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 100%;
+                                                                                        margin: 0 auto;">
+                                        <table #codeTable class="apptable" cellPadding="10px">
+                                                <thead>
+                                                        <tr>
+                                                                <th>
+                                                                        Super Admin
+                                                                </th>
+                                                                <th>
+                                                                        &nbsp;
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody #codeTbody
+                                                        style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+                                                        <tr *ngFor="let row of parameterconfigBody.superAdmins">
+                                                                <td>
+
+                                                                        {{row.email_}}
+                                                                </td>
+                                                                <td>
+                                                                        <button mat-stroked-button
+                                                                                style="margin: 50px; padding: 10px"
+                                                                                type="button" class="btn btn-primary"
+                                                                                (click)="openPopup(); onSelect(row)"
+                                                                                value="{{row.id}}" style="background-color: white; color: red;
+                                                                                         BORDER: 2px solid;"
+                                                                                class="submitbtn">
+                                                                                <mat-icon>delete_sweep</mat-icon>
+                                                                        </button>
+
+                                                                </td>
+
+
+                                                        </tr>
+                                                </tbody>
+
+                                        </table>
+                                </div>
+                        </div>
+
+                </div>
+
+
+        </div>
+
+        <br>
+
+
+
 </div>
-
-

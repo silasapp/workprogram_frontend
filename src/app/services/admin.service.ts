@@ -38,10 +38,12 @@ export class AdminService {
       )
   }
 
-  addDataDuration_pw(dataDuration_pw_FormBody: FormData, action: string) {
-    debugger;
-    return this.http.post<any>(`${environment.apiUrl}/admin/get_parametersconfiguration`, dataDuration_pw_FormBody, { params: { action: action } })
-      .pipe(retry(this.num),
+  addDataDuration_pw(e: any, action: string) {
+
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_start_end_dates`, {
+      start_date: e.start_date, end_date: e.end_date
+    }, { params: { _action: action } })
+      .pipe(retry(this.num), 
         map((response) => {
 
           //response.data = this.gen.lowerArray(response.data);
@@ -50,6 +52,30 @@ export class AdminService {
       )
   }
   
+
+  addDataDuration_duw(e:any, action:string){
+    
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_start_end_date_data_uploads`, {
+      start_date: e.start_date, end_date: e.end_date
+    }, { params: { _action: action } })
+      .pipe(retry(this.num), 
+        map((response) => {
+
+          //response.data = this.gen.lowerArray(response.data);
+          return response
+        })
+      )
+  }
+
+  addMeetingRoom(e:any, action:string){
+return this.http.post<any>(`${environment.apiUrl}/admin/admin_meeting_rooms`, {meeting_room:e.meeting_rooms}, {params:{_action:action}})
+.pipe(retry(this.num),
+map((response)=>{
+  return response;
+}))
+  }
+
+
 
   getUser(id_: string) {
     var id = parseInt(id_);

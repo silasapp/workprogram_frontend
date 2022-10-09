@@ -54,14 +54,18 @@ export class ParameterConfigComponent implements OnInit {
       end_date: ["", Validators.required],
 
 
+    }),
+    this.dataDuration_duw_Form = new FormGroup({
+      'id': new FormControl('', [Validators.required]),
+        'start_date': new FormControl('', [Validators.required]),
+        'end_date': new FormControl('', [Validators.required]),
+        
+    },{}), 
+    this.meetingroom_Form = this.fb.group({
+      id: ["", Validators.required],
+      meeting_rooms: ["", Validators.required],
+ 
     })
-    // this.dataDuration_duw_Form = new FormGroup({
-    //     'Name': new FormControl(this.name, [Validators.required]),
-    //     'Designation': new FormControl(this.designation, [Validators.required]),
-    //     'Phone': new FormControl(this.phone, [Validators.required]),
-    //     'Email': new FormControl(this.email, [Validators.required]),
-    //     'Password': new FormControl(this.password, [Validators.required])
-    // },{})
   }
 
 
@@ -72,15 +76,17 @@ export class ParameterConfigComponent implements OnInit {
       (res) => {
 
         this.parameterconfigBody = res.data as PARAMETER_CONFIG;
-        debugger;
+    
         this.cd.markForCheck();
       }
     )
   }
 
-  addParamemterConfig(){
+  addDataDuration_pw(){
+    
     this.admin.addDataDuration_pw(this.dataDuration_pw_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
+     
         if(res.statusCode==200){
           this.Alert("Success", res.message, "success")
           this.fetchdata();
@@ -93,6 +99,49 @@ export class ParameterConfigComponent implements OnInit {
     )
    
   }
+
+  addDataDuration_duw(){
+    debugger;
+    this.admin.addDataDuration_duw(this. dataDuration_duw_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+
+
+  addMeetingRoom(){
+    debugger;
+    this.admin.addMeetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+
+  
 
 
 
