@@ -75,6 +75,15 @@ map((response)=>{
 }))
   }
 
+  addEmailDuration(e:any, action:string){
+    debugger;
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_email_days`, {dayS_:e.dayS_}, {params:{_action:action}})
+    .pipe(retry(this.num),
+    map((response)=>{
+      return response;
+    }))
+      }
+
 
 
   getUser(id_: string) {

@@ -16,6 +16,7 @@ export class ParameterConfigComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   auth: AuthenticationService;
+  genk: GenericService;
   title = 'CONFIGURATION PARAMETERS';
 
   parameterconfigBody: PARAMETER_CONFIG = {} as PARAMETER_CONFIG;
@@ -35,11 +36,12 @@ export class ParameterConfigComponent implements OnInit {
   constructor(private admin: AdminService,
     private authenticationService: AuthenticationService,
     private cd: ChangeDetectorRef,
+    private gen: GenericService,
     private modalService: ModalService,
     private fb: FormBuilder) {
     this.cdr = cd;
     this.auth = authenticationService;
-
+this.genk=gen;
   }
 
   ngOnInit() {
@@ -65,7 +67,18 @@ export class ParameterConfigComponent implements OnInit {
       id: ["", Validators.required],
       meeting_rooms: ["", Validators.required],
  
+    }),
+    this.email_notification_Form = this.fb.group({
+      id: ["", Validators.required],
+      dayS_: ['', Validators.required,],
+ 
+    }),
+    this.contractType_Form = this.fb.group({
+      id: ["", Validators.required],
+      dayS_: ['', Validators.required,],
+ 
     })
+    
   }
 
 
@@ -76,7 +89,7 @@ export class ParameterConfigComponent implements OnInit {
       (res) => {
 
         this.parameterconfigBody = res.data as PARAMETER_CONFIG;
-    
+    debugger;
         this.cd.markForCheck();
       }
     )
@@ -124,6 +137,26 @@ export class ParameterConfigComponent implements OnInit {
   addMeetingRoom(){
     debugger;
     this.admin.addMeetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+
+  addEmailDuration(){
+    debugger;
+    this.admin.addEmailDuration(this.email_notification_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){

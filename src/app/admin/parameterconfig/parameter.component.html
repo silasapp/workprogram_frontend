@@ -201,34 +201,35 @@
 
                         <form [formGroup]="meetingroom_Form" (ngSubmit)="addMeetingRoom()">
 
-                        <div style="width: 100%; display: flex;">
+                                <div style="width: 100%; display: flex;">
 
-                                <div style="width: 98%; margin-right: 2%;">
-                                        <br>
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute form-control" formControlName="meeting_rooms">
+                                        <div style="width: 98%; margin-right: 2%;">
+                                                <br>
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="text" class="inpute form-control"
+                                                                        formControlName="meeting_rooms">
+                                                        </div>
                                                 </div>
                                         </div>
+
+
+
+
+                                </div>
+                                <br>
+
+
+                                <div style="width: 100%; text-align: center;">
+
+                                        <input type="submit" value=" Add Meeting Room"
+                                                class="btn btn-success round col-md-offset-4"
+                                                style="width:330px;width:330px;margin-left: 0px;">
+
                                 </div>
 
-
-
-
-                        </div>
-                        <br>
-
-
-                        <div style="width: 100%; text-align: center;">
-
-                                <input type="submit" value=" Add Meeting Room"
-                                        class="btn btn-success round col-md-offset-4"
-                                        style="width:330px;width:330px;margin-left: 0px;">
-
-                        </div>
-
-                </form>
+                        </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
@@ -298,34 +299,38 @@
 
                                 <span>Email Notification Scheduled Days</span>
                         </div>
+                        <form [formGroup]="email_notification_Form" (ngSubmit)="addEmailDuration()">
 
+                                <div style="width: 100%; display: flex;">
 
-                        <div style="width: 100%; display: flex;">
+                                        <div style="width: 98%; margin-right: 2%;">
 
-                                <div style="width: 98%; margin-right: 2%;">
+                                                <div style="display: flex;">
+                                                        <div class="inpdiv"
+                                                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
+                                                                <input type="text" class="inpute form-control"
+                                                                        (keypress)="genk.restrictData($event)"
+                                                                        formControlName="dayS_">
 
-                                        <div style="display: flex;">
-                                                <div class="inpdiv"
-                                                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        </div>
                                                 </div>
                                         </div>
+
+
+
+
                                 </div>
+                                <br>
 
 
+                                <div style="width: 100%; text-align: center;">
 
+                                        <input type="submit" value="  Add Scheduled Days"
+                                                class="btn btn-success round col-md-offset-4"
+                                                style="width:330px;width:330px;margin-left: 0px;">
 
-                        </div>
-                        <br>
-
-
-                        <div style="width: 100%; text-align: center;">
-
-                                <input type="submit" value="  Add Scheduled Days"
-                                        class="btn btn-success round col-md-offset-4"
-                                        style="width:330px;width:330px;margin-left: 0px;">
-
-                        </div>
+                                </div>
+                        </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
@@ -350,10 +355,10 @@
                                                 </thead>
                                                 <tbody #codeTbody
                                                         style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-                                                        <tr *ngFor="let row of parameterconfigBody.meetingRooms">
+                                                        <tr *ngFor="let row of parameterconfigBody.emailDays">
                                                                 <td>
 
-                                                                        {{row.meetinG_ROOM}}
+                                                                        {{row.dayS_}}
                                                                 </td>
                                                                 <td>
                                                                         <button mat-stroked-button
