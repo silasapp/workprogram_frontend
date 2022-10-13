@@ -1,18 +1,19 @@
 <div id="info-block">
-    <section class="file-marker">
-      <div>
-        <div class="box-title">
-          {{title}}
-        </div>
-  
-        <form [formGroup]="concessionForm" (ngSubmit)="onSubmit()">
+  <section class="file-marker">
+    <div>
+      <div class="box-title">
+        {{title}}
+      </div>
+
+      <form [formGroup]="concessionForm" (ngSubmit)="onSubmit()">
         <div style="margin: 1% 1% 1% 1%;">
           <div>
             <div class="row mt-5">
               <div class="col-sm-4">
                 <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Company Name</span>
                 <select id="time" class="form-select" formControlName="companY_NAME">
-                  <option selected disabled>--Please Select Company Name--<option>
+                  <option selected disabled>--Please Select Company Name--
+                  <option>
                   <option *ngFor="let val of company" value={{val.company_name}}>{{val.company_name}}</option>
                 </select>
               </div>
@@ -25,144 +26,149 @@
                 <input type="text" class="form-control" formControlName="equity_distribution">
               </div>
             </div>
-  
-    <div class="row mt-5">
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Area (Km2)</span>
-        <input type="text" class="form-control" formControlName="area">
-      </div>
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Contract Type</span>
-        <select id="time" class="form-select" formControlName="contract_Type">
-            <option selected disabled>--Please Select Categories--<option>
-            <option *ngFor="let val of genk.contractType" value={{val.value}}>{{val.value}}</option>
-          </select>
-      </div>
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date / Year of Award Grant	</span>
-        <input type="date" class="form-control" formControlName="year_of_Grant_Award">
-      </div>
-    </div>
-  
-    <div class="row mt-5">
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date of Expiration</span>
-        <input type="text" class="form-control" formControlName="date_of_Expiration">
-      </div>
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Geological location/terrain</span>
-        <input type="text" class="form-control" formControlName="geological_location">
-      </div>
-      <div class="col-sm-4">
-        <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Held (Year)</span>
-        <select class="form-select" formControlName="year">
-            <option selected disabled>--Please Select Year--<option>
-            <option *ngFor="let val of genk.year" value={{val.value}}>{{val.value}}</option>
-          </select>
-      </div>
-    </div>
+
+            <div class="row mt-5">
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Area (Km2)</span>
+                <input type="text" class="form-control" formControlName="area">
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Contract Type</span>
+                <select id="time" class="form-select" formControlName="contract_Type">
+                  <option selected disabled>--Please Select Categories--
+                  <option>
+                  <option *ngFor="let val of genk.contractType" value={{val.value}}>{{val.value}}</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date / Year of Award Grant
+                </span>
+                <input type="date" class="form-control" formControlName="year_of_Grant_Award">
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Date of Expiration</span>
+                <input type="date" class="form-control" formControlName="date_of_Expiration">
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Geological
+                  location/terrain</span>
+                <input type="text" class="form-control" formControlName="geological_location">
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Held (Year)</span>
+                <select class="form-select" formControlName="year">
+                  <option selected disabled>--Please Select Year--
+                  <option>
+                  <option *ngFor="let val of genk.year" value={{val.value}}>{{val.value}}</option>
+                </select>
+              </div>
+            </div>
 
 
-    <div class="row mt-5">
-        <div class="col-sm-4">
-          <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Comment</span>
-          <input type="text" class="form-control" formControlName="comment">
-        </div>
-        <div class="col-sm-4">
-          <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type	</span>
-          <select class="form-select" formControlName="year">
-            <option selected disabled>--Please Select concession type--<option>
-            <option *ngFor="let val of genk.concessiontype" value={{val.value}}>{{val.value}}</option>
-          </select>
-        </div>
-        <div class="col-sm-4">
-          <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Code	</span>
-          <input type="text" class="form-control" formControlName="concession_Unique_ID">
-        </div>
-      </div>
-  
-          </div>
-          <div class="container d-flex mt-5">
-            <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;">Add Concession</button>
-        </div>
-        </div>
-        </form>
-
-
-
-        <div class="row mb-5 mt-5">
-            <div class="col-sm-4">
-              <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Year</span>
-              <select id="time" class="form-select" (change)="fetchdata($event)">
-                <option selected disabled>--select year--</option>
-                <option *ngFor="let val of genk.year" value={{val.value}}>{{val.value}}</option>
-              </select>
+            <div class="row mt-5">
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Comment</span>
+                <input type="text" class="form-control" formControlName="comment">
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type </span>
+                <select class="form-select" formControlName="year">
+                  <option selected disabled>--Please Select concession type--
+                  <option>
+                  <option *ngFor="let val of genk.concessiontype" value={{val.value}}>{{val.value}}</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Code </span>
+                <input type="text" class="form-control" formControlName="concession_Unique_ID">
+              </div>
             </div>
 
           </div>
-        <div
-          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
-          <div>
-            <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
-              class="search">
-          </div>
-          <div style="width: 225px;">
-            <select id="time" class="form-select" (change)="resize($event)">
-              <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
-            </select>
-          </div>
-  
-          <div style="display: flex;">
-            <button (click)="genk.printData(myTable)" class="rebtn">
-              <mat-icon style="font-size: 20px;">print</mat-icon> Print
-            </button>
-            <button (click)="genk.tableToCSV(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
-              <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
-            </button>
-            <button (click)="genk.copyTable(myTable)" class="rebtn"
-              style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
-              <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
-            </button>
+          <div class="container d-flex mt-5">
+            <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;">Add Concession</button>
           </div>
         </div>
-  
-        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-          <table #myTable class="apptable" cellPadding="10" cellSpacing="15">
-            <thead>
-              <tr>
-                <th *ngFor="let h of columns">
-                  {{h.header}}
-                </th>
-              </tr>
-            </thead>
-            <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-              <tr *ngFor="let row of arrayRows">
-                <td *ngFor="let h of columns">
-                  {{row[h.columnDef]}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      </form>
+
+
+
+      <div class="row mb-5 mt-5">
+        <div class="col-sm-4">
+          <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Year</span>
+          <select id="time" class="form-select" (change)="fetchdata($event)">
+            <option selected disabled>--select year--</option>
+            <option *ngFor="let val of genk.year" value={{val.value}}>{{val.value}}</option>
+          </select>
         </div>
-  
-  
-        <div
-          style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
-          <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
-            <mat-icon>keyboard_double_arrow_left</mat-icon>
+
+      </div>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
+        <div>
+          <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
+            class="search">
+        </div>
+        <div style="width: 225px;">
+          <select id="time" class="form-select" (change)="resize($event)">
+            <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
+          </select>
+        </div>
+
+        <div style="display: flex;">
+          <button (click)="genk.printData(myTable)" class="rebtn">
+            <mat-icon style="font-size: 20px;">print</mat-icon> Print
           </button>
-          <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
-          <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
-              style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; border-radius: 50px; outline: dodgerblue;"
-              #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
-              (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
-  
-          <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
-            mat-raised-button>Next</button>
-          <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
-            <mat-icon>keyboard_double_arrow_right</mat-icon>
+          <button (click)="genk.tableToCSV(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+            <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+          </button>
+          <button (click)="genk.copyTable(myTable)" class="rebtn"
+            style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+            <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
           </button>
         </div>
       </div>
-    </section>
-  </div>
+
+      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+        <table #myTable class="apptable" cellPadding="10" cellSpacing="15">
+          <thead>
+            <tr>
+              <th *ngFor="let h of columns">
+                {{h.header}}
+              </th>
+            </tr>
+          </thead>
+          <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+            <tr *ngFor="let row of arrayRows">
+              <td *ngFor="let h of columns">
+                {{row[h.columnDef]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div
+        style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
+        <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
+        <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
+            style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; border-radius: 50px; outline: dodgerblue;"
+            #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+            (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
+
+        <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
+          mat-raised-button>Next</button>
+        <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
+          <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
