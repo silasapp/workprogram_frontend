@@ -9,7 +9,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MonthlyOilProductionComponent implements OnInit {
+export class ReconciledOilProductionComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -17,7 +17,7 @@ export class MonthlyOilProductionComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'MONTHLY PRODUCTION';
+    title = 'RECONCILED OIL PRODUCTION';
     reporttext: string;
     pagenum = 0;
     selectedPage = 1;
@@ -28,37 +28,121 @@ export class MonthlyOilProductionComponent implements OnInit {
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    barone = 'TOTAL ANNUAL PRODUCTION';
-    bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
+
+    barone = 'January';
+    bartwo = 'February';
 
     columns = [
       {
-        "columnDef": "production_month",
-        "header": "MONTH"
+          "columnDef": "companyName",
+          "header": "COMPANY NAME"
       },
       {
-        "columnDef": "annual_Total_Production_by_company",
-        "header": "PRODUCTION (BBLS)"
+          "columnDef": "january",
+          "header": "JANUARY"
       },
       {
-        "columnDef": "annual_Avg_Daily_Production",
-        "header": "AVERAGE DAILY PRODUCTION (BOPD)"
-      }]
+        "columnDef": "february",
+        "header": "FEBRUARY"
+      },
+      {
+        "columnDef": "march",
+        "header": "MARCH"
+      },
+      {
+        "columnDef": "april",
+        "header": "APRIL"
+      },
+      {
+        "columnDef": "may",
+        "header": "MAY"
+      },
+      {
+        "columnDef": "june",
+        "header": "JUNE"
+      },
+      {
+        "columnDef": "july",
+        "header": "JULY"
+      },
+      {
+          "columnDef": "august",
+          "header": "AUGUST"
+      },
+      {
+          "columnDef": "september",
+          "header": "SEPTEMBER"
+      },
+      {
+        "columnDef": "october",
+        "header": "OCTOBER"
+      },
+      {
+        "columnDef": "november",
+        "header": "NOVEMBER"
+      },
+      {
+        "columnDef": "december",
+        "header": "DECEMBER"
+      }
+    ]
 
 
       repcolumns = [
         {
-          "columnDef": "production_month",
-          "header": "MONTH"
-        },
-        {
-          "columnDef": "annual_Total_Production_by_company",
-          "header": "PRODUCTION (BBLS)"
-        },
-        {
-          "columnDef": "annual_Avg_Daily_Production",
-          "header": "AVERAGE DAILY PRODUCTION (BOPD)"
-        }]
+          "columnDef": "companyName",
+          "header": "COMPANY NAME"
+      },
+      {
+          "columnDef": "january",
+          "header": "JANUARY"
+      },
+      {
+        "columnDef": "february",
+        "header": "FEBRUARY"
+      },
+      {
+        "columnDef": "march",
+        "header": "MARCH"
+      },
+      {
+        "columnDef": "april",
+        "header": "APRIL"
+      },
+      {
+        "columnDef": "may",
+        "header": "MAY"
+      },
+      {
+        "columnDef": "june",
+        "header": "JUNE"
+      },
+      {
+        "columnDef": "july",
+        "header": "JULY"
+      },
+      {
+          "columnDef": "august",
+          "header": "AUGUST"
+      },
+      {
+          "columnDef": "september",
+          "header": "SEPTEMBER"
+      },
+      {
+        "columnDef": "october",
+        "header": "OCTOBER"
+      },
+      {
+        "columnDef": "november",
+        "header": "NOVEMBER"
+      },
+      {
+        "columnDef": "december",
+        "header": "DECEMBER"
+      }
+      ]
+
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
       private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
@@ -72,9 +156,10 @@ export class MonthlyOilProductionComponent implements OnInit {
     }
 
     ngOnInit() {
+      //this.year = Number(this.genk.reportYear);
       this.data = [];
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getCrudeOilProduction();
+      //this.getCrudeOilProduction();
     }
 
     public get pageIndex(): number {
@@ -82,9 +167,8 @@ export class MonthlyOilProductionComponent implements OnInit {
     }
 
     public get tableTitle(): string {
-      return `Figure 3: ${this.genk.reportYear} Production Distribution on Monthly basis`;
+      return `Figure 4: Breakdown of Reconciled Oil Production in bbls for ${this.genk.reportYear}`;
     }
-
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -135,9 +219,10 @@ export class MonthlyOilProductionComponent implements OnInit {
   getCrudeOilProduction() {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.crude_Oil_Monthly_Production as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));
+        //debugger;
+        this.data = res.crude_Oil_Monthly_Production_Pivotted as any[];
+        this.totalone = Math.round(this.report.sumColumn(this.data, "january"));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, "february"));
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

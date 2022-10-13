@@ -9,7 +9,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MonthlyOilProductionComponent implements OnInit {
+export class CrudeProductionTerrainComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -17,7 +17,7 @@ export class MonthlyOilProductionComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'MONTHLY PRODUCTION';
+    title = 'PRODUCTION ON TERRAIN BASIS';
     reporttext: string;
     pagenum = 0;
     selectedPage = 1;
@@ -28,37 +28,8 @@ export class MonthlyOilProductionComponent implements OnInit {
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    barone = 'TOTAL ANNUAL PRODUCTION';
-    bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
-
-    columns = [
-      {
-        "columnDef": "production_month",
-        "header": "MONTH"
-      },
-      {
-        "columnDef": "annual_Total_Production_by_company",
-        "header": "PRODUCTION (BBLS)"
-      },
-      {
-        "columnDef": "annual_Avg_Daily_Production",
-        "header": "AVERAGE DAILY PRODUCTION (BOPD)"
-      }]
-
-
-      repcolumns = [
-        {
-          "columnDef": "production_month",
-          "header": "MONTH"
-        },
-        {
-          "columnDef": "annual_Total_Production_by_company",
-          "header": "PRODUCTION (BBLS)"
-        },
-        {
-          "columnDef": "annual_Avg_Daily_Production",
-          "header": "AVERAGE DAILY PRODUCTION (BOPD)"
-        }]
+    year: number;
+    columnsArray: any[];
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
       private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
@@ -72,9 +43,10 @@ export class MonthlyOilProductionComponent implements OnInit {
     }
 
     ngOnInit() {
+      //this.year = Number(this.genk.reportYear);
       this.data = [];
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getCrudeOilProduction();
+      //this.getCrudeOilProduction();
     }
 
     public get pageIndex(): number {
@@ -82,9 +54,84 @@ export class MonthlyOilProductionComponent implements OnInit {
     }
 
     public get tableTitle(): string {
-      return `Figure 3: ${this.genk.reportYear} Production Distribution on Monthly basis`;
+      return `Crude Oil Production in bbls from ${Number(this.genk.reportYear) - 4} to ${this.genk.reportYear} on Terrain Basis`;
     }
 
+    public get barone(): string {
+      return `TOTAL ${this.genk.reportYear}`;
+    }
+
+    public get bartwo(): string {
+      return `TOTAL ${Number(this.genk.reportYear) - 1}`;
+    }
+
+    public get columns(): any[] {
+      this.columnsArray = [
+        {
+          "columnDef": "terrain",
+          "header": "TERRAIN"
+        },
+        {
+          "columnDef": `_${this.genk.reportYear}`,
+          "header": `${this.genk.reportYear}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
+          "header": `${Number(this.genk.reportYear) - 1}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
+          "header": `${Number(this.genk.reportYear) - 2}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
+          "header": `${Number(this.genk.reportYear) - 3}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
+          "header": `${Number(this.genk.reportYear) - 4}`
+        }
+      ];
+      return this.columnsArray;
+    }
+
+    public get repcolumns(): any[] {
+      this.columnsArray= [
+        {
+          "columnDef": "terrain",
+          "header": "TERRAIN"
+        },
+        {
+          "columnDef": `_${this.genk.reportYear}`,
+          "header": `${this.genk.reportYear}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
+          "header": `${Number(this.genk.reportYear) - 1}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
+          "header": `${Number(this.genk.reportYear) - 2}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
+          "header": `${Number(this.genk.reportYear) - 3}`
+        },
+        {
+          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
+          "header": `${Number(this.genk.reportYear) - 4}`
+        }
+      ];
+      return this.columnsArray;
+    }
+
+    public set columns(value) {
+      this.columnsArray = value;
+    }
+
+    public set repcolumns(value) {
+      this.columnsArray = value;
+    }
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -135,9 +182,10 @@ export class MonthlyOilProductionComponent implements OnInit {
   getCrudeOilProduction() {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.crude_Oil_Monthly_Production as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));
+        //debugger;
+        this.data = res.crude_Oil_Production_By_Terrain_Pivotted as any[];
+        this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

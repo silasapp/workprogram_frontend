@@ -1054,6 +1054,15 @@ getCrudeOilProduction(year: string) {
   )
 }
 
+GetGasProductionReport(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Gas_Production_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
 getOilProductionText(year: string) {
   return this.http.get<any>(`${environment.apiUrl}/report/Get_Crude_Oil_Production_Report_Content`, {params: {year: year}})
   .pipe(retry(this.num),

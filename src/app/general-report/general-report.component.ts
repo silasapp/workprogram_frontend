@@ -110,8 +110,9 @@ export class GeneralReportComponent implements OnInit {
     this.report.getYearList("concessionsituationyearlist")
         .subscribe((res: any[]) => {
             this.listyear = res;
-            this.genk.reportYear = this.listyear[0]
-            this.cd.markForCheck();
+            this.genk.reportYear = this.listyear[0];
+            this.modal.logGeneralReportYear();
+            //this.cd.markForCheck();
         });
 }
 

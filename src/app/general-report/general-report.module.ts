@@ -24,6 +24,11 @@ import { ReserveUpdateComponent } from './reserves-update.component';
 import { OilProductionComponent } from './oil-production.component';
 import { OilProductionContractComponent } from './oil-production-contract.component';
 import { MonthlyOilProductionComponent } from './monthly-oil-production.component';
+import { OilProductionTerrainComponent } from './oil-production-terrain.component';
+import { CrudeProductionContractComponent } from './crude-production-contract.component';
+import { CrudeProductionTerrainComponent } from './crude-production-terrain.component';
+import { ReconciledOilProductionComponent } from './reconciled-oil-production.component';
+import { GasProductionAndUtilizationComponent } from './gas-production-utilization.component';
 
 
 @NgModule({
@@ -41,6 +46,11 @@ import { MonthlyOilProductionComponent } from './monthly-oil-production.componen
     OilProductionComponent,
     OilProductionContractComponent,
     MonthlyOilProductionComponent,
+    OilProductionTerrainComponent,
+    CrudeProductionContractComponent,
+    CrudeProductionTerrainComponent,
+    ReconciledOilProductionComponent,
+    GasProductionAndUtilizationComponent,
     GeneralReportComponent,
     ExecutiveSummaryComponent
   ],

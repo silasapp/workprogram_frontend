@@ -9,7 +9,7 @@ import { WorkProgramService } from '../services/workprogram.service';
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MonthlyOilProductionComponent implements OnInit {
+export class OilProductionTerrainComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -17,7 +17,7 @@ export class MonthlyOilProductionComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'MONTHLY PRODUCTION';
+    title = 'PRODUCTION ON TERRAIN BASIS';
     reporttext: string;
     pagenum = 0;
     selectedPage = 1;
@@ -33,31 +33,31 @@ export class MonthlyOilProductionComponent implements OnInit {
 
     columns = [
       {
-        "columnDef": "production_month",
-        "header": "MONTH"
+        "columnDef": "terrain",
+        "header": "TERRAIN"
       },
       {
         "columnDef": "annual_Total_Production_by_company",
         "header": "PRODUCTION (BBLS)"
       },
       {
-        "columnDef": "annual_Avg_Daily_Production",
-        "header": "AVERAGE DAILY PRODUCTION (BOPD)"
+        "columnDef": "percentage_Production",
+        "header": "PERCENTAGE PRODUCTION (%)"
       }]
 
 
       repcolumns = [
         {
-          "columnDef": "production_month",
-          "header": "MONTH"
+          "columnDef": "terrain",
+          "header": "TERRAIN"
         },
         {
           "columnDef": "annual_Total_Production_by_company",
           "header": "PRODUCTION (BBLS)"
         },
         {
-          "columnDef": "annual_Avg_Daily_Production",
-          "header": "AVERAGE DAILY PRODUCTION (BOPD)"
+          "columnDef": "percentage_Production",
+          "header": "PERCENTAGE PRODUCTION (%)"
         }]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
@@ -135,9 +135,9 @@ export class MonthlyOilProductionComponent implements OnInit {
   getCrudeOilProduction() {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.crude_Oil_Monthly_Production as any[];
+        this.data = res.crude_Oil_Production_By_Terrain as any[];
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'percentage_Production'));
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

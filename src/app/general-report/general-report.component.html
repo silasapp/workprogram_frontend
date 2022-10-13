@@ -132,6 +132,26 @@
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Monthly Oil Production</span>
                       </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'oilproductionterrain']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Oil Production on Terrain basis</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'crudeproductioncontract']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Crude Oil Production in five years on Contract Type</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'crudeproductionterrain']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Crude Oil Production in five years on Terrain Basis</span>
+                      </div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'gasproductionandutilization']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Gas production and utilization</span>
+                      </div>
                     </div>
                   </div>
 
