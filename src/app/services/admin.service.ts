@@ -196,6 +196,7 @@ export class AdminService {
       )
   }
   addConcession(e: any) {
+    debugger;
     return this.http.post<any>(`${environment.apiUrl}/admin/create_concession`,
       {
         companYNAME: e.companY_NAME, concession_Held: e.concession_Held, equity_distribution: e.equity_distribution,
