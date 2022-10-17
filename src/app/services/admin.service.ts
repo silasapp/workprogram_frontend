@@ -19,7 +19,7 @@ export class AdminService {
     return this.http.get<any>(`${environment.apiUrl}/admin/${url}`)
       .pipe(retry(this.num),
         map((response) => {
-        
+
           response.data = this.gen.lowerArray(response.data);
           return response
         })
@@ -31,7 +31,7 @@ export class AdminService {
     return this.http.get<any>(`${environment.apiUrl}/admin/get_parametersconfiguration`)
       .pipe(retry(this.num),
         map((response) => {
-          
+
           //response.data = this.gen.lowerArray(response.data);
           return response
         })
@@ -43,7 +43,7 @@ export class AdminService {
     return this.http.post<any>(`${environment.apiUrl}/admin/admin_start_end_dates`, {
       start_date: e.start_date, end_date: e.end_date
     }, { params: { _action: action } })
-      .pipe(retry(this.num), 
+      .pipe(retry(this.num),
         map((response) => {
 
           //response.data = this.gen.lowerArray(response.data);
@@ -51,14 +51,14 @@ export class AdminService {
         })
       )
   }
-  
 
-  addDataDuration_duw(e:any, action:string){
-    
+
+  addDataDuration_duw(e: any, action: string) {
+
     return this.http.post<any>(`${environment.apiUrl}/admin/admin_start_end_date_data_uploads`, {
       start_date: e.start_date, end_date: e.end_date
     }, { params: { _action: action } })
-      .pipe(retry(this.num), 
+      .pipe(retry(this.num),
         map((response) => {
 
           //response.data = this.gen.lowerArray(response.data);
@@ -67,24 +67,83 @@ export class AdminService {
       )
   }
 
-  addMeetingRoom(e:any, action:string){
-return this.http.post<any>(`${environment.apiUrl}/admin/admin_meeting_rooms`, {meeting_room:e.meeting_rooms}, {params:{_action:action}})
-.pipe(retry(this.num),
-map((response)=>{
-  return response;
-}))
+  addMeetingRoom(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_meeting_rooms`, { meeting_room: e.meeting_rooms }, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
   }
 
-  addEmailDuration(e:any, action:string){
+
+
+  addContractType(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_categories`, { categories: e.categories }, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+
+
+
+
+  addEmailDuration(e: any, action: string) {
     debugger;
-    return this.http.post<any>(`${environment.apiUrl}/admin/admin_email_days`, {dayS_:e.dayS_}, {params:{_action:action}})
-    .pipe(retry(this.num),
-    map((response)=>{
-      return response;
-    }))
-      }
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin_email_days`, { dayS_: e.dayS_ }, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+  addDataTypes(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/data_types`, { categories: e.datatype }, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
 
 
+
+  addPenalities(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/admin_penalties`, { no_show: e.no_show, no_submission:e.no_submission }, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+
+  addPresentationCategories(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/admin_presentation_categories`, {  categories: e.categories}, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+
+  addWellCategories(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/admin_well_categories`, {  welltype: e.welltype}, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+  addSuperAdmin(e: any, action: string) {
+    return this.http.post<any>(`${environment.apiUrl}/roles_super_admins`, {   email_: e. email_}, { params: { _action: action } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response;
+        }))
+  }
+
+
+  
 
   getUser(id_: string) {
     var id = parseInt(id_);
@@ -111,8 +170,8 @@ map((response)=>{
   updateUser(e: any, id_: any) {
     debugger;
     var id = parseInt(id_);
-     return this.http.put<any>(`${environment.apiUrl}/admin/activate_deactivate`, '',
-     {params: { status: e.statuS_, id: id }},
+    return this.http.put<any>(`${environment.apiUrl}/admin/activate_deactivate`, '',
+      { params: { status: e.statuS_, id: id } },
     )
       .pipe(retry(this.num),
         map((response) => {
@@ -137,6 +196,7 @@ map((response)=>{
       )
   }
   addConcession(e: any) {
+    debugger;
     return this.http.post<any>(`${environment.apiUrl}/admin/create_concession`,
       {
         companYNAME: e.companY_NAME, concession_Held: e.concession_Held, equity_distribution: e.equity_distribution,
@@ -155,7 +215,7 @@ map((response)=>{
   }
 
   addCompanyConcession(e: any) {
-    
+
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_admin_concessions_information`,
       {})
       .pipe(
@@ -213,9 +273,9 @@ map((response)=>{
   }
 
 
-  updateCompanyCode(_id: any, _name: any, _status:any) {
+  updateCompanyCode(_id: any, _name: any, _status: any) {
     var id = parseInt(_id);
-    return this.http.put<any>(`${environment.apiUrl}/admin/update_company_codes`, '', { params: { id:id, name:_name, status:_status } }
+    return this.http.put<any>(`${environment.apiUrl}/admin/update_company_codes`, '', { params: { id: id, name: _name, status: _status } }
     )
       .pipe(retry(this.num),
         map((response) => {

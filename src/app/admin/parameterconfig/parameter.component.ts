@@ -57,30 +57,69 @@ this.genk=gen;
 
 
     }),
+
     this.dataDuration_duw_Form = new FormGroup({
       'id': new FormControl('', [Validators.required]),
         'start_date': new FormControl('', [Validators.required]),
         'end_date': new FormControl('', [Validators.required]),
         
     },{}), 
+
     this.meetingroom_Form = this.fb.group({
       id: ["", Validators.required],
       meeting_rooms: ["", Validators.required],
  
     }),
+
     this.email_notification_Form = this.fb.group({
       id: ["", Validators.required],
       dayS_: ['', Validators.required,],
  
     }),
+
     this.contractType_Form = this.fb.group({
       id: ["", Validators.required],
-      dayS_: ['', Validators.required,],
+      categories: ['', Validators.required,],
+ 
+    }),
+
+    this.dataForm_Form = this.fb.group({
+      id: ["", Validators.required],
+      datatype: ['', Validators.required,],
+ 
+    }),
+
+    this.penalties_Form = this.fb.group({
+      id: ["", Validators.required],
+      no_show: ['', Validators.required,],
+      no_submission: ['', Validators.required,],
+ 
+    }),
+  
+    this.presentation_Categories_Form = this.fb.group({
+      id: ["", Validators.required],
+      categories: ['', Validators.required,],
+ 
+    }),
+
+    this.well_Categories_Form = this.fb.group({
+      id: ["", Validators.required],
+      welltype: ['', Validators.required,],
+ 
+    }),
+
+    this.super_Admin_Form= this.fb.group({
+      id: ["", Validators.required],
+      email_: ['', Validators.required,],
  
     })
+
+
     
   }
 
+  
+  
 
 
 
@@ -173,8 +212,119 @@ this.genk=gen;
   }
 
 
+  addContractTypes(){
+    debugger;
+    this.admin.addContractType(this.contractType_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+  addDataTypes(){
+    debugger;
+    this.admin.addDataTypes(this.dataForm_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+
+  addPenalities(){
+    debugger;
+    this.admin.addDataTypes(this.penalties_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
 
   
+  addPresentationCategories(){
+    debugger;
+    this.admin.addPresentationCategories(this.presentation_Categories_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  addWellCategories(){
+    debugger;
+    this.admin.addPresentationCategories(this.well_Categories_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  addSuperAdmin(){
+    debugger;
+    this.admin.addPresentationCategories(this.super_Admin_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
 
 
 

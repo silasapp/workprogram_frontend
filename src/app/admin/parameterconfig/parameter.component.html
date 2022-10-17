@@ -208,8 +208,7 @@
                                                 <div style="display: flex;">
                                                         <div class="inpdiv"
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="text" class="inpute form-control"
-                                                                        formControlName="meeting_rooms">
+                                                                <input type="text" class="inpute form-control" formControlName="meeting_rooms">
                                                         </div>
                                                 </div>
                                         </div>
@@ -575,7 +574,7 @@
 
                                 <span>Penalties</span>
                         </div>
-
+<form>
 
                         <div style="width: 100%; display: flex;">
 
@@ -584,7 +583,7 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="categories">
                                                 </div>
                                         </div>
                                 </div>
@@ -594,7 +593,7 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="categories">
                                                 </div>
                                         </div>
                                 </div>
@@ -614,6 +613,7 @@
                                         style="width:330px;width:330px;margin-left: 0px;">
 
                         </div>
+                </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
@@ -665,6 +665,7 @@
                                 <span>Categories of Presentation</span>
                         </div>
 
+                        <form [formGroup]="super_Admin_Form" (ngSubmit)=" addPresentationCategories()">
 
                         <div style="width: 100%; display: flex;">
 
@@ -673,7 +674,7 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="categories">
                                                 </div>
                                         </div>
                                 </div>
@@ -692,6 +693,7 @@
                                         style="width:330px;width:330px;margin-left: 0px;">
 
                         </div>
+                        </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
@@ -756,6 +758,7 @@
                                 <span>Well Categories</span>
                         </div>
 
+                        <form [formGroup]="super_Admin_Form" (ngSubmit)=" addWellCategories()">
 
                         <div style="width: 100%; display: flex;">
 
@@ -764,7 +767,7 @@
                                         <div style="display: flex;">
                                                 <div class="inpdiv"
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="welltype">
                                                 </div>
                                         </div>
                                 </div>
@@ -783,6 +786,7 @@
                                         style="width:330px;width:330px;margin-left: 0px;">
 
                         </div>
+                        </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
@@ -852,6 +856,7 @@
                                 <span>Super Admin</span>
                         </div>
 
+                        <form [formGroup]="super_Admin_Form" (ngSubmit)="addSuperAdmin()">
 
                         <div style="width: 100%; display: flex;">
 
@@ -862,7 +867,7 @@
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
 
 
-                                                        <input type="text" class="inpute">
+                                                        <input type="text" class="inpute form-control" formControlName="email_">>
                                                 </div>
                                         </div>
 
@@ -873,6 +878,7 @@
 
 
                         </div>
+                        
                         <br>
 
 
@@ -883,6 +889,7 @@
                                         style="width:330px;width:330px;margin-left: 0px;">
 
                         </div>
+                </form>
                         <div style="width: 100%; display: flex;">
                                 <span class="demacation"
                                         style="display:inline-block;font-weight:bold;font-style:normal;width:100%;"></span>
