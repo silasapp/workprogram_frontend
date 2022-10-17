@@ -22,7 +22,7 @@
                 <div>
                     <div *ngIf="genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.dashboard]" routerLinkActive="active">
                         <span class="material-icons layout-icon">dashboard</span>
-                        <span>Dashboard</span>
+                        <!-- <span>Dashboard</span> -->
                     </div>
                     <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'select-date']" routerLinkActive="active">
                         <span class="material-icons layout-icon">event</span>
