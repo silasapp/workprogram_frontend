@@ -99,6 +99,7 @@ initForm() {
      this.adminservice.getConcessions(e.target.value).subscribe(
         (res) => {
           this.data = res.data
+       
           this.assignDataRows();
           this.assignPageNum();
           this.cd.markForCheck();
@@ -106,7 +107,7 @@ initForm() {
       )
     }
   fetchCompany(){
-    this.adminservice.fetch("get_companylist").subscribe(
+       this.adminservice.fetch("get_companylist").subscribe(
       (res) => {
         this.company = res.data;
         this.cd.markForCheck();
@@ -152,8 +153,11 @@ initForm() {
     
 
   onSubmit() {
+debugger;
     this.adminservice.addConcession(this.concessionForm.getRawValue()).subscribe(
+      
       (res) => {
+       
         if(res.statusCode == 200){
           this.Alert("Success", res.message,  "success")
         }

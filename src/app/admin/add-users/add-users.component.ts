@@ -21,7 +21,7 @@ export class AddUsersComponent implements OnInit {
   arrayRows = [];
   data: any[];
   year = [];
-  userForm: FormGroup
+  userForm: FormGroup;
 
     columns = [
       {
@@ -101,9 +101,11 @@ initForm() {
     }
   
     fetchdata(){
-     this.adminservice.fetch("get_users").subscribe(
+      debugger;
+     this.adminservice.fetch("Get_Companies").subscribe(
         (res) => {
-          this.data = res.data.companiesList
+          debugger
+          this.data = res.data;
           this.assignDataRows();
           this.assignPageNum();
           this.cd.markForCheck();
@@ -158,6 +160,7 @@ initForm() {
   }
 
   onSubmit() {
+    debugger;
     this.adminservice.addUser(this.userForm.getRawValue()).subscribe(
       (res) => {
         if(res.statusCode == 200){
@@ -166,7 +169,7 @@ initForm() {
         else{
           this.Alert("Error",res.message, "error")
         }
-        this.fetchdata();
+       // this.fetchdata();
         this.initForm();
       }
     )

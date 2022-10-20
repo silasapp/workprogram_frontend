@@ -1,185 +1,137 @@
-<div style="width: 85%; border: solid 1px grey; background-color: white; margin: auto; border-radius:10px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3); margin-top: 5%; margin-bottom: 5%;">
-    <div class="container">
-        <h1>Upload Company Code</h1>
-    
+<div
+  style="width: 85%; border: solid 1px grey; background-color: white; margin: auto; border-radius:10px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3); margin-top: 5%; margin-bottom: 5%;">
+  <div class="container">
+    <h1>{{title}}</h1>
+
+
+    <a class="btn btn-primary" href="assets/Company_Code_Template.xlsx" target="_blank"
+      download="Company_Code_Template.xlsx" style="background-color:#117849;">Download Template <i
+        class="fa fa-download" aria-hidden="true"></i>
+    </a>
+
     <div class="bg-success">
-        <hr size="5">
+      <hr size="5">
     </div>
+    <form [formGroup]="CompanyCodeForm">
+      <div>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>Company Name</h2>
-                </div>
-                <div class="col-sm-6"><input type="text" class="form-control" id="test" placeholder="TEST" formControlName="companyName"></div>
+          <div class="row">
+            <div class="col-sm-3">
+              <h2>Company Name</h2>
             </div>
+            <div class="col-sm-6"><input readonly="readonly" type="text" class="form-control" id="test"
+                placeholder="{{auth.currentUserValue?.companyName}}" formControlName="companyName"></div>
+          </div>
         </div>
-    
+
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>Company Email</h2>
-                </div>
-                <div class="col-sm-6"><input type="text" class="form-control" placeholder="Company Email" formControlName="companyEmail"></div>
+          <div class="row">
+            <div class="col-sm-3">
+              <h2>Company Email</h2>
             </div>
+            <div class="col-sm-6"><input readonly="readonly" type="text" class="form-control"
+                placeholder="{{auth.currentUserValue?.companyEmail}}" formControlName="companyEmail"></div>
+          </div>
         </div>
-    
+
         <div class="bg-success">
-            <hr size="5">
+          <hr size="5">
         </div>
         <br><br>
 
         <div style="width: 30%;">
-            <label class="labelwp">Upload File/Document</label>
-            <div style="display: flex;">
-              <div
-                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                <input type="file" class="inpute">
-              </div>
+          <label class="labelwp">Upload File/Document</label>
+          <div style="display: flex;">
+            <div
+              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+              <input type="file" formControlName="companycodeFilePath" accept=".xlsx"
+                (change)="saveCompanyCodeDoc($event)" class="inpute">
             </div>
           </div>
-          <br><br>
-
-          <div style="text-align: center; margin-bottom: 5%;">
-            <input type="submit" value="Upload Company Code"
-                style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 10%; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);">
         </div>
+        <br><br>
 
-       
+        <div style="text-align: center; margin-bottom: 5%;">
+          <input type="submit" value="Upload Company Code" (click)="Company_Code_Submit()"
+            style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 10%; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);">
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <hr size="10">
+  <br><br>
+
+  <div
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
+    <div>
+      <input #myInput (keyup)='genk.searchTable(myInput, codeTbody)' type='text' placeholder="Search Table"
+        class="search">
     </div>
-    <hr size="10">
-    <br><br>
+    <div style="width: 225px;">
+      <select id=" " class="form-select" (change)="resize($event)">
+        <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
+      </select>
+    </div>
 
     <div
-          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
-          <div>
-            <input #myInput (keyup)='genk.searchTable' type='text' placeholder="Search Table"
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0;">
+      <!-- <div>
+            <input #myInput (keyup)='genk.searchTable(myInput, Tbody)' type='text' placeholder="Search Table"
               class="search">
           </div>
           <div style="width: 225px;">
             <select id="time" class="form-select" (change)="resize($event)">
               <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
             </select>
-          </div>
-  
-          <div style="display: flex;">
-            <button (click)="genk.printData" class="rebtn">
-              <mat-icon style="font-size: 20px;">print</mat-icon> Print
-            </button>
-            <button (click)="genk.tableToCSV" class="rebtn" style="margin: 0 20px; background-color: teal;">
-              <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
-            </button>
-            <button (click)="genk.copyTable" class="rebtn"
-              style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
-              <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
-            </button>
-          </div>
-        </div>
-      <br><br>
+          </div> -->
 
-        <table class="apptable" cellPadding="10px">
-            <thead>
-                <tr>
-                    <th>COMPANY NAME</th>
-                    <th>COMPANY CODE</th>
-                    <th>CREATED BY</th>
-                    <th>DATE CREATED</th>
-                    <th>IS ACTIVE</th>
-                    <th>STATUS</th>
-                  </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>AFREN GLOBAL ENERGY RESOURCES LIMITED</td>
-                    <td>AGE/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <button  class="btn"
-                    style="background-color: whitesmoke; color: darkslategrey; font-weight: 400;">
-                    YES
-                  </button>
-                    
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>ASHBERT OIL & GAS LTD</td>
-                    <td>AOG/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                  <td>AMNI INTL PETR. DEV. CO. LTD OML.</td>
-                    <td>companyofchoice</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>BT ENERGY LIMITED</td>
-                    <td>BTE/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                  <td>CHINA NATIONAL OIL DEV. CO (CNODC)</td>
-                    <td>CNO/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>CONOIL PRODUCING LTD</td>
-                    <td>CONOIL/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                  <td>CLEANWATERS CONSORTIUM</td>
-                    <td>CWC/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>CROWNWELL PETROLEUM LTD</td>
-                    <td>CWP/001</td>
-                    <td>anthony.nwosu@brandonetech.com</td>
-                    <td>23 Nov 2021 23:11:05</td>
-                    <td><button>YES</button></td>
-                    <td><button>UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>DAJO OIL LIMITED</td>
-                      <td>DAJ/001</td>
-                      <td>anthony.nwosu@brandonetech.com</td>
-                      <td>23 Nov 2021 23:11:05</td>
-                      <td><button>YES</button></td>
-                      <td><button>UPDATE</button></td>
-                    </tr>
-                    <tr>
-                      <td>AFRICOIL & MARKETING CO. LTD.</td>
-                      <td>ACM/001</td>
-                      <td>anthony.nwosu@brandonetech.com</td>
-                      <td>23 Nov 2021 23:11:05</td>
-                      <td><button>YES</button></td>
-                      <td><button>UPDATE</button></td>
-                    </tr>
+      <div style="display: flex;">
+        <button (click)="genk.printData(codeTable)" class="rebtn">
+          <mat-icon style="font-size: 20px;">print</mat-icon> Print
+        </button>
+        <button (click)="genk.tableToCSV(codeTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+          <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+        </button>
+       
+        <button (click)="genk.copyTable(codeTable)" class="rebtn"
+          style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+          <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
+        </button>
+      </div>
+    </div>
+  </div>
+  <br><br>
 
-
-                  
-            </tbody>
+  <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+    <table #codeTable class="apptable" cellPadding="10px">
+      <thead>
+        <tr>
+          <th *ngFor="let h of columns">
+            {{h.header}}
+          </th>
+        </tr>
+      </thead>
+      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+        <tr *ngFor="let row of arrayRows">
+          <td *ngFor="let h of columns" [ngStyle]="{'color': row[h.columnDef]=='NO'?'red':'black'}">
+            {{row[h.columnDef]}}
             
-          </table>
-          
-    <div
+          </td>
+          <td>
+            <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
+             value="{{row.id}}"  style="background-color: white; color: GREEN;
+              BORDER: 2px solid;" class="submitbtn"> <mat-icon style="font-size: 20px;"> border_color</mat-icon> <b>Edit</b>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div
     style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
     <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
       <mat-icon>keyboard_double_arrow_left</mat-icon>
@@ -196,5 +148,62 @@
       <mat-icon>keyboard_double_arrow_right</mat-icon>
     </button>
   </div>
-    
 
+
+
+
+
+  <div *ngIf="displayStyle" class="modal" style="display: block;">
+    <div class="modal-dialog">
+      <!-- <form [formGroup]="CompanyCodeForm"> -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">UPDATE COMPANT CODE</h4>
+          <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-danger" (click)="closePopup()" style="background-color: white; color: red; BORDER: 2px solid; float: left;"><mat-icon>clear</mat-icon>
+            Close
+          </button>
+        </div>
+        
+        <div class="modal-body" style="align-self: center">
+          <div>
+            <td style="height: 20px">
+              <span id="">Company Name</span>
+              <br />
+
+              <input type="text" [(ngModel)]="codeBody.companyname" class="form-control" style="width:450px; resize:none">
+            </td>
+            <br />
+            <br />
+            <td style="height: 20px">
+              <span id="">Company Code</span>
+              <br />
+              <br />
+              <input type="text" [(ngModel)]="codeBody.companycode" readonly class="form-control" style="width:450px; resize: none">
+            </td>
+            <br />
+            <br />
+            <td class="">
+              <span id="">Active Status</span>
+              <br />
+              <br />
+              <select [(ngModel)]="codeBody.isactive"
+                class="form-control" style="width:350px;">
+                <option value="NO">NO</option>
+                <option value="YES">YES</option>
+              </select>
+            </td>
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+         
+          <button (click)="onSubmit()"  mat-stroked-button style="margin: 50px; padding: 10px" type="button" type="button" class="btn btn-success"  style="background-color: white; color: GREEN; BORDER: 2px solid;"> <mat-icon>done</mat-icon>
+            Update
+          </button>
+        </div>
+      </div>
+    <!-- </form> -->
+    </div>
+  </div>
