@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
@@ -7,8 +6,7 @@ import { WorkProgramService } from '../services/workprogram.service';
 @Component({
   selector: 'app-ndr-report',
   templateUrl: './executive-summary.component.html',
-  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss']
 })
 export class ExecutiveSummaryComponent implements OnInit {
     genk: GenericService;
@@ -26,7 +24,7 @@ export class ExecutiveSummaryComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
       this.data = [];
       this.getData();
     }
@@ -34,11 +32,20 @@ export class ExecutiveSummaryComponent implements OnInit {
 
 
     getData() {
-      this.report.getExecutiveReport(this.genk.reportYear)
+      //this.cd.markForCheck();
+      this.modalService.logCover("Loading data...", true);
+      if (this.genk.reportYear !== undefined || this.genk.reportYear != null) {
+        this.report.getExecutiveReport(this.genk.reportYear)
           .subscribe(res => {
               this.data = res.summary_1;
+              this.modalService.togCover();
               this.cd.markForCheck();
+
           });
+      }
+
+          //this.modalService.togCover();
     }
 
 }
+

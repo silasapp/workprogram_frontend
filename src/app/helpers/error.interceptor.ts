@@ -15,7 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         private userdat: ModalService,
         private locate: Location,
         private router: Router) {
-            
+
         }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -30,6 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 //window.location.reload();
             }
             if (err.status === 400) {
+              debugger;
                 const head = 'An error occurred';
                 this.userdat.logYawa(err.error.message, head);
                 return EMPTY;

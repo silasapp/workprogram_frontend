@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { WorkprogrammeReportService } from '../../services/workprogramme-report.service'
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
@@ -6,6 +6,8 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
+import { ModalService } from 'src/app/services';
+import { CdkAriaLive } from '@angular/cdk/a11y';
 declare var $: any;
 
 @Component({
@@ -28,9 +30,11 @@ export class DashboardComponent implements OnInit {
   firstChartData: any;
   secondChartData: any;
   thirdChartData: any[];
-  fourthChartData: any
+  fourthChartData: any;
+  modalService: ModalService;
 
-  constructor(private report: WorkprogrammeReportService, private genReport: ReportService) {
+  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private modale: ModalService, private cd: ChangeDetectorRef) {
+    this.modalService = modale;
    }
 
   ngOnInit(): void {
@@ -40,16 +44,18 @@ ngAfterViewInit(){
 }
 
   fetchreport() {
-    let value = 2021
+    let value = 2021;
+    this.modalService.logCover("Loading data...", true);
     this.report.fetch("general_report", value).subscribe(
       (res) => {
         this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
         this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
         this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-        debugger;
         this.plotDoubleBarChart();
         this.plotDoublePieChart();
         this.plotDoubleBarChartHorizontal();
+        this.modalService.togCover();
+        this.cd.markForCheck();
       }
 
     )

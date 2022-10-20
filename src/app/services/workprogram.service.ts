@@ -348,7 +348,6 @@ saveReserveUpdateCurrent(conbody: RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESER
 }
 
 post_Budget(budget: budgetActualExpenditure,  year: string, omlName: string, fieldName: string, id, actionToDo){
-
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`, budget, {params: {year: year, omlName: omlName, fieldName, id, actionToDo}})
   .pipe(retry(this.num),
   map((response) => {
@@ -358,7 +357,6 @@ post_Budget(budget: budgetActualExpenditure,  year: string, omlName: string, fie
 }
 
 post_Exploratory(budget: exploratoryActivities,  year: string, omlName: string, fieldName: string, id, actionToDo){
-
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`, budget, {params: {year: year, omlName: omlName, fieldName, id, actionToDo}})
   .pipe(retry(this.num),
   map((response) => {

@@ -41,6 +41,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   f_isTabVisible: boolean;
   isAddConcession = false;
   isAddField = false;
+  isInsert = true;
 
   columns = [
     //   {
@@ -200,7 +201,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   ConcessionSubmit() {
-
+    debugger;
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
@@ -209,10 +210,14 @@ export class ConcessionsfieldsComponent implements OnInit {
       if (item != 'consession_Id') {
         concessionInfo[this.genk.upperText(item)] = this.concessionBody[item]?.toString() ?? '';
       }
-      else {
-        actionToDo = 'UPDATE';
-        id = this.concessionBody[item]?.toString();
-      }
+    }
+
+    if (this.isInsert) {
+      actionToDo = 'INSERT';
+      //id = this.concessionBody[item]?.toString();
+    }
+    else {
+      actionToDo = 'UPDATE';
     }
 
     this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
@@ -261,7 +266,7 @@ export class ConcessionsfieldsComponent implements OnInit {
 
 
   loadTable_Concession(data) {
-    debugger;
+    //debugger;
     this.c_ColumnHeader = [];
     this.c_ColumnValue = [];
     let datae: any[] = data;

@@ -12,6 +12,7 @@ import { ErrorInterceptor, JwtInterceptor } from './helpers';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 //import { ConcessionsFieldsComponent } from './company/concessions-fields/concessions-fields.component';
 
 
@@ -29,6 +30,7 @@ import { NgChartsModule } from 'ng2-charts';
     HttpClientModule,
     MatSliderModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     CompanyModule,
     NgChartsModule
   ],
