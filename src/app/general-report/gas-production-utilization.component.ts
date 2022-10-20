@@ -54,42 +54,34 @@ export class GasProductionAndUtilizationComponent implements OnInit {
     }
 
     public get tableTitle(): string {
-      return `Crude Oil Production in bbls from ${Number(this.genk.reportYear) - 4} to ${this.genk.reportYear} on Contract Type`;
+      return `Table 8: Annual Gas Production and Utilization for ${this.genk.reportYear} (MMscf)`;
     }
 
     public get barone(): string {
-      return `TOTAL ${this.genk.reportYear}`;
+      return "FLARED GAS PRODUCED";
     }
 
     public get bartwo(): string {
-      return `TOTAL ${Number(this.genk.reportYear) - 1}`;
+      return "UTILIZED GAS PRODUCED";
     }
 
     public get columns(): any[] {
       this.columnsArray = [
         {
-          "columnDef": "contract_Type",
-          "header": "CONTRACT TYPE"
+          "columnDef": "actual_Total_Gas_Produced",
+          "header": "TOTAL GAS PRODUCED"
         },
         {
-          "columnDef": `_${this.genk.reportYear}`,
-          "header": `${this.genk.reportYear}`
+          "columnDef": `flared_Gas_Produced`,
+          "header": `FLARED GAS PRODUCED`
         },
         {
-          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
-          "header": `${Number(this.genk.reportYear) - 1}`
+          "columnDef": `utilized_Gas_Produced`,
+          "header": `UTILIZED GAS PRODUCED`
         },
         {
-          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
-          "header": `${Number(this.genk.reportYear) - 2}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
-          "header": `${Number(this.genk.reportYear) - 3}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
-          "header": `${Number(this.genk.reportYear) - 4}`
+          "columnDef": `year_of_WP`,
+          "header": `YEAR`
         }
       ];
       return this.columnsArray;
@@ -98,28 +90,20 @@ export class GasProductionAndUtilizationComponent implements OnInit {
     public get repcolumns(): any[] {
       this.columnsArray= [
         {
-          "columnDef": "contract_Type",
-          "header": "CONTRACT TYPE"
+          "columnDef": "actual_Total_Gas_Produced",
+          "header": "TOTAL GAS PRODUCED"
         },
         {
-          "columnDef": `_${this.genk.reportYear}`,
-          "header": `${this.genk.reportYear}`
+          "columnDef": `flared_Gas_Produced`,
+          "header": `FLARED GAS PRODUCED`
         },
         {
-          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
-          "header": `${Number(this.genk.reportYear) - 1}`
+          "columnDef": `utilized_Gas_Produced`,
+          "header": `UTILIZED GAS PRODUCED`
         },
         {
-          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
-          "header": `${Number(this.genk.reportYear) - 2}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
-          "header": `${Number(this.genk.reportYear) - 3}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
-          "header": `${Number(this.genk.reportYear) - 4}`
+          "columnDef": `year_of_WP`,
+          "header": `YEAR`
         }
       ];
       return this.columnsArray;
@@ -183,9 +167,9 @@ export class GasProductionAndUtilizationComponent implements OnInit {
   getGasProductionReport() {
     this.workprogram.GetGasProductionReport(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.crude_Oil_Production_By_ContractType_Pivotted as any[];
-        this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
+        this.data = res.annual_Gas_Produced as any[];
+        this.totalone = Math.round(this.report.sumColumn(this.data, `flared_Gas_Produced`));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, `utilized_Gas_Produced`));
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
@@ -223,7 +207,7 @@ export class GasProductionAndUtilizationComponent implements OnInit {
       let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
       this.selectedColumns = remainingArr;
     }
-    this.cd.markForCheck;
+    this.cd.markForCheck();
   }
 
   selectColumns() {
@@ -233,58 +217,58 @@ export class GasProductionAndUtilizationComponent implements OnInit {
   }
 
   plotDoublePieChart() {
-    if (this.selectedColumns.length > 2) {
-      alert('Can not plot this chart');
-    }
-    else {
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
-      node.style.width = '100%';
-      node.style.height = '500px';
-      this.myChartBox.nativeElement.appendChild(node);
-      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
-      let sele1 = this.selectedColumns[0].columnDef;
-      let sele2 = this.selectedColumns[1].columnDef;
+    // if (this.selectedColumns.length > 2) {
+    //   alert('Can not plot this chart');
+    // }
+    // else {
+    //   this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+    //   const node = document.createElement("div");
+    //   node.style.width = '100%';
+    //   node.style.height = '500px';
+    //   this.myChartBox.nativeElement.appendChild(node);
+    //   let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+    //   let sele1 = this.selectedColumns[0].columnDef;
+    //   let sele2 = this.selectedColumns[1].columnDef;
 
-      this.myChartBox.nativeElement.style.display = 'block';
-      if (this.selectedColumns.length === 2) {
-        let reportdata = this.data;
-        let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
-      }
-    }
+    //   this.myChartBox.nativeElement.style.display = 'block';
+    //   if (this.selectedColumns.length === 2) {
+    //     let reportdata = this.data;
+    //     let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
+    //     this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+    //   }
+    // }
   }
 
   plotDoubleBarChart() {
-    let totalString = "";
-    if (this.selectedColumns.length > 2) {
-      alert('Can not plot this chart');
-    }
-    else {
+    // let totalString = "";
+    // if (this.selectedColumns.length > 2) {
+    //   alert('Can not plot this chart');
+    // }
+    // else {
 
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
-      node.style.width = '100%';
-      node.style.height = '500px';
-      this.myChartBox.nativeElement.appendChild(node);
-      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
-      let sele1 = this.selectedColumns[0].columnDef;
-      let sele2 = this.selectedColumns[1].columnDef;
+    //   this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+    //   const node = document.createElement("div");
+    //   node.style.width = '100%';
+    //   node.style.height = '500px';
+    //   this.myChartBox.nativeElement.appendChild(node);
+    //   let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+    //   let sele1 = this.selectedColumns[0].columnDef;
+    //   let sele2 = this.selectedColumns[1].columnDef;
 
-      this.myChartBox.nativeElement.style.display = 'block';
-      if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
-        for (var i = 0; i < chartdata.length; i++) {
-          totalString += chartdata[i].base;
-        }
-        if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-        else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-      }
-    }
+    //   this.myChartBox.nativeElement.style.display = 'block';
+    //   if (this.selectedColumns.length === 2) {
+    //     let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+    //     for (var i = 0; i < chartdata.length; i++) {
+    //       totalString += chartdata[i].base;
+    //     }
+    //     if (totalString.length > 70) {
+    //       this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+    //     }
+    //     else {
+    //       this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+    //     }
+    //   }
+    //}
   }
 
 
