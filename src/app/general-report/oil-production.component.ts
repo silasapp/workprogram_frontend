@@ -223,7 +223,7 @@ export class OilProductionComponent implements OnInit {
       let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
       this.selectedColumns = remainingArr;
     }
-    this.cd.markForCheck;
+    this.cd.markForCheck();
   }
 
   selectColumns() {

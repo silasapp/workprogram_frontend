@@ -7,8 +7,7 @@ import { WorkProgramService } from '../services/workprogram.service';
 @Component({
   selector: 'app-ndr-report',
   templateUrl: './seismic-activities.component.html',
-  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss']
 })
 export class SeismicActivitiesApprovedComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
@@ -99,7 +98,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     ngOnInit() {
       this.data = [];
-      this.yearList();
+      //this.yearList();
       this.genk.sizePerPage = this.genk.sizeten;
       this.getSeismic();
       this.getSeismicReportText();
@@ -119,25 +118,25 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("concessionsituation", value).subscribe(
-        (res) => {
-            this.data = res.data as any[];
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-        }
-      )
-    }
+  //   fetchdata(e){
+  //     let value = e.target.value;
+  //    this.report.fetch("concessionsituation", value).subscribe(
+  //       (res) => {
+  //           this.data = res.data as any[];
+  //           this.assignDataRows();
+  //           this.assignPageNum();
+  //           this.cd.markForCheck();
+  //       }
+  //     )
+  //   }
 
-    yearList() {
-      this.report.getYearList("concessionsituationyearlist")
-          .subscribe((res: any[]) => {
-              this.listyear = res;
-              this.cd.markForCheck();
-          });
-  }
+  //   yearList() {
+  //     this.report.getYearList("concessionsituationyearlist")
+  //         .subscribe((res: any[]) => {
+  //             this.listyear = res;
+  //             this.cd.markForCheck();
+  //         });
+  // }
 
 
     goNext() {
@@ -178,7 +177,9 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
 
   getSeismic() {
-
+    debugger;
+    if (this.genk.reportYear !== undefined || this.genk.reportYear != null) {
+      this.modalService.logCover("Loading data...", true);
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
@@ -186,8 +187,11 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();
             this.assignPageNum();
+            this.modalService.togCover();
             this.cd.markForCheck();
-      });
+      },
+      err => {this.modalService.togCover();});
+    }
   }
 
   getSeismicReportText() {
@@ -229,7 +233,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
       this.selectedColumns = remainingArr;
     }
-    this.cd.markForCheck;
+    this.cd.markForCheck();
   }
 
   selectColumns() {

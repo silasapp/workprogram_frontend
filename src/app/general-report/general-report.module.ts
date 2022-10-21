@@ -29,6 +29,11 @@ import { CrudeProductionContractComponent } from './crude-production-contract.co
 import { CrudeProductionTerrainComponent } from './crude-production-terrain.component';
 import { ReconciledOilProductionComponent } from './reconciled-oil-production.component';
 import { GasProductionAndUtilizationComponent } from './gas-production-utilization.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { GasProductionContractComponent } from './gas-production-contract.component';
+import { GasProductionTerrainComponent } from './gas-production-terrain.component';
+import { GasProductionContractBasisComponent } from './gas-prod-contract-basis.component';
+import { GasFlarePenaltyComponent } from './gas-flare-penalty.component';
 
 
 @NgModule({
@@ -51,6 +56,10 @@ import { GasProductionAndUtilizationComponent } from './gas-production-utilizati
     CrudeProductionTerrainComponent,
     ReconciledOilProductionComponent,
     GasProductionAndUtilizationComponent,
+    GasProductionContractComponent,
+    GasProductionTerrainComponent,
+    GasProductionContractBasisComponent,
+    GasFlarePenaltyComponent,
     GeneralReportComponent,
     ExecutiveSummaryComponent
   ],
@@ -64,6 +73,7 @@ import { GasProductionAndUtilizationComponent } from './gas-production-utilizati
     FormsModule,
     ReactiveFormsModule,
     NgChartsModule,
+    MatProgressSpinnerModule,
     GeneralReportRoutingModule
   ]
 })

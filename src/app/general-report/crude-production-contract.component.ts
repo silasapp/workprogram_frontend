@@ -47,6 +47,7 @@ export class CrudeProductionContractComponent implements OnInit {
       this.data = [];
       this.genk.sizePerPage = this.genk.sizeten;
       this.getCrudeOilProduction();
+      //////get accessor columns prevents the checkbox clicks
     }
 
     public get pageIndex(): number {
@@ -184,6 +185,7 @@ export class CrudeProductionContractComponent implements OnInit {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.crude_Oil_Production_By_ContractType_Pivotted as any[];
+        this.data = this.data.slice(1, this.data.length);
         this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
         this.assignDataRows();
@@ -215,15 +217,16 @@ export class CrudeProductionContractComponent implements OnInit {
   }
 
   pickColumn(value: string, checked: boolean) {
+    debugger;
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.columnsArray.filter(x => x.columnDef == value)[0];
       this.selectedColumns.push(val);
     }
     else {
       let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
       this.selectedColumns = remainingArr;
     }
-    this.cd.markForCheck;
+    this.cd.markForCheck();
   }
 
   selectColumns() {
