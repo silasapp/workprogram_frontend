@@ -7,15 +7,13 @@ import { ReportService } from '../services/report.service';
 @Component({
   selector: 'app-ndr-report',
   templateUrl: './ndr-report.component.html',
-  styleUrls: ['./ndr-report.component.scss'],
+     styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NdrReportComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
-
-genk: GenericService;
-cdr: ChangeDetectorRef;
+  genk: GenericService; cdr: ChangeDetectorRef;
 title = 'NDR DATA';
 pagenum = 0;
 selectedPage = 1;

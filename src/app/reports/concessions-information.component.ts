@@ -4,16 +4,14 @@ import { GenericService } from '../services';
 
 @Component({
   selector: 'app-concessions-information',
-  templateUrl: 'concessions-information.component.html',
+  templateUrl: 'ndr-report.component.html',
   styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConcessionsInformationComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
-  
-  genk: GenericService;
-    cdr: ChangeDetectorRef;
+  genk: GenericService;   cdr: ChangeDetectorRef;
     title = 'Check Concession Status';
     pagenum = 0;
     selectedPage = 1;
@@ -263,5 +261,8 @@ assignDataRows() {
       }
     }
   }
+
+
+  
 }
 
