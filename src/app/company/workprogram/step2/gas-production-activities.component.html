@@ -1,5 +1,6 @@
 <div
   style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
   <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
     <span>GAS PRODUCTION ACTIVITIES</span><br><br>
   </div>
@@ -19,7 +20,7 @@
       </div>
 
       <div style="width: 30%;">
-        <label class="labelwp">Utilized (MMscf)</label>
+        <label class="labelwp">Utilized (MMSCF)</label>
         <div style="display: flex; width: 100%">
           <div class="inputshadow">
             <select class="dropwp" formControlName="utilized" [(ngModel)]="gasproductionBody.utilized">
@@ -32,7 +33,7 @@
       </div>
 
       <div style="width: 30%; margin: auto 0 0;">
-        <label class="labelwp">Flared (MMscf)</label>
+        <label class="labelwp">Flared (MMSCF)</label>
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
@@ -84,7 +85,7 @@
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
             <input (keypress)="genk.restrictData($event)" formControlName="no_of_gas_well_planned"
-              [(ngModel)]="gasproductionBody.no_of_gas_well_planned" class="inpute">
+              [(ngModel)]="gasproductionBody.no_of_gas_well_planned" class="inpute" type="number">
           </div>
         </div>
       </div>
@@ -156,7 +157,7 @@
     <br>
     <div style="display: flex; width: 100%; justify-content: space-between;">
       <div style="width: 30%;">
-        <label class="labelwp">Gas Flare Penalty Payment made?</label>
+        <label class="labelwp">Gas Flare Penalty Payment made</label>
         <div style="display: flex; width: 100%">
           <div class="inputshadow">
             <select class="dropwp" formControlName="gas_flare_Royalty_payment"[(ngModel)]="gasproductionBody.gas_flare_Royalty_payment">

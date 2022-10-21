@@ -1,5 +1,6 @@
 <div
   style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
   <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
     <span>FIELD DEVELOPMENT PLAN</span><br><br>
   </div>
@@ -43,12 +44,12 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between;">
       <div style="width: 30%; margin-top: auto;">
-        <label class="labelwp">Proposed number of wells from approved FDP ?</label>
+        <label class="labelwp">Proposed number of wells from approved FDP </label>
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
             <input (keypress)="genk.restrictData($event)" formControlName="proposed_number_of_wells_from_approved_FDP"
-              [(ngModel)]="fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP" class="inpute">
+              [(ngModel)]="fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP" type="number" class="inpute">
           </div>
         </div>
       </div>
@@ -59,18 +60,18 @@
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
             <input (keypress)="genk.restrictData($event)" formControlName="no_of_wells_drilled_in_current_year"
-              [(ngModel)]="fielddevelopmentBody.no_of_wells_drilled_in_current_year" class="inpute">
+              [(ngModel)]="fielddevelopmentBody.no_of_wells_drilled_in_current_year" class="inpute" type="number">
           </div>
         </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0;">
-        <label class="labelwp">No.of Producing Fields ?</label>
+        <label class="labelwp">No.of Producing Fields</label>
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
             <input (keypress)="genk.restrictData($event)" formControlName="noof_Producing_Fields"
-              [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields" class="inpute">
+              [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields" type="number" class="inpute">
           </div>
         </div>
       </div>
@@ -204,7 +205,7 @@
     
     <div class="row">
         <div class="col-md-4">
-            <label class="labelwp">Is this field straddling ?</label>
+            <label class="labelwp">Is this field straddling?</label>
             <br>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
                 <select class="dropwp" formControlName="is_any_of_your_field_straddling" [(ngModel)]="unitizationBody.is_any_of_your_field_straddling">
@@ -218,7 +219,7 @@
 
         <div class="col-md-4">
           <label class="labelwp">What Concession is the field straddling
-                (Seperate with a comma if more than one e.g OML 21, OPL 24)</label>
+                (Seperate with a comma if more than one e.g OML 21, OPL 24)?</label>
             <div style="display: flex;">
                 <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
@@ -228,7 +229,7 @@
         </div>
     
         <div class="col-md-4">
-          <label class="labelwp">Is the straddled field Producing</label>
+          <label class="labelwp">Is the straddled field Producing?</label>
           <br>
             <div style="display: flex; width: 100%;">
                 <div class="inputshadow">

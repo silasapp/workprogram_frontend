@@ -1,7 +1,9 @@
 <div class="wppage">
+  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
     <div style="font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
         <span>Geophysical Activities On Quarterly Basis</span>
-    </div><br>
+    </div>
+    <br>
 
     <div style="text-align: start; font-size: 20px; font-weight: 500; color: teal; margin-bottom: 10px;">
         <span>Acquisition</span><br>
@@ -75,7 +77,7 @@
                             <div style="display: flex;">
                                 <div class="inpdivcurrency">
                                     <span class="currencywp">&#x20A6;</span>
-                                    <input type="text" formControlName="budeget_Allocation_NGN"
+                                    <input type="number" formControlName="budeget_Allocation_NGN"
                                         (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                                         (change)="acquisitionBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
                                         [value]="acquisitionBody.budeget_Allocation_NGN" class="inpute">
@@ -88,7 +90,7 @@
                             <div style="display: flex;">
                                 <div class="inpdivcurrency">
                                     <span class="currencywp">$</span>
-                                    <input type="text" formControlName="budeget_Allocation_USD"
+                                    <input type="number" formControlName="budeget_Allocation_USD"
                                         (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                                         (change)="acquisitionBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
                                         [value]="acquisitionBody.budeget_Allocation_USD" class="inpute">
@@ -103,7 +105,7 @@
 
             <div class="toprow">
                 <div style="width: 30%;">
-                    <label class="labelwp">Any Acquired Geophysical Data</label>
+                    <label class="labelwp">Any Acquired Geophysical Data?</label>
                     <div class="wpwidth">
                         <div class="inputshadow">
                             <select class="dropwp" formControlName="geo_acquired_geophysical_data"
@@ -293,13 +295,13 @@
 
   <div>
     <div class="quarterbox">
-      <div class="quarterspace" [ngClass]="quaterPRClassOne" (click)="changePRQuater(1, btnprocess)">
+      <div class="quarterspace" [ngClass]="quaterPRClassOne" (click)="changePRQuater(1, btnprocess) ">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">1</span> Quarter</span>
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassTwo" (click)="changePRQuater(2, btnprocess)">
+      <div class="quarterspace" [ngClass]="quaterPRClassTwo" (click)="changePRQuater(2, btnprocess) ">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">2</span> Quarter</span>
         </div>
@@ -431,7 +433,7 @@
   <div style="display:flex ; width: 100%; justify-content: space-between;">
 
     <div style="width: 30%; "><br>
-      <label class="labelwp">Any Ongoing Processing Project</label>
+      <label class="labelwp">Any Ongoing Processing Project?</label>
       <div style="display: flex; width: 100%">
         <div class="inputshadow">
           <select class="dropwp" formControlName="geo_Any_Ongoing_Processing_Project" [(ngModel)]="processingBody.geo_Any_Ongoing_Processing_Project">
@@ -447,7 +449,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="quantum_Planned" [(ngModel)]="processingBody.quantum_Planned" class="inpute">
+          <input type="number" formControlName="quantum_Planned" [(ngModel)]="processingBody.quantum_Planned" class="inpute">
         </div>
       </div>
     </div>
@@ -457,7 +459,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="geo_Quantum_of_Data" [(ngModel)]="processingBody.geo_Quantum_of_Data" class="inpute">
+          <input type="number" formControlName="geo_Quantum_of_Data" [(ngModel)]="processingBody.geo_Quantum_of_Data" class="inpute">
         </div>
       </div>
     </div>
@@ -511,7 +513,7 @@
     <div style="width: 30%;"><br>
       <label class="labelwp">Completion Status(%)</label>
       <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="geo_Completion_Status" [(ngModel)]="processingBody.geo_Completion_Status" class="inpute">
+        <input type="number" formControlName="geo_Completion_Status" [(ngModel)]="processingBody.geo_Completion_Status" class="inpute">
       </div>
     </div>
 
@@ -527,7 +529,7 @@
           <div style="display: flex;">
             <div class="inpdivcurrency">
               <span class="currencywp">&#x20A6;</span>
-              <input type="text" formControlName="budeget_Allocation_NGN"
+              <input type="number" formControlName="budeget_Allocation_NGN"
                   (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                   (change)="processingBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
                   [value]="processingBody.budeget_Allocation_NGN" class="inpute">
@@ -540,7 +542,7 @@
           <div style="display: flex;">
             <div class="inpdivcurrency">
               <span class="currencywp">$</span>
-              <input type="text" formControlName="budeget_Allocation_NGN"
+              <input type="number" formControlName="budeget_Allocation_NGN"
                   (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                   (change)="processingBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
                   [value]="processingBody.budeget_Allocation_USD" class="inpute">
