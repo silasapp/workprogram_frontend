@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import { CONCESSION_SITUATION } from '../../../models/step1-concession.model';
+import { Royalty} from '../../../models/step1-royalty.model';
 
 @Component({
   templateUrl: './concession-situation.component.html',
@@ -12,6 +13,8 @@ import { CONCESSION_SITUATION } from '../../../models/step1-concession.model';
 export class SWPConcessionSituationComponent implements OnInit {
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
+  RoyaltyForm: FormGroup;
+  royaltyBody: Royalty = {} as Royalty;
   wkpYear: string;
   wkpYearList = [];
   concessionHeld: string;
@@ -37,6 +40,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
@@ -69,7 +73,18 @@ export class SWPConcessionSituationComponent implements OnInit {
         area_in_square_meter_based_on_company_records: new FormControl(this.concessionBody.area_in_square_meter_based_on_company_records, [Validators.required]),
         comment: new FormControl(this.concessionBody.comment, [Validators.required])
       }, {});
+
+      this.RoyaltyForm = new FormGroup(
+        {
+          crude_Oil_Royalty: new FormControl(this.royaltyBody.crude_Oil_Royalty, [Validators.required]),
+          gas_Sales_Royalty: new FormControl(this.royaltyBody.gas_Sales_Royalty, [Validators.required]),
+          gas_Flare_Payment: new FormControl(this.royaltyBody.gas_Flare_Payment, [Validators.required]),
+          concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
+          miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
+        },{});
+
       this.getConcessionHeld();
+      this.getRoyaltyHeld();
       //this.concessionBody = this.genk.concessionData;
       //this.concessionHeldList = this.genk.OMLList;
     this.cd.markForCheck();
@@ -146,6 +161,74 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.cd.markForCheck();
           this.loadTable();
         }
+      });
+  }
+
+  getRoyaltyHeld() {
+    this.workprogram
+      .getRoyalty(this.genk.OmlName, this.genk.wpYear,)
+      .subscribe((res) => {
+        debugger;
+        let royaltyInfo = res.royalty[0] as Royalty;
+        //console.log(conInfo);
+        if (!royaltyInfo) {
+          royaltyInfo = {} as any;
+          royaltyInfo.crude_Oil_Royalty = res.royaltyInfo[0].companyName;
+          royaltyInfo.gas_Sales_Royalty = res.royaltyInfo[0].area;
+          royaltyInfo.gas_Flare_Payment = res.concessionInfo[0].equity_distribution;
+          royaltyInfo.concession_Rentals = res.concessionInfo[0].contract_Type;
+          royaltyInfo.miscellaneous = this.genk.formDate(
+            royaltyInfo.miscellaneous)
+
+          royaltyInfo.miscellaneous = this.genk.formDate(
+            royaltyInfo.miscellaneous
+          );
+          this.royaltyBody = royaltyInfo;
+          this.genk.royaltyData = royaltyInfo;
+          this.cd.markForCheck();
+        }
+        else {
+          royaltyInfo.miscellaneous = this.genk.formDate(
+            royaltyInfo.miscellaneous
+          );
+          royaltyInfo.miscellaneous = this.genk.formDate( royaltyInfo.miscellaneous
+          );
+          this.royaltyBody = royaltyInfo;
+          this.genk.royaltyData = royaltyInfo;
+          this.genk.isStep1 = true;
+          this.cd.markForCheck();
+          this.loadTable();
+        }
+      });
+  }
+
+  submitroyalty() {
+    //debugger;
+    //let salel = {} as CONCESSION_SITUATION;
+    if (this.royaltyBody.miscellaneous) {
+      this.royaltyBody.miscellaneous = this.concessionBody.date_of_Expiration.includes("T00:00:00") ? this.royaltyBody.miscellaneous : this.royaltyBody.miscellaneous + "T00:00:00";
+    }
+    if (this.royaltyBody.miscellaneous) {
+      this.royaltyBody.miscellaneous = this.royaltyBody.miscellaneous.includes("T00:00:00") ? this.royaltyBody.miscellaneous : this.royaltyBody.miscellaneous + "T00:00:00";
+    }
+    this.royaltyBody.crude_Oil_Royalty = this.royaltyBody.crude_Oil_Royalty.toString();
+    this.royaltyBody.gas_Sales_Royalty = this.royaltyBody.gas_Sales_Royalty.toString();
+    this.royaltyBody.gas_Flare_Payment = this.royaltyBody.gas_Flare_Payment.toString();
+    this.royaltyBody.concession_Rentals = this.royaltyBody.concession_Rentals.toString();
+    this.royaltyBody.miscellaneous = this.royaltyBody.miscellaneous.toString();
+    //this.concessionBody.id =  0;
+    this.royaltyBody.year = this.wkpYear;
+    this.royaltyBody.concession_Held = this.concessionHeld;
+    // for (let item in this.concessionBody) {
+    //   //console.log(item);
+    //   if (item != 'id' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID') {
+    //     salel[this.genk.upperText(item)] = this.concessionBody[item].toString() ?? '';
+    //   }
+    // }
+    console.log(this.royaltyBody);
+    this.workprogram.saveRoyalty(this.royaltyBody, this.genk.wpYear, this.genk.OmlName,this.genk.fieldName)
+      .subscribe( res => {
+        this.modalService.logNotice("Success", res.message, 'success');
       });
   }
 

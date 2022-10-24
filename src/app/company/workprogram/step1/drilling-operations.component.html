@@ -335,7 +335,7 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="water_depth" [(ngModel)]="categoryBody.water_depth"
+                    <input type="number" formControlName="water_depth" [(ngModel)]="categoryBody.water_depth"
                       class="inpute">
                   </div>
                 </div>
@@ -587,6 +587,6 @@
 <br>
 
 <div style="text-align: center;">
-  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']"
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']"
     class="nextbtn">Next</button>
 </div>
