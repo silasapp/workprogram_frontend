@@ -58,6 +58,7 @@ export class AddConcessionComponent implements OnInit {
       this.fetchCompany();
       this.genk.sizePerPage = this.genk.sizeten;
       this.initForm();
+      this.concessionForm.reset();
       //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
       //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
     }
@@ -159,13 +160,19 @@ debugger;
       (res) => {
        
         if(res.statusCode == 200){
+          debugger;
+       
           this.Alert("Success", res.message,  "success")
+        
         }
         else{
+          debugger;
+        
           this.Alert("Error",res.message, "error")
         }
         // this.fetchdata();
-        this.initForm();
+        debugger;
+       
       }
     )
   }
