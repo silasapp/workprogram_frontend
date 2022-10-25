@@ -96,7 +96,6 @@
             <br>
 
             <div class="toprow">
-
                 <div style="width: 30%">
                     <label id="ContentPlaceHolder2_Label13" class="labelwp">Name of Company</label>
                     <div style="display: flex;">
@@ -111,7 +110,7 @@
                     <label class="labelwp">Area (sq km)</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input disabled="" type="number" formControlName="area" [(ngModel)]="concessionBody.area"
+                            <input disabled="" formControlName="area" [(ngModel)]="concessionBody.area"
                                 class="inpute">
                         </div>
                     </div>
@@ -179,7 +178,7 @@
                     <label class="labelwp">No. of field producing</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input type="number" formControlName="no_of_field_producing"
+                            <input (keypress)="genk.restrictData($event)" formControlName="no_of_field_producing"
                                 [(ngModel)]="concessionBody.no_of_field_producing" class="inpute">
                         </div>
                     </div>
@@ -340,7 +339,7 @@
                     <label class="labelwp"> No. of Discovered Fields</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input type="number" formControlName="no_of_discovered_field"
+                            <input (keypress)="genk.restrictData($event)" formControlName="no_of_discovered_field"
                                 [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
                         </div>
                     </div>
@@ -366,7 +365,7 @@
                     <label class="labelwp">Proposed Budget for License/Lease</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input type="number" formControlName="proposed_budget_for_each_license_lease"
+                            <input formControlName="proposed_budget_for_each_license_lease"
                                 [(ngModel)]="concessionBody.proposed_budget_for_each_license_lease" class="inpute">
                         </div>
                     </div>
@@ -409,7 +408,7 @@
                     <label class="labelwp">Relinquishment/Retention of 50% contract area after 10 years if any?</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input #relinq type="text" formControlName="relinquishment_retention"
+                            <input #relinq type="text" (keypress)="genk.restrictData($event)" formControlName="relinquishment_retention"
                                 [(ngModel)]="concessionBody.relinquishment_retention" class="inpute">
                         </div>
                     </div>
@@ -423,8 +422,7 @@
                     <label class="labelwp">Area (sq km)</label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <input #areaSquare type="number"
-                                formControlName="area_in_square_meter_based_on_company_records"
+                            <input #areaSquare (keypress)="genk.restrictData($event)" formControlName="area_in_square_meter_based_on_company_records"
                                 [(ngModel)]="concessionBody.area_in_square_meter_based_on_company_records"
                                 class="inpute">
                         </div>
@@ -436,7 +434,7 @@
                     <label class="labelwp"> Comment </label>
                     <div style="display: flex;">
                         <div class="inpdiv">
-                            <textarea #wpcomment type="number" rows="3" formControlName="comment"
+                            <textarea #wpcomment rows="3" formControlName="comment"
                                 [(ngModel)]="concessionBody.comment" class="inpute"></textarea>
                         </div>
                     </div>
