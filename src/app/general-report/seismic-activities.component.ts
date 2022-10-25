@@ -243,6 +243,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   }
 
   plotDoublePieChart() {
+    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     }

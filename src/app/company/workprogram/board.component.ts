@@ -88,8 +88,12 @@ export class BoardComponent implements OnInit {
   checkCompletedSteps() {
     this.workprogram.getCompletedSteps(this.concessionHeld)
     .subscribe(res => {
-      debugger;
-      let del = res;
+      this.genk.isStep1 = res.step1;
+      this.genk.isStep2 = res.step2;
+      this.genk.isStep3 = res.step3;
+      this.genk.isStep4 = res.step4;
+      this.genk.isStep5 = res.step5;
+      this.cd.markForCheck();
     });
   }
 

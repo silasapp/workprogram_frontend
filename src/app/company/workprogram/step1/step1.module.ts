@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import { Step1RoutingModule} from './step1-routing.module';
+import { Step1RoutingModule } from './step1-routing.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { SWPConcessionSituationComponent } from './concession-situation.component';
@@ -14,7 +14,7 @@ import { SWPGeophysicalActivitiesComponent } from './geophysical-activities.comp
 import { Step1Component } from './step1.component';
 
 @NgModule({
-  declarations: [  
+  declarations: [
     Step1Component,
     SWPConcessionSituationComponent,
     SWPDrillingOperationsComponent,

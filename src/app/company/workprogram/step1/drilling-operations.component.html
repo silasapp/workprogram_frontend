@@ -1,4 +1,7 @@
-<div style="background-color: white; border-radius: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); padding: 20px 20px 0 20px;">
+<div
+  style="background-color: white; border-radius: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); padding: 20px 20px 0 20px;">
+  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
+    Note:*All Fields are Mandatory</h1>
   <div
     style="font-size: 20px; font-weight: 500; text-align: center; margin-bottom: 20px; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
     <span>DRILLING OPERATIONS ON QUARTERLY BASIS</span>
@@ -6,7 +9,8 @@
   <br>
   <div>
     <span style="font-weight: 600; color: teal; font-size: 17px;">Categories of Wells Drilled</span><br>
-    <small style="color: rgb(255, 157, 0); font-weight: 500;">Note*: &nbsp; Fill only for quarters for which you have data</small>
+    <small style="color: rgb(255, 157, 0); font-weight: 500;">Note*: &nbsp; Fill only for quarters for which you have
+      data</small>
   </div><br>
   <div>
     <div>
@@ -166,7 +170,7 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="core_Depth_Interval"
+                    <input formControlName="core_Depth_Interval" (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.core_Depth_Interval" class="inpute">
                   </div>
                 </div>
@@ -177,8 +181,8 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="core_Cost_USD" [(ngModel)]="categoryBody.core_Cost_USD"
-                      class="inpute">
+                    <input formControlName="core_Cost_USD" (keypress)="genk.restrictData($event)"
+                      [(ngModel)]="categoryBody.core_Cost_USD" class="inpute">
                   </div>
                 </div>
               </div>
@@ -277,7 +281,8 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="well_cost" [(ngModel)]="categoryBody.well_cost" class="inpute">
+                    <input formControlName="well_cost" (keypress)="genk.restrictData($event)"
+                      [(ngModel)]="categoryBody.well_cost" class="inpute">
                   </div>
                 </div>
               </div>
@@ -332,8 +337,8 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="water_depth" [(ngModel)]="categoryBody.water_depth"
-                      class="inpute">
+                    <input formControlName="water_depth" (keypress)="genk.restrictData($event)"
+                      [(ngModel)]="categoryBody.water_depth" class="inpute">
                   </div>
                 </div>
               </div>
@@ -343,7 +348,7 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="true_vertical_depth"
+                    <input formControlName="true_vertical_depth" (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.true_vertical_depth" class="inpute">
                   </div>
                 </div>
@@ -357,8 +362,8 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="measured_depth" [(ngModel)]="categoryBody.measured_depth"
-                      class="inpute">
+                    <input formControlName="measured_depth" (keypress)="genk.restrictData($event)"
+                      [(ngModel)]="categoryBody.measured_depth" class="inpute">
                   </div>
                 </div>
               </div>
@@ -370,8 +375,8 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="depth_refrence" [(ngModel)]="categoryBody.depth_refrence"
-                      class="inpute">
+                    <input formControlName="depth_refrence" (keypress)="genk.restrictData($event)"
+                      [(ngModel)]="categoryBody.depth_refrence" class="inpute">
                   </div>
                 </div>
               </div>
@@ -481,7 +486,8 @@
 
           <div>
             <span style="font-weight: 600; color: teal; font-size: 17px;">Actual Well Name and Cost Per Well</span><br>
-            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time. Enter N/A or Zero(0) for cost, if none drillied</small>
+            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time.
+              Enter N/A or Zero(0) for cost, if none drillied</small>
           </div><br>
 
 
@@ -503,7 +509,8 @@
               <div style="display: flex;">
                 <div
                   style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                  <input type="text" formControlName="well_cost" [(ngModel)]="costBody.well_cost" class="inpute">
+                  <input formControlName="well_cost" (keypress)="genk.restrictData($event)"
+                    [(ngModel)]="costBody.well_cost" class="inpute">
                 </div>
               </div>
             </div>
@@ -513,7 +520,8 @@
               <div style="display: flex;">
                 <div
                   style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                  <input type="text" formControlName="surface_cordinates_for_each_well_in_degrees"
+                  <input formControlName="surface_cordinates_for_each_well_in_degrees"
+                    (keypress)="genk.restrictData($event)"
                     [(ngModel)]="costBody.surface_cordinates_for_each_well_in_degrees" class="inpute">
                 </div>
               </div>
@@ -526,8 +534,10 @@
           </div>
 
           <div>
-            <span style="font-weight: 600; color: teal; font-size: 17px;">Proposed Well Name and Cost Per Well</span><br>
-            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time. Enter N/A or Zero(0) for cost, if none drillied</small>
+            <span style="font-weight: 600; color: teal; font-size: 17px;">Proposed Well Name and Cost Per
+              Well</span><br>
+            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time.
+              Enter N/A or Zero(0) for cost, if none drillied</small>
           </div><br>
 
 
@@ -550,8 +560,8 @@
               <div style="display: flex;">
                 <div
                   style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                  <input type="text" formControlName="well_cost" [(ngModel)]="costProposedBody.well_cost"
-                    class="inpute">
+                  <input formControlName="well_cost" (keypress)="genk.restrictData($event)"
+                    [(ngModel)]="costProposedBody.well_cost" class="inpute">
                 </div>
               </div>
             </div>
@@ -581,6 +591,6 @@
 <br>
 
 <div style="text-align: center;">
-  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']"
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']"
     class="nextbtn">Next</button>
 </div>

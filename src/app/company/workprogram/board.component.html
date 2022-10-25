@@ -14,23 +14,23 @@
                 <div [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'concessionsituation']">
                     <div style="display: flex;">
                         <div class="divcent">
-                            <span class="me" style="background-color: teal; color: white;">1</span>
+                            <span [class]="genk.activeStep === 'STEP1'? 'me navactive': 'me'" [ngStyle]="{'background-color': genk.isStep1 ? 'teal' : 'lightgrey' }">1</span>
                         </div>
                         <div class="divcent">
-                            <div style="height: 5px; background-color: teal; width: 100px;"></div>
+                            <div style="height: 5px; width: 100px; background-color: teal"></div>
                         </div>
                     </div>
                     <div class="smalljust">
                         <span>STEP 1</span>
                     </div>
                 </div>
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']">
+                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']">
                     <div style="display: flex;">
                         <div class="divcent">
-                            <span class="me">2</span>
+                            <span [class]="genk.activeStep === 'STEP2'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep2 ? 'teal' : 'lightgrey' }">2</span>
                         </div>
                         <div class="divcent">
-                            <div style="height: 5px; background-color: lightgrey; width: 100px;"></div>
+                            <div style="height: 5px; width: 100px; background-color: teal"></div>
                         </div>
                     </div>
                     <div class="smalljust">
@@ -40,10 +40,10 @@
                 <div [routerLink]="['/' + genk.company, genk.workprogram, 'step3', 'budgetperformance']">
                     <div style="display: flex;">
                         <div class="divcent">
-                            <span class="me">3</span>
+                            <span [class]="genk.activeStep === 'STEP3'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep3 ? 'teal' : 'lightgrey' }">3</span>
                         </div>
                         <div class="divcent">
-                            <div style="height: 5px; background-color: lightgrey; width: 100px;"></div>
+                            <div style="height: 5px;  width: 100px; background-color: teal"></div>
                         </div>
                     </div>
                     <div class="smalljust">
@@ -53,10 +53,10 @@
                 <div [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'nigeriacontent']">
                     <div style="display: flex;">
                         <div class="divcent">
-                            <span class="me">4</span>
+                            <span [class]="genk.activeStep === 'STEP4'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep4 ? 'teal' : 'lightgrey' }">4</span>
                         </div>
                         <div class="divcent">
-                            <div style="height: 5px; background-color: lightgrey; width: 100px;"></div>
+                            <div style="height: 5px; width: 100px; background-color: teal"></div>
                         </div>
                     </div>
                     <div class="smalljust">
@@ -66,7 +66,7 @@
                 <div [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']">
                     <div style="display: flex;">
                         <div class="divcent">
-                            <span class="me">5</span>
+                            <span [class]="genk.activeStep === 'STEP5'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep5 ? 'teal' : 'lightgrey' }">5</span>
                         </div>
                     </div>
                     <div class="smalljust">

@@ -68,6 +68,7 @@ export class AddUsersComponent implements OnInit {
       this.fetchdata();
       this.genk.sizePerPage = this.genk.sizeten;
       this.initForm();
+      this.userForm.reset();
       //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
       //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
     }
@@ -170,6 +171,7 @@ initForm() {
           this.Alert("Error",res.message, "error")
         }
        // this.fetchdata();
+    
         this.initForm();
       }
     )
