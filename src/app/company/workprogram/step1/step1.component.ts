@@ -12,12 +12,12 @@ export class Step1Component implements OnInit {
 
   constructor(private gen: GenericService) {
     this.genk = gen;
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit() {
     return null;
   }
 

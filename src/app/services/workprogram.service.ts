@@ -26,6 +26,7 @@ import { facilitiesProjectPerformance, newTechnologyAndConformityAssessment, oil
 import { INITIAL_WELL_COMPLETION_JOB1, WORKOVERS_RECOMPLETION_JOB1 } from '../models/step2-initial';
 import { LEGAL_ARBITRATION, LEGAL_LITIGATION, NIGERIA_CONTENT_QUESTION, NIGERIA_CONTENT_Training, NIGERIA_CONTENT_Upload_Succession_Plan, STRATEGIC_PLANS_ON_COMPANY_BASES } from '../company/workprogram/step4/step4-NCQ.model';
 import { FIELD_DEVELOPMENT_PLAN, GAS_PRODUCTION_ACTIVITY, OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED, OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity, OIL_CONDENSATE_PRODUCTION_ACTIVITy, RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE } from '../models/step2-FIPR.model';
+import { Royalty } from '../models/step1-royalty.model';
 
 @Injectable({
   providedIn: 'root'
@@ -1163,6 +1164,22 @@ getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
     )
   }
 
+  saveRoyalty(conbody: Royalty, year: string, omlName: string, fieldName: string){
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
 
+  getRoyalty(year: string, omlName: string,){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {params: { year: year, omlName: omlName, }})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
 
 }
