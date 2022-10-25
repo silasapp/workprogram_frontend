@@ -7,51 +7,14 @@
   </div>
 
   <div [formGroup]="FieldDevelopmentForm">
-    <!-- <div style="display: flex; width: 100%; justify-content: space-between;">
-      <div style="width: 30%; margin-top: auto;">
-        <label class="labelwp">How many Fields are in the Concession</label>
-        <div style="display: flex;">
-          <div
-            style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input (keypress)="genk.restrictData($event)" formControlName="how_many_fields_in_concession"
-              [(ngModel)]="fielddevelopmentBody.how_many_fields_in_concession" class="inpute">
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0;">
-        <label class="labelwp"> How many fields have approved FDP ?</label>
-        <div style="display: flex;">
-          <div
-            style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input (keypress)="genk.restrictData($event)" formControlName="how_many_fields_have_approved_FDP"
-              [(ngModel)]="fielddevelopmentBody.how_many_fields_have_approved_FDP" class="inpute">
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0;">
-        <label class="labelwp">Which field do you plan to submit an FDP ?</label>
-        <div style="display: flex;">
-          <div
-            style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input type="text" formControlName="which_fields_do_you_plan_to_submit_an_FDP"
-              [(ngModel)]="fielddevelopmentBody.which_fields_do_you_plan_to_submit_an_FDP" class="inpute">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br> -->
-
     <div style="display: flex; width: 100%; justify-content: space-between;">
       <div style="width: 30%; margin-top: auto;">
         <label class="labelwp">Proposed number of wells from approved FDP </label>
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input (keypress)="genk.restrictData($event)" formControlName="proposed_number_of_wells_from_approved_FDP"
-              [(ngModel)]="fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP" type="number"
-              class="inpute">
+            <input formControlName="proposed_number_of_wells_from_approved_FDP" (keypress)="genk.restrictData($event)"
+              [(ngModel)]="fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP" class="inpute">
           </div>
         </div>
       </div>
@@ -61,8 +24,8 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input (keypress)="genk.restrictData($event)" formControlName="no_of_wells_drilled_in_current_year"
-              [(ngModel)]="fielddevelopmentBody.no_of_wells_drilled_in_current_year" class="inpute" type="number">
+            <input formControlName="no_of_wells_drilled_in_current_year" (keypress)="genk.restrictData($event)"
+              [(ngModel)]="fielddevelopmentBody.no_of_wells_drilled_in_current_year" class="inpute">
           </div>
         </div>
       </div>
@@ -72,8 +35,8 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-            <input (keypress)="genk.restrictData($event)" formControlName="noof_Producing_Fields"
-              [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields" type="number" class="inpute">
+            <input formControlName="noof_Producing_Fields" (keypress)="genk.restrictData($event)"
+              [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields" class="inpute">
           </div>
         </div>
       </div>
@@ -286,68 +249,3 @@
         class="nextbtn">Save Unitization</button>
     </div>
   </div>
-
-  <!-- <div
-        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
-        <span>NAMES OF FIELD(S) AND INDICATE ITS FIELD DEVELOPMENT PLAN STATUS</span>
-    </div>
-    <div style="display: flex; width: 100%;">
-        <div style="width: 30%; margin:auto 2% 0 0;">
-            <label class="labelwp">Name of Field</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text"  formControlName="" [(ngModel)]="" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%;">
-            <label id=""  formControlName="" [(ngModel)]="" class="label">Field Development Plan Status</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp">
-                        <option selected disabled>--Select an Option -- </option>
-                        <option value="Application under Review">Application under Review</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Unapproved">Unapproved</option>
-                        <option value="Studies Ongoing">Studies Ongoing</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-
-    <div>
-        <div style="text-align: center;">
-            <button class="btn btn-success">Add Field & Plan Status</button>
-        </div>
-    </div>
-
-
-    <br> <br><br><br>
-    <hr size="10">
-
-
-    <div style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
-        <span>WHICH FIELD(S) DO YOU PLAN TO SUBMIT AN FDP</span>
-    </div>
-    <div style="display: flex; width: 100%;">
-        <div style="width: 30%; margin:auto 2% 0 0;">
-            <label class="labelwp">Name of Field</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text"  formControlName="" [(ngModel)]="" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-    <div>
-        <div style="text-align: center;">
-            <button class="btn btn-success">Add Field to Submit FDP</button>
-        </div>
-    </div>
-</div> -->

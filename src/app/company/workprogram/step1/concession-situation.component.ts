@@ -85,8 +85,6 @@ export class SWPConcessionSituationComponent implements OnInit {
 
     this.getConcessionHeld();
     this.getRoyaltyHeld();
-    //this.concessionBody = this.genk.concessionData;
-    //this.concessionHeldList = this.genk.OMLList;
     this.cd.markForCheck();
   }
 
@@ -102,24 +100,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  // changeConcessionHeld() {
-  //   this.workprogram.getFormOne(this.genk.OmlName, this.genk.wpYear)
-  //   .subscribe((res) => {
-  //       let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-  //       this.genk.OmlName = conInfo.concession_Held;
-  //       this.genk.wpYear = conInfo.year;
-  //       conInfo.date_of_Grant_Expiration = this.genk.formDate(
-  //         conInfo.date_of_Grant_Expiration
-  //       );
-  //       conInfo.date_of_Expiration = this.genk.formDate(
-  //         conInfo.date_of_Expiration
-  //       );
-  //       this.concessionBody = conInfo;
-  //       this.genk.concessionData = conInfo;
-  //       this.cd.markForCheck();
-  //       this.loadTable();
-  //     });
-  // }
+
 
   getConcessionHeld() {
     this.workprogram
@@ -127,7 +108,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         debugger;
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-        //console.log(conInfo);
+
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
