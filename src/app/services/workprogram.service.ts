@@ -53,6 +53,15 @@ getConcessionField(concessionName, companyId){
   )
 }
 
+getCompletedSteps(concessionName){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response;
+  })
+  )
+}
+
 getWPYearList(){
     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
     .pipe(retry(this.num),
