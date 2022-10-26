@@ -166,10 +166,10 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
- 
-      
-   
-  
+
+
+
+
     this.workprogram.saveRoyalty(this.RoyaltyForm.getRawValue(), this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
         //this.RoyaltyForm.reset();
