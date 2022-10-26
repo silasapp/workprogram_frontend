@@ -111,7 +111,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
         if (!conInfo) {
           conInfo = {} as any;
-          conInfo.companyName = res.concessionInfo[0]?.companyName;
+          conInfo.companyName = res.concessionInfo[0].companyName;
           conInfo.area = res.concessionInfo[0].area;
           conInfo.equity_distribution =
             res.concessionInfo[0].equity_distribution;
