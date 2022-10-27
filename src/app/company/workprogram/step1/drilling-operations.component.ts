@@ -260,34 +260,46 @@ export class SWPDrillingOperationsComponent implements OnInit {
 
     this.workprogram.getDrilling(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe(res => {
+        debugger;
         this.quaterACOneData = res.drillOperationCategoriesWell.filter(res => {
           return res.quater === quaterText;
         })[0];
-        this.quaterACOneData.spud_date = this.genk.formDate(this.quaterACOneData.spud_date);
-        this.quaterACOne = this.quaterACOneData ? true : false;
+        if (this.quaterACOneData || this.quaterACOneData !== undefined) {
+          this.quaterACOneData.spud_date = this.genk.formDate(this.quaterACOneData?.spud_date);
+          this.quaterACOne = this.quaterACOneData ? true : false;
+        }
+
 
         this.quaterACTwoData = res.drillOperationCategoriesWell.filter(res => {
           this.quaterACTwo = res.quater === "QUARTER 2" ? true : false;
           return res.quater === "QUARTER 2";
         })[0];
-        this.quaterACTwoData.spud_date = this.genk.formDate(this.quaterACTwoData.spud_date);
-        this.quaterACTwo = this.quaterACTwoData ? true : false;
+        if (this.quaterACTwoData || this.quaterACTwoData !== undefined) {
+          this.quaterACTwoData.spud_date = this.genk.formDate(this.quaterACTwoData.spud_date);
+          this.quaterACTwo = this.quaterACTwoData ? true : false;
+        }
+
+
 
         this.quaterACThreeData = res.drillOperationCategoriesWell.filter(res => {
           this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
           return res.quater === "QUARTER 3";
         })[0];
-        this.quaterACThreeData.spud_date = this.genk.formDate(this.quaterACThreeData.spud_date);
-        this.quaterACThree = this.quaterACThreeData ? true : false;
+        if (this.quaterACThreeData || this.quaterACThreeData !== undefined) {
+          this.quaterACThreeData.spud_date = this.genk.formDate(this.quaterACThreeData.spud_date);
+          this.quaterACThree = this.quaterACThreeData ? true : false;
+        }
 
         this.quaterACFourData = res.drillOperationCategoriesWell.filter(res => {
           this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
           return res.quater === "QUARTER 4";
         })[0];
-        this.quaterACFourData.spud_date = this.genk.formDate(this.quaterACFourData.spud_date);
+        if (this.quaterACFourData || this.quaterACFourData !== undefined) {
+          this.quaterACFourData.spud_date = this.genk.formDate(this.quaterACFourData.spud_date);
         //alert(this.quaterACFourData);
-        this.quaterACFour = this.quaterACFourData ? true : false;
-        this.categoryBody = this.quaterACOneData;
+          this.quaterACFour = this.quaterACFourData ? true : false;
+          this.categoryBody = this.quaterACOneData;
+        }
 
 
 

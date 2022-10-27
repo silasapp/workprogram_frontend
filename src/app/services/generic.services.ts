@@ -80,7 +80,6 @@ contractType = [
     { text: "50 entries", value: "50" },
     { text: "All entries", value: "all" }
   ];
-  royaltyData: import("c:/Sandbox/WorkprogramFEnd/src/app/models/step1-royalty.model").Royalty;
 
   constructor(private modal: ModalService) { }
 

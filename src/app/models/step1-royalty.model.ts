@@ -1,6 +1,5 @@
 export class Royalty
 {
-  constructor() {}
         id: number = 0;
         oML_ID: string = '';
         oML_Name: string = '';
