@@ -160,6 +160,7 @@ getWPYearList(){
 
 
   saveQuarterAcquisition(conbody: GEOPHYSICAL_ACTIVITIES_ACQUISITION, year: string, omlName: string) {
+    debugger;
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_geophysical_activities_acquisition`, conbody, {params: {year: year, omlName: omlName}})
     .pipe(retry(this.num),
     map((response) => {
@@ -170,6 +171,7 @@ getWPYearList(){
 
 
   saveQuarterProcessing(conbody: GEOPHYSICAL_ACTIVITIES_PROCESSING, year: string, omlName: string){
+    
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_geophysical_activities_processing`, conbody, {params: {year: year, omlName: omlName}})
     .pipe(retry(this.num),
     map((response) => {

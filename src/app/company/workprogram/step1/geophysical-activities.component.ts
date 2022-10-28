@@ -386,11 +386,13 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
+    debugger;
     this.acquisitionBody.qUATER = "QUARTER " + this.currentACQuarter;
     this.acquisitionBody.budeget_Allocation_NGN = this.acquisitionBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.acquisitionBody.budeget_Allocation_USD = this.acquisitionBody.budeget_Allocation_USD.replace(/,/g, '');
     let sail: GEOPHYSICAL_ACTIVITIES_ACQUISITION = {} as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
     sail = this.genk.stringArray(this.acquisitionBody) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+    debugger;
     this.workprogram.saveQuarterAcquisition(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe(res => {
         this.modalService.logNotice("Success", res.popText, 'success');
@@ -398,6 +400,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
+    debugger;
     this.processingBody.qUATER = "QUARTER " + this.currentACQuarter;
     this.processingBody.budeget_Allocation_NGN = this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.processingBody.budeget_Allocation_USD = this.processingBody.budeget_Allocation_USD.replace(/,/g, '');
@@ -411,8 +414,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     //     newobj[key] = val.toString();
     //   }
     // }
+    debugger;
     let sail: GEOPHYSICAL_ACTIVITIES_PROCESSING = {} as GEOPHYSICAL_ACTIVITIES_PROCESSING;
     sail = this.genk.stringArray(this.processingBody) as GEOPHYSICAL_ACTIVITIES_PROCESSING;
+    debugger;
     this.workprogram.saveQuarterProcessing(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe(res => {
         this.modalService.logNotice("Success", res.popText, 'success');
