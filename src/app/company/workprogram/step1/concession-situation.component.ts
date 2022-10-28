@@ -25,6 +25,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -79,12 +80,11 @@ export class SWPConcessionSituationComponent implements OnInit {
         crude_Oil_Royalty: new FormControl(this.royaltyBody.crude_Oil_Royalty, [Validators.required]),
         gas_Sales_Royalty: new FormControl(this.royaltyBody.gas_Sales_Royalty, [Validators.required]),
         gas_Flare_Payment: new FormControl(this.royaltyBody.gas_Flare_Payment, [Validators.required]),
-        concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
+        //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
       }, {});
 
     this.getConcessionHeld();
-    this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
 
@@ -127,6 +127,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
+          debugger;
           this.cd.markForCheck();
         }
         else {
@@ -141,7 +142,11 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.genk.isStep1 = true;
           this.cd.markForCheck();
           this.loadTable();
+          debugger;
+
         }
+        this.getRoyaltyHeld();
+
       });
   }
 
@@ -150,57 +155,24 @@ export class SWPConcessionSituationComponent implements OnInit {
       .getRoyalty(this.genk.OmlName, this.genk.wpYear,)
       .subscribe((res) => {
         debugger;
-        let royaltyInfo = res.royalty[0] as Royalty;
+        this.royaltyBody = res.royalty as Royalty;
+        this.cd.markForCheck();
 
-        if (!royaltyInfo) {
-          royaltyInfo = {} as any;
-          royaltyInfo.crude_Oil_Royalty = res.royaltyInfo[0].companyName;
-          royaltyInfo.gas_Sales_Royalty = res.royaltyInfo[0].area;
-          royaltyInfo.gas_Flare_Payment = res.concessionInfo[0].equity_distribution;
-          royaltyInfo.concession_Rentals = res.concessionInfo[0].contract_Type;
-          royaltyInfo.miscellaneous = this.genk.formDate(
-            royaltyInfo.miscellaneous)
+        this.genk.isStep1 = true;
+        this.cd.markForCheck();
+        this.loadTable();
 
-          royaltyInfo.miscellaneous = this.genk.formDate(
-            royaltyInfo.miscellaneous
-          );
-          this.royaltyBody = royaltyInfo;
-          //this.genk.royaltyData = royaltyInfo;
-          this.cd.markForCheck();
-        }
-        else {
-          royaltyInfo.miscellaneous = this.genk.formDate(
-            royaltyInfo.miscellaneous
-          );
-          royaltyInfo.miscellaneous = this.genk.formDate(royaltyInfo.miscellaneous
-          );
-          this.royaltyBody = royaltyInfo;
-          //this.genk.royaltyData = royaltyInfo;
-          this.genk.isStep1 = true;
-          this.cd.markForCheck();
-          this.loadTable();
-        }
       });
   }
 
   submitroyalty() {
-    if (this.royaltyBody.miscellaneous) {
-      this.royaltyBody.miscellaneous = this.concessionBody.date_of_Expiration.includes("T00:00:00") ? this.royaltyBody.miscellaneous : this.royaltyBody.miscellaneous + "T00:00:00";
-    }
-    if (this.royaltyBody.miscellaneous) {
-      this.royaltyBody.miscellaneous = this.royaltyBody.miscellaneous.includes("T00:00:00") ? this.royaltyBody.miscellaneous : this.royaltyBody.miscellaneous + "T00:00:00";
-    }
-    this.royaltyBody.crude_Oil_Royalty = this.royaltyBody.crude_Oil_Royalty.toString();
-    this.royaltyBody.gas_Sales_Royalty = this.royaltyBody.gas_Sales_Royalty.toString();
-    this.royaltyBody.gas_Flare_Payment = this.royaltyBody.gas_Flare_Payment.toString();
-    this.royaltyBody.concession_Rentals = this.royaltyBody.concession_Rentals.toString();
-    this.royaltyBody.miscellaneous = this.royaltyBody.miscellaneous.toString();
-    this.royaltyBody.year = this.wkpYear;
-    this.royaltyBody.concession_Held = this.concessionHeld;
-
-    console.log(this.royaltyBody);
-    this.workprogram.saveRoyalty(this.royaltyBody, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+ 
+      
+   
+  
+    this.workprogram.saveRoyalty(this.RoyaltyForm.getRawValue(), this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
+        //this.RoyaltyForm.reset();
         this.modalService.logNotice("Success", res.message, 'success');
       });
   }

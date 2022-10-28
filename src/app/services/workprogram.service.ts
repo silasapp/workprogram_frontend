@@ -1173,17 +1173,19 @@ getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
     )
   }
 
-  saveRoyalty(conbody: Royalty, year: string, omlName: string, fieldName: string){
+  saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string){
+    debugger;
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName}})
     .pipe(retry(this.num),
     map((response) => {
+      debugger;
       return response
     })
     )
   }
 
-  getRoyalty(year: string, omlName: string,){
-    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {params: { year: year, omlName: omlName, }})
+  getRoyalty( omlName: string, year: string,){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {params: { myyear: year, omlName: omlName, }})
     .pipe(retry(this.num),
     map((response) => {
       return response

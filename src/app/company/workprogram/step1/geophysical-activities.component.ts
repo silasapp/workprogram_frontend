@@ -12,31 +12,31 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
 export class SWPGeophysicalActivitiesComponent implements OnInit {
   AcquisitionForm: FormGroup;
   ProcessingForm: FormGroup;
-  quaterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
-  quaterACTwoData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
-  quaterACThreeData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
-  quaterACFourData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+  quarterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+  quarterACTwoData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+  quarterACThreeData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+  quarterACFourData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
 
-  quaterPROneData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
-  quaterPRTwoData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
-  quaterPRThreeData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
-  quaterPRFourData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
+  quarterPROneData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
+  quarterPRTwoData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
+  quarterPRThreeData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
+  quarterPRFourData: GEOPHYSICAL_ACTIVITIES_PROCESSING;
 
   acquisitionBody: GEOPHYSICAL_ACTIVITIES_ACQUISITION = {} as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
   processingBody: GEOPHYSICAL_ACTIVITIES_PROCESSING = {} as GEOPHYSICAL_ACTIVITIES_PROCESSING;
   genk: GenericService;
-  quaterACOne = false;
-  quaterACTwo = false;
-  quaterACThree = false;
-  quaterACFour = false;
+  quarterACOne = false;
+  quarterACTwo = false;
+  quarterACThree = false;
+  quarterACFour = false;
 
-  quaterPROne = false;
-  quaterPRTwo = false;
-  quaterPRThree = false;
-  quaterPRFour = false;
+  quarterPROne = false;
+  quarterPRTwo = false;
+  quarterPRThree = false;
+  quarterPRFour = false;
   submitted = false;
-  currentACQuater = 1;
-  currentPRQuater = 1;
+  currentACQuarter = 1;
+  currentPRQuarter = 1;
 
   columnHeader = [];
   columnValue = [];
@@ -53,7 +53,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu
       .subscribe(res => {
-        const rel = "QUARTER " + this.currentACQuater;
+        const rel = "QUARTER " + this.currentACQuarter;
         this.getGeophysical(rel);
       });
     this.cd.markForCheck();
@@ -114,15 +114,15 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterACClassOne() {
     let list = '';
-    if (this.quaterACOne) {
-      if (this.currentACQuater === 1) {
+    if (this.quarterACOne) {
+      if (this.currentACQuarter === 1) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
       //list = 'currfilled currquarter';
     } else {
-      if (this.currentACQuater === 1) {
+      if (this.currentACQuarter === 1) {
         list = 'currquarter';
       } else {
         list = '';
@@ -133,14 +133,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterACClassTwo() {
     let list = '';
-    if (this.quaterACTwo) {
-      if (this.currentACQuater === 2) {
+    if (this.quarterACTwo) {
+      if (this.currentACQuarter === 2) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentACQuater === 2) {
+      if (this.currentACQuarter === 2) {
         list = 'currquarter';
       } else {
         list = '';
@@ -149,16 +149,16 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterACClassThree() {
+  get quarterACClassThree() {
     let list = '';
-    if (this.quaterACThree) {
-      if (this.currentACQuater === 3) {
+    if (this.quarterACThree) {
+      if (this.currentACQuarter === 3) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentACQuater === 3) {
+      if (this.currentACQuarter === 3) {
         list = 'currquarter';
       } else {
         list = '';
@@ -167,16 +167,16 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterACClassFour() {
+  get quarterACClassFour() {
     let list = '';
-    if (this.quaterACFour) {
-      if (this.currentACQuater === 4) {
+    if (this.quarterACFour) {
+      if (this.currentACQuarter === 4) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentACQuater === 4) {
+      if (this.currentACQuarter === 4) {
         list = 'currquarter';
       } else {
         list = '';
@@ -188,15 +188,15 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterPRClassOne() {
     let list = '';
-    if (this.quaterPROne) {
-      if (this.currentPRQuater === 1) {
+    if (this.quarterPROne) {
+      if (this.currentPRQuarter === 1) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
       //list = 'currfilled currquarter';
     } else {
-      if (this.currentPRQuater === 1) {
+      if (this.currentPRQuarter === 1) {
         list = 'currquarter';
       } else {
         list = '';
@@ -207,14 +207,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterPRClassTwo() {
     let list = '';
-    if (this.quaterPRTwo) {
-      if (this.currentPRQuater === 2) {
+    if (this.quarterPRTwo) {
+      if (this.currentPRQuarter === 2) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentPRQuater === 2) {
+      if (this.currentPRQuarter === 2) {
         list = 'currquarter';
       } else {
         list = '';
@@ -225,14 +225,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterPRClassThree() {
     let list = '';
-    if (this.quaterPRThree) {
-      if (this.currentPRQuater === 3) {
+    if (this.quarterPRThree) {
+      if (this.currentPRQuarter === 3) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentPRQuater === 3) {
+      if (this.currentPRQuarter === 3) {
         list = 'currquarter';
       } else {
         list = '';
@@ -243,14 +243,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   get quaterPRClassFour() {
     let list = '';
-    if (this.quaterPRFour) {
-      if (this.currentPRQuater === 4) {
+    if (this.quarterPRFour) {
+      if (this.currentPRQuarter === 4) {
         list = 'currfilled curractive';
       } else {
         list = 'currfilled';
       }
     } else {
-      if (this.currentPRQuater === 4) {
+      if (this.currentPRQuarter === 4) {
         list = 'currquarter';
       } else {
         list = '';
@@ -262,61 +262,61 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   changeACQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
-      this.currentACQuater = 1;
-      btn.textContent = "Save Quater 1";
-      this.acquisitionBody = this.quaterACOneData;
+      this.currentACQuarter = 1;
+      btn.textContent = "Save Quarter 1";
+      this.acquisitionBody = this.quarterACOneData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 1");
     }
     if (quater === 2) {
-      this.currentACQuater = 2;
-      btn.textContent = "Save Quater 2";
-      this.acquisitionBody = this.quaterACTwoData;
+      this.currentACQuarter = 2;
+      btn.textContent = "Save Quarter 2";
+      this.acquisitionBody = this.quarterACTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
     }
     if (quater === 3) {
-      this.currentACQuater = 3;
-      this.acquisitionBody = this.quaterACThreeData;
-      btn.textContent = "Save Quater 3";
+      this.currentACQuarter = 3;
+      this.acquisitionBody = this.quarterACThreeData;
+      btn.textContent = "Save Quarter 3";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
-      this.currentACQuater = 4;
-      this.acquisitionBody = this.quaterACFourData;
-      btn.textContent = "Save Quater 4";
+      this.currentACQuarter = 4;
+      this.acquisitionBody = this.quarterACFourData;
+      btn.textContent = "Save Quarter 4";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
     this.cd.markForCheck();
   }
 
-  changePRQuater(quater: number, btn: HTMLButtonElement) {
-    if (quater === 1) {
-      this.currentPRQuater = 1;
-      btn.textContent = "Save Quater 1";
-      this.processingBody = this.quaterPROneData;
+  changePRQuarter(quarter: number, btn: HTMLButtonElement) {
+    if (quarter === 1) {
+      this.currentPRQuarter = 1;
+      btn.textContent = "Save Quarter 1";
+      this.processingBody = this.quarterPROneData;
       this.cd.markForCheck();
 
     }
-    if (quater === 2) {
-      this.currentPRQuater = 2;
-      btn.textContent = "Save Quater 2";
-      this.processingBody = this.quaterPRTwoData
+    if (quarter === 2) {
+      this.currentPRQuarter = 2;
+      btn.textContent = "Save Quarter 2";
+      this.processingBody = this.quarterPRTwoData
       this.cd.markForCheck();
     }
-    if (quater === 3) {
-      this.currentPRQuater = 3;
-      btn.textContent = "Save Quater 3";
-      this.processingBody = this.quaterPRThreeData;
+    if (quarter === 3) {
+      this.currentPRQuarter = 3;
+      btn.textContent = "Save Quarter 3";
+      this.processingBody = this.quarterPRThreeData;
       this.cd.markForCheck();
 
     }
-    if (quater === 4) {
-      this.currentPRQuater = 4;
-      btn.textContent = "Save Quater 4";
-      this.processingBody = this.quaterPRFourData;
+    if (quarter === 4) {
+      this.currentPRQuarter = 4;
+      btn.textContent = "Save Quarter 4";
+      this.processingBody = this.quarterPRFourData;
       this.cd.markForCheck();
 
     }
@@ -328,57 +328,57 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.workprogram.getFormOneGeoPhysical(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe(res => {
         //debugger;
-        this.quaterACOneData = res.geoActivitiesAcquisition.filter(res => {
+        this.quarterACOneData = res.geoActivitiesAcquisition.filter(res => {
           return res.quater === quaterText;
         })[0];
-        this.quaterACOne = this.quaterACOneData ? true : false;
+        this.quarterACOne = this.quarterACOneData ? true : false;
 
-        this.quaterACTwoData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACTwo = res.quater === "QUARTER 2" ? true : false;
-          return res.quater === "QUARTER 2";
+        this.quarterACTwoData = res.geoActivitiesAcquisition.filter(res => {
+          this.quarterACTwo = res.quarter === "QUARTER 2" ? true : false;
+          return res.quarter === "QUARTER 2";
         })[0];
-        this.quaterACTwo = this.quaterACTwoData ? true : false;
+        this.quarterACTwo = this.quarterACTwoData ? true : false;
 
-        this.quaterACThreeData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
-          return res.quater === "QUARTER 3";
+        this.quarterACThreeData = res.geoActivitiesAcquisition.filter(res => {
+          this.quarterACThree = res.quarter === "QUARTER 3" ? true : false;
+          return res.quarter === "QUARTER 3";
         })[0];
-        this.quaterACThree = this.quaterACThreeData ? true : false;
+        this.quarterACThree = this.quarterACThreeData ? true : false;
 
-        this.quaterACFourData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
+        this.quarterACFourData = res.geoActivitiesAcquisition.filter(res => {
+          this.quarterACFour = res.quater === "QUARTER 4" ? true : false;
           return res.quater === "QUARTER 4";
         })[0];
-        this.quaterACFour = this.quaterACFourData ? true : false;
-        this.acquisitionBody = this.quaterACOneData;
+        this.quarterACFour = this.quarterACFourData ? true : false;
+        this.acquisitionBody = this.quarterACOneData;
 
 
 
 
-        this.quaterPROneData = res.geoActivitiesProcessing.filter(res => {
+        this.quarterPROneData = res.geoActivitiesProcessing.filter(res => {
           return res.quater === quaterText;
         })[0];
-        this.quaterPROne = this.quaterPROneData ? true : false;
+        this.quarterPROne = this.quarterPROneData ? true : false;
 
-        this.quaterPRTwoData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRTwo = res.quater === "QUARTER 2" ? true : false;
+        this.quarterPRTwoData = res.geoActivitiesProcessing.filter(res => {
+          this.quarterPRTwo = res.quater === "QUARTER 2" ? true : false;
           return res.quater === "QUARTER 2";
         })[0];
-        this.quaterPRTwo = this.quaterPRTwoData ? true : false;
+        this.quarterPRTwo = this.quarterPRTwoData ? true : false;
 
-        this.quaterPRThreeData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRThree = res.quater === "QUARTER 3" ? true : false;
+        this.quarterPRThreeData = res.geoActivitiesProcessing.filter(res => {
+          this.quarterPRThree = res.quater === "QUARTER 3" ? true : false;
           return res.quater === "QUARTER 3";
         })[0];
-        this.quaterPRThree = this.quaterPRThreeData ? true : false;
+        this.quarterPRThree = this.quarterPRThreeData ? true : false;
 
-        this.quaterPRFourData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRFour = res.quater === "QUARTER 4" ? true : false;
+        this.quarterPRFourData = res.geoActivitiesProcessing.filter(res => {
+          this.quarterPRFour = res.quater === "QUARTER 4" ? true : false;
           return res.quater === "QUARTER 4";
         })[0];
-        this.quaterPRFour = this.quaterPRFourData ? true : false;
+        this.quarterPRFour = this.quarterPRFourData ? true : false;
 
-        this.processingBody = this.quaterPROneData;
+        this.processingBody = this.quarterPROneData;
         //console.log(this.quaterOneData[0]);
         this.cd.markForCheck();
       });
@@ -386,7 +386,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
-    this.acquisitionBody.qUATER = "QUARTER " + this.currentACQuater;
+    this.acquisitionBody.qUATER = "QUARTER " + this.currentACQuarter;
     this.acquisitionBody.budeget_Allocation_NGN = this.acquisitionBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.acquisitionBody.budeget_Allocation_USD = this.acquisitionBody.budeget_Allocation_USD.replace(/,/g, '');
     let sail: GEOPHYSICAL_ACTIVITIES_ACQUISITION = {} as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
@@ -398,7 +398,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-    this.processingBody.qUATER = "QUARTER " + this.currentACQuater;
+    this.processingBody.qUATER = "QUARTER " + this.currentACQuarter;
     this.processingBody.budeget_Allocation_NGN = this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.processingBody.budeget_Allocation_USD = this.processingBody.budeget_Allocation_USD.replace(/,/g, '');
     // var key, keys = Object.keys(this.processingBody);
