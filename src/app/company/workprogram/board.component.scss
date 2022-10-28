@@ -214,10 +214,22 @@ select {
   width: 100%;
   justify-content: space-between;
 }
+.toprow2 
+{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+}
 
 .rowbox {
   width: 30%;
   margin-top: auto;
+}
+
+.rowbox2 {
+ width: 100%;
+ margin: auto 2% 0;
 }
 
 .quarterbtn {

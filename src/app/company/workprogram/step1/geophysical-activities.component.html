@@ -27,13 +27,13 @@
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterACClassThree" (click)="changeACQuater(3, btn)">
+      <div class="quarterspace" [ngClass]="quarterACClassThree" (click)="changeACQuater(3, btn)">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">3</span> Quarter</span>
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterACClassFour" (click)="changeACQuater(4, btn)">
+      <div class="quarterspace" [ngClass]="quarterACClassFour" (click)="changeACQuater(4, btn)">
         <div style="margin-bottom: 20px;">
           <span> <span style="font-size: 25px;">4</span> Quarter</span>
         </div>
@@ -226,9 +226,9 @@
       <br>
 
       <div class="toprow">
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">No of folds (1-100)</label>
-          <div style="display: flex;">
+          <div style="display: flex; ">
             <div class="inpdiv">
               <input formControlName="no_of_Folds" (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.no_of_Folds" class="inpute">
@@ -236,7 +236,7 @@
           </div>
         </div>
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Record Length of Data (seconds)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -248,7 +248,7 @@
 
 
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Completion Status(%)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -258,7 +258,7 @@
           </div>
         </div>
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Activity Timeline (Quarter)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -300,25 +300,25 @@
 
   <div>
     <div class="quarterbox">
-      <div class="quarterspace" [ngClass]="quaterPRClassOne" (click)="changePRQuater(1, btnprocess) ">
+      <div class="quarterspace" [ngClass]="quaterPRClassOne" (click)="changePRQuarter(1, btnprocess) ">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">1</span> Quarter</span>
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassTwo" (click)="changePRQuater(2, btnprocess) ">
+      <div class="quarterspace" [ngClass]="quaterPRClassTwo" (click)="changePRQuarter(2, btnprocess) ">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">2</span> Quarter</span>
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassThree" (click)="changePRQuater(3, btnprocess)">
+      <div class="quarterspace" [ngClass]="quaterPRClassThree" (click)="changePRQuarter(3, btnprocess)">
         <div style="margin-bottom: 20px;">
           <span><span style="font-size: 25px;">3</span> Quarter</span>
         </div>
 
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassFour" (click)="changePRQuater(4, btnprocess)">
+      <div class="quarterspace" [ngClass]="quaterPRClassFour" (click)="changePRQuarter(4, btnprocess)">
         <div style="margin-bottom: 20px;">
           <span> <span style="font-size: 25px;">4</span> Quarter</span>
         </div>

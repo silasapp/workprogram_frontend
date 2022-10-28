@@ -80,7 +80,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         crude_Oil_Royalty: new FormControl(this.royaltyBody.crude_Oil_Royalty, [Validators.required]),
         gas_Sales_Royalty: new FormControl(this.royaltyBody.gas_Sales_Royalty, [Validators.required]),
         gas_Flare_Payment: new FormControl(this.royaltyBody.gas_Flare_Payment, [Validators.required]),
-        concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
+        //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
       }, {});
 
@@ -162,36 +162,14 @@ export class SWPConcessionSituationComponent implements OnInit {
         this.cd.markForCheck();
         this.loadTable();
 
-<<<<<<< HEAD
-=======
-          royaltyInfo.miscellaneous = this.genk.formDate(
-            royaltyInfo.miscellaneous
-          );
-          this.royaltyBody = royaltyInfo;
-          //this.genk.royaltyData = royaltyInfo;
-          this.cd.markForCheck();
-        }
-        else {
-          royaltyInfo.miscellaneous = this.genk.formDate(
-            royaltyInfo.miscellaneous
-          );
-          royaltyInfo.miscellaneous = this.genk.formDate(royaltyInfo.miscellaneous
-          );
-          this.royaltyBody = royaltyInfo;
-          //this.genk.royaltyData = royaltyInfo;
-          this.genk.isStep1 = true;
-          this.cd.markForCheck();
-          this.loadTable();
-        }
->>>>>>> c923a1f3eac02ea3cfc725164ba21584d1ff15bb
       });
   }
 
   submitroyalty() {
-
-
-
-
+ 
+      
+   
+  
     this.workprogram.saveRoyalty(this.RoyaltyForm.getRawValue(), this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
         //this.RoyaltyForm.reset();
