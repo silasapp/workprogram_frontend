@@ -84,6 +84,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         geo_Activity_Timeline: new FormControl(this.acquisitionBody.geo_Activity_Timeline, [Validators.required]),
         remarks: new FormControl(this.acquisitionBody.remarks, [Validators.required])
       }, {});
+      this.cd.markForCheck();
 
     this.ProcessingForm = new FormGroup(
       {
@@ -283,6 +284,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
+      debugger;
       this.currentACQuater = 4;
       this.acquisitionBody = this.quaterACFourData;
       btn.textContent = "Save Quater 4";
@@ -324,71 +326,88 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   getGeophysical(quaterText: string) {
-
+    debugger;
     this.workprogram.getFormOneGeoPhysical(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe(res => {
-        //debugger;
-        this.quaterACOneData = res.geoActivitiesAcquisition.filter(res => {
-          return res.quater === quaterText;
-        })[0];
-        this.quaterACOne = this.quaterACOneData ? true : false;
 
-        this.quaterACTwoData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACTwo = res.quater === "QUARTER 2" ? true : false;
-          return res.quater === "QUARTER 2";
-        })[0];
-        this.quaterACTwo = this.quaterACTwoData ? true : false;
+        if (res.geoActivitiesAcquisition) {
 
-        this.quaterACThreeData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
-          return res.quater === "QUARTER 3";
-        })[0];
-        this.quaterACThree = this.quaterACThreeData ? true : false;
+          this.quaterACOneData = res.geoActivitiesAcquisition.filter(result => {
+            return result.quater === quaterText;
+          })[0];
+          this.quaterACOne = this.quaterACOneData ? true : false;
+          this.quaterACOneData = this.quaterACOneData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
 
-        this.quaterACFourData = res.geoActivitiesAcquisition.filter(res => {
-          this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
-          return res.quater === "QUARTER 4";
-        })[0];
-        this.quaterACFour = this.quaterACFourData ? true : false;
-        this.acquisitionBody = this.quaterACOneData;
+          this.quaterACTwoData = res.geoActivitiesAcquisition.filter(result => {
+            this.quaterACTwo = result.quater === "QUARTER 2" ? true : false;
+            return result.quater === "QUARTER 2";
+          })[0];
+          this.quaterACTwo = this.quaterACTwoData ? true : false;
+          this.quaterACTwoData = this.quaterACTwoData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
+
+          this.quaterACThreeData = res.geoActivitiesAcquisition.filter(res => {
+            this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
+            return res.quater === "QUARTER 3";
+          })[0];
+          this.quaterACThree = this.quaterACThreeData ? true : false;
+          this.quaterACThreeData = this.quaterACThreeData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
+
+          this.quaterACFourData = res.geoActivitiesAcquisition.filter(res => {
+            this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
+            return res.quater === "QUARTER 4";
+          })[0];
+          this.quaterACFour = this.quaterACFourData ? true : false;
+          this.quaterACFourData = this.quaterACFourData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
+          this.acquisitionBody = this.quaterACOneData;
 
 
 
 
-        this.quaterPROneData = res.geoActivitiesProcessing.filter(res => {
-          return res.quater === quaterText;
-        })[0];
-        this.quaterPROne = this.quaterPROneData ? true : false;
+          this.quaterPROneData = res.geoActivitiesProcessing.filter(res => {
+            return res.quater === quaterText;
+          })[0];
+          this.quaterPROne = this.quaterPROneData ? true : false;
+          this.quaterPROneData = this.quaterPROneData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
 
-        this.quaterPRTwoData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRTwo = res.quater === "QUARTER 2" ? true : false;
-          return res.quater === "QUARTER 2";
-        })[0];
-        this.quaterPRTwo = this.quaterPRTwoData ? true : false;
+          this.quaterPRTwoData = res.geoActivitiesProcessing.filter(res => {
+            this.quaterPRTwo = res.quater === "QUARTER 2" ? true : false;
+            return res.quater === "QUARTER 2";
+          })[0];
+          this.quaterPRTwo = this.quaterPRTwoData ? true : false;
+          this.quaterPRTwoData = this.quaterPRTwoData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
 
-        this.quaterPRThreeData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRThree = res.quater === "QUARTER 3" ? true : false;
-          return res.quater === "QUARTER 3";
-        })[0];
-        this.quaterPRThree = this.quaterPRThreeData ? true : false;
 
-        this.quaterPRFourData = res.geoActivitiesProcessing.filter(res => {
-          this.quaterPRFour = res.quater === "QUARTER 4" ? true : false;
-          return res.quater === "QUARTER 4";
-        })[0];
-        this.quaterPRFour = this.quaterPRFourData ? true : false;
+          this.quaterPRThreeData = res.geoActivitiesProcessing.filter(res => {
+            this.quaterPRThree = res.quater === "QUARTER 3" ? true : false;
+            return res.quater === "QUARTER 3";
+          })[0];
+          this.quaterPRThree = this.quaterPRThreeData ? true : false;
+          this.quaterPRThreeData = this.quaterPRThreeData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
 
-        this.processingBody = this.quaterPROneData;
-        //console.log(this.quaterOneData[0]);
-        this.cd.markForCheck();
+
+          this.quaterPRFourData = res.geoActivitiesProcessing.filter(res => {
+            this.quaterPRFour = res.quater === "QUARTER 4" ? true : false;
+            return res.quater === "QUARTER 4";
+          })[0];
+          this.quaterPRFour = this.quaterPRFourData ? true : false;
+          this.quaterPRFourData = this.quaterPRFourData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
+
+
+          this.processingBody = this.quaterPROneData;
+          //console.log(this.quaterOneData[0]);
+          this.cd.markForCheck();
+
+        }
       });
     this.cd.markForCheck();
   }
 
   saveQuarterAcquisition() {
+    debugger;
+    let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = "QUARTER " + this.currentACQuater;
-    this.acquisitionBody.budeget_Allocation_NGN = this.acquisitionBody.budeget_Allocation_NGN.replace(/,/g, '');
-    this.acquisitionBody.budeget_Allocation_USD = this.acquisitionBody.budeget_Allocation_USD.replace(/,/g, '');
+    this.acquisitionBody.budeget_Allocation_NGN = this.acquisitionBody?.budeget_Allocation_NGN.replace(/,/g, '');
+    this.acquisitionBody.budeget_Allocation_USD = this.acquisitionBody?.budeget_Allocation_USD.replace(/,/g, '');
     let sail: GEOPHYSICAL_ACTIVITIES_ACQUISITION = {} as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
     sail = this.genk.stringArray(this.acquisitionBody) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
     this.workprogram.saveQuarterAcquisition(sail, this.genk.wpYear, this.genk.OmlName)

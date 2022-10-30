@@ -53,8 +53,7 @@
               <div style="width: 30%;">
                 <label class="labelwp">Well Name</label>
                 <div style="display: flex;">
-                  <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
                     <input type="text" formControlName="wellName" [(ngModel)]="categoryBody.wellName" class="inpute">
                   </div>
                 </div>
@@ -491,7 +490,7 @@
           </div><br>
 
 
-          <div [formGroup]="CostForm" style="display: flex; width: 100%;  justify-content: space-between;">
+          <div [formGroup]="CostForm" (ngSubmit)="saveWellCost()" style="display: flex; width: 100%;  justify-content: space-between;">
             <div style="width: 30%; margin-top: auto;">
               <label class="labelwp">Actual Well Name</label>
               <div style="display: flex;">
@@ -501,8 +500,6 @@
                 </div>
               </div>
             </div>
-
-
 
             <div style="width: 30%; margin-top: auto;">
               <label class="labelwp"> Cost Per Well (USD)</label>
