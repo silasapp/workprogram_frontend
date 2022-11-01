@@ -164,7 +164,8 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
       let value = e.target.value;
       this.report.fetch("hse_inspection_and_maintenance_facility_type_new", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

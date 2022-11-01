@@ -130,7 +130,8 @@ export class GasProductionActivitiesDomesticSupplyComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("gas_production_activities_domestic_supply", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
