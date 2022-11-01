@@ -124,7 +124,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
      this.report.fetch("concessionsituation", value).subscribe(
         (res) => {
            this.data = res.data as any[];
-            //if(this.data.length>0) this.selectedPage=1;
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
