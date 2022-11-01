@@ -293,6 +293,7 @@ export class ConcessionSituationComponent implements OnInit {
   
     fetchdata(e){
       let value = e.target.value;
+      debugger;
      this.report.fetch("concessionsituation", value).subscribe(
         (res) => {
             this.data = res.data as any[];
