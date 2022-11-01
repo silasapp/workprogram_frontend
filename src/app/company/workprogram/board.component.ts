@@ -29,8 +29,8 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.boardForm = new FormGroup(
       {
-        'WkpYear': new FormControl(this.wkpYear, [Validators.required]),
-        'ConcessionHeld': new FormControl(this.concessionHeld, [ Validators.required]),
+        'year': new FormControl(this.wkpYear, [Validators.required]),
+        'concession_Held': new FormControl(this.concessionHeld, [ Validators.required]),
         'Field': new FormControl(this.field, [ Validators.required])
       }, {});
     this.getWPYearList();
@@ -52,6 +52,7 @@ export class BoardComponent implements OnInit {
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
     this.cd.markForCheck();
+    this.checkCompletedSteps();
 
     this.workprogram.getConcessionField(this.concessionHeld, null)
     .subscribe((res: any[]) => {
@@ -74,11 +75,24 @@ export class BoardComponent implements OnInit {
     this.field = e.target.value;
     this.genk.fieldName = this.field;
     this.modal.logConcessionSituation(this.concessionHeld);
+
   }
 
   getWPYearList() {
     this.workprogram.getWPYearList().subscribe((res) => {
       this.wkpYearList = res;
+      this.cd.markForCheck();
+    });
+  }
+
+  checkCompletedSteps() {
+    this.workprogram.getCompletedSteps(this.concessionHeld)
+    .subscribe(res => {
+      this.genk.isStep1 = res.step1;
+      this.genk.isStep2 = res.step2;
+      this.genk.isStep3 = res.step3;
+      this.genk.isStep4 = res.step4;
+      this.genk.isStep5 = res.step5;
       this.cd.markForCheck();
     });
   }

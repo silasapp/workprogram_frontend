@@ -41,6 +41,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   f_isTabVisible: boolean;
   isAddConcession = false;
   isAddField = false;
+  isInsert = true;
 
   columns = [
     //   {
@@ -200,7 +201,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   ConcessionSubmit() {
-
+    debugger;
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
@@ -209,10 +210,16 @@ export class ConcessionsfieldsComponent implements OnInit {
       if (item != 'consession_Id') {
         concessionInfo[this.genk.upperText(item)] = this.concessionBody[item]?.toString() ?? '';
       }
-      else {
-        actionToDo = 'UPDATE'; id = this.concessionBody[item]?.toString();
-      }
     }
+
+    if (this.isInsert) {
+      actionToDo = 'INSERT';
+      //id = this.concessionBody[item]?.toString();
+    }
+    else {
+      actionToDo = 'UPDATE';
+    }
+
     this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
       .subscribe(res => {
         if (res.statusCode == 300) {
@@ -259,7 +266,7 @@ export class ConcessionsfieldsComponent implements OnInit {
 
 
   loadTable_Concession(data) {
-    debugger;
+    //debugger;
     this.c_ColumnHeader = [];
     this.c_ColumnValue = [];
     let datae: any[] = data;
@@ -290,7 +297,6 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   Delete_Concession(event) {
-
     let info = this.concessionBody as ConcessionDetails;
     this.adminservice
       .Post_ConcessionDetails(info, event.target.value, "DELETE")
@@ -305,12 +311,11 @@ export class ConcessionsfieldsComponent implements OnInit {
         }
       })
   }
+
   Edit_Concession(event) {
     let info = this.allConcessions as ConcessionDetails[];
     let con = info.filter(element => element.consession_Id == event.target.value);
-
     this.concessionBody = con[0];
-
   }
 
   Edit_Field(event) {
@@ -318,10 +323,9 @@ export class ConcessionsfieldsComponent implements OnInit {
     let con = info.filter(element => element.field_ID == event.target.value);
 
     this.fieldBody = con[0];
-
   }
-  loadTable_Field(data) {
 
+  loadTable_Field(data) {
     this.f_ColumnHeader = [];
     this.f_ColumnValue = [];
 

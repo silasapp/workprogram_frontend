@@ -1,34 +1,35 @@
 <div
   style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
+    Note:*All Fields are Mandatory</h1>
   <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
     <span>NIGERIA CONTENT</span>
   </div><br>
   <hr size="10">
   <div style="width:100%;">
-    <div style="width: 30%">
+    <div style="width: 100%">
       <div style="font-weight: 500; margin-bottom: 5px">
         <span>Staff Disposition - Training for Nigerians</span>
       </div>
     </div>
+    <hr>
+    <div style="width: 40%; margin: auto 0 0;">
+      <label class="labelwp">Please provide values for Actual and Proposed year</label>
+      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
+        <select class="inpute" formControlName="actual_Proposed_Year">
+          <option selected disabled>---- Please Select an Option ----</option>
+          <option value="Actual Year">Actual Year</option>
+          <option value="Proposed Year">Proposed Year</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-    <hr size="5">
+  <hr size="5">
 
-    <div [formGroup]="staffdispositionForm">
+  <div [formGroup]="staffdispositionForm">
 
-      <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%; margin: auto 0 0;">
-          <label class="labelwp">Please provide values for Actual and Proposed year</label>
-          <div
-            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
-            <select class="inpute" formControlName="actual_Proposed_Year"
-              [(ngModel)]="staffdispositionBody.actual_Proposed_Year">
-              <option selected disabled>---- Please Select an Option ----</option>
-              <option value="ACTUAL">ACTUAL</option>
-              <option value="PROPOSED">PROPOSED</option>
-            </select>
-          </div>
-        </div>
-
+    <div style="display: flex; width: 100%;  justify-content: space-between;">
       <div style="width: 30%; margin: auto 0 0;">
         <label class="labelwp">No of Expatriate Quota Positions </label>
         <div style="display: flex;">
@@ -86,10 +87,9 @@
           </div>
         </div>
       </div>
-
-
     </div>
     <br>
+
     <div style="display: flex; width: 100%;">
       <div style="width: 30%; margin: auto 5% 0 0;">
         <label class="labelwp">Local (Staff)</label>
@@ -127,7 +127,7 @@
 
 <hr size="10"><br><br>
 
-<div style="display:flex;width: 100%; justify-content: space-between; ">
+<div [formGroup]="seniormanagementstaffForm">
   <div style="width: 30%">
     <div style="font-weight: 500; margin-bottom: 5px">
       <span>Senior / Management Staff </span>
@@ -149,83 +149,90 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div style="display: flex; width: 100%;  justify-content: space-between;">
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">If NO, Give Reason</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="text" formControlName="if_NO_why" [(ngModel)]="seniormanagementstaffBody.if_NO_why" class="inpute">
+  <br>
+  <div style="display: flex; width: 100%;  justify-content: space-between;">
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">If NO, Give Reason</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="text" formControlName="if_NO_why" [(ngModel)]="seniormanagementstaffBody.if_NO_why"
+            class="inpute">
+        </div>
       </div>
     </div>
-  </div>
 
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">Number of staff released within the year</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="number_of_staff_released_within_the_year_"
-          [(ngModel)]="seniormanagementstaffBody.number_of_staff_released_within_the_year_" class="inpute">
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Number of staff released within the year</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="number_of_staff_released_within_the_year_"
+            [(ngModel)]="seniormanagementstaffBody.number_of_staff_released_within_the_year_" class="inpute">
+        </div>
       </div>
     </div>
-  </div>
 
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">Total No. of Nigerian Senior Staff</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="total_no_of_nigeria_senior_staff"
-          [(ngModel)]="seniormanagementstaffBody.total_no_of_nigeria_senior_staff" class="inpute">
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Total No. of Nigerian Senior Staff</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="total_no_of_nigeria_senior_staff"
+            [(ngModel)]="seniormanagementstaffBody.total_no_of_nigeria_senior_staff" class="inpute">
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<br>
-
-<div style="display: flex; width: 100%;  justify-content: space-between;">
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">Total No. of Senior Staff</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="total_no_of_senior_staff"
-          [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff" class="inpute">
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">Total No. of Nigerian Top Management Staff</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="total_no_of_top_nigerian_management_staff"
-          [(ngModel)]="seniormanagementstaffBody.total_no_of_top_nigerian_management_staff" class="inpute">
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 30%; margin: auto 0 0;">
-    <label class="labelwp">Total No. of Top Management Staff</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="total_no_of_top_management_staff"
-          [(ngModel)]="seniormanagementstaffBody.total_no_of_top_management_staff" class="inpute">
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-
-<br><br>
-<div>
-  <div style="text-align: center;">
-    <button class="submitbtn">Update Senior / Management Staff</button>
   </div>
   <br>
-</div>
-<hr size="10"><br><br>
 
-<div>
+  <div style="display: flex; width: 100%;  justify-content: space-between;">
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Total No. of Senior Staff</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="total_no_of_senior_staff"
+            [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff" class="inpute">
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Total No. of Nigerian Top Management Staff</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="total_no_of_top_nigerian_management_staff"
+            [(ngModel)]="seniormanagementstaffBody.total_no_of_top_nigerian_management_staff" class="inpute">
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Total No. of Top Management Staff</label>
+      <div style="display: flex;">
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="total_no_of_top_management_staff"
+            [(ngModel)]="seniormanagementstaffBody.total_no_of_top_management_staff" class="inpute">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <br><br>
+  <div>
+    <div style="text-align: center;">
+      <button class="submitbtn">Update Senior / Management Staff</button>
+    </div>
+    <br>
+  </div>
+  <hr size="10"><br><br>
+</div>
+
+<div [formGroup]="uploadsuccessionForm">
   <div style="width: 100%;">
     <div style="width: 30%">
       <div style="font-weight: 500; margin-bottom: 5px">
@@ -234,79 +241,84 @@
     </div>
   </div>
   <hr size="5"><br>
-</div>
 
 
-<div style="display:flex;width: 100%; justify-content: space-between;">
-  <div style="width: 30%;">
-    <label class="labelwp">Is there a succession plan in place?</label>
-    <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-      <select class="input" formControlName="actual_Proposed_Year"
-        [(ngModel)]="uploadsuccessionplanbody.actual_Proposed_Year" type="inpute">
-        <option selected disabled>---- Please Select an Option ----</option>
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-      </select>
-    </div>
-  </div>
 
-  <div style="width: 30%;">
-    <label class="labelwp">Please provide values for Actual and Proposed year</label>
-    <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-      <select class="inpute" formControlName="actual_Proposed" [(ngModel)]="uploadsuccessionplanBody.actual_proposed">
-        <option selected disabled>---- Please Select an Option ----</option>
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-      </select>
-    </div>
-  </div>
-  <div style="width:30%;">
-    <div style="width: 100%;">
-      <label class="labelwp">Name of Expatriate</label>
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="text" formControlName="name_" [(ngModel)]="uploadsuccessionplanBody.name_" class="inpute">
+  <div style="display:flex;width: 100%; justify-content: space-between;">
+    <div style="width: 30%;">
+      <label class="labelwp">Is there a succession plan in place?</label>
+      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+        <select class="input" formControlName="actual_Proposed_Year"
+          [(ngModel)]="uploadsuccessionplanBody.actual_Proposed_Year" type="inpute">
+          <option selected disabled>---- Please Select an Option ----</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
       </div>
     </div>
-  </div>
-</div>
 
-<br>
-
-<div style="display:flex; width:100%; justify-content: space-between; ">
-  <div style="width:30%;">
-    <div style="width: 100%;">
-      <label class="labelwp">Nigerian Understudy</label>
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="text" formControlName="understudy_" [(ngModel)]="uploadsuccessionplanBody.understudy_"
-          class="inpute">
+    <div style="width: 30%;">
+      <label class="labelwp">Please provide values for Actual and Proposed year</label>
+      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+        <select class="inpute" formControlName="actual_proposed" [(ngModel)]="uploadsuccessionplanBody.actual_proposed">
+          <option selected disabled>---- Please Select an Option ----</option>
+          <option value="Actual Year">Actual Year</option>
+          <option value="Proposed Year">Proposed Year</option>
+        </select>
+      </div>
+    </div>
+    <div style="width:30%;">
+      <div style="width: 100%;">
+        <label class="labelwp">Name of Expatriate</label>
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="text" formControlName="name_" [(ngModel)]="uploadsuccessionplanBody.name_" class="inpute">
+        </div>
       </div>
     </div>
   </div>
 
-  <div style="width:30%;">
-    <div style="width: 100%;">
-      <label class="labelwp">Timeline (Years)</label>
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="number" formControlName="timeline_" [(ngModel)]="uploadsuccessionplanBody.timeline_"
-          class="inpute">
-      </div>
-    </div>
-  </div>
-  <div style="width:30%;">
-    <div style="width: 100%;">
-      <label class="labelwp">Position Occupied</label>
-      <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-        <input type="text" formControlName="position_Occupied_"
-          [(ngModel)]="uploadsuccessionplanBody.position_Occupied_" class="inpute">
-      </div>
-    </div>
-  </div>
-</div>
-<br><br>
-<div>
-  <div style="text-align: center;">
-    <button class="submitbtn">Upload Succession Plan</button>
-  </div>
   <br>
+
+  <div style="display:flex; width:100%; justify-content: space-between; ">
+    <div style="width:30%;">
+      <div style="width: 100%;">
+        <label class="labelwp">Nigerian Understudy</label>
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="text" formControlName="understudy_" [(ngModel)]="uploadsuccessionplanBody.understudy_"
+            class="inpute">
+        </div>
+      </div>
+    </div>
+
+    <div style="width:30%;">
+      <div style="width: 100%;">
+        <label class="labelwp">Timeline (Years)</label>
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="number" formControlName="timeline_" [(ngModel)]="uploadsuccessionplanBody.timeline_"
+            class="inpute">
+        </div>
+      </div>
+    </div>
+    <div style="width:30%;">
+      <div style="width: 100%;">
+        <label class="labelwp">Position Occupied</label>
+        <div
+          style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+          <input type="text" formControlName="position_Occupied_"
+            [(ngModel)]="uploadsuccessionplanBody.position_Occupied_" class="inpute">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div>
+    <div style="text-align: center;">
+      <button class="submitbtn">Upload Succession Plan</button>
+    </div>
+    <br>
+  </div>
 </div>
 <hr size="10"><br><br>

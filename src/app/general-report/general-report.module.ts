@@ -24,6 +24,16 @@ import { ReserveUpdateComponent } from './reserves-update.component';
 import { OilProductionComponent } from './oil-production.component';
 import { OilProductionContractComponent } from './oil-production-contract.component';
 import { MonthlyOilProductionComponent } from './monthly-oil-production.component';
+import { OilProductionTerrainComponent } from './oil-production-terrain.component';
+import { CrudeProductionContractComponent } from './crude-production-contract.component';
+import { CrudeProductionTerrainComponent } from './crude-production-terrain.component';
+import { ReconciledOilProductionComponent } from './reconciled-oil-production.component';
+import { GasProductionAndUtilizationComponent } from './gas-production-utilization.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { GasProductionContractComponent } from './gas-production-contract.component';
+import { GasProductionTerrainComponent } from './gas-production-terrain.component';
+import { GasProductionContractBasisComponent } from './gas-prod-contract-basis.component';
+import { GasFlarePenaltyComponent } from './gas-flare-penalty.component';
 
 
 @NgModule({
@@ -41,6 +51,15 @@ import { MonthlyOilProductionComponent } from './monthly-oil-production.componen
     OilProductionComponent,
     OilProductionContractComponent,
     MonthlyOilProductionComponent,
+    OilProductionTerrainComponent,
+    CrudeProductionContractComponent,
+    CrudeProductionTerrainComponent,
+    ReconciledOilProductionComponent,
+    GasProductionAndUtilizationComponent,
+    GasProductionContractComponent,
+    GasProductionTerrainComponent,
+    GasProductionContractBasisComponent,
+    GasFlarePenaltyComponent,
     GeneralReportComponent,
     ExecutiveSummaryComponent
   ],
@@ -54,6 +73,7 @@ import { MonthlyOilProductionComponent } from './monthly-oil-production.componen
     FormsModule,
     ReactiveFormsModule,
     NgChartsModule,
+    MatProgressSpinnerModule,
     GeneralReportRoutingModule
   ]
 })

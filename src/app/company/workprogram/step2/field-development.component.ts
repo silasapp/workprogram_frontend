@@ -12,30 +12,30 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SWPFieldDevelopmentComponent implements OnInit {
-    FieldDevelopmentForm: FormGroup;
-    FieldDevelopmeentExcessiveReserveForm: FormGroup;
-    UnitizationForm: FormGroup;
-    unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION = {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION;
+  FieldDevelopmentForm: FormGroup;
+  FieldDevelopmeentExcessiveReserveForm: FormGroup;
+  UnitizationForm: FormGroup;
+  unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION = {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION;
 
-    fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE = {} as FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE;
-    fielddevelopmentBody: FIELD_DEVELOPMENT_PLAN = {} as FIELD_DEVELOPMENT_PLAN;
-    wkpYear: string;
-    wkpYearList = [];
-    concessionHeld: string;
-    concessionHeldList = [];
-    genk: GenericService;
-    submitted = false;
-    columnHeader = [];
-    columnValue = [];
-    isTabVisible = false;
+  fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE = {} as FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE;
+  fielddevelopmentBody: FIELD_DEVELOPMENT_PLAN = {} as FIELD_DEVELOPMENT_PLAN;
+  wkpYear: string;
+  wkpYearList = [];
+  concessionHeld: string;
+  concessionHeldList = [];
+  genk: GenericService;
+  submitted = false;
+  columnHeader = [];
+  columnValue = [];
+  isTabVisible = false;
 
-    PUAFile?: File = null;
-UUOAFile?: File = null;
-mediatype = 'doc';
-PUANewName: string;
-UUOANameDoc: string;
-UUOANewName: string;
-PUANameDoc: string;
+  PUAFile?: File = null;
+  UUOAFile?: File = null;
+  mediatype = 'doc';
+  PUANewName: string;
+  UUOANameDoc: string;
+  UUOANewName: string;
+  PUANameDoc: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -46,37 +46,28 @@ PUANameDoc: string;
   ) {
     this.genk = gen;
     this.modalService.concessionSitu
-    .subscribe(res => {
-      // this.getConcessionHeld();
-    });
+      .subscribe(res => {
+        // this.getConcessionHeld();
+      });
   }
 
 
   ngOnInit(): void {
     this.genk.activeStep = 'STEP2';
     this.FieldDevelopmentForm = new FormGroup(
-    {
-      how_many_fields_in_concession: new FormControl(this.fielddevelopmentBody.how_many_fields_in_concession,[Validators.required]),
-      how_many_fields_have_approved_FDP: new FormControl(this.fielddevelopmentBody.how_many_fields_have_approved_FDP, [Validators.required]),
-      which_fields_do_you_plan_to_submit_an_FDP: new FormControl(this.fielddevelopmentBody.which_fields_do_you_plan_to_submit_an_FDP, [Validators.required]),
-      proposed_number_of_wells_from_approved_FDP: new FormControl(this.fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP, [Validators.required]),
-      no_of_wells_drilled_in_current_year: new FormControl(this.fielddevelopmentBody.no_of_wells_drilled_in_current_year, [Validators.required]),
-      number_of_wells_proposed_in_the_FDP: new FormControl(this.fielddevelopmentBody.number_of_wells_proposed_in_the_FDP, [Validators.required]),
-      noof_Producing_Fields: new FormControl(this.fielddevelopmentBody.noof_Producing_Fields, [Validators.required]),
-      uploaded_approved_FDP_Document: new FormControl(this.fielddevelopmentBody.uploaded_approved_FDP_Document, [Validators.required]),
-      are_they_oil_or_gas_wells: new FormControl(this.fielddevelopmentBody.are_they_oil_or_gas_wells, [Validators.required]),
-      status: new FormControl(this.fielddevelopmentBody.status, [Validators.required]),
+      {
+        how_many_fields_in_concession: new FormControl(this.fielddevelopmentBody.how_many_fields_in_concession, [Validators.required]),
+        how_many_fields_have_approved_FDP: new FormControl(this.fielddevelopmentBody.how_many_fields_have_approved_FDP, [Validators.required]),
+        which_fields_do_you_plan_to_submit_an_FDP: new FormControl(this.fielddevelopmentBody.which_fields_do_you_plan_to_submit_an_FDP, [Validators.required]),
+        proposed_number_of_wells_from_approved_FDP: new FormControl(this.fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP, [Validators.required]),
+        no_of_wells_drilled_in_current_year: new FormControl(this.fielddevelopmentBody.no_of_wells_drilled_in_current_year, [Validators.required]),
+        number_of_wells_proposed_in_the_FDP: new FormControl(this.fielddevelopmentBody.number_of_wells_proposed_in_the_FDP, [Validators.required]),
+        noof_Producing_Fields: new FormControl(this.fielddevelopmentBody.noof_Producing_Fields, [Validators.required]),
+        uploaded_approved_FDP_Document: new FormControl(this.fielddevelopmentBody.uploaded_approved_FDP_Document, [Validators.required]),
+        are_they_oil_or_gas_wells: new FormControl(this.fielddevelopmentBody.are_they_oil_or_gas_wells, [Validators.required]),
+        status: new FormControl(this.fielddevelopmentBody.status, [Validators.required]),
 
-    },{});
-
-    this.FieldDevelopmeentExcessiveReserveForm = new FormGroup(
-    {
-      proposed_Development_well_name: new FormControl(this.fielddevelopmentexcessivereserveBody.proposed_Development_well_name, [Validators.required]),
-      field_Name: new FormControl(this.fielddevelopmentexcessivereserveBody.field_Name, [Validators.required]),
-      oil: new FormControl(this.fielddevelopmentexcessivereserveBody.oil, [Validators.required]),
-      gas: new FormControl(this.fielddevelopmentexcessivereserveBody.gas, [Validators.required]),
-      condensate: new FormControl(this.fielddevelopmentexcessivereserveBody.condensate, [Validators.required]),
-    },{});
+      }, {});
 
     this.FieldDevelopmeentExcessiveReserveForm = new FormGroup(
       {
@@ -85,31 +76,27 @@ PUANameDoc: string;
         oil: new FormControl(this.fielddevelopmentexcessivereserveBody.oil, [Validators.required]),
         gas: new FormControl(this.fielddevelopmentexcessivereserveBody.gas, [Validators.required]),
         condensate: new FormControl(this.fielddevelopmentexcessivereserveBody.condensate, [Validators.required]),
-      },{});
+      }, {});
 
-      this.getFDP();
+    this.FieldDevelopmeentExcessiveReserveForm = new FormGroup(
+      {
+        proposed_Development_well_name: new FormControl(this.fielddevelopmentexcessivereserveBody.proposed_Development_well_name, [Validators.required]),
+        field_Name: new FormControl(this.fielddevelopmentexcessivereserveBody.field_Name, [Validators.required]),
+        oil: new FormControl(this.fielddevelopmentexcessivereserveBody.oil, [Validators.required]),
+        gas: new FormControl(this.fielddevelopmentexcessivereserveBody.gas, [Validators.required]),
+        condensate: new FormControl(this.fielddevelopmentexcessivereserveBody.condensate, [Validators.required]),
+      }, {});
 
-      this.UnitizationForm = new FormGroup(
-        {
-          is_any_of_your_field_straddling: new FormControl(this.unitizationBody.is_any_of_your_field_straddling, [Validators.required]),
-          what_concession_field_straddling: new FormControl(this.unitizationBody.what_concession_field_straddling, [Validators.required]),
-          straddle_field_producing: new FormControl(this.unitizationBody.straddle_field_producing, [Validators.required]),
-          has_DPR_been_notified: new FormControl(this.unitizationBody.has_DPR_been_notified, [Validators.required]),
-          has_the_other_party_been_notified: new FormControl(this.unitizationBody.has_the_other_party_been_notified, [Validators.required]),
-          // straddling_Field_OP: new FormControl(this.unitizationBody.straddling_Field_OP, [Validators.required]),
-          // has_the_CA_been_signed: new FormControl(this.unitizationBody.has_the_CA_been_signed, [Validators.required]),
-          // committees_been_inaugurated: new FormControl(this.unitizationBody.committees_been_inaugurated, [Validators.required]),
-          // participation_been_determined: new FormControl(this.unitizationBody.participation_been_determined, [Validators.required]),
-          //straddling_Fields_OC: new FormControl(this.unitizationBody.straddling_Fields_OC, [Validators.required]),
-          // prod_Status_OC: new FormControl(this.unitizationBody.prod_Status_OC, [Validators.required]),
-          // company_Name_OP: new FormControl(this.unitizationBody.company_Name_OP, [Validators.required]),
-          // how_many_fields_straddle: new FormControl(this.unitizationBody.how_many_fields_straddle, [Validators.required]),
-          // is_there_a_Joint_Development: new FormControl(this.unitizationBody.is_there_a_Joint_Development, [Validators.required]),
-          // has_the_PUA_been_signed: new FormControl(this.unitizationBody.has_the_PUA_been_signed, [Validators.required]),
-          // has_the_UUOA_been_signed: new FormControl(this.unitizationBody.has_the_UUOA_been_signed, [Validators.required]),
-          // 'PUAFormFile': new FormControl(this.PUAFile, [Validators.required]),
-          // 'UUOAFormFile': new FormControl(this.UUOAFile, [Validators.required]),
-        },{});
+    this.getFDP();
+
+    this.UnitizationForm = new FormGroup(
+      {
+        is_any_of_your_field_straddling: new FormControl(this.unitizationBody.is_any_of_your_field_straddling, [Validators.required]),
+        what_concession_field_straddling: new FormControl(this.unitizationBody.what_concession_field_straddling, [Validators.required]),
+        straddle_field_producing: new FormControl(this.unitizationBody.straddle_field_producing, [Validators.required]),
+        has_DPR_been_notified: new FormControl(this.unitizationBody.has_DPR_been_notified, [Validators.required]),
+        has_the_other_party_been_notified: new FormControl(this.unitizationBody.has_the_other_party_been_notified, [Validators.required]),
+      }, {});
   }
 
   getFDP() {

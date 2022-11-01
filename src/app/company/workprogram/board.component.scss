@@ -6,7 +6,7 @@
     align-items: center;
     border-radius: 50%;
     background-color: rgb(214, 214, 214);
-    color: darkgray;
+    color: darkgrey;
     font-weight: 700;
     font-size: 18px;
 }
@@ -214,10 +214,22 @@ select {
   width: 100%;
   justify-content: space-between;
 }
+.toprow2 
+{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+}
 
 .rowbox {
   width: 30%;
   margin-top: auto;
+}
+
+.rowbox2 {
+ width: 100%;
+ margin: auto 2% 0;
 }
 
 .quarterbtn {
@@ -261,3 +273,16 @@ select {
   box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
   padding: 20px;
 }
+
+.navfull {
+  background-color: teal;
+   color: white;
+}
+
+.navactive {
+  border: solid 5px rgb(63, 205, 50);
+  color: white;
+}
+
+
+
