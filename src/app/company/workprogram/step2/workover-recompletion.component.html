@@ -123,10 +123,8 @@
           <label class="labelwp"> Well Type </label>
           <div style="display: flex; width: 100%;">
             <div class="inputshadow">
-              <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="workoverBody.oil_or_gas_wells"
-                (change)="getFieldWell($event)">
-                <option selected disabled>--Select a Option -- </option>
-                <option value="GAS WELL">GAS WELL</option>
+              <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="workoverBody.oil_or_gas_wells" (change)="getFieldWell($event)">
+                <option selected value="GAS WELL">GAS WELL</option>
                 <option value="OIL WELL">OIL WELL</option>
                 <option value="CONDENSATE WELL">CONDENSATE WELL</option>
               </select>

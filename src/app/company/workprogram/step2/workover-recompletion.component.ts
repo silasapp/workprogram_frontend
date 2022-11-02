@@ -164,11 +164,24 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
 
       this.workprogram.getWorkover(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
+        debugger;
+        if (!res.workoverRecompletion) {
+          this.quaterIWOneData = {oil_or_gas_wells: 'GAS WELL'} as WORKOVERS_RECOMPLETION_JOB1;
+          this.quaterIWTwoData = {oil_or_gas_wells: 'GAS WELL'} as WORKOVERS_RECOMPLETION_JOB1;
+          this.quaterIWThreeData = {oil_or_gas_wells: 'GAS WELL'} as WORKOVERS_RECOMPLETION_JOB1;
+          this.quaterIWFourData = {oil_or_gas_wells: 'GAS WELL'} as WORKOVERS_RECOMPLETION_JOB1;
+          this.workoverBody = this.quaterIWOneData;
+          this.genk.fieldWell = 'GAS WELL';
+          this.cd.markForCheck();
+          return;
+        }
+
+
         if (res.workoverRecompletion.length > 0) {
           this.genk.isStep2 = true;
           this.cd.markForCheck();
         }
-        //debugger;
+
          this.quaterIWOneData = res.workoverRecompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? {} as WORKOVERS_RECOMPLETION_JOB1;
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
@@ -210,5 +223,6 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
 
   getFieldWell(event){
     this.genk.fieldWell = event.target.value;
+    this.cd.markForCheck();
   }
 }

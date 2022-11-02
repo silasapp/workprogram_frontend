@@ -10,8 +10,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { SWPConcessionSituationComponent } from './concession-situation.component';
 import { SWPDrillingOperationsComponent } from './drilling-operations.component';
-import { SWPGeophysicalActivitiesComponent } from './geophysical-activities.component';
 import { Step1Component } from './step1.component';
+import { SWPGeophysicalActivitiesComponent } from './geophysical-activities.component';
 
 @NgModule({
   declarations: [

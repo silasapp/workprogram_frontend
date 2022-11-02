@@ -37,6 +37,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.modalService.concessionSitu
       .subscribe(res => {
         this.getConcessionHeld();
+        this.getRoyaltyHeld();
       });
   }
 
@@ -85,6 +86,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       }, {});
 
     this.getConcessionHeld();
+    this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
 
@@ -176,7 +178,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
 
   submit() {
-
+    debugger;
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration = this.concessionBody.date_of_Expiration.includes("T00:00:00") ? this.concessionBody.date_of_Expiration : this.concessionBody.date_of_Expiration + "T00:00:00";
     }

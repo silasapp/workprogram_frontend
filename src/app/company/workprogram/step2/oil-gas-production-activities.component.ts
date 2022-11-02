@@ -36,6 +36,8 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
+  oil_or_gas_wells = '';
+
 
 YPFFile?: File = null;
 mediatype = 'doc';
@@ -265,5 +267,10 @@ this.fiveYearForecastForm = new FormGroup({
       this.workprogram.saveFiveYearForecast(formDat, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(res => {
         this.modalService.logNotice("Success", res.popText, 'success');
       });
+    }
+
+    getFieldWell(event){
+      this.genk.fieldWell = event.target.value;
+      this.cd.markForCheck();
     }
   }
