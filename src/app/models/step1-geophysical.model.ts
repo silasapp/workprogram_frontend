@@ -30,7 +30,7 @@ export class GEOPHYSICAL_ACTIVITIES_ACQUISITION
   gas_flare_Royalty_payment: string = '';
   gas_Sales_Royalty_Payment: string = '';
   no_of_Folds: string = '';
-  qUATER: string = '';
+  qUARTER: string = '';
 }
 
 
@@ -65,6 +65,6 @@ export class GEOPHYSICAL_ACTIVITIES_PROCESSING
   terrain: string = '';
   quantum_Planned: string = '';
   consession_Type: string = '';
-  qUATER: string = '';
+  qUARTER: string = '';
   type_of_Processing : string = '';
 }

@@ -112,7 +112,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  get quaterACClassOne() {
+  get quarterACClassOne() {
     let list = '';
     if (this.quarterACOne) {
       if (this.currentACQuarter === 1) {
@@ -131,7 +131,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterACClassTwo() {
+  get quarterACClassTwo() {
     let list = '';
     if (this.quarterACTwo) {
       if (this.currentACQuarter === 2) {
@@ -186,7 +186,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
 
-  get quaterPRClassOne() {
+  get quarterPRClassOne() {
     let list = '';
     if (this.quarterPROne) {
       if (this.currentPRQuarter === 1) {
@@ -205,7 +205,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterPRClassTwo() {
+  get quarterPRClassTwo() {
     let list = '';
     if (this.quarterPRTwo) {
       if (this.currentPRQuarter === 2) {
@@ -223,7 +223,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterPRClassThree() {
+  get quarterPRClassThree() {
     let list = '';
     if (this.quarterPRThree) {
       if (this.currentPRQuarter === 3) {
@@ -241,7 +241,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return list
   }
 
-  get quaterPRClassFour() {
+  get quarterPRClassFour() {
     let list = '';
     if (this.quarterPRFour) {
       if (this.currentPRQuarter === 4) {
@@ -260,29 +260,29 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
 
-  changeACQuater(quater: number, btn: HTMLButtonElement) {
-    if (quater === 1) {
+  changeACQuarter(quarter: number, btn: HTMLButtonElement) {
+    if (quarter === 1) {
       this.currentACQuarter = 1;
       btn.textContent = "Save Quarter 1";
       this.acquisitionBody = this.quarterACOneData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 1");
     }
-    if (quater === 2) {
+    if (quarter === 2) {
       this.currentACQuarter = 2;
       btn.textContent = "Save Quarter 2";
       this.acquisitionBody = this.quarterACTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
     }
-    if (quater === 3) {
+    if (quarter === 3) {
       this.currentACQuarter = 3;
       this.acquisitionBody = this.quarterACThreeData;
       btn.textContent = "Save Quarter 3";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
-    if (quater === 4) {
+    if (quarter === 4) {
       this.currentACQuarter = 4;
       this.acquisitionBody = this.quarterACFourData;
       btn.textContent = "Save Quarter 4";
@@ -387,7 +387,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   saveQuarterAcquisition() {
     debugger;
-    this.acquisitionBody.qUATER = "QUARTER " + this.currentACQuarter;
+    this.acquisitionBody.qUARTER = "QUARTER " + this.currentACQuarter;
     this.acquisitionBody.budeget_Allocation_NGN = this.acquisitionBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.acquisitionBody.budeget_Allocation_USD = this.acquisitionBody.budeget_Allocation_USD.replace(/,/g, '');
     let sail: GEOPHYSICAL_ACTIVITIES_ACQUISITION = {} as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
@@ -401,7 +401,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   saveQuarterProcessing() {
     debugger;
-    this.processingBody.qUATER = "QUARTER " + this.currentACQuarter;
+    this.processingBody.qUARTER = "QUARTER " + this.currentACQuarter;
     this.processingBody.budeget_Allocation_NGN = this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.processingBody.budeget_Allocation_USD = this.processingBody.budeget_Allocation_USD.replace(/,/g, '');
     // var key, keys = Object.keys(this.processingBody);
