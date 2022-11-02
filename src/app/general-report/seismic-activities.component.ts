@@ -118,17 +118,18 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       }
 
 
-  //   fetchdata(e){
-  //     let value = e.target.value;
-  //    this.report.fetch("concessionsituation", value).subscribe(
-  //       (res) => {
-  //           this.data = res.data as any[];
-  //           this.assignDataRows();
-  //           this.assignPageNum();
-  //           this.cd.markForCheck();
-  //       }
-  //     )
-  //   }
+    fetchdata(e){
+      let value = e.target.value;
+     this.report.fetch("concessionsituation", value).subscribe(
+        (res) => {
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
+            this.assignPageNum();
+            this.cd.markForCheck();
+        }
+      )
+    }
 
   //   yearList() {
   //     this.report.getYearList("concessionsituationyearlist")

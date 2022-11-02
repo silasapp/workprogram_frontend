@@ -312,10 +312,10 @@ const routes: Routes = [
     path: "general_report",
     component: WorkProgramReportComponent
   },
-{
-  path:"oil_and_gas_facility_maintenance",
-
-}
+// {
+//   path:"oil_and_gas_facility_maintenance",
+// component:oilAndGasFacilityMaintenanceProject
+// }
 ];
 
 @NgModule({

@@ -18,7 +18,7 @@ export class ConcessionSituationComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'Concessions Situation';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     year = [];
     selectedColumns: any[] = [];
@@ -287,6 +287,7 @@ export class ConcessionSituationComponent implements OnInit {
     
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -295,7 +296,9 @@ export class ConcessionSituationComponent implements OnInit {
       let value = e.target.value;
      this.report.fetch("concessionsituation", value).subscribe(
         (res) => {
+          debugger;
             this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
