@@ -1,6 +1,6 @@
 export class Royalty
 {
-        id: number = 0;
+        royalty_ID: number = 0;
         oML_ID: string = '';
         oML_Name: string = '';
         year: string = '';

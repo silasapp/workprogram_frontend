@@ -131,14 +131,14 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentIWQuater = 1;
-      btn.textContent = "Save Quater 1";
+      btn.textContent = "Save Quarter 1";
       this.workoverBody = this.quaterIWOneData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 1");
     }
     if (quater === 2) {
       this.currentIWQuater = 2;
-      btn.textContent = "Save Quater 2";
+      btn.textContent = "Save Quarter 2";
       this.workoverBody = this.quaterIWTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
@@ -146,14 +146,14 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
     if (quater === 3) {
       this.currentIWQuater = 3;
       this.workoverBody = this.quaterIWThreeData;
-      btn.textContent = "Save Quater 3";
+      btn.textContent = "Save Quarter 3";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
       this.currentIWQuater = 4;
       this.workoverBody = this.quaterIWFourData;
-      btn.textContent = "Save Quater 4";
+      btn.textContent = "Save Quarter 4";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
