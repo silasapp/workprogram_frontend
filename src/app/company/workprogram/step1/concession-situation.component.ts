@@ -37,7 +37,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.modalService.concessionSitu
       .subscribe(res => {
         this.getConcessionHeld();
-      this.getRoyaltyHeld();
+        this.getRoyaltyHeld();
       });
   }
 
@@ -85,9 +85,9 @@ export class SWPConcessionSituationComponent implements OnInit {
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
       }, {});
 
-    // this.getConcessionHeld();
-    // debugger;
-    // this.getRoyaltyHeld();
+    this.getConcessionHeld();
+    //
+    this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
 
@@ -109,7 +109,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
+
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
 
         if (!conInfo) {
@@ -130,7 +130,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
-          debugger;
+
           this.cd.markForCheck();
         }
         else {
@@ -146,28 +146,26 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.cd.markForCheck();
           console.log(this.concessionBody.companyName);
           this.loadTable();
-          debugger;
-
         }
-        debugger;
+
         this.getRoyaltyHeld();
 
       });
   }
 
   getRoyaltyHeld() {
-    debugger;
+
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear,)
       .subscribe((res) => {
-        debugger;
+
         this.royaltyBody = res.royalty[0] as Royalty;
         this.cd.markForCheck();
-debugger;
+
         this.genk.isStep1 = true;
         this.cd.markForCheck();
         console.log(this.royaltyBody.royalty_ID);
-        
+
         this.loadTable();
 
       });
@@ -184,7 +182,7 @@ debugger;
 
 
   submit() {
-    debugger;
+
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration = this.concessionBody.date_of_Expiration.includes("T00:00:00") ? this.concessionBody.date_of_Expiration : this.concessionBody.date_of_Expiration + "T00:00:00";
     }
