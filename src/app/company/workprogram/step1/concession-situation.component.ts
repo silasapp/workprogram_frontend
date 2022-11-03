@@ -37,7 +37,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.modalService.concessionSitu
       .subscribe(res => {
         this.getConcessionHeld();
-        this.getRoyaltyHeld();
+      this.getRoyaltyHeld();
       });
   }
 
@@ -85,8 +85,9 @@ export class SWPConcessionSituationComponent implements OnInit {
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
       }, {});
 
-    this.getConcessionHeld();
-    this.getRoyaltyHeld();
+    // this.getConcessionHeld();
+    // debugger;
+    // this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
 
@@ -143,25 +144,30 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.genk.concessionData = conInfo;
           this.genk.isStep1 = true;
           this.cd.markForCheck();
+          console.log(this.concessionBody.companyName);
           this.loadTable();
           debugger;
 
         }
+        debugger;
         this.getRoyaltyHeld();
 
       });
   }
 
   getRoyaltyHeld() {
+    debugger;
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear,)
       .subscribe((res) => {
         debugger;
-        this.royaltyBody = res.royalty as Royalty;
+        this.royaltyBody = res.royalty[0] as Royalty;
         this.cd.markForCheck();
-
+debugger;
         this.genk.isStep1 = true;
         this.cd.markForCheck();
+        console.log(this.royaltyBody.royalty_ID);
+        
         this.loadTable();
 
       });
