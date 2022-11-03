@@ -20,7 +20,7 @@ export class CrudeProductionTerrainComponent implements OnInit {
     title = 'PRODUCTION ON TERRAIN BASIS';
     reporttext: string;
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -139,6 +139,7 @@ export class CrudeProductionTerrainComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 

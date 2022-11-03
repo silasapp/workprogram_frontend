@@ -15,7 +15,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'SCHOLARSHIPS';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -171,6 +171,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
 
     assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
 

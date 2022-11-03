@@ -15,7 +15,7 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'HSE INSPECTION AND MAINTENANCE FACILITY TYPE NEW';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -157,6 +157,7 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
 
     assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   

@@ -20,7 +20,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     title = '1.1 Seismic Data Acquisition Activities for 2021';
     tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -114,6 +114,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 

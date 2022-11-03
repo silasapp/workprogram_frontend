@@ -21,7 +21,7 @@ export class SeismicProcessingCurrentComponent implements OnInit {
     title = 'Seismic Data Approved and 2 Years ago';
     tableTitle = 'Table 5. 2019 3D Seismic Data Approved and Acquired';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -113,6 +113,7 @@ export class SeismicProcessingCurrentComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
