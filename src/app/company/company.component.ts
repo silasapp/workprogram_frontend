@@ -12,6 +12,7 @@ export class CompanyComponent implements OnInit {
   genk: GenericService;
   isPresentationEvaluation = false;
   isPresentationSchedule = false;
+  isApplication = false;
   isWorkProgramReport = false;
   isAdminstration = false;
   isReports = false;
@@ -45,6 +46,18 @@ export class CompanyComponent implements OnInit {
       this.entryStyle = 'layout-child';
       this.isPresentationEvaluation = false;
       evac.focus();
+    }
+  }
+
+  toggle_application() {
+    
+    if (!this.isApplication) {
+      
+      this.entryStyle = 'layout-child';
+      this.isApplication = true;
+    } else {
+      this.entryStyle = 'layout-child';
+      this.isApplication = false;
     }
   }
 

@@ -6,6 +6,10 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
+import { GenericService } from 'src/app/services';
+import { AdminService } from 'src/app/services/admin.service';
+import { DashboardModel } from 'src/app/models/application-details';
+
 declare var $: any;
 
 @Component({
@@ -14,6 +18,7 @@ declare var $: any;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
+  genk: GenericService;
   @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
 
@@ -29,14 +34,17 @@ export class DashboardComponent implements OnInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any
+  dashboardStuff : DashboardModel;   
 
-  constructor(private report: WorkprogrammeReportService, private genReport: ReportService) {
+  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private gen: GenericService, private adminservice: AdminService) {
+    this.genk = gen;
    }
-
+   
   ngOnInit(): void {
+    this.getDashboardStuff();
   }
 ngAfterViewInit(){
-  this.fetchreport()
+  this.fetchreport();
 }
 
   fetchreport() {
@@ -54,6 +62,16 @@ ngAfterViewInit(){
 
     )
 
+  }
+
+  getDashboardStuff(){
+    debugger;
+    this.adminservice.getDashboardStuff()
+    .subscribe(res=>
+      {
+        this.dashboardStuff = res;
+      }
+      )
   }
 
   // firstChart() {

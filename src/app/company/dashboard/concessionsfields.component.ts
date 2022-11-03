@@ -204,13 +204,16 @@ export class ConcessionsfieldsComponent implements OnInit {
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
-
+debugger;
     for (let item in this.concessionBody) {
-      if (item != 'consession_Id') {
-        concessionInfo[this.genk.upperText(item)] = this.concessionBody[item]?.toString() ?? '';
+      //if (item != 'consession_Id' && item != 'date_of_Expiration') {
+      if (item != 'consession_Id' ) {
+        concessionInfo[this.genk.upperText(item)] = this.concessionBody[item] ?? '';
       }
       else {
-        actionToDo = 'UPDATE'; id = this.concessionBody[item]?.toString();
+        debugger;
+        id = this.concessionBody[item]?.toString();
+        actionToDo = id === '' || id === undefined ? 'INSERT': 'UPDATE';         
       }
     }
     this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
@@ -225,6 +228,7 @@ export class ConcessionsfieldsComponent implements OnInit {
         this.togAddConcession();
       })
   }
+ 
 
   FieldSubmit() {
     //debugger;

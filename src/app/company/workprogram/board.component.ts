@@ -51,6 +51,7 @@ export class BoardComponent implements OnInit {
   changeConcessionHeld(e) {
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
+    //this.genk.OmlID = this.concessionHeld;
     this.cd.markForCheck();
 
     this.workprogram.getConcessionField(this.concessionHeld, null)

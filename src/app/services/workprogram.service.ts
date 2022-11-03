@@ -52,6 +52,32 @@ getConcessionField(concessionName, companyId){
   })
   )
 }
+getApplications(){
+  return this.http.get<any>(`${environment.apiUrl}/application/all-applications`)
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+getApplication(id){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/viewapplication`, {params:{appID: id}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+getAppsOnMyDesk(){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/getappsonmydesk` )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 
 getWPYearList(){
     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
@@ -832,16 +858,24 @@ post_SDCP_Pictures(conbody: FormData, year: string, omlName: string, fieldName: 
   )
 }
 
-post_WorkProgram(data: any,year: string, omlName: string, fieldName){
-
-  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_workprogram`, data, {params: {year: year, omlName: omlName, fieldName: fieldName}})
+post_WorkProgram(year: string, omlName: string, fieldName){
+debugger;
+  return this.http.post<any>(`${environment.apiUrl}/application/submitapplication`, null, {params: {year: year, omlName: omlName, fieldName: fieldName}})
   .pipe(retry(this.num),
   map((response) => {
     return response
   })
   )
 }
-
+post_WorkProgramINT(data: any,year: string, concessionID, fieldID){
+  debugger;
+    return this.http.post<any>(`${environment.apiUrl}/application/submitapplication`, data, {params: {year: year, concessionID: concessionID, fieldID: fieldID}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
 saveWellCostQuarter(conbody: DRILLING_EACH_WELL_COST, year: string, omlName: string){
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_drilling_each_well_cost`, conbody, {params: {omlName: omlName, year: year}})
   .pipe(retry(this.num),
