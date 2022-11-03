@@ -182,25 +182,25 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
           this.cd.markForCheck();
         }
 
-         this.quaterIWOneData = res.workoverRecompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? {} as WORKOVERS_RECOMPLETION_JOB1;
+         this.quaterIWOneData = res.workoverRecompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
           this.quaterIWTwoData = res.workoverRecompletion.filter(res => {
             this.quaterIWTwo = res.quater === "QUARTER 2" ? true : false;
           return res.quater === "QUARTER 2";
-        })[0]  ?? {} as WORKOVERS_RECOMPLETION_JOB1;
+        })[0]  ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWTwo = this.quaterIWTwoData.omL_Name ? true : false;
 
         this.quaterIWThreeData = res.workoverRecompletion.filter(res => {
           this.quaterIWThree = res.quater === "QUARTER 3" ? true : false;
           return res.quater === "QUARTER 3";
-        })[0] ?? {} as WORKOVERS_RECOMPLETION_JOB1;
+        })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWThree = this.quaterIWThreeData.omL_Name ? true : false;
 
         this.quaterIWFourData = res.workoverRecompletion.filter(res => {
           this.quaterIWFour = res.quater === "QUARTER 4" ? true : false;
           return res.quater === "QUARTER 4";
-        })[0] ?? {} as WORKOVERS_RECOMPLETION_JOB1;
+        })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWFour = this.quaterIWFourData.omL_Name ? true : false;
         this.workoverBody = this.quaterIWOneData;
         this.cd.markForCheck();

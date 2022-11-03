@@ -31,6 +31,7 @@ export class OilProductionContractComponent implements OnInit {
     totaltwo = 0;
     barone = 'TOTAL ANNUAL PRODUCTION';
     bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
+    isData = true;
 
     columns = [
       {
@@ -137,6 +138,7 @@ export class OilProductionContractComponent implements OnInit {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.crude_Oil_Production_By_ContractType_Pivotted as any[];
+        this.isData = this.data.length > 0;
         this.data = this.data.slice(1, this.data.length);
         this.data = this.filterData(this.data);
         this.data = this.report.addSn(this.data);

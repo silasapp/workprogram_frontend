@@ -32,6 +32,7 @@ export class AppraisalWellsComponent implements OnInit {
     totaltwo = 0;
     barone = 'Total Days to Total Depth';
     bartwo = 'Total Well Cost';
+    isData = true;
 
     columns = [
       {
@@ -200,6 +201,7 @@ export class AppraisalWellsComponent implements OnInit {
     this.workprogram.getAppraisalWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        this.isData = this.data.length > 0;
         let count = this.data.length;
           let reptext = this.reporttext.split(' ')[3];
           this.reporttext = this.reporttext.replace(reptext, count.toString());

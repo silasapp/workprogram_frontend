@@ -31,7 +31,8 @@ export class SeismicProcessingCurrentComponent implements OnInit {
     totalone = 0;
     totaltwo = 0;
     barone = 'Total Quantum Approved';
-    bartwo = 'Total Quantum Processed'
+    bartwo = 'Total Quantum Processed';
+    isData = true;
 
     columns = [
       {
@@ -155,10 +156,10 @@ export class SeismicProcessingCurrentComponent implements OnInit {
 
 
   getSeismic() {
-
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Processing_and_Reprocessing_Activities_CURRENT as any[];
+        this.isData = this.data.length > 0;
         this.reporttext = res.geophysicaL_ACTIVITIES_PROCESSING_DESCRIPTION;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'geo_Quantum_of_Data'));

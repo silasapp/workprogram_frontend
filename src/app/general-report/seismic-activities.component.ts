@@ -29,6 +29,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     totaltwo = 0;
     barone = 'Total Quantum Approved';
     bartwo = 'Total Quantum Acquired';
+    isData = true;
 
     columns = [
       {
@@ -91,6 +92,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.modalService.generalReport
         .subscribe(res => {
           this.getSeismic();
+          this.getSeismicReportText();
         });
     }
 
@@ -190,6 +192,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
+        this.isData = this.data.length > 0;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();

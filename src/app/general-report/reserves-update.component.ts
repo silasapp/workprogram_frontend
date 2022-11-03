@@ -30,6 +30,7 @@ export class ReserveUpdateComponent implements OnInit {
     totaltwo = 0;
     barone = 'TOTAL OIL (BBLLS)';
     bartwo = 'TOTAL CONDENSATE (BBLLS)';
+    isData = true;
 
     columns = [
       {
@@ -175,6 +176,7 @@ export class ReserveUpdateComponent implements OnInit {
     this.workprogram.getReservesUpdatestWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        this.isData = this.data.length > 0;
         let count = this.data.length;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Oil'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Condensate'));
