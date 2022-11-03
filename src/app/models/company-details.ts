@@ -43,3 +43,10 @@ export class CodeFields{
     companyname: string;
     isactive: string;
 }
+
+export class CompanyDashboardBody{
+    companyReports:any[];
+    oML_Count:number;
+    oPL_Count:number;
+    no_Of_ProducingFields_Count:number;
+}

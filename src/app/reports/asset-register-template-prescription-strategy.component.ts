@@ -17,7 +17,7 @@ export class AssetRegisterTemplatePrescriptionStrategyComponent implements OnIni
     cdr: ChangeDetectorRef;
     title = 'ASSET REGISTER TEMPLATE (PRESCRIPTION STRATEGY)';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];

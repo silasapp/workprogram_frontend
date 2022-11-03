@@ -15,7 +15,7 @@ export class GasProductionActivitiesComponent implements OnInit {
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'GAS PRODUCTION ACTIVITIES';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
