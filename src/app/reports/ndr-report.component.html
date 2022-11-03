@@ -82,24 +82,25 @@
 
       <div
         style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
-        <div style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); background-color: white;">
-        <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
-          <mat-icon>keyboard_double_arrow_left</mat-icon>
-        </button>
-        <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
-        <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
-            style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;"
-            #pageInput type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
-            (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
-
-        <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
-          mat-raised-button>Next</button>
-        <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
-          <mat-icon>keyboard_double_arrow_right</mat-icon>
-        </button>
+        <div
+          style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); background-color: white;">
+          <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
+            <mat-icon>keyboard_double_arrow_left</mat-icon>
+          </button>
+          <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
+          <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
+              style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;" #pageInput
+              type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+              (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
+      
+          <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
+            mat-raised-button>Next</button>
+          <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
+            <mat-icon>keyboard_double_arrow_right</mat-icon>
+          </button>
+        </div>
+      
       </div>
-
-</div>
     </div>
   </section>
 

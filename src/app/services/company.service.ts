@@ -74,4 +74,18 @@ export class CompanyService {
 
     }
 
+
+    getdashboardreport(year: string){
+        debugger;
+        return this.http.get<any>(`${environment.apiUrl}/dashboard/company_dashboard_report`,  {params: {year: year}}
+        )
+        .pipe(retry(this.num),
+        map((response) =>{
+            debugger;
+            return response
+        })
+        )
+
+    }
+
 }

@@ -14,7 +14,7 @@ export class ConcessionsInformationComponent implements OnInit {
   genk: GenericService;   cdr: ChangeDetectorRef;
     title = 'Check Concession Status';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];

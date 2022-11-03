@@ -21,7 +21,7 @@ export class OilProductionContractComponent implements OnInit {
     title = 'OIL PRODUCTION OF CONTRACT BASIS';
     reporttext: string;
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -93,6 +93,7 @@ export class OilProductionContractComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 

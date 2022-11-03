@@ -15,7 +15,7 @@ export class GeophysicalActivitiesComponent implements OnInit {
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'GEOPHYSICAL ACTIVITIES (ACQUISITION)';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];

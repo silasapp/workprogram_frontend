@@ -16,7 +16,7 @@ export class ReservesDeclineComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'RESERVES DECLINE';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -156,6 +156,7 @@ export class ReservesDeclineComponent implements OnInit {
 
     assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   
