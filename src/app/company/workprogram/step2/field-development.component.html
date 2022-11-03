@@ -6,7 +6,7 @@
     <span>FIELD DEVELOPMENT PLAN</span><br><br>
   </div>
 
-  <div [formGroup]="FieldDevelopmentForm">
+  <div [formGroup]="FieldDevelopmentForm" (ngSubmit)="fdpSubmit()">
     <div style="display: flex; width: 100%; justify-content: space-between;">
       <div style="width: 30%; margin-top: auto;">
         <label class="labelwp">Proposed number of wells from approved FDP </label>
@@ -49,8 +49,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-            <input type="file" formControlName="uploaded_approved_FDP_Document"
-              [(ngModel)]="fielddevelopmentBody.uploaded_approved_FDP_Document" class="inpute">
+            <input type="file" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx" formControlName="FDPFile" (change)="saveFDPDoc($event)" class="inpute">
           </div>
         </div>
       </div>
@@ -89,7 +88,7 @@
 
   <div>
     <div style="text-align: center;">
-      <button class="quarterbtn">Save Field Development Plan</button>
+      <button class="quarterbtn" (click)="fdpSubmit()">Save Field Development Plan</button>
     </div>
   </div>
 </div>

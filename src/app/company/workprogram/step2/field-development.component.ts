@@ -29,13 +29,13 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
-  PUAFile?: File = null;
+  FDPFile?: File = null;
   UUOAFile?: File = null;
   mediatype = 'doc';
-  PUANewName: string;
+  FDPNewName: string;
   UUOANameDoc: string;
   UUOANewName: string;
-  PUANameDoc: string;
+  FDPNameDoc: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -47,7 +47,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu
       .subscribe(res => {
-        // this.getConcessionHeld();
+        this.getFDP();
       });
   }
 
@@ -63,7 +63,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         no_of_wells_drilled_in_current_year: new FormControl(this.fielddevelopmentBody.no_of_wells_drilled_in_current_year, [Validators.required]),
         number_of_wells_proposed_in_the_FDP: new FormControl(this.fielddevelopmentBody.number_of_wells_proposed_in_the_FDP, [Validators.required]),
         noof_Producing_Fields: new FormControl(this.fielddevelopmentBody.noof_Producing_Fields, [Validators.required]),
-        uploaded_approved_FDP_Document: new FormControl(this.fielddevelopmentBody.uploaded_approved_FDP_Document, [Validators.required]),
+        'FDPFile': new FormControl(this.FDPFile),
         are_they_oil_or_gas_wells: new FormControl(this.fielddevelopmentBody.are_they_oil_or_gas_wells, [Validators.required]),
         status: new FormControl(this.fielddevelopmentBody.status, [Validators.required]),
 
@@ -118,26 +118,43 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       });
   }
 
-  saveUUAODoc(DeFile: any) {
-    this.UUOAFile = <File>DeFile.target.files[0];
-    if (!this.UUOAFile) {
+  saveFDPDoc(DeFile: any) {
+    this.FDPFile = <File>DeFile.target.files[0];
+    if (!this.FDPFile) {
       return;
     }
-    if (this.UUOAFile.size < 1 || this.UUOAFile.size > 1024 * 1024 * 50) {
-      this.UnitizationForm.controls['UUOAFile'].setErrors({ 'incorrect': true });
-      this.UUOAFile = null;
+    if (this.FDPFile.size < 1 || this.FDPFile.size > 1024 * 1024 * 50) {
+      this.FieldDevelopmentForm.controls['FDPFile'].setErrors({ 'incorrect': true });
+      this.FDPFile = null;
       return;
     } else {
-      this.UnitizationForm.controls['UUOAFile'].setErrors(null);
+      this.FieldDevelopmentForm.controls['FDPFile'].setErrors(null);
     }
-    this.UUOANewName = this.gen.getExpDoc(this.UUOAFile.name, this.UUOAFile.type);
-    this.UUOANameDoc = this.UUOANewName;
+    this.UUOANewName = this.gen.getExpDoc(this.FDPFile.name, this.FDPFile.type);
+    this.FDPNameDoc = this.FDPNewName;
     //let dockind = this.gen.getExt(this.discoveryFile.name);
   }
 
 
-  submit() {
-    return null;
+  fdpSubmit() {
+    const formDat: FormData = new FormData();
+    for (const key in this.fielddevelopmentBody) {
+      if (this.fielddevelopmentBody[key]) {
+        formDat.append(key.toString(), this.fielddevelopmentBody[key]);
+      }
+      if (key.toString() === 'id') {
+        formDat.delete(key);
+      }
+    }
+
+    if (this.FDPFile) {
+      formDat.append("FDPFile", this.FDPFile, this.FDPNewName);
+    }
+
+    this.workprogram.saveFDP(formDat, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(res => {
+      this.modalService.logNotice("Success", res.message, 'success');
+    });
+
   }
 
 }

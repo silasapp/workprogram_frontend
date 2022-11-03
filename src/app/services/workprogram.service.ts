@@ -321,7 +321,7 @@ saveFiveYearForecast(conbody: FormData, year: string, omlName: string, fieldName
   )
 }
 
-saveFDP(conbody: FIELD_DEVELOPMENT_PLAN, year: string, omlName: string, fieldName: string){
+saveFDP(conbody: FormData, year: string, omlName: string, fieldName: string){
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN`, conbody, {params: {omlName: omlName, fieldName: fieldName, year: year}})
   .pipe(retry(this.num),
   map((response) => {

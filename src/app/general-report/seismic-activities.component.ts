@@ -17,8 +17,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
@@ -106,7 +104,15 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
-      }
+    }
+
+    public get title(): string {
+      return `1.1 Seismic Data Acquisition Activities for ${this.genk.reportYear}`;
+    }
+
+    public get tableTitle(): string {
+      return `Table 3. ${this.genk.reportYear} 3D Seismic Data Approved and Acquired`;
+    }
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
