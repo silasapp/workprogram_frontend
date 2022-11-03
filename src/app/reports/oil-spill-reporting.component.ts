@@ -194,7 +194,8 @@ export class OilSpillReportingComponent implements OnInit {
       let value = e.target.value;
      let result =  this.report.fetch("oil_spill_reporting", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

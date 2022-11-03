@@ -178,7 +178,8 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
       let value = e.target.value;
       this.report.fetch("hse_sustainable_development_community_new_scholarships", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

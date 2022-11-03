@@ -140,7 +140,8 @@ export class HSETechnicalSafetyControlStudiesNewComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("hse_technical_safety_control_studies_new", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

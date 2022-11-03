@@ -264,14 +264,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   changeACQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentACQuater = 1;
-      btn.textContent = "Save Quater 1";
+      btn.textContent = "Save Quarter 1";
       this.acquisitionBody = this.quaterACOneData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 1");
     }
     if (quater === 2) {
       this.currentACQuater = 2;
-      btn.textContent = "Save Quater 2";
+      btn.textContent = "Save Quarter 2";
       this.acquisitionBody = this.quaterACTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
@@ -279,7 +279,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     if (quater === 3) {
       this.currentACQuater = 3;
       this.acquisitionBody = this.quaterACThreeData;
-      btn.textContent = "Save Quater 3";
+      btn.textContent = "Save Quarter 3";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
@@ -287,7 +287,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       debugger;
       this.currentACQuater = 4;
       this.acquisitionBody = this.quaterACFourData;
-      btn.textContent = "Save Quater 4";
+      btn.textContent = "Save Quarter 4";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
@@ -297,27 +297,27 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   changePRQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentPRQuater = 1;
-      btn.textContent = "Save Quater 1";
+      btn.textContent = "Save Quarter 1";
       this.processingBody = this.quaterPROneData;
       this.cd.markForCheck();
 
     }
     if (quater === 2) {
       this.currentPRQuater = 2;
-      btn.textContent = "Save Quater 2";
+      btn.textContent = "Save Quarter 2";
       this.processingBody = this.quaterPRTwoData
       this.cd.markForCheck();
     }
     if (quater === 3) {
       this.currentPRQuater = 3;
-      btn.textContent = "Save Quater 3";
+      btn.textContent = "Save Quarter 3";
       this.processingBody = this.quaterPRThreeData;
       this.cd.markForCheck();
 
     }
     if (quater === 4) {
       this.currentPRQuater = 4;
-      btn.textContent = "Save Quater 4";
+      btn.textContent = "Save Quarter 4";
       this.processingBody = this.quaterPRFourData;
       this.cd.markForCheck();
 

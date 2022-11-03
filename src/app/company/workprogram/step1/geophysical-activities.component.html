@@ -2,7 +2,9 @@
   <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
     Note:*All Fields are Mandatory</h1>
   <div
-    style="font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
+    style="
+    padding-left: 40px;
+ font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
     <span>Geophysical Activities On Quarterly Basis</span>
   </div>
   <br>
@@ -224,9 +226,9 @@
       <br>
 
       <div class="toprow">
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">No of folds (1-100)</label>
-          <div style="display: flex;">
+          <div style="display: flex; ">
             <div class="inpdiv">
               <input formControlName="no_of_Folds" (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.no_of_Folds" class="inpute">
@@ -234,7 +236,7 @@
           </div>
         </div>
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Record Length of Data (seconds)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -246,7 +248,7 @@
 
 
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Completion Status(%)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -256,7 +258,7 @@
           </div>
         </div>
 
-        <div class="rowbox">
+        <div class="rowbox2">
           <label class="labelwp">Activity Timeline (Quarter)</label>
           <div style="display: flex;">
             <div class="inpdiv">
@@ -513,7 +515,7 @@
           <div style="display: flex;">
             <div class="inpdivcurrency">
               <span class="currencywp">&#x20A6;</span>
-              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                 (change)="processingBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
                 [value]="processingBody.budeget_Allocation_NGN" class="inpute">
             </div>
@@ -525,7 +527,7 @@
           <div style="display: flex;">
             <div class="inpdivcurrency">
               <span class="currencywp">$</span>
-              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                 (change)="processingBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
                 [value]="processingBody.budeget_Allocation_USD" class="inpute">
             </div>

@@ -114,7 +114,8 @@ export class HSEClimateChangeAndAirQualityComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("hse_climate_change_and_air_quality", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
