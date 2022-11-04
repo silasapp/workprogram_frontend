@@ -138,8 +138,8 @@ export class CrudeProductionTerrainComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -185,6 +185,7 @@ export class CrudeProductionTerrainComponent implements OnInit {
       .subscribe(res => {
         //debugger;
         this.data = res.crude_Oil_Production_By_Terrain_Pivotted as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
         this.assignDataRows();

@@ -81,8 +81,9 @@ year = [];
     let value = e.target.value;
    this.presentationScheduleService.getDivisionalScheduleByYear(value).subscribe(
       (res) => {
-        this.data = res.data as any[];
-        this.assignDataRows();
+          this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
         }
@@ -92,8 +93,9 @@ year = [];
   fetchAlldata(){
    this.presentationScheduleService.getDivisionalScheduleList().subscribe(
       (res) => {
-        this.data = res.data as any[];
-        this.assignDataRows();
+          this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
         }
