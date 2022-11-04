@@ -183,6 +183,7 @@ export class OilProductionComponent implements OnInit {
       .subscribe(res => {
         this.data = res.crude_Oil_Production as any[];
         let count = this.data.length;
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.data = this.report.addSn(this.data);
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));

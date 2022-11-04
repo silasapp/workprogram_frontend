@@ -222,6 +222,7 @@ export class ReconciledOilProductionComponent implements OnInit {
       .subscribe(res => {
         //debugger;
         this.data = res.crude_Oil_Monthly_Production_Pivotted as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, "january"));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, "february"));
         this.assignDataRows();

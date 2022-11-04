@@ -176,6 +176,7 @@ export class ReserveUpdateComponent implements OnInit {
     this.workprogram.getReservesUpdatestWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         let count = this.data.length;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Oil'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Condensate'));

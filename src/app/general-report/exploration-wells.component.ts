@@ -201,6 +201,7 @@ export class ExplorationWellsComponent implements OnInit {
     this.workprogram.getExplorationWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.data = this.report.addSn(this.data);
         this.totalone = Math.round(this.report.sumColumn(this.data, 'number_of_Days_to_Total_Depth'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'well_cost'));

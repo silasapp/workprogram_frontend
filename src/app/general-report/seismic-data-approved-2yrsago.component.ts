@@ -160,6 +160,7 @@ export class SeismicDataApproved2yrsagoComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired_TWO_YEARS_AG0 as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();

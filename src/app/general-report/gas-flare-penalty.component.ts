@@ -163,6 +163,7 @@ export class GasFlarePenaltyComponent implements OnInit {
     this.workprogram.GetGasProductionReport(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.gas_Flare_Penalty as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `flared`));
         //this.totaltwo = Math.round(this.report.sumColumn(this.data, `utilized_Gas_Produced`));
         this.assignDataRows();

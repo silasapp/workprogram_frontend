@@ -200,6 +200,7 @@ export class DevelopmentWellsComponent implements OnInit {
     this.workprogram.getDevelopmentWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        if(this.arrayRows.length>1) this.selectedPage=1;
         let count = this.data.length;
           let reptext = this.reporttext.split(' ')[3];
           this.reporttext = this.reporttext.replace(reptext, count.toString());

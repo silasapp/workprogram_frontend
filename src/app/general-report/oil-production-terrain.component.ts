@@ -139,6 +139,7 @@ export class OilProductionTerrainComponent implements OnInit {
         this.data = res.crude_Oil_Production_By_Terrain as any[];
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'percentage_Production'));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
