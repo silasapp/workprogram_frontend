@@ -160,6 +160,7 @@ export class SeismicProcessingCurrentComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Processing_and_Reprocessing_Activities_CURRENT as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.isData = this.data.length > 0;
         this.reporttext = res.geophysicaL_ACTIVITIES_PROCESSING_DESCRIPTION;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));

@@ -143,6 +143,7 @@ export class OilProductionContractComponent implements OnInit {
         this.data = this.data.slice(1, this.data.length);
         this.data = this.filterData(this.data);
         this.data = this.report.addSn(this.data);
+          if(this.data.length>1) this.selectedPage=1;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

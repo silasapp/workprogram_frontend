@@ -139,6 +139,7 @@ export class MonthlyOilProductionComponent implements OnInit {
         this.data = res.crude_Oil_Monthly_Production as any[];
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));
+          if(this.data.length>1) this.selectedPage=1;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

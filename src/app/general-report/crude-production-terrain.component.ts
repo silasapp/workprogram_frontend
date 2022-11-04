@@ -185,7 +185,7 @@ export class CrudeProductionTerrainComponent implements OnInit {
       .subscribe(res => {
         //debugger;
         this.data = res.crude_Oil_Production_By_Terrain_Pivotted as any[];
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
         this.assignDataRows();
