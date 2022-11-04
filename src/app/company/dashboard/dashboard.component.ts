@@ -21,7 +21,7 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
- // @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
 
   @ViewChild('secondchart', { static: false }) mysecondchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox2', { static: false }) myChartBox2: ElementRef<HTMLDivElement>;
@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
   }
 ngAfterViewInit(){
   this.fetchreport()
-this.getCompanyDashboardReport();
+//this.getCompanyDashboardReport();
 }
 
   fetchreport() {
@@ -112,7 +112,7 @@ this.getCompanyDashboardReport();
         this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
         this.plotDoubleBarChart();
         this.plotDoublePieChart();
-     //   this.plotDoubleBarChartHorizontal();
+        this.plotDoubleBarChartHorizontal();
         this.modalService.togCover();
         this.cd.markForCheck();
       }
@@ -325,35 +325,35 @@ this.getCompanyDashboardReport();
       this.designDoublePieChart(this.mysecondchart.nativeElement, sele1, sele2, chartdata);
   }
 
-  // plotDoubleBarChartHorizontal() {
-  //   debugger;
-  //   let totalString = "";
-  //   let selectedColumn = ['production_month', 'annual_Total_Production_by_company'];
-  //     // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
-  //     // const node = document.createElement("div");
-  //     // node.style.width = '100%';
-  //     // node.style.height = '500px';
-  //     // this.myChartBox1.nativeElement.appendChild(node);
-  //     // let bechart = this.myChartBox1.nativeElement.firstChild as HTMLDivElement;
-  //     // let sele1 = selectedColumn[0];
-  //     // let sele2 = selectedColumn[1];
+  plotDoubleBarChartHorizontal() {
+    debugger;
+    let totalString = "";
+    let selectedColumn = ['production_month', 'annual_Total_Production_by_company'];
+      // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
+      // const node = document.createElement("div");
+      // node.style.width = '100%';
+      // node.style.height = '500px';
+      // this.myChartBox1.nativeElement.appendChild(node);
+      // let bechart = this.myChartBox1.nativeElement.firstChild as HTMLDivElement;
+      // let sele1 = selectedColumn[0];
+      // let sele2 = selectedColumn[1];
 
-  //     //this.myChartBox1.nativeElement.style.display = 'block';
-  //     let reportdata = this.firstChartData;
-  //     let chartdata = this.firstChartData;
-  //       //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
-  //     //   for (var i = 0; i < chartdata.length; i++) {
-  //     //     totalString += chartdata[i].production_month;
+      //this.myChartBox1.nativeElement.style.display = 'block';
+      let reportdata = this.firstChartData;
+      let chartdata = this.firstChartData;
+        //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
+      //   for (var i = 0; i < chartdata.length; i++) {
+      //     totalString += chartdata[i].production_month;
 
-  //     //   if (totalString.length > 70) {
-  //     this.designDoubleBarChartHorizontal(this.myfirstchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-  //     //   }
-  //     //   else {
-  //     //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-  //     //   }
-  //     // }
+      //   if (totalString.length > 70) {
+      this.designDoubleBarChartHorizontal(this.myfirstchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
+      //   }
+      //   else {
+      //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
+      //   }
+      // }
 
-  // }
+  }
 
   plotDoubleBarChart() {
     debugger;
