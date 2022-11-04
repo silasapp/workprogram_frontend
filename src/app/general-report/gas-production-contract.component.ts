@@ -163,7 +163,7 @@ export class GasProductionContractComponent implements OnInit {
     this.workprogram.GetGasProductionReport(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.gas_Produced_Utilized_By_Contract_Basis as any[];
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `flared_Gas_Produced`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `utilized_Gas_Produced`));
         this.assignDataRows();

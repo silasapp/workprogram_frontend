@@ -26,12 +26,13 @@ export class ExplorationWellsComponent implements OnInit {
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-    reporttext: string = 'A total of twelve (12) appraisal wells were drilled during the year 2021 --Table 9 below shows the details';
+    reporttext: string;
     isChart = false;
     totalone = 0;
     totaltwo = 0;
     barone = 'Total Days to Total Depth';
     bartwo = 'Total Well Cost';
+    isData = true;
 
     columns = [
       {
@@ -201,7 +202,8 @@ export class ExplorationWellsComponent implements OnInit {
     this.workprogram.getExplorationWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          if(this.data.length>1) this.selectedPage=1;
+        this.isData = this.data.length > 0;
         this.data = this.report.addSn(this.data);
         this.totalone = Math.round(this.report.sumColumn(this.data, 'number_of_Days_to_Total_Depth'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'well_cost'));

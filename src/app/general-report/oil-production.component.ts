@@ -31,6 +31,7 @@ export class OilProductionComponent implements OnInit {
     totaltwo = 0;
     barone = 'TOTAL ANNUAL PRODUCTION';
     bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
+    isData = true;
 
     columns = [
       {
@@ -182,8 +183,9 @@ export class OilProductionComponent implements OnInit {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.crude_Oil_Production as any[];
+        this.isData = this.data.length > 0;
         let count = this.data.length;
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          if(this.data.length>1) this.selectedPage=1;
         this.data = this.report.addSn(this.data);
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'annual_Avg_Daily_Production'));

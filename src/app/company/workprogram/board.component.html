@@ -1,7 +1,20 @@
-<div style="width: 100%; background-color: rgb(217, 219, 220); margin: 0 0 20px 30px;">
-    <div style="width: 100%; background-color: rgb(217, 219, 220); top: 0; padding: 10px 1% 10px 0;">
-        <div>
-            <!-- <div class="progressbar-wrapper">
+<div
+  style="
+    width: 100%;
+    background-color: rgb(217, 219, 220);
+    margin: 0 0 20px 30px;
+  "
+>
+  <div
+    style="
+      width: 100%;
+      background-color: rgb(217, 219, 220);
+      top: 0;
+      padding: 10px 1% 10px 0;
+    "
+  >
+    <div>
+      <!-- <div class="progressbar-wrapper">
             <ul class="progressbar">
                 <li class="active">Step 1</li>
                 <li>Step 2</li>
@@ -10,123 +23,234 @@
             </ul>
         </div> -->
 
-            <div style="display: flex; justify-content: center; background-color: white; margin: 0 0 10px 0; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3); border-radius: 5px; padding: 5px 0;">
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'concessionsituation']">
-                    <div style="display: flex;">
-                        <div class="divcent">
-                            <span [class]="genk.activeStep === 'STEP1'? 'me navactive': 'me'" [ngStyle]="{'background-color': genk.isStep1 ? 'teal' : 'lightgrey', 'color': genk.isStep1 ? 'white' : 'darkgrey' }">1</span>
-                        </div>
-                        <div class="divcent">
-                            <div style="height: 5px; width: 100px; background-color: teal"></div>
-                        </div>
-                    </div>
-                    <div class="smalljust">
-                        <span>STEP 1</span>
-                    </div>
-                </div>
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']">
-                    <div style="display: flex;">
-                        <div class="divcent">
-                            <span [class]="genk.activeStep === 'STEP2'? 'me navactive': 'me'" [ngStyle]="{'background-color': genk.isStep2 ? 'teal' : 'lightgrey', 'color': genk.isStep2 ? 'white' : 'darkgrey'}">2</span>
-                        </div>
-                        <div class="divcent">
-                            <div style="height: 5px; width: 100px; background-color: teal"></div>
-                        </div>
-                    </div>
-                    <div class="smalljust">
-                        <span>STEP 2</span>
-                    </div>
-                </div>
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step3', 'budgetperformance']">
-                    <div style="display: flex;">
-                        <div class="divcent">
-                            <span [class]="genk.activeStep === 'STEP3'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep3 ? 'teal' : 'lightgrey', 'color': genk.isStep3 ? 'white' : 'darkgrey' }">3</span>
-                        </div>
-                        <div class="divcent">
-                            <div style="height: 5px;  width: 100px; background-color: teal"></div>
-                        </div>
-                    </div>
-                    <div class="smalljust">
-                        <span>STEP 3</span>
-                    </div>
-                </div>
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'nigeriacontent']">
-                    <div style="display: flex;">
-                        <div class="divcent">
-                            <span [class]="genk.activeStep === 'STEP4'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep4 ? 'teal' : 'lightgrey', 'color': genk.isStep4 ? 'white' : 'darkgrey' }">4</span>
-                        </div>
-                        <div class="divcent">
-                            <div style="height: 5px; width: 100px; background-color: teal"></div>
-                        </div>
-                    </div>
-                    <div class="smalljust">
-                        <span>STEP 4</span>
-                    </div>
-                </div>
-                <div [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']">
-                    <div style="display: flex;">
-                        <div class="divcent">
-                            <span [class]="genk.activeStep === 'STEP5'? 'me navactive': 'me'"[ngStyle]="{'background-color': genk.isStep5 ? 'teal' : 'lightgrey', 'color': genk.isStep5 ? 'white' : 'darkgrey' }">5</span>
-                        </div>
-                    </div>
-                    <div class="smalljust">
-                        <span>STEP 5</span>
-                    </div>
-                </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          background-color: white;
+          margin: 0 0 10px 0;
+          box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+          border-radius: 5px;
+          padding: 5px 0;
+        "
+      >
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step1',
+            'concessionsituation'
+          ]"
+        >
+          <div style="display: flex">
+            <div class="divcent">
+              <span
+                [class]="genk.activeStep === 'STEP1' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep1 ? 'teal' : 'lightgrey',
+                  color: genk.isStep1 ? 'white' : 'darkgrey'
+                }"
+                >1</span
+              >
             </div>
-
-            <div [formGroup]="boardForm" style="display: flex; justify-content: space-around; background-color: white; margin: 0 0 20px 0; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3); border-radius: 5px; padding: 10px 0;">
-              <div style="width: 30%; text-align: center;">
-                <div style="margin-bottom: 5px; color: teal; font-weight: 600">
-                  <span>Work Programme Year</span>
-                </div>
-
-                <div class="wpwidth">
-                  <div class="inputshadow">
-                    <select class="dropwp" formControlName="year" (change)="changeWPYear($event)">
-                      <option>----Select WP Year ----</option>
-                      <option *ngFor="let list of wkpYearList">{{list}}</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div style="width: 30%; text-align: center;">
-                <div style="margin-bottom: 5px; color: teal; font-weight: 600">
-                  <span>Concession(s) Held</span>
-                </div>
-                <div class="wpwidth">
-                    <div class="inputshadow">
-                        <select class="dropwp" formControlName="concession_Held" (change)="changeConcessionHeld($event)">
-                          <option>----Select Concession Held----</option>
-                          <option *ngFor="let list of concessionHeldList">{{list}}</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="divcent">
+              <div
+                style="height: 5px; width: 100px; background-color: teal"
+              ></div>
             </div>
-
-            <div style="width: 30%; text-align: center;">
-              <div style="margin-bottom: 5px; color: teal; font-weight: 600">
-                <span>Field</span>
-              </div>
-              <div class="wpwidth">
-                  <div class="inputshadow">
-                      <select class="dropwp" formControlName="Field" (change)="changeConcessionField($event)">
-                        <option>----Select Field----</option>
-                        <option *ngFor="let list2 of Field_List" [value]='list2.field_ID'>{{list2.field_Name}}</option>
-                      </select>
-                  </div>
-              </div>
-            </div>
-            </div>
-
+          </div>
+          <div class="smalljust">
+            <span>STEP 1</span>
+          </div>
         </div>
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step2',
+            'fielddevelopmentplan'
+          ]"
+        >
+          <div style="display: flex">
+            <div class="divcent">
+              <span
+                [class]="genk.activeStep === 'STEP2' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep2 ? 'teal' : 'lightgrey',
+                  color: genk.isStep2 ? 'white' : 'darkgrey'
+                }"
+                >2</span
+              >
+            </div>
+            <div class="divcent">
+              <div
+                style="height: 5px; width: 100px; background-color: teal"
+              ></div>
+            </div>
+          </div>
+          <div class="smalljust">
+            <span>STEP 2</span>
+          </div>
+        </div>
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step3',
+            'budgetperformance'
+          ]"
+        >
+          <div style="display: flex">
+            <div class="divcent">
+              <span
+                [class]="genk.activeStep === 'STEP3' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep3 ? 'teal' : 'lightgrey',
+                  color: genk.isStep3 ? 'white' : 'darkgrey'
+                }"
+                >3</span
+              >
+            </div>
+            <div class="divcent">
+              <div
+                style="height: 5px; width: 100px; background-color: teal"
+              ></div>
+            </div>
+          </div>
+          <div class="smalljust">
+            <span>STEP 3</span>
+          </div>
+        </div>
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step4',
+            'nigeriacontent'
+          ]"
+        >
+          <div style="display: flex">
+            <div class="divcent">
+              <span
+                [class]="genk.activeStep === 'STEP4' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep4 ? 'teal' : 'lightgrey',
+                  color: genk.isStep4 ? 'white' : 'darkgrey'
+                }"
+                >4</span
+              >
+            </div>
+            <div class="divcent">
+              <div
+                style="height: 5px; width: 100px; background-color: teal"
+              ></div>
+            </div>
+          </div>
+          <div class="smalljust">
+            <span>STEP 4</span>
+          </div>
+        </div>
+        <div
+          [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']"
+        >
+          <div style="display: flex">
+            <div class="divcent">
+              <span
+                [class]="genk.activeStep === 'STEP5' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep5 ? 'teal' : 'lightgrey',
+                  color: genk.isStep5 ? 'white' : 'darkgrey'
+                }"
+                >5</span
+              >
+            </div>
+          </div>
+          <div class="smalljust">
+            <span>STEP 5</span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        [formGroup]="boardForm"
+        style="
+          display: flex;
+          justify-content: space-around;
+          background-color: white;
+          margin: 0 0 20px 0;
+          box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+          border-radius: 5px;
+          padding: 10px 0;
+        "
+      >
+        <div style="width: 30%; text-align: center">
+          <div style="margin-bottom: 5px; color: teal; font-weight: 600">
+            <span>Work Programme Year</span>
+          </div>
+
+          <div class="wpwidth">
+            <div class="inputshadow">
+              <select
+                class="dropwp"
+                formControlName="year"
+                (change)="changeWPYear($event)"
+              >
+                <option>----Select WP Year ----</option>
+                <option *ngFor="let list of wkpYearList">{{ list }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; text-align: center">
+          <div style="margin-bottom: 5px; color: teal; font-weight: 600">
+            <span>Concession(s) Held</span>
+          </div>
+          <div class="wpwidth">
+            <div class="inputshadow">
+              <select
+                class="dropwp"
+                formControlName="concession_Held"
+                (change)="changeConcessionHeld($event)"
+              >
+                <option>----Select Concession Held----</option>
+                <option *ngFor="let list of concessionHeldList">
+                  {{ list }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; text-align: center">
+          <div style="margin-bottom: 5px; color: teal; font-weight: 600">
+            <span>Field</span>
+          </div>
+          <div class="wpwidth">
+            <div class="inputshadow">
+              <select
+                class="dropwp"
+                formControlName="Field"
+                (change)="changeConcessionField($event)"
+              >
+                <option>----Select Field----</option>
+                <option
+                  *ngFor="let list2 of Field_List"
+                  [value]="list2.field_ID"
+                >
+                  {{ list2.field_Name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
+  <div>{{ consolelog() }}</div>
 
-
-    <div>
-        <router-outlet></router-outlet>
-    </div>
-
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

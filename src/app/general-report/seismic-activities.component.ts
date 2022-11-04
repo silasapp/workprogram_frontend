@@ -17,8 +17,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = '1.1 Seismic Data Acquisition Activities for 2021';
-    tableTitle = 'Table 3. 2021 3D Seismic Data Approved and Acquired';
     pagenum = 0;
     selectedPage = 0;
     arrayRows = [];
@@ -31,6 +29,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     totaltwo = 0;
     barone = 'Total Quantum Approved';
     bartwo = 'Total Quantum Acquired';
+    isData = true;
 
     columns = [
       {
@@ -93,6 +92,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.modalService.generalReport
         .subscribe(res => {
           this.getSeismic();
+          this.getSeismicReportText();
         });
     }
 
@@ -106,7 +106,15 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
-      }
+    }
+
+    public get title(): string {
+      return `1.1 Seismic Data Acquisition Activities for ${this.genk.reportYear}`;
+    }
+
+    public get tableTitle(): string {
+      return `Table 3. ${this.genk.reportYear} 3D Seismic Data Approved and Acquired`;
+    }
 
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
@@ -185,6 +193,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Approved_and_Acquired as any[];
+        this.isData = this.data.length > 0;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'quantum'));
             this.assignDataRows();
