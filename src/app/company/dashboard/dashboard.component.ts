@@ -6,18 +6,22 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
-import { ModalService } from 'src/app/services';
+import { GenericService, ModalService } from 'src/app/services';
 import { CdkAriaLive } from '@angular/cdk/a11y';
+import { CompanyService } from 'src/app/services/company.service';
+import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
+import { CompanyDashboardBody } from 'src/app/models/company-details';
+import Swal from 'sweetalert2';
 declare var $: any;
 
 @Component({
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  styleUrls: ['./dashboard.component.scss', '../../reports/ndr-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
+ // @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
 
   @ViewChild('secondchart', { static: false }) mysecondchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox2', { static: false }) myChartBox2: ElementRef<HTMLDivElement>;
@@ -26,21 +30,76 @@ export class DashboardComponent implements OnInit {
   @ViewChild('mychartbox3', { static: false }) myChartBox3: ElementRef<HTMLDivElement>;
 
   private root: am5.Root;
+  pagenum = 0;
+  selectedPage = 1;
+  arrayRows = [];
   isBrowser: boolean;
   firstChartData: any;
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any;
+  c_ColumnHeader = [];
+  c_ColumnValue = [];
+  f_ColumnHeader = [];
+  f_ColumnValue = [];
+  c_isTabVisible: boolean;
+  f_isTabVisible: boolean;
+  previousYear = new Date().getFullYear()-1;
+  data:any;
+  selectedColumns: any[] = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
+  dashboardBody:CompanyDashboardBody= {} as CompanyDashboardBody;
   modalService: ModalService;
+  companyService:CompanyService;
+  genk:GenericService;
+  cdr:ChangeDetectorRef;
 
-  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private modale: ModalService, private cd: ChangeDetectorRef) {
+  columns=[
+    {
+        "columnDef": "concessionName",
+        "header": "CONCESSION NAME"
+    },
+    {
+        "columnDef": "totalNetProduction",
+        "header": "TOTAL PRODUCTION"
+    },
+    
+    {
+        "columnDef": "totalReserves",
+        "header": "TOTAL RESERVES"
+    }
+  ];
+
+  repcolumns=[
+    {
+        "columnDef": "concessionName",
+        "header": "CONCESSION NAME"
+    },
+    {
+        "columnDef": "totalNetProduction",
+        "header": "TOTAL PRODUCTION"
+    },
+    
+    {
+        "columnDef": "totalReserves",
+        "header": "TOTAL RESERVES"
+    }
+  ];
+
+  constructor(private report: WorkprogrammeReportService, private _companyService:CompanyService, private genReport: ReportService, private modale: ModalService, private gen:GenericService, private cd: ChangeDetectorRef) {
     this.modalService = modale;
+    this.companyService=_companyService;
+    this.genk=gen;
+    this.cdr=cd;
+    
    }
 
   ngOnInit(): void {
   }
 ngAfterViewInit(){
   this.fetchreport()
+this.getCompanyDashboardReport();
 }
 
   fetchreport() {
@@ -53,7 +112,7 @@ ngAfterViewInit(){
         this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
         this.plotDoubleBarChart();
         this.plotDoublePieChart();
-        this.plotDoubleBarChartHorizontal();
+     //   this.plotDoubleBarChartHorizontal();
         this.modalService.togCover();
         this.cd.markForCheck();
       }
@@ -228,6 +287,21 @@ ngAfterViewInit(){
   // }
 
 
+  getCompanyDashboardReport(){
+    debugger;
+    let value = (this.previousYear).toString();
+      this.companyService.getdashboardreport(value).subscribe(
+      (res) => {
+        debugger;
+         this.data = res.data as CompanyDashboardBody;
+          this.cd.markForCheck();
+      }
+      )
+  }
+
+
+
+
   onSubmit(){
     return null;
   }
@@ -251,35 +325,35 @@ ngAfterViewInit(){
       this.designDoublePieChart(this.mysecondchart.nativeElement, sele1, sele2, chartdata);
   }
 
-  plotDoubleBarChartHorizontal() {
-    debugger;
-    let totalString = "";
-    let selectedColumn = ['production_month', 'annual_Total_Production_by_company'];
-      // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
-      // const node = document.createElement("div");
-      // node.style.width = '100%';
-      // node.style.height = '500px';
-      // this.myChartBox1.nativeElement.appendChild(node);
-      // let bechart = this.myChartBox1.nativeElement.firstChild as HTMLDivElement;
-      // let sele1 = selectedColumn[0];
-      // let sele2 = selectedColumn[1];
+  // plotDoubleBarChartHorizontal() {
+  //   debugger;
+  //   let totalString = "";
+  //   let selectedColumn = ['production_month', 'annual_Total_Production_by_company'];
+  //     // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
+  //     // const node = document.createElement("div");
+  //     // node.style.width = '100%';
+  //     // node.style.height = '500px';
+  //     // this.myChartBox1.nativeElement.appendChild(node);
+  //     // let bechart = this.myChartBox1.nativeElement.firstChild as HTMLDivElement;
+  //     // let sele1 = selectedColumn[0];
+  //     // let sele2 = selectedColumn[1];
 
-      //this.myChartBox1.nativeElement.style.display = 'block';
-      let reportdata = this.firstChartData;
-      let chartdata = this.firstChartData;
-        //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
-      //   for (var i = 0; i < chartdata.length; i++) {
-      //     totalString += chartdata[i].production_month;
+  //     //this.myChartBox1.nativeElement.style.display = 'block';
+  //     let reportdata = this.firstChartData;
+  //     let chartdata = this.firstChartData;
+  //       //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
+  //     //   for (var i = 0; i < chartdata.length; i++) {
+  //     //     totalString += chartdata[i].production_month;
 
-      //   if (totalString.length > 70) {
-      this.designDoubleBarChartHorizontal(this.myfirstchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-      //   }
-      //   else {
-      //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-      //   }
-      // }
+  //     //   if (totalString.length > 70) {
+  //     this.designDoubleBarChartHorizontal(this.myfirstchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
+  //     //   }
+  //     //   else {
+  //     //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
+  //     //   }
+  //     // }
 
-  }
+  // }
 
   plotDoubleBarChart() {
     debugger;
@@ -296,13 +370,13 @@ ngAfterViewInit(){
 
       //this.myChartBox1.nativeElement.style.display = 'block';
 
-      let chartdata = this.thirdChartData.filter(x => x.terrain != null);
+    //  let chartdata = this.thirdChartData.filter(x => x.terrain != null);
         //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
       //   for (var i = 0; i < chartdata.length; i++) {
       //     totalString += chartdata[i].production_month;
 
       //   if (totalString.length > 70) {
-      this.designDoubleBarChart(this.mythirdchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
+     // this.designDoubleBarChart(this.mythirdchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
       //   }
       //   else {
       //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
@@ -557,6 +631,105 @@ ngAfterViewInit(){
         let exporting = am5plugins_exporting.Exporting.new(root, {
           menu: am5plugins_exporting.ExportingMenu.new(root, {})
         });
+  }
+
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
+
+  goNext() {
+    this.selectedPage++;
+    this.assignDataRows();
+  }
+
+  goPrev() {
+    this.selectedPage--;
+    this.assignDataRows();
+  }
+
+  firstPage() {
+    this.selectedPage = 1;
+    this.assignDataRows();
+  }
+
+  lastPage() {
+    this.selectedPage = this.pagenum;
+    this.assignDataRows();
+  }
+
+  changePage(value: string) {
+    this.selectedPage = Number(value);
+    this.assignDataRows();
+  }
+
+  assignPageNum() {
+    this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+  }
+
+  assignDataRows() {
+    this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+    this.cd.markForCheck();
+  }
+  
+  resize(e) {
+    let value = e.target.value;
+    if (value === 'all') {
+      value = this.pagenum * this.genk.sizePerPage
+    }
+    this.genk.sizePerPage = Number(value);
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
+  }
+  togOptions() {
+    if (!this.isTableOpt) {
+      this.isTableOpt = true;
+    } else {
+      this.isTableOpt = false;
+    }
+    this.cd.markForCheck();
+  }
+  togSpecifyColumns() {
+    if (!this.isSpecifyColumns) {
+      this.isSpecifyColumns = true;
+      this.columns = this.repcolumns;
+      this.selectedColumns = [];
+    } else {
+      this.isSpecifyColumns = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  pickColumn(value: string, checked: boolean) {
+    if (checked) {
+      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      this.selectedColumns.push(val);
+    }
+    else {
+      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+      this.selectedColumns = remainingArr;
+    }
+    this.cd.markForCheck;
+  }
+
+  selectColumns() {
+    this.columns = this.selectedColumns;
+    this.isSpecifyColumns = false;
+    this.cd.markForCheck();
+  }
+
+
+
+ 
+  Alert(title: string, text: string, icon: any) {
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Okay'
+    })
   }
 
 

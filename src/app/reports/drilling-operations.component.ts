@@ -15,7 +15,7 @@ export class DrillingOperationsComponent implements OnInit {
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'DRILLING OPERATIONS';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -313,6 +313,7 @@ export class DrillingOperationsComponent implements OnInit {
 
     assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   
@@ -320,7 +321,8 @@ export class DrillingOperationsComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("drilling-operations", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

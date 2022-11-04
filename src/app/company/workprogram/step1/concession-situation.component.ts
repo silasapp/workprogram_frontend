@@ -176,6 +176,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     );
 
     this.getConcessionHeld();
+    //
     this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
@@ -195,7 +196,6 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
 
         if (!conInfo) {
@@ -216,7 +216,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
-          debugger;
+
           this.cd.markForCheck();
         } else {
           conInfo.date_of_Grant_Expiration = this.genk.formDate(
@@ -229,9 +229,10 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.genk.concessionData = conInfo;
           this.genk.isStep1 = true;
           this.cd.markForCheck();
+          console.log(this.concessionBody.companyName);
           this.loadTable();
-          debugger;
         }
+
         this.getRoyaltyHeld();
       });
   }
@@ -240,12 +241,13 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
-        this.royaltyBody = res.royalty as Royalty;
+        this.royaltyBody = res.royalty[0] as Royalty;
         this.cd.markForCheck();
 
         this.genk.isStep1 = true;
         this.cd.markForCheck();
+        console.log(this.royaltyBody.royalty_ID);
+
         this.loadTable();
       });
   }
@@ -265,7 +267,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submit() {
-    debugger;
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration =
         this.concessionBody.date_of_Expiration.includes('T00:00:00')

@@ -40,13 +40,13 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
-  PUAFile?: File = null;
+  FDPFile?: File = null;
   UUOAFile?: File = null;
   mediatype = 'doc';
-  PUANewName: string;
+  FDPNewName: string;
   UUOANameDoc: string;
   UUOANewName: string;
-  PUANameDoc: string;
+  FDPNameDoc: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -193,9 +193,9 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       });
   }
 
-  saveUUAODoc(DeFile: any) {
-    this.UUOAFile = <File>DeFile.target.files[0];
-    if (!this.UUOAFile) {
+  saveFDPDoc(DeFile: any) {
+    this.FDPFile = <File>DeFile.target.files[0];
+    if (!this.FDPFile) {
       return;
     }
     if (this.UUOAFile.size < 1 || this.UUOAFile.size > 1024 * 1024 * 50) {
@@ -203,7 +203,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       this.UUOAFile = null;
       return;
     } else {
-      this.UnitizationForm.controls['UUOAFile'].setErrors(null);
+      this.FieldDevelopmentForm.controls['FDPFile'].setErrors(null);
     }
     this.UUOANewName = this.gen.getExpDoc(
       this.UUOAFile.name,
@@ -326,7 +326,30 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       });
   }
 
-  submit() {
-    return null;
+  fdpSubmit() {
+    const formDat: FormData = new FormData();
+    for (const key in this.fielddevelopmentBody) {
+      if (this.fielddevelopmentBody[key]) {
+        formDat.append(key.toString(), this.fielddevelopmentBody[key]);
+      }
+      if (key.toString() === 'id') {
+        formDat.delete(key);
+      }
+    }
+
+    if (this.FDPFile) {
+      formDat.append('FDPFile', this.FDPFile, this.FDPNewName);
+    }
+
+    this.workprogram
+      .saveFDP(
+        formDat as any,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
+      .subscribe((res) => {
+        this.modalService.logNotice('Success', res.message, 'success');
+      });
   }
 }

@@ -21,7 +21,7 @@ export class AppraisalWellsComponent implements OnInit {
     title = 'APPRAISAL WELLS';
     tableTitle = 'TABLE 9: Appraisal wells drilled in 2021';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -32,6 +32,7 @@ export class AppraisalWellsComponent implements OnInit {
     totaltwo = 0;
     barone = 'Total Days to Total Depth';
     bartwo = 'Total Well Cost';
+    isData = true;
 
     columns = [
       {
@@ -154,6 +155,7 @@ export class AppraisalWellsComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -200,6 +202,7 @@ export class AppraisalWellsComponent implements OnInit {
     this.workprogram.getAppraisalWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+        this.isData = this.data.length > 0;
         let count = this.data.length;
           let reptext = this.reporttext.split(' ')[3];
           this.reporttext = this.reporttext.replace(reptext, count.toString());

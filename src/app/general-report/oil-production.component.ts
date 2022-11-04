@@ -21,7 +21,7 @@ export class OilProductionComponent implements OnInit {
     title = 'OIL PRODUCTION';
     reporttext: string;
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -31,6 +31,7 @@ export class OilProductionComponent implements OnInit {
     totaltwo = 0;
     barone = 'TOTAL ANNUAL PRODUCTION';
     bartwo = 'TOTAL AVERAGE DAILY (BOPD)';
+    isData = true;
 
     columns = [
       {
@@ -127,6 +128,7 @@ export class OilProductionComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -181,6 +183,7 @@ export class OilProductionComponent implements OnInit {
     this.workprogram.getCrudeOilProduction(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.crude_Oil_Production as any[];
+        this.isData = this.data.length > 0;
         let count = this.data.length;
         this.data = this.report.addSn(this.data);
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
