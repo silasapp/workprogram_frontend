@@ -292,8 +292,8 @@ export class UnitizationComponent implements OnInit {
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   
@@ -301,8 +301,9 @@ export class UnitizationComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("unitization", value).subscribe(
         (res) => {
-                this.data = res.data as any[];
-                this.assignDataRows();
+                 this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
                 this.assignPageNum();
                 this.cd.markForCheck();
         }
