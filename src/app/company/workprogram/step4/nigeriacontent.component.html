@@ -23,6 +23,9 @@
         </select>
       </div>
     </div>
+
+    
+
   </div>
 
   <hr size="5">
@@ -118,6 +121,36 @@
       <br>
     </div>
   </div>
+
+
+  <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+    <table #codeTable class="apptable" cellPadding="10px">
+      <thead>
+        <tr>
+          <th *ngFor="let h of sdcolumn">
+            {{h.header}}
+          </th>
+        </tr>
+      </thead>
+      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+        <tr *ngFor="let row of sdList">
+          <td *ngFor="let h of sdcolumn">
+            {{row[h.columnDef]}}
+            
+          </td>
+          <td>
+            <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
+             value="{{row.id}}"  style="background-color: white; color: red;
+              BORDER: 2px solid;" class="submitbtn"> <mat-icon style="font-size: 20px;"> border_color</mat-icon> <b>Deleted</b>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
 </div>
 <br>
 

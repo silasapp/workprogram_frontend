@@ -81,7 +81,7 @@
               <div style="display: flex;">
                 <div class="inpdivcurrency">
                   <span class="currencywp">&#x20A6;</span>
-                  <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+                  <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                     (change)="acquisitionBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
                     [value]="acquisitionBody.budeget_Allocation_NGN" class="inpute">
                 </div>
@@ -93,7 +93,7 @@
               <div style="display: flex;">
                 <div class="inpdivcurrency">
                   <span class="currencywp">$</span>
-                  <input formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)"
+                  <input formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                     (change)="acquisitionBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
                     [value]="acquisitionBody.budeget_Allocation_USD" class="inpute">
                 </div>

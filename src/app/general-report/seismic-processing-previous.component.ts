@@ -21,7 +21,7 @@ export class SeismicProcessingPreviousComponent implements OnInit {
     title = 'Seismic Data Approved and 2 Years ago';
     tableTitle = 'Table 5. 2019 3D Seismic Data Approved and Acquired';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -112,7 +112,8 @@ export class SeismicProcessingPreviousComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -158,6 +159,7 @@ export class SeismicProcessingPreviousComponent implements OnInit {
     this.workprogram.getSeismicActivities(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.seismic_Data_Processing_and_Reprocessing_Activities_PREVIOUS as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'quantum_Approved'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'geo_Quantum_of_Data'));
             this.assignDataRows();

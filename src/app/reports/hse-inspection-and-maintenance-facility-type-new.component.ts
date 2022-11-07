@@ -15,7 +15,7 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'HSE INSPECTION AND MAINTENANCE FACILITY TYPE NEW';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -156,7 +156,8 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   
@@ -164,7 +165,8 @@ export class HSEInspectionAndMaintenanceFacilityTypeNewComponent implements OnIn
       let value = e.target.value;
       this.report.fetch("hse_inspection_and_maintenance_facility_type_new", value).subscribe(
         (res) => {
-            this.data = res.data as any[];
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

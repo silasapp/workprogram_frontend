@@ -122,7 +122,8 @@ export class OspRegistrationComponent implements OnInit {
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
 
@@ -130,8 +131,9 @@ export class OspRegistrationComponent implements OnInit {
       let value = e.target.value;
      let result =  this.report.fetch("osp_registration", value).subscribe(
         (res) => {
-          this.data = res.data as any[];
-                this.assignDataRows();
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
                 this.assignPageNum();
                 this.cd.markForCheck();
           }

@@ -1,488 +1,1275 @@
 <div class="whiteback">
-  <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
+  <div
+    style="
+      font-size: 25px;
+      font-weight: 500;
+      text-align: center;
+      padding-bottom: 20px;
+    "
+  >
     <span>RESERVES UPDATE (MMBLS)</span>
   </div>
-  <br>
-  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
-  <div style="font-size: 22px; font-weight: 500;"> <span>Status of Reserves</span></div>
-  <hr>
-  <br>
-  <div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color:teal">
+  <br />
+  <h1
+    style="
+      text-shadow: 1px 1px rgb(130, 23, 23);
+      color: rgb(255, 157, 0);
+      margin-left: 75%;
+      font-size: 18px;
+    "
+  >
+    Note:*All Fields are Mandatory
+  </h1>
+  <div style="font-size: 22px; font-weight: 500">
+    <span>Status of Reserves</span>
+  </div>
+  <hr />
+  <br />
+  <div
+    style="text-align: start;font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
     <span>Concession Reserves for preceding year(as at 1st January)</span>
   </div>
-  <div [formGroup]="ReserveUpdatePreceedingForm" (ngSubmit)="saveReserveUpdatePreceeding()">
-  <div style="display: flex; width: 100%;  justify-content: space-between;">
-    <div style="width: 30%;">
-      <label class="labelwp">Year</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp" formControlName="year_of_WP" [(ngModel)]="statusOfReservesPreceeding.year_of_WP">
-          <option selected disabled>---- Select a Year ----</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp"> 2P reserves (MMBBL)- Oil</label>
-      <div style="display: flex;">
+  <div
+    [formGroup]="ReserveUpdatePreceedingForm"
+    (ngSubmit)="saveReserveUpdatePreceeding()"
+  >
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Year</label>
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_Oil"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_Oil" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="year_of_WP"
+            [(ngModel)]="statusOfReservesPreceeding.year_of_WP"
+          >
+            <option selected disabled>---- Select a Year ----</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> 2P reserves (Barrels)- Oil</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_Oil"
+              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_Oil"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesPreceeding.company_Reserves_Oil"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">2P reserves (Barrels) - Condensate</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_Condensate"
+              [(ngModel)]="
+                statusOfReservesPreceeding.company_Reserves_Condensate
+              "
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesPreceeding.company_Reserves_Condensate"
+            />
+          </div>
         </div>
       </div>
     </div>
+    <br />
 
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="width: 30%; margin-right: 5%">
+        <label class="labelwp">2P reserves (Standard Cubic Feet) - AG</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_AG"
+              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AG"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesPreceeding.company_Reserves_AG"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> 2P reserves (Standard Cubic Feet) - NAG</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input placeholder="1,000,000"
+              type="text"
+              formControlName="company_Reserves_NAG"
+              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_NAG"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesPreceeding.company_Reserves_NAG"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Annual Oil Production (Barrels)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_AnnualOilProduction"
+              [(ngModel)]="
+                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction
+              "
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Annual Condensate Production (Barrels)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_AnnualCondensateProduction"
+              [(ngModel)]="
+                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction
+              "
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Annual AG Production (Standard Cubic Feet)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_AnnualGasAGProduction"
+              [(ngModel)]="
+                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction
+              "
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
     <div style="width: 30%">
-      <label class="labelwp">2P reserves (MMBBL) - Condensate</label>
-      <div style="display: flex;">
+      <label class="labelwp">Annual NAG Production (Standard Cubic Feet)</label>
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_Condensate"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_Condensate" class="inpute">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <div style="display: flex; width: 100%; justify-content: start;">
-    <div style="width: 30%; margin-right: 5%;">
-      <label class="labelwp">2P reserves (BSCF) - AG</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_AG"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AG" class="inpute">
-        </div>
-      </div>
-    </div>
-
-    <div style="width: 30%">
-      <label class="labelwp"> 2P reserves (BSCF) - NAG</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_NAG"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_NAG" class="inpute">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <div style="display: flex; width: 100%; justify-content: space-between;">
-    <div style="width: 30%;">
-      <label class="labelwp">Annual Oil Production (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_AnnualOilProduction"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AnnualOilProduction" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            formControlName="company_Reserves_AnnualGasNAGProduction"
+            [(ngModel)]="
+              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction
+            "
+            class="inpute"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction =
+                genk.addCurrencyDecimal($event)
+            "
+            [value]="
+              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction
+            "
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%">
-      <label class="labelwp">Annual Condensate Production (MMBBL)</label>
-      <div style="display: flex;">
+    <div style="text-align: center">
+      <button
+        type="submit"
+        class="quarterbtn"
+        (click)="saveReserveUpdatePreceeding()"
+      >
+        Update Preceeding Status of Reserves
+      </button>
+    </div>
+    <br /><br />
+  </div>
+
+  <div
+    [formGroup]="ReserveUpdateCurrentForm"
+    (ngSubmit)="saveReserveUpdateCurrent()"
+  >
+    <div
+      style="
+        text-align: start;
+        font-size: 17px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        color: teal;
+      "
+    >
+      <span>Concession Reserves (as at 1st January)</span>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Year</label>
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_AnnualCondensateProduction"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="year_of_WP"
+            [(ngModel)]="statusOfReservesCurrent.year_of_WP"
+          >
+            <option selected disabled>---- Select a Year ----</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">2P reserves (Barrels) - Oil</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_Oil"
+              [(ngModel)]="statusOfReservesCurrent.company_Reserves_Oil"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesCurrent.company_Reserves_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesCurrent.company_Reserves_Oil"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> 2P reserves (Standard Cubic Feet) - Condensate</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_Condensate"
+              [(ngModel)]="statusOfReservesCurrent.company_Reserves_Condensate"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesCurrent.company_Reserves_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesCurrent.company_Reserves_Condensate"
+            />
+          </div>
         </div>
       </div>
     </div>
+    <br />
 
-    <div style="width: 30%">
-      <label class="labelwp">Annual AG Production (BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="company_Reserves_AnnualGasAGProduction"
-            [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction" class="inpute">
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="width: 30%; margin-right: 5%">
+        <label class="labelwp">2P reserves (BSCF) - AG</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_AG"
+              [(ngModel)]="statusOfReservesCurrent.company_Reserves_AG"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesCurrent.company_Reserves_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesCurrent.company_Reserves_AG"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> 2P reserves (BSCF) - NAG</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Reserves_NAG"
+              [(ngModel)]="statusOfReservesCurrent.company_Reserves_NAG"
+              class="inpute"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                statusOfReservesCurrent.company_Reserves_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="statusOfReservesCurrent.company_Reserves_NAG"
+            />
+          </div>
         </div>
       </div>
     </div>
-
+    <br /><br />
+    <div style="text-align: center">
+      <button
+        type="submit"
+        class="quarterbtn"
+        (click)="saveReserveUpdateCurrent()"
+      >
+        Update Current Status of Reserves
+      </button>
+    </div>
   </div>
-  <br>
-  <div style="width: 30%">
-    <label class="labelwp">Annual NAG Production (BSCF)</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="company_Reserves_AnnualGasNAGProduction"
-          [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction" class="inpute">
+  <br />
+  <hr />
+
+  <div
+    [formGroup]="ReserveUpdateFiveYearProjectionForm"
+    (ngSubmit)="saveReserveUpdateFiveYearProjection()"
+  >
+    <div
+      style="
+        text-align: start;
+        font-size: 17px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        color: teal;
+      "
+    >
+      <span>Five (5) Year Reserves Projection: (Figures)</span>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Reserve Projection Year</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="fiveyear_Projection_Year"
+            [(ngModel)]="
+              reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
+            "
+          >
+            <option selected disabled>---- Select a Year ----</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Oil</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="fiveyear_Projection_Oil"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Condensate (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="fiveyear_Projection_Condensate"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
+              "
+            />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <br />
 
-  <div style="text-align: center;">
-    <button type="submit" class="quarterbtn" (click)="saveReserveUpdatePreceeding()">Update Preceeding Status of Reserves</button>
-  </div>
-  <br><br>
-</div>
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="width: 30%; margin-right: 5%">
+        <label class="labelwp">AG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="fiveyear_Projection_AG"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
+              "
+            />
+          </div>
+        </div>
+      </div>
 
-<div [formGroup]="ReserveUpdateCurrentForm" (ngSubmit)="saveReserveUpdateCurrent()">
-
-
-<div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color:teal;">
-  <span>Concession Reserves (as at 1st January)</span>
-</div>
-<div style="display: flex; width: 100%;  justify-content: space-between;">
-  <div style="width: 30%;">
-    <label class="labelwp">Year</label>
-    <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-      <select class="dropwp" formControlName="year_of_WP" [(ngModel)]="statusOfReservesCurrent.year_of_WP">
-        <option selected disabled>---- Select a Year ----</option>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-      </select>
-    </div>
-  </div>
-
-  <div style="width: 30%;">
-    <label class="labelwp">2P reserves (MMBBL) - Oil</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="company_Reserves_Oil" [(ngModel)]="statusOfReservesCurrent.company_Reserves_Oil" class="inpute">
+      <div style="width: 30%">
+        <label class="labelwp">NAG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="fiveyear_Projection_NAG"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
+              "
+            />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div style="width: 30%">
-    <label class="labelwp"> 2P reserves (MMBBL) - Condensate</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="company_Reserves_Condensate" [(ngModel)]="statusOfReservesCurrent.company_Reserves_Condensate" class="inpute">
-      </div>
+    <br /><br />
+    <div style="text-align: center">
+      <button
+        class="quarterbtn"
+        (click)="saveReserveUpdateFiveYearProjection()"
+      >
+        Save Five Years Reserve Projection
+      </button>
     </div>
+    <br />
   </div>
 </div>
-<br>
-
-<div style="display: flex; width: 100%; justify-content: start;">
-  <div style="width: 30%; margin-right: 5%;">
-    <label class="labelwp">2P reserves (BSCF) - AG</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="company_Reserves_AG" [(ngModel)]="statusOfReservesCurrent.company_Reserves_AG" class="inpute">
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 30%">
-    <label class="labelwp"> 2P reserves (BSCF) - NAG</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="company_Reserves_NAG" [(ngModel)]="statusOfReservesCurrent.company_Reserves_NAG" class="inpute">
-      </div>
-    </div>
-  </div>
-</div>
-<br><br>
-<div style="text-align: center;">
-  <button type="submit" class="quarterbtn" (click)="saveReserveUpdateCurrent()">Update Current Status of Reserves</button>
-</div>
-</div>
-<br>
-<hr>
-
-<div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
-  <span>Five (5) Year Reserves Projection: (Figures)</span>
-</div>
-<div style="display: flex; width: 100%;  justify-content: space-between;">
-  <div style="width: 30%;">
-    <label class="labelwp">Reserve Projection Year</label>
-    <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-      <select class="dropwp">
-        <option selected disabled>---- Select a Year ----</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-      </select>
-    </div>
-  </div>
-
-  <div style="width: 30%;">
-    <label class="labelwp">Oil</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" class="inpute">
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 30%">
-    <label class="labelwp">Condensate (MMBBL)</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" class="inpute">
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-
-<div style="display: flex; width: 100%; justify-content: start;">
-  <div style="width: 30%; margin-right: 5%;">
-    <label class="labelwp">AG(BSCF)</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" class="inpute">
-      </div>
-    </div>
-  </div>
-
-  <div style="width: 30%">
-    <label class="labelwp">NAG(BSCF)</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" class="inpute">
-      </div>
-    </div>
-  </div>
-</div>
-<br><br>
-<div style="text-align: center;">
-  <button class="quarterbtn">Save Five Years Reserve Projection</button>
-</div>
-<br>
-</div>
-<br><br>
+<br /><br />
 
 <div class="whiteback">
-  <div style="font-size: 20px; font-weight: 500;"> <span>Company Annual Production</span></div>
-  <hr>
-  <br>
-  <div style="display: flex; width: 100%;  justify-content: space-between;">
-    <div style="width: 30%;">
-      <label class="labelwp">Year</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
-          <option selected disabled>---- Select a Year ----</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-
-        </select>
-      </div>
+  <div [formGroup]="reserveUpdateOilCondensateCompanyAnnualProductionForm">
+    <div style="font-size: 20px; font-weight: 500">
+      <span>Company Annual Production</span>
     </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">Oil (MMBBL)</label>
-      <div style="display: flex;">
+    <hr />
+    <br />
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Year</label>
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="company_Annual_Year"
+            [(ngModel)]="
+              reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Year
+            "
+          >
+            <option selected disabled>---- Select a Year ----</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Oil (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="company_Annual_Oil"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Condensate (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="company_Annual_Condensate"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
+    <br />
 
-    <div style="width: 30%">
-      <label class="labelwp">Condensate (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="width: 30%; margin-right: 5%">
+        <label class="labelwp">AG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="company_Annual_AG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
+              "
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <br>
 
-  <div style="display: flex; width: 100%; justify-content: start;">
-    <div style="width: 30%; margin-right: 5%;">
-      <label class="labelwp">AG(BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-
-    <div style="width: 30%">
-      <label class="labelwp">NAG(BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br><br>
-
-
-  <div style="font-size: 17px; font-weight: 600; color: teal;"> <span>Reserve Addition</span></div>
-  <br>
-
-  <div style="display: flex; width: 100%;  justify-content: space-between;">
-    <div style="width: 30%;">
-      <label class="labelwp">Was there any Reserve Addition?</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
-          <option selected disabled>---- Select an Option ----</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">Reason for Addition</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
-          <option selected disabled>---- Select a Reason for Addition ----</option>
-          <option value="Acquisition">Acquisition</option>
-          <option value="Discoveries">Discoveries</option>
-          <option value="Improved Recovery">Improved Recovery</option>
-          <option value="Revision/Review">Revision/Review</option>
-          <option value="NIL">NIL</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">Oil (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div style="display:flex; width:100%; justify-content: space-between; ">
-    <div style="width: 30%;">
-      <label class="labelwp">Condensate (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">AG(BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">NAG (BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br><br>
-
-
-  <div style="font-size: 17px; font-weight: 600; color: teal;"> <span>Reserve Decline</span></div>
-  <br>
-
-  <div style="display: flex; width: 100%;  justify-content: space-between;">
-    <div style="width: 30%;">
-      <label class="labelwp">Was there a decline in reserve?</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
-          <option selected disabled>---- Select an Option ----</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">Reason for Decline</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
-          <option selected disabled>---- Select a Reason for Decline ----</option>
-          <option value="Divestment/Fields Transfer">Divestment/Fields Transfer</option>
-          <option value="Production">Production</option>
-          <option value="Revision/Review">Revision/Review</option>
-          <option value="NIL">NIL</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">Oil (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+      <div style="width: 30%">
+        <label class="labelwp">NAG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="company_Annual_NAG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <div style="display:flex; width:100%; justify-content: space-between; ">
-    <div style="width: 30%;">
-      <label class="labelwp">Condensate (MMBBL)</label>
-      <div style="display: flex;">
+  <br /><br />
+
+  <div [formGroup]="reserveupdateOilCondensateReservesAdditionForm">
+    <div style="font-size: 17px; font-weight: 600; color: teal">
+      <span>Reserve Addition</span>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Was there any Reserve Addition?</label>
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="reserves_Addition_Was_there_any_Reserve_Addition"
+            [(ngModel)]="
+              reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Was_there_any_Reserve_Addition
+            "
+          >
+            <option selected disabled>---- Select an Option ----</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Reason for Addition</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="reserves_Addition_Reason_for_Addition"
+            [(ngModel)]="
+              reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Reason_for_Addition
+            "
+          >
+            <option selected disabled>
+              ---- Select a Reason for Addition ----
+            </option>
+            <option value="Acquisition">Acquisition</option>
+            <option value="Discoveries">Discoveries</option>
+            <option value="Improved Recovery">Improved Recovery</option>
+            <option value="Revision/Review">Revision/Review</option>
+            <option value="NIL">NIL</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Oil (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Addition_Oil"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
-
-    <div style="width: 30%;">
-      <label class="labelwp">AG(BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+    <br />
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Condensate (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Addition_Condensate"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
+              "
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div style="width: 30%;">
-      <label class="labelwp">NAG (BSCF)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+      <div style="width: 30%">
+        <label class="labelwp">AG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Addition_AG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">NAG (BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Addition_NAG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <br /><br />
+  <div [formGroup]="reserveUpdateOilCondensateReservesDeclineForm">
+    <div style="font-size: 17px; font-weight: 600; color: teal">
+      <span>Reserve Decline</span>
+    </div>
+    <br />
 
-  <br><br>
-  <div style="text-align: center;">
-    <button class="quarterbtn">Update Company Annual Production</button>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Was there a decline in reserve?</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="reserves_Decline_Was_there_a_decline_in_reserve"
+            [(ngModel)]="
+              reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Was_there_a_decline_in_reserve
+            "
+          >
+            <option selected disabled>---- Select an Option ----</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Reason for Decline</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="reserves_Decline_Reason_for_Decline"
+            [(ngModel)]="
+              reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Reason_for_Decline
+            "
+          >
+            <option selected disabled>
+              ---- Select a Reason for Decline ----
+            </option>
+            <option value="Divestment/Fields Transfer">
+              Divestment/Fields Transfer
+            </option>
+            <option value="Production">Production</option>
+            <option value="Revision/Review">Revision/Review</option>
+            <option value="NIL">NIL</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Oil (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Decline_Oil"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Condensate (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Decline_Condensate"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">AG(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Decline_AG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">NAG (BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="reserves_Decline_NAG"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
+              "
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="
+                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <br>
+  <br /><br />
+  <div style="text-align: center">
+    <button
+      class="quarterbtn"
+      (click)="saveReserveUpdateOilCondensateCompanyAnnualProduction()"
+    >
+      Update Company Annual Production
+    </button>
+  </div>
+  <br />
 </div>
-<br><br>
+<br /><br />
 
 <div class="whiteback">
-  <div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
+  <div
+    style="
+      text-align: start;
+      font-size: 17px;
+      font-weight: 600;
+      padding-bottom: 20px;
+      color: teal;
+    "
+  >
     <span>Five-Year Trend for Concession Reserve Replacement Ratio</span>
   </div>
-  <div style="display: flex; width: 100%;  justify-content: start;">
-    <div style="width: 30%; margin-right: 5%;">
+  <div
+    style="display: flex; width: 100%; justify-content: start"
+    [formGroup]="reserveReplacementRatioForm"
+  >
+    <div style="width: 30%; margin-right: 5%">
       <label class="labelwp">Trend Year</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-        <select class="dropwp">
+      <div
+        style="
+          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+          width: 100%;
+          padding: 5px;
+          border-radius: 20px;
+        "
+      >
+        <select
+          class="dropwp"
+          formControlName="trend_Year"
+          [(ngModel)]="reserveReplacementRatioBody.trend_Year"
+        >
           <option selected disabled>---- Select a Year ----</option>
           <option value="2022">2022</option>
           <option value="2023">2023</option>
@@ -493,108 +1280,282 @@
       </div>
     </div>
 
-    <div style="width: 30%;">
+    <div style="width: 30%">
       <label class="labelwp">Reserve Replacement Ratio Value</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="reserveS_REPLACEMENT_RATIO_VALUE"
+            [(ngModel)]="
+              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
+            "
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE =
+                genk.addCurrencyDecimal($event)
+            "
+            [value]="
+              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
+            "
+          />
         </div>
       </div>
     </div>
   </div>
-  <br><br>
-  <div style="text-align: center;">
-    <button class="quarterbtn">Save Reserve Replacement Ratio</button>
+  <br /><br />
+  <div style="text-align: center">
+    <button class="quarterbtn" (click)="saveReserveReplacementRatio()">
+      Save Reserve Replacement Ratio
+    </button>
   </div>
-  <hr>
-  <br>
+  <hr />
+  <br />
 
-  <div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal">
+  <div
+    style="
+      text-align: start;
+      font-size: 17px;
+      font-weight: 600;
+      padding-bottom: 20px;
+      color: teal;
+    "
+  >
     <span>Depletion Rate (%)</span>
   </div>
-  <div style="display:flex; width:100%; justify-content: space-between; ">
-    <div style="width: 30%;">
+  <div
+    style="display: flex; width: 100%; justify-content: space-between"
+    [formGroup]="reserveUpdateDepletionRateForm"
+  >
+    <div style="width: 30%">
       <label class="labelwp">OIL (MMBBL)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="oIL"
+            [(ngModel)]="reserveUpdateDepletionRateBody.oIL"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              reserveUpdateDepletionRateBody.oIL =
+                genk.addCurrencyDecimal($event)
+            "
+            [value]="reserveUpdateDepletionRateBody.oIL"
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%;">
+    <div style="width: 30%">
       <label class="labelwp">CONDENSATE (MMBBL)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="cONDENSATE"
+            [(ngModel)]="reserveUpdateDepletionRateBody.cONDENSATE"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              reserveUpdateDepletionRateBody.cONDENSATE =
+                genk.addCurrencyDecimal($event)
+            "
+            [value]="reserveUpdateDepletionRateBody.cONDENSATE"
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%;">
+    <div style="width: 30%">
       <label class="labelwp">NAG (BSCF)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="nAG"
+            [(ngModel)]="reserveUpdateDepletionRateBody.nAG"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              reserveUpdateDepletionRateBody.nAG =
+                genk.addCurrencyDecimal($event)
+            "
+            [value]="reserveUpdateDepletionRateBody.nAG"
+          />
         </div>
       </div>
     </div>
   </div>
-  <br><br>
-  <div style="text-align: center;">
-    <button class="quarterbtn">Update Depletion Rate</button>
+  <br /><br />
+  <div style="text-align: center">
+    <button class="quarterbtn" (click)="saveReserveUpdateDepletionRate()">
+      Update Depletion Rate
+    </button>
   </div>
-  <hr><br>
+  <hr />
+  <br />
 
-
-  <div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal">
+  <div
+    style="
+      text-align: start;
+      font-size: 17px;
+      font-weight: 600;
+      padding-bottom: 20px;
+      color: teal;
+    "
+  >
     <span>Life Index (Years)</span>
   </div>
-  <div style="display:flex; width:100%; justify-content: space-between; ">
-    <div style="width: 30%;">
-      <label class="labelwp">OIL (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+  <div [formGroup]="reserveUpdateLifeIndexForm">
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">OIL (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="oIL"
+              [(ngModel)]="reserveUpdateLifeIndexBody.oIL"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateLifeIndexBody.oIL = genk.addCurrencyDecimal($event)
+              "
+              [value]="reserveUpdateLifeIndexBody.oIL"
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div style="width: 30%;">
-      <label class="labelwp">CONDENSATE (MMBBL)</label>
-      <div style="display: flex;">
-        <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+      <div style="width: 30%">
+        <label class="labelwp">CONDENSATE (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="cONDENSATE"
+              [(ngModel)]="reserveUpdateLifeIndexBody.cONDENSATE"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateLifeIndexBody.cONDENSATE =
+                  genk.addCurrencyDecimal($event)
+              "
+              [value]="reserveUpdateLifeIndexBody.cONDENSATE"
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div style="width: 30%;">
-      <label class="labelwp">NAG (BSCF)</label>
-      <div style="display: flex;">
+      <div style="width: 30%">
+        <label class="labelwp">NAG (BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="nAG"
+              [(ngModel)]="reserveUpdateLifeIndexBody.nAG"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatCurrency($event)"
+              (change)="
+                reserveUpdateLifeIndexBody.nAG = genk.addCurrencyDecimal($event)
+              "
+              [value]="reserveUpdateLifeIndexBody.nAG"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div style="width: 30%">
+      <label class="labelwp">AG (BSCF)</label>
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="aG"
+            [(ngModel)]="reserveUpdateLifeIndexBody.aG"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatCurrency($event)"
+            (change)="
+              reserveUpdateLifeIndexBody.aG = genk.addCurrencyDecimal($event)
+            "
+            [value]="reserveUpdateLifeIndexBody.aG"
+          />
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <div style="width: 30%;">
-    <label class="labelwp">AG (BSCF)</label>
-    <div style="display: flex;">
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" class="inpute">
-      </div>
-    </div>
+  <br />
+  <div style="text-align: center">
+    <button class="quarterbtn" (click)="saveReserveUpdateLifeIndex()">
+      Update Life Index
+    </button>
   </div>
-  <br>
-  <div style="text-align: center;">
-    <button class="quarterbtn">Update Life Index</button>
-  </div>
+</div>
