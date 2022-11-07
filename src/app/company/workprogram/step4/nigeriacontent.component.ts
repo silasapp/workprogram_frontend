@@ -29,6 +29,7 @@ sStaffList:any[];
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
+  actualValue:string;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
@@ -142,6 +143,7 @@ sStaffList:any[];
   }
 
   getNigeriaContentTraining() {
+    debugger;
     this.workprogram.getNigeriaContentTraining(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(result => {
         debugger;
@@ -192,6 +194,16 @@ sStaffList:any[];
     this.workprogram.saveAddStaffDisposition(this.staffdispositionBody, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(result => {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
     });
+  }
+
+  changeActualValue(e){
+    this.actualValue=e.target.value;
+    debugger;
+    this.staffdispositionBody= {} as NIGERIA_CONTENT_Training;
+    this.staffdispositionBody = this.sdList.filter(res=>{
+      return res.actual_Proposed === this.actualValue;
+    })[0] ?? {} as NIGERIA_CONTENT_Training;
+    this.cd.markForCheck();
   }
 
 
