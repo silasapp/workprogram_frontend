@@ -33,7 +33,7 @@
               border-radius: 10px;
               padding: 7px 10px;
             ">
-            <input placeholder="1,000,000" formControlName="proposed_number_of_wells_from_approved_FDP" [(ngModel)]="
+            <input formControlName="proposed_number_of_wells_from_approved_FDP" [(ngModel)]="
                 fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP
               " class="inpute" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                 fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP =

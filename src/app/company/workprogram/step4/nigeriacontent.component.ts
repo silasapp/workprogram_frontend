@@ -33,6 +33,7 @@ sStaffList:any[];
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
+  id: number;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
   nigeriacontenttrainingBody: NIGERIA_CONTENT_Training;

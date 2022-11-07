@@ -13,6 +13,7 @@
       </div>
     </div><br>
     <hr size="5"><br>
+    <div [formGroup]="staffdispositionForm">
     <div style="width: 30%; margin: auto 0 0;">
       <label class="labelwp">Please provide values for Actual and Proposed year</label><br>
       <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
@@ -30,7 +31,7 @@
 
   <hr size="5">
 
-  <div [formGroup]="staffdispositionForm">
+  
 
     <div style="display: flex; width: 100%;  justify-content: space-between;">
       <div style="width: 30%; margin: auto 0 0;">
@@ -38,7 +39,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input type="number" formControlName="expatriate_quota_positions"
+            <input (keypress)="genk.restrictData($event)" formControlName="expatriate_quota_positions"
               [(ngModel)]="staffdispositionBody.expatriate_quota_positions" class="inpute">
           </div>
         </div>
@@ -50,7 +51,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input formControlName="utilized_EQ" [(ngModel)]="staffdispositionBody.utilized_EQ" class="inpute">
+            <input (keypress)="genk.restrictData($event)" formControlName="utilized_EQ" [(ngModel)]="staffdispositionBody.utilized_EQ" class="inpute">
           </div>
         </div>
       </div>
@@ -63,7 +64,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input type="text" formControlName="nigerian_Understudies"
+            <input (keypress)="genk.restrictData($event)" formControlName="nigerian_Understudies"
               [(ngModel)]="staffdispositionBody.nigerian_Understudies" class="inpute">
           </div>
         </div>
@@ -74,7 +75,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn"
+            <input (keypress)="genk.restrictData($event)" formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn"
               class="inpute">
           </div>
         </div>
@@ -85,7 +86,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local"
+            <input (keypress)="genk.restrictData($event)" formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local"
               class="inpute">
           </div>
         </div>
@@ -99,7 +100,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input formControlName="staff_Local" [(ngModel)]="staffdispositionBody.staff_Local" class="inpute">
+            <input (keypress)="genk.restrictData($event)" formControlName="staff_Local" [(ngModel)]="staffdispositionBody.staff_Local" class="inpute">
           </div>
         </div>
       </div>
@@ -108,7 +109,7 @@
         <div style="display: flex;">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-            <input formControlName="staff_Foriegn" [(ngModel)]="staffdispositionBody.staff_Foriegn" class="inpute">
+            <input (keypress)="genk.restrictData($event)" formControlName="staff_Foriegn" [(ngModel)]="staffdispositionBody.staff_Foriegn" class="inpute">
           </div>
         </div>
       </div>
@@ -200,7 +201,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-          <input type="number" formControlName="number_of_staff_released_within_the_year_"
+          <input (keypress)="genk.restrictData($event)" formControlName="number_of_staff_released_within_the_year_"
             [(ngModel)]="seniormanagementstaffBody.number_of_staff_released_within_the_year_" class="inpute">
         </div>
       </div>
@@ -211,7 +212,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-          <input type="number" formControlName="total_no_of_nigeria_senior_staff"
+          <input (keypress)="genk.restrictData($event)" formControlName="total_no_of_nigeria_senior_staff"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_nigeria_senior_staff" class="inpute">
         </div>
       </div>
@@ -225,7 +226,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-          <input type="number" formControlName="total_no_of_senior_staff"
+          <input (keypress)="genk.restrictData($event)" formControlName="total_no_of_senior_staff"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff" class="inpute">
         </div>
       </div>
@@ -236,7 +237,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-          <input type="number" formControlName="total_no_of_top_nigerian_management_staff"
+          <input (keypress)="genk.restrictData($event)" formControlName="total_no_of_top_nigerian_management_staff"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_top_nigerian_management_staff" class="inpute">
         </div>
       </div>
@@ -247,7 +248,7 @@
       <div style="display: flex;">
         <div
           style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-          <input type="number" formControlName="total_no_of_top_management_staff"
+          <input (keypress)="genk.restrictData($event)" formControlName="total_no_of_top_management_staff"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_top_management_staff" class="inpute">
         </div>
       </div>

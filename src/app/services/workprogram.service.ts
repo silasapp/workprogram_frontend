@@ -107,7 +107,7 @@ import { Royalty } from '../models/step1-royalty.model';
 export class WorkProgramService {
   private num = 2;
 
-  constructor(private http: HttpClient, private gen: GenericService) {}
+  constructor(private http: HttpClient, private gen: GenericService) { }
 
   getConcessionHeld(id, year) {
     return this.http
@@ -2604,7 +2604,7 @@ export class WorkProgramService {
   }
 
   getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
-   debugger;
+    debugger;
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`,
@@ -2724,12 +2724,7 @@ export class WorkProgramService {
       );
   }
 
-  saveNigeriaContent(
-    conbody: NIGERIA_CONTENT_Training,
-    year: string,
-    omlName: string,
-    id,
-    actionToDo
+  saveNigeriaContent(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, id, actionToDo
   ) {
     return this.http
       .post<any>(
@@ -2793,24 +2788,24 @@ export class WorkProgramService {
       );
   }
 
-  getPlanningRequirement( omlName: string, year: string,){
-    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_Planning_Requirement`, {params: { myyear: year, omlName: omlName, }})
-    .pipe(retry(this.num),
-    map((response) => {
-      return response
-    })
-    )
+  getPlanningRequirement(omlName: string, year: string,) {
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_Planning_Requirement`, { params: { myyear: year, omlName: omlName, } })
+      .pipe(retry(this.num),
+        map((response) => {
+          return response
+        })
+      )
   }
 
-  savePlanningRequirement(conbody: any, year: string, omlName: string){
+  savePlanningRequirement(conbody: any, year: string, omlName: string) {
     debugger;
-    return this.http.post<any>(`${environment.apiUrl}/workprogramme/Post_Planning_Requirement`, conbody, {params: {year: year, omlName: omlName}})
-    .pipe(retry(this.num),
-    map((response) => {
-      debugger;
-      return response
-    })
-    )
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/Post_Planning_Requirement`, conbody, { params: { year: year, omlName: omlName } })
+      .pipe(retry(this.num),
+        map((response) => {
+          debugger;
+          return response
+        })
+      )
   }
 
 }
