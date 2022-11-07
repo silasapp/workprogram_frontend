@@ -1195,4 +1195,24 @@ getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
     )
   }
 
+  getPlanningRequirement( omlName: string, year: string,){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_Planning_Requirement`, {params: { myyear: year, omlName: omlName, }})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  savePlanningRequirement(conbody: any, year: string, omlName: string){
+    debugger;
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/Post_Planning_Requirement`, conbody, {params: {year: year, omlName: omlName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      debugger;
+      return response
+    })
+    )
+  }
+
 }
