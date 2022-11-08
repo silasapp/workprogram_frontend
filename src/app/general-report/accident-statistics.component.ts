@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
@@ -5,11 +6,12 @@ import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
   selector: 'app-ndr-report',
-  templateUrl: './seismic-data-approved-previous.component.html',
+  templateUrl: './seismic-activities.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GasProductionContractComponent implements OnInit {
+
+export class AccidentStatisticsComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
@@ -17,108 +19,144 @@ export class GasProductionContractComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'Gas Production And Utilization';
-    reporttext: string;
+    title = 'APPRAISAL WELLS';
+    tableTitle = 'TABLE 9: Appraisal wells drilled in 2021';
     pagenum = 1;
     selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
+    reporttext: string = 'A total of (10) appraisal wells were drilled during the year 2021 --Table 9 below shows the details';
     isChart = false;
     totalone = 0;
     totaltwo = 0;
-    columnsArray: any[];
+    barone = 'Total Days to Total Depth';
+    bartwo = 'Total Well Cost';
+    isData = true;
 
+    columns = [
+      {
+        "columnDef": "sn",
+        "header": "S/N"
+      },
+      {
+          "columnDef": "companyName",
+          "header": "COMPANY NAME"
+      },
+      {
+          "columnDef": "omL_Name",
+          "header": "BLOCK"
+      },
+      {
+        "columnDef": "terrain",
+        "header": "TERRAIN"
+      },
+      {
+        "columnDef": "contract_Type",
+        "header": "CONTRACT TYPE"
+      },
+      {
+        "columnDef": "category",
+        "header": "WELL CLASSIFICATION"
+      },
+      {
+        "columnDef": "spud_date",
+        "header": "SPUD DATE"
+      },
+      {
+        "columnDef": "well_name",
+        "header": "WELL NAME"
+      },
+      {
+      "columnDef": "well_Status_and_Depth",
+      "header": "WELL STATUS $ DEPTH"
+      },
+      {
+          "columnDef": "number_of_Days_to_Total_Depth",
+          "header": "NO OF DAYS TO TD"
+      },
+      {
+          "columnDef": "well_cost",
+          "header": "WELL COST (USD)"
+      }]
+
+
+      repcolumns = [
+        {
+          "columnDef": "sn",
+          "header": "S/N"
+        },
+        {
+            "columnDef": "companyName",
+            "header": "COMPANY NAME"
+        },
+        {
+            "columnDef": "omL_Name",
+            "header": "BLOCK"
+        },
+        {
+          "columnDef": "terrain",
+          "header": "TERRAIN"
+        },
+        {
+          "columnDef": "contract_Type",
+          "header": "CONTRACT TYPE"
+        },
+        {
+          "columnDef": "category",
+          "header": "WELL CLASSIFICATION"
+        },
+        {
+          "columnDef": "spud_date",
+          "header": "SPUD DATE"
+        },
+        {
+          "columnDef": "well_name",
+          "header": "WELL NAME"
+        },
+        {
+        "columnDef": "well_Status_and_Depth",
+        "header": "WELL STATUS $ DEPTH"
+        },
+        {
+            "columnDef": "number_of_Days_to_Total_Depth",
+            "header": "NO OF DAYS TO TD"
+        },
+        {
+            "columnDef": "well_cost",
+            "header": "WELL COST (USD)"
+        }
+      ]
 
     constructor(private report: ReportService, private workprogram: WorkProgramService,
       private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
         this.genk = gen;
-        //this.year = Number(this.genk.reportYear);
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
         this.modalService.generalReport
         .subscribe(res => {
-          this.getGasProductionReport();
+          this.getAppraisalWells();
         });
     }
 
     ngOnInit() {
       this.data = [];
       this.genk.sizePerPage = this.genk.sizeten;
-      this.getGasProductionReport();
+      this.getAppraisalWells();
     }
 
     public get pageIndex(): number {
         return (this.selectedPage - 1) * this.genk.sizePerPage;
     }
 
-    public get tableTitle(): string {
-      return `Table 1b: Gas Production on Contract basis for the year ${this.genk.reportYear}`;
-    }
-
-    public get barone(): string {
-      return "FLARED GAS PRODUCED";
-    }
-
-    public get bartwo(): string {
-      return "UTILIZED GAS PRODUCED";
-    }
-
-    columns = [
-        {
-          "columnDef": `year_of_WP`,
-          "header": `YEAR`
-        },
-        {
-          "columnDef": "contract_Type",
-          "header": "CONTRACT TYPE"
-        },
-        {
-          "columnDef": `percentage_Production`,
-          "header": `PERCENTAGE PRODUCTION`
-        },
-        {
-          "columnDef": `total_GAS_Production_by_company`,
-          "header": `TOTAL GAS PRODUCTION BY COMPANY`
-        },
-        {
-          "columnDef": `total_GAS_Production_by_year`,
-          "header": `TOTAL GAS PRODUCTION BY YEAR`
-        }
-      ];
-
-    repcolumns = [
-        {
-          "columnDef": `year_of_WP`,
-          "header": `YEAR`
-        },
-        {
-          "columnDef": "contract_Type",
-          "header": "CONTRACT TYPE"
-        },
-        {
-          "columnDef": `percentage_Production`,
-          "header": `PERCENTAGE PRODUCTION`
-        },
-        {
-          "columnDef": `total_GAS_Production_by_company`,
-          "header": `TOTAL GAS PRODUCTION BY COMPANY`
-        },
-        {
-          "columnDef": `total_GAS_Production_by_year`,
-          "header": `TOTAL GAS PRODUCTION BY YEAR`
-        }
-      ];
-
-
       assignPageNum() {
         this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
       }
 
       assignDataRows() {
-          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        //if(this.arrayRows.length>1) this.selectedPage=1;
+        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+      //    if(this.data.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -159,20 +197,29 @@ export class GasProductionContractComponent implements OnInit {
         this.cd.markForCheck();
       }
 
-  getGasProductionReport() {
-    this.workprogram.GetGasProductionReport(this.genk.reportYear)
+
+  getAppraisalWells() {
+
+    this.workprogram.getAppraisalWells(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res.gas_Produced_Utilized_By_Contract_Basis as any[];
+        this.data = res as any[];
           if(this.data.length>1) this.selectedPage=1;
-        this.totalone = Math.round(this.report.sumColumn(this.data, `flared_Gas_Produced`));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, `utilized_Gas_Produced`));
-        this.assignDataRows();
-        this.assignPageNum();
+        this.isData = this.data.length > 0;
+        let count = this.data.length;
+          let reptext = this.reporttext.split(' ')[3];
+          this.reporttext = this.reporttext.replace(reptext, count.toString());
+
         this.cd.markForCheck();
+        this.data = this.report.addSn(this.data);
+        this.totalone = Math.round(this.report.sumColumn(this.data, 'number_of_Days_to_Total_Depth'));
+        this.totaltwo = Math.round(this.report.sumColumn(this.data, 'well_cost'));
+        this.data = this.report.arrangeDate(this.data, 'spud_date');
+        if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
+            this.assignPageNum();
+            this.cd.markForCheck();
       });
   }
-
-
 
   togOptions() {
     if (!this.isTableOpt) {
@@ -217,6 +264,7 @@ export class GasProductionContractComponent implements OnInit {
       alert('Can not plot this chart');
     }
     else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
       node.style.width = '100%';
@@ -266,6 +314,4 @@ export class GasProductionContractComponent implements OnInit {
       }
     }
   }
-
-
 }
