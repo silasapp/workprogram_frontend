@@ -456,14 +456,20 @@ export interface POST_RESERVES_REPLACEMENT_RATIO {
 export class RESERVES_UPDATES_LIFE_INDEX {
   id: number;
   oML_ID: string = '';
+  omL_ID: string = '';
   oML_Name: string = '';
+  omL_Name: string = '';
   CompanyName: string = '';
   companyemail: string = '';
   year_of_WP: string = '';
   oIL: string = '';
+  oil: string = '';
   cONDENSATE: string = '';
+  condensate: string = '';
   nAG: string = '';
+  nag: string = '';
   aG: string = '';
+  ag: string = '';
   created_by: string = '';
   updated_by: string = '';
   date_Created: string = '';
@@ -476,14 +482,20 @@ export class RESERVES_UPDATES_LIFE_INDEX {
 export class RESERVES_UPDATES_DEPLETION_RATE {
   id: number;
   oML_ID: string = '';
+  omL_ID: string = '';
   oML_Name: string = '';
+  omL_Name: string = '';
   companyName: string = '';
   companyemail: string = '';
   year_of_WP: string = '';
   oIL: string = '';
+  oil: string = '';
   cONDENSATE: string = '';
+  condensate: string = '';
   nAG: string = '';
+  nag: string = '';
   aG: string = '';
+  ag: string = '';
   created_by: string = '';
   updated_by: string = '';
   date_Created: string = '';

@@ -4,12 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import {
   POST_RESERVES_REPLACEMENT_RATIO,
@@ -86,6 +81,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       // this.getConcessionHeld();
       this.getReserveUpdate();
+      // this.getReserveUpdateDepletionRate();
     });
   }
 
@@ -278,14 +274,14 @@ export class SWPReserveUpdateComponent implements OnInit {
     });
 
     this.reserveUpdateDepletionRateForm = new FormGroup({
-      oIL: new FormControl(this.reserveUpdateDepletionRateBody.oIL, [
+      oIL: new FormControl(this.reserveUpdateDepletionRateBody.oil, [
         Validators.required,
       ]),
       cONDENSATE: new FormControl(
-        this.reserveUpdateDepletionRateBody.cONDENSATE,
+        this.reserveUpdateDepletionRateBody.condensate,
         [Validators.required]
       ),
-      nAG: new FormControl(this.reserveUpdateDepletionRateBody.nAG, [
+      nAG: new FormControl(this.reserveUpdateDepletionRateBody.nag, [
         Validators.required,
       ]),
     });
@@ -341,8 +337,65 @@ export class SWPReserveUpdateComponent implements OnInit {
         if (res.reservesReplacementRatio) {
           this.reserveReplacementRatioBody = res.reservesReplacementRatio;
         }
-        // if(res.)
+        if (res.reserveDepletionRate) {
+          this.reserveUpdateDepletionRateBody = res.reserveDepletionRate;
+          this.reserveUpdateDepletionRateBody.aG =
+            this.reserveUpdateDepletionRateBody.ag;
+          this.reserveUpdateDepletionRateBody.nAG =
+            this.reserveUpdateDepletionRateBody.nag;
+          this.reserveUpdateDepletionRateBody.oIL =
+            this.reserveUpdateDepletionRateBody.oil;
+          this.reserveUpdateDepletionRateBody.cONDENSATE =
+            this.reserveUpdateDepletionRateBody.condensate;
+          this.reserveUpdateDepletionRateBody.oML_ID =
+            this.reserveUpdateDepletionRateBody.omL_ID;
+          this.reserveUpdateDepletionRateBody.oML_Name =
+            this.reserveUpdateDepletionRateBody.omL_Name;
+        }
+        if (res.reserveLifeIndices) {
+          this.reserveUpdateLifeIndexBody = res.reserveLifeIndices;
+          this.reserveUpdateLifeIndexBody.aG =
+            this.reserveUpdateLifeIndexBody.ag;
+          this.reserveUpdateLifeIndexBody.nAG =
+            this.reserveUpdateLifeIndexBody.nag;
+          this.reserveUpdateLifeIndexBody.oIL =
+            this.reserveUpdateLifeIndexBody.oil;
+          this.reserveUpdateLifeIndexBody.cONDENSATE =
+            this.reserveUpdateLifeIndexBody.condensate;
+          this.reserveUpdateLifeIndexBody.oML_ID =
+            this.reserveUpdateLifeIndexBody.omL_ID;
+          this.reserveUpdateLifeIndexBody.oML_Name =
+            this.reserveUpdateLifeIndexBody.omL_Name;
+        }
+
+        console.log(
+          'updates...',
+          this.reserveUpdateDepletionRateBody,
+          this.reserveUpdateLifeIndexBody
+        );
+
         this.cd.markForCheck();
+      });
+  }
+
+  getReserveUpdateDepletionRate() {
+    this.workprogram
+      .getReserveUpdateDepletionRate(
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+        },
+        error: (error) => {
+          this.modalService.logNotice(
+            'Something went wrong while trying to fetch data.',
+            'Error',
+            'error'
+          );
+        },
       });
   }
 
@@ -354,8 +407,17 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.genk.OmlName,
         this.genk.fieldName
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+        },
+        error: (error) => {
+          this.modalService.logNotice(
+            'Something went wrong while trying to save form.',
+            'Error',
+            'error'
+          );
+        },
       });
   }
 
@@ -367,8 +429,17 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.genk.OmlName,
         this.genk.fieldName
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+        },
+        error: (error) => {
+          this.modalService.logNotice(
+            'Something went wrong while trying to save form.',
+            'Error',
+            'error'
+          );
+        },
       });
   }
 

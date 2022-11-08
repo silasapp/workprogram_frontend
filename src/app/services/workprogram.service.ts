@@ -773,6 +773,26 @@ export class WorkProgramService {
       );
   }
 
+  getReserveUpdateDepletionRate(
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/Report/RESERVES_UPDATES_DEPLETION_RATE`,
+        {
+          params: { omlName: omlName, fieldName: fieldName, myyear: year },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   saveReserveUpdateDepletionRate(
     conbody: RESERVES_UPDATES_DEPLETION_RATE,
     year: string,
