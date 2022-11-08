@@ -130,8 +130,8 @@ export class ReserveUpdateComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -177,6 +177,7 @@ export class ReserveUpdateComponent implements OnInit {
     this.workprogram.getReservesUpdatestWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.isData = this.data.length > 0;
         let count = this.data.length;
         this.totalone = Math.round(this.report.sumColumn(this.data, 'total_Company_Reserves_Oil'));

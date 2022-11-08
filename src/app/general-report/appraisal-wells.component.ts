@@ -155,7 +155,7 @@ export class AppraisalWellsComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+      //    if(this.data.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -202,6 +202,7 @@ export class AppraisalWellsComponent implements OnInit {
     this.workprogram.getAppraisalWells(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.isData = this.data.length > 0;
         let count = this.data.length;
           let reptext = this.reporttext.split(' ')[3];
@@ -212,6 +213,7 @@ export class AppraisalWellsComponent implements OnInit {
         this.totalone = Math.round(this.report.sumColumn(this.data, 'number_of_Days_to_Total_Depth'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'well_cost'));
         this.data = this.report.arrangeDate(this.data, 'spud_date');
+        if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

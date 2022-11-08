@@ -123,8 +123,8 @@ export class GasProductionAndUtilizationComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -169,6 +169,7 @@ export class GasProductionAndUtilizationComponent implements OnInit {
     this.workprogram.GetGasProductionReport(this.genk.reportYear)
       .subscribe(res => {
         this.data = res.annual_Gas_Produced as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `flared_Gas_Produced`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `utilized_Gas_Produced`));
         this.assignDataRows();

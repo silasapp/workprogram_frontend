@@ -141,7 +141,7 @@ export class CrudeProductionContractComponent implements OnInit {
 
       assignDataRows() {
         this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -187,6 +187,7 @@ export class CrudeProductionContractComponent implements OnInit {
       .subscribe(res => {
         this.data = res.crude_Oil_Production_By_ContractType_Pivotted as any[];
         this.data = this.data.slice(1, this.data.length);
+                   if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
         this.assignDataRows();

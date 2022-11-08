@@ -2624,6 +2624,7 @@ export class WorkProgramService {
   }
 
   getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
+   debugger;
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`,

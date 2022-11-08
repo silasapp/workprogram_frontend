@@ -155,8 +155,9 @@ assignDataRows() {
       let value = e.target.value;
      let result =  this.report.fetch("oil_condensate_monthly_activities_proposed", value).subscribe(
         (res) => {
-          this.data = res.data as any[];
-                this.assignDataRows();
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
                 this.assignPageNum();
                 this.cd.markForCheck();
         }

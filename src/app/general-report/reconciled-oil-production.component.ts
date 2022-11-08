@@ -175,8 +175,8 @@ export class ReconciledOilProductionComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -222,6 +222,7 @@ export class ReconciledOilProductionComponent implements OnInit {
       .subscribe(res => {
         //debugger;
         this.data = res.crude_Oil_Monthly_Production_Pivotted as any[];
+          if(this.data.length>1) this.selectedPage=1;
         this.totalone = Math.round(this.report.sumColumn(this.data, "january"));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, "february"));
         this.assignDataRows();

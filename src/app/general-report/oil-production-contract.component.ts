@@ -93,8 +93,8 @@ export class OilProductionContractComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -143,6 +143,7 @@ export class OilProductionContractComponent implements OnInit {
         this.data = this.data.slice(1, this.data.length);
         this.data = this.filterData(this.data);
         this.data = this.report.addSn(this.data);
+          if(this.data.length>1) this.selectedPage=1;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

@@ -132,8 +132,8 @@ export class HSETechnicalSafetyControlStudiesNewComponent implements OnInit {
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        if(this.arrayRows.length>1) this.selectedPage=1;
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   

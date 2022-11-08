@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
 import { NIGERIA_CONTENT_QUESTION, NIGERIA_CONTENT_Training, NIGERIA_CONTENT_Upload_Succession_Plan, } from './step4-NCQ.model';
 import { GenericService, AuthenticationService, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
+import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './nigeriacontent.component.html',
@@ -18,18 +19,68 @@ export class SWPNigeriaContentComponent implements OnInit {
   seniormanagementstaffBody: NIGERIA_CONTENT_QUESTION = {} as NIGERIA_CONTENT_QUESTION;
   uploadsuccessionplanBody: NIGERIA_CONTENT_Upload_Succession_Plan = {} as NIGERIA_CONTENT_Upload_Succession_Plan;
 
+  sdList :any[];
+sStaffList:any[];
+
   wkpYear: string;
   wkpYearList = [];
+  arrayRows = [];
   concessionHeld: string;
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
+  actualValue:string;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
   nigeriacontenttrainingBody: NIGERIA_CONTENT_Training;
+
+  sdcolumn = [
+    {
+      "columnDef": "year_of_WP",
+      "header": "Work Programme Year"
+    },
+    {
+      "columnDef": "actual_Proposed",
+      "header": "ACTUAL/PROPOSED"
+    },
+    {
+      "columnDef": "actual_Proposed_Year",
+      "header": "ACTUAL/PROPOSED YEAR"
+    },
+
+    {
+      "columnDef": "expatriate_quota_positions",
+      "header": "EXPATRIATE QUOTA POSITION"
+    },
+    {
+      "columnDef": "utilized_EQ",
+      "header": "UTILIZED EQ"
+    },
+    {
+      "columnDef": "nigerian_Understudies",
+      "header": "NIGERIAN UNDERSTUDIES"
+    },
+    {
+      "columnDef": "management_Foriegn",
+      "header": "MANAGEMENT (FORIEGN)"
+    },
+    {
+      "columnDef": "management_Local",
+      "header": "MANAGEMENT (LOCAL)"
+    },
+    {
+      "columnDef": "staff_Foriegn",
+      "header": "STAFF (FORIEGN)"
+    },
+    {
+      "columnDef": "staff_Local",
+      "header": "STAFF (LOCAL)"
+    },
+
+  ];
 
 
   constructor(private cd: ChangeDetectorRef,
@@ -41,9 +92,9 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu
       .subscribe(res => {
-      this.getNigeriaContentTraining();
-      //this.getNigeriaContentQuestion();
-      //this.getUploadSuccessionplan();
+        this.getNigeriaContentTraining();
+        //this.getNigeriaContentQuestion();
+        //this.getUploadSuccessionplan();
       });
   }
 
@@ -85,40 +136,41 @@ export class SWPNigeriaContentComponent implements OnInit {
         position_Occupied_: new FormControl(this.uploadsuccessionplanBody.position_Occupied_, [Validators.required])
       }, {})
 
-      this.getNigeriaContentTraining();
-      //this.getNigeriaContentQuestion();
-      //this.getUploadSuccessionplan();
+    this.getNigeriaContentTraining();
+    //this.getNigeriaContentQuestion();
+    //this.getUploadSuccessionplan();
 
   }
 
-    getNigeriaContentTraining() {
-      this.workprogram.getNigeriaContentTraining(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+  getNigeriaContentTraining() {
+    debugger;
+    this.workprogram.getNigeriaContentTraining(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(result => {
         debugger;
         if (result.nigeriaContent) {
-          this.staffdispositionBody = result.nigeriaContent;
+          this.sdList = result.nigeriaContent;
         }
         this.cd.markForCheck();
       });
-    }
+  }
 
 
 
-    // getNigeriaContentQuestion() {
-    //   this.workprogram.getNigeriaContentQuestion( this.genk.OmlName, this.genk.fieldName, this.genk.wpYear).subscribe(result => {
-    //     this.seniormanagementstaffBody = result.data;
-    //     this.cd.markForCheck();
-    //     let rel = "Hello";
-    //   });
-    // }
+  // getNigeriaContentQuestion() {
+  //   this.workprogram.getNigeriaContentQuestion( this.genk.OmlName, this.genk.fieldName, this.genk.wpYear).subscribe(result => {
+  //     this.seniormanagementstaffBody = result.data;
+  //     this.cd.markForCheck();
+  //     let rel = "Hello";
+  //   });
+  // }
 
-    // getUploadSuccessionplan() {
-    //   this.workprogram.getNigeriaContent( this.genk.OmlName, this.genk.fieldName, this.genk.wpYear).subscribe(result => {
-    //     this.uploadsuccessionplanBody = result.data;
-    //     this.cd.markForCheck();
-    //     let rel = "Hello";
-    //   });
-    // }
+  // getUploadSuccessionplan() {
+  //   this.workprogram.getNigeriaContent( this.genk.OmlName, this.genk.fieldName, this.genk.wpYear).subscribe(result => {
+  //     this.uploadsuccessionplanBody = result.data;
+  //     this.cd.markForCheck();
+  //     let rel = "Hello";
+  //   });
+  // }
 
   saveNigeriaContentTraining() {
     this.workprogram.saveNigeriaContenttraining(this.nigeriacontenttrainingBody, this.genk.wpYear, this.genk.OmlName,).subscribe(result => {
@@ -133,7 +185,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveUploadSuccessionPlan() {
-    this.workprogram.saveNigeriaUploadSuccessionPlan(this.uploadsuccessionplanBody, this.genk.wpYear, this.genk.OmlName, ).subscribe(result => {
+    this.workprogram.saveNigeriaUploadSuccessionPlan(this.uploadsuccessionplanBody, this.genk.wpYear, this.genk.OmlName,).subscribe(result => {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
     });
   }
@@ -143,6 +195,29 @@ export class SWPNigeriaContentComponent implements OnInit {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
     });
   }
+
+  changeActualValue(e){
+    this.actualValue=e.target.value;
+    debugger;
+    this.staffdispositionBody= {} as NIGERIA_CONTENT_Training;
+    this.staffdispositionBody = this.sdList.filter(res=>{
+      return res.actual_Proposed === this.actualValue;
+    })[0] ?? {} as NIGERIA_CONTENT_Training;
+    this.cd.markForCheck();
+  }
+
+
+  Alert(title: string, text: string, icon: any){
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Okay'
+    })
+  }
+
 
 }
 

@@ -3,27 +3,30 @@
   <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
     Note:*All Fields are Mandatory</h1>
   <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
-    <span>NIGERIA CONTENT</span>
+    <span style="font-weight:600;">NIGERIA CONTENT</span>
   </div><br>
   <hr size="10">
   <div style="width:100%;">
     <div style="width: 100%">
       <div style="font-weight: 500; margin-bottom: 5px">
-        <span>Staff Disposition - Training for Nigerians</span>
+        <span style="font-weight: 600; font-size: 20px;">Staff Disposition - Training for Nigerians</span>
       </div>
-    </div>
-    <hr>
-    <div style="width: 40%; margin: auto 0 0;">
-      <label class="labelwp">Please provide values for Actual and Proposed year</label>
+    </div><br>
+    <hr size="5"><br>
+    <div style="width: 30%; margin: auto 0 0;">
+      <label class="labelwp">Please provide values for Actual and Proposed year</label><br>
       <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
-        <select class="inpute" formControlName="actual_Proposed_Year">
+        <select class="inpute" formControlName="actual_Proposed_Year" (change)="changeActualValue($event)">
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="Actual Year">Actual Year</option>
           <option value="Proposed Year">Proposed Year</option>
         </select>
       </div>
     </div>
-  </div>
+
+    
+
+  </div><br><br>
 
   <hr size="5">
 
@@ -118,6 +121,36 @@
       <br>
     </div>
   </div>
+
+
+  <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+    <table #codeTable class="apptable" cellPadding="10px">
+      <thead>
+        <tr>
+          <th *ngFor="let h of sdcolumn">
+            {{h.header}}
+          </th>
+        </tr>
+      </thead>
+      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+        <tr *ngFor="let row of sdList">
+          <td *ngFor="let h of sdcolumn">
+            {{row[h.columnDef]}}
+            
+          </td>
+          <td>
+            <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup(); onSelect(row)"
+             value="{{row.id}}"  style="background-color: white; color: red;
+              BORDER: 2px solid;" class="submitbtn"> <mat-icon style="font-size: 20px;"> border_color</mat-icon> <b>Deleted</b>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
 </div>
 <br>
 
