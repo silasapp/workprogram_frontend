@@ -20,8 +20,8 @@ export class SWPNigeriaContentComponent implements OnInit {
   uploadsuccessionplanBody: NIGERIA_CONTENT_Upload_Succession_Plan = {} as NIGERIA_CONTENT_Upload_Succession_Plan;
 
   sdList :any[];
-sStaffList:any[];
-
+  sStaffList:any[];
+  
   wkpYear: string;
   wkpYearList = [];
   arrayRows = [];
@@ -33,7 +33,6 @@ sStaffList:any[];
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  id: number;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
   nigeriacontenttrainingBody: NIGERIA_CONTENT_Training;
@@ -45,6 +44,51 @@ sStaffList:any[];
     },
     {
       "columnDef": "actual_Proposed",
+      "header": "ACTUAL/PROPOSED"
+    },
+    {
+      "columnDef": "actual_Proposed_Year",
+      "header": "ACTUAL/PROPOSED YEAR"
+    },
+
+    {
+      "columnDef": "expatriate_quota_positions",
+      "header": "EXPATRIATE QUOTA POSITION"
+    },
+    {
+      "columnDef": "utilized_EQ",
+      "header": "UTILIZED EQ"
+    },
+    {
+      "columnDef": "nigerian_Understudies",
+      "header": "NIGERIAN UNDERSTUDIES"
+    },
+    {
+      "columnDef": "management_Foriegn",
+      "header": "MANAGEMENT (FORIEGN)"
+    },
+    {
+      "columnDef": "management_Local",
+      "header": "MANAGEMENT (LOCAL)"
+    },
+    {
+      "columnDef": "staff_Foriegn",
+      "header": "STAFF (FORIEGN)"
+    },
+    {
+      "columnDef": "staff_Local",
+      "header": "STAFF (LOCAL)"
+    },
+
+  ];
+
+  smcolumn = [
+    {
+      "columnDef": "year_of_WP",
+      "header": "Work Programme Year"
+    },
+    {
+      "columnDef": "do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff",
       "header": "ACTUAL/PROPOSED"
     },
     {
@@ -104,6 +148,7 @@ sStaffList:any[];
     this.genk.activeStep = 'STEP4';
     this.staffdispositionForm = new FormGroup(
       {
+        actual_Proposed: new FormControl(this.staffdispositionBody.actual_Proposed, [Validators.required]),
         actual_Proposed_Year: new FormControl(this.staffdispositionBody.actual_Proposed_Year, [Validators.required]),
         expatriate_quota_positions: new FormControl(this.staffdispositionBody.expatriate_quota_positions, [Validators.required]),
         utilized_EQ: new FormControl(this.staffdispositionBody.utilized_EQ, [Validators.required]),
@@ -142,6 +187,7 @@ sStaffList:any[];
     //this.getUploadSuccessionplan();
 
   }
+  
 
   getNigeriaContentTraining() {
     debugger;
@@ -192,6 +238,7 @@ sStaffList:any[];
   }
 
   saveAddStaffDisposition() {
+    debugger;
     this.workprogram.saveAddStaffDisposition(this.staffdispositionBody, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(result => {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
     });

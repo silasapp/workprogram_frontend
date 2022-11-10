@@ -2746,6 +2746,7 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
