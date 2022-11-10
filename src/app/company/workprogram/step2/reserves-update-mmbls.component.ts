@@ -145,22 +145,22 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.statusOfReservesCurrent.company_Reserves_NAG,
         [Validators.required]
       ),
-      company_Reserves_AnnualOilProduction: new FormControl(
-        this.statusOfReservesCurrent.company_Reserves_AnnualOilProduction,
-        [Validators.required]
-      ),
-      company_Reserves_AnnualCondensateProduction: new FormControl(
-        this.statusOfReservesCurrent.company_Reserves_AnnualCondensateProduction,
-        [Validators.required]
-      ),
-      company_Reserves_AnnualGasAGProduction: new FormControl(
-        this.statusOfReservesCurrent.company_Reserves_AnnualGasAGProduction,
-        [Validators.required]
-      ),
-      company_Reserves_AnnualGasNAGProduction: new FormControl(
-        this.statusOfReservesCurrent.company_Reserves_AnnualGasNAGProduction,
-        [Validators.required]
-      ),
+      // company_Reserves_AnnualOilProduction: new FormControl(
+      //   this.statusOfReservesCurrent.company_Reserves_AnnualOilProduction,
+      //   [Validators.required]
+      // ),
+      // company_Reserves_AnnualCondensateProduction: new FormControl(
+      //   this.statusOfReservesCurrent.company_Reserves_AnnualCondensateProduction,
+      //   [Validators.required]
+      // ),
+      // company_Reserves_AnnualGasAGProduction: new FormControl(
+      //   this.statusOfReservesCurrent.company_Reserves_AnnualGasAGProduction,
+      //   [Validators.required]
+      // ),
+      // company_Reserves_AnnualGasNAGProduction: new FormControl(
+      //   this.statusOfReservesCurrent.company_Reserves_AnnualGasNAGProduction,
+      //   [Validators.required]
+      // ),
     });
 
     this.ReserveUpdateFiveYearProjectionForm = new FormGroup({

@@ -171,6 +171,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       ),
     });
 
+    this.getFDP();
     this.cd.markForCheck();
   }
 
@@ -192,6 +193,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.cd.markForCheck();
       });
   }
+
+  getConcessionHeld() {}
 
   saveFDPDoc(DeFile: any) {
     this.FDPFile = <File>DeFile.target.files[0];
