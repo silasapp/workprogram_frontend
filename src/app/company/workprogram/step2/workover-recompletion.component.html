@@ -90,10 +90,10 @@
                 [(ngModel)]="workoverBody.current_year_Actual_Number_data"
                 class="inpute"
                 (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatCurrency($event)"
+                (keyup)="genk.formatNum_Efficient($event.target.value)"
                 (change)="
                   workoverBody.current_year_Actual_Number_data =
-                    genk.addCurrencyDecimal($event)
+                    genk.formatNum_Efficient($event.target.value)
                 "
                 [value]="workoverBody.current_year_Actual_Number_data"
               />
@@ -117,10 +117,11 @@
                 [(ngModel)]="workoverBody.proposed_year_data"
                 class="inpute"
                 (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatCurrency($event)"
+                (keyup)="genk.formatNum_Efficient($event.target.value)"
                 (change)="
-                  workoverBody.proposed_year_data =
-                    genk.addCurrencyDecimal($event)
+                  workoverBody.proposed_year_data = genk.formatNum_Efficient(
+                    $event.target.value
+                  )
                 "
                 [value]="workoverBody.proposed_year_data"
               />
@@ -144,10 +145,11 @@
                 [(ngModel)]="workoverBody.daysForCompletion"
                 class="inpute"
                 (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatCurrency($event)"
+                (keyup)="genk.formatNum_Efficient($event.target.value)"
                 (change)="
-                  workoverBody.daysForCompletion =
-                    genk.addCurrencyDecimal($event)
+                  workoverBody.daysForCompletion = genk.formatNum_Efficient(
+                    $event.target.value
+                  )
                 "
                 [value]="workoverBody.daysForCompletion"
               />

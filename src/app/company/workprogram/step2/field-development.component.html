@@ -49,10 +49,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP
@@ -81,10 +81,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentBody.no_of_wells_drilled_in_current_year =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [(value)]="
                 fielddevelopmentBody.no_of_wells_drilled_in_current_year
@@ -111,10 +111,10 @@
               [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentBody.noof_Producing_Fields =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="fielddevelopmentBody.noof_Producing_Fields"
             />
@@ -267,10 +267,10 @@
               [(ngModel)]="fielddevelopmentexcessivereserveBody.oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentexcessivereserveBody.oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="fielddevelopmentexcessivereserveBody.oil"
             />
@@ -295,10 +295,10 @@
               [(ngModel)]="fielddevelopmentexcessivereserveBody.gas"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentexcessivereserveBody.gas =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="fielddevelopmentexcessivereserveBody.gas"
             />
@@ -323,10 +323,10 @@
               [(ngModel)]="fielddevelopmentexcessivereserveBody.condensate"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 fielddevelopmentexcessivereserveBody.condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="fielddevelopmentexcessivereserveBody.condensate"
             />

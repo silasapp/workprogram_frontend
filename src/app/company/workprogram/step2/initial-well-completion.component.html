@@ -90,10 +90,11 @@
             [(ngModel)]="initialBody.current_year_Actual_Number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
-              initialBody.current_year_Actual_Number =
-                genk.addCurrencyDecimal($event)
+              initialBody.current_year_Actual_Number = genk.formatNum_Efficient(
+                $event.target.value
+              )
             "
             [value]="initialBody.current_year_Actual_Number"
           />
@@ -118,9 +119,11 @@
             [(ngModel)]="initialBody.proposed_year_data"
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
-              initialBody.proposed_year_data = genk.addCurrencyDecimal($event)
+              initialBody.proposed_year_data = genk.formatNum_Efficient(
+                $event.target.value
+              )
             "
             [value]="initialBody.proposed_year_data"
           />

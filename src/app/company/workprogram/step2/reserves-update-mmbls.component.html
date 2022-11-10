@@ -82,10 +82,10 @@
               [(ngModel)]="statusOfReservesPreceeding.company_Reserves_Oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesPreceeding.company_Reserves_Oil"
             />
@@ -112,10 +112,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesPreceeding.company_Reserves_Condensate"
             />
@@ -143,10 +143,10 @@
               [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesPreceeding.company_Reserves_AG"
             />
@@ -171,10 +171,10 @@
               [(ngModel)]="statusOfReservesPreceeding.company_Reserves_NAG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesPreceeding.company_Reserves_NAG"
             />
@@ -204,10 +204,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_AnnualOilProduction =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 statusOfReservesPreceeding.company_Reserves_AnnualOilProduction
@@ -236,10 +236,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction
@@ -268,10 +268,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction
@@ -301,10 +301,10 @@
             "
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
               statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction =
-                genk.addCurrencyDecimal($event)
+                genk.formatNum_Efficient($event.target.value)
             "
             [value]="
               statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction
@@ -383,10 +383,10 @@
               [(ngModel)]="statusOfReservesCurrent.company_Reserves_Oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesCurrent.company_Reserves_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesCurrent.company_Reserves_Oil"
             />
@@ -411,10 +411,10 @@
               [(ngModel)]="statusOfReservesCurrent.company_Reserves_Condensate"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesCurrent.company_Reserves_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesCurrent.company_Reserves_Condensate"
             />
@@ -442,10 +442,10 @@
               [(ngModel)]="statusOfReservesCurrent.company_Reserves_AG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesCurrent.company_Reserves_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesCurrent.company_Reserves_AG"
             />
@@ -470,10 +470,10 @@
               [(ngModel)]="statusOfReservesCurrent.company_Reserves_NAG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 statusOfReservesCurrent.company_Reserves_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="statusOfReservesCurrent.company_Reserves_NAG"
             />
@@ -555,10 +555,10 @@
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
@@ -587,10 +587,10 @@
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
@@ -622,10 +622,10 @@
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
@@ -654,10 +654,10 @@
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
@@ -734,10 +734,10 @@
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
@@ -766,10 +766,10 @@
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
@@ -801,10 +801,10 @@
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
@@ -833,10 +833,10 @@
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
@@ -928,10 +928,10 @@
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
@@ -962,10 +962,10 @@
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
@@ -994,10 +994,10 @@
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
@@ -1026,10 +1026,10 @@
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
@@ -1121,10 +1121,10 @@
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
@@ -1155,10 +1155,10 @@
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
@@ -1187,10 +1187,10 @@
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
@@ -1219,10 +1219,10 @@
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
               "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
@@ -1306,10 +1306,10 @@
               reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
             "
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
               reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE =
-                genk.addCurrencyDecimal($event)
+                genk.formatNum_Efficient($event.target.value)
             "
             [value]="
               reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
@@ -1360,10 +1360,11 @@
             formControlName="oIL"
             [(ngModel)]="reserveUpdateDepletionRateBody.oIL"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
-              reserveUpdateDepletionRateBody.oIL =
-                genk.addCurrencyDecimal($event)
+              reserveUpdateDepletionRateBody.oIL = genk.formatNum_Efficient(
+                $event.target.value
+              )
             "
             [value]="reserveUpdateDepletionRateBody.oIL"
           />
@@ -1388,10 +1389,10 @@
             formControlName="cONDENSATE"
             [(ngModel)]="reserveUpdateDepletionRateBody.cONDENSATE"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
               reserveUpdateDepletionRateBody.cONDENSATE =
-                genk.addCurrencyDecimal($event)
+                genk.formatNum_Efficient($event.target.value)
             "
             [value]="reserveUpdateDepletionRateBody.cONDENSATE"
           />
@@ -1416,10 +1417,11 @@
             formControlName="nAG"
             [(ngModel)]="reserveUpdateDepletionRateBody.nAG"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
-              reserveUpdateDepletionRateBody.nAG =
-                genk.addCurrencyDecimal($event)
+              reserveUpdateDepletionRateBody.nAG = genk.formatNum_Efficient(
+                $event.target.value
+              )
             "
             [value]="reserveUpdateDepletionRateBody.nAG"
           />
@@ -1466,9 +1468,11 @@
               formControlName="oIL"
               [(ngModel)]="reserveUpdateLifeIndexBody.oIL"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
-                reserveUpdateLifeIndexBody.oIL = genk.addCurrencyDecimal($event)
+                reserveUpdateLifeIndexBody.oIL = genk.formatNum_Efficient(
+                  $event.target.value
+                )
               "
               [value]="reserveUpdateLifeIndexBody.oIL"
             />
@@ -1493,10 +1497,10 @@
               formControlName="cONDENSATE"
               [(ngModel)]="reserveUpdateLifeIndexBody.cONDENSATE"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 reserveUpdateLifeIndexBody.cONDENSATE =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="reserveUpdateLifeIndexBody.cONDENSATE"
             />
@@ -1521,9 +1525,11 @@
               formControlName="nAG"
               [(ngModel)]="reserveUpdateLifeIndexBody.nAG"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
-                reserveUpdateLifeIndexBody.nAG = genk.addCurrencyDecimal($event)
+                reserveUpdateLifeIndexBody.nAG = genk.formatNum_Efficient(
+                  $event.target.value
+                )
               "
               [value]="reserveUpdateLifeIndexBody.nAG"
             />
@@ -1549,9 +1555,11 @@
             formControlName="aG"
             [(ngModel)]="reserveUpdateLifeIndexBody.aG"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
-              reserveUpdateLifeIndexBody.aG = genk.addCurrencyDecimal($event)
+              reserveUpdateLifeIndexBody.aG = genk.formatNum_Efficient(
+                $event.target.value
+              )
             "
             [value]="reserveUpdateLifeIndexBody.aG"
           />

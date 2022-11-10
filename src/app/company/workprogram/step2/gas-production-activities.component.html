@@ -46,10 +46,10 @@
               [(ngModel)]="gasproductionBody.current_Actual_Year"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.current_Actual_Year =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.current_Actual_Year"
             />
@@ -92,9 +92,11 @@
               [(ngModel)]="gasproductionBody.flared"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
-                gasproductionBody.flared = genk.addCurrencyDecimal($event)
+                gasproductionBody.flared = genk.formatNum_Efficient(
+                  $event.target.value
+                )
               "
               [value]="gasproductionBody.flared"
             />
@@ -122,10 +124,10 @@
               [(ngModel)]="gasproductionBody.proposed_production"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.proposed_production =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.proposed_production"
             />
@@ -149,10 +151,10 @@
               [(ngModel)]="gasproductionBody.proposed_utilization"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.proposed_utilization =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.proposed_utilization"
             />
@@ -176,10 +178,11 @@
               [(ngModel)]="gasproductionBody.proposed_flaring"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
-                gasproductionBody.proposed_flaring =
-                  genk.addCurrencyDecimal($event)
+                gasproductionBody.proposed_flaring = genk.formatNum_Efficient(
+                  $event.target.value
+                )
               "
               [value]="gasproductionBody.proposed_flaring"
             />
@@ -208,10 +211,10 @@
               class="inpute"
               type="number"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.no_of_gas_well_planned =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.no_of_gas_well_planned"
             />
@@ -235,10 +238,10 @@
               [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.no_of_gas_well_drilled =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.no_of_gas_well_drilled"
             />
@@ -282,10 +285,10 @@
               [(ngModel)]="gasproductionBody.domestic_gas_obligation"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.domestic_gas_obligation =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.domestic_gas_obligation"
             />
@@ -311,10 +314,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
@@ -397,10 +400,10 @@
               [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.number_of_gas_wells_completed =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.number_of_gas_wells_completed"
             />
@@ -427,10 +430,10 @@
             [(ngModel)]="gasproductionBody.number_of_gas_wells_tested"
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="
               gasproductionBody.number_of_gas_wells_tested =
-                genk.addCurrencyDecimal($event)
+                genk.formatNum_Efficient($event.target.value)
             "
             [value]="gasproductionBody.number_of_gas_wells_tested"
           />
@@ -491,10 +494,10 @@
               [(ngModel)]="gasproductionBody.domestic_Gas_Supply_DSO"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.domestic_Gas_Supply_DSO =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="gasproductionBody.domestic_Gas_Supply_DSO"
             />
@@ -521,10 +524,10 @@
               "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc =
-                  genk.addCurrencyDecimal($event)
+                  genk.formatNum_Efficient($event.target.value)
               "
               [value]="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
