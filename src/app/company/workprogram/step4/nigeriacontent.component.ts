@@ -191,6 +191,7 @@ sStaffList:any[];
   }
 
   saveAddStaffDisposition() {
+    debugger;
     this.workprogram.saveAddStaffDisposition(this.staffdispositionBody, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(result => {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
     });
