@@ -170,7 +170,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         [Validators.required]
       ),
     });
-
+    this.getFDP();
     this.cd.markForCheck();
   }
 
