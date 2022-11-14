@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { STRATEGIC_PLANS_ON_COMPANY_BASES  } from './step4-NCQ.model';
+import { STRATEGIC_PLANS_ON_COMPANY_BASES  } from '../../../models/step4-NCQ.model';
 import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
