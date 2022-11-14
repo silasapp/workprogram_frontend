@@ -2536,6 +2536,19 @@ export class WorkProgramService {
       );
   }
 
+  getAccidentStatistics(year: string) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/report/Get_Accident_Statistics_Report`, {
+        params: { year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   getDevelopmentWells(year: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/report/Get_Development_Report`, {

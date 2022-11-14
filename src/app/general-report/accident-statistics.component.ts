@@ -19,7 +19,7 @@ export class AccidentStatisticsComponent implements OnInit {
   selectedColumns: any[] = [];
     genk: GenericService;
     cdr: ChangeDetectorRef;
-    title = 'APPRAISAL WELLS';
+    title = ' ACCIDENT STATISTICS';
     tableTitle = 'TABLE 9: Appraisal wells drilled in 2021';
     pagenum = 1;
     selectedPage = 1;
@@ -27,7 +27,7 @@ export class AccidentStatisticsComponent implements OnInit {
     listyear = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-    reporttext: string = 'A total of (10) appraisal wells were drilled during the year 2021 --Table 9 below shows the details';
+    reporttext: string = '(N) Report Shows that a total of (Y) incidents was recorded which led to (X) fatalities. These fatalities were both non-work and work related. The SHE performance reviewed showed a negative trend or no improvement in comparison with (N-1). Measures were undertaken to ensure improved Safety practice in the industry to reduce the number of reported incidents.';
     isChart = false;
     totalone = 0;
     totaltwo = 0;
@@ -200,7 +200,7 @@ export class AccidentStatisticsComponent implements OnInit {
 
   getAppraisalWells() {
 
-    this.workprogram.getAppraisalWells(this.genk.reportYear)
+    this.workprogram.getAccidentStatistics(this.genk.reportYear)
       .subscribe(res => {
         this.data = res as any[];
           if(this.data.length>1) this.selectedPage=1;
