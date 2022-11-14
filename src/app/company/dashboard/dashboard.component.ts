@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
   }
 ngAfterViewInit(){
   this.fetchreport()
-//this.getCompanyDashboardReport();
+this.getCompanyDashboardReport();
 }
 
   fetchreport() {
