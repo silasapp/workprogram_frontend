@@ -330,7 +330,41 @@ export class GenericService {
 
   //More efficient and concise implementation
   formatNum_Efficient(num: string) {
-    console.log('iinput....', num);
+    if (num.length < 4) return num;
+
+    num = num.replace(/,/g, '');
+    const digits = num.split('');
+
+    for (let p = digits.length - 1; p >= 0; p -= 3) {
+      digits.splice(p + 1, 0, ',');
+    }
+
+    let res = digits.join('');
+
+    return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
+  }
+
+  // test(event: Event) {
+  //   let num = (event.target as HTMLInputElement).value;
+
+  //   if (num.length < 4) return num;
+
+  //   num = num.replace(/,/g, '');
+  //   const digits = num.split('');
+
+  //   for (let p = digits.length - 1; p >= 0; p -= 3) {
+  //     digits.splice(p + 1, 0, ',');
+  //   }
+
+  //   let res = digits.join('');
+
+  //   (event.target as HTMLInputElement).value =
+  //     res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
+  //   return '';
+  // }
+
+  formatNumFromStr(num: string) {
+    if (!num) return '';
     if (num.length < 4) return num;
 
     num = num.replace(/,/g, '');
@@ -343,11 +377,9 @@ export class GenericService {
     let res = digits.join('');
 
     console.log(
-      'res.....',
-      res,
+      'tes....',
       res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
     );
-
     return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
   }
 

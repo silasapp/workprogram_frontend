@@ -1,117 +1,183 @@
 <div class="wppage">
-  <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
-    Note:*All Fields are Mandatory</h1>
+  <h1
+    style="
+      text-shadow: 1px 1px rgb(130, 23, 23);
+      color: rgb(255, 157, 0);
+      margin-left: 75%;
+      font-size: 18px;
+    "
+  >
+    Note:*All Fields are Mandatory
+  </h1>
   <div
     style="
-    padding-left: 40px;
- font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
+      padding-left: 40px;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+      text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3);
+      color: teal;
+    "
+  >
     <span>Geophysical Activities On Quarterly Basis</span>
   </div>
-  <br>
+  <br />
 
-  <div style="text-align: start; font-size: 20px; font-weight: 500; color: teal; margin-bottom: 10px;">
-    <span>Acquisition</span><br>
+  <div
+    style="
+      text-align: start;
+      font-size: 20px;
+      font-weight: 500;
+      color: teal;
+      margin-bottom: 10px;
+    "
+  >
+    <span>Acquisition</span><br />
   </div>
 
   <div>
     <div class="quarterbox">
-      <div class="quarterspace" [ngClass]="quaterACClassOne" (click)="changeACQuater(1, btn)">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">1</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterACClassOne"
+        (click)="changeACQuater(1, btn)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">1</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterACClassTwo" (click)="changeACQuater(2, btn)">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">2</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterACClassTwo"
+        (click)="changeACQuater(2, btn)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">2</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterACClassThree" (click)="changeACQuater(3, btn)">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">3</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterACClassThree"
+        (click)="changeACQuater(3, btn)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">3</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterACClassFour" (click)="changeACQuater(4, btn)">
-        <div style="margin-bottom: 20px;">
-          <span> <span style="font-size: 25px;">4</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterACClassFour"
+        (click)="changeACQuater(4, btn)"
+      >
+        <div style="margin-bottom: 20px">
+          <span> <span style="font-size: 25px">4</span> Quarter</span>
         </div>
-
       </div>
     </div>
   </div>
-  <br>
+  <br />
 
   <div [formGroup]="AcquisitionForm">
     <div>
-      <div style="display: flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%; margin-top: auto;">
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%; margin-top: auto">
           <label class="labelwp">Actual</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-              <input formControlName="actual_year_aquired_data" type="text"
-                [(ngModel)]="acquisitionBody.actual_year_aquired_data" class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="actual_year_aquired_data"
+                type="text"
+                [(ngModel)]="acquisitionBody.actual_year_aquired_data"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
-        <div style="width: 30%; margin-top: auto;">
+        <div style="width: 30%; margin-top: auto">
           <label class="labelwp">Proposed</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-              <input formControlName="proposed_year_data" type="text" [(ngModel)]="acquisitionBody.proposed_year_data"
-                class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="proposed_year_data"
+                type="text"
+                [(ngModel)]="acquisitionBody.proposed_year_data"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
-
 
         <div style="width: 30%">
           <div style="font-weight: 500; margin-bottom: 5px">
             <span>Budget Allocation (NGN & USD)</span>
           </div>
 
-          <div style="width: 100%; display: flex;">
-
-            <div style="width: 98%; margin-right: 2%;">
+          <div style="width: 100%; display: flex">
+            <div style="width: 98%; margin-right: 2%">
               <label class="labelwp">NGN</label>
-              <div style="display: flex;">
+              <div style="display: flex">
                 <div class="inpdivcurrency">
                   <span class="currencywp">&#x20A6;</span>
-                  <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                    (change)="acquisitionBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
-                    [value]="acquisitionBody.budeget_Allocation_NGN" class="inpute">
+                  <input
+                    formControlName="budeget_Allocation_NGN"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    [(ngModel)]="acquisitionBody.budeget_Allocation_NGN"
+                    class="inpute"
+                  />
                 </div>
               </div>
             </div>
 
             <div style="width: 98%">
               <label class="labelwp">USD</label>
-              <div style="display: flex;">
+              <div style="display: flex">
                 <div class="inpdivcurrency">
                   <span class="currencywp">$</span>
-                  <input formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                    (change)="acquisitionBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
-                    [value]="acquisitionBody.budeget_Allocation_USD" class="inpute">
+                  <input
+                    formControlName="budeget_Allocation_USD"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      acquisitionBody.budeget_Allocation_USD =
+                        genk.addCurrencyDecimal($event)
+                    "
+                    [value]="acquisitionBody.budeget_Allocation_USD"
+                    class="inpute"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-      </div><br>
-
+      </div>
+      <br />
 
       <div class="toprow">
-        <div style="width: 30%;">
+        <div style="width: 30%">
           <label class="labelwp">Any Acquired Geophysical Data?</label>
           <div class="wpwidth">
             <div class="inputshadow">
-              <select class="dropwp" formControlName="geo_acquired_geophysical_data"
-                [(ngModel)]="acquisitionBody.geo_acquired_geophysical_data">
+              <select
+                class="dropwp"
+                formControlName="geo_acquired_geophysical_data"
+                [(ngModel)]="acquisitionBody.geo_acquired_geophysical_data"
+              >
                 <option selected disabled>----Select an Option----</option>
                 <option value="YES">YES</option>
                 <option value="NO">NO</option>
@@ -122,20 +188,27 @@
 
         <div style="width: 30%">
           <label class="labelwp">Area of Coverage (sq km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="quantum_Planned" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.geo_area_of_coverage" class="inpute">
+              <input
+                formControlName="quantum_Planned"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.geo_area_of_coverage"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
-        <div style="width: 30%;">
+        <div style="width: 30%">
           <label class="labelwp">Type of Acquisition</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <select class="dropwp" formControlName="geo_method_of_acquisition"
-                [(ngModel)]="acquisitionBody.geo_method_of_acquisition">
+              <select
+                class="dropwp"
+                formControlName="geo_method_of_acquisition"
+                [(ngModel)]="acquisitionBody.geo_method_of_acquisition"
+              >
                 <option selected disabled>--Please Select--</option>
                 <option value="Land">Land</option>
                 <option value="Marine">Marine</option>
@@ -144,74 +217,100 @@
           </div>
         </div>
       </div>
-      <br>
+      <br />
 
-      <div style="display: flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%; margin-top: auto;">
-          <label id="ContentPlaceHolder2_Label13" class="labelwp">Quantum Planned (sq km)</label>
-          <div style="display: flex;">
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%; margin-top: auto">
+          <label id="ContentPlaceHolder2_Label13" class="labelwp"
+            >Quantum Planned (sq km)</label
+          >
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="quantum_Planned" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.quantum_Planned" class="inpute">
+              <input
+                formControlName="quantum_Planned"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.quantum_Planned"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
-        <div style="width: 30%; margin-top: auto;">
+        <div style="width: 30%; margin-top: auto">
           <label class="labelwp">Quantum Acquired (sq km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="quantum" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.quantum" class="inpute">
+              <input
+                formControlName="quantum"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.quantum"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div class="rowbox">
           <label class="labelwp">Quantum Approved (sq km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="quantum_Approved" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.quantum_Approved" class="inpute">
+              <input
+                formControlName="quantum_Approved"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.quantum_Approved"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
-
-
-
       </div>
-      <br>
+      <br />
 
       <div class="toprow">
         <div class="rowbox">
           <label class="labelwp">Quantum Carry Forward (sq km) </label>
           <div class="wpwidth">
             <div class="inpdiv">
-              <input formControlName="quantum_carry_forward" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.quantum_carry_forward" class="inpute">
+              <input
+                formControlName="quantum_carry_forward"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.quantum_carry_forward"
+                class="inpute"
+              />
             </div>
           </div>
-
         </div>
 
         <div class="rowbox">
           <label class="labelwp">Name of Contractor</label>
           <div class="wpwidth">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-              <input type="text" formControlName="name_of_Contractor" [(ngModel)]="acquisitionBody.name_of_Contractor"
-                class="inpute">
-
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="name_of_Contractor"
+                [(ngModel)]="acquisitionBody.name_of_Contractor"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
-        <div style="width: 30%;">
+        <div style="width: 30%">
           <label class="labelwp">Type of Seismic Data Acquired </label>
           <div class="wpwidth">
             <div class="inputshadow">
-              <select class="dropwp" formControlName="geo_type_of_data_acquired"
-                [(ngModel)]="acquisitionBody.geo_type_of_data_acquired">
+              <select
+                class="dropwp"
+                formControlName="geo_type_of_data_acquired"
+                [(ngModel)]="acquisitionBody.geo_type_of_data_acquired"
+              >
                 <option selected disabled>--Please Select Data-Type--</option>
                 <option value="2D">2D</option>
                 <option value="3D">3D</option>
@@ -223,115 +322,152 @@
         </div>
       </div>
 
-      <br>
+      <br />
 
       <div class="toprow">
         <div class="rowbox2">
           <label class="labelwp">No of folds (1-100)</label>
-          <div style="display: flex; ">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="no_of_Folds" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.no_of_Folds" class="inpute">
+              <input
+                formControlName="no_of_Folds"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.no_of_Folds"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div class="rowbox2">
           <label class="labelwp">Record Length of Data (seconds)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="geo_Record_Length_of_Data" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.geo_Record_Length_of_Data" class="inpute">
+              <input
+                formControlName="geo_Record_Length_of_Data"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.geo_Record_Length_of_Data"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
-
-
         <div class="rowbox2">
           <label class="labelwp">Completion Status(%)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input formControlName="geo_Completion_Status" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.geo_Completion_Status" class="inpute">
+              <input
+                formControlName="geo_Completion_Status"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="acquisitionBody.geo_Completion_Status"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div class="rowbox2">
           <label class="labelwp">Activity Timeline (Quarter)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <input type="text" formControlName="geo_Activity_Timeline"
-                [(ngModel)]="acquisitionBody.geo_Activity_Timeline" class="inpute">
+              <input
+                type="text"
+                formControlName="geo_Activity_Timeline"
+                [(ngModel)]="acquisitionBody.geo_Activity_Timeline"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
       </div>
-      <br>
-
+      <br />
 
       <div>
         <div class="rowbox">
           <label class="labelwp">Remarks</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdiv">
-              <textarea type="text" rows="3" formControlName="remarks" [(ngModel)]="acquisitionBody.remarks"
-                class="inpute"></textarea>
+              <textarea
+                type="text"
+                rows="3"
+                formControlName="remarks"
+                [(ngModel)]="acquisitionBody.remarks"
+                class="inpute"
+              ></textarea>
             </div>
           </div>
         </div>
       </div>
 
-      <div style="text-align: center;">
-        <button #btn class="quarterbtn" (click)="saveQuarterAcquisition()">Save Quarter 1</button>
+      <div style="text-align: center">
+        <button #btn class="quarterbtn" (click)="saveQuarterAcquisition()">
+          Save Quarter 1
+        </button>
       </div>
     </div>
   </div>
 </div>
-<br><br>
-
+<br /><br />
 
 <div class="wppage" [formGroup]="ProcessingForm">
-  <div style="font-size:16px; font-weight:300;">
-    <span style="font-size: 18px; font-weight: 500; color: teal;">Processing</span>
+  <div style="font-size: 16px; font-weight: 300">
+    <span style="font-size: 18px; font-weight: 500; color: teal"
+      >Processing</span
+    >
   </div>
-  <br>
+  <br />
 
   <div>
     <div class="quarterbox">
-      <div class="quarterspace" [ngClass]="quaterPRClassOne" (click)="changePRQuater(1, btnprocess) ">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">1</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterPRClassOne"
+        (click)="changePRQuater(1, btnprocess)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">1</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassTwo" (click)="changePRQuater(2, btnprocess) ">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">2</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterPRClassTwo"
+        (click)="changePRQuater(2, btnprocess)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">2</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassThree" (click)="changePRQuater(3, btnprocess)">
-        <div style="margin-bottom: 20px;">
-          <span><span style="font-size: 25px;">3</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterPRClassThree"
+        (click)="changePRQuater(3, btnprocess)"
+      >
+        <div style="margin-bottom: 20px">
+          <span><span style="font-size: 25px">3</span> Quarter</span>
         </div>
-
       </div>
-      <div class="quarterspace" [ngClass]="quaterPRClassFour" (click)="changePRQuater(4, btnprocess)">
-        <div style="margin-bottom: 20px;">
-          <span> <span style="font-size: 25px;">4</span> Quarter</span>
+      <div
+        class="quarterspace"
+        [ngClass]="quaterPRClassFour"
+        (click)="changePRQuater(4, btnprocess)"
+      >
+        <div style="margin-bottom: 20px">
+          <span> <span style="font-size: 25px">4</span> Quarter</span>
         </div>
-
       </div>
     </div>
   </div>
-  <br><br>
-  <div style="width: 30%;">
+  <br /><br />
+  <div style="width: 30%">
     <label class="labelwp">Type of Processing</label>
-    <div style="display: flex;">
+    <div style="display: flex">
       <div class="inpdiv">
-        <select class="dropwp" formControlName="type_of_Processing" [(ngModel)]="processingBody.type_of_Processing">
+        <select
+          class="dropwp"
+          formControlName="type_of_Processing"
+          [(ngModel)]="processingBody.type_of_Processing"
+        >
           <option selected disabled>--Please Select--</option>
           <option value="PSDM">PSDM</option>
           <option value="PSTM">PSTM</option>
@@ -339,33 +475,65 @@
       </div>
     </div>
   </div>
-  <div style="display:flex;width: 100%; justify-content: space-between; ">
+  <div style="display: flex; width: 100%; justify-content: space-between">
     <div style="width: 30%">
-      <div style="font-weight: 600; margin-bottom: 12px; padding-bottom: 5px; border-bottom: solid 1px grey;">
+      <div
+        style="
+          font-weight: 600;
+          margin-bottom: 12px;
+          padding-bottom: 5px;
+          border-bottom: solid 1px grey;
+        "
+      >
         <span>Processed</span>
       </div>
 
-
-      <div style="width: 100%; display: flex; padding-bottom: 15px; border-bottom: solid 1px grey;">
-
-        <div style="width: 98%; margin-right: 2%;">
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          padding-bottom: 15px;
+          border-bottom: solid 1px grey;
+        "
+      >
+        <div style="width: 98%; margin-right: 2%">
           <label class="labelwp">Actual (Sq/Km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-              <input formControlName="processed_Actual" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="processingBody.processed_Actual" class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 15px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="processed_Actual"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="processingBody.processed_Actual"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div style="width: 98%">
           <label class="labelwp">Proposed(Sq/Km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-              <input formControlName="processed_Proposed" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="processingBody.processed_Proposed" class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 15px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="processed_Proposed"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="processingBody.processed_Proposed"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
@@ -373,49 +541,82 @@
     </div>
 
     <div style="width: 30%">
-      <div style="font-weight: 600; margin-bottom: 12px; padding-bottom: 5px; border-bottom: solid 1px grey;">
+      <div
+        style="
+          font-weight: 600;
+          margin-bottom: 12px;
+          padding-bottom: 5px;
+          border-bottom: solid 1px grey;
+        "
+      >
         <span>Reprocessed</span>
       </div>
 
-
-      <div style="width: 100%; display: flex; padding-bottom: 15px; border-bottom: solid 1px grey;">
-
-
-        <div style="width: 98%; margin-right: 2%;">
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          padding-bottom: 15px;
+          border-bottom: solid 1px grey;
+        "
+      >
+        <div style="width: 98%; margin-right: 2%">
           <label class="labelwp">Actual (Sq/Km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-              <input formControlName="reprocessed_Actual" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="processingBody.reprocessed_Actual" class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 15px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="reprocessed_Actual"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="processingBody.reprocessed_Actual"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div style="width: 98%">
           <label class="labelwp">Proposed (Sq/Km)</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div
-              style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-              <input formControlName="reprocessed_Proposed" (keypress)="genk.restrictData($event)"
-                [(ngModel)]="processingBody.reprocessed_Proposed" class="inpute">
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 15px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                formControlName="reprocessed_Proposed"
+                (keypress)="genk.restrictData($event)"
+                [(ngModel)]="processingBody.reprocessed_Proposed"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-  <br>
+  <br />
 
-  <div style="display:flex ; width: 100%; justify-content: space-between;">
-
-    <div style="width: 30%; "><br>
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    <div style="width: 30%">
+      <br />
       <label class="labelwp">Any Ongoing Processing Project?</label>
       <div style="display: flex; width: 100%">
         <div class="inputshadow">
-          <select class="dropwp" formControlName="geo_Any_Ongoing_Processing_Project"
-            [(ngModel)]="processingBody.geo_Any_Ongoing_Processing_Project">
+          <select
+            class="dropwp"
+            formControlName="geo_Any_Ongoing_Processing_Project"
+            [(ngModel)]="processingBody.geo_Any_Ongoing_Processing_Project"
+          >
             <option selected disabled>-- Select an Option --</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -423,83 +624,158 @@
         </div>
       </div>
     </div>
-    <div style="width: 30%; margin-top: auto;"><br>
+    <div style="width: 30%; margin-top: auto">
+      <br />
       <label class="labelwp">Quantum Planned (sq km)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input formControlName="quantum_Planned" (keypress)="genk.restrictData($event)"
-            [(ngModel)]="processingBody.quantum_Planned" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="quantum_Planned"
+            (keypress)="genk.restrictData($event)"
+            [(ngModel)]="processingBody.quantum_Planned"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%;"><br>
+    <div style="width: 30%">
+      <br />
       <label class="labelwp">Quantum Processed (sq km)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input formControlName="geo_Quantum_of_Data" (keypress)="genk.restrictData($event)"
-            [(ngModel)]="processingBody.geo_Quantum_of_Data" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="geo_Quantum_of_Data"
+            (keypress)="genk.restrictData($event)"
+            [(ngModel)]="processingBody.geo_Quantum_of_Data"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
   </div>
-  <br>
+  <br />
 
-  <div style="display:flex ; width: 100%; justify-content: space-between;">
-
-    <div style="width: 30%; ">
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    <div style="width: 30%">
       <label class="labelwp">Quantum Approved (sq km)</label>
       <div style="display: flex; width: 100%">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input formControlName="quantum_Approved" (keypress)="genk.restrictData($event)"
-            [(ngModel)]="processingBody.quantum_Approved" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="quantum_Approved"
+            (keypress)="genk.restrictData($event)"
+            [(ngModel)]="processingBody.quantum_Approved"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%;">
+    <div style="width: 30%">
       <label class="labelwp">Quantum Carry Forward (sq km)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input formControlName="geo_Quantum_of_Data_carry_over" (keypress)="genk.restrictData($event)"
-            [(ngModel)]="processingBody.geo_Quantum_of_Data_carry_over" class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="geo_Quantum_of_Data_carry_over"
+            (keypress)="genk.restrictData($event)"
+            [(ngModel)]="processingBody.geo_Quantum_of_Data_carry_over"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
 
-    <div style="width: 30%;">
+    <div style="width: 30%">
       <label class="labelwp">Activity Timeline (Quarter)</label>
-      <div style="display: flex;">
+      <div style="display: flex">
         <div
-          style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-          <input type="text" formControlName="geo_Activity_Timeline" [(ngModel)]="processingBody.geo_Activity_Timeline"
-            class="inpute">
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            formControlName="geo_Activity_Timeline"
+            [(ngModel)]="processingBody.geo_Activity_Timeline"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
-
   </div>
-  <br>
+  <br />
 
-  <div style="display: flex; width: 100%; justify-content: space-between;">
-    <div style="width: 30%;"><br>
-      <label id="ContentPlaceHolder2_Label13" class="labelwp">Name of Contractor</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input type="text" formControlName="name_of_Contractor" [(ngModel)]="processingBody.name_of_Contractor"
-          class="inpute">
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    <div style="width: 30%">
+      <br />
+      <label id="ContentPlaceHolder2_Label13" class="labelwp"
+        >Name of Contractor</label
+      >
+      <div
+        style="
+          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+          width: 100%;
+          border-radius: 20px;
+          padding: 7px 10px;
+        "
+      >
+        <input
+          type="text"
+          formControlName="name_of_Contractor"
+          [(ngModel)]="processingBody.name_of_Contractor"
+          class="inpute"
+        />
       </div>
     </div>
 
-
-    <div style="width: 30%;"><br>
+    <div style="width: 30%">
+      <br />
       <label class="labelwp">Completion Status(%)</label>
-      <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-        <input formControlName="geo_Completion_Status" (keypress)="genk.restrictData($event)"
-          [(ngModel)]="processingBody.geo_Completion_Status" class="inpute">
+      <div
+        style="
+          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+          width: 100%;
+          border-radius: 20px;
+          padding: 7px 10px;
+        "
+      >
+        <input
+          formControlName="geo_Completion_Status"
+          (keypress)="genk.restrictData($event)"
+          [(ngModel)]="processingBody.geo_Completion_Status"
+          class="inpute"
+        />
       </div>
     </div>
 
@@ -508,44 +784,66 @@
         <span>Budget Allocation (NGN & USD)</span>
       </div>
 
-      <div style="width: 100%; display: flex;">
-
-        <div style="width: 98%; margin-right: 2%;">
+      <div style="width: 100%; display: flex">
+        <div style="width: 98%; margin-right: 2%">
           <label class="labelwp">NGN</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdivcurrency">
               <span class="currencywp">&#x20A6;</span>
-              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                (change)="processingBody.budeget_Allocation_NGN = genk.addCurrencyDecimal($event)"
-                [value]="processingBody.budeget_Allocation_NGN" class="inpute">
+              <input
+                formControlName="budeget_Allocation_NGN"
+                (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
+                (change)="
+                  processingBody.budeget_Allocation_NGN =
+                    genk.addCurrencyDecimal($event)
+                "
+                [value]="processingBody.budeget_Allocation_NGN"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
 
         <div style="width: 98%">
           <label class="labelwp">USD</label>
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="inpdivcurrency">
               <span class="currencywp">$</span>
-              <input formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                (change)="processingBody.budeget_Allocation_USD = genk.addCurrencyDecimal($event)"
-                [value]="processingBody.budeget_Allocation_USD" class="inpute">
+              <input
+                formControlName="budeget_Allocation_NGN"
+                (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
+                (change)="
+                  processingBody.budeget_Allocation_USD =
+                    genk.addCurrencyDecimal($event)
+                "
+                [value]="processingBody.budeget_Allocation_USD"
+                class="inpute"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <br><br>
+  <br /><br />
   <div>
-    <div style="display: flex; width: 100%;">
-      <div style="width: 30%; margin-right: 5%;">
-        <label id="ContentPlaceHolder2_Label13" class="labelwp">Type of Data Being Processed</label>
-        <div style="display: flex; width: 100%;">
+    <div style="display: flex; width: 100%">
+      <div style="width: 30%; margin-right: 5%">
+        <label id="ContentPlaceHolder2_Label13" class="labelwp"
+          >Type of Data Being Processed</label
+        >
+        <div style="display: flex; width: 100%">
           <div class="inputshadow">
-            <select class="dropwp" formControlName="geo_Type_of_Data_being_Processed"
-              [(ngModel)]="processingBody.geo_Type_of_Data_being_Processed">
-              <option selected disabled>-- Select Data Type -- &nbsp; &nbsp;</option>
+            <select
+              class="dropwp"
+              formControlName="geo_Type_of_Data_being_Processed"
+              [(ngModel)]="processingBody.geo_Type_of_Data_being_Processed"
+            >
+              <option selected disabled>
+                -- Select Data Type -- &nbsp; &nbsp;
+              </option>
               <option value="2D">2D</option>
               <option value="3D">3D</option>
               <option value="4D">4D</option>
@@ -555,29 +853,50 @@
         </div>
       </div>
 
-
-
-      <div style="width: 30%; margin-top: auto;">
+      <div style="width: 30%; margin-top: auto">
         <label class="labelwp">Remarks</label>
-        <div style="display: flex;">
+        <div style="display: flex">
           <div
-            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-            <textarea type="text" rows="3" formControlName="remarks" [(ngModel)]="processingBody.remarks"
-              class="inpute"></textarea>
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              type="text"
+              rows="3"
+              formControlName="remarks"
+              [(ngModel)]="processingBody.remarks"
+              class="inpute"
+            ></textarea>
           </div>
         </div>
       </div>
     </div>
-    <br><br>
-
+    <br /><br />
   </div>
-  <div style="text-align: center;">
-    <button #btnprocess class="quarterbtn" (click)="saveQuarterProcessing()"> Save Quarter 1</button>
+  <div style="text-align: center">
+    <button #btnprocess class="quarterbtn" (click)="saveQuarterProcessing()">
+      Save Quarter 1
+    </button>
   </div>
 </div>
-<br><br>
+<br /><br />
 
-<div style="text-align: center;">
-  <button #btnprocess (click)="goToTop()"
-    [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'drillingoperation']" class="nextbtn">Next</button>
+<div style="text-align: center">
+  <button
+    #btnprocess
+    (click)="goToTop()"
+    [routerLink]="[
+      '/' + genk.company,
+      genk.workprogram,
+      'step1',
+      'drillingoperation'
+    ]"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>

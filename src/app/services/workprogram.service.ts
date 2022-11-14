@@ -2624,7 +2624,6 @@ export class WorkProgramService {
   }
 
   getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
-   debugger;
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`,
@@ -2786,7 +2785,6 @@ export class WorkProgramService {
   }
 
   saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -2794,7 +2792,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
