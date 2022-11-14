@@ -369,6 +369,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   saveReserveUpdatePreceeding() {
+    console.log('proceeding', this.statusOfReservesPreceeding);
     this.workprogram
       .saveReserveUpdatePreceeding(
         this.statusOfReservesPreceeding,

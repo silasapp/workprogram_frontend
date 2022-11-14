@@ -9,7 +9,7 @@ import {
   NIGERIA_CONTENT_QUESTION,
   NIGERIA_CONTENT_Training,
   NIGERIA_CONTENT_Upload_Succession_Plan,
-} from './step4-NCQ.model';
+} from '../../../models/step4-NCQ.model';
 import {
   GenericService,
   AuthenticationService,
@@ -28,12 +28,10 @@ export class SWPNigeriaContentComponent implements OnInit {
   seniormanagementstaffForm: FormGroup;
   uploadsuccessionForm: FormGroup;
 
-  staffdispositionBody: NIGERIA_CONTENT_Training =
-    {} as NIGERIA_CONTENT_Training;
+  public staffdispositionBody = new NIGERIA_CONTENT_Training();
   seniormanagementstaffBody: NIGERIA_CONTENT_QUESTION =
-    {} as NIGERIA_CONTENT_QUESTION;
-  uploadsuccessionplanBody: NIGERIA_CONTENT_Upload_Succession_Plan =
-    {} as NIGERIA_CONTENT_Upload_Succession_Plan;
+    new NIGERIA_CONTENT_QUESTION();
+  uploadsuccessionplanBody = new NIGERIA_CONTENT_Upload_Succession_Plan();
 
   sdList: any[];
   sStaffList: any[];
@@ -51,7 +49,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
-  nigeriacontenttrainingBody: NIGERIA_CONTENT_Training;
+  nigeriacontenttrainingBody = new NIGERIA_CONTENT_Training();
 
   sdcolumn = [
     {
@@ -121,16 +119,16 @@ export class SWPNigeriaContentComponent implements OnInit {
           [Validators.required]
         ),
         expatriate_quota_positions: new FormControl(
-          this.staffdispositionBody.expatriate_quota_positions,
+          this.staffdispositionBody._expatriate_quota_positions,
           [Validators.required]
         ),
-        utilized_EQ: new FormControl(this.staffdispositionBody.utilized_EQ, [
+        utilized_EQ: new FormControl(this.staffdispositionBody._utilized_EQ, [
           Validators.required,
         ]),
-        names_of_Parties: new FormControl(
-          this.staffdispositionBody.utilized_EQ,
-          [Validators.required]
-        ),
+        // names_of_Parties: new FormControl(
+        //   this.staffdispositionBody.nam,
+        //   [Validators.required]
+        // ),
         nigerian_Understudies: new FormControl(
           this.staffdispositionBody.nigerian_Understudies,
           [Validators.required]
@@ -230,7 +228,13 @@ export class SWPNigeriaContentComponent implements OnInit {
       )
       .subscribe((result) => {
         if (result.nigeriaContent) {
-          this.sdList = result.nigeriaContent;
+          const tempList = result.nigeriaContent;
+          this.sdList = tempList?.map(
+            (item) => new NIGERIA_CONTENT_Training(item)
+          );
+          // this.staffdispositionBody = new NIGERIA_CONTENT_Training(
+          //   result.nigeriaContent[0]
+          // );
         }
         this.cd.markForCheck();
       });
@@ -257,7 +261,8 @@ export class SWPNigeriaContentComponent implements OnInit {
       .saveNigeriaContenttraining(
         this.nigeriacontenttrainingBody,
         this.genk.wpYear,
-        this.genk.OmlName
+        this.genk.OmlName,
+        ''
       )
       .subscribe((result) => {
         this.modalService.logNotice(
@@ -301,7 +306,8 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveAddStaffDisposition() {
-    debugger;
+    console.log('staff body', this.staffdispositionBody);
+
     this.workprogram
       .saveAddStaffDisposition(
         this.staffdispositionBody,
@@ -321,11 +327,13 @@ export class SWPNigeriaContentComponent implements OnInit {
   changeActualValue(e) {
     this.actualValue = e.target.value;
 
-    this.staffdispositionBody = {} as NIGERIA_CONTENT_Training;
-    this.staffdispositionBody =
-      this.sdList.filter((res) => {
+    this.staffdispositionBody = new NIGERIA_CONTENT_Training();
+    const temp =
+      this.sdList?.filter((res) => {
         return res.actual_Proposed === this.actualValue;
-      })[0] ?? ({} as NIGERIA_CONTENT_Training);
+      })[0] ?? null;
+
+    this.staffdispositionBody = new NIGERIA_CONTENT_Training(temp);
     this.cd.markForCheck();
   }
 

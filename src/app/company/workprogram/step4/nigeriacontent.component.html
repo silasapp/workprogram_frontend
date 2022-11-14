@@ -28,46 +28,46 @@
   </div>
   <br />
   <hr size="10" />
-  <div style="width: 100%">
-    <div style="width: 100%">
-      <div style="font-weight: 500; margin-bottom: 5px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Staff Disposition - Training for Nigerians</span
-        >
-      </div>
-    </div>
-    <br />
-    <hr size="5" />
-    <br />
-    <div style="width: 30%; margin: auto 0 0">
-      <label class="labelwp"
-        >Please provide values for Actual and Proposed year</label
-      ><br />
-      <div
-        style="
-          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-          width: 100%;
-          padding: 7px 10px;
-          border-radius: 10px;
-        "
-      >
-        <select
-          class="inpute"
-          formControlName="actual_Proposed_Year"
-          (change)="changeActualValue($event)"
-        >
-          <option selected disabled>---- Please Select an Option ----</option>
-          <option value="Actual Year">Actual Year</option>
-          <option value="Proposed Year">Proposed Year</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <br /><br />
-
-  <hr size="5" />
-
   <div [formGroup]="staffdispositionForm">
+    <div style="width: 100%">
+      <div style="width: 100%">
+        <div style="font-weight: 500; margin-bottom: 5px">
+          <span style="font-weight: 600; font-size: 20px"
+            >Staff Disposition - Training for Nigerians</span
+          >
+        </div>
+      </div>
+      <br />
+      <hr size="5" />
+      <br />
+      <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp"
+          >Please provide values for Actual and Proposed year</label
+        ><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 7px 10px;
+            border-radius: 10px;
+          "
+        >
+          <select
+            class="inpute"
+            formControlName="actual_Proposed_Year"
+            (change)="changeActualValue($event)"
+          >
+            <option selected disabled>---- Please Select an Option ----</option>
+            <option value="Actual Year">Actual Year</option>
+            <option value="Proposed Year">Proposed Year</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+
+    <hr size="5" />
+
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -81,10 +81,11 @@
             "
           >
             <input
-              type="number"
-              formControlName="expatriate_quota_positions"
-              [(ngModel)]="staffdispositionBody.expatriate_quota_positions"
               class="inpute"
+              formControlName="expatriate_quota_positions"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="staffdispositionBody._expatriate_quota_positions"
             />
           </div>
         </div>
@@ -102,9 +103,11 @@
             "
           >
             <input
-              formControlName="utilized_EQ"
-              [(ngModel)]="staffdispositionBody.utilized_EQ"
               class="inpute"
+              formControlName="utilized_EQ"
+              (keypress)="genk.restrictData($event)"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="staffdispositionBody._utilized_EQ"
             />
           </div>
         </div>

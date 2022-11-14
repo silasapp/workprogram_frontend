@@ -81,7 +81,7 @@ import {
   NIGERIA_CONTENT_Training,
   NIGERIA_CONTENT_Upload_Succession_Plan,
   STRATEGIC_PLANS_ON_COMPANY_BASES,
-} from '../company/workprogram/step4/step4-NCQ.model';
+} from '../models/step4-NCQ.model';
 import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE,
@@ -2347,13 +2347,14 @@ export class WorkProgramService {
   saveNigeriaContenttraining(
     conbody: NIGERIA_CONTENT_Training,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
-        conbody,
-        { params: { year: year, omlName: omlName } }
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_training?omlName=${omlName}&fieldName=${fieldName}&year=${year}`,
+        conbody
+        // { params: { omlName: omlName, fieldName: fieldName, year: year } }
       )
       .pipe(
         retry(this.num),
