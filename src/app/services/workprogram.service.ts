@@ -2344,6 +2344,14 @@ export class WorkProgramService {
       );
   }
 
+  deleteNigeriaContentTraining(id: any) {
+    return this.http
+      .delete<any>(
+        `${environment.apiUrl}/workprogramme/delete-nigeria-content-training?id=${id}`
+      )
+      .pipe(retry(this.num));
+  }
+
   saveNigeriaContenttraining(
     conbody: NIGERIA_CONTENT_Training,
     year: string,
@@ -2371,7 +2379,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_upload_succession_plan`,
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`,
         conbody,
         { params: { year: year, omlName: omlName } }
       )
@@ -2383,11 +2391,11 @@ export class WorkProgramService {
       );
   }
 
-  getNigeriaContentQuestion(year: string, omlName: string) {
+  getNigeriaContentQuestion(year: string, omlName: string, fieldName: string) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/NIGERIA_CONTENT_QUESTION`,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year, omlName: omlName, fieldName: fieldName } }
       )
       .pipe(
         retry(this.num),

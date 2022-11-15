@@ -28,14 +28,16 @@ export class SWPNigeriaContentComponent implements OnInit {
   seniormanagementstaffForm: FormGroup;
   uploadsuccessionForm: FormGroup;
 
+  // public staffdispositionBody = {} as NIGERIA_CONTENT_Training;
   public staffdispositionBody = new NIGERIA_CONTENT_Training();
+
   seniormanagementstaffBody: NIGERIA_CONTENT_QUESTION =
-    new NIGERIA_CONTENT_QUESTION();
-  uploadsuccessionplanBody = new NIGERIA_CONTENT_Upload_Succession_Plan();
+    {} as NIGERIA_CONTENT_QUESTION;
+  uploadsuccessionplanBody: NIGERIA_CONTENT_Upload_Succession_Plan =
+    {} as NIGERIA_CONTENT_Upload_Succession_Plan;
 
   sdList: any[];
   sStaffList: any[];
-
   wkpYear: string;
   wkpYearList = [];
   arrayRows = [];
@@ -105,7 +107,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       this.getNigeriaContentTraining();
-      //this.getNigeriaContentQuestion();
+      // this.getNigeriaContentQuestion();
       //this.getUploadSuccessionplan();
     });
   }
@@ -215,7 +217,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     );
 
     this.getNigeriaContentTraining();
-    //this.getNigeriaContentQuestion();
+    // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
 
@@ -235,17 +237,44 @@ export class SWPNigeriaContentComponent implements OnInit {
           // this.staffdispositionBody = new NIGERIA_CONTENT_Training(
           //   result.nigeriaContent[0]
           // );
+        } else {
+          this.staffdispositionBody = {} as NIGERIA_CONTENT_Training;
+        }
+
+        if (
+          result.nigeriaContentQuestion &&
+          result.nigeriaContentQuestion.length > 0
+        ) {
+          this.seniormanagementstaffBody = result.nigeriaContentQuestion[0];
+        } else {
+          this.seniormanagementstaffBody = {} as NIGERIA_CONTENT_QUESTION;
+        }
+
+        if (
+          result.nigeriaContentUploadSuccession &&
+          result.nigeriaContentUploadSuccession.length > 0
+        ) {
+          this.uploadsuccessionplanBody =
+            result.nigeriaContentUploadSuccession[0];
+        } else {
+          this.uploadsuccessionplanBody =
+            {} as NIGERIA_CONTENT_Upload_Succession_Plan;
         }
         this.cd.markForCheck();
       });
   }
 
   // getNigeriaContentQuestion() {
-  //   this.workprogram.getNigeriaContentQuestion( this.genk.OmlName, this.genk.fieldName, this.genk.wpYear).subscribe(result => {
-  //     this.seniormanagementstaffBody = result.data;
-  //     this.cd.markForCheck();
-  //     let rel = "Hello";
-  //   });
+  //   this.workprogram
+  //     .getNigeriaContentQuestion(
+  //       this.genk.wpYear,
+  //       this.genk.OmlName,
+  //       this.genk.fieldName
+  //     )
+  //     .subscribe((result) => {
+  //       this.seniormanagementstaffBody = result.data;
+  //       this.cd.markForCheck();
+  //     });
   // }
 
   // getUploadSuccessionplan() {
@@ -274,6 +303,24 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveSeniorManagementStaff() {
+    const model = {
+      do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff:
+        this.seniormanagementstaffBody
+          .do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff,
+      if_NO_why: this.seniormanagementstaffBody.if_NO_why,
+      number_of_staff_released_within_the_year_:
+        this.seniormanagementstaffBody
+          .number_of_staff_released_within_the_year_,
+      total_no_of_nigeria_senior_staff:
+        this.seniormanagementstaffBody.total_no_of_nigeria_senior_staff,
+      total_no_of_senior_staff:
+        this.seniormanagementstaffBody.total_no_of_senior_staff,
+      total_no_of_top_management_staff:
+        this.seniormanagementstaffBody.total_no_of_top_management_staff,
+      total_no_of_top_nigerian_management_staff:
+        this.seniormanagementstaffBody
+          .total_no_of_top_nigerian_management_staff,
+    };
     this.workprogram
       .saveNigeriaContentQuestion(
         this.seniormanagementstaffBody,
@@ -306,11 +353,21 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveAddStaffDisposition() {
-    console.log('staff body', this.staffdispositionBody);
+    const model_ = {
+      actual_Proposed: this.actualValue,
+      management_Foriegn: this.staffdispositionBody.management_Foriegn,
+      management_Local: this.staffdispositionBody.management_Local,
+      nigerian_Understudies: this.staffdispositionBody.staff_Foriegn,
+      staff_Foriegn: this.staffdispositionBody.staff_Foriegn,
+      staff_Local: this.staffdispositionBody.staff_Local,
+      expatriate_quota_positions:
+        this.staffdispositionBody._expatriate_quota_positions,
+      utilized_EQ: this.staffdispositionBody._utilized_EQ,
+    };
 
     this.workprogram
       .saveAddStaffDisposition(
-        this.staffdispositionBody,
+        model_ as NIGERIA_CONTENT_Training,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -328,13 +385,26 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.actualValue = e.target.value;
 
     this.staffdispositionBody = new NIGERIA_CONTENT_Training();
-    const temp =
+    this.staffdispositionBody =
       this.sdList?.filter((res) => {
         return res.actual_Proposed === this.actualValue;
-      })[0] ?? null;
+      })[0] ?? new NIGERIA_CONTENT_Training();
 
-    this.staffdispositionBody = new NIGERIA_CONTENT_Training(temp);
+    //this.staffdispositionBody = new NIGERIA_CONTENT_Training(temp);
     this.cd.markForCheck();
+  }
+
+  deleteNCT(row: any) {
+    console.log('row data', row);
+    this.workprogram
+      .deleteNigeriaContentTraining(row.id)
+      .subscribe((result) => {
+        this.modalService.logNotice(
+          'Deletion was successful!',
+          'Successfully!',
+          'success'
+        );
+      });
   }
 
   Alert(title: string, text: string, icon: any) {

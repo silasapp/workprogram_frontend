@@ -257,13 +257,13 @@
               style="margin: 50px; padding: 10px"
               type="button"
               class="btn btn-primary"
-              (click)="openPopup(); onSelect(row)"
+              (click)="deleteNCT(row)"
               value="{{ row.id }}"
               style="background-color: white; color: red; border: 2px solid"
               class="submitbtn"
             >
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
-              <b>Deleted</b>
+              <b>Delete</b>
             </button>
           </td>
         </tr>
@@ -459,7 +459,9 @@
   <br /><br />
   <div>
     <div style="text-align: center">
-      <button class="submitbtn">Update Senior / Management Staff</button>
+      <button class="submitbtn" (click)="saveSeniorManagementStaff()">
+        Update Senior / Management Staff
+      </button>
     </div>
     <br />
   </div>
@@ -615,7 +617,9 @@
   <br /><br />
   <div>
     <div style="text-align: center">
-      <button class="submitbtn">Upload Succession Plan</button>
+      <button class="submitbtn" (click)="saveUploadSuccessionPlan()">
+        Upload Succession Plan
+      </button>
     </div>
     <br />
   </div>

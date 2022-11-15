@@ -26,45 +26,45 @@ export class NIGERIA_CONTENT_QUESTION {
   public cOMPANY_ID: string = '';
   public companyNumber: number;
 
-  constructor(model?: NIGERIA_CONTENT_QUESTION) {
-    if (!model) return;
+  // constructor(model?: NIGERIA_CONTENT_QUESTION) {
+  //   if (!model) return;
 
-    this.id = model.id;
-    this.oML_ID = model.oML_ID;
-    this.oML_Name = model.oML_Name;
-    this.companyName = model.companyName;
-    this.companyemail = model.companyemail;
-    this.year_of_WP = model.year_of_WP;
-    this.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff =
-      model.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff;
-    this.if_NO_why = model.if_NO_why;
-    this.is_there_a_succession_plan_in_place =
-      model.is_there_a_succession_plan_in_place;
-    this.number_of_staff_released_within_the_year_ =
-      model.number_of_staff_released_within_the_year_;
-    this.created_by = model.created_by;
-    this.updated_by = model.updated_by;
-    this.date_Created = model.date_Created;
-    this.date_Updated = model.date_Updated;
-    this.contract_Type = model.contract_Type;
-    this.terrain = model.terrain;
-    this.consession_Type = model.contract_Type;
-    this.total_no_of_nigeria_senior_staff =
-      model.total_no_of_nigeria_senior_staff;
-    this.total_no_of_senior_staff = model.total_no_of_senior_staff;
-    this.total_no_of_top_nigerian_management_staff =
-      model.total_no_of_top_nigerian_management_staff;
-    this.total_no_of_top_management_staff =
-      model.total_no_of_top_management_staff;
-    this.cOMPANY_ID = model.cOMPANY_ID;
-    this.companyNumber = model.companyNumber;
-  }
+  //   this.id = model.id;
+  //   this.oML_ID = model.oML_ID;
+  //   this.oML_Name = model.oML_Name;
+  //   this.companyName = model.companyName;
+  //   this.companyemail = model.companyemail;
+  //   this.year_of_WP = model.year_of_WP;
+  //   this.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff =
+  //     model.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff;
+  //   this.if_NO_why = model.if_NO_why;
+  //   this.is_there_a_succession_plan_in_place =
+  //     model.is_there_a_succession_plan_in_place;
+  //   this.number_of_staff_released_within_the_year_ =
+  //     model.number_of_staff_released_within_the_year_;
+  //   this.created_by = model.created_by;
+  //   this.updated_by = model.updated_by;
+  //   this.date_Created = model.date_Created;
+  //   this.date_Updated = model.date_Updated;
+  //   this.contract_Type = model.contract_Type;
+  //   this.terrain = model.terrain;
+  //   this.consession_Type = model.contract_Type;
+  //   this.total_no_of_nigeria_senior_staff =
+  //     model.total_no_of_nigeria_senior_staff;
+  //   this.total_no_of_senior_staff = model.total_no_of_senior_staff;
+  //   this.total_no_of_top_nigerian_management_staff =
+  //     model.total_no_of_top_nigerian_management_staff;
+  //   this.total_no_of_top_management_staff =
+  //     model.total_no_of_top_management_staff;
+  //   this.cOMPANY_ID = model.cOMPANY_ID;
+  //   this.companyNumber = model.companyNumber;
+  // }
 }
 
 export class NIGERIA_CONTENT_Training {
   public id: number = 0;
-  public oML_ID: string = '';
-  public oML_Name: string = '';
+  public omL_ID: string = '';
+  public omL_Name: string = '';
   public companyName: string = '';
   public companyemail: string = '';
   public year_of_WP: string = '';
@@ -85,10 +85,10 @@ export class NIGERIA_CONTENT_Training {
   public consession_Type: string = '';
   public contract_Type: string = '';
   public terrain: string = '';
-  public cOMPANY_ID: string = '';
+  public companY_ID: string = '';
   public companyNumber: number;
-  private expatriate_quota_positions?: string = '';
-  private utilized_EQ?: string = '';
+  public expatriate_quota_positions?: string = '';
+  public utilized_EQ?: string = '';
 
   public set _expatriate_quota_positions(expatriate_quota_positions: string) {
     this.expatriate_quota_positions = expatriate_quota_positions?.replace(
@@ -111,9 +111,10 @@ export class NIGERIA_CONTENT_Training {
 
   constructor(model?: NIGERIA_CONTENT_Training) {
     if (!model) return;
+
     this.id = model.id;
-    this.oML_ID = model.oML_ID;
-    this.oML_Name = model.oML_Name;
+    this.omL_ID = model.omL_ID;
+    this.omL_Name = model.omL_Name;
     this.companyName = model.companyName;
     this.companyemail = model.companyemail;
     this.year_of_WP = model.year_of_WP;
@@ -136,7 +137,7 @@ export class NIGERIA_CONTENT_Training {
     this.consession_Type = model.consession_Type;
     this.contract_Type = model.contract_Type;
     this.terrain = model.terrain;
-    this.cOMPANY_ID = model.cOMPANY_ID;
+    this.companY_ID = model.companY_ID;
     this.companyNumber = model.companyNumber;
   }
 }
