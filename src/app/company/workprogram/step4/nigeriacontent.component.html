@@ -350,8 +350,9 @@
           "
         >
           <input
-            type="number"
             formControlName="number_of_staff_released_within_the_year_"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.number_of_staff_released_within_the_year_
             "
@@ -373,8 +374,9 @@
           "
         >
           <input
-            type="number"
             formControlName="total_no_of_nigeria_senior_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_nigeria_senior_staff
             "
@@ -399,8 +401,9 @@
           "
         >
           <input
-            type="number"
             formControlName="total_no_of_senior_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff"
             class="inpute"
           />
@@ -420,8 +423,9 @@
           "
         >
           <input
-            type="number"
             formControlName="total_no_of_top_nigerian_management_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_nigerian_management_staff
             "
@@ -443,8 +447,9 @@
           "
         >
           <input
-            type="number"
             formControlName="total_no_of_top_management_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_management_staff
             "
@@ -492,7 +497,6 @@
         "
       >
         <select
-          class="input"
           formControlName="actual_Proposed_Year"
           [(ngModel)]="uploadsuccessionplanBody.actual_Proposed_Year"
           type="inpute"
@@ -585,7 +589,6 @@
           "
         >
           <input
-            type="number"
             formControlName="timeline_"
             [(ngModel)]="uploadsuccessionplanBody.timeline_"
             class="inpute"
