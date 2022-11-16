@@ -184,8 +184,9 @@ export class UploadCodeComponent implements OnInit {
   fetchcompanycode() {
     this.admin.codefetch("GET_COMPANY_CODES").subscribe(
       (res) => {
-        this.data = res.data as any[];
-        this.assignDataRows();
+          this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
       }

@@ -130,14 +130,14 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentIWQuater = 1;
-      btn.textContent = "Save Quater 1";
+      btn.textContent = "Save Quarter 1";
       this.initialBody = this.quaterIWOneData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 1");
     }
     if (quater === 2) {
       this.currentIWQuater = 2;
-      btn.textContent = "Save Quater 2";
+      btn.textContent = "Save Quarter 2";
       this.initialBody = this.quaterIWTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
@@ -145,14 +145,14 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     if (quater === 3) {
       this.currentIWQuater = 3;
       this.initialBody = this.quaterIWThreeData;
-      btn.textContent = "Save Quater 3";
+      btn.textContent = "Save Quarter 3";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
       this.currentIWQuater = 4;
       this.initialBody = this.quaterIWFourData;
-      btn.textContent = "Save Quater 4";
+      btn.textContent = "Save Quarter 4";
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
@@ -164,7 +164,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
       this.workprogram.getInitialWellCompletion(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
         //debugger;
-         this.quaterIWOneData = res.initialWellCompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? {} as INITIAL_WELL_COMPLETION_JOB1;
+         this.quaterIWOneData = res.initialWellCompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
           if (this.quaterIWOneData) {
             this.quaterIWOneData.actual_Completion_Date = this.genk.formDate(this.quaterIWOneData.actual_Completion_Date);
             this.quaterIWOneData.proposed_Completion_Date = this.genk.formDate(this.quaterIWOneData.proposed_Completion_Date);
@@ -174,7 +174,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           this.quaterIWTwoData = res.initialWellCompletion.filter(res => {
             this.quaterIWTwo = res.quater === "QUARTER 2" ? true : false;
           return res.quater === "QUARTER 2";
-        })[0]  ?? {} as INITIAL_WELL_COMPLETION_JOB1;
+        })[0]  ?? new INITIAL_WELL_COMPLETION_JOB1();
         if (this.quaterIWTwoData) {
           this.quaterIWTwoData.actual_Completion_Date = this.genk.formDate(this.quaterIWTwoData.actual_Completion_Date);
           this.quaterIWTwoData.proposed_Completion_Date = this.genk.formDate(this.quaterIWTwoData.proposed_Completion_Date);
@@ -184,7 +184,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
         this.quaterIWThreeData = res.initialWellCompletion.filter(res => {
           this.quaterIWThree = res.quater === "QUARTER 3" ? true : false;
           return res.quater === "QUARTER 3";
-        })[0] ?? {} as INITIAL_WELL_COMPLETION_JOB1;
+        })[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
         if (this.quaterIWThreeData) {
           this.quaterIWThreeData.actual_Completion_Date = this.genk.formDate(this.quaterIWThreeData.actual_Completion_Date);
           this.quaterIWThreeData.proposed_Completion_Date = this.genk.formDate(this.quaterIWThreeData.proposed_Completion_Date);
@@ -194,7 +194,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
         this.quaterIWFourData = res.initialWellCompletion.filter(res => {
           this.quaterIWFour = res.quater === "QUARTER 4" ? true : false;
           return res.quater === "QUARTER 4";
-        })[0] ?? {} as INITIAL_WELL_COMPLETION_JOB1;
+        })[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
         if (this.quaterIWFourData) {
           this.quaterIWFourData.actual_Completion_Date = this.genk.formDate(this.quaterIWFourData.actual_Completion_Date);
           this.quaterIWFourData.proposed_Completion_Date = this.genk.formDate(this.quaterIWFourData.proposed_Completion_Date);

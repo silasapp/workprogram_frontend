@@ -154,7 +154,8 @@ export class OilCondensateMonthlyActivitiesProposedFiveyearsComponent implements
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
   
@@ -162,8 +163,9 @@ export class OilCondensateMonthlyActivitiesProposedFiveyearsComponent implements
       let value = e.target.value;
      let result =  this.report.fetch("oil_condensate_monthly_activities_proposed_fiveyears", value).subscribe(
         (res) => {
-          this.data = res.data as any[];
-                this.assignDataRows();
+           this.data = res.data as any[];
+            if(this.data.length>0) this.selectedPage=1;
+            this.assignDataRows();
                 this.assignPageNum();
                 this.cd.markForCheck();
         }

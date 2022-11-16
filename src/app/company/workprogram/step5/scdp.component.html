@@ -105,7 +105,7 @@
                 <select class="input" type="inpute" formControlName="do_you_have_an_MOU_with_the_communities_for_all_your_assets" [(ngModel)]="scdp_question_Body.do_you_have_an_MOU_with_the_communities_for_all_your_assets">
                     <option selected disabled>---- Please Select a Option----</option>
                     <option value="Yes">Yes</option>
-                    <option value="No">No"</option>
+                    <option value="No">No</option>
                 </select>
             </div>
         </div>
@@ -200,7 +200,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Year GMoU was signed</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_mou_Body.year_GMou_was_signed">
+                <input type="date" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_mou_Body.year_GMou_was_signed">
             </div>
         </div>
     </div>
@@ -217,7 +217,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Actual Budget Total ($)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_mou_Body.actual_Budget_Total_Dollars">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_mou_Body.actual_Budget_Total_Dollars">
             </div>
         </div>
         <div style="width: 30%;">
@@ -314,13 +314,13 @@
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Planned Budget Total ($)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_capitalprojects_Body.budget_">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="budget_" [(ngModel)]="scdp_capitalprojects_Body.budget_">
             </div>
         </div>
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Actual (Budget)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_capitalprojects_Body.actual_Spent">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_capitalprojects_Body.actual_Spent">
             </div>
         </div>
 
@@ -331,7 +331,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Percentage Completion</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_capitalprojects_Body.percentage_Completion_">
+                <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_capitalprojects_Body.percentage_Completion_">
             </div>
         </div>
         <div style="width: 30%; margin-left: 5%; ">
@@ -407,13 +407,13 @@
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Planned Budget Total ($)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_scholarship_csr_Body.budget_">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="budget_" [(ngModel)]="scdp_scholarship_csr_Body.budget_">
             </div>
         </div>
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Actual (Budget)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_scholarship_csr_Body.actual_Spent">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_scholarship_csr_Body.actual_Spent">
             </div>
         </div>
 
@@ -424,7 +424,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Percentage Completion</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_scholarship_csr_Body.percentage_Completion_">
+                <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_scholarship_csr_Body.percentage_Completion_">
             </div>
         </div>
         <div style="width: 30%; ">
@@ -496,13 +496,13 @@
         <div style="width: 30%;">
             <label class="labelwp">Year GMoU was signed</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_scholarship_Body.year_GMou_was_signed">
+                <input type="date" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_scholarship_Body.year_GMou_was_signed">
             </div>
         </div>
         <div style="width: 30%; ">
             <label class="labelwp">Scholarship year</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="scholarshipYear" [(ngModel)]="scdp_scholarship_Body.scholarshipYear">
+                <input type="date" class="inpute" formControlName="scholarshipYear" [(ngModel)]="scdp_scholarship_Body.scholarshipYear">
             </div>
         </div>
 
@@ -519,7 +519,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Actual budget total (USD)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="text" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_scholarship_Body.actual_Budget_Total_Dollars">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_scholarship_Body.actual_Budget_Total_Dollars">
             </div>
         </div>
         <div style="width: 30%; ">
@@ -595,13 +595,13 @@
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Planned (Budget)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="budget_" [(ngModel)]="scdp_trainingskills_csr_Body.budget_">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="budget_" [(ngModel)]="scdp_trainingskills_csr_Body.budget_">
             </div>
         </div>
         <div style="width: 30%;margin-left: 5%; ">
             <label class="labelwp">Actual (Budget)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_trainingskills_csr_Body.actual_Spent">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Spent" [(ngModel)]="scdp_trainingskills_csr_Body.actual_Spent">
             </div>
         </div>
 
@@ -687,13 +687,13 @@
         <div style="width: 30%; ">
             <label class="labelwp">Year GMoU was signed</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_trainingdetails_csr_Body.year_GMou_was_signed">
+                <input type="date" class="inpute" formControlName="year_GMou_was_signed" [(ngModel)]="scdp_trainingdetails_csr_Body.year_GMou_was_signed">
             </div>
         </div>
         <div style="width: 30%; ">
             <label class="labelwp">Training year</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="trainingYear" [(ngModel)]="scdp_trainingdetails_csr_Body.trainingYear">
+                <input type="date" class="inpute" formControlName="trainingYear" [(ngModel)]="scdp_trainingdetails_csr_Body.trainingYear">
             </div>
         </div>
 
@@ -711,7 +711,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Actual budget total (USD)</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_trainingdetails_csr_Body.actual_Budget_Total_Dollars">
+                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute" formControlName="actual_Budget_Total_Dollars" [(ngModel)]="scdp_trainingdetails_csr_Body.actual_Budget_Total_Dollars">
             </div>
         </div>
         <div style="width: 30%;">

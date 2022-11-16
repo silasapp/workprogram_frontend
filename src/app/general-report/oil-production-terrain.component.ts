@@ -20,7 +20,7 @@ export class OilProductionTerrainComponent implements OnInit {
     title = 'PRODUCTION ON TERRAIN BASIS';
     reporttext: string;
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
@@ -91,7 +91,8 @@ export class OilProductionTerrainComponent implements OnInit {
       }
 
       assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
       }
 
@@ -138,6 +139,7 @@ export class OilProductionTerrainComponent implements OnInit {
         this.data = res.crude_Oil_Production_By_Terrain as any[];
         this.totalone = Math.round(this.report.sumColumn(this.data, 'annual_Total_Production_by_company'));
         this.totaltwo = Math.round(this.report.sumColumn(this.data, 'percentage_Production'));
+          if(this.data.length>1) this.selectedPage=1;
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();

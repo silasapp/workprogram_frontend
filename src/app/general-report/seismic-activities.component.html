@@ -41,7 +41,16 @@
             </div>
           </div>
         </div>
+      </div>
 
+
+      <div *ngIf="!isData" class="divcent">
+        <span class="material-icons" style="font-size: 35px; margin-right: 5px;">warning_amber</span>
+        <span style="font-size: 17px; font-weight: 600; color: rgb(127, 77, 6);">No data for this year</span>
+      </div>
+
+
+      <div *ngIf="isData">
         <div style="margin: 0 1% 5px 1%">
           <span style="color: rgb(248, 108, 48); font-weight: 500; font-size: 17px;">{{tableTitle}}</span>
         </div>
@@ -79,6 +88,8 @@
             <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
           </button>
         </div>
+
+
 
         <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
           <table #myTable class="apptablereport" cellPadding="10">

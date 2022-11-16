@@ -682,7 +682,7 @@
             </div>
             <hr size="5">
             <br>
-                <div class="col-md-4">
+                <div class="col-md-4"><br>
                     <label class="labelwp"> Name of Facility</label>
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
@@ -698,7 +698,7 @@
                                 type="text" class="inpute">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4"><br>
                     <label class="labelwp">Equipment Description (Scrubber, Pilot Operated Valve)</label>
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
@@ -713,7 +713,7 @@
                         <label class="labelwp">Equipment Serial Number</label>
                             <div
                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input formControlName="equipment_serial_number"
+                                <input (keypress)="genk.restrictData($event)" formControlName="equipment_serial_number"
                                     [(ngModel)]="asset_PRE_Body.equipment_serial_number" type="text" class="inpute">
                             </div>
                     </div>
@@ -722,7 +722,7 @@
                         <label class="labelwp">Equipment Tag Number</label>
                             <div
                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input formControlName="equipment_tag_number"
+                                <input (keypress)="genk.restrictData($event)" formControlName="equipment_tag_number"
                                     [(ngModel)]="asset_PRE_Body.equipment_tag_number" type="text" class="inpute">
                             </div>
                     </div>
@@ -896,7 +896,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="width: 30%;"><br>
+                <div style="width: 30%;">
                     <label class="labelwp"> Equipment Type (Pressure Vessel, Pressure Relief Device, etc )</label>
                     <div style="width: 100%;">
                         <div
@@ -925,7 +925,7 @@
                     <div style="width: 100%;">
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                            <input formControlName="equipment_serial_number"
+                            <input formControlName="equipment_serial_number" (keypress)="genk.restrictData($event)"
                                 [(ngModel)]="asset_RBI_Body.equipment_serial_number" type="text" class="inpute">
                         </div>
                     </div>
@@ -935,7 +935,7 @@
                     <div style="width: 100%;">
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                            <input formControlName="equipment_tag_number"
+                            <input formControlName="equipment_tag_number" (keypress)="genk.restrictData($event)"
                                 [(ngModel)]="asset_RBI_Body.equipment_tag_number" type="text" class="inpute">
                         </div>
                     </div>
@@ -1171,7 +1171,7 @@
                         <div style="display: flex;">
                             <div
                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input type="text" class="inpute" formControlName="incident_Oil_Spill_Ref_No"
+                                <input type (keypress)="genk.restrictData($event)" class="inpute" formControlName="incident_Oil_Spill_Ref_No"
                                     [(ngModel)]="oilSpill_Body.incident_Oil_Spill_Ref_No">
                             </div>
                         </div>
@@ -1277,7 +1277,7 @@
                         <div style="display: flex;">
                             <div
                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input type="number" class="inpute" formControlName="volume_of_spill_bbls"
+                                <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="volume_of_spill_bbls"
                                     [(ngModel)]="oilSpill_Body.volume_of_spill_bbls">
                             </div>
                         </div>
@@ -1290,7 +1290,7 @@
                 <div style="display: flex;">
                     <div
                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                        <input type="number" class="inpute" formControlName="volume_recovered_bbls"
+                        <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="volume_recovered_bbls"
                             [(ngModel)]="oilSpill_Body.volume_recovered_bbls">
                     </div>
                 </div>
@@ -1343,7 +1343,7 @@
                     <div style="width: 100%;">
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="total_Quantity_Spilled"
+                            <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="total_Quantity_Spilled"
                                 [(ngModel)]="causesOfSpill_Body.total_Quantity_Spilled">
                         </div>
                     </div>
@@ -1353,7 +1353,7 @@
                     <div style="width: 100%;">
                         <div
                             style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="total_Quantity_Spilled"
+                            <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="total_Quantity_Spilled"
                                 [(ngModel)]="causesOfSpill_Body.total_Quantity_Recovered">
                         </div>
                     </div>
@@ -1753,7 +1753,7 @@
                     <div style="width: 30%;">
                         <label class="labelwp">Was all spill reported at agreed timeline?</label>
                         <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); width: 100%; padding: 5px; border-radius: 20px;">
                             <select class="input" type="inpute" formControlName="oil_spill_reported"
                                 [(ngModel)]="community_Body.oil_spill_reported">
                                 <option selected disabled>---- Please Select an Option ----</option>
@@ -1769,7 +1769,7 @@
                         <label class="labelwp">Was there any Community Related Disturbances within your operational
                             area?</label>
                         <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); width: 100%; padding: 5px; border-radius: 20px;">
                             <select class="input" type="inpute"
                                 formControlName="was_there_any_Community_Related_Disturbances_within_your_operational_area"
                                 [(ngModel)]="community_Body.was_there_any_Community_Related_Disturbances_within_your_operational_area">
@@ -1785,7 +1785,7 @@
                         <label class="labelwp">If YES, Give details on Community Related Disturbances within your
                             operational area</label>
                         <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); width: 100%; padding: 5px; border-radius: 20px;">
                             <input type="text" class="inpute"
                                 formControlName="if_YES_Give_details_on_Community_Related_Disturbances_within_your_operational_area"
                                 [(ngModel)]="community_Body.if_YES_Give_details_on_Community_Related_Disturbances_within_your_operational_area">
@@ -1793,11 +1793,11 @@
                     </div>
 
 
-                    <div style="width: 30%;">
+                    <div style="width: 30%;"><br>
                         <label class="labelwp">Was any Oil Spill recorded within your operational area?</label>
                         <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                            <select class="input" type="inpute"
+                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); width: 100%; padding: 5px; border-radius: 20px;">
+                            <select class="inpute" type="text"
                                 formControlName="was_any_Oil_Spill_recorded_within_your_operational_area"
                                 [(ngModel)]="community_Body.was_any_Oil_Spill_recorded_within_your_operational_area">
                                 <option selected disabled>---- Please Select an Option ----</option>

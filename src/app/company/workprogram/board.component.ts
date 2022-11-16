@@ -1,14 +1,25 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
+import {
+  AuthenticationService,
+  GenericService,
+  ModalService,
+} from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnChanges {
   boardForm: FormGroup;
   wkpYear: string;
   wkpYearList = [];
@@ -18,21 +29,32 @@ export class BoardComponent implements OnInit {
   field: string;
   genk: GenericService;
 
-  constructor(private workprogram: WorkProgramService,
+  constructor(
+    private workprogram: WorkProgramService,
     private gen: GenericService,
     private modal: ModalService,
     private auth: AuthenticationService,
-    private cd: ChangeDetectorRef) {
+    private cd: ChangeDetectorRef
+  ) {
     this.genk = gen;
-   }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Rerendering board changes');
+  }
 
   ngOnInit(): void {
+    console.log('Rerendering board onit');
     this.boardForm = new FormGroup(
       {
-        'year': new FormControl(this.wkpYear, [Validators.required]),
-        'concession_Held': new FormControl(this.concessionHeld, [ Validators.required]),
-        'Field': new FormControl(this.field, [ Validators.required])
-      }, {});
+        year: new FormControl(this.wkpYear, [Validators.required]),
+        concession_Held: new FormControl(this.concessionHeld, [
+          Validators.required,
+        ]),
+        Field: new FormControl(this.field, [Validators.required]),
+      },
+      {}
+    );
     this.getWPYearList();
   }
 
@@ -55,28 +77,26 @@ export class BoardComponent implements OnInit {
     this.cd.markForCheck();
     this.checkCompletedSteps();
 
-    this.workprogram.getConcessionField(this.concessionHeld, null)
-    .subscribe((res: any[]) => {
-      if (res.length > 0) {
-        this.Field_List = res;
-        this.genk.Field_List = res;
-        this.cd.markForCheck();
-
-      } else {
-        this.modal.logConcessionSituation(this.concessionHeld);
-        this.Field_List = res;
-        this.genk.Field_List = res;
-        this.cd.markForCheck();
-      }
-
-    });
+    this.workprogram
+      .getConcessionField(this.concessionHeld, null)
+      .subscribe((res: any[]) => {
+        if (res.length > 0) {
+          this.Field_List = res;
+          this.genk.Field_List = res;
+          this.cd.markForCheck();
+        } else {
+          this.modal.logConcessionSituation(this.concessionHeld);
+          this.Field_List = res;
+          this.genk.Field_List = res;
+          this.cd.markForCheck();
+        }
+      });
   }
 
   changeConcessionField(e) {
     this.field = e.target.value;
     this.genk.fieldName = this.field;
     this.modal.logConcessionSituation(this.concessionHeld);
-
   }
 
   getWPYearList() {
@@ -87,8 +107,7 @@ export class BoardComponent implements OnInit {
   }
 
   checkCompletedSteps() {
-    this.workprogram.getCompletedSteps(this.concessionHeld)
-    .subscribe(res => {
+    this.workprogram.getCompletedSteps(this.concessionHeld).subscribe((res) => {
       this.genk.isStep1 = res.step1;
       this.genk.isStep2 = res.step2;
       this.genk.isStep3 = res.step3;
@@ -98,4 +117,7 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  consolelog() {
+    console.log('rerendering board component');
+  }
 }

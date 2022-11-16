@@ -15,7 +15,7 @@ export class OilSpillReportingComponent implements OnInit {
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'OIL SPILL REPORTING';
     pagenum = 0;
-    selectedPage = 1;
+    selectedPage = 0;
     arrayRows = [];
     data: any[];
     year = [];
@@ -186,7 +186,8 @@ export class OilSpillReportingComponent implements OnInit {
     }
 
     assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+        //if(this.arrayRows.length>1) this.selectedPage=1;
         this.cd.markForCheck();
     }
 

@@ -35,6 +35,10 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+  
+
+
   toggle_presentation_evaluation(evac: HTMLDivElement) {
 
     if (!this.isPresentationEvaluation) {
