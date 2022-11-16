@@ -290,8 +290,7 @@ export class SWPNigeriaContentComponent implements OnInit {
       .saveNigeriaContenttraining(
         this.nigeriacontenttrainingBody,
         this.genk.wpYear,
-        this.genk.OmlName,
-        ''
+        this.genk.OmlName
       )
       .subscribe((result) => {
         this.modalService.logNotice(

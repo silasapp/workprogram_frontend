@@ -43,8 +43,7 @@ import { AllapprovalsComponent } from './allapprovals/allapprovals.component';
       MydeskComponent,
       AllcompaniesComponent,
       AllapprovalsComponent
-  
+
     ]
   })
-  export class ApplicationModule { }
-  
+  export class ApplicationModule{ }

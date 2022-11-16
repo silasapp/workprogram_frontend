@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
 import { AllApplicationsComponent } from './allapplications/allapplications.component';
@@ -18,7 +16,7 @@ const routes: Routes = [
   { path: 'viewapplication', component: ViewApplicationComponent},
   { path: 'allapprovals', component: AllapprovalsComponent},
   { path: 'mydesk', component: MydeskComponent},
-  
+
   ];
 
 @NgModule({

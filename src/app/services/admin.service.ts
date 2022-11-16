@@ -147,7 +147,7 @@ export class AdminService {
   }
 
 
-  
+
 
   getUser(id_: string) {
     var id = parseInt(id_);
@@ -241,7 +241,7 @@ export class AdminService {
         })
         )
       }
-    
+
       Post_FieldDetails(conbody: FieldDetails, id , actionToDo){
         debugger;
         return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_company_field`, conbody, {params: {id, actionToDo}})
@@ -264,6 +264,26 @@ export class AdminService {
     )
       .pipe(retry(this.num),
         map((response) => {
+          return response
+        })
+      )
+  }
+
+  uploadCompanyCode(conbody: FormData) {
+
+    return this.http.post<any>(`${environment.apiUrl}/admin/upload_companycode`, conbody)
+      .pipe(retry(this.num),
+        map((response) => {
+          return response
+        })
+      )
+  }
+
+  codefetch(url) {
+    return this.http.get<any>(`${environment.apiUrl}/admin/${url}`)
+      .pipe(retry(this.num),
+        map((response) => {
+          response.data = this.gen.lowerArray(response.data);
           return response
         })
       )

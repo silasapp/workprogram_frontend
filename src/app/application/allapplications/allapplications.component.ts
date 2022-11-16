@@ -75,7 +75,7 @@ export class AllApplicationsComponent implements OnInit {
     this.columnHeader = [];
     this.columnValue = [];
     data = this.filter(data);
-   
+
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
@@ -94,7 +94,7 @@ debugger;
     });
 
     resultArray.forEach(element => {
-     
+
       delete element['approvalRef'];
       delete element['categoryID'];
       delete element['companyID'];
@@ -111,7 +111,7 @@ debugger;
     return resultArray;
   }
   View_Application(event) {
-   
+
     this.workprogram.getApplication(event.target.value)
       .subscribe(res => {
         if (res.statusCode == 300) {
@@ -119,11 +119,11 @@ debugger;
         }
         else {
           this.genk.applicationDetails= res.data;
-          this.router.navigate(['/application/viewapplication']); 
+          this.router.navigate(['/application/viewapplication']);
         }
     });
   }
-  
+
 
 
 }

@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component:CompanyComponent,
-    loadChildren: () => import('./application/allapplications/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
   },
 
   {
