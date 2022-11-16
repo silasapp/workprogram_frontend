@@ -76,5 +76,31 @@
     text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
 }
 
-
-
+.inpdiv {
+    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+    width: 100%;
+    border-radius: 20px;
+    padding: 7px 10px;
+  }
+  .inpute {
+    //box-sizing: border-box;
+    padding: 3px;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: darkslategrey;
+  }
+  .demacation
+{
+    
+    border-left: 1px solid #E6E9ED;
+    border-right: 1px solid #E6E9ED;
+    border-top: 1px solid #E6E9ED;
+    border-bottom: 2px solid #00a65a;
+    background-color: #E6E9ED; 
+    text-align: left; 
+    vertical-align: middle; 
+    font-size:16px;
+    color:#117849;
+    margin: 10px 0px;
+}

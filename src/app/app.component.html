@@ -6,3 +6,65 @@
   {{status=='finish'?'check_circle' : 'block'  }}
 
 </mat-icon> -->
+
+<!-- <div *ngIf="coverModal" (click)="endCover()">
+  <div class="covermodal">
+    <div class="cvas">
+      <div class="coolspin"></div>
+    </div>
+
+    <div *ngIf="modalService.body" class="divwidehigh">
+      <div class="covertem">
+        <div class="dinabody">
+          <div class="divcent">
+            <mat-progress-spinner
+
+                [color]="color"
+        [mode]="mode"
+        [diameter]="40">
+    </mat-progress-spinner>
+            <ion-spinner *ngIf="coverModal" name="lines-small"></ion-spinner>
+            {{modalService.body}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!--The Error Modal-->
+<div *ngIf="eModal" class="modal" (click)="togYawa()">
+  <div class="modaltent">
+    <div class="delhead">
+      <span>{{modalService?.head}}</span>
+    </div>
+    <div class="delbody">
+      <div class="dbs">{{modalService?.body}}</div>
+    </div>
+    <div class="deltail">
+      <span class="ok">Ok</span>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="noteModal" class="modal" (click)="togNotice()">
+  <div class="modalnote">
+    <div class="notehead">
+      <span>{{userdata.head}}</span>
+    </div>
+    <div class="delbody">
+      <div class="dbs">{{userdata.body}}</div>
+    </div>
+    <div class="deltail">
+      <span class="ok">Ok</span>
+    </div>
+  </div>
+</div> -->
+
+
+<div #cover (click)="closeModal()">
+</div>
+
+
+
+

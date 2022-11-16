@@ -28,7 +28,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
-  uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
+  //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
   nigeriacontenttrainingBody: NIGERIA_CONTENT_Training;
 
 
@@ -54,8 +54,9 @@ export class SWPNigeriaContentComponent implements OnInit {
       {
         actual_Proposed_Year: new FormControl(this.staffdispositionBody.actual_Proposed_Year, [Validators.required]),
         expatriate_quota_positions: new FormControl(this.staffdispositionBody.expatriate_quota_positions, [Validators.required]),
+        utilized_EQ: new FormControl(this.staffdispositionBody.utilized_EQ, [Validators.required]),
         names_of_Parties: new FormControl(this.staffdispositionBody.utilized_EQ, [Validators.required]),
-        name_of_Court: new FormControl(this.staffdispositionBody.nigerian_Understudies, [Validators.required]),
+        nigerian_Understudies: new FormControl(this.staffdispositionBody.nigerian_Understudies, [Validators.required]),
         management_Foriegn: new FormControl(this.staffdispositionBody.management_Foriegn, [Validators.required]),
         management_Local: new FormControl(this.staffdispositionBody.management_Local, [Validators.required]),
         staff_Foriegn: new FormControl(this.staffdispositionBody.staff_Foriegn, [Validators.required]),
@@ -64,6 +65,7 @@ export class SWPNigeriaContentComponent implements OnInit {
 
     this.seniormanagementstaffForm = new FormGroup(
       {
+        do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff: new FormControl(this.seniormanagementstaffBody.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff, [Validators.required]),
         if_NO_why: new FormControl(this.seniormanagementstaffBody.if_NO_why, [Validators.required]),
         number_of_staff_released_within_the_year_: new FormControl(this.seniormanagementstaffBody.number_of_staff_released_within_the_year_, [Validators.required]),
         total_no_of_nigeria_senior_staff: new FormControl(this.seniormanagementstaffBody.total_no_of_nigeria_senior_staff, [Validators.required]),
@@ -75,10 +77,12 @@ export class SWPNigeriaContentComponent implements OnInit {
 
     this.uploadsuccessionForm = new FormGroup(
       {
+        actual_Proposed_Year: new FormControl(this.uploadsuccessionplanBody.actual_Proposed_Year, [Validators.required]),
+        actual_proposed: new FormControl(this.uploadsuccessionplanBody.actual_proposed, [Validators.required]),
         name_: new FormControl(this.uploadsuccessionplanBody.name_, [Validators.required]),
         understudy_: new FormControl(this.uploadsuccessionplanBody.understudy_, [Validators.required]),
         timeline_: new FormControl(this.uploadsuccessionplanBody.timeline_, [Validators.required]),
-        position_Occupied_: new FormControl(this.uploadsuccessionplanBody.position_Occupied_, [Validators.required]),
+        position_Occupied_: new FormControl(this.uploadsuccessionplanBody.position_Occupied_, [Validators.required])
       }, {})
 
       this.getNigeriaContentTraining();

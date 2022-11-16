@@ -12,7 +12,7 @@ export class UploadedCompanyComponent implements OnInit {
 
   genk: GenericService;
   cdr: ChangeDetectorRef;
-  title = 'NDR DATA';
+  title = 'COMPANY DETAILS';
   pagenum = 0;
   selectedPage = 1;
   arrayRows = [];
@@ -20,38 +20,31 @@ export class UploadedCompanyComponent implements OnInit {
   year = [];
     columns = [
       {
-          "columnDef": "companyname",
+          "columnDef": "company_name",
           "header": "COMPANY NAME"
       },
       {
-          "columnDef": "companyemail",
-          "header": "COMPANY EMAIL"
+          "columnDef": "address_of_company",
+          "header": "COMPANY ADDRESS"
       },
       {
   
-          "columnDef": "has_annual_ndr_subscription_fee_been_paid",
-          "header": "HAS ANNUAL NDR SUBSCRIPTION FEE BEEN PAID"
+          "columnDef": "contact_person",
+          "header": "CONTACT PERSON"
   
       },
       {
-        "columnDef": "are_you_up_to_date_with_your_ndr_data_submission",
-        "header": "ARE YOU UP TO DATE WITH YOUR NDR DATA SUBMISSION"
+        "columnDef": "phone_no",
+        "header": "PHONE NUMBER"
       },
       {
-          "columnDef": "when_was_the_date_of_your_last_ndr_submission",
-          "header": "WHEN WAS THE DATE OF YOUR LAST NDR SUBMISSION"
+          "columnDef": "email_address",
+          "header": "EMAIL"
       },
+      
       {
-          "columnDef": "upload_ndr_payment_receipt",
-          "header": "NDR PAYMENT RECEIPT"
-      },
-      {
-          "columnDef": "consession_type",
-          "header": "CONSESSION TYPE"
-      },
-      {
-        "columnDef": "year_of_wp",
-        "header": "YEAR"
+        "columnDef": "flag",
+        "header": " "
     }
   ]
   
@@ -83,7 +76,8 @@ export class UploadedCompanyComponent implements OnInit {
     }
   
     fetchdata(){
-     this.admin.fetch("get_companycodes").subscribe(
+      debugger;
+     this.admin.fetch("get_companylist").subscribe(
         (res) => {
           this.data = this.arrangeDate(res.data as any[]);
           this.assignDataRows();

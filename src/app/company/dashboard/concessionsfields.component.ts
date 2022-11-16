@@ -41,6 +41,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   f_isTabVisible: boolean;
   isAddConcession = false;
   isAddField = false;
+  isInsert = true;
 
   columns = [
     //   {
@@ -200,7 +201,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   ConcessionSubmit() {
-
+    debugger;
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
@@ -263,7 +264,7 @@ debugger;
 
 
   loadTable_Concession(data) {
-    debugger;
+    //debugger;
     this.c_ColumnHeader = [];
     this.c_ColumnValue = [];
     let datae: any[] = data;
@@ -294,7 +295,6 @@ debugger;
   }
 
   Delete_Concession(event) {
-
     let info = this.concessionBody as ConcessionDetails;
     this.adminservice
       .Post_ConcessionDetails(info, event.target.value, "DELETE")
@@ -309,12 +309,11 @@ debugger;
         }
       })
   }
+
   Edit_Concession(event) {
     let info = this.allConcessions as ConcessionDetails[];
     let con = info.filter(element => element.consession_Id == event.target.value);
-
     this.concessionBody = con[0];
-
   }
 
   Edit_Field(event) {
@@ -322,10 +321,9 @@ debugger;
     let con = info.filter(element => element.field_ID == event.target.value);
 
     this.fieldBody = con[0];
-
   }
-  loadTable_Field(data) {
 
+  loadTable_Field(data) {
     this.f_ColumnHeader = [];
     this.f_ColumnValue = [];
 

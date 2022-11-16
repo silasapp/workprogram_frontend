@@ -23,50 +23,50 @@ export class SWPDrillingOperationsComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
-quaterACOne = false;
-quaterACTwo = false;
-quaterACThree = false;
-quaterACFour = false;
-currentACQuater = 1;
+  quaterACOne = false;
+  quaterACTwo = false;
+  quaterACThree = false;
+  quaterACFour = false;
+  currentACQuater = 1;
 
-quaterACOneData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-quaterACTwoData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-quaterACThreeData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-quaterACFourData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+  quaterACOneData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+  quaterACTwoData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+  quaterACThreeData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+  quaterACFourData: DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
 
-quaterCWOneData: DRILLING_EACH_WELL_COST;
-quaterCWTwoData: DRILLING_EACH_WELL_COST;
-quaterCWThreeData: DRILLING_EACH_WELL_COST;
-quaterCWFourData: DRILLING_EACH_WELL_COST;
+  quaterCWOneData: DRILLING_EACH_WELL_COST;
+  quaterCWTwoData: DRILLING_EACH_WELL_COST;
+  quaterCWThreeData: DRILLING_EACH_WELL_COST;
+  quaterCWFourData: DRILLING_EACH_WELL_COST;
 
-quaterCPOneData: DRILLING_EACH_WELL_COST_PROPOSED;
-quaterCPTwoData: DRILLING_EACH_WELL_COST_PROPOSED;
-quaterCPThreeData: DRILLING_EACH_WELL_COST_PROPOSED;
-quaterCPFourData: DRILLING_EACH_WELL_COST_PROPOSED;
+  quaterCPOneData: DRILLING_EACH_WELL_COST_PROPOSED;
+  quaterCPTwoData: DRILLING_EACH_WELL_COST_PROPOSED;
+  quaterCPThreeData: DRILLING_EACH_WELL_COST_PROPOSED;
+  quaterCPFourData: DRILLING_EACH_WELL_COST_PROPOSED;
 
-discoveryFile?: File = null;
-hydrocarbonFile?: File = null;
-mediatype = 'doc';
-hydroNewName: string;
-hydroNameDoc: string;
-discoveryNewName: string;
-discoveryNameDoc: string;
+  discoveryFile?: File = null;
+  hydrocarbonFile?: File = null;
+  mediatype = 'doc';
+  hydroNewName: string;
+  hydroNameDoc: string;
+  discoveryNewName: string;
+  discoveryNameDoc: string;
 
-    constructor(
-      private cd: ChangeDetectorRef,
-      private workprogram: WorkProgramService,
-      private auth: AuthenticationService,
-      private gen: GenericService,
-      private modalService: ModalService
-    ) {
-      this.genk = gen;
-      this.modalService.concessionSitu
-    .subscribe(res => {
-      const rel = "QUARTER " + this.currentACQuater;
-      this.getDrilling(rel);
-    });
+  constructor(
+    private cd: ChangeDetectorRef,
+    private workprogram: WorkProgramService,
+    private auth: AuthenticationService,
+    private gen: GenericService,
+    private modalService: ModalService
+  ) {
+    this.genk = gen;
+    this.modalService.concessionSitu
+      .subscribe(res => {
+        const rel = "QUARTER " + this.currentACQuater;
+        this.getDrilling(rel);
+      });
     this.cd.markForCheck();
-    }
+  }
   ngOnInit(): void {
     this.genk.activeStep = 'STEP1';
     this.getDrilling("QUARTER 1");
@@ -107,277 +107,302 @@ discoveryNameDoc: string;
       }, {});
 
 
-   this.CostForm = new FormGroup(
-        {
-          well_name: new FormControl(this.costBody.well_name, [Validators.required]),
-          well_cost: new FormControl(this.categoryBody.well_cost, [Validators.required]),
-          surface_cordinates_for_each_well_in_degrees: new FormControl(this.categoryBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
-        }, {});
+    this.CostForm = new FormGroup(
+      {
+        well_name: new FormControl(this.costBody.well_name, [Validators.required]),
+        well_cost: new FormControl(this.categoryBody.well_cost, [Validators.required]),
+        surface_cordinates_for_each_well_in_degrees: new FormControl(this.categoryBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
+      }, {});
 
     this.CostProposedForm = new FormGroup(
-          {
-            well_name: new FormControl(this.costProposedBody.well_name, [Validators.required]),
-            well_cost: new FormControl(this.costProposedBody.well_cost, [Validators.required]),
-            surface_cordinates_for_each_well_in_degrees: new FormControl(this.costProposedBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
-          }, {});
- }
-
- get f() {
-  return this.CategoryForm.controls;
-}
-
-
- get quaterACClassOne() {
-  let list = '';
-  if (this.quaterACOne) {
-    if (this.currentACQuater === 1) {
-      list = 'currfilled curractive';
-    } else {
-      list = 'currfilled';
-    }
-    //list = 'currfilled currquarter';
-  } else {
-    if (this.currentACQuater === 1) {
-      list = 'currquarter';
-    } else {
-      list = '';
-    }
+      {
+        well_name: new FormControl(this.costProposedBody.well_name, [Validators.required]),
+        well_cost: new FormControl(this.costProposedBody.well_cost, [Validators.required]),
+        surface_cordinates_for_each_well_in_degrees: new FormControl(this.costProposedBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
+      }, {});
   }
-  return list
-}
 
-get quaterACClassTwo() {
-  let list = '';
-  if (this.quaterACTwo) {
-    if (this.currentACQuater === 2) {
-      list = 'currfilled curractive';
-    } else {
-      list = 'currfilled';
-    }
-  } else {
-    if (this.currentACQuater === 2) {
-      list = 'currquarter';
-    } else {
-      list = '';
-    }
+  get f() {
+    return this.CategoryForm.controls;
   }
-  return list
-}
 
-get quaterACClassThree() {
-  let list = '';
-  if (this.quaterACThree) {
-    if (this.currentACQuater === 3) {
-      list = 'currfilled curractive';
+
+  get quaterACClassOne() {
+    let list = '';
+    if (this.quaterACOne) {
+      if (this.currentACQuater === 1) {
+        list = 'currfilled curractive';
+      } else {
+        list = 'currfilled';
+      }
+
     } else {
-      list = 'currfilled';
+      if (this.currentACQuater === 1) {
+        list = 'currquarter';
+      } else {
+        list = '';
+      }
     }
-  } else {
-    if (this.currentACQuater === 3) {
-      list = 'currquarter';
-    } else {
-      list = '';
-    }
+    return list
   }
-  return list
-}
 
-get quaterACClassFour() {
-  let list = '';
-  if (this.quaterACFour) {
-    if (this.currentACQuater === 4) {
-      list = 'currfilled curractive';
+  get quaterACClassTwo() {
+    let list = '';
+    if (this.quaterACTwo) {
+      if (this.currentACQuater === 2) {
+        list = 'currfilled curractive';
+      } else {
+        list = 'currfilled';
+      }
     } else {
-      list = 'currfilled';
+      if (this.currentACQuater === 2) {
+        list = 'currquarter';
+      } else {
+        list = '';
+      }
     }
-  } else {
-    if (this.currentACQuater === 4) {
-      list = 'currquarter';
-    } else {
-      list = '';
-    }
+    return list
   }
-  return list
-}
 
-changeACQuater(quater: number, btn: HTMLButtonElement, btn2: HTMLButtonElement, btn3: HTMLButtonElement) {
-  if (quater === 1) {
-    this.currentACQuater = 1;
-    btn.textContent = "Save Quater 1";
-    btn2.textContent = "Save Quater 1";
-    btn3.textContent = "Save Quater 1";
-    this.categoryBody = this.quaterACOneData ? this.quaterACOneData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-    this.costBody = this.quaterCWOneData ? this.quaterCWOneData : {} as DRILLING_EACH_WELL_COST;
-    this.costProposedBody = this.quaterCPOneData ? this.quaterCPOneData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
+  get quaterACClassThree() {
+    let list = '';
+    if (this.quaterACThree) {
+      if (this.currentACQuater === 3) {
+        list = 'currfilled curractive';
+      } else {
+        list = 'currfilled';
+      }
+    } else {
+      if (this.currentACQuater === 3) {
+        list = 'currquarter';
+      } else {
+        list = '';
+      }
+    }
+    return list
+  }
+
+  get quaterACClassFour() {
+    let list = '';
+    if (this.quaterACFour) {
+      if (this.currentACQuater === 4) {
+        list = 'currfilled curractive';
+      } else {
+        list = 'currfilled';
+      }
+    } else {
+      if (this.currentACQuater === 4) {
+        list = 'currquarter';
+      } else {
+        list = '';
+      }
+    }
+    return list
+  }
+
+  changeACQuater(quater: number, btn: HTMLButtonElement, btn2: HTMLButtonElement, btn3: HTMLButtonElement) {
+    if (quater === 1) {
+      this.currentACQuater = 1;
+      btn.textContent = "Save Quater 1";
+      btn2.textContent = "Save Quater 1";
+      btn3.textContent = "Save Quater 1";
+      this.categoryBody = this.quaterACOneData ? this.quaterACOneData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+      this.costBody = this.quaterCWOneData ? this.quaterCWOneData : new DRILLING_EACH_WELL_COST();
+      this.costProposedBody = this.quaterCPOneData ? this.quaterCPOneData : new DRILLING_EACH_WELL_COST_PROPOSED();
+      this.cd.markForCheck();
+
+    }
+    if (quater === 2) {
+      this.currentACQuater = 2;
+      btn.textContent = "Save Quater 2";
+      btn2.textContent = "Save Quater 2";
+      btn3.textContent = "Save Quater 2";
+      this.categoryBody = this.quaterACTwoData ? this.quaterACTwoData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+      this.costBody = this.quaterCWTwoData ? this.quaterCWTwoData : {} as DRILLING_EACH_WELL_COST;
+      this.costProposedBody = this.quaterCPTwoData ? this.quaterCPTwoData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
+      this.cd.markForCheck();
+
+    }
+    if (quater === 3) {
+      this.currentACQuater = 3;
+      btn.textContent = "Save Quater 3";
+      btn2.textContent = "Save Quater 3";
+      btn3.textContent = "Save Quater 3";
+      this.categoryBody = this.quaterACThreeData ? this.quaterACThreeData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+      this.costBody = this.quaterCWThreeData ? this.quaterCWThreeData : {} as DRILLING_EACH_WELL_COST;
+      this.costProposedBody = this.quaterCPThreeData ? this.quaterCPThreeData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
+      this.cd.markForCheck();
+    }
+
+    if (quater === 4) {
+      this.currentACQuater = 4;
+      btn.textContent = "Save Quater 4";
+      btn2.textContent = "Save Quater 4";
+      btn3.textContent = "Save Quater 4";
+      this.categoryBody = this.quaterACFourData ? this.quaterACFourData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
+      this.costBody = this.quaterCWFourData ? this.quaterCWFourData : {} as DRILLING_EACH_WELL_COST;
+      this.costProposedBody = this.quaterCPFourData ? this.quaterCPFourData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
+      this.cd.markForCheck();
+    }
     this.cd.markForCheck();
-    //this.getGeophysical("QUARTER 1");
   }
-  if (quater === 2) {
-    this.currentACQuater = 2;
-    btn.textContent = "Save Quater 2";
-    btn2.textContent = "Save Quater 2";
-    btn3.textContent = "Save Quater 2";
-    this.categoryBody = this.quaterACTwoData ? this.quaterACTwoData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-    this.costBody = this.quaterCWTwoData ? this.quaterCWTwoData : {} as DRILLING_EACH_WELL_COST;
-    this.costProposedBody = this.quaterCPTwoData ? this.quaterCPTwoData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
+
+  saveWellCost() {
+    debugger;
+    this.costBody.id = 0;
+    this.costBody.qUATER = "QUARTER " + this.currentACQuater;
+    this.workprogram.saveWellCostQuarter(this.costBody, this.genk.wpYear, this.genk.OmlName).subscribe(res => {
+      this.modalService.logNotice("Success", res.message, 'success');
+    });
+  }
+  saveCostProposed() {
+    this.costProposedBody.id = 0;
+    this.costProposedBody.qUATER = "QUARTER " + this.currentACQuater;
+    this.workprogram.saveCostProposedQuarter(this.costProposedBody, this.genk.wpYear, this.genk.OmlName).subscribe(res => {
+      this.modalService.logNotice("Success", res.message, 'success');
+    });
+  }
+  getDrilling(quaterText: string) {
+
+    this.workprogram.getDrilling(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+      .subscribe(res => {
+        debugger;
+        if (res.drillOperationCategoriesWell) {
+          this.quaterACOneData = res.drillOperationCategoriesWell.filter(res => {
+            return res.quater === quaterText;
+          })[0];
+          if (this.quaterACOneData || this.quaterACOneData !== undefined) {
+            this.quaterACOneData.spud_date = this.genk.formDate(this.quaterACOneData?.spud_date);
+            this.quaterACOne = true;
+          } else {
+            this.quaterACOne = false;
+            this.quaterACOneData = this.quaterACOneData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          }
+
+
+          this.quaterACTwoData = res.drillOperationCategoriesWell.filter(res => {
+            this.quaterACTwo = res.quater === "QUARTER 2" ? true : false;
+            return res.quater === "QUARTER 2";
+          })[0];
+          if (this.quaterACTwoData || this.quaterACTwoData !== undefined) {
+            this.quaterACTwoData.spud_date = this.genk.formDate(this.quaterACTwoData.spud_date);
+            this.quaterACTwo = this.quaterACTwoData ? true : false;
+          } else {
+            this.quaterACTwo = false;
+            this.quaterACTwoData = this.quaterACTwoData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          }
+
+          this.quaterACThreeData = res.drillOperationCategoriesWell.filter(res => {
+            this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
+            return res.quater === "QUARTER 3";
+          })[0];
+          if (this.quaterACThreeData || this.quaterACThreeData !== undefined) {
+            this.quaterACThreeData.spud_date = this.genk.formDate(this.quaterACThreeData.spud_date);
+            this.quaterACThree = this.quaterACThreeData ? true : false;
+          } else {
+            this.quaterACThree = false;
+            this.quaterACThreeData = this.quaterACThreeData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          }
+
+          this.quaterACFourData = res.drillOperationCategoriesWell.filter(res => {
+            this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
+            return res.quater === "QUARTER 4";
+          })[0];
+          if (this.quaterACFourData || this.quaterACFourData !== undefined) {
+            this.quaterACFourData.spud_date = this.genk.formDate(this.quaterACFourData.spud_date);
+            this.quaterACFour = this.quaterACFourData ? true : false;
+          } else {
+            this.quaterACFour = false;
+            this.quaterACFourData = this.quaterACFourData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          }
+          this.categoryBody = this.quaterACOneData;
+
+
+
+          this.quaterCPOneData = res.drillEachCostProposed.filter(res => {
+            return res.quater === quaterText;
+          })[0] ?? new DRILLING_EACH_WELL_COST_PROPOSED();
+
+          this.quaterCPTwoData = res.drillEachCostProposed.filter(res => {
+            return res.quater === "QUARTER 2";
+          })[0] ?? new DRILLING_EACH_WELL_COST_PROPOSED();
+
+          this.quaterCPThreeData = res.drillEachCostProposed.filter(res => {
+            return res.quater === "QUARTER 3";
+          })[0] ?? new DRILLING_EACH_WELL_COST_PROPOSED();
+
+          this.quaterCPFourData = res.drillEachCostProposed.filter(res => {
+            return res.quater === "QUARTER 4";
+          })[0] ?? new DRILLING_EACH_WELL_COST_PROPOSED();
+          this.costProposedBody = this.quaterCPOneData;
+
+
+          this.quaterCWOneData = res.drillEachCost.filter(res => {
+            return res.quater === quaterText;
+          })[0] ?? new DRILLING_EACH_WELL_COST();
+
+          this.quaterCWTwoData = res.drillEachCost.filter(res => {
+            return res.quater === "QUARTER 2";
+          })[0] ?? new DRILLING_EACH_WELL_COST();
+
+          this.quaterCWThreeData = res.drillEachCost.filter(res => {
+            return res.quater === "QUARTER 3";
+          })[0] ?? new DRILLING_EACH_WELL_COST();
+
+          this.quaterCWFourData = res.drillEachCost.filter(res => {
+            return res.quater === "QUARTER 4";
+          })[0] ?? new DRILLING_EACH_WELL_COST();
+
+          this.costBody = this.quaterCWOneData;
+          this.cd.markForCheck();
+        }
+        });
     this.cd.markForCheck();
-    //this.getGeophysical("QUARTER 2");
   }
-  if (quater === 3) {
-    this.currentACQuater = 3;
-    btn.textContent = "Save Quater 3";
-    btn2.textContent = "Save Quater 3";
-    btn3.textContent = "Save Quater 3";
-    this.categoryBody = this.quaterACThreeData ? this.quaterACThreeData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-    this.costBody = this.quaterCWThreeData ? this.quaterCWThreeData : {} as DRILLING_EACH_WELL_COST;
-    this.costProposedBody = this.quaterCPThreeData ? this.quaterCPThreeData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
-    this.cd.markForCheck();
-    //this.getGeophysical("QUARTER 3");
+
+  saveHydroDoc(DeFile: any) {
+    this.hydrocarbonFile = <File>DeFile.target.files[0];
+    if (!this.hydrocarbonFile) {
+      return;
+    }
+    if (this.hydrocarbonFile.size < 1 || this.hydrocarbonFile.size > 1024 * 1024 * 50) {
+      this.CategoryForm.controls['hydrocarbonFile'].setErrors({ 'incorrect': true });
+      this.hydrocarbonFile = null;
+      return;
+    } else {
+      this.CategoryForm.controls['hydrocarbonFile'].setErrors(null);
+    }
+    this.hydroNewName = this.gen.getExpDoc(this.hydrocarbonFile.name, this.hydrocarbonFile.type);
+    this.hydroNameDoc = this.hydroNewName;
+
   }
-  if (quater === 4) {
-    this.currentACQuater = 4;
-    btn.textContent = "Save Quater 4";
-    btn2.textContent = "Save Quater 4";
-    btn3.textContent = "Save Quater 4";
-    this.categoryBody = this.quaterACFourData ? this.quaterACFourData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-    this.costBody = this.quaterCWFourData ? this.quaterCWFourData : {} as DRILLING_EACH_WELL_COST;
-    this.costProposedBody = this.quaterCPFourData ? this.quaterCPFourData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
-    this.cd.markForCheck();
-    //this.getGeophysical("QUARTER 4");
+
+  saveDiscoveryDoc(DeFile: any) {
+    this.discoveryFile = <File>DeFile.target.files[0];
+    if (!this.discoveryFile) {
+      return;
+    }
+    if (this.discoveryFile.size < 1 || this.discoveryFile.size > 1024 * 1024 * 50) {
+      this.CategoryForm.controls['discoveryFile'].setErrors({ 'incorrect': true });
+      this.discoveryFile = null;
+      return;
+    } else {
+      this.CategoryForm.controls['discoveryFile'].setErrors(null);
+    }
+    this.discoveryNewName = this.gen.getExpDoc(this.discoveryFile.name, this.discoveryFile.type);
+    this.discoveryNameDoc = this.discoveryNewName;
   }
-  this.cd.markForCheck();
-}
-
-saveWellCost(){
-
-}
-saveCostProposed(){
-  this.costProposedBody.id = 0;
-  this.workprogram.saveCostProposedQuarter(this.costProposedBody, this.genk.wpYear, this.genk.OmlName).subscribe(res => {
-    this.modalService.logNotice("Success", res.popText, 'success');
-  });
-}
-getDrilling(quaterText: string) {
-
-  this.workprogram.getDrilling(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
-  .subscribe(res => {
-     this.quaterACOneData = res.drillOperationCategoriesWell.filter(res => {
-      return res.quater === quaterText;
-    })[0];
-    this.quaterACOneData.spud_date = this.genk.formDate(this.quaterACOneData.spud_date);
-    this.quaterACOne = this.quaterACOneData ? true : false;
-
-      this.quaterACTwoData = res.drillOperationCategoriesWell.filter(res => {
-        this.quaterACTwo = res.quater === "QUARTER 2" ? true : false;
-      return res.quater === "QUARTER 2";
-    })[0];
-    this.quaterACTwoData.spud_date = this.genk.formDate(this.quaterACTwoData.spud_date);
-    this.quaterACTwo = this.quaterACTwoData ? true : false;
-
-    this.quaterACThreeData = res.drillOperationCategoriesWell.filter(res => {
-      this.quaterACThree = res.quater === "QUARTER 3" ? true : false;
-      return res.quater === "QUARTER 3";
-    })[0];
-    this.quaterACThreeData.spud_date = this.genk.formDate(this.quaterACThreeData.spud_date);
-    this.quaterACThree = this.quaterACThreeData ? true : false;
-
-    this.quaterACFourData = res.drillOperationCategoriesWell.filter(res => {
-      this.quaterACFour = res.quater === "QUARTER 4" ? true : false;
-      return res.quater === "QUARTER 4";
-    })[0];
-    this.quaterACFourData.spud_date = this.genk.formDate(this.quaterACFourData.spud_date);
-    //alert(this.quaterACFourData);
-    this.quaterACFour = this.quaterACFourData ? true : false;
-    this.categoryBody = this.quaterACOneData;
-
-
-
-
-    this.quaterCWOneData = res.drillEachCostProposed.filter(res => {
-      return res.quater === quaterText;
-    })[0];
-
-    this.quaterCWTwoData = res.drillEachCostProposed.filter(res => {
-      return res.quater === "QUARTER 2";
-    })[0];
-
-    this.quaterCWThreeData = res.drillEachCostProposed.filter(res => {
-      return res.quater === "QUARTER 3";
-    })[0];
-
-    this.quaterCWFourData = res.drillEachCostProposed.filter(res => {
-      return res.quater === "QUARTER 4";
-    })[0];
-    this.costBody = this.quaterCWOneData;
-
-
-
-
-    this.quaterCPOneData = res.drillEachCost.filter(res => {
-      return res.quater === quaterText;
-    })[0];
-
-    this.quaterCPTwoData = res.drillEachCost.filter(res => {
-      return res.quater === "QUARTER 2";
-    })[0];
-
-    this.quaterCPThreeData = res.drillEachCost.filter(res => {
-      return res.quater === "QUARTER 3";
-    })[0];
-
-    this.quaterCPFourData = res.drillEachCost.filter(res => {
-      return res.quater === "QUARTER 4";
-    })[0];
-
-    this.costProposedBody = this.quaterCPOneData;
-    this.cd.markForCheck();
-  });
-  this.cd.markForCheck();
-}
-
-saveHydroDoc(DeFile: any) {
-  this.hydrocarbonFile = <File>DeFile.target.files[0];
-  if (!this.hydrocarbonFile) {
-    return;
-  }
-  if (this.hydrocarbonFile.size < 1 || this.hydrocarbonFile.size > 1024 * 1024 * 50) {
-    this.CategoryForm.controls['hydrocarbonFile'].setErrors({ 'incorrect': true });
-    this.hydrocarbonFile = null;
-    return;
-  } else {
-    this.CategoryForm.controls['hydrocarbonFile'].setErrors(null);
-  }
-  this.hydroNewName = this.gen.getExpDoc(this.hydrocarbonFile.name, this.hydrocarbonFile.type);
-  this.hydroNameDoc = this.hydroNewName;
-  //let dockind = this.gen.getExt(this.hydrocarbonFile.name);
-}
-
-saveDiscoveryDoc(DeFile: any) {
-  this.hydrocarbonFile = <File>DeFile.target.files[0];
-  if (!this.hydrocarbonFile) {
-    return;
-  }
-  if (this.hydrocarbonFile.size < 1 || this.hydrocarbonFile.size > 1024 * 1024 * 50) {
-    this.CategoryForm.controls['hydrocarbonFile'].setErrors({ 'incorrect': true });
-    this.hydrocarbonFile = null;
-    return;
-  } else {
-    this.CategoryForm.controls['hydrocarbonFile'].setErrors(null);
-  }
-  this.discoveryNewName = this.gen.getExpDoc(this.discoveryFile.name, this.discoveryFile.type);
-  this.discoveryNameDoc = this.discoveryNewName;
-  //let dockind = this.gen.getExt(this.discoveryFile.name);
-}
 
   saveCategoryQuarter() {
     const formDat: FormData = new FormData();
+    this.categoryBody.qUATER = "QUARTER " + this.currentACQuater;
     for (const key in this.categoryBody) {
-        if (this.categoryBody[key]) {
-          formDat.append(key.toString(), this.categoryBody[key]);
-        }
-        if (key.toString() === 'id') {
-          formDat.delete(key);
-        }
+      if (this.categoryBody[key]) {
+        formDat.append(key.toString(), this.categoryBody[key]);
+      }
+      if (key.toString() === 'id') {
+        formDat.delete(key);
+      }
 
     }
     if (this.discoveryFile) {
@@ -388,10 +413,9 @@ saveDiscoveryDoc(DeFile: any) {
     }
 
     this.workprogram.saveCategoryQuarter(formDat, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(res => {
-
+      this.modalService.logNotice("Success", res.message, 'success');
     });
 
-
-}
+  }
 
 }

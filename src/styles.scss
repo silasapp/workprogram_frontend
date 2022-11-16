@@ -63,3 +63,128 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@keyframes lane {
+  0% {margin-right: auto; background-color: grey;}
+  25% {margin-left: 20%; background-color: hotpink;}
+  50% {margin-left: 40%; background-color: grey;}
+  75% {margin-left: 60%; background-color: teal;}
+  100% {margin-left: 80%; background-color: goldenrod;}
+}
+
+.covermodal {
+  display: block;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.covertem{
+  background-color: white;
+  box-shadow: 1px 2px 1px rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+}
+
+.cvas {
+  width: 95%;
+  height: 0.5vh;
+  background-color: rgb(155, 186, 252);
+}
+
+.coolspin {
+  background-color: rgb(100, 100, 100);
+  width: 25%;
+  height: 1vh;
+  animation: lane 1.5s alternate infinite;
+}
+
+.dinabody {
+  padding: 3px 0;
+  font-size: 14px;
+}
+
+.dinamodal{
+  background-color: dimgrey;
+  border: 1px solid #888;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.divcent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divmid {
+  display: flex;
+  align-items: center;
+}
+.divmidwide {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.divwidehigh {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid teal;
+  border-color: teal transparent teal transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+

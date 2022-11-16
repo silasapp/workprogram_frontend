@@ -38,3 +38,10 @@ export class FieldDetails{
     concession_Name: string;
     field_Name: string;
 }
+
+export class CodeFields{
+    id: number;
+    companycode: string;
+    companyname: string;
+    isactive: string;
+}

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SWPHseComponent } from './hse.component';
+import { SWPRequirementComponent } from './requirement.component';
 import { SWPScdpComponent } from './scdp.component';
+
+
+
 
 const routes: Routes = [
 {
@@ -16,6 +20,11 @@ const routes: Routes = [
   path: 'scdp',
   component: SWPScdpComponent
 },
+{
+  path: 'requirement',
+  component: SWPRequirementComponent
+},
+
 ];
 
 @NgModule({

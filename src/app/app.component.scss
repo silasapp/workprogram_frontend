@@ -1,0 +1,128 @@
+@keyframes lane {
+  0% {margin-right: auto; background-color: grey;}
+  25% {margin-left: 20%; background-color: hotpink;}
+  50% {margin-left: 40%; background-color: grey;}
+  75% {margin-left: 60%; background-color: teal;}
+  100% {margin-left: 80%; background-color: goldenrod;}
+}
+
+.covermodal {
+  display: block;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.covertem{
+  background-color: white;
+  box-shadow: 1px 2px 1px rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+}
+
+.cvas {
+  width: 95%;
+  height: 0.5vh;
+  background-color: rgb(155, 186, 252);
+}
+
+.coolspin {
+  background-color: rgb(100, 100, 100);
+  width: 25%;
+  height: 1vh;
+  animation: lane 1.5s alternate infinite;
+}
+
+.dinabody {
+  padding: 3px 0;
+  font-size: 14px;
+}
+
+.dinamodal{
+  background-color: dimgrey;
+  border: 1px solid #888;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.divcent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divmid {
+  display: flex;
+  align-items: center;
+}
+.divmidwide {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.divwidehigh {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+.modalbox {
+border-bottom: solid 1px silver;
+padding: 1.5vh 3vh;
+background-color: white;
+}
+
+.modaltent{
+  margin: 0 auto;
+  background-color: white;
+}
+
+.delbody {
+  display: flex;
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.delhead {
+    padding: 5px;
+    background-color: #d9534f;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.deltail {
+  text-align: right;
+  padding: 1% 4% 3% 1%;
+}
+
+.ok {
+  border: solid 1px grey;
+  padding: 1px 10px 1px 10px;
+  margin: 0 5%;
+}
+

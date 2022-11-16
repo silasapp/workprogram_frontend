@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, NgZone, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { GenericService } from 'src/app/services';
 import { WorkprogrammeReportService } from '../../services/workprogramme-report.service'
 import * as am5 from '@amcharts/amcharts5';
@@ -15,8 +15,9 @@ declare var $: any;
 })
 export class WorkProgramReportComponent implements OnInit {
   private root: am5.Root;
-  genk: GenericService;
-  cdr: ChangeDetectorRef;
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
+  genk: GenericService; cdr: ChangeDetectorRef;
   title = 'General Report';
   pagenum = 0;
   selectedPage = 1;

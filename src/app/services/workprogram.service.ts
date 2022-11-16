@@ -26,6 +26,7 @@ import { facilitiesProjectPerformance, newTechnologyAndConformityAssessment, oil
 import { INITIAL_WELL_COMPLETION_JOB1, WORKOVERS_RECOMPLETION_JOB1 } from '../models/step2-initial';
 import { LEGAL_ARBITRATION, LEGAL_LITIGATION, NIGERIA_CONTENT_QUESTION, NIGERIA_CONTENT_Training, NIGERIA_CONTENT_Upload_Succession_Plan, STRATEGIC_PLANS_ON_COMPANY_BASES } from '../company/workprogram/step4/step4-NCQ.model';
 import { FIELD_DEVELOPMENT_PLAN, GAS_PRODUCTION_ACTIVITY, OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED, OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity, OIL_CONDENSATE_PRODUCTION_ACTIVITy, RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE } from '../models/step2-FIPR.model';
+import { Royalty } from '../models/step1-royalty.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,15 @@ getAppsOnMyDesk(){
   .pipe(retry(this.num),
   map((response) => {
     return response
+  })
+  )
+}
+
+getCompletedSteps(concessionName){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response;
   })
   )
 }
@@ -374,7 +384,6 @@ saveReserveUpdateCurrent(conbody: RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESER
 }
 
 post_Budget(budget: budgetActualExpenditure,  year: string, omlName: string, fieldName: string, id, actionToDo){
-
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`, budget, {params: {year: year, omlName: omlName, fieldName, id, actionToDo}})
   .pipe(retry(this.num),
   map((response) => {
@@ -384,7 +393,6 @@ post_Budget(budget: budgetActualExpenditure,  year: string, omlName: string, fie
 }
 
 post_Exploratory(budget: exploratoryActivities,  year: string, omlName: string, fieldName: string, id, actionToDo){
-
   return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`, budget, {params: {year: year, omlName: omlName, fieldName, id, actionToDo}})
   .pipe(retry(this.num),
   map((response) => {
@@ -1088,6 +1096,15 @@ getCrudeOilProduction(year: string) {
   )
 }
 
+GetGasProductionReport(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/report/Get_Gas_Production_Report`, {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
 getOilProductionText(year: string) {
   return this.http.get<any>(`${environment.apiUrl}/report/Get_Crude_Oil_Production_Report_Content`, {params: {year: year}})
   .pipe(retry(this.num),
@@ -1183,6 +1200,26 @@ getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
 
   saveAddStaffDisposition(conbody: NIGERIA_CONTENT_Training, year: string, omlName: string, fieldName: string){
     return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      return response
+    })
+    )
+  }
+
+  saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string){
+    debugger;
+    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName}})
+    .pipe(retry(this.num),
+    map((response) => {
+      debugger;
+      return response
+    })
+    )
+  }
+
+  getRoyalty( omlName: string, year: string,){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {params: { myyear: year, omlName: omlName, }})
     .pipe(retry(this.num),
     map((response) => {
       return response

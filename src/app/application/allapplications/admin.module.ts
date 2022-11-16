@@ -17,6 +17,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UploadCodeComponent } from '../../admin/upload-code/uploadcode.component';
 import { ReportEditorComponent } from '../../admin/report-editor/reporteditor.component';
+import { UploadCodeComponent } from './upload-code/uploadcode.component';
+import { ReportEditorComponent } from './report-editor/reporteditor.component';
+import { ParameterConfigComponent } from './parameterconfig/parameter.component';
 
 
 
@@ -43,7 +46,7 @@ import { ReportEditorComponent } from '../../admin/report-editor/reporteditor.co
     UpdateUserComponent,
     UploadCodeComponent,
     ReportEditorComponent,
-
+    ParameterConfigComponent
   ]
 })
 export class AdminModule { }

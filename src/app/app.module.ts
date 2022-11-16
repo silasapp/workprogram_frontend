@@ -17,6 +17,7 @@ import { ViewApplicationComponent } from './application/viewapplication/viewappl
 import { ProcessApplicationComponent } from './application/process-application/process-application.component';
 import { AllApplicationsComponent } from './application/allapplications/allapplications.component';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 //import { ConcessionsFieldsComponent } from './company/concessions-fields/concessions-fields.component';
 
 
@@ -33,6 +34,7 @@ import { AllApplicationsComponent } from './application/allapplications/allappli
     HttpClientModule,
     MatSliderModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     CompanyModule,
     NgChartsModule
   ],

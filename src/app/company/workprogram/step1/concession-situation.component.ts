@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import { CONCESSION_SITUATION } from '../../../models/step1-concession.model';
+import { Royalty } from '../../../models/step1-royalty.model';
 
 @Component({
   templateUrl: './concession-situation.component.html',
@@ -12,6 +13,8 @@ import { CONCESSION_SITUATION } from '../../../models/step1-concession.model';
 export class SWPConcessionSituationComponent implements OnInit {
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
+  RoyaltyForm: FormGroup;
+  royaltyBody: Royalty = {} as Royalty;
   wkpYear: string;
   wkpYearList = [];
   concessionHeld: string;
@@ -22,6 +25,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -31,12 +35,14 @@ export class SWPConcessionSituationComponent implements OnInit {
   ) {
     this.genk = gen;
     this.modalService.concessionSitu
-    .subscribe(res => {
-      this.getConcessionHeld();
-    });
+      .subscribe(res => {
+        this.getConcessionHeld();
+        this.getRoyaltyHeld();
+      });
   }
 
   ngOnInit(): void {
+
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
@@ -46,11 +52,11 @@ export class SWPConcessionSituationComponent implements OnInit {
         area: new FormControl(this.concessionBody.area, [Validators.required]),
         contract_Type: new FormControl(this.concessionBody.contract_Type, [Validators.required]),
         geological_location: new FormControl(this.concessionBody.geological_location, [Validators.required]),
-        terrain: new FormControl(this.concessionBody.terrain, [Validators.required, ]),
+        terrain: new FormControl(this.concessionBody.terrain, [Validators.required,]),
         equity_distribution: new FormControl(this.concessionBody.equity_distribution, [Validators.required]),
         no_of_field_producing: new FormControl(this.concessionBody.no_of_field_producing, [Validators.required]),
         date_of_Grant_Expiration: new FormControl(this.concessionBody.date_of_Grant_Expiration, [Validators.required]),
-        date_of_Expiration: new FormControl(this.concessionBody.date_of_Expiration,[Validators.required]),
+        date_of_Expiration: new FormControl(this.concessionBody.date_of_Expiration, [Validators.required]),
         has_Signature_Bonus_been_paid: new FormControl(this.concessionBody.has_Signature_Bonus_been_paid, [Validators.required]),
         has_the_Concession_Rentals_been_paid: new FormControl(this.concessionBody.has_the_Concession_Rentals_been_paid, [Validators.required]),
         is_there_an_application_for_renewal: new FormControl(this.concessionBody.is_there_an_application_for_renewal, [Validators.required]),
@@ -69,9 +75,18 @@ export class SWPConcessionSituationComponent implements OnInit {
         area_in_square_meter_based_on_company_records: new FormControl(this.concessionBody.area_in_square_meter_based_on_company_records, [Validators.required]),
         comment: new FormControl(this.concessionBody.comment, [Validators.required])
       }, {});
-      this.getConcessionHeld();
-      //this.concessionBody = this.genk.concessionData;
-      //this.concessionHeldList = this.genk.OMLList;
+
+    this.RoyaltyForm = new FormGroup(
+      {
+        crude_Oil_Royalty: new FormControl(this.royaltyBody.crude_Oil_Royalty, [Validators.required]),
+        gas_Sales_Royalty: new FormControl(this.royaltyBody.gas_Sales_Royalty, [Validators.required]),
+        gas_Flare_Payment: new FormControl(this.royaltyBody.gas_Flare_Payment, [Validators.required]),
+        //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
+        miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [Validators.required]),
+      }, {});
+
+    this.getConcessionHeld();
+    this.getRoyaltyHeld();
     this.cd.markForCheck();
   }
 
@@ -87,24 +102,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  // changeConcessionHeld() {
-  //   this.workprogram.getFormOne(this.genk.OmlName, this.genk.wpYear)
-  //   .subscribe((res) => {
-  //       let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-  //       this.genk.OmlName = conInfo.concession_Held;
-  //       this.genk.wpYear = conInfo.year;
-  //       conInfo.date_of_Grant_Expiration = this.genk.formDate(
-  //         conInfo.date_of_Grant_Expiration
-  //       );
-  //       conInfo.date_of_Expiration = this.genk.formDate(
-  //         conInfo.date_of_Expiration
-  //       );
-  //       this.concessionBody = conInfo;
-  //       this.genk.concessionData = conInfo;
-  //       this.cd.markForCheck();
-  //       this.loadTable();
-  //     });
-  // }
+
 
   getConcessionHeld() {
     this.workprogram
@@ -112,7 +110,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         debugger;
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-        //console.log(conInfo);
+
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
@@ -131,6 +129,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
+          debugger;
           this.cd.markForCheck();
         }
         else {
@@ -145,15 +144,45 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.genk.isStep1 = true;
           this.cd.markForCheck();
           this.loadTable();
+          debugger;
+
         }
+        this.getRoyaltyHeld();
+
+      });
+  }
+
+  getRoyaltyHeld() {
+    this.workprogram
+      .getRoyalty(this.genk.OmlName, this.genk.wpYear,)
+      .subscribe((res) => {
+        debugger;
+        this.royaltyBody = res.royalty as Royalty;
+        this.cd.markForCheck();
+
+        this.genk.isStep1 = true;
+        this.cd.markForCheck();
+        this.loadTable();
+
+      });
+  }
+
+  submitroyalty() {
+
+
+
+
+    this.workprogram.saveRoyalty(this.RoyaltyForm.getRawValue(), this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+      .subscribe(res => {
+        //this.RoyaltyForm.reset();
+        this.modalService.logNotice("Success", res.message, 'success');
       });
   }
 
 
 
   submit() {
-    //debugger;
-    //let salel = {} as CONCESSION_SITUATION;
+    debugger;
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration = this.concessionBody.date_of_Expiration.includes("T00:00:00") ? this.concessionBody.date_of_Expiration : this.concessionBody.date_of_Expiration + "T00:00:00";
     }
@@ -165,18 +194,13 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.concessionBody.no_of_field_producing = this.concessionBody.no_of_field_producing.toString();
     this.concessionBody.area = this.concessionBody.area.toString();
     this.concessionBody.area_in_square_meter_based_on_company_records = this.concessionBody.area_in_square_meter_based_on_company_records.toString();
-    //this.concessionBody.id =  0;
+
     this.concessionBody.year = this.wkpYear;
     this.concessionBody.concession_Held = this.concessionHeld;
-    // for (let item in this.concessionBody) {
-    //   //console.log(item);
-    //   if (item != 'id' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID' && item != 'field_ID') {
-    //     salel[this.genk.upperText(item)] = this.concessionBody[item].toString() ?? '';
-    //   }
-    // }
+
     console.log(this.concessionBody);
     this.workprogram.concessionSituation(this.concessionBody, this.genk.wpYear, this.genk.OmlName)
-      .subscribe( res => {
+      .subscribe(res => {
         this.modalService.logNotice("Success", res.message, 'success');
       });
   }

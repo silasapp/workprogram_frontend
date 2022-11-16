@@ -1,26 +1,31 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReportService } from 'src/app/services/report.service';
 import { GenericService } from '../services';
 
 @Component({
   selector: 'app-oil-and-gas-maintenance-projects',
   templateUrl: 'ndr-report.component.html',
-  styleUrls: ['ndr-report.component.scss'],
+   styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
+
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OilAndGasMaintenanceProjectsComponent implements OnInit {
-    genk: GenericService;
-    cdr: ChangeDetectorRef;
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>; 
+      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>; 
+      genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'OIL AND GAS MAINTENANCE PROJECTS';
     pagenum = 0;
     selectedPage = 1;
     arrayRows = [];
     data: any[];
     year = [];
-
-    columns = [
+    selectedColumns: any[] = [];
+    isTableOpt = false;
+    isSpecifyColumns = false;
+  
+      columns = [
       {
-          "columnDef": "companyName",
+          "columnDef":  "companyName",
           "header": "COMPANY NAME"
       },
       {
@@ -147,6 +152,135 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": "COMMENT "
       }];
 
+      repcolumns = [
+        {
+            "columnDef":  "companyName",
+            "header": "COMPANY NAME"
+        },
+        {
+            "columnDef": "companyemail",
+            "header": "COMPANY EMAIL"
+        },
+        {
+            "columnDef": "year_of_WP",
+            "header": "YEAR"
+        },
+        {
+          "columnDef": "consession_Type",
+          "header": "CONSESSION TYPE"
+      },
+      {
+          "columnDef": "terrain",
+          "header": "TERRAIN"
+      },
+      {
+          "columnDef": "contract_Type",
+          "header": "CONTRACT TYPE"
+      },
+        {
+            "columnDef": "major_Projects",
+            "header": "MAJOR PROJECTS"
+        },
+        {
+            "columnDef": "name",
+            "header": " NAME"
+        },
+        {
+            "columnDef": "objective_Drivers_",
+            "header": "OBJECTIVE DRIVERS "
+        },
+        {
+            "columnDef": "approval_License_Permits",
+            "header": "APPROVAL LICENSE PERMITS"
+        },
+        {
+            "columnDef": "completion_Status",
+            "header": "COMPLETION STATUS"
+        },
+        {
+            "columnDef": "conceptual",
+            "header": "CONCEPTUAL"
+        },
+        {
+            "columnDef": "feed",
+            "header": "FEED"
+        },
+        {
+            "columnDef": "detailed_Engineering",
+            "header": "DETAILED ENGINEERING"
+        },
+        {
+            "columnDef": "construction_Commissioning_",
+            "header": "CONSTRUCTION COMMISSIONING "
+        },
+        {
+            "columnDef": "production_Product_Offtakers",
+            "header": "PRODUCTION PRODUCT OFFTAKERS"
+        },
+        {
+            "columnDef": "challenges",
+            "header": "CHALLENGES"
+        },
+        {
+            "columnDef": "project_Timeline",
+            "header": "PROJECT TIMELINE"
+        },
+        {
+            "columnDef": "new_Technology_",
+            "header": "NEW TECHNOLOGY "
+        },
+        {
+            "columnDef": "has_it_been_adopted_by_DPR_",
+            "header": "HAS IT BEEN ADOPTED BY DPR "
+        },
+       
+        {
+            "columnDef": "planned_ongoing_and_routine_maintenance",
+            "header": "PLANNED ONGOING AND ROUTINE MAINTENANCE"
+        },
+        {
+            "columnDef": "actual_year",
+            "header": "ACTUAL YEAR"
+        },
+        {
+            "columnDef": "proposed_year",
+            "header": "PROPOSED YEAR"
+        },
+        
+        {
+            "columnDef": "actual_capital_expenditure_Current_year_NGN",
+            "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR NGN"
+        },
+        {
+            "columnDef": "actual_capital_expenditure_Current_year_USD",
+            "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR USD"
+        },
+        {
+            "columnDef": "proposed_Capital_Expenditure_NGN",
+            "header": "PROPOSED CAPITAL EXPENDITURE NGN"
+        },
+        {
+            "columnDef": "proposed_Capital_Expenditure_USD",
+            "header": "PROPOSED CAPITAL EXPENDITURE USD"
+        },
+        {
+            "columnDef": "project_Stage",
+            "header": "PROJECT STAGE"
+        },
+        {
+            "columnDef": "nigerian_Content_Value",
+            "header": "NIGERIAN CONTENT VALUE"
+        },
+        
+        {
+            "columnDef": "actual_Proposed",
+            "header": "ACTUAL PROPOSED"
+        },
+         {
+            "columnDef": "comment_",
+            "header": "COMMENT "
+        }];
+
       constructor(private report: ReportService,
         private cd: ChangeDetectorRef,
         private gen: GenericService) {
@@ -218,15 +352,112 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
         this.selectedPage = Number(value);
         this.assignDataRows();
     }
+resize(e) {
+      let value = e.target.value;
+      if (value === 'all') {
+          value = this.pagenum * this.genk.sizePerPage
+      }
+      this.genk.sizePerPage = Number(value);
+      this.assignDataRows();
+      this.assignPageNum();
+      this.cd.markForCheck();
+  }
 
-    resize(e) {
-        let value = e.target.value;
-        if (value === 'all') {
-            value = this.pagenum * this.genk.sizePerPage
-        }
-        this.genk.sizePerPage = Number(value);
-        this.assignDataRows();
-        this.assignPageNum();
-        this.cd.markForCheck();
+  togOptions() {
+    if (!this.isTableOpt) {
+      this.isTableOpt = true;
+    } else {
+      this.isTableOpt = false;
     }
+    this.cd.markForCheck();
+  }
+  togSpecifyColumns() {
+    if (!this.isSpecifyColumns) {
+      this.isSpecifyColumns = true;
+      this.columns = this.repcolumns;
+      this.selectedColumns = [];
+    } else {
+      this.isSpecifyColumns = false;
+    }
+    this.cd.markForCheck();
+  }
+
+  pickColumn(value: string, checked: boolean) {
+    if (checked) {
+      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      this.selectedColumns.push(val);
+    }
+    else {
+      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+      this.selectedColumns = remainingArr;
+    }
+    this.cd.markForCheck;
+  }
+
+  selectColumns() {
+    this.columns = this.selectedColumns;
+    this.isSpecifyColumns = false;
+    this.cd.markForCheck();
+  }
+
+  plotDoublePieChart() {
+    debugger;
+    if (this.selectedColumns.length > 2) {
+      alert('Can not plot this chart');
+    }
+    else {
+      debugger;
+      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+      const node = document.createElement("div");
+      node.style.width = '100%';
+      node.style.height = '500px';
+      this.myChartBox.nativeElement.appendChild(node);
+      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+      let sele1 = this.selectedColumns[0].columnDef;
+      let sele2 = this.selectedColumns[1].columnDef;
+
+      this.myChartBox.nativeElement.style.display = 'block';
+      if (this.selectedColumns.length === 2) {
+        let reportdata = this.data;
+        let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+      }
+    }
+  }
+
+  plotDoubleBarChart() {
+    debugger;
+    let totalString = "";
+    if (this.selectedColumns.length > 2) {
+      alert('Can not plot this chart');
+    }
+    else {
+
+      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+      const node = document.createElement("div");
+      node.style.width = '100%';
+      node.style.height = '500px';
+      this.myChartBox.nativeElement.appendChild(node);
+      let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+      let sele1 = this.selectedColumns[0].columnDef;
+      let sele2 = this.selectedColumns[1].columnDef;
+
+      this.myChartBox.nativeElement.style.display = 'block';
+      if (this.selectedColumns.length === 2) {
+        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        for (var i = 0; i < chartdata.length; i++) {
+          totalString += chartdata[i].base;
+        }
+        if (totalString.length > 70) {
+          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+        }
+        else {
+          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+        }
+      }
+    }
+  }
+
+
+  
 }

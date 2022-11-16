@@ -42,7 +42,7 @@ export class GenericService {
   OmlName: string;
   OmlID: number;
   fieldName: string;
-  fieldWell: string;
+  fieldWell: string = 'GAS WELL';
   fieldID: number;
   OMLList = [];
   Field_List = [];
@@ -434,13 +434,13 @@ contractType = [
   }
 
   addCurrencyDecimal(event) {
-    let e = event.target as HTMLInputElement;
-    let term = parseFloat(e.value.toString().replace(/,+/g, '')).toFixed(2);
+      let e = event.target as HTMLInputElement;
+      let term = parseFloat(e.value.toString().replace(/,+/g, '')).toFixed(2);
 
-    let halfone = this.formatNum(term.split('.')[0]);
-    let halftwo = term.split('.')[1];
-    e.value = (halfone + "." + halftwo);
-    return e.value;
+      let halfone = this.formatNum(term.split('.')[0]);
+      let halftwo = term.split('.')[1];
+      e.value = (halfone + "." + halftwo);
+      return e.value;
   }
 
   restrictData(e) {

@@ -58,6 +58,7 @@ export class AddConcessionComponent implements OnInit {
       this.fetchCompany();
       this.genk.sizePerPage = this.genk.sizeten;
       this.initForm();
+      this.concessionForm.reset();
       //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
       //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
     }
@@ -99,6 +100,7 @@ initForm() {
      this.adminservice.getConcessions(e.target.value).subscribe(
         (res) => {
           this.data = res.data
+       
           this.assignDataRows();
           this.assignPageNum();
           this.cd.markForCheck();
@@ -106,7 +108,7 @@ initForm() {
       )
     }
   fetchCompany(){
-    this.adminservice.fetch("get_companylist").subscribe(
+       this.adminservice.fetch("get_companylist").subscribe(
       (res) => {
         this.company = res.data;
         this.cd.markForCheck();
@@ -152,16 +154,25 @@ initForm() {
     
 
   onSubmit() {
+debugger;
     this.adminservice.addConcession(this.concessionForm.getRawValue()).subscribe(
+      
       (res) => {
+       
         if(res.statusCode == 200){
+          debugger;
+       
           this.Alert("Success", res.message,  "success")
+        
         }
         else{
+          debugger;
+        
           this.Alert("Error",res.message, "error")
         }
         // this.fetchdata();
-        this.initForm();
+        debugger;
+       
       }
     )
   }
