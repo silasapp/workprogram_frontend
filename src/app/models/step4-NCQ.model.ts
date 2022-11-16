@@ -175,6 +175,7 @@ export class LEGAL_ARBITRATION {
   companyName: string = '';
   companyemail: string = '';
   year_of_WP: string = '';
+  anyArbitration: string = '';
   terrain: string = '';
   contract_Type: string = '';
   consession_Type: string = '';

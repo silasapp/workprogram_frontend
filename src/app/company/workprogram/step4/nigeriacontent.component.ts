@@ -190,10 +190,9 @@ export class SWPNigeriaContentComponent implements OnInit {
 
     this.uploadsuccessionForm = new FormGroup(
       {
-        actual_Proposed_Year: new FormControl(
-          this.uploadsuccessionplanBody.actual_Proposed_Year,
-          [Validators.required]
-        ),
+        actual_Proposed_Year: new FormControl(this.uploadsuccessionplanBody, [
+          Validators.required,
+        ]),
         actual_proposed: new FormControl(
           this.uploadsuccessionplanBody.actual_proposed,
           [Validators.required]
@@ -395,9 +394,13 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   deleteNCT(row: any) {
-    console.log('row data', row);
     this.workprogram
-      .deleteNigeriaContentTraining(row.id)
+      .deleteNigeriaContentTraining(
+        row,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        ''
+      )
       .subscribe((result) => {
         this.modalService.logNotice(
           'Deletion was successful!',

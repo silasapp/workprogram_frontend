@@ -2344,10 +2344,24 @@ export class WorkProgramService {
       );
   }
 
-  deleteNigeriaContentTraining(id: any) {
+  deleteNigeriaContentTraining(
+    conbody: any,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
     return this.http
-      .delete<any>(
-        `${environment.apiUrl}/workprogramme/delete-nigeria-content-training?id=${id}`
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
+        conbody,
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo: 'DELETE',
+          },
+        }
       )
       .pipe(retry(this.num));
   }
@@ -2709,6 +2723,28 @@ export class WorkProgramService {
       );
   }
 
+  deleteLitigation(
+    conbody: any,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/POST_LEGAL_LITIGATION`,
+        conbody,
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo: 'DELETE',
+          },
+        }
+      )
+      .pipe(retry(this.num));
+  }
+
   saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
     return this.http
       .post<any>(
@@ -2722,6 +2758,28 @@ export class WorkProgramService {
           return response;
         })
       );
+  }
+
+  deleteArbitration(
+    conbody: any,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_legal_arbitration`,
+        conbody,
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo: 'DELETE',
+          },
+        }
+      )
+      .pipe(retry(this.num));
   }
 
   getlegalLitigation(year: string, fieldName: string, omlName: string) {
@@ -2779,7 +2837,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
