@@ -81,7 +81,7 @@ import {
   NIGERIA_CONTENT_Training,
   NIGERIA_CONTENT_Upload_Succession_Plan,
   STRATEGIC_PLANS_ON_COMPANY_BASES,
-} from '../company/workprogram/step4/step4-NCQ.model';
+} from '../models/step4-NCQ.model';
 import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE,
@@ -770,6 +770,26 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
+      );
+  }
+
+  getReserveUpdateDepletionRate(
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/Report/RESERVES_UPDATES_DEPLETION_RATE`,
+        {
+          params: { omlName: omlName, fieldName: fieldName, myyear: year },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
       );
   }
 
@@ -2324,16 +2344,25 @@ export class WorkProgramService {
       );
   }
 
+  deleteNigeriaContentTraining(id: any) {
+    return this.http
+      .delete<any>(
+        `${environment.apiUrl}/workprogramme/delete-nigeria-content-training?id=${id}`
+      )
+      .pipe(retry(this.num));
+  }
+
   saveNigeriaContenttraining(
     conbody: NIGERIA_CONTENT_Training,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
-        conbody,
-        { params: { year: year, omlName: omlName } }
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_training?omlName=${omlName}&fieldName=${fieldName}&year=${year}`,
+        conbody
+        // { params: { omlName: omlName, fieldName: fieldName, year: year } }
       )
       .pipe(
         retry(this.num),
@@ -2617,7 +2646,6 @@ export class WorkProgramService {
   }
 
   getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
-   debugger;
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`,
@@ -2780,7 +2808,6 @@ export class WorkProgramService {
   }
 
   saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -2788,7 +2815,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );

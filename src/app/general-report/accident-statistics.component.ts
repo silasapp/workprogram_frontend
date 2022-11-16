@@ -37,49 +37,17 @@ export class AccidentStatisticsComponent implements OnInit {
 
     columns = [
       {
-        "columnDef": "sn",
-        "header": "S/N"
-      },
-      {
           "columnDef": "companyName",
           "header": "COMPANY NAME"
       },
       {
-          "columnDef": "omL_Name",
-          "header": "BLOCK"
+          "columnDef": "type_of_incidence",
+          "header": "TYPE OF INCIDENT"
       },
       {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
-      },
-      {
-        "columnDef": "contract_Type",
-        "header": "CONTRACT TYPE"
-      },
-      {
-        "columnDef": "category",
-        "header": "WELL CLASSIFICATION"
-      },
-      {
-        "columnDef": "spud_date",
-        "header": "SPUD DATE"
-      },
-      {
-        "columnDef": "well_name",
-        "header": "WELL NAME"
-      },
-      {
-      "columnDef": "well_Status_and_Depth",
-      "header": "WELL STATUS $ DEPTH"
-      },
-      {
-          "columnDef": "number_of_Days_to_Total_Depth",
-          "header": "NO OF DAYS TO TD"
-      },
-      {
-          "columnDef": "well_cost",
-          "header": "WELL COST (USD)"
-      }]
+        "columnDef": "fatalities_Current_year",
+        "header": "FATALITY"
+      }];
 
 
       repcolumns = [
@@ -202,7 +170,7 @@ export class AccidentStatisticsComponent implements OnInit {
 
     this.workprogram.getAccidentStatistics(this.genk.reportYear)
       .subscribe(res => {
-        this.data = res as any[];
+        this.data = res.accident_Statistics_Facility as any[];
           if(this.data.length>1) this.selectedPage=1;
         this.isData = this.data.length > 0;
         let count = this.data.length;

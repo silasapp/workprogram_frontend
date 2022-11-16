@@ -44,18 +44,11 @@
           >
             <input
               formControlName="proposed_number_of_wells_from_approved_FDP"
-              [(ngModel)]="
-                fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP
               "
             />
           </div>
@@ -75,18 +68,12 @@
           >
             <input
               formControlName="no_of_wells_drilled_in_current_year"
-              (keypress)="genk.restrictData($event)"
-              [(ngModel)]="
-                fielddevelopmentBody.no_of_wells_drilled_in_current_year
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentBody.no_of_wells_drilled_in_current_year =
-                  genk.addCurrencyDecimal($event)
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                fielddevelopmentBody._no_of_wells_drilled_in_current_year
               "
-              [value]="fielddevelopmentBody.no_of_wells_drilled_in_current_year"
             />
           </div>
         </div>
@@ -105,16 +92,10 @@
           >
             <input
               formControlName="noof_Producing_Fields"
-              (keypress)="genk.restrictData($event)"
-              [(ngModel)]="fielddevelopmentBody.noof_Producing_Fields"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentBody.noof_Producing_Fields =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="fielddevelopmentBody.noof_Producing_Fields"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="fielddevelopmentBody._noof_Producing_Fields"
             />
           </div>
         </div>
@@ -262,15 +243,10 @@
             <input
               type="text"
               formControlName="oil"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody.oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentexcessivereserveBody.oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="fielddevelopmentexcessivereserveBody.oil"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="fielddevelopmentexcessivereserveBody._oil"
             />
           </div>
         </div>
@@ -285,21 +261,19 @@
               width: 100%;
               border-radius: 10px;
               padding: 7px 10px;
+              display: flex;
             "
           >
             <input
               type="text"
               formControlName="gas"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody.gas"
+              placeholder="1,000,000"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentexcessivereserveBody.gas =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="fielddevelopmentexcessivereserveBody.gas"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="fielddevelopmentexcessivereserveBody._gas"
             />
+            <span>SCF</span>
           </div>
         </div>
       </div>
@@ -318,15 +292,10 @@
             <input
               type="text"
               formControlName="condensate"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody.condensate"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                fielddevelopmentexcessivereserveBody.condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="fielddevelopmentexcessivereserveBody.condensate"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="fielddevelopmentexcessivereserveBody._condensate"
             />
           </div>
         </div>
