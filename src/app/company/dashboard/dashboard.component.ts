@@ -6,12 +6,9 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
-import { GenericService } from 'src/app/services';
-import { AdminService } from 'src/app/services/admin.service';
-import { DashboardModel } from 'src/app/models/application-details';
-
 import { ModalService } from 'src/app/services';
 import { CdkAriaLive } from '@angular/cdk/a11y';
+import { GenericService } from 'src/app/services';
 declare var $: any;
 
 @Component({
@@ -35,20 +32,18 @@ export class DashboardComponent implements OnInit {
   firstChartData: any;
   secondChartData: any;
   thirdChartData: any[];
-  fourthChartData: any
-  dashboardStuff : DashboardModel;   
+  fourthChartData: any;
+  modalService: ModalService;
 
-  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private modale: ModalService, private cd: ChangeDetectorRef) {
+  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private modale: ModalService, private cd: ChangeDetectorRef, private genericService: GenericService) {
     this.modalService = modale;
-  constructor(private report: WorkprogrammeReportService, private genReport: ReportService, private gen: GenericService, private adminservice: AdminService) {
-    this.genk = gen;
+    this.genk = genericService;
    }
-   
+
   ngOnInit(): void {
-    this.getDashboardStuff();
   }
 ngAfterViewInit(){
-  this.fetchreport();
+  this.fetchreport()
 }
 
   fetchreport() {
@@ -68,16 +63,6 @@ ngAfterViewInit(){
 
     )
 
-  }
-
-  getDashboardStuff(){
-    debugger;
-    this.adminservice.getDashboardStuff()
-    .subscribe(res=>
-      {
-        this.dashboardStuff = res;
-      }
-      )
   }
 
   // firstChart() {

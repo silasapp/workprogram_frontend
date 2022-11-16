@@ -15,11 +15,11 @@ import { UpdateUserComponent } from '../../admin/add-users/update-user/update-us
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { UploadCodeComponent } from '../../admin/upload-code/uploadcode.component';
-import { ReportEditorComponent } from '../../admin/report-editor/reporteditor.component';
-import { UploadCodeComponent } from './upload-code/uploadcode.component';
-import { ReportEditorComponent } from './report-editor/reporteditor.component';
-import { ParameterConfigComponent } from './parameterconfig/parameter.component';
+// import { UploadCodeComponent } from '../../admin/upload-code/uploadcode.component';
+// import { ReportEditorComponent } from '../../admin/report-editor/reporteditor.component';
+// import { UploadCodeComponent } from './upload-code/uploadcode.component';
+//import { ReportEditorComponent } from './report-editor/reporteditor.component';
+//import { ParameterConfigComponent } from './parameterconfig/parameter.component';
 
 
 
@@ -44,9 +44,9 @@ import { ParameterConfigComponent } from './parameterconfig/parameter.component'
     AddConcessionComponent,
     UploadedCompanyComponent,
     UpdateUserComponent,
-    UploadCodeComponent,
-    ReportEditorComponent,
-    ParameterConfigComponent
+    //UploadCodeComponent,
+    // ReportEditorComponent,
+    // ParameterConfigComponent
   ]
 })
 export class AdminModule { }

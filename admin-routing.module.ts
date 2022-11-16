@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddConcessionComponent } from './src/app/admin/add-concession.component';
-import { AddUsersComponent } from './src/app/admin/add-users/add-users.component';
-import { UploadCodeComponent } from './src/app/admin/upload-code/uploadcode.component';
-import { UploadedCompanyComponent } from './src/app/admin/uploaded-company.component';
 import { AddConcessionComponent } from './add-concession.component';
-import { AddUsersComponent } from './add-users/add-users.component';
+import { AddUsersComponent } from './admin/add-users/add-users.component';
 import { ParameterConfigComponent } from './parameterconfig/parameter.component';
 import { UploadCodeComponent } from './upload-code/uploadcode.component';
 import { UploadedCompanyComponent } from './uploaded-company.component';
