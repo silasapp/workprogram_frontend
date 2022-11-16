@@ -73,6 +73,7 @@ export class BoardComponent implements OnInit, OnChanges {
   changeConcessionHeld(e) {
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
+    //this.genk.OmlID = this.concessionHeld;
     this.cd.markForCheck();
     this.checkCompletedSteps();
 

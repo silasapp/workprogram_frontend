@@ -1,18 +1,22 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ApplicationDetails } from '../models/application-details';
 import { CONCESSION_SITUATION } from '../models/step1-concession.model';
 import { HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW } from '../models/step5_hse.model';
 import { ModalService } from './modal.service';
 
 @Injectable({ providedIn: 'root' })
 export class GenericService {
+  sessionStaffID : number;
+  sessionStaffEmail : string;
   fileData: File = null;
   selectedPage = 1;
   sizeten = 10;
   sizePerPage = 10;
   chanSize = 6;
   staySize = 3;
+  application = 'application';
   admin = 'admin';
   account = 'account';
   company = 'company';
@@ -36,14 +40,17 @@ export class GenericService {
   terrain: string;
   geologicalLocation: string;
   OmlName: string;
+  OmlID: number;
   fieldName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
   OMLList = [];
   Field_List = [];
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
+  applicationDetails: ApplicationDetails;
   hseTechnicalSafety: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
     {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
+  appID: number;
   isStep1 = false;
   isStep2 = false;
   isStep3 = false;
@@ -627,4 +634,43 @@ export class GenericService {
   goToTop() {
     window.scrollTo(0, 0);
   }
+
+  filter(data) {
+    const resultArray = Object.keys(data).map(index => {
+      let person = data[index];
+      return person;
+    });
+
+    resultArray.forEach(element => {
+      delete element['approvalref'];
+      delete element['categoryid'];
+      delete element['companyid'];
+      delete element['concessionid'];
+      delete element['createdat'];
+      delete element['currentdesk'];
+      delete element['deletestatus'];
+      delete element['deletedat'];
+      delete element['deletedby'];
+      delete element['id'];
+      delete element['submitted'];
+      delete element['updatedat'];
+
+      delete element['companY_ID'];
+      delete element['companyNumber'];
+      delete element['companyName'];
+      delete element['companyemail'];
+      delete element['consession_Type'];
+      delete element['contract_Type'];
+      delete element['created_by'];
+      delete element['date_Updated'];
+      delete element['omL_ID'];
+      delete element['omL_Name'];
+      delete element['terrain'];
+      delete element['updated_by'];
+      delete element['year_of_WP'];
+    });
+    return resultArray;
+  }
+
+
 }

@@ -1995,210 +1995,69 @@ export class WorkProgramService {
       );
   }
 
-  //SCDP
-  post_SDCP_CSR(
-    conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_planned_and_actual`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_Question(
-    conbody: FormData,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_question`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_MOU(
-    conbody: FormData,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_mou`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_Capital(
-    conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_Scholarship(
-    conbody: FormData,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_scholaship_scheme`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_Scholarship_CSR(
-    conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new_scholarship`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  post_SDCP_Training_Skills_CSR(
-    conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition,
-    year: string,
-    omlName: string,
-    fieldName: string,
-    id,
-    actionToDo
-  ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new_training_skill_acquisition`,
-        conbody,
-        {
-          params: {
-            year: year,
-            omlName: omlName,
-            fieldName: fieldName,
-            id,
-            actionToDo,
-          },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
+//SCDP
+post_SDCP_CSR(conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_planned_and_actual`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_Question(conbody: FormData, year: string, omlName: string, fieldName: string, id, actionToDo){
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_question`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_MOU(conbody: FormData, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_mou`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_Capital(conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_Scholarship(conbody: FormData, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_scholaship_scheme`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_Scholarship_CSR(conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new_scholarship`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+post_SDCP_Training_Skills_CSR(conbody: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition, year: string, omlName: string, fieldName: string, id, actionToDo){
+
+  return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new_training_skill_acquisition`, conbody, {params: {year: year, omlName: omlName, fieldName: fieldName, id, actionToDo}})
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 
   post_SDCP_Training_Details_CSR(
     conbody: FormData,

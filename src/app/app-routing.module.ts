@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
+import { ApplicationComponent } from './application/application.component';
 import { GeneralReportComponent } from './general-report/general-report.component';
 
 const routes: Routes = [
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+  },
+  {
+    component: CompanyComponent,
+    path: 'application',
+    loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
   },
   {
     path: 'login',
@@ -35,7 +41,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component:CompanyComponent,
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./application/allapplications/admin.module').then(m => m.AdminModule)
   },
 
   {
