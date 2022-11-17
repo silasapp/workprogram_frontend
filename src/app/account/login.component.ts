@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         // }
         //alert('my email' + this.email + '  ' + this.password);
         this.isSpinner = true;
-            this.authenticationService.elpslogin(this.email, this.password).subscribe(
+            this.authenticationService.login(this.email, this.password).subscribe(
                 data => {
                     switch (data.code) {
                       case 0:
