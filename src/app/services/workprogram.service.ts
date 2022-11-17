@@ -2405,6 +2405,28 @@ export class WorkProgramService {
       );
   }
 
+  deleteSuccessionPlan(
+    conbody: any,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`,
+        conbody,
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo: 'DELETE',
+          },
+        }
+      )
+      .pipe(retry(this.num));
+  }
+
   getNigeriaContentQuestion(year: string, omlName: string, fieldName: string) {
     return this.http
       .get<any>(

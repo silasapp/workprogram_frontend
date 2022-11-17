@@ -216,6 +216,32 @@ export class NIGERIA_CONTENT_Upload_Succession_Plan {
   consession_Type: string = '';
   cOMPANY_ID: string = '';
   companyNumber: number;
+
+  constructor(model?: NIGERIA_CONTENT_Upload_Succession_Plan) {
+    if (!model) return;
+
+    this.id = model.id;
+    this.oML_ID = model.oML_ID;
+    this.oML_Name = model.oML_Name;
+    this.companyName = model.companyName;
+    this.companyemail = model.companyemail;
+    this.year_of_WP = model.year_of_WP;
+    this.name_ = model.name_;
+    this.understudy_ = model.understudy_;
+    this.timeline_ = model.timeline_;
+    this.position_Occupied_ = model.position_Occupied_;
+    this.created_by = model.created_by;
+    this.updated_by = model.updated_by;
+    this.date_Created = model.date_Created;
+    this.date_Updated = model.date_Updated;
+    this.actual_proposed = model.actual_proposed;
+    this.actual_Proposed_Year = model.actual_Proposed_Year;
+    this.terrain = model.terrain;
+    this.contract_Type = model.contract_Type;
+    this.consession_Type = model.consession_Type;
+    this.cOMPANY_ID = model.cOMPANY_ID;
+    this.companyNumber = this.companyNumber;
+  }
 }
 
 export class STRATEGIC_PLANS_ON_COMPANY_BASES {
