@@ -1,6 +1,7 @@
 <div
         style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
-        <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
+        <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
+                Note:*All Fields are Mandatory</h1>
         <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
                 <span>BUDGET PERFORMANCE</span>
         </div><br>
@@ -19,7 +20,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_Direct_Exploration_and_Production_Activities_NGN"
                                                                 [(ngModel)]="budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN">
                                                 </div>
@@ -31,7 +32,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_Direct_Exploration_and_Production_Activities_USD"
                                                                 [(ngModel)]="budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD">
                                                 </div>
@@ -52,7 +53,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_other_Activities_NGN"
                                                                 [(ngModel)]="budgetBody.budget_for_other_Activities_NGN">
                                                 </div>
@@ -64,7 +65,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_other_Activities_USD"
                                                                 [(ngModel)]="budgetBody.budget_for_other_Activities_USD">
                                                 </div>
@@ -85,7 +86,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px  rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="equivalent_Naira_and_Dollar_Component_NGN"
                                                                 [(ngModel)]="budgetBody.equivalent_Naira_and_Dollar_Component_NGN">
                                                 </div>
@@ -97,7 +98,7 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input type="number" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="equivalent_Naira_and_Dollar_Component_USD"
                                                                 [(ngModel)]="budgetBody.equivalent_Naira_and_Dollar_Component_USD">
                                                 </div>
@@ -110,45 +111,48 @@
         <br><br>
         <div>
                 <div style="text-align: center;">
-                        <button class="submitbtn"(click)="saveBudgetActualExpenditure() ">Save Production Cost</button>
-                    </div>
+                        <button class="submitbtn" (click)="saveBudgetActualExpenditure() ">Save Production Cost</button>
+                </div>
                 <br>
         </div>
         <div *ngIf="isTabVisible" class="wptablebox">
                 <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Budget($event)" value={{y.value.id}}>Delete</button>
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
+                        <table class="wptable">
+                                <thead>
+                                        <tr *ngFor="let h of columnHeader">
+                                                <th *ngFor="let d of h | keyvalue">
+                                                        {{d.key | titlecase}}
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody #myTbody *ngFor="let item of columnValue">
+                                        <tr *ngFor="let y of item | keyvalue">
+                                                <td *ngFor="let x of y.value | keyvalue">
+                                                        {{x.value}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-danger btn-sm submitbtn"
+                                                                (click)="Delete_Budget($event)"
+                                                                value={{y.value.id}}>Delete</button>
+                                                </td>
+                                        </tr>
+
+
+                                </tbody>
+
+                        </table>
                 </div>
-            </div>
+        </div>
         <br>
 
         <hr size="10">
         <div [formGroup]="exploratoryActivitiesForm">
-                <div
-                        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(2, 2, 2);  color: rgb(67, 183, 67); text-shadow:
+                <div style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(2, 2, 2);  color: rgb(67, 183, 67); text-shadow:
                         rgb(227, 255, 192);">
-                        <span style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px;"></span>EXPLORATORY ACTIVITIES
+                        <span
+                                style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px;"></span>EXPLORATORY
+                        ACTIVITIES
                 </div>
                 <hr size="5">
                 <div style="display: flex; justify-content: center; color: black;">
@@ -169,7 +173,7 @@
                                                 <div style="display: flex;">
                                                         <div
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input type="number" class="inpute"
+                                                                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                         formControlName="aCQUISITION_planned"
                                                                         [(ngModel)]="exploratoryBody.acquisitioN_planned">
                                                         </div>
@@ -332,8 +336,8 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveExploratory() ">Save Exploratory</button>
-                            </div>
+                                <button class="submitbtn" (click)="saveExploratory() ">Save Exploratory</button>
+                        </div>
                         <br>
                 </div>
 
@@ -341,32 +345,34 @@
         </div>
         <div *ngIf="isTabVisible_2" class="wptablebox">
                 <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_2">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_2">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Exploratory($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
+                        <table class="wptable">
+                                <thead>
+                                        <tr *ngFor="let h of columnHeader_2">
+                                                <th *ngFor="let d of h | keyvalue">
+                                                        {{d.key | titlecase}}
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody #myTbody *ngFor="let item of columnValue_2">
+                                        <tr *ngFor="let y of item | keyvalue">
+                                                <td *ngFor="let x of y.value | keyvalue">
+                                                        {{x.value}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-danger btn-sm submitbtn"
+                                                                (click)="Delete_Exploratory($event)"
+                                                                value={{y.value.id}}>Delete</button>
+
+                                                </td>
+                                        </tr>
+
+
+                                </tbody>
+
+                        </table>
                 </div>
-            </div>
+        </div>
         <br>
         <hr size="10">
         <div [formGroup]="developmentDrillingForm">
@@ -483,41 +489,44 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveDevelopmentDrilling() ">Save Development Drilling Activities</button>
-                            </div>
+                                <button class="submitbtn" (click)="saveDevelopmentDrilling() ">Save Development Drilling
+                                        Activities</button>
+                        </div>
                         <br>
                 </div>
 
-                
+
         </div>
         <div *ngIf="isTabVisible_3" class="wptablebox">
                 <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_3">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_3">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Development($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
+                        <table class="wptable">
+                                <thead>
+                                        <tr *ngFor="let h of columnHeader_3">
+                                                <th *ngFor="let d of h | keyvalue">
+                                                        {{d.key | titlecase}}
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody #myTbody *ngFor="let item of columnValue_3">
+                                        <tr *ngFor="let y of item | keyvalue">
+                                                <td *ngFor="let x of y.value | keyvalue">
+                                                        {{x.value}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-danger btn-sm submitbtn"
+                                                                (click)="Delete_Development($event)"
+                                                                value={{y.value.id}}>Delete</button>
+
+                                                </td>
+                                        </tr>
+
+
+                                </tbody>
+
+                        </table>
                 </div>
-            </div>
+        </div>
         <br>
 
         <hr size="10">
@@ -800,41 +809,44 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveFacilitiesDevelopment() ">Save Facilities Development</button>
-                            </div>
+                                <button class="submitbtn" (click)="saveFacilitiesDevelopment() ">Save Facilities
+                                        Development</button>
+                        </div>
                         <br>
                 </div>
 
         </div>
         <div *ngIf="isTabVisible_4" class="wptablebox">
                 <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_4">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_4">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Facility($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
+                        <table class="wptable">
+                                <thead>
+                                        <tr *ngFor="let h of columnHeader_4">
+                                                <th *ngFor="let d of h | keyvalue">
+                                                        {{d.key | titlecase}}
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody #myTbody *ngFor="let item of columnValue_4">
+                                        <tr *ngFor="let y of item | keyvalue">
+                                                <td *ngFor="let x of y.value | keyvalue">
+                                                        {{x.value}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-danger btn-sm submitbtn"
+                                                                (click)="Delete_Facility($event)"
+                                                                value={{y.value.id}}>Delete</button>
+
+                                                </td>
+                                        </tr>
+
+
+                                </tbody>
+
+                        </table>
                 </div>
-            </div>
-     
+        </div>
+
         <br>
 
         <hr size="10">
@@ -919,41 +931,43 @@
                 <br><br>
                 <div>
                         <div style="text-align: center;">
-                                <button class="submitbtn"(click)="saveProductionCost() ">Save Production Cost</button>
-                            </div>
+                                <button class="submitbtn" (click)="saveProductionCost() ">Save Production Cost</button>
+                        </div>
                         <br>
                 </div>
 
         </div>
         <div *ngIf="isTabVisible_5" class="wptablebox">
                 <div class="apptable">
-                    <table class="wptable" >
-                        <thead >
-                            <tr *ngFor="let h of columnHeader_5">
-                                <th *ngFor="let d of h | keyvalue">
-                                    {{d.key | titlecase}}
-                                </th>
-    
-                            </tr>
-                        </thead>
-                        <tbody #myTbody *ngFor="let item of columnValue_5">
-                            <tr *ngFor="let y of item | keyvalue">
-                                <td *ngFor="let x of y.value | keyvalue">
-                                {{x.value}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Production($event)" value={{y.value.id}}>Delete</button>
-                                   
-                                </td>
-                            </tr>
-    
-                        
-                        </tbody>
-    
-                    </table>
+                        <table class="wptable">
+                                <thead>
+                                        <tr *ngFor="let h of columnHeader_5">
+                                                <th *ngFor="let d of h | keyvalue">
+                                                        {{d.key | titlecase}}
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody #myTbody *ngFor="let item of columnValue_5">
+                                        <tr *ngFor="let y of item | keyvalue">
+                                                <td *ngFor="let x of y.value | keyvalue">
+                                                        {{x.value}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-danger btn-sm submitbtn"
+                                                                (click)="Delete_Production($event)"
+                                                                value={{y.value.id}}>Delete</button>
+
+                                                </td>
+                                        </tr>
+
+
+                                </tbody>
+
+                        </table>
                 </div>
-            </div>
-     
+        </div>
+
         <br>
 
 </div>

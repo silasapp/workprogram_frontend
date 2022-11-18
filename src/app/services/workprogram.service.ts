@@ -5627,7 +5627,8 @@ getWPYears(){
     year: string,
     omlName: string,
     fieldName: string
-  ) {
+  ) 
+  {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_DEPLETION_RATE`,

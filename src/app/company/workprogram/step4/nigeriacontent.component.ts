@@ -260,6 +260,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
+  
 
   getNigeriaContentTraining() {
     this.workprogram
