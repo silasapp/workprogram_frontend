@@ -44,9 +44,22 @@ export class CodeFields{
     isactive: string;
 }
 
-export class CompanyDashboardBody{
-    companyReports:any[];
-    oML_Count:number;
-    oPL_Count:number;
-    no_Of_ProducingFields_Count:number;
+export class CompanyDashboardBody {
+    companyReportModels: CompanyReportModel[];
+    omL_Count: number;
+    opL_Count: number;
+    no_Of_ProducingFields_Count: number;
+}
+
+export class DashboardGasBudgetAndReserveBody {
+    gasPlantCapacity: number;
+    gasFlareds: number;
+    directProdCost: number;
+    oilCondensate: number;
+}
+
+export class CompanyReportModel {
+    concessionName: string;
+    totalNetProduction: number;
+    totalReserves: number;
 }
