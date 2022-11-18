@@ -168,8 +168,7 @@
                         <label class="labelwp">No. of field producing</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
-                                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    formControlName="no_of_field_producing"
+                                <input (keypress)="genk.restrictData($event)" formControlName="no_of_field_producing"
                                     [(ngModel)]="concessionBody.no_of_field_producing" class="inpute">
                             </div>
                         </div>
@@ -331,8 +330,7 @@
                         <label class="labelwp"> No. of Discovered Fields</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
-                                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    formControlName="no_of_discovered_field"
+                                <input (keypress)="genk.restrictData($event)" formControlName="no_of_discovered_field"
                                     [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
                             </div>
                         </div>
@@ -345,7 +343,6 @@
                         <div class="wpwidth">
                             <div class="inputshadow">
                                 <select class="dropwp" formControlName="has_Assignment_of_Interest_Fee_been_paid"
-                                    (keyup)="genk.formatCurrency($event)"
                                     [(ngModel)]="concessionBody.has_Assignment_of_Interest_Fee_been_paid">
                                     <option selected disabled>--Select an Option --</option>
                                     <option value="NO">NO</option>
@@ -404,7 +401,7 @@
                         <div style="display: flex;">
                             <div class="inpdiv">
                                 <input #relinq type="text" (keypress)="genk.restrictData($event)"
-                                    (keyup)="genk.formatCurrency($event)" formControlName="relinquishment_retention"
+                                    formControlName="relinquishment_retention"
                                     [(ngModel)]="concessionBody.relinquishment_retention" class="inpute">
                             </div>
                         </div>
@@ -419,7 +416,6 @@
                         <div style="display: flex;">
                             <div class="inpdiv">
                                 <input #areaSquare (keypress)="genk.restrictData($event)"
-                                    (keyup)="genk.formatCurrency($event)"
                                     formControlName="area_in_square_meter_based_on_company_records"
                                     [(ngModel)]="concessionBody.area_in_square_meter_based_on_company_records"
                                     class="inpute">
