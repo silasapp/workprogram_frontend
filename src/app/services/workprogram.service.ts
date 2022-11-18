@@ -2764,78 +2764,148 @@ export class WorkProgramService {
 
   constructor(private http: HttpClient, private gen: GenericService) {}
 
-  getConcessionHeld(id, year) {
-    return this.http
-      .get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {
-        params: { mycompanyId: id, myyear: year },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
+getConcessionHeld(id, year){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {params:{mycompanyId: id, myyear: year}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 
-  getConcessionField(concessionName, companyId) {
-    return this.http
-      .get<any>(`${environment.apiUrl}/workprogramme/get_concessions_fields`, {
-        params: { concessionID: concessionName, companyID: companyId },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  getApplications() {
-    return this.http
-      .get<any>(`${environment.apiUrl}/application/all-applications`)
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  getApplication(id) {
-    debugger;
-    return this.http
-      .get<any>(`${environment.apiUrl}/application/viewapplication`, {
-        params: { appID: id },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
-  getAppsOnMyDesk() {
-    debugger;
-    return this.http
-      .get<any>(`${environment.apiUrl}/application/getappsonmydesk`)
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
+getConcessionField(concessionName, companyId){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concessions_fields`, {params:{concessionID: concessionName, companyID:companyId }} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response;
+  })
+  )
+}
+getApplications(){
+  return this.http.get<any>(`${environment.apiUrl}/application/all-applications`)
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+getApplication(id){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/viewapplication`, {params:{appID: id}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+getAppsOnMyDesk(){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/getappsonmydesk` )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 
-  getCompletedSteps(concessionName) {
-    return this.http
-      .get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {
-        params: { omlname: concessionName },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
-  }
+getCompletedSteps(concessionName){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response;
+  })
+  )
+}
+
+getWPYears(){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/GETWORKPROGRAMYEARS`)
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
+// getWPYearList(){
+//     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
+//     .pipe(retry(this.num),
+//     map((response) => {
+//       return response
+//     })
+//     )
+// }
+  // getConcessionHeld(id, year) {
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {
+  //       params: { mycompanyId: id, myyear: year },
+  //     })
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
+
+  // getConcessionField(concessionName, companyId) {
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/workprogramme/get_concessions_fields`, {
+  //       params: { concessionID: concessionName, companyID: companyId },
+  //     })
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
+  // getApplications() {
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/application/all-applications`)
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
+  // getApplication(id) {
+  //   debugger;
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/application/viewapplication`, {
+  //       params: { appID: id },
+  //     })
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
+  // getAppsOnMyDesk() {
+  //   debugger;
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/application/getappsonmydesk`)
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
+
+  // getCompletedSteps(concessionName) {
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {
+  //       params: { omlname: concessionName },
+  //     })
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         return response;
+  //       })
+  //     );
+  // }
 
   getWPYearList() {
     return this.http
@@ -3169,6 +3239,14 @@ export class WorkProgramService {
       );
   }
 
+// saveNigeriaUploadSuccessionPlan(conbody: NIGERIA_CONTENT_Upload_Succession_Plan, year: string, omlName: string){
+// return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`, conbody, {params: {year: year, omlName: omlName}})
+// .pipe(retry(this.num),
+// map((response) => {
+//   return response
+// })
+// )
+// }
   saveGasProduction(
     conbody: GAS_PRODUCTION_ACTIVITY,
     year: string,
