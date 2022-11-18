@@ -23,9 +23,29 @@ height: 120px;
     text-decoration: none!important;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.media-body a{
-    color: white!important;
-    text-decoration: none!important;
+
+.left{
+    float: left; height: 90%; margin: 5% 0; width: 35%;
+}
+
+.top{
+    font-size: large;
+    font-weight: 400;
+    color: yellowgreen;
+}
+
+.buttom{
+    font-size: xx-large;
+    font-weight: 400;
+}
+
+
+hr{
+    width: 100%;
+    background-color: yellowgreen;
+    height: 3px;
+    color: yellowgreen;
+    margin-bottom:5px;
 }
 
 .below{
