@@ -31,11 +31,6 @@ export class SWPNigeriaContentComponent implements OnInit {
   // public staffdispositionBody = {} as NIGERIA_CONTENT_Training;
   public staffdispositionBody = new NIGERIA_CONTENT_Training();
 
-<<<<<<< HEAD
-  sdList :any[];
-  sStaffList:any[];
-  
-=======
   seniormanagementstaffBody: NIGERIA_CONTENT_QUESTION =
     {} as NIGERIA_CONTENT_QUESTION;
   uploadsuccessionplanBody: NIGERIA_CONTENT_Upload_Succession_Plan =
@@ -43,7 +38,6 @@ export class SWPNigeriaContentComponent implements OnInit {
 
   sdList: any[];
   sStaffList: any[];
->>>>>>> b8c807695e1d9fad8df98e04eb969c863646a180
   wkpYear: string;
   wkpYearList = [];
   arrayRows = [];
@@ -103,58 +97,8 @@ export class SWPNigeriaContentComponent implements OnInit {
     },
   ];
 
-<<<<<<< HEAD
-  smcolumn = [
-    {
-      "columnDef": "year_of_WP",
-      "header": "Work Programme Year"
-    },
-    {
-      "columnDef": "do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff",
-      "header": "ACTUAL/PROPOSED"
-    },
-    {
-      "columnDef": "actual_Proposed_Year",
-      "header": "ACTUAL/PROPOSED YEAR"
-    },
-
-    {
-      "columnDef": "expatriate_quota_positions",
-      "header": "EXPATRIATE QUOTA POSITION"
-    },
-    {
-      "columnDef": "utilized_EQ",
-      "header": "UTILIZED EQ"
-    },
-    {
-      "columnDef": "nigerian_Understudies",
-      "header": "NIGERIAN UNDERSTUDIES"
-    },
-    {
-      "columnDef": "management_Foriegn",
-      "header": "MANAGEMENT (FORIEGN)"
-    },
-    {
-      "columnDef": "management_Local",
-      "header": "MANAGEMENT (LOCAL)"
-    },
-    {
-      "columnDef": "staff_Foriegn",
-      "header": "STAFF (FORIEGN)"
-    },
-    {
-      "columnDef": "staff_Local",
-      "header": "STAFF (LOCAL)"
-    },
-
-  ];
-
-
-  constructor(private cd: ChangeDetectorRef,
-=======
   constructor(
     private cd: ChangeDetectorRef,
->>>>>>> b8c807695e1d9fad8df98e04eb969c863646a180
     private workprogram: WorkProgramService,
     private auth: AuthenticationService,
     private gen: GenericService,
@@ -172,19 +116,6 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk.activeStep = 'STEP4';
     this.staffdispositionForm = new FormGroup(
       {
-<<<<<<< HEAD
-        actual_Proposed: new FormControl(this.staffdispositionBody.actual_Proposed, [Validators.required]),
-        actual_Proposed_Year: new FormControl(this.staffdispositionBody.actual_Proposed_Year, [Validators.required]),
-        expatriate_quota_positions: new FormControl(this.staffdispositionBody.expatriate_quota_positions, [Validators.required]),
-        utilized_EQ: new FormControl(this.staffdispositionBody.utilized_EQ, [Validators.required]),
-        names_of_Parties: new FormControl(this.staffdispositionBody.utilized_EQ, [Validators.required]),
-        nigerian_Understudies: new FormControl(this.staffdispositionBody.nigerian_Understudies, [Validators.required]),
-        management_Foriegn: new FormControl(this.staffdispositionBody.management_Foriegn, [Validators.required]),
-        management_Local: new FormControl(this.staffdispositionBody.management_Local, [Validators.required]),
-        staff_Foriegn: new FormControl(this.staffdispositionBody.staff_Foriegn, [Validators.required]),
-        staff_Local: new FormControl(this.staffdispositionBody.staff_Local, [Validators.required]),
-      }, {})
-=======
         actual_Proposed_Year: new FormControl(
           this.staffdispositionBody.actual_Proposed_Year,
           [Validators.required]
@@ -222,7 +153,6 @@ export class SWPNigeriaContentComponent implements OnInit {
       },
       {}
     );
->>>>>>> b8c807695e1d9fad8df98e04eb969c863646a180
 
     this.seniormanagementstaffForm = new FormGroup(
       {
@@ -423,12 +353,6 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveAddStaffDisposition() {
-<<<<<<< HEAD
-    debugger;
-    this.workprogram.saveAddStaffDisposition(this.staffdispositionBody, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName).subscribe(result => {
-      this.modalService.logNotice("Success", "Data saved successfully!", 'success');
-    });
-=======
     const model_ = {
       actual_Proposed: this.actualValue,
       management_Foriegn: this.staffdispositionBody.management_Foriegn,
@@ -455,7 +379,6 @@ export class SWPNigeriaContentComponent implements OnInit {
           'success'
         );
       });
->>>>>>> b8c807695e1d9fad8df98e04eb969c863646a180
   }
 
   changeActualValue(e) {
