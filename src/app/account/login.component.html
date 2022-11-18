@@ -1,6 +1,7 @@
 <div>
   <br> <br>
-  <div style="display:flex; width: 85%; margin-top: 10px; height: 85vh; border: solid 1px grey; margin: auto; border-radius: 50px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);">
+  <div
+    style="display:flex; width: 85%; margin-top: 10px; height: 85vh; border: solid 1px grey; margin: auto; border-radius: 50px; box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);">
     <div class="overlapbox" style="width: 55%;">
       <img style="height: 100%; width: 100%; border-radius: 50px 0 0 50px; filter: blur(4px);"
         src="assets/nuprcback.jpg">
@@ -35,61 +36,62 @@
     <div style="width: 45%; height: 100%;">
 
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div style="width: 90%; margin: 30% 0 0 20%;">
-        <div>
-          <label>
-            <span style="font-weight: 700">E-mail</span>
-          </label><br>
-          <input #myemail type="email" class="myform" placeholder="Enter Email" style="width: 70%;"
-            formControlName="email" [value]="email" (change)="email = genk.hook(myemail.value.toString())">
+        <div style="width: 90%; margin: 30% 0 0 20%;">
+          <div>
+            <label>
+              <span style="font-weight: 700">E-mail</span>
+            </label><br>
+            <input #myemail type="email" class="myform" placeholder="Enter Email" style="width: 70%;"
+              formControlName="email" [value]="email" (change)="email = genk.hook(myemail.value.toString())">
+          </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['email'].valid">
+              Email is required
+            </span>
+          </div>
+          <div class="eroce">
+            <div>{{usernameError}}</div>
+          </div><br>
+
+
+
+          <div>
+            <label>
+              <span style="font-weight: 700">Password</span>
+            </label><br>
+            <input #mypassword type="password" class="myform" placeholder="Enter Password" style="width: 70%;"
+              formControlName="password" [value]="password"
+              (change)="password = genk.hook(mypassword.value.toString())">
+
+          </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['password'].valid">
+              Password is required
+            </span>
+          </div>
+          <div class="eroce">
+            <div>{{passwordError}}</div>
+
+
+          </div><br>
+
+
+          <div style="width: 100%; display: flex; align-items: center;">
+
+            <button type="submit"
+              style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 20px; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3); display: flex;"><span
+                *ngIf="isSpinner" style="margin-right: 5px">
+                <mat-spinner [diameter]="20"></mat-spinner>
+              </span> <span>Login</span></button>
+
+
+            <span [routerLink]="['/' + genk.account, 'forgotpassword']"
+              style="color: rgb(28, 99, 39);font-weight:600;  margin-left: 30%;">Forgot Password ?</span>
+          </div>
+
+          <br><br>
+
         </div>
-        <div *ngIf="submitted" class="eroce">
-          <span *ngIf="!f['email'].valid">
-            Email is required
-          </span>
-        </div>
-        <div class="eroce">
-          <div>{{usernameError}}</div>
-        </div><br>
-
-
-
-        <div>
-          <label>
-            <span style="font-weight: 700">Password</span>
-          </label><br>
-          <input #mypassword type="password" class="myform" placeholder="Enter Password" style="width: 70%;"
-            formControlName="password" [value]="password" (change)="password = genk.hook(mypassword.value.toString())">
-
-        </div>
-        <div *ngIf="submitted" class="eroce">
-          <span *ngIf="!f['password'].valid">
-            Password is required
-          </span>
-        </div>
-        <div class="eroce">
-          <div>{{passwordError}}</div>
-
-
-        </div><br>
-
-
-        <div style="width: 100%; display: flex; align-items: center;">
-
-          <button type="submit"
-            style="background-color: rgb(27, 124, 8); font-weight:bold; padding: 10px 20px; border-radius: 30px; color: white; border: none; outline: none; box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3); display: flex;"><span
-              *ngIf="isSpinner" style="margin-right: 5px">
-              <mat-spinner [diameter]="20"></mat-spinner>
-            </span> <span>Login</span></button>
-
-
-          <span [routerLink]="['/' + genk.account, 'forgotpassword']"
-            style="color: rgb(28, 99, 39);font-weight:600;  margin-left: 30%;">Forgot Password ?</span>
-        </div>
-
-        <br><br>
-
-      </div>
       </form>
     </div>
 
