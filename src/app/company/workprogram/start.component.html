@@ -1,0 +1,66 @@
+<div class="overlapbox" style="width: 100%;">
+  <img style="height: 100vh; width: 100%; filter: blur(1px);" src="assets/workprogramimage.jpg">
+  <div class="overlapdiv" style="padding-top: 5%; background-color: rgb(0, 0, 0, 0.5);">
+    <div style="text-align: center;">
+      <span style="font-size: 80px; font-weight: 900; color: white">Welcome to </span><br><br>
+      <span style="font-size: 50px; font-weight: 900; color: rgb(227, 222, 222)">Submit Work Programme for 2022</span>
+    </div><br><br>
+
+    <div [formGroup]="boardForm" style="display: flex; justify-content: center; width: 100%; margin-bottom: 80px;">
+      <select formControlName="year" style="padding: 15px; font-size: 18px; width: 50%; border: solid 2px white; border-radius: 15px; background-color: rgb(0, 0, 0, 0.2); color: white;" (change)="changeWPYear($event)">
+        <option style="background-color: rgb(0, 0, 0, 0.7)" selected disabled>Select a Year to submit workprogramme </option>
+        <option style="background-color: rgb(0, 0, 0, 0.7);" *ngFor="let list of wkpYearList">{{ list }}</option>
+      </select>
+    </div>
+
+    <div style="display: inline-flex;">
+      <div style="display: flex; margin: 0 20px 0 50px;">
+        <div style="background-color: white; text-align: center; border-radius: 30px 30px 10px 10px;">
+
+          <div style="padding: 20px;">
+            <div style="margin-bottom: 15px;">
+              <span class="material-icons" style="font-size: 40px; color: rgb(99, 76, 47);">account_balance</span>
+            </div>
+            <div style="margin-bottom: 5px;">
+              <span class="topname">Concession (Step-1)</span>
+            </div>
+            <div class="tabsname">
+              <span>Concession Situation</span><br>
+              <span>Geophysical Activities</span><br>
+              <span>Drilling Operations</span>
+            </div>
+          </div>
+          <br>
+          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+            <span class="material-icons" style="font-size: 16px">settings</span>
+            <small>Format: &nbsp;&nbsp; OML/OPL basis</small>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; margin: 0 20px 0 50px;">
+        <div style="background-color: white; text-align: center; border-radius: 30px 30px 10px 10px;">
+
+          <div style="padding: 20px;">
+            <div style="margin-bottom: 15px;">
+              <span class="material-icons" style="font-size: 40px; color: rgb(99, 76, 47);">propane_tank</span>
+            </div>
+            <div style="margin-bottom: 5px;">
+              <span class="topname">Reverses (Step-2)</span>
+            </div>
+            <div class="tabsname">
+              <span>Concession Situation</span><br>
+              <span>Geophysical Activities</span><br>
+              <span>Drilling Operations</span>
+            </div>
+          </div>
+          <br>
+          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+            <span class="material-icons" style="font-size: 16px">settings</span>
+            <small>Format: &nbsp;&nbsp; OML/OPL basis</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

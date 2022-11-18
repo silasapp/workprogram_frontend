@@ -2785,6 +2785,15 @@ getCompletedSteps(concessionName){
   )
 }
 
+getWPYears(){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/GETWORKPROGRAMYEARS`)
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
+
 getWPYearList(){
     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
     .pipe(retry(this.num),
@@ -3628,7 +3637,7 @@ map((response) => {
 
 
 saveNigeriaUploadSuccessionPlan(conbody: NIGERIA_CONTENT_Upload_Succession_Plan, year: string, omlName: string){
-return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_upload_succession_plan`, conbody, {params: {year: year, omlName: omlName}})
+return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`, conbody, {params: {year: year, omlName: omlName}})
 .pipe(retry(this.num),
 map((response) => {
   return response

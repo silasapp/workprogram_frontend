@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         // }
         //alert('my email' + this.email + '  ' + this.password);
         this.isSpinner = true;
-            this.authenticationService.elpslogin(this.email, this.password).subscribe(
+            this.authenticationService.login(this.email, this.password).subscribe(
                 data => {
                     switch (data.code) {
                       case 0:
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
                         this.returnUrl = '';
                         this.locate.replaceState(url);
                         window.location.reload();
-                        
+
                         // this.clearForm();
                         // this.router.navigate([url]);
                     }
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
             this.cd.markForCheck();
         }
     }
-    
+
     clearForm() {
         this.email = '';
         this.password = '';
