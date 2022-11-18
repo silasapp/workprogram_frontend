@@ -1146,26 +1146,26 @@ export class RESERVES_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE {
 
 export class RESERVES_UPDATES_OIL_CONDENSATE_Reserves_Addition {
   public id: number;
-  public oML_ID: string = '';
-  public oML_Name: string = '';
-  public companyName: string = '';
-  public companyemail: string = '';
-  public year_of_WP: string = '';
-  public reserves_Addition_Was_there_any_Reserve_Addition: string = '';
-  public reserves_Addition_Reason_for_Addition: string = '';
-  public created_by: string = '';
-  public updated_by: string = '';
-  public date_Created: string = '';
-  public date_Updated: string = '';
-  public contract_Type: string = '';
-  public consession_Type: string = '';
-  public terrain: string = '';
-  public cOMPANY_ID: string = '';
-  public companyNumber: string = '';
-  private reserves_Addition_Oil: string = '';
-  private reserves_Addition_Condensate: string = '';
-  private reserves_Addition_AG: string = '';
-  private reserves_Addition_NAG: string = '';
+  public oML_ID: string;
+  public oML_Name: string;
+  public companyName: string;
+  public companyemail: string;
+  public year_of_WP: string;
+  public reserves_Addition_Was_there_any_Reserve_Addition: string;
+  public reserves_Addition_Reason_for_Addition: string;
+  public created_by: string;
+  public updated_by: string;
+  public date_Created: string;
+  public date_Updated: string;
+  public contract_Type: string;
+  public consession_Type: string;
+  public terrain: string;
+  public cOMPANY_ID: string;
+  public companyNumber: string;
+  private reserves_Addition_Oil: string;
+  private reserves_Addition_Condensate: string;
+  private reserves_Addition_AG: string;
+  private reserves_Addition_NAG: string;
 
   public set _reserves_Addition_Oil(reserves_Addition_Oil: string) {
     this.reserves_Addition_Oil = reserves_Addition_Oil?.replace(/,/g, '');
