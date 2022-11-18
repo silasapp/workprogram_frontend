@@ -19,8 +19,8 @@ export class GasProductionContractBasisComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'Gas Production And Utilization';
     reporttext: string;
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

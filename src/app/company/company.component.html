@@ -24,6 +24,26 @@
                         <span class="material-icons layout-icon">dashboard</span>
                         <span>Dashboard</span>
                     </div>
+                    <div *ngIf="genk.isAdmin" (click)="scheduleExpand= scheduleExpand == 'more'?'less':'more'; toggle_application()">
+                        <div class="layout-div layout-pad layout-line" >
+                            <span class="material-icons layout-icon">event_note</span>
+                            <span class="divmid" style="width: 100%;">Application <span class="material-icons expand-icon" style="margin-left: auto">{{scheduleExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
+                        </div>
+                        <div *ngIf="isApplication" [class]="entryStyle">
+                            <div class="divmid child-div" [routerLink]="['/application', 'mydesk']" routerLinkActive="active">
+                                <span class="material-icons child-icon">ac_unit</span>
+                                <span>My Desk</span>
+                            </div>
+                            <div class="divmid  child-div" [routerLink]="['/application', 'all-applications']" routerLinkActive="active">
+                                <span class="material-icons child-icon">ac_unit</span>
+                                <span>All Applications</span>
+                            </div>
+                            <div class="divmid  child-div" [routerLink]="['/application', 'all-companies']" routerLinkActive="active">
+                                <span class="material-icons child-icon">ac_unit</span>
+                                <span>All Companies</span>
+                            </div>
+                        </div>
+                    </div>
                     <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'select-date']" routerLinkActive="active">
                         <span class="material-icons layout-icon">event</span>
                         <span>Presentation Date Time</span>
@@ -429,3 +449,6 @@
         </div>
     </div>
 </div>
+
+<script src="/src/assets/jquery.waypoints.min.js"></script>
+<script src="/src/assets/script.js"></script>

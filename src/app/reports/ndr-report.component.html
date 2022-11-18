@@ -21,7 +21,7 @@
         <br>
 
       </div>
-      <div
+      <div  
         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
    
        
@@ -52,17 +52,17 @@
         </div>
       </div>
 
-      <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
+      <div *ngIf="isSpecifyColumns" style="position: relative; display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
           <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
             <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
           </button>
         </div>
 
-      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
+      <div #divTable style="position: relative; overflow-y: scroll; overflow-x: auto; max-height: 96vh; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
         <table #myTable class="apptable" cellPadding="10">
           <thead>
             <tr>
-              <th *ngFor="let h of columns">
+              <th *ngFor="let h of columns" style="position: sticky; top: 0;">
         
                 {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
 

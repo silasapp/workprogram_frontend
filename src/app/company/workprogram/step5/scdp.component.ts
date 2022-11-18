@@ -1016,7 +1016,7 @@ debugger;
     let o = this.genk.OmlName;
     let f = this.genk.fieldName;
     debugger;
-    this.workprogram.post_WorkProgram(null, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+    this.workprogram.post_WorkProgram(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
 
         if(res.statusCode == 300){

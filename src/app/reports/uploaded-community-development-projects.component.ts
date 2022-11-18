@@ -10,8 +10,8 @@ import { GenericService } from '../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
-@ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>; 
-      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>; 
+@ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
       genk: GenericService;  cdr: ChangeDetectorRef;
   title = 'UPLOADED COMMUNITY DEVELOPMENT PROJECTS';
   pagenum = 0;
@@ -22,10 +22,10 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
     selectedColumns: any[] = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-  
+
      columns = [
         {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,11 +33,11 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
-        "columnDef": "consession_Type",
+        "columnDef": "consession_type",
         "header": "CONSESSION TYPE"
     },
     {
@@ -45,7 +45,7 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
         "header": "TERRAIN"
     },
     {
-        "columnDef": "contract_Type",
+        "columnDef": "contract_type",
         "header": "CONTRACT TYPE"
     },
       {
@@ -55,7 +55,7 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
 
       repcolumns = [
         {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -63,11 +63,11 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
-        "columnDef": "consession_Type",
+        "columnDef": "consession_type",
         "header": "CONSESSION TYPE"
     },
     {
@@ -75,7 +75,7 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
         "header": "TERRAIN"
     },
     {
-        "columnDef": "contract_Type",
+        "columnDef": "contract_type",
         "header": "CONTRACT TYPE"
     },
       {
@@ -115,11 +115,12 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
       let value = e.target.value;
       this.report.fetch("uploaded_community_development_projects", value).subscribe(
         (res) => {
+          debugger;
            this.data = res.data as any[];
             if(this.data.length>0) this.selectedPage=1;
             this.assignDataRows();
-                this.assignPageNum();
-                this.cd.markForCheck();
+            this.assignPageNum();
+            this.cd.markForCheck();
         }
       )
     }
@@ -264,6 +265,6 @@ export class UploadedCommunityDevelopmentProjectsComponent implements OnInit {
   }
 
 
-  
+
 }
 

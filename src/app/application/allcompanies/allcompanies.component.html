@@ -1,0 +1,76 @@
+
+<div>
+    <hr>
+    <div>
+        <div>
+            <div>
+    
+          
+                <div>
+                  <div style="box-shadow: 0.5px 0.5px 1px rgb(0, 0, 0, 0.5); padding: 1%; background-color: white; margin: 3% 1% 2% 1.5%">
+                    <div style="padding: 0 10px 10px 0;">
+                      <div style="font-size: 18px; font-weight: 600; color: rgb(9, 79, 104);">
+                        All Companies
+                      </div>
+                    </div>
+          
+          
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
+                    <div style="margin-left: 10px" class="inpdiv">
+                      <input #myInput (keyup)='genk.searchTable(myInput, myTable)' type='text' placeholder="Search Table"
+                        class="inpute">
+                    </div>
+                   
+          
+                    <div style="display: flex;">
+                      <button (click)="genk.printData(myTable)" class="rebtn" style="background-color: rgb(9, 96, 127);">
+                        <mat-icon style="font-size: 20px;">print</mat-icon> Print
+                      </button>
+                      <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+                        <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+                      </button>
+                      <button (click)="genk.copyTable(myTable)" class="rebtn"
+                        style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+                        <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
+                      </button>
+                     
+                    </div>
+                  </div> 
+                  </div>
+                </div>
+            </div>
+        
+          
+          
+          </div>
+          <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
+           
+            <table #myTable class="apptablereport table table-bordered" cellPadding="10">
+                    <thead >
+                        <tr>
+                            <th>COMPANY</th>
+                            <th>CONCESSION</th>
+                            <th>FIELD</th>
+                            <th></th>
+                            <th>PAYMENT STATUS</th>
+                            <th>REFERENCE NO.</th>
+                            <th>STATUS</th>
+                            <th>DATE SUBMITTED</th>
+                            <th>YEAR</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);" *ngFor="let item of columnValue">
+                        <tr *ngFor="let y of item | keyvalue">
+                            <td *ngFor="let x of y.value | keyvalue">
+                            {{x.value}}
+                            </td>
+                            <td>
+                                <button class="btn btn-warning btn-sm submitbtn" (click)="View_Application($event)" value={{y.value.id}}>View</button>
+                            
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+          </div>
+    </div>

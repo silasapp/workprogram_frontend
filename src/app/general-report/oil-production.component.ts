@@ -20,8 +20,8 @@ export class OilProductionComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'OIL PRODUCTION';
     reporttext: string;
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

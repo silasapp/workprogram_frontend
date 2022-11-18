@@ -10,8 +10,8 @@ import { GenericService } from '../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HSESustainableDevelopmentCommunityProjectSkillComponent implements OnInit {
-  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>; 
-      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>; 
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
       genk: GenericService;    cdr: ChangeDetectorRef;
     title = 'TRAINING AND SKILL ACQUISITION';
     pagenum = 0;
@@ -22,7 +22,7 @@ export class HSESustainableDevelopmentCommunityProjectSkillComponent implements 
     selectedColumns: any[] = [];
     isTableOpt = false;
     isSpecifyColumns = false;
-  
+
       columns = [
       {
           "columnDef":  "companyName",
@@ -327,5 +327,5 @@ resize(e) {
   }
 
 
-  
+
 }
