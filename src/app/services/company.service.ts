@@ -82,10 +82,23 @@ export class CompanyService {
         .pipe(retry(this.num),
         map((response) =>{
             debugger;
-            return response
+            return response;
+            debugger;
         })
         )
 
     }
 
+
+    getdashboardgasbudgetandreserve(year: string){
+        debugger;
+        return this.http.get<any>(`${environment.apiUrl}/dashboard/dashboard_total_gas_budget_reserves_details`,  {params: {year: year}}
+        )
+        .pipe(retry(this.num),
+        map((response) =>{
+            debugger;
+            return response;
+            debugger;
+        })
+        )}
 }
