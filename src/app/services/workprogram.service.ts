@@ -733,46 +733,6 @@
 //       );
 //   }
 
-//   saveUpdateOilCondensateReservesDecline(
-//     conbody: RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE,
-//     year: string,
-//     omlName: string,
-//     fieldName: string
-//   ) {
-//     return this.http
-//       .post<any>(
-//         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_RESERVES_DECLINE`,
-//         conbody,
-//         {
-//           params: { omlName: omlName, fieldName: fieldName, year: year },
-//         }
-//       )
-//       .pipe(
-//         retry(this.num),
-//         map((res) => res)
-//       );
-//   }
-
-//   saveReserveReplacementRatio(
-//     conbody: POST_RESERVES_REPLACEMENT_RATIO,
-//     year: string,
-//     omlName: string,
-//     fieldName: string
-//   ) {
-//     return this.http
-//       .post<any>(
-//         `${environment.apiUrl}/workprogramme/POST_RESERVES_REPLACEMENT_RATIO`,
-//         conbody,
-//         {
-//           params: { omlName: omlName, fieldName: fieldName, year: year },
-//         }
-//       )
-//       .pipe(
-//         retry(this.num),
-//         map((res) => res)
-//       );
-//   }
-
 //   getReserveUpdateDepletionRate(
 //     year: string,
 //     omlName: string,
@@ -5512,20 +5472,20 @@ export class WorkProgramService {
       .pipe(retry(this.num));
   }
 
-  saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_RESERVES_DECLINE`,
-        conbody,
-        {
-          params: { omlName: omlName, fieldName: fieldName, year: year },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((res) => res)
-      );
-  }
+  // saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
+  //   return this.http
+  //     .post<any>(
+  //       `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_RESERVES_DECLINE`,
+  //       conbody,
+  //       {
+  //         params: { omlName: omlName, fieldName: fieldName, year: year },
+  //       }
+  //     )
+  //     .pipe(
+  //       retry(this.num),
+  //       map((res) => res)
+  //     );
+  // }
 
   deleteArbitration(
     conbody: any,
@@ -5549,20 +5509,20 @@ export class WorkProgramService {
       .pipe(retry(this.num));
   }
 
-  getlegalLitigation(year: string, fieldName: string, omlName: string) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/POST_RESERVES_REPLACEMENT_RATIO`,
-        conbody,
-        {
-          params: { omlName: omlName, fieldName: fieldName, year: year },
-        }
-      )
-      .pipe(
-        retry(this.num),
-        map((res) => res)
-      );
-  }
+  // getlegalLitigation(year: string, fieldName: string, omlName: string) {
+  //   return this.http
+  //     .post<any>(
+  //       `${environment.apiUrl}/workprogramme/POST_RESERVES_REPLACEMENT_RATIO`,
+  //       conbody,
+  //       {
+  //         params: { omlName: omlName, fieldName: fieldName, year: year },
+  //       }
+  //     )
+  //     .pipe(
+  //       retry(this.num),
+  //       map((res) => res)
+  //     );
+  // }
 
   getReserveUpdateDepletionRate(
     year: string,
@@ -5664,11 +5624,51 @@ export class WorkProgramService {
       );
   }
 
-  deleteNigeriaContentTraining(id: any) {
+  saveUpdateOilCondensateReservesDecline(
+    conbody: RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
     return this.http
-      .delete<any>(
-        `${environment.apiUrl}/workprogramme/delete-nigeria-content-training?id=${id}`
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_RESERVES_DECLINE`,
+        conbody,
+        {
+          params: { omlName: omlName, fieldName: fieldName, year: year },
+        }
       )
-      .pipe(retry(this.num));
+      .pipe(
+        retry(this.num),
+        map((res) => res)
+      );
   }
+
+  saveReserveReplacementRatio(
+    conbody: POST_RESERVES_REPLACEMENT_RATIO,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/POST_RESERVES_REPLACEMENT_RATIO`,
+        conbody,
+        {
+          params: { omlName: omlName, fieldName: fieldName, year: year },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((res) => res)
+      );
+  }
+
+  // deleteNigeriaContentTraining(id: any) {
+  //   return this.http
+  //     .delete<any>(
+  //       `${environment.apiUrl}/workprogramme/delete-nigeria-content-training?id=${id}`
+  //     )
+  //     .pipe(retry(this.num));
+  // }
 }
