@@ -91,6 +91,7 @@
                         <td>
                             <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_HSE_Technical($event)"
                                 value={{y.value.id}}>Delete</button>
+
                             <!-- 
                                 <button (click)="Delete_HSE_Technical($event)" value={{y.value.id}}($event) value={{y.value.id}} style="background-color: darkred;"
                                     class="submitbtn">Delete</button> -->
@@ -172,7 +173,8 @@
 
         <div class="col-md-4"><br>
             <label class="labelwp">Do you have a Safety Management System</label>
-            <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
+            <div
+                style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 7px 10px; border-radius: 10px;">
                 <select formControlName="doyouhaveSMSinPlace" [(ngModel)]="safetyBody.doyouhaveSMSinPlace"
                     class="dropwp">
                     <option selected disabled>---- Please Select an Option ----</option>
@@ -679,7 +681,7 @@
                         </td>
                         <td>
                             <button (click)="Delete_HSE_IM($event)" value={{y.value.id}}($event)
-                                style="background-color: teal;" class="submitbtn">Delete</button>
+                                style="background-color: darkred" class="submitbtn">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -2015,7 +2017,7 @@
                         </td>
                         <td>
                             <button (click)="Delete_DesignSafety($event)" value={{y.value.id}}($event)
-                                style="background-color: teal;" class="submitbtn">Delete</button>
+                                style="background-color: darkred;" class="submitbtn">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -2118,7 +2120,7 @@
                         </td>
                         <td>
                             <button (click)="Delete_ESU($event)" value={{y.value.id}}($event)
-                                style="background-color: teal;" class="submitbtn">Delete</button>
+                                style="background-color: darkred;" class="submitbtn">Delete</button>
                         </td>
                     </tr>
                 </tbody>
