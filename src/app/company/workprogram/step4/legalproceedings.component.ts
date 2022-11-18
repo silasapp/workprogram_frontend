@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
-import { LEGAL_ARBITRATION, LEGAL_LITIGATION } from './step4-NCQ.model';
+import { LEGAL_ARBITRATION, LEGAL_LITIGATION } from '../../../models/step4-NCQ.model';
 
 @Component({
   templateUrl: './legalproceedings.component.html',

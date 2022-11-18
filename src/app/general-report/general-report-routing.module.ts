@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccidentStatisticsComponent } from './accident-statistics.component';
 import { AppraisalWellsComponent } from './appraisal-wells.component';
 import { CrudeProductionContractComponent } from './crude-production-contract.component';
 import { CrudeProductionTerrainComponent } from './crude-production-terrain.component';
@@ -115,6 +116,10 @@ const routes: Routes = [
 {
   path: 'gasflarepenalty',
   component: GasFlarePenaltyComponent
+},
+{
+  path: 'accidentstatistics',
+  component: AccidentStatisticsComponent
 }
 ];
 

@@ -79,15 +79,10 @@
             <input
               type="text"
               formControlName="company_Reserves_Oil"
-              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_Oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesPreceeding.company_Reserves_Oil"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_Oil"
             />
           </div>
         </div>
@@ -107,17 +102,12 @@
             <input
               type="text"
               formControlName="company_Reserves_Condensate"
-              [(ngModel)]="
-                statusOfReservesPreceeding.company_Reserves_Condensate
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_Condensate =
-                  genk.addCurrencyDecimal($event)
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                statusOfReservesPreceeding._company_Reserves_Condensate
               "
-              [value]="statusOfReservesPreceeding.company_Reserves_Condensate"
             />
           </div>
         </div>
@@ -140,15 +130,10 @@
             <input
               type="text"
               formControlName="company_Reserves_AG"
-              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_AG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesPreceeding.company_Reserves_AG"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_AG"
             />
           </div>
         </div>
@@ -168,15 +153,10 @@
             <input
               type="text"
               formControlName="company_Reserves_NAG"
-              [(ngModel)]="statusOfReservesPreceeding.company_Reserves_NAG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesPreceeding.company_Reserves_NAG"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_NAG"
             />
           </div>
         </div>
@@ -199,18 +179,11 @@
             <input
               type="text"
               formControlName="company_Reserves_AnnualOilProduction"
-              [(ngModel)]="
-                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                statusOfReservesPreceeding.company_Reserves_AnnualOilProduction
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                statusOfReservesPreceeding._company_Reserves_AnnualOilProduction
               "
             />
           </div>
@@ -231,18 +204,11 @@
             <input
               type="text"
               formControlName="company_Reserves_AnnualCondensateProduction"
-              [(ngModel)]="
-                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                statusOfReservesPreceeding.company_Reserves_AnnualCondensateProduction
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                statusOfReservesPreceeding._company_Reserves_AnnualCondensateProduction
               "
             />
           </div>
@@ -263,18 +229,11 @@
             <input
               type="text"
               formControlName="company_Reserves_AnnualGasAGProduction"
-              [(ngModel)]="
-                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction
-              "
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                statusOfReservesPreceeding.company_Reserves_AnnualGasAGProduction
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                statusOfReservesPreceeding._company_Reserves_AnnualGasAGProduction
               "
             />
           </div>
@@ -296,18 +255,11 @@
           <input
             type="text"
             formControlName="company_Reserves_AnnualGasNAGProduction"
-            [(ngModel)]="
-              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction
-            "
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction =
-                genk.addCurrencyDecimal($event)
-            "
-            [value]="
-              statusOfReservesPreceeding.company_Reserves_AnnualGasNAGProduction
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
+              statusOfReservesPreceeding._company_Reserves_AnnualGasNAGProduction
             "
           />
         </div>
@@ -380,15 +332,10 @@
             <input
               type="text"
               formControlName="company_Reserves_Oil"
-              [(ngModel)]="statusOfReservesCurrent.company_Reserves_Oil"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesCurrent.company_Reserves_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesCurrent.company_Reserves_Oil"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_Oil"
             />
           </div>
         </div>
@@ -408,15 +355,10 @@
             <input
               type="text"
               formControlName="company_Reserves_Condensate"
-              [(ngModel)]="statusOfReservesCurrent.company_Reserves_Condensate"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesCurrent.company_Reserves_Condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesCurrent.company_Reserves_Condensate"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_Condensate"
             />
           </div>
         </div>
@@ -439,15 +381,10 @@
             <input
               type="text"
               formControlName="company_Reserves_AG"
-              [(ngModel)]="statusOfReservesCurrent.company_Reserves_AG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesCurrent.company_Reserves_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesCurrent.company_Reserves_AG"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_AG"
             />
           </div>
         </div>
@@ -467,15 +404,10 @@
             <input
               type="text"
               formControlName="company_Reserves_NAG"
-              [(ngModel)]="statusOfReservesCurrent.company_Reserves_NAG"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                statusOfReservesCurrent.company_Reserves_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="statusOfReservesCurrent.company_Reserves_NAG"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_NAG"
             />
           </div>
         </div>
@@ -551,17 +483,10 @@
               type="text"
               class="inpute"
               formControlName="fiveyear_Projection_Oil"
-              [(ngModel)]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Oil
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil
               "
             />
           </div>
@@ -583,17 +508,10 @@
               type="text"
               class="inpute"
               formControlName="fiveyear_Projection_Condensate"
-              [(ngModel)]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Condensate
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate
               "
             />
           </div>
@@ -618,17 +536,10 @@
               type="text"
               class="inpute"
               formControlName="fiveyear_Projection_AG"
-              [(ngModel)]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_AG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG
               "
             />
           </div>
@@ -650,17 +561,10 @@
               type="text"
               class="inpute"
               formControlName="fiveyear_Projection_NAG"
-              [(ngModel)]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveupdatefiveyearprojectionBody.fiveyear_Projection_NAG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG
               "
             />
           </div>
@@ -730,17 +634,10 @@
               type="text"
               class="inpute"
               formControlName="company_Annual_Oil"
-              [(ngModel)]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Oil
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Oil
               "
             />
           </div>
@@ -762,17 +659,10 @@
               type="text"
               class="inpute"
               formControlName="company_Annual_Condensate"
-              [(ngModel)]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_Condensate
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Condensate
               "
             />
           </div>
@@ -797,17 +687,10 @@
               type="text"
               class="inpute"
               formControlName="company_Annual_AG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_AG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_AG
               "
             />
           </div>
@@ -829,17 +712,10 @@
               type="text"
               class="inpute"
               formControlName="company_Annual_NAG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateCompanyAnnualProductionBody.company_Annual_NAG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_NAG
               "
             />
           </div>
@@ -924,17 +800,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Addition_Oil"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Oil
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil
               "
             />
           </div>
@@ -958,17 +827,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Addition_Condensate"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Condensate
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate
               "
             />
           </div>
@@ -990,17 +852,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Addition_AG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_AG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG
               "
             />
           </div>
@@ -1022,17 +877,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Addition_NAG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_NAG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG
               "
             />
           </div>
@@ -1117,17 +965,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Decline_Oil"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Oil
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Oil
               "
             />
           </div>
@@ -1151,17 +992,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Decline_Condensate"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Condensate
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate
               "
             />
           </div>
@@ -1183,17 +1017,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Decline_AG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_AG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG
               "
             />
           </div>
@@ -1215,17 +1042,10 @@
               type="text"
               class="inpute"
               formControlName="reserves_Decline_NAG"
-              [(ngModel)]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
-              "
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="
-                reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_NAG
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="
+                reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG
               "
             />
           </div>
@@ -1302,17 +1122,10 @@
             type="text"
             class="inpute"
             formControlName="reserveS_REPLACEMENT_RATIO_VALUE"
-            [(ngModel)]="
-              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
-            "
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE =
-                genk.addCurrencyDecimal($event)
-            "
-            [value]="
-              reserveReplacementRatioBody.reserveS_REPLACEMENT_RATIO_VALUE
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
+              reserveReplacementRatioBody._reserveS_REPLACEMENT_RATIO_VALUE
             "
           />
         </div>
@@ -1358,14 +1171,9 @@
             type="text"
             class="inpute"
             formControlName="oIL"
-            [(ngModel)]="reserveUpdateDepletionRateBody.oIL"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              reserveUpdateDepletionRateBody.oIL =
-                genk.addCurrencyDecimal($event)
-            "
-            [value]="reserveUpdateDepletionRateBody.oIL"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="reserveUpdateDepletionRateBody._oil"
           />
         </div>
       </div>
@@ -1386,14 +1194,9 @@
             type="text"
             class="inpute"
             formControlName="cONDENSATE"
-            [(ngModel)]="reserveUpdateDepletionRateBody.cONDENSATE"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              reserveUpdateDepletionRateBody.cONDENSATE =
-                genk.addCurrencyDecimal($event)
-            "
-            [value]="reserveUpdateDepletionRateBody.cONDENSATE"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="reserveUpdateDepletionRateBody._condensate"
           />
         </div>
       </div>
@@ -1414,14 +1217,9 @@
             type="text"
             class="inpute"
             formControlName="nAG"
-            [(ngModel)]="reserveUpdateDepletionRateBody.nAG"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              reserveUpdateDepletionRateBody.nAG =
-                genk.addCurrencyDecimal($event)
-            "
-            [value]="reserveUpdateDepletionRateBody.nAG"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="reserveUpdateDepletionRateBody._nag"
           />
         </div>
       </div>
@@ -1464,13 +1262,9 @@
               type="text"
               class="inpute"
               formControlName="oIL"
-              [(ngModel)]="reserveUpdateLifeIndexBody.oIL"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateLifeIndexBody.oIL = genk.addCurrencyDecimal($event)
-              "
-              [value]="reserveUpdateLifeIndexBody.oIL"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="reserveUpdateLifeIndexBody._oil"
             />
           </div>
         </div>
@@ -1491,14 +1285,9 @@
               type="text"
               class="inpute"
               formControlName="cONDENSATE"
-              [(ngModel)]="reserveUpdateLifeIndexBody.cONDENSATE"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateLifeIndexBody.cONDENSATE =
-                  genk.addCurrencyDecimal($event)
-              "
-              [value]="reserveUpdateLifeIndexBody.cONDENSATE"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="reserveUpdateLifeIndexBody._condensate"
             />
           </div>
         </div>
@@ -1519,13 +1308,9 @@
               type="text"
               class="inpute"
               formControlName="nAG"
-              [(ngModel)]="reserveUpdateLifeIndexBody.nAG"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatCurrency($event)"
-              (change)="
-                reserveUpdateLifeIndexBody.nAG = genk.addCurrencyDecimal($event)
-              "
-              [value]="reserveUpdateLifeIndexBody.nAG"
+              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              [(ngModel)]="reserveUpdateLifeIndexBody._nag"
             />
           </div>
         </div>
@@ -1547,13 +1332,9 @@
             type="text"
             class="inpute"
             formControlName="aG"
-            [(ngModel)]="reserveUpdateLifeIndexBody.aG"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
-            (change)="
-              reserveUpdateLifeIndexBody.aG = genk.addCurrencyDecimal($event)
-            "
-            [value]="reserveUpdateLifeIndexBody.aG"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="reserveUpdateLifeIndexBody._ag"
           />
         </div>
       </div>

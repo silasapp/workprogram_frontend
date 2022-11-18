@@ -20,33 +20,34 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPFieldDevelopmentComponent implements OnInit {
-  FieldDevelopmentForm: FormGroup;
-  FieldDevelopmeentExcessiveReserveForm: FormGroup;
-  UnitizationForm: FormGroup;
-  unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION =
-    {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION;
+  public FieldDevelopmentForm: FormGroup;
+  public FieldDevelopmeentExcessiveReserveForm: FormGroup;
+  public UnitizationForm: FormGroup;
+  public unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION =
+    new OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION();
 
-  fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE =
-    {} as FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE;
-  fielddevelopmentBody: FIELD_DEVELOPMENT_PLAN = {} as FIELD_DEVELOPMENT_PLAN;
-  approved_FDP_Document: any;
-  wkpYear: string;
-  wkpYearList = [];
-  concessionHeld: string;
-  concessionHeldList = [];
-  genk: GenericService;
-  submitted = false;
-  columnHeader = [];
-  columnValue = [];
-  isTabVisible = false;
+  public fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE =
+    new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE();
 
-  FDPFile?: File = null;
-  UUOAFile?: File = null;
-  mediatype = 'doc';
-  FDPNewName: string;
-  UUOANameDoc: string;
-  UUOANewName: string;
-  FDPNameDoc: string;
+  public fielddevelopmentBody = new FIELD_DEVELOPMENT_PLAN();
+  public approved_FDP_Document: any;
+  public wkpYear: string;
+  public wkpYearList = [];
+  public concessionHeld: string;
+  public concessionHeldList = [];
+  public genk: GenericService;
+  public submitted = false;
+  public columnHeader = [];
+  public columnValue = [];
+  public isTabVisible = false;
+
+  public FDPFile?: File = null;
+  public UUOAFile?: File = null;
+  public mediatype = 'doc';
+  public FDPNewName: string;
+  public UUOANameDoc: string;
+  public UUOANewName: string;
+  public FDPNameDoc: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -78,11 +79,11 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         [Validators.required]
       ),
       proposed_number_of_wells_from_approved_FDP: new FormControl(
-        this.fielddevelopmentBody.proposed_number_of_wells_from_approved_FDP,
+        this.fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP,
         [Validators.required]
       ),
       no_of_wells_drilled_in_current_year: new FormControl(
-        this.fielddevelopmentBody.no_of_wells_drilled_in_current_year,
+        this.fielddevelopmentBody._no_of_wells_drilled_in_current_year,
         [Validators.required]
       ),
       number_of_wells_proposed_in_the_FDP: new FormControl(
@@ -90,7 +91,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         [Validators.required]
       ),
       noof_Producing_Fields: new FormControl(
-        this.fielddevelopmentBody.noof_Producing_Fields,
+        this.fielddevelopmentBody._noof_Producing_Fields,
         [Validators.required]
       ),
       uploaded_approved_FDP_Document: new FormControl(
@@ -115,35 +116,14 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.fielddevelopmentexcessivereserveBody.field_Name,
         [Validators.required]
       ),
-      oil: new FormControl(this.fielddevelopmentexcessivereserveBody.oil, [
+      oil: new FormControl(this.fielddevelopmentexcessivereserveBody._oil, [
         Validators.required,
       ]),
-      gas: new FormControl(this.fielddevelopmentexcessivereserveBody.gas, [
-        Validators.required,
-      ]),
-      condensate: new FormControl(
-        this.fielddevelopmentexcessivereserveBody.condensate,
-        [Validators.required]
-      ),
-    });
-
-    this.FieldDevelopmeentExcessiveReserveForm = new FormGroup({
-      proposed_Development_well_name: new FormControl(
-        this.fielddevelopmentexcessivereserveBody.proposed_Development_well_name,
-        [Validators.required]
-      ),
-      field_Name: new FormControl(
-        this.fielddevelopmentexcessivereserveBody.field_Name,
-        [Validators.required]
-      ),
-      oil: new FormControl(this.fielddevelopmentexcessivereserveBody.oil, [
-        Validators.required,
-      ]),
-      gas: new FormControl(this.fielddevelopmentexcessivereserveBody.gas, [
+      gas: new FormControl(this.fielddevelopmentexcessivereserveBody._gas, [
         Validators.required,
       ]),
       condensate: new FormControl(
-        this.fielddevelopmentexcessivereserveBody.condensate,
+        this.fielddevelopmentexcessivereserveBody._condensate,
         [Validators.required]
       ),
     });
@@ -170,7 +150,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         [Validators.required]
       ),
     });
-
+    this.getFDP();
     this.cd.markForCheck();
   }
 
@@ -179,11 +159,13 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       .getFDP(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe((res) => {
         if (res.fdp) {
-          this.fielddevelopmentBody = res.fdp;
+          this.fielddevelopmentBody = new FIELD_DEVELOPMENT_PLAN(res.fdp);
         }
-
         if (res.fdpExcessiveReserves) {
-          this.fielddevelopmentexcessivereserveBody = res.fdpExcessiveReserves;
+          this.fielddevelopmentexcessivereserveBody =
+            new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE(
+              res.fdpExcessiveReserves
+            );
         }
         if (res.unitization) {
           this.unitizationBody = res.unitization;
@@ -192,6 +174,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.cd.markForCheck();
       });
   }
+
+  getConcessionHeld() {}
 
   saveFDPDoc(DeFile: any) {
     this.FDPFile = <File>DeFile.target.files[0];
@@ -216,9 +200,16 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   saveFieldDevelopmentPlan() {
     const formData = new FormData();
 
+    // formData.append(
+    //   'id',
+    //   this.fielddevelopmentexcessivereserveBody.id.toString()
+    // );
     formData.append(
       'how_many_fields_in_concession',
-      this.FieldDevelopmentForm.get('how_many_fields_in_concession').value
+      (
+        this.FieldDevelopmentForm.get('how_many_fields_in_concession')
+          .value as string
+      ).replace(/,/g, '')
     );
     formData.append(
       'how_many_fields_have_approved_FDP',
@@ -231,21 +222,31 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     );
     formData.append(
       'proposed_number_of_wells_from_approved_FDP',
-      this.FieldDevelopmentForm.get(
-        'proposed_number_of_wells_from_approved_FDP'
-      ).value
+      (
+        this.FieldDevelopmentForm.get(
+          'proposed_number_of_wells_from_approved_FDP'
+        ).value as string
+      ).replace(/,/g, '')
     );
     formData.append(
       'no_of_wells_drilled_in_current_year',
-      this.FieldDevelopmentForm.get('no_of_wells_drilled_in_current_year').value
+      (
+        this.FieldDevelopmentForm.get('no_of_wells_drilled_in_current_year')
+          .value as string
+      ).replace(/,/g, '')
     );
     formData.append(
       'number_of_wells_proposed_in_the_FDP',
-      this.FieldDevelopmentForm.get('number_of_wells_proposed_in_the_FDP').value
+      (
+        this.FieldDevelopmentForm.get('number_of_wells_proposed_in_the_FDP')
+          .value as string
+      ).replace(/,/g, '')
     );
     formData.append(
       'noof_Producing_Fields',
-      this.FieldDevelopmentForm.get('noof_Producing_Fields').value
+      (
+        this.FieldDevelopmentForm.get('noof_Producing_Fields').value as string
+      ).replace(/,/g, '')
     );
     formData.append(
       'uploaded_approved_FDP_Document',

@@ -19,8 +19,8 @@ export class ReconciledOilProductionComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'RECONCILED OIL PRODUCTION';
     reporttext: string;
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

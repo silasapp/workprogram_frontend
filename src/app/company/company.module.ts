@@ -15,6 +15,7 @@ import { PresentationModule } from './presentation/presentation.module';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CompanyComponent } from './company.component';
+import { ApplicationComponent } from '../application/application.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './dashboard/landing.component';
 
@@ -24,7 +25,7 @@ import { ConcessionsfieldsComponent } from './dashboard/concessionsfields.compon
 
 @NgModule({
   declarations: [
-    CompanyDetailsComponent, CompanyComponent, DashboardComponent, LandingComponent, ResetPasswordComponent, ConcessionsfieldsComponent
+    CompanyDetailsComponent, CompanyComponent, DashboardComponent, LandingComponent, ResetPasswordComponent, ConcessionsfieldsComponent, ApplicationComponent
   ],
   imports: [
 

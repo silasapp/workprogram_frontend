@@ -20,6 +20,7 @@ declare var $: any;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
+  genk: GenericService;
   @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
 
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
   dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody = {} as DashboardGasBudgetAndReserveBody;
   modalService: ModalService;
   companyService: CompanyService;
-  genk: GenericService;
+
   cdr: ChangeDetectorRef;
 
   columns = [

@@ -20,8 +20,8 @@ export class SeismicDataApprovedPreviousComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'Seismic Data Approved and Acquired Previous Year';
     tableTitle = 'Table 4. 2020 3D Seismic Data Approved and Acquired';
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;
