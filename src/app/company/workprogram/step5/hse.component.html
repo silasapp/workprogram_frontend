@@ -1887,7 +1887,7 @@
                 <div style="width: 100%;">
                     <div
                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                        <input type="number" class="inpute" formControlName="current_year_DATA"
+                        <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="current_year_DATA"
                             [(ngModel)]="fatality_Body.current_year_DATA">
                     </div>
                 </div>
@@ -1897,7 +1897,7 @@
                 <div style="width: 100%;">
                     <div
                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                        <input type="number" class="inpute" formControlName="proposed_year_DATA"
+                        <input (keypress)="genk.restrictData($event)"  class="inpute" formControlName="proposed_year_DATA"
                             [(ngModel)]="fatality_Body.proposed_year_DATA">
                     </div>
                 </div>
@@ -2494,7 +2494,7 @@
                 <div style="width: 100%;">
                     <div
                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                        <input type="number" class="inpute" formControlName="produced_water_volumes"
+                        <input (keypress)="genk.restrictData($event)" class="inpute" formControlName="produced_water_volumes"
                             [(ngModel)]=" water_Management_Updated_New_Body.produced_water_volumes">
 
                     </div>
