@@ -163,10 +163,10 @@ export class SWPNigeriaContentComponent implements OnInit {
           Validators.required,
         ]),
         expatriate_quota_positions: new FormControl(
-          this.staffdispositionBody._expatriate_quota_positions,
+          this.staffdispositionBody.expatriate_quota_positions,
           [Validators.required]
         ),
-        utilized_EQ: new FormControl(this.staffdispositionBody._utilized_EQ, [
+        utilized_EQ: new FormControl(this.staffdispositionBody.utilized_EQ, [
           Validators.required,
         ]),
         // names_of_Parties: new FormControl(
@@ -361,8 +361,7 @@ export class SWPNigeriaContentComponent implements OnInit {
       .saveNigeriaContenttraining(
         this.nigeriacontenttrainingBody,
         this.genk.wpYear,
-        this.genk.OmlName,
-        ''
+        this.genk.OmlName
       )
       .subscribe((result) => {
         this.modalService.logNotice(
@@ -374,6 +373,24 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveSeniorManagementStaff() {
+    const model = {
+      do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff:
+        this.seniormanagementstaffBody
+          .do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff,
+      if_NO_why: this.seniormanagementstaffBody.if_NO_why,
+      number_of_staff_released_within_the_year_:
+        this.seniormanagementstaffBody
+          .number_of_staff_released_within_the_year_,
+      total_no_of_nigeria_senior_staff:
+        this.seniormanagementstaffBody.total_no_of_nigeria_senior_staff,
+      total_no_of_senior_staff:
+        this.seniormanagementstaffBody.total_no_of_senior_staff,
+      total_no_of_top_management_staff:
+        this.seniormanagementstaffBody.total_no_of_top_management_staff,
+      total_no_of_top_nigerian_management_staff:
+        this.seniormanagementstaffBody
+          .total_no_of_top_nigerian_management_staff,
+    };
     this.workprogram
       .saveNigeriaContentQuestion(
         this.seniormanagementstaffBody,

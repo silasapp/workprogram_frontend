@@ -20,8 +20,8 @@ export class AppraisalWellsComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'APPRAISAL WELLS';
     tableTitle = 'TABLE 9: Appraisal wells drilled in 2021';
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

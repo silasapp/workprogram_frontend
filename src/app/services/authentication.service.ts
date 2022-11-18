@@ -30,10 +30,9 @@ export class AuthenticationService {
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
-
-
-    login(email: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/account/authenticate`, { email: email, password: password})
+    elpslogin(email: string, password: string) {
+        debugger;
+        return this.http.post<any>(`${environment.apiUrl}/auth/userauth`, { email: email, code: password})
             .pipe(retry(this.num), map(user => {
                 if (user.code === 1) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -46,7 +45,23 @@ export class AuthenticationService {
                 return user;
             }));
     }
-    dlogin(username: string, password: string) {
+
+   login(email: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}/account/authenticate`, { email: email, password: password})
+            .pipe(retry(this.num), map(user => {
+                debugger;
+                if (user.code === 1) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    //localStorage.setItem('iden', user.id);
+                    this.currentUserSubject.next(user);
+                    this.isLoggedIn = true;
+                    return user;
+                }
+                return user;
+            }));
+    }
+    dllogin(username: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/account/dlogin`, { username: username, password: password })
             .pipe(retry(this.num), map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes

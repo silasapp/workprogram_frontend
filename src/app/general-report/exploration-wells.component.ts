@@ -20,8 +20,8 @@ export class ExplorationWellsComponent implements OnInit {
     cdr: ChangeDetectorRef;
     title = 'EXPLORATION WELLS';
     tableTitle = 'TABLE 8: Exploration wells drilled in 2021';
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

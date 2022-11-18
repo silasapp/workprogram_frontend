@@ -36,7 +36,7 @@ export class UploadCodeComponent implements OnInit {
   CompanyCodeFile?: File = null;
   CompanyCodeNewName: string;
   CompanyCodeNameDoc: string;
-  
+
 
 
   //#region form groups declaration
@@ -164,8 +164,7 @@ export class UploadCodeComponent implements OnInit {
     if (this.CompanyCodeFile) {
       formDat.append(this.CompanyCodeNameDoc, this.CompanyCodeFile, this.CompanyCodeNewName);
     }
-    this.admin
-      .uploadCompanyCode(formDat)
+    this.admin.uploadCompanyCode(formDat)
       .subscribe(res => {
 
         if (res.statusCode == 300) {
@@ -296,7 +295,7 @@ export class UploadCodeComponent implements OnInit {
     debugger;
     this.admin.updateCompanyCode(this.codeBody.id, this.codeBody.companyname, this.codeBody.isactive).subscribe(
       (res)=>{
-        
+
         if(res.statusCode == 200){
           debugger;
           this.closePopup();
@@ -311,8 +310,8 @@ export class UploadCodeComponent implements OnInit {
         this.fetchcompanycode();
       }
     )
-   
-    
+
+
   }
 
 
@@ -328,7 +327,7 @@ export class UploadCodeComponent implements OnInit {
   }
 
 
-  
+
 
 }
 

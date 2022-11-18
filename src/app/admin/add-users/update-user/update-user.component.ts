@@ -19,7 +19,7 @@ export class UpdateUserComponent implements OnInit {
     public dialogRef: MatDialogRef<UpdateUserComponent>,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    ) { 
+    ) {
       this.repsForm =  this.initForm();
       this.getUser(data.id)
       this.id = data.id;
@@ -72,9 +72,9 @@ setUser(){
     passwords: this.user.passwords
   })
 }
+
 closeDialog(){
   this.dialogRef.close();
 }
-
 
 }

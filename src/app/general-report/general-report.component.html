@@ -181,6 +181,19 @@
                     </div>
                   </div>
 
+                  <div class="layout-line layout-padsect">
+                    <div class="layout-divcap layout-pad">
+                      <span>SAFETY, HEALTH AND ENVIRONMENT PERFORMANCE</span>
+                    </div>
+                    <div>
+                      <div *ngIf="genk.isAdmin" class="layout-divsmall layout-padsmall" [routerLink]="['/' + genk.generalReport, 'accidentstatistics']"
+                        routerLinkActive="activel">
+                        <span class="material-icons layout-icon">dashboard</span>
+                        <span>Accident Statistics</span>
+                      </div>
+                    </div>
+                  </div>
+
                   <!-- <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'upload-presentation']" routerLinkActive="active">
                       <span class="material-icons layout-icon">upload</span>
                       <span>Upload Presentation</span>

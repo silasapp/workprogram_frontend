@@ -14,6 +14,10 @@ export class AdminService {
 
   constructor(private http: HttpClient, private gen: GenericService) { }
 
+    getDashboardStuff(){
+      return this.http.get<any>(`${environment.apiUrl}/application/getDashboardStuff`)
+      .pipe(retry(this.num), map((response) =>{ return response }))
+    }
 
   fetch(url) {
     return this.http.get<any>(`${environment.apiUrl}/admin/${url}`)
@@ -143,7 +147,7 @@ export class AdminService {
   }
 
 
-  
+
 
   getUser(id_: string) {
     var id = parseInt(id_);
@@ -228,28 +232,41 @@ export class AdminService {
   }
 
 
-  Post_ConcessionDetails(conbody: ConcessionDetails, id, actionToDo) {
-    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_admin_concessions_information`, conbody, { params: { id, actionToDo } })
-      .pipe(retry(this.num),
+      Post_ConcessionDetails(conbody: ConcessionDetails, id, actionToDo){
+        debugger;
+        return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_admin_concessions_information`, conbody, {params: {id, actionToDo}})
+        .pipe(retry(this.num),
+        map((response) => {
+          return response
+        })
+        )
+      }
+
+      Post_FieldDetails(conbody: FieldDetails, id , actionToDo){
+        debugger;
+        return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_company_field`, conbody, {params: {id, actionToDo}})
+        .pipe(retry(this.num),
         map((response) => {
           return response
         })
       )
   }
 
-  Post_FieldDetails(conbody: FieldDetails, id, actionToDo) {
-    debugger;
-    return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_company_field`, conbody, { params: { id, actionToDo } })
+      getConcessionFields(){
+        return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concessions_field`, {params: {companyNumber: 0}})
+        .pipe(retry(this.num), map((response) =>{ return response }))
+      }
+
+
+  updateCompanyCode(_id: any, _name: any, _status: any) {
+    var id = parseInt(_id);
+    return this.http.put<any>(`${environment.apiUrl}/admin/update_company_codes`, '', { params: { id: id, name: _name, status: _status } }
+    )
       .pipe(retry(this.num),
         map((response) => {
           return response
         })
       )
-  }
-
-  getConcessionFields() {
-    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concessions_field`, { params: { companyNumber: 0 } })
-      .pipe(retry(this.num), map((response) => { return response }))
   }
 
   uploadCompanyCode(conbody: FormData) {
@@ -267,18 +284,6 @@ export class AdminService {
       .pipe(retry(this.num),
         map((response) => {
           response.data = this.gen.lowerArray(response.data);
-          return response
-        })
-      )
-  }
-
-
-  updateCompanyCode(_id: any, _name: any, _status: any) {
-    var id = parseInt(_id);
-    return this.http.put<any>(`${environment.apiUrl}/admin/update_company_codes`, '', { params: { id: id, name: _name, status: _status } }
-    )
-      .pipe(retry(this.num),
-        map((response) => {
           return response
         })
       )

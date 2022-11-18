@@ -261,16 +261,19 @@
               width: 100%;
               border-radius: 10px;
               padding: 7px 10px;
+              display: flex;
             "
           >
             <input
               type="text"
               formControlName="gas"
+              placeholder="1,000,000"
               class="inpute"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatNum_Efficient($event.target.value)"
               [(ngModel)]="fielddevelopmentexcessivereserveBody._gas"
             />
+            <span>SCF</span>
           </div>
         </div>
       </div>

@@ -19,8 +19,8 @@ export class ReserveUpdateComponent implements OnInit {
     genk: GenericService;
     cdr: ChangeDetectorRef;
     title = 'RESERVES UPDATE';
-    pagenum = 0;
-    selectedPage = 0;
+    pagenum = 1;
+    selectedPage = 1;
     arrayRows = [];
     listyear = [];
     isTableOpt = false;

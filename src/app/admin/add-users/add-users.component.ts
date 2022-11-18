@@ -37,10 +37,10 @@ export class AddUsersComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-  
+
           "columnDef": "name",
           "header": "NAME"
-  
+
       },
       {
         "columnDef": "phone_no",
@@ -51,9 +51,9 @@ export class AddUsersComponent implements OnInit {
           "header": "LAST LOGIN DATE"
       },
   ]
-  
-    constructor(private adminservice: AdminService, 
-    private cd: ChangeDetectorRef, 
+
+    constructor(private adminservice: AdminService,
+    private cd: ChangeDetectorRef,
     private gen: GenericService,
     private dialog: MatDialog,
     private fb: FormBuilder
@@ -62,7 +62,7 @@ export class AddUsersComponent implements OnInit {
       this.cdr = cd;
       this.genk.sizePerPage = this.genk.sizeten;
     }
-    
+
     ngOnInit() {
       this.data = [];
       this.fetchdata();
@@ -83,7 +83,7 @@ initForm() {
     phonE_NO: ["", Validators.required],
     designation: ["", Validators.required],
     companY_ID: ["", Validators.required],
-    
+
   })
 }
 
@@ -91,16 +91,16 @@ initForm() {
     public get pageIndex(): number {
       return (this.selectedPage - 1) * this.genk.sizePerPage;
     }
-  
+
     assignPageNum() {
       this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
     }
-  
+
     assignDataRows() {
       this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
       this.cd.markForCheck();
     }
-  
+
     fetchdata(){
       debugger;
      this.adminservice.fetch("Get_Companies").subscribe(
@@ -113,33 +113,33 @@ initForm() {
           }
       )
     }
-  
-  
+
+
     goNext() {
       this.selectedPage++;
       this.assignDataRows();
     }
-  
+
     goPrev() {
       this.selectedPage--;
       this.assignDataRows();
     }
-  
+
     firstPage() {
       this.selectedPage = 1;
       this.assignDataRows();
     }
-  
+
     lastPage() {
       this.selectedPage = this.pagenum;
       this.assignDataRows();
     }
-  
+
     changePage(value: string) {
       this.selectedPage = Number(value);
       this.assignDataRows();
     }
-  
+
     resize(e) {
       let value = e.target.value;
       if (value === 'all') {
@@ -171,7 +171,7 @@ initForm() {
           this.Alert("Error",res.message, "error")
         }
        // this.fetchdata();
-    
+
         this.initForm();
       }
     )
