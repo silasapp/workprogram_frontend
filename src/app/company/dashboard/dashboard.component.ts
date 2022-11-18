@@ -99,33 +99,31 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
   ngAfterViewInit() {
-    debugger;
     this.getCompanyDashboardReport();
-    debugger;
     this.getDashboardGasBudgetAndReserveDetails();
 
   }
 
-  fetchreportI() {
-    let value = 2021;
-    this.modalService.logCover("Loading data...", true);
-    this.report.fetch("general_report", value).subscribe(
-      (res) => {
-        debugger;
-        this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
-        this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-        this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-        debugger;
-        //this.plotDoubleBarChart();
-        this.plotDoublePieChart();
-        this.plotDoubleBarChartHorizontal();
-        this.modalService.togCover();
-        this.cd.markForCheck();
-      }
+  // fetchreportI() {
+  //   let value = 2021;
+  //   this.modalService.logCover("Loading data...", true);
+  //   this.report.fetch("general_report", value).subscribe(
+  //     (res) => {
+  //       debugger;
+  //       this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
+  //       this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
+  //       this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+  //       debugger;
+  //       //this.plotDoubleBarChart();
+  //       this.plotDoublePieChart();
+  //       this.plotDoubleBarChartHorizontal();
+  //       this.modalService.togCover();
+  //       this.cd.markForCheck();
+  //     }
 
-    )
+  //   )
 
-  }
+  // }
 
 
   fetchreport() {
@@ -319,8 +317,6 @@ export class DashboardComponent implements OnInit {
         debugger;
         debugger;
         this.fetchreport();
-        debugger;
-        this.fetchreportI();
         this.cd.markForCheck();
       }
     )
@@ -438,8 +434,8 @@ export class DashboardComponent implements OnInit {
     }));
 
     var series = chart.series.push(am5percent.PieSeries.new(root, {
-      valueField: 'percentage_Production',
-      categoryField: 'contract_Type'
+      valueField: 'totalReserves',
+      categoryField: 'concessionName'
     }));
 
     // series.slices.template.adapters.add("fill", function (fill, target) {
