@@ -1,6 +1,6 @@
 .me {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,7 @@
     color: darkgrey;
     font-weight: 700;
     font-size: 18px;
+    box-shadow: 2px 2px 3px rgb(0, 0, 0, 0.3);
 }
 
 .divcent {
@@ -18,7 +19,11 @@
 }
 
 .smalljust {
-    padding-left: 10px;
+    padding-left: 5px;
+    font-size: 10px;
+    font-weight: 900;
+    color: grey;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3);
 }
 
 .dropwp {
@@ -79,10 +84,7 @@ select {
 
 .wkpactive {
     border-radius: 5px 5px 0 0;
-    border-left: 2px solid silver;
-    border-top: 2px solid silver;
-    border-right: 2px solid silver;
-    border-bottom: 5px solid teal;
+    border-bottom: 7px solid teal;
     color: teal;
     font-weight: 600;
 }
@@ -214,7 +216,7 @@ select {
   width: 100%;
   justify-content: space-between;
 }
-.toprow2 
+.toprow2
 {
   display: flex;
   width: 100%;

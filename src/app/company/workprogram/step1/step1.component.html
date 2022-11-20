@@ -1,6 +1,20 @@
+<div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color:  rgb(9, 79, 104); color: white; font-weight: 500;">
+    <span class="material-icons" style="font-size: 30px;" [routerLink]="['/' + genk.company, genk.workprogram, 'start', ]">account_balance</span>
+    <span style="font-size: 18px;">STEP 1</span>
+    <span class="material-icons" style="font-size: 30px;">arrow_forward_ios</span>
+
+  </div>
+</div>
+<div>
+  <app-board></app-board>
+</div>
+<div>
+  <app-concession></app-concession>
+</div>
 <div style="margin: 0 10px 0 0">
   <div
-      style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3); margin-bottom: 10px; padding-top: 5px;">
+      style="background-color: white; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);padding-top: 5px; margin-bottom: 5px;">
       <div style="display: flex; justify-content: space-around; font-size: 16px; font-weight: 500;">
           <div style="padding: 10px 9%;"
               [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'concessionsituation']"

@@ -10,12 +10,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {BoardComponent } from './board.component';
 import { StartComponent } from './start.component';
+import { ConcessionBaseComponent } from './concession-base.component';
 
 
 @NgModule({
   declarations: [
     BoardComponent,
-    StartComponent
+    StartComponent,
+    ConcessionBaseComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { StartComponent } from './start.component';
     FormsModule,
     ReactiveFormsModule,
     WorkProgramRoutingModule
-  ]
+  ],
+  exports: [BoardComponent, ConcessionBaseComponent]
 })
 export class WorkProgramModule { }

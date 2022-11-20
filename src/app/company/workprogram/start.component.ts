@@ -44,6 +44,7 @@ export class StartComponent implements OnInit{
   changeWPYear(e) {
     this.wkpYear = e.target.value;
     this.genk.wpYear = this.wkpYear;
+    localStorage.setItem('wkpYear', this.wkpYear);
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.wkpYear)
       .subscribe((res) => {
