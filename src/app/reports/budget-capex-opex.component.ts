@@ -25,7 +25,7 @@ export class BudgetCapexOpexComponent implements OnInit {
 
     columns = [
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -33,11 +33,11 @@ export class BudgetCapexOpexComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "omL_Name",
-            "header": "CONCESSION HELD"
+            "columnDef": "oml_name",
+            "header": "OML NAME"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -53,11 +53,11 @@ export class BudgetCapexOpexComponent implements OnInit {
             "header": "CONSESSION TYPE"
         },
         {
-            "columnDef": "item_Type",
+            "columnDef": "item_type",
             "header": "ITEM TYPE"
         },
         {
-            "columnDef": "item_Description",
+            "columnDef": "item_description",
             "header": "ITEM DESCRIPTION"
         },
         {
@@ -76,7 +76,7 @@ export class BudgetCapexOpexComponent implements OnInit {
 
     repcolumns = [
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -84,11 +84,11 @@ export class BudgetCapexOpexComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "omL_Name",
+            "columnDef": "oml_name",
             "header": "CONCESSION HELD"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -104,11 +104,11 @@ export class BudgetCapexOpexComponent implements OnInit {
             "header": "CONSESSION TYPE"
         },
         {
-            "columnDef": "item_Type",
+            "columnDef": "item_type",
             "header": "ITEM TYPE"
         },
         {
-            "columnDef": "item_Description",
+            "columnDef": "item_description",
             "header": "ITEM DESCRIPTION"
         },
         {

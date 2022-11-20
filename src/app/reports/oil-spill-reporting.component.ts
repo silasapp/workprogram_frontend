@@ -25,7 +25,7 @@ export class OilSpillReportingComponent implements OnInit {
   
      columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -37,7 +37,7 @@ export class OilSpillReportingComponent implements OnInit {
         "header": "CONCESSION HELD"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -53,11 +53,11 @@ export class OilSpillReportingComponent implements OnInit {
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "incident_Oil_Spill_Ref_No",
+          "columnDef": "incident_oil_spill_ref_no",
           "header": "INCIDENT OIL SPILL REF NO"
       },
       {
-          "columnDef": "facility_Equipment",
+          "columnDef": "facility_equipment",
           "header": "FACILITY EQUIPMENT"
       },
       {
@@ -73,7 +73,7 @@ export class OilSpillReportingComponent implements OnInit {
           "header": "STATE "
       },
       {
-          "columnDef": "date_of_Spill",
+          "columnDef": "date_of_spill",
           "header": "DATE OF SPILL"
       },
       {
@@ -95,7 +95,7 @@ export class OilSpillReportingComponent implements OnInit {
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -103,11 +103,11 @@ export class OilSpillReportingComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "CONCESSION HELD"
       },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -123,11 +123,11 @@ export class OilSpillReportingComponent implements OnInit {
           "header": "CONTRACT TYPE"
       },
         {
-            "columnDef": "incident_Oil_Spill_Ref_No",
+            "columnDef": "incident_oil_spill_ref_no",
             "header": "INCIDENT OIL SPILL REF NO"
         },
         {
-            "columnDef": "facility_Equipment",
+            "columnDef": "facility_equipment",
             "header": "FACILITY EQUIPMENT"
         },
         {
@@ -143,7 +143,7 @@ export class OilSpillReportingComponent implements OnInit {
             "header": "STATE "
         },
         {
-            "columnDef": "date_of_Spill",
+            "columnDef": "date_of_spill",
             "header": "DATE OF SPILL"
         },
         {

@@ -25,7 +25,7 @@ export class OspRegistrationComponent implements OnInit {
   
      columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,11 +33,11 @@ export class OspRegistrationComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-        "columnDef": "omL_Name",
-        "header": "CONCESSION HELD"
+        "columnDef": "oml_name",
+        "header": "OML NAME"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -53,17 +53,17 @@ export class OspRegistrationComponent implements OnInit {
         "header": "CONSESSION TYPE"
     },
       {
-          "columnDef": "descriptioN_",
+          "columnDef": "description_",
           "header": "DESCRIPTION "
       },
       {
-          "columnDef": "valueS_",
+          "columnDef": "values_",
           "header": "VALUES "
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -71,11 +71,11 @@ export class OspRegistrationComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "CONCESSION HELD"
       },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -91,11 +91,11 @@ export class OspRegistrationComponent implements OnInit {
           "header": "CONSESSION TYPE"
       },
         {
-            "columnDef": "descriptioN_",
+            "columnDef": "description_",
             "header": "DESCRIPTION "
         },
         {
-            "columnDef": "valueS_",
+            "columnDef": "values_",
             "header": "VALUES "
         }];
 
