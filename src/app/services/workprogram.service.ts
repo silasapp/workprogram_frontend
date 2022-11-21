@@ -3583,17 +3583,18 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    console.log('conbody', conbody);
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_technical_safety_control_studies_new`,
         conbody,
         {
           params: {
-            year: year,
             omlName: omlName,
             fieldName: fieldName,
-            actionToDo,
+            year: year,
             id,
+            actionToDo,
           },
         }
       )
