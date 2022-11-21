@@ -329,10 +329,42 @@ export class SWPHseComponent implements OnInit {
     },
   ];
 
+  hsctColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'safetyCurrentYearFilename',
+      header: 'Accident Statistics for the year',
+    },
+    {
+      columnDef: 'safetyLast2YearsFilename',
+      header: 'Accident Statistics for the last 2 years',
+    },
+  ];
+
+  hohmColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'OHMplanFilePath',
+      header: 'Evidence of submission of OHM plan',
+    },
+    {
+      columnDef: 'OHMplanCommunicationFilePath',
+      header: 'Evidence of communication of OHM plan/policies',
+    },
+  ];
+
   //lists declarations
   hseTechnicals: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW[] = [];
-  hseSafetyStudy: HSE_SAFETY_STUDIES_NEW[] = [];
-  hseManagementPosition: HSE_MANAGEMENT_POSITION[] = [];
+  hseSafetyStudies: HSE_SAFETY_STUDIES_NEW[] = [];
+  hseManagementPositions: HSE_MANAGEMENT_POSITION[] = [];
+  hseSafetyCultureTrainings: HSE_SAFETY_CULTURE_TRAINING[] = [];
+  occupationHealthManagements: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT[] = [];
   /////////////////////
 
   //#region  form bodies declaration
@@ -1186,70 +1218,59 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_SafetySubmit() {
-    const formDat: FormData = new FormData();
+    const formDataToSubmit: FormData = new FormData();
     this.safetyBody.id = 0;
     for (const key in this.safetyBody) {
       if (this.safetyBody[key]) {
-        formDat.append(key.toString(), this.safetyBody[key]);
+        formDataToSubmit.append(key.toString(), this.safetyBody[key]);
       }
     }
     if (this.SMSFile) {
-      formDat.append(this.SMSNameDoc, this.SMSFile, this.SMSNewName);
+      formDataToSubmit.append(this.SMSNameDoc, this.SMSFile, this.SMSNewName);
     }
 
     this.workprogram
       .post_HSE_SafetyStudies_2(
-        formDat,
+        formDataToSubmit,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_SafetyStudies(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice(
+            'Form was submitted successfully!',
+            res.message,
+            'success'
+          );
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 
   Hse_Management_Position_Submit() {
     const formDataToSubmit: FormData = new FormData();
-    // this.mgtPositionBody.id = 0;
-    // for (const key in this.mgtPositionBody) {
-    //   if (this.mgtPositionBody[key]) {
-    //     formDat.append(key.toString(), this.mgtPositionBody[key]);
-    //   }
-    // }
 
-    // if (this.PromotionFile) {
-    //   formDat.append(
-    //     this.PromotionNameDoc,
-    //     this.PromotionFile,
-    //     this.PromotionNewName
-    //   );
-    // }
-    // if (this.OrganogramFile) {
-    //   formDat.append(
-    //     this.OrganogramNameDoc,
-    //     this.OrganogramFile,
-    //     this.OrganogramNewName
-    //   );
-    // }
+    if (this.PromotionFile)
+      formDataToSubmit.append(
+        this.OrganogramNameDoc,
+        this.OrganogramFile,
+        this.PromotionNewName
+      );
 
-    formDataToSubmit.append(
-      'organogramrFilePath',
-      this.ManagementPositionForm.get('organogramrFilePath').value,
-      this.PromotionNewName
-    );
-    formDataToSubmit.append(
-      'organogramrFilePath',
-      this.ManagementPositionForm.get('organogramrFilePath').value,
-      this.PromotionNewName
-    );
+    if (this.PromotionFile)
+      formDataToSubmit.append(
+        this.OrganogramNameDoc,
+        this.OrganogramFile,
+        this.PromotionNewName
+      );
 
     this.workprogram
       .post_HSE_Management_Position(
@@ -1260,24 +1281,26 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Management(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice(
+            'Form was submitted successfully!.',
+            res.message,
+            'success'
+          );
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 
   Hse_Safety_Culture_Submit() {
     const formDat: FormData = new FormData();
-    this.safetyCultureBody.id = 0;
-    for (const key in this.safetyCultureBody) {
-      if (this.safetyCultureBody[key]) {
-        formDat.append(key.toString(), this.safetyCultureBody[key]);
-      }
-    }
+
     if (this.StatisticsFile) {
       formDat.append(
         this.StatisticsNameDoc,
@@ -1292,6 +1315,7 @@ export class SWPHseComponent implements OnInit {
         this.Statistics_2NewName
       );
     }
+
     this.workprogram
       .post_HSE_SafetyCulture(
         formDat,
@@ -1301,9 +1325,20 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        this.loadTable_SafetyCulture(res.data);
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice(
+            'Form was submitted successfully!',
+            res.message,
+            'success'
+          );
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 
@@ -2325,12 +2360,7 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        let techInfo = this
-          .technicalBody as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
         let safetyInfo = this.safetyBody as HSE_SAFETY_STUDIES_NEW;
-        let mgtPositionInfo = this.mgtPositionBody as HSE_MANAGEMENT_POSITION;
-        let safetyCultureInfo = this
-          .safetyCultureBody as HSE_SAFETY_CULTURE_TRAINING;
         let occupationalInfo = this
           .occupationalBody as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
         let accidentInfo = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
@@ -2381,19 +2411,20 @@ export class SWPHseComponent implements OnInit {
         if (res.hseTechnicalSafety) {
           this.hseTechnicals = res.hseTechnicalSafety;
         }
-        if (res.hseSafetyStudies != null && res.hseSafetyStudies.length > 0) {
+
+        if (res.hseSafetyStudies && res.hseSafetyStudies.length > 0) {
           safetyInfo = res.hseSafetyStudies[0] as HSE_SAFETY_STUDIES_NEW;
-          this.loadTable_SafetyStudies(res.hseSafetyStudies);
-        }
-        if (res.hseManagementPosition) {
-          this.hseManagementPosition = res.hseManagementPosition;
+          this.hseSafetyStudies = res.hseSafetyStudies;
         }
 
-        if (res.hseSafetyCulture != null && res.hseSafetyCulture.length > 0) {
-          safetyCultureInfo = res
-            .hseSafetyCulture[0] as HSE_SAFETY_CULTURE_TRAINING;
-          this.loadTable_SafetyCulture(res.hseSafetyCulture);
+        if (res.hseManagementPosition) {
+          this.hseManagementPositions = res.hseManagementPosition;
         }
+
+        if (res.hseSafetyCulture) {
+          this.hseSafetyCultureTrainings = res.hseSafetyCulture;
+        }
+
         if (
           res.hseOccupationalHealth != null &&
           res.hseOccupationalHealth.length > 0
@@ -2559,10 +2590,7 @@ export class SWPHseComponent implements OnInit {
           this.loadTable_EMS_Files(res.hseEnvironmentalManagementSystems);
         }
 
-        this.technicalBody = techInfo;
         this.safetyBody = safetyInfo;
-        this.mgtPositionBody = mgtPositionInfo;
-        this.safetyCultureBody = safetyCultureInfo;
         this.qualityControlBody = qualityInfo;
         this.climateChangeBody = climateInfo;
         this.inspectionMaintenanceBody = inspectionInfo;
@@ -2671,50 +2699,30 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_SafetyStudies(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.SafetyStudyForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.safetyBody[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_HSE_SafetyStudies(event) {
+  Delete_HSE_SafetyStudies(row: HSE_SAFETY_STUDIES_NEW) {
     this.workprogram
       .post_HSE_SafetyStudies(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_SafetyStudies(res.data);
-        }
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice(
+            'Form submission was successful!',
+            res.message,
+            'success'
+          );
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 
@@ -2744,62 +2752,46 @@ export class SWPHseComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  Delete_HSE_Management(event) {
+  Delete_HSE_Management(row: HSE_MANAGEMENT_POSITION) {
     this.workprogram
       .post_HSE_Management(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.loadTable_Management(res.data);
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 
-  loadTable_SafetyCulture(data) {
-    this.columnHeader_4 = [];
-    this.columnValue_4 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_4.push(data[0]);
-      this.columnValue_4.push(result);
-    } else {
-      for (let item1 in this.SafetyCultureTrainingForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_4.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_4.push(this.safetyCultureBody[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible_4 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_HSE_SafetyCulture(event) {
+  Delete_HSE_SafetyCulture(row: HSE_SAFETY_CULTURE_TRAINING) {
     this.workprogram
       .post_HSE_SafetyCulture(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_SafetyCulture(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
       });
   }
 
@@ -2829,19 +2821,26 @@ export class SWPHseComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  Delete_HSE_Occupational(event) {
+  Delete_HSE_Occupational(row: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT) {
     this.workprogram
       .post_HSE_Occupational(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_Occupational(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
       });
   }
 

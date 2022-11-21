@@ -336,7 +336,7 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="hseSafetyStudy.length > 0" class="wptablebox">
+  <div *ngIf="hseSafetyStudies.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -347,14 +347,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of hseSafetyStudy">
+          <tr *ngFor="let row of hseSafetyStudies">
             <td *ngFor="let colDef of hssColDef">
               {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_HSE_Technical(row)"
+                (click)="Delete_HSE_SafetyStudies(row)"
               >
                 Delete
               </button>
@@ -432,7 +432,7 @@
   </div>
   <br /><br />
 
-  <div *ngIf="hseManagementPosition.length > 0" class="wptablebox">
+  <div *ngIf="hseManagementPositions.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -443,7 +443,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of hseManagementPosition">
+          <tr *ngFor="let row of hseManagementPositions">
             <td *ngFor="let colDef of hmpColDef">
               {{ row[colDef.columnDef] }}
             </td>
@@ -527,27 +527,26 @@
       </button>
     </div>
   </div>
-  <div *ngIf="isTabVisible_4" class="wptablebox">
+
+  <div *ngIf="hseSafetyCultureTrainings.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_4">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hsctColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_4">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of hseSafetyCultureTrainings">
+            <td *ngFor="let colDef of hsctColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_HSE_SafetyCulture($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_SafetyCulture(row)"
               >
                 Delete
               </button>
@@ -557,6 +556,7 @@
       </table>
     </div>
   </div>
+
   <br /><br />
   <hr size="10" />
   <br /><br />
@@ -625,27 +625,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_5" class="wptablebox">
+
+  <div *ngIf="occupationHealthManagements.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_5">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hohmColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_5">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of occupationHealthManagements">
+            <td *ngFor="let colDef of hohmColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_HSE_Occupational($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Occupational(row)"
               >
                 Delete
               </button>
@@ -655,6 +654,7 @@
       </table>
     </div>
   </div>
+
   <hr size="10" />
   <br /><br />
 
