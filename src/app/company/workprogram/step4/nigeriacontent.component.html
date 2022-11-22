@@ -180,7 +180,7 @@
             <br /><br />
             <div>
               <div style="text-align: center">
-                <button class="submitbtn" (click)="saveAddStaffDisposition()">
+                <button class="submitbtn" (click)="saveAddStaffDisposition()"> 
                   Add Staff Disposition
                 </button>
               </div>
@@ -752,3 +752,9 @@
     </div>
     <hr size="10" />
     <br /><br />
+
+    <br><br>
+<div style="text-align: center;">
+    <button [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'strategicplans']"
+      class="nextbtn">Next</button>
+  </div>

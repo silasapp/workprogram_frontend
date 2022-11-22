@@ -29,7 +29,7 @@ export class HSEClimateChangeAndAirQualityComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -45,11 +45,11 @@ export class HSEClimateChangeAndAirQualityComponent implements OnInit {
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "doyouhaveGHG",
+          "columnDef": "doyouhaveghg",
           "header": "DO YOU HAVE GHG?"
       },
       {
-          "columnDef": "ghgFilePath",
+          "columnDef": "ghgfilepath",
           "header": "GHG FILE"
         }];
 
@@ -59,7 +59,7 @@ export class HSEClimateChangeAndAirQualityComponent implements OnInit {
               "header": "COMPANY EMAIL"
           },
           {
-              "columnDef": "year_of_WP",
+              "columnDef": "year_of_wp",
               "header": "YEAR"
           },
           {
@@ -75,11 +75,11 @@ export class HSEClimateChangeAndAirQualityComponent implements OnInit {
             "header": "CONTRACT TYPE"
         },
           {
-              "columnDef": "doyouhaveGHG",
+              "columnDef": "doyouhaveghg",
               "header": "DO YOU HAVE GHG?"
           },
           {
-              "columnDef": "ghgFilePath",
+              "columnDef": "ghgfilepath",
               "header": "GHG FILE"
             }];
 
