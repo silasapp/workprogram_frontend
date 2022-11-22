@@ -65,7 +65,6 @@ export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
   OHMplanCommunicationFilePath: File;
 }
 export class HSE_QUALITY_CONTROL {
-  constructor() {}
   id: number = 0;
   oML_id: number = 0;
   oML_Name: string = '';
@@ -78,13 +77,13 @@ export class HSE_QUALITY_CONTROL {
 }
 
 export class HSE_CLIMATE_CHANGE_AND_AIR_QUALITY {
-  constructor() {}
   id: number = 0;
   oML_id: number = 0;
   oML_Name: string = '';
   year_of_WP: string = '';
   doyouhaveGHG: string = '';
-  gHGFilePath: string;
+  gHGFilePath: string = '';
+  ghgFilename: string = '';
   consession_Type: string = '';
   terrain: string = '';
   contract_Type: string = '';

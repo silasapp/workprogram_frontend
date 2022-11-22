@@ -719,27 +719,26 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="isTabVisible_6" class="wptablebox">
+
+  <div *ngIf="qualityControlDocuments.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_6">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hqcdColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_6">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of qualityControlDocuments">
+            <td *ngFor="let colDef of hqcdColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_HSE_Quality($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Quality(row)"
               >
                 Delete
               </button>
@@ -749,6 +748,7 @@
       </table>
     </div>
   </div>
+
   <hr size="10" />
   <br /><br />
 
@@ -813,27 +813,26 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="isTabVisible_7" class="wptablebox">
+
+  <div *ngIf="climateChanges.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_7">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hccaColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_7">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of climateChanges">
+            <td *ngFor="let colDef of hccaColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_HSE_Climate($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Climate(row)"
               >
                 Delete
               </button>
@@ -843,6 +842,7 @@
       </table>
     </div>
   </div>
+
   <hr size="10" />
   <br />
 

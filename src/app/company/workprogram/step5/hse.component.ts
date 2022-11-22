@@ -359,12 +359,44 @@ export class SWPHseComponent implements OnInit {
     },
   ];
 
+  hqcdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'doyouhaveQualityControl',
+      header: 'Do you have Certificates of Sampling (COS)',
+    },
+    {
+      columnDef: 'qualityControlFilePath',
+      header: 'Certificates of Sampling (COS) issued in the year',
+    },
+  ];
+
+  hccaColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'doyouhaveGHG',
+      header: 'Do you have GHG monitoring document for the year',
+    },
+    {
+      columnDef: 'ghgFilename',
+      header: 'GHG monitoring document for the year',
+    },
+  ];
+
   //lists declarations
   hseTechnicals: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW[] = [];
   hseSafetyStudies: HSE_SAFETY_STUDIES_NEW[] = [];
   hseManagementPositions: HSE_MANAGEMENT_POSITION[] = [];
   hseSafetyCultureTrainings: HSE_SAFETY_CULTURE_TRAINING[] = [];
   occupationHealthManagements: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT[] = [];
+  qualityControlDocuments: HSE_QUALITY_CONTROL[] = [];
+  climateChanges: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY[] = [];
   /////////////////////
 
   //#region  form bodies declaration
@@ -1372,60 +1404,71 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_QualityControl_Submit() {
-    const formDat: FormData = new FormData();
-    this.qualityControlBody.id = 0;
+    const formDataToSubmit: FormData = new FormData();
+    // this.qualityControlBody.id = 0;
     for (const key in this.qualityControlBody) {
       if (this.qualityControlBody[key]) {
-        formDat.append(key.toString(), this.qualityControlBody[key]);
+        formDataToSubmit.append(key.toString(), this.qualityControlBody[key]);
       }
     }
+    // if (this.COSFile) {
+    //   formDataToSubmit.append(this.OHMNameDoc, this.OHMFile, this.OHMNewName);
+    // }
     if (this.COSFile) {
-      formDat.append(this.OHMNameDoc, this.OHMFile, this.OHMNewName);
-    }
-    if (this.COSFile) {
-      formDat.append(this.COSNameDoc, this.COSFile, this.COSNewName);
+      formDataToSubmit.append(this.COSNameDoc, this.COSFile, this.COSNewName);
     }
     this.workprogram
       .post_HSE_QualityControl(
-        formDat,
+        formDataToSubmit,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        this.loadTable_Quality(res.data);
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   HSE_Climate_Submit() {
-    const formDat: FormData = new FormData();
-    this.climateChangeBody.id = 0;
+    const formDataToSubmit: FormData = new FormData();
+    // this.climateChangeBody.id = 0;
     for (const key in this.climateChangeBody) {
       if (this.climateChangeBody[key]) {
-        formDat.append(key.toString(), this.climateChangeBody[key]);
+        formDataToSubmit.append(key.toString(), this.climateChangeBody[key]);
       }
     }
     if (this.GHGFile) {
-      formDat.append(this.GHGNameDoc, this.GHGFile, this.GHGNewName);
+      formDataToSubmit.append(this.GHGNameDoc, this.GHGFile, this.GHGNewName);
     }
     this.workprogram
       .post_HSE_ClimateChange(
-        formDat,
+        formDataToSubmit,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Climate(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -2361,13 +2404,8 @@ export class SWPHseComponent implements OnInit {
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         let safetyInfo = this.safetyBody as HSE_SAFETY_STUDIES_NEW;
-        let occupationalInfo = this
-          .occupationalBody as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
         let accidentInfo = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
 
-        let qualityInfo = this.qualityControlBody as HSE_QUALITY_CONTROL;
-        let climateInfo = this
-          .climateChangeBody as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY;
         let inspectionInfo = this
           .inspectionMaintenanceBody as HSE_INSPECTION_AND_MAINTENANCE_NEW;
         let asset_PRE_Info = this
@@ -2425,23 +2463,18 @@ export class SWPHseComponent implements OnInit {
           this.hseSafetyCultureTrainings = res.hseSafetyCulture;
         }
 
-        if (
-          res.hseOccupationalHealth != null &&
-          res.hseOccupationalHealth.length > 0
-        ) {
-          occupationalInfo = res
-            .hseOccupationalHealth[0] as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
-          this.loadTable_Occupational(res.hseOccupationalHealth);
+        if (res.hseOccupationalHealth) {
+          this.occupationHealthManagements = res.hseOccupationalHealth;
         }
-        if (res.hseQualityControl != null && res.hseQualityControl.length > 0) {
-          qualityInfo = res.hseQualityControl[0] as HSE_QUALITY_CONTROL;
-          this.loadTable_Quality(res.hseQualityControl);
+
+        if (res.hseQualityControl) {
+          this.qualityControlDocuments = res.hseQualityControl;
         }
-        if (res.hseClimateChange != null && res.hseClimateChange.length > 0) {
-          climateInfo = res
-            .hseClimateChange[0] as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY;
-          this.loadTable_Climate(res.hseClimateChange);
+
+        if (res.hseClimateChange) {
+          this.climateChanges = res.hseClimateChange;
         }
+
         if (
           res.hseInspectionMaintenance != null &&
           res.hseInspectionMaintenance.length > 0
@@ -2591,8 +2624,6 @@ export class SWPHseComponent implements OnInit {
         }
 
         this.safetyBody = safetyInfo;
-        this.qualityControlBody = qualityInfo;
-        this.climateChangeBody = climateInfo;
         this.inspectionMaintenanceBody = inspectionInfo;
         this.asset_PRE_Body = asset_PRE_Info;
         this.asset_RBI_Body = asset_RBI_Info;
@@ -2869,19 +2900,26 @@ export class SWPHseComponent implements OnInit {
     this.isTabVisible_6 = true;
     this.cd.markForCheck();
   }
-  Delete_HSE_Quality(event) {
+  Delete_HSE_Quality(row: HSE_QUALITY_CONTROL) {
     this.workprogram
       .post_HSE_QualityControl(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_Quality(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -2910,19 +2948,26 @@ export class SWPHseComponent implements OnInit {
     this.isTabVisible_7 = true;
     this.cd.markForCheck();
   }
-  Delete_HSE_Climate(event) {
+  Delete_HSE_Climate(row: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY) {
     this.workprogram
       .post_HSE_ClimateChange(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_Climate(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
