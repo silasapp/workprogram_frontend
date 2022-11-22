@@ -27,7 +27,7 @@ export class CausesOfOilSpillComponent implements OnInit {
     columns=[
       
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -35,11 +35,11 @@ export class CausesOfOilSpillComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-        "columnDef": "omL_Name",
+        "columnDef": "oml_name",
         "header": "CONCESSION HELD"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -59,11 +59,11 @@ export class CausesOfOilSpillComponent implements OnInit {
           "header": "NO OF SPILLS REPORTED"
       },
       {
-          "columnDef": "total_Quantity_Spilled",
+          "columnDef": "total_quantity_spilled",
           "header": "TOTAL QUANTITY SPILLED"
       },
       {
-          "columnDef": "total_Quantity_Recovered",
+          "columnDef": "total_quantity_recovered",
           "header": "TOTAL QUANTITY RECOVERED"
       },
       {
@@ -71,7 +71,7 @@ export class CausesOfOilSpillComponent implements OnInit {
           "header": "CORROSION"
       },
       {
-          "columnDef": "equipment_Failure",
+          "columnDef": "equipment_failure",
           "header": "EQUIPMENT FAILURE"
       },
       {
@@ -79,7 +79,7 @@ export class CausesOfOilSpillComponent implements OnInit {
           "header": "EROSSION WAVES SAND"
       },
       {
-          "columnDef": "human_Error",
+          "columnDef": "human_error",
           "header": "HUMAN ERROR"
       },
       {
@@ -87,7 +87,7 @@ export class CausesOfOilSpillComponent implements OnInit {
           "header": "MYSTERY"
       },
       {
-          "columnDef": "operational_Maintenance_Error",
+          "columnDef": "operational_maintenance_error",
           "header": "OPERATIONAL MAINTENANCE ERROR"
       },
       {
@@ -102,7 +102,7 @@ export class CausesOfOilSpillComponent implements OnInit {
   repcolumns=[
       
     {
-        "columnDef": "companyName",
+        "columnDef": "companyname",
         "header": "COMPANY NAME"
     },
     {
@@ -110,11 +110,11 @@ export class CausesOfOilSpillComponent implements OnInit {
         "header": "COMPANY EMAIL"
     },
     {
-      "columnDef": "omL_Name",
-      "header": "CONCESSION HELD"
+      "columnDef": "oml_name",
+      "header": "OML NAME"
   },
     {
-        "columnDef": "year_of_WP",
+        "columnDef": "year_of_wp",
         "header": "YEAR"
     },
     {
@@ -134,11 +134,11 @@ export class CausesOfOilSpillComponent implements OnInit {
         "header": "NO OF SPILLS REPORTED"
     },
     {
-        "columnDef": "total_Quantity_Spilled",
+        "columnDef": "total_quantity_spilled",
         "header": "TOTAL QUANTITY SPILLED"
     },
     {
-        "columnDef": "total_Quantity_Recovered",
+        "columnDef": "total_quantity_recovered",
         "header": "TOTAL QUANTITY RECOVERED"
     },
     {
@@ -146,7 +146,7 @@ export class CausesOfOilSpillComponent implements OnInit {
         "header": "CORROSION"
     },
     {
-        "columnDef": "equipment_Failure",
+        "columnDef": "equipment_failure",
         "header": "EQUIPMENT FAILURE"
     },
     {
@@ -154,7 +154,7 @@ export class CausesOfOilSpillComponent implements OnInit {
         "header": "EROSSION WAVES SAND"
     },
     {
-        "columnDef": "human_Error",
+        "columnDef": "human_error",
         "header": "HUMAN ERROR"
     },
     {
@@ -162,7 +162,7 @@ export class CausesOfOilSpillComponent implements OnInit {
         "header": "MYSTERY"
     },
     {
-        "columnDef": "operational_Maintenance_Error",
+        "columnDef": "operational_maintenance_error",
         "header": "OPERATIONAL MAINTENANCE ERROR"
     },
     {

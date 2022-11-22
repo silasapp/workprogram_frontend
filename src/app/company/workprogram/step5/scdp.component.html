@@ -612,7 +612,7 @@
         <div style="width: 30%;">
             <label class="labelwp">Percentage Completion</label>
             <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <input type="number" class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_trainingskills_csr_Body.percentage_Completion_">
+                <input (keypress)="genk.restrictData($event)"  class="inpute" formControlName="percentage_Completion_" [(ngModel)]="scdp_trainingskills_csr_Body.percentage_Completion_">
             </div>
         </div>
         <div style="width: 30%;">
@@ -836,3 +836,4 @@
         </div>
     </div>
     </div>
+    

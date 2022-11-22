@@ -25,7 +25,7 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,11 +33,11 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
           "header": "COMPANY EMAIL"
       },
       {
-        "columnDef": "omL_Name",
+        "columnDef": "oml_name",
         "header": "CONCESSION HELD"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -53,7 +53,7 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
         "header": "CONSESSION TYPE"
     },
       {
-          "columnDef": "csR_",
+          "columnDef": "csr_",
           "header": "CSR "
       },
       {
@@ -61,15 +61,15 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
           "header": "BUDGET "
       },
       {
-          "columnDef": "actual_Spent",
+          "columnDef": "actual_spent",
           "header": "ACTUAL SPENT"
       },
       {
-          "columnDef": "percentage_Completion_",
+          "columnDef": "percentage_completion_",
           "header": "PERCENTAGE COMPLETION "
       },
       {
-          "columnDef": "beneficiary_Communities",
+          "columnDef": "beneficiary_communities",
           "header": "BENEFICIARY COMMUNITIES"
       },
       {
@@ -77,13 +77,13 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
           "header": "ACTUAL PROPOSED"
       },
       {
-          "columnDef": "actual_Proposed_Year",
+          "columnDef": "actual_proposed_year",
           "header": "ACTUAL/PROPOSED YEAR"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -91,11 +91,11 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
             "header": "COMPANY EMAIL"
         },
         {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "CONCESSION HELD"
       },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -111,7 +111,7 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
           "header": "CONSESSION TYPE"
       },
         {
-            "columnDef": "csR_",
+            "columnDef": "csr_",
             "header": "CSR "
         },
         {
@@ -119,15 +119,15 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
             "header": "BUDGET "
         },
         {
-            "columnDef": "actual_Spent",
+            "columnDef": "actual_spent",
             "header": "ACTUAL SPENT"
         },
         {
-            "columnDef": "percentage_Completion_",
+            "columnDef": "percentage_completion_",
             "header": "PERCENTAGE COMPLETION "
         },
         {
-            "columnDef": "beneficiary_Communities",
+            "columnDef": "beneficiary_communities",
             "header": "BENEFICIARY COMMUNITIES"
         },
         {
@@ -135,7 +135,7 @@ export class HSESustainableDevelopmentCommunityProjectCSRNewComponent implements
             "header": "ACTUAL PROPOSED"
         },
         {
-            "columnDef": "actual_Proposed_Year",
+            "columnDef": "actual_proposed_year",
             "header": "ACTUAL/PROPOSED YEAR"
         }];
 

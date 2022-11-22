@@ -36,7 +36,7 @@ export class ConcessionSituationComponent implements OnInit {
       },
       
       {
-          "columnDef": "concession_held",
+          "columnDef": "consession_Type",
           "header": "CONCESSION HELD"
       },
       {
@@ -156,7 +156,7 @@ export class ConcessionSituationComponent implements OnInit {
         },
         
         {
-            "columnDef": "concession_held",
+            "columnDef": "consession_Type",
             "header": "CONCESSION HELD"
         },
         {

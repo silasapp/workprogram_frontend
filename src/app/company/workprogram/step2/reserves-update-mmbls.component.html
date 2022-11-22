@@ -26,14 +26,7 @@
   <hr />
   <br />
   <div
-    style="
-      text-align: start;
-      font-size: 17px;
-      font-weight: 600;
-      padding-bottom: 20px;
-      color: teal;
-    "
-  >
+    style="text-align: start;font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
     <span>Concession Reserves for preceding year(as at 1st January)</span>
   </div>
   <div
@@ -66,7 +59,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> 2P reserves (MMBBL)- Oil</label>
+        <label class="labelwp"> 2P reserves (Barrels)- Oil</label>
         <div style="display: flex">
           <div
             style="
@@ -89,7 +82,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">2P reserves (MMBBL) - Condensate</label>
+        <label class="labelwp">2P reserves (Barrels) - Condensate</label>
         <div style="display: flex">
           <div
             style="
@@ -117,7 +110,7 @@
 
     <div style="display: flex; width: 100%; justify-content: start">
       <div style="width: 30%; margin-right: 5%">
-        <label class="labelwp">2P reserves (BSCF) - AG</label>
+        <label class="labelwp">2P reserves (Standard Cubic Feet) - AG</label>
         <div style="display: flex">
           <div
             style="
@@ -140,7 +133,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> 2P reserves (BSCF) - NAG</label>
+        <label class="labelwp"> 2P reserves (Standard Cubic Feet) - NAG</label>
         <div style="display: flex">
           <div
             style="
@@ -150,7 +143,7 @@
               padding: 7px 10px;
             "
           >
-            <input
+            <input placeholder="1,000,000"
               type="text"
               formControlName="company_Reserves_NAG"
               class="inpute"
@@ -166,7 +159,7 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Annual Oil Production (MMBBL)</label>
+        <label class="labelwp">Annual Oil Production (Barrels)</label>
         <div style="display: flex">
           <div
             style="
@@ -191,7 +184,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">Annual Condensate Production (MMBBL)</label>
+        <label class="labelwp">Annual Condensate Production (Barrels)</label>
         <div style="display: flex">
           <div
             style="
@@ -216,7 +209,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">Annual AG Production (BSCF)</label>
+        <label class="labelwp">Annual AG Production (Standard Cubic Feet)</label>
         <div style="display: flex">
           <div
             style="
@@ -242,7 +235,7 @@
     </div>
     <br />
     <div style="width: 30%">
-      <label class="labelwp">Annual NAG Production (BSCF)</label>
+      <label class="labelwp">Annual NAG Production (Standard Cubic Feet)</label>
       <div style="display: flex">
         <div
           style="
@@ -319,7 +312,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">2P reserves (MMBBL) - Oil</label>
+        <label class="labelwp">2P reserves (Barrels) - Oil</label>
         <div style="display: flex">
           <div
             style="
@@ -342,7 +335,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> 2P reserves (MMBBL) - Condensate</label>
+        <label class="labelwp"> 2P reserves (Standard Cubic Feet) - Condensate</label>
         <div style="display: flex">
           <div
             style="
@@ -1346,4 +1339,9 @@
       Update Life Index
     </button>
   </div>
+</div>
+<br><br>
+<div style="text-align: center;">
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step3', 'budgetperformance']"
+    class="nextbtn">Next</button>
 </div>

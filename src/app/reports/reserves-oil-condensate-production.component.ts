@@ -25,7 +25,7 @@ export class ReservesOilCondensateProductionComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class ReservesOilCondensateProductionComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -49,29 +49,29 @@ export class ReservesOilCondensateProductionComponent implements OnInit {
         "header": "CONSESSION TYPE"
     },
       {
-          "columnDef": "company_Annual_Year",
+          "columnDef": "company_annual_year",
           "header": "COMPANY ANNUAL YEAR"
       },
       {
-          "columnDef": "company_Annual_Oil",
+          "columnDef": "company_annual_oil",
           "header": "COMPANY ANNUAL OIL"
       },
       {
-          "columnDef": "company_Annual_Condensate",
+          "columnDef": "company_annual_condensate",
           "header": "COMPANY ANNUAL CONDENSATE"
       },
       {
-          "columnDef": "company_Annual_AG",
+          "columnDef": "company_annual_ag",
           "header": "COMPANY ANNUAL AG"
       },
       {
-          "columnDef": "company_Annual_NAG",
+          "columnDef": "company_annual_nag",
           "header": "COMPANY ANNUAL NAG"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -79,7 +79,7 @@ export class ReservesOilCondensateProductionComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -95,23 +95,23 @@ export class ReservesOilCondensateProductionComponent implements OnInit {
           "header": "CONSESSION TYPE"
       },
         {
-            "columnDef": "company_Annual_Year",
+            "columnDef": "company_annual_year",
             "header": "COMPANY ANNUAL YEAR"
         },
         {
-            "columnDef": "company_Annual_Oil",
+            "columnDef": "company_annual_oil",
             "header": "COMPANY ANNUAL OIL"
         },
         {
-            "columnDef": "company_Annual_Condensate",
+            "columnDef": "company_annual_condensate",
             "header": "COMPANY ANNUAL CONDENSATE"
         },
         {
-            "columnDef": "company_Annual_AG",
+            "columnDef": "company_annual_ag",
             "header": "COMPANY ANNUAL AG"
         },
         {
-            "columnDef": "company_Annual_NAG",
+            "columnDef": "company_annual_nag",
             "header": "COMPANY ANNUAL NAG"
         }];
 

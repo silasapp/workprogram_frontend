@@ -26,7 +26,7 @@ export class ReservesAdditionComponent implements OnInit {
 
     columns = [
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -34,7 +34,7 @@ export class ReservesAdditionComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -50,33 +50,33 @@ export class ReservesAdditionComponent implements OnInit {
         "header": "TERRAIN"
     },
       {
-          "columnDef": "reserves_Addition_Was_there_any_Reserve_Addition",
+          "columnDef": "reserves_addition_was_there_any_reserve_addition",
           "header": "RESERVES ADDITION WAS THERE ANY RESERVE ADDITION"
       },
       {
-          "columnDef": "reserves_Addition_Reason_for_Addition",
+          "columnDef": "reserves_addition_reason_for_addition",
           "header": "RESERVES ADDITION REASON FOR ADDITION"
       },
       {
-          "columnDef": "reserves_Addition_Oil",
+          "columnDef": "reserves_addition_oil",
           "header": "RESERVES ADDITION OIL"
       },
       {
-          "columnDef": "reserves_Addition_Condensate",
+          "columnDef": "reserves_addition_condensate",
           "header": "RESERVES ADDITION CONDENSATE"
       },
       {
-          "columnDef": "reserves_Addition_AG",
+          "columnDef": "reserves_addition_ag",
           "header": "RESERVES ADDITION AG"
       },
       {
-          "columnDef": "reserves_Addition_NAG",
+          "columnDef": "reserves_addition_nag",
           "header": "RESERVES ADDITION NAG"
       }];
 
       repcolumns = [
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -84,7 +84,7 @@ export class ReservesAdditionComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -100,27 +100,27 @@ export class ReservesAdditionComponent implements OnInit {
           "header": "TERRAIN"
       },
         {
-            "columnDef": "reserves_Addition_Was_there_any_Reserve_Addition",
+            "columnDef": "reserves_addition_was_there_any_reserve_addition",
             "header": "RESERVES ADDITION WAS THERE ANY RESERVE ADDITION"
         },
         {
-            "columnDef": "reserves_Addition_Reason_for_Addition",
+            "columnDef": "reserves_addition_reason_for_addition",
             "header": "RESERVES ADDITION REASON FOR ADDITION"
         },
         {
-            "columnDef": "reserves_Addition_Oil",
+            "columnDef": "reserves_addition_oil",
             "header": "RESERVES ADDITION OIL"
         },
         {
-            "columnDef": "reserves_Addition_Condensate",
+            "columnDef": "reserves_Addition_condensate",
             "header": "RESERVES ADDITION CONDENSATE"
         },
         {
-            "columnDef": "reserves_Addition_AG",
+            "columnDef": "reserves_Addition_ag",
             "header": "RESERVES ADDITION AG"
         },
         {
-            "columnDef": "reserves_Addition_NAG",
+            "columnDef": "reserves_addition_nag",
             "header": "RESERVES ADDITION NAG"
         }];
 

@@ -1,68 +1,44 @@
-<div
-  [formGroup]="InitialForm"
-  (ngSubmit)="submit()"
-  style="
+<div [formGroup]="InitialForm" (ngSubmit)="submit()" style="
     background-color: white;
     border-radius: 5px;
     box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
     padding: 20px;
-  "
->
-  <h1
-    style="
+  ">
+  <h1 style="
       text-shadow: 1px 1px rgb(130, 23, 23);
       color: rgb(255, 157, 0);
       margin-left: 75%;
       font-size: 18px;
-    "
-  >
+    ">
     Note:*All Fields are Mandatory
   </h1>
-  <div
-    style="
+  <div style="
       font-size: 25px;
       font-weight: 500;
       text-align: center;
       padding-bottom: 20px;
-    "
-  >
+    ">
     <span>INITIAL WELL COMPLETION JOBS ON QUARTERLY BASIS</span>
   </div>
 
   <div>
     <div class="quarterbox">
-      <div
-        class="quarterspace"
-        [ngClass]="quaterIWClassOne"
-        (click)="changeIWQuater(1, btn)"
-      >
+      <div class="quarterspace" [ngClass]="quaterIWClassOne" (click)="changeIWQuater(1, btn)">
         <div style="margin-bottom: 20px">
           <span><span style="font-size: 25px">1</span> Quarter</span>
         </div>
       </div>
-      <div
-        class="quarterspace"
-        [ngClass]="quaterIWClassTwo"
-        (click)="changeIWQuater(2, btn)"
-      >
+      <div class="quarterspace" [ngClass]="quaterIWClassTwo" (click)="changeIWQuater(2, btn)">
         <div style="margin-bottom: 20px">
           <span><span style="font-size: 25px">2</span> Quarter</span>
         </div>
       </div>
-      <div
-        class="quarterspace"
-        [ngClass]="quaterIWClassThree"
-        (click)="changeIWQuater(3, btn)"
-      >
+      <div class="quarterspace" [ngClass]="quaterIWClassThree" (click)="changeIWQuater(3, btn)">
         <div style="margin-bottom: 20px">
           <span><span style="font-size: 25px">3</span> Quarter</span>
         </div>
       </div>
-      <div
-        class="quarterspace"
-        [ngClass]="quaterIWClassFour"
-        (click)="changeIWQuater(4, btn)"
-      >
+      <div class="quarterspace" [ngClass]="quaterIWClassFour" (click)="changeIWQuater(4, btn)">
         <div style="margin-bottom: 20px">
           <span> <span style="font-size: 25px">4</span> Quarter</span>
         </div>
@@ -76,28 +52,19 @@
     <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Actual No. of Completion </label>
       <div style="display: flex">
-        <div
-          style="
+        <div style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          "
-        >
-          <input
-            (keypress)="genk.restrictData($event)"
-            formControlName="current_year_Actual_Number"
-            [(ngModel)]="initialBody.current_year_Actual_Number"
-            class="inpute"
-            (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
-            (change)="
+          ">
+          <input (keypress)="genk.restrictData($event)" formControlName="current_year_Actual_Number"
+            [(ngModel)]="initialBody.current_year_Actual_Number" class="inpute" (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
               initialBody.current_year_Actual_Number = genk.formatNum_Efficient(
                 $event.target.value
               )
-            "
-            [value]="initialBody.current_year_Actual_Number"
-          />
+            " [value]="initialBody.current_year_Actual_Number" />
         </div>
       </div>
     </div>
@@ -105,28 +72,19 @@
     <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Proposed No. of Completion</label>
       <div style="display: flex">
-        <div
-          style="
+        <div style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          "
-        >
-          <input
-            (keypress)="genk.restrictData($event)"
-            formControlName="proposed_year_data"
-            [(ngModel)]="initialBody.proposed_year_data"
-            class="inpute"
-            (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
-            (change)="
+          ">
+          <input (keypress)="genk.restrictData($event)" formControlName="proposed_year_data"
+            [(ngModel)]="initialBody.proposed_year_data" class="inpute" (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
               initialBody.proposed_year_data = genk.formatNum_Efficient(
                 $event.target.value
               )
-            "
-            [value]="initialBody.proposed_year_data"
-          />
+            " [value]="initialBody.proposed_year_data" />
         </div>
       </div>
     </div>
@@ -142,18 +100,11 @@
           <div style="display: flex">
             <div class="inpdivcurrency">
               <span class="currencywp">&#x20A6;</span>
-              <input
-                type="text"
-                formControlName="budeget_Allocation_NGN"
-                (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatCurrency($event)"
-                (change)="
+              <input type="text" formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)" (change)="
                   initialBody.budeget_Allocation_NGN =
                     genk.addCurrencyDecimal($event)
-                "
-                [value]="initialBody.budeget_Allocation_NGN"
-                class="inpute"
-              />
+                " [value]="initialBody.budeget_Allocation_NGN" class="inpute" />
             </div>
           </div>
         </div>
@@ -163,18 +114,11 @@
           <div style="display: flex">
             <div class="inpdivcurrency">
               <span class="currencywp">$</span>
-              <input
-                type="text"
-                formControlName="budeget_Allocation_USD"
-                (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatCurrency($event)"
-                (change)="
+              <input type="text" formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)" (change)="
                   initialBody.budeget_Allocation_USD =
                     genk.addCurrencyDecimal($event)
-                "
-                [value]="initialBody.budeget_Allocation_USD"
-                class="inpute"
-              />
+                " [value]="initialBody.budeget_Allocation_USD" class="inpute" />
             </div>
           </div>
         </div>
@@ -186,20 +130,14 @@
     <div style="width: 30%; margin: auto 2% 0 0">
       <label class="labelwp">Actual Completion Date</label>
       <div style="display: flex">
-        <div
-          style="
+        <div style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          "
-        >
-          <input
-            type="date"
-            class="inpute"
-            formControlName="actual_Completion_Date"
-            [(ngModel)]="initialBody.actual_Completion_Date"
-          />
+          ">
+          <input type="date" class="inpute" formControlName="actual_Completion_Date"
+            [(ngModel)]="initialBody.actual_Completion_Date" />
         </div>
       </div>
     </div>
@@ -207,20 +145,14 @@
     <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Proposed Completion Date</label>
       <div style="display: flex">
-        <div
-          style="
+        <div style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          "
-        >
-          <input
-            type="date"
-            class="inpute"
-            formControlName="proposed_Completion_Date"
-            [(ngModel)]="initialBody.proposed_Completion_Date"
-          />
+          ">
+          <input type="date" class="inpute" formControlName="proposed_Completion_Date"
+            [(ngModel)]="initialBody.proposed_Completion_Date" />
         </div>
       </div>
     </div>
@@ -229,11 +161,7 @@
       <label class="labelwp"> Initial well completion in Oil or Gas well</label>
       <div style="display: flex">
         <div class="inputshadow">
-          <select
-            class="dropwp"
-            formControlName="oil_or_gas_wells"
-            [(ngModel)]="initialBody.oil_or_gas_wells"
-          >
+          <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="initialBody.oil_or_gas_wells">
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
             <option value="OIL WELL">Oil Well</option>
@@ -248,20 +176,13 @@
     <div style="width: 30%">
       <label class="labelwp">Remarks</label>
       <div style="display: flex">
-        <div
-          style="
+        <div style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          "
-        >
-          <textarea
-            class="inpute"
-            rows="2"
-            formControlName="remarks"
-            [(ngModel)]="initialBody.remarks"
-          ></textarea>
+          ">
+          <textarea class="inpute" rows="2" formControlName="remarks" [(ngModel)]="initialBody.remarks"></textarea>
         </div>
       </div>
     </div>
@@ -278,17 +199,12 @@
 <br />
 
 <div style="text-align: center">
-  <button
-    #btnprocess
-    (click)="genk.goToTop()"
-    [routerLink]="[
+  <button #btnprocess (click)="genk.goToTop()" [routerLink]="[
       '/' + genk.company,
       genk.workprogram,
       'step2',
-      'drillingoperation'
-    ]"
-    class="nextbtn"
-  >
+      'workoverrecompletion'
+    ]" class="nextbtn">
     Next
   </button>
 </div>

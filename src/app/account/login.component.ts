@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
                         this.returnUrl = '';
                         this.locate.replaceState(url);
                         window.location.reload();
-                        
+
                         // this.clearForm();
                         // this.router.navigate([url]);
                     }
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
             this.cd.markForCheck();
         }
     }
-    
+
     clearForm() {
         this.email = '';
         this.password = '';

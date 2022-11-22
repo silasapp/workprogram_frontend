@@ -9,11 +9,13 @@ import {WorkProgramRoutingModule} from './workprogram-routing.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {BoardComponent } from './board.component';
+import { StartComponent } from './start.component';
 
 
 @NgModule({
-  declarations: [  
-    BoardComponent
+  declarations: [
+    BoardComponent,
+    StartComponent
   ],
   imports: [
     CommonModule,

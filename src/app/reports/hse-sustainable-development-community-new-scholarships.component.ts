@@ -25,7 +25,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,11 +33,11 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
           "header": "COMPANY EMAIL"
       },
       {
-        "columnDef": "omL_Name",
+        "columnDef": "oml_name",
         "header": "CONCESSION HELD"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -53,7 +53,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "csR_",
+          "columnDef": "csr_",
           "header": "CSR "
       },
       {
@@ -61,19 +61,19 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
           "header": "BUDGET "
       },
       {
-          "columnDef": "actual_Spent",
+          "columnDef": "actual_spent",
           "header": "ACTUAL SPENT"
       },
       {
-          "columnDef": "percentage_Completion_",
+          "columnDef": "percentage_completion_",
           "header": "PERCENTAGE COMPLETION "
       },
       {
-          "columnDef": "beneficiary_Communities_host",
+          "columnDef": "beneficiary_communities_host",
           "header": "BENEFICIARY COMMUNITIES (HOST)"
       },
       {
-          "columnDef": "beneficiary_Communities_National",
+          "columnDef": "beneficiary_communities_national",
           "header": "BENEFICIARY COMMUNITIES (NATIONAL)"
       },
       {
@@ -81,13 +81,13 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
           "header": "ACTUAL PROPOSED"
       },
       {
-          "columnDef": "actual_Proposed_Year",
+          "columnDef": "actual_proposed_year",
           "header": "ACTUAL PROPOSED YEAR"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -95,11 +95,11 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
             "header": "COMPANY EMAIL"
         },
         {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "CONCESSION HELD"
       },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -115,7 +115,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
           "header": "CONTRACT TYPE"
       },
         {
-            "columnDef": "csR_",
+            "columnDef": "csr_",
             "header": "CSR "
         },
         {
@@ -123,19 +123,19 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
             "header": "BUDGET "
         },
         {
-            "columnDef": "actual_Spent",
+            "columnDef": "actual_spent",
             "header": "ACTUAL SPENT"
         },
         {
-            "columnDef": "percentage_Completion_",
+            "columnDef": "percentage_completion_",
             "header": "PERCENTAGE COMPLETION "
         },
         {
-            "columnDef": "beneficiary_Communities_host",
+            "columnDef": "beneficiary_communities_host",
             "header": "BENEFICIARY COMMUNITIES (HOST)"
         },
         {
-            "columnDef": "beneficiary_Communities_National",
+            "columnDef": "beneficiary_communities_national",
             "header": "BENEFICIARY COMMUNITIES (NATIONAL)"
         },
         {
@@ -143,7 +143,7 @@ export class HSESustainableDevelopmentCommunityNewScholarshipsComponent implemen
             "header": "ACTUAL PROPOSED"
         },
         {
-            "columnDef": "actual_Proposed_Year",
+            "columnDef": "actual_proposed_year",
             "header": "ACTUAL PROPOSED YEAR"
         }];
 

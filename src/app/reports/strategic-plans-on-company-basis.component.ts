@@ -25,7 +25,7 @@ export class StrategicPlansOnCompanyBasisComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class StrategicPlansOnCompanyBasisComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR OF WP"
       },
       {
@@ -53,83 +53,83 @@ export class StrategicPlansOnCompanyBasisComponent implements OnInit {
           "header": "ACTIVITIES"
       },
       {
-          "columnDef": "n_1_Q1",
+          "columnDef": "n_1_q1",
           "header": "N 1 Q1"
       },
       {
-          "columnDef": "n_1_Q2",
+          "columnDef": "n_1_q2",
           "header": "N 1 Q2"
       },
       {
-          "columnDef": "n_1_Q3",
+          "columnDef": "n_1_q3",
           "header": "N 1 Q3"
       },
       {
-          "columnDef": "n_1_Q4",
+          "columnDef": "n_1_q4",
           "header": "N 1 Q4"
       },
       {
-          "columnDef": "n_2_Q1",
+          "columnDef": "n_2_q1",
           "header": "N 2 Q1"
       },
       {
-          "columnDef": "n_2_Q2",
+          "columnDef": "n_2_q2",
           "header": "N 2 Q2"
       },
       {
-          "columnDef": "n_2_Q3",
+          "columnDef": "n_2_q3",
           "header": "N 2 Q3"
       },
       {
-          "columnDef": "n_2_Q4",
+          "columnDef": "n_2_q4",
           "header": "N 2 Q4"
       },
       {
-          "columnDef": "n_3_Q1",
+          "columnDef": "n_3_q1",
           "header": "N 3 Q1"
       },
       {
-          "columnDef": "n_3_Q2",
+          "columnDef": "n_3_q2",
           "header": "N 3 Q2"
       },
       {
-          "columnDef": "n_3_Q3",
+          "columnDef": "n_3_q3",
           "header": "N 3 Q3"
       },
       {
-          "columnDef": "n_3_Q4",
+          "columnDef": "n_3_q4",
           "header": "N 3 Q4"
       },
       {
-          "columnDef": "n_4_Q1",
+          "columnDef": "n_4_q1",
           "header": "N 4 Q1"
       },
       {
-          "columnDef": "n_4_Q2",
+          "columnDef": "n_4_q2",
           "header": "N 4 Q2"
       },
       {
-          "columnDef": "n_4_Q3",
+          "columnDef": "n_4_q3",
           "header": "N 4 Q3"
       },
       {
-          "columnDef": "n_4_Q4",
+          "columnDef": "n_4_q4",
           "header": "N 4 Q4"
       },
       {
-          "columnDef": "n_5_Q1",
+          "columnDef": "n_5_q1",
           "header": "N 5 Q1"
       },
       {
-          "columnDef": "n_5_Q2",
+          "columnDef": "n_5_q2",
           "header": "N 5 Q2"
       },
       {
-          "columnDef": "n_5_Q3",
+          "columnDef": "n_5_q3",
           "header": "N 5 Q3"
       },
       {
-          "columnDef": "n_5_Q4",
+          "columnDef": "n_5_q4",
           "header": "N 5 Q4"
       }];
 
@@ -143,7 +143,7 @@ export class StrategicPlansOnCompanyBasisComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR OF WP"
         },
         {
@@ -163,83 +163,83 @@ export class StrategicPlansOnCompanyBasisComponent implements OnInit {
             "header": "ACTIVITIES"
         },
         {
-            "columnDef": "n_1_Q1",
+            "columnDef": "n_1_q1",
             "header": "N 1 Q1"
         },
         {
-            "columnDef": "n_1_Q2",
+            "columnDef": "n_1_q2",
             "header": "N 1 Q2"
         },
         {
-            "columnDef": "n_1_Q3",
+            "columnDef": "n_1_q3",
             "header": "N 1 Q3"
         },
         {
-            "columnDef": "n_1_Q4",
+            "columnDef": "n_1_q4",
             "header": "N 1 Q4"
         },
         {
-            "columnDef": "n_2_Q1",
+            "columnDef": "n_2_q1",
             "header": "N 2 Q1"
         },
         {
-            "columnDef": "n_2_Q2",
+            "columnDef": "n_2_q2",
             "header": "N 2 Q2"
         },
         {
-            "columnDef": "n_2_Q3",
+            "columnDef": "n_2_q3",
             "header": "N 2 Q3"
         },
         {
-            "columnDef": "n_2_Q4",
+            "columnDef": "n_2_q4",
             "header": "N 2 Q4"
         },
         {
-            "columnDef": "n_3_Q1",
+            "columnDef": "n_3_q1",
             "header": "N 3 Q1"
         },
         {
-            "columnDef": "n_3_Q2",
-            "header": "N 3 Q2"
+            "columnDef": "n_3_q2",
+            "header": "N 3 q2"
         },
         {
-            "columnDef": "n_3_Q3",
+            "columnDef": "n_3_q3",
             "header": "N 3 Q3"
         },
         {
-            "columnDef": "n_3_Q4",
+            "columnDef": "n_3_q4",
             "header": "N 3 Q4"
         },
         {
-            "columnDef": "n_4_Q1",
+            "columnDef": "n_4_q1",
             "header": "N 4 Q1"
         },
         {
-            "columnDef": "n_4_Q2",
+            "columnDef": "n_4_q2",
             "header": "N 4 Q2"
         },
         {
-            "columnDef": "n_4_Q3",
+            "columnDef": "n_4_q3",
             "header": "N 4 Q3"
         },
         {
-            "columnDef": "n_4_Q4",
+            "columnDef": "n_4_q4",
             "header": "N 4 Q4"
         },
         {
-            "columnDef": "n_5_Q1",
+            "columnDef": "n_5_q1",
             "header": "N 5 Q1"
         },
         {
-            "columnDef": "n_5_Q2",
+            "columnDef": "n_5_q2",
             "header": "N 5 Q2"
         },
         {
-            "columnDef": "n_5_Q3",
+            "columnDef": "n_5_q3",
             "header": "N 5 Q3"
         },
         {
-            "columnDef": "n_5_Q4",
+            "columnDef": "n_5_q4",
             "header": "N 5 Q4"
         }];
 

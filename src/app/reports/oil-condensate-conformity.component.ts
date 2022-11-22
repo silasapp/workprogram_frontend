@@ -25,7 +25,7 @@ export class OilCondensateConformityComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class OilCondensateConformityComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -57,11 +57,11 @@ export class OilCondensateConformityComponent implements OnInit {
           "header": "OBJECTIVE"
       },
       {
-          "columnDef": "existing_Alternatives",
+          "columnDef": "existing_alternatives",
           "header": "EXISTING ALTERNATIVES"
       },
       {
-          "columnDef": "dpR_Consent",
+          "columnDef": "dpr_consent",
           "header": "DPR CONSENT"
       },
       {
@@ -83,7 +83,7 @@ export class OilCondensateConformityComponent implements OnInit {
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -91,7 +91,7 @@ export class OilCondensateConformityComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -115,11 +115,11 @@ export class OilCondensateConformityComponent implements OnInit {
             "header": "OBJECTIVE"
         },
         {
-            "columnDef": "existing_Alternatives",
+            "columnDef": "existing_alternatives",
             "header": "EXISTING ALTERNATIVES"
         },
         {
-            "columnDef": "dpR_Consent",
+            "columnDef": "dpr_consent",
             "header": "DPR CONSENT"
         },
         {
