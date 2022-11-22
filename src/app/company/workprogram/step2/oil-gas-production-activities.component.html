@@ -1,24 +1,18 @@
-<div
-  style="
+<div style="
     background-color: white;
     border-radius: 20px;
     box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
     padding: 20px;
     font-weight: 600;
-  "
->
+  ">
   <div style="width: 40%; margin-top: auto; margin-bottom: 5%">
     <label class="labelwp" style="color: teal; font-weight: 600">
       WELL TYPE
     </label>
     <div style="display: flex; width: 100%">
       <div class="inputshadow" style="border-radius: 0">
-        <select
-          class="dropwp"
-          formControlName="oil_or_gas_wells"
-          [value]="genk.fieldWell"
-          (change)="getFieldWell($event)"
-        >
+        <select class="dropwp" formControlName="oil_or_gas_wells" [value]="genk.fieldWell"
+          (change)="getFieldWell($event)">
           <option selected value="GAS WELL">GAS WELL</option>
           <option value="OIL WELL">OIL WELL</option>
           <option value="CONDENSATE WELL">CONDENSATE WELL</option>
@@ -28,50 +22,38 @@
   </div>
 
   <div>
-    <div
-      *ngIf="this.genk.fieldWell === 'OIL WELL'"
-      style="
+    <div *ngIf="this.genk.fieldWell === 'OIL WELL'" style="
         background-color: white;
         border-radius: 5px;
         box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
         padding: 20px;
-      "
-    >
-      <h1
-        style="
+      ">
+      <h1 style="
           text-shadow: 1px 1px rgb(130, 23, 23);
           color: rgb(255, 157, 0);
           margin-left: 75%;
           font-size: 18px;
-        "
-      >
+        ">
         Note:*All Fields are Mandatory
       </h1>
-      <div
-        style="
+      <div style="
           font-size: 25px;
           font-weight: 500;
           text-align: center;
           padding-bottom: 20px;
-        "
-      >
+        ">
         <span>PRODUCTION (OIL/CONDENSATE/AG/NAG)</span>
       </div>
 
       <div [formGroup]="Oil_ProductionForm">
         <div>
-          <div
-            style="display: flex; width: 100%; justify-content: space-between"
-          >
+          <div style="display: flex; width: 100%; justify-content: space-between">
             <div style="width: 30%">
               <span class="labelwp">Is There a Planned Deferment ?</span>
               <div style="display: flex; width: 100%">
                 <div class="inputshadow">
-                  <select
-                    class="dropwp"
-                    formControlName="oil_Royalty_Payment"
-                    [(ngModel)]="productionoilBody.oil_Royalty_Payment"
-                  >
+                  <select class="dropwp" formControlName="oil_Royalty_Payment"
+                    [(ngModel)]="productionoilBody.oil_Royalty_Payment">
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
                     <option value="NO">No</option>
@@ -83,54 +65,36 @@
             <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Volume of Deferment (Barrels)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 10px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    (keypress)="genk.restrictData($event)"
-                    formControlName="deferment"
-                    [(ngModel)]="productionoilBody.deferment"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input (keypress)="genk.restrictData($event)" formControlName="deferment"
+                    [(ngModel)]="productionoilBody.deferment" class="inpute" (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)" (change)="
                       productionoilBody.deferment =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="productionoilBody.deferment"
-                  />
+                    " [value]="productionoilBody.deferment" />
                 </div>
               </div>
             </div>
             <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Forecast (Barrels)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 10px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    (keypress)="genk.restrictData($event)"
-                    formControlName="forecast"
-                    [(ngModel)]="productionoilBody.forecast"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input (keypress)="genk.restrictData($event)" formControlName="forecast"
+                    [(ngModel)]="productionoilBody.forecast" class="inpute" (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)" (change)="
                       productionoilBody.forecast =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="productionoilBody.forecast"
-                  />
+                    " [value]="productionoilBody.forecast" />
                 </div>
               </div>
             </div>
@@ -138,91 +102,57 @@
           <br />
 
           <div>
-            <div
-              style="display: flex; width: 100%; justify-content: space-between"
-            >
+            <div style="display: flex; width: 100%; justify-content: space-between">
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp"
-                  >Cost Barrel (USD)</label
-                >
+                <label id="ContentPlaceHolder2_Label8" class="labelwp">Cost Barrel (USD)</label>
                 <div style="display: flex">
                   <div class="inpdivcurrency">
                     <span class="currencywp">$</span>
-                    <input
-                      type="text"
-                      formControlName="cost_Barrel"
-                      (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatCurrency($event)"
-                      (change)="
+                    <input type="text" formControlName="cost_Barrel" (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)" (change)="
                         productionoilBody.cost_Barrel =
                           genk.addCurrencyDecimal($event)
-                      "
-                      [value]="productionoilBody.cost_Barrel"
-                      class="inpute"
-                    />
+                      " [value]="productionoilBody.cost_Barrel" class="inpute" />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp"
-                  >Total Reconciled Crude Oil Production</label
-                >
+                <label id="ContentPlaceHolder2_Label8" class="labelwp">Total Reconciled Crude Oil Production</label>
                 <div style="display: flex">
-                  <div
-                    style="
+                  <div style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 20px;
                       padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="total_Reconciled_National_Crude_Oil_Production"
-                      [(ngModel)]="
+                    ">
+                    <input type="text" formControlName="total_Reconciled_National_Crude_Oil_Production" [(ngModel)]="
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production
-                      "
-                      class="inpute"
-                      (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatCurrency($event)"
+                      " class="inpute" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                       (change)="
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production =
                           genk.addCurrencyDecimal($event)
-                      "
-                      [value]="
+                      " [value]="
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production
-                      "
-                    />
+                      " />
                   </div>
                 </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
                 <label id="ContentPlaceHolder2_Label8" class="labelwp">
-                  Gas production (AG) (BSCF)</label
-                >
+                  Gas production (AG) (BSCF)</label>
                 <div style="display: flex">
-                  <div
-                    style="
+                  <div style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 20px;
                       padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="gas_AG"
-                      [(ngModel)]="productionoilBody.gas_AG"
-                      class="inpute"
-                      (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatCurrency($event)"
-                      (change)="
+                    ">
+                    <input type="text" formControlName="gas_AG" [(ngModel)]="productionoilBody.gas_AG" class="inpute"
+                      (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                         productionoilBody.gas_AG =
                           genk.addCurrencyDecimal($event)
-                      "
-                      [value]="productionoilBody.gas_AG"
-                    />
+                      " [value]="productionoilBody.gas_AG" />
                   </div>
                 </div>
               </div>
@@ -231,31 +161,19 @@
 
             <div style="display: flex; width: 100%">
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp"
-                  >Gas production (NAG)(BSCF)</label
-                >
+                <label id="ContentPlaceHolder2_Label8" class="labelwp">Gas production (NAG)(BSCF)</label>
                 <div style="display: flex">
-                  <div
-                    style="
+                  <div style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 20px;
                       padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="gas_NAG"
-                      [(ngModel)]="productionoilBody.gas_NAG"
-                      class="inpute"
-                      (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatCurrency($event)"
-                      (change)="
+                    ">
+                    <input type="text" formControlName="gas_NAG" [(ngModel)]="productionoilBody.gas_NAG" class="inpute"
+                      (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                         productionoilBody.gas_NAG =
                           genk.addCurrencyDecimal($event)
-                      "
-                      [value]="productionoilBody.gas_NAG"
-                    />
+                      " [value]="productionoilBody.gas_NAG" />
                   </div>
                 </div>
               </div>
@@ -278,34 +196,26 @@
       </div>
       <br /><br />
       <div [formGroup]="monthlyActivityForm">
-        <div
-          style="
+        <div style="
             text-align: start;
             font-size: 17px;
             font-weight: 600;
             padding-bottom: 20px;
             color: teal;
-          "
-        >
+          ">
           <span>ACTUAL MONTHLY PRODUCTION</span>
         </div>
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%">
             <label class="labelwp">Months</label>
-            <div
-              style="
+            <div style="
                 box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                 width: 100%;
                 padding: 5px;
                 border-radius: 20px;
-              "
-            >
-              <select
-                class="dropwp"
-                formControlName="production_month"
-                [value]="monthlyactivityBody.production_month"
-                (change)="changeActualMonth($event)"
-              >
+              ">
+              <select class="dropwp" formControlName="production_month" [value]="monthlyactivityBody.production_month"
+                (change)="changeActualMonth($event)">
                 <option selected disabled>---- Select a Month ----</option>
                 <option value="January">January</option>
                 <option value="Febuary">Febuary</option>
@@ -326,28 +236,18 @@
           <div style="width: 30%">
             <label class="labelwp">Production (BBLS)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  type="text"
-                  formControlName="production"
-                  [(ngModel)]="monthlyactivityBody.production"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" type="text" formControlName="production"
+                  [(ngModel)]="monthlyactivityBody.production" class="inpute" (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)" (change)="
                     monthlyactivityBody.production =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="monthlyactivityBody.production"
-                />
+                  " [value]="monthlyactivityBody.production" />
               </div>
             </div>
           </div>
@@ -355,27 +255,18 @@
           <div style="width: 30%">
             <label class="labelwp">Average Daily Production (BOPD)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  formControlName="avg_Daily_Production"
-                  [(ngModel)]="monthlyactivityBody.avg_Daily_Production"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" formControlName="avg_Daily_Production"
+                  [(ngModel)]="monthlyactivityBody.avg_Daily_Production" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     monthlyactivityBody.avg_Daily_Production =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="monthlyactivityBody.avg_Daily_Production"
-                />
+                  " [value]="monthlyactivityBody.avg_Daily_Production" />
               </div>
             </div>
           </div>
@@ -385,56 +276,34 @@
           <div style="margin-right: 5%; width: 30%">
             <label class="labelwp">Gas Production (AG)(BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  formControlName="gas_AG"
-                  [(ngModel)]="monthlyactivityBody.gas_AG"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" formControlName="gas_AG" [(ngModel)]="monthlyactivityBody.gas_AG" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     monthlyactivityBody.gas_AG = genk.addCurrencyDecimal($event)
-                  "
-                  [value]="monthlyactivityBody.gas_AG"
-                />
+                  " [value]="monthlyactivityBody.gas_AG" />
               </div>
             </div>
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp"
-              >Gas Average Daily Production (NAG)(BSCF)</label
-            >
+            <label class="labelwp">Gas Average Daily Production (NAG)(BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  formControlName="gas_NAG"
-                  [(ngModel)]="monthlyactivityBody.gas_NAG"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" formControlName="gas_NAG" [(ngModel)]="monthlyactivityBody.gas_NAG" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     monthlyactivityBody.gas_NAG =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="monthlyactivityBody.gas_NAG"
-                />
+                  " [value]="monthlyactivityBody.gas_NAG" />
               </div>
             </div>
           </div>
@@ -452,36 +321,26 @@
 
       <div>
         <div [formGroup]="ProposedMonthlyForm">
-          <div
-            style="
+          <div style="
               text-align: start;
               font-size: 17px;
               font-weight: 600;
               padding-bottom: 20px;
               color: teal;
-            "
-          >
+            ">
             <span>PROPOSED MONTHLY PRODUCTION</span>
           </div>
-          <div
-            style="display: flex; width: 100%; justify-content: space-between"
-          >
+          <div style="display: flex; width: 100%; justify-content: space-between">
             <div style="width: 30%">
               <label class="labelwp">Months</label>
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   padding: 5px;
                   border-radius: 20px;
-                "
-              >
-                <select
-                  class="dropwp"
-                  formControlName="production_month"
-                  [value]="proposedmonthlyBody.production_month"
-                  (change)="changeProposedMonth($event)"
-                >
+                ">
+                <select class="dropwp" formControlName="production_month" [value]="proposedmonthlyBody.production_month"
+                  (change)="changeProposedMonth($event)">
                   <option selected disabled>---- Select a Month ----</option>
                   <option value="January">January</option>
                   <option value="Febuary">Febuary</option>
@@ -502,28 +361,18 @@
             <div style="width: 30%">
               <label class="labelwp">Production (BBLS)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 20px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    type="text"
-                    (keypress)="genk.restrictData($event)"
-                    formControlName="production"
-                    [(ngModel)]="proposedmonthlyBody.production"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input type="text" (keypress)="genk.restrictData($event)" formControlName="production"
+                    [(ngModel)]="proposedmonthlyBody.production" class="inpute" (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)" (change)="
                       proposedmonthlyBody.production =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="proposedmonthlyBody.production"
-                  />
+                    " [value]="proposedmonthlyBody.production" />
                 </div>
               </div>
             </div>
@@ -531,27 +380,18 @@
             <div style="width: 30%">
               <label class="labelwp">Average Daily Production (BOPD)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 20px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    type="text"
-                    formControlName="avg_Daily_Production"
-                    [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input type="text" formControlName="avg_Daily_Production"
+                    [(ngModel)]="proposedmonthlyBody.avg_Daily_Production" class="inpute"
+                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                       proposedmonthlyBody.avg_Daily_Production =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="proposedmonthlyBody.avg_Daily_Production"
-                  />
+                    " [value]="proposedmonthlyBody.avg_Daily_Production" />
                 </div>
               </div>
             </div>
@@ -562,27 +402,17 @@
             <div style="margin-right: 5%; width: 30%">
               <label class="labelwp">Gas Production (AG)(BSCF)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 20px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    type="text"
-                    formControlName="gas_AG"
-                    [(ngModel)]="proposedmonthlyBody.gas_AG"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input type="text" formControlName="gas_AG" [(ngModel)]="proposedmonthlyBody.gas_AG" class="inpute"
+                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                       proposedmonthlyBody.gas_AG =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="proposedmonthlyBody.gas_AG"
-                  />
+                    " [value]="proposedmonthlyBody.gas_AG" />
                 </div>
               </div>
             </div>
@@ -590,27 +420,17 @@
             <div style="width: 30%">
               <label class="labelwp">Gas Production (NAG)(BSCF)</label>
               <div style="display: flex">
-                <div
-                  style="
+                <div style="
                     box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                     width: 100%;
                     border-radius: 20px;
                     padding: 7px 10px;
-                  "
-                >
-                  <input
-                    type="text"
-                    formControlName="gas_NAG"
-                    [(ngModel)]="proposedmonthlyBody.gas_NAG"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
+                  ">
+                  <input type="text" formControlName="gas_NAG" [(ngModel)]="proposedmonthlyBody.gas_NAG" class="inpute"
+                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                       proposedmonthlyBody.gas_NAG =
                         genk.addCurrencyDecimal($event)
-                    "
-                    [value]="proposedmonthlyBody.gas_NAG"
-                  />
+                    " [value]="proposedmonthlyBody.gas_NAG" />
                 </div>
               </div>
             </div>
@@ -628,34 +448,26 @@
       <hr size="10" />
 
       <div [formGroup]="fiveYearForecastForm">
-        <div
-          style="
+        <div style="
             text-align: start;
             font-size: 17px;
             font-weight: 600;
             padding-bottom: 20px;
             color: teal;
-          "
-        >
+          ">
           <span>Five Year Production Forecast: (Figures)</span>
         </div>
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%">
             <label class="labelwp">PROJECTION YEAR</label>
-            <div
-              style="
+            <div style="
                 box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                 width: 100%;
                 padding: 5px;
                 border-radius: 20px;
-              "
-            >
-              <select
-                class="dropwp"
-                formControlName="fiveyear_Timeline"
-                [value]="fiveYearForecastBody.fiveyear_Timeline"
-                (change)="changeFiveYearProjection($event)"
-              >
+              ">
+              <select class="dropwp" formControlName="fiveyear_Timeline"
+                [value]="fiveYearForecastBody.fiveyear_Timeline" (change)="changeFiveYearProjection($event)">
                 <option selected disabled>---- Select a Year ----</option>
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
@@ -669,28 +481,18 @@
           <div style="width: 30%">
             <label class="labelwp">Oil (MMBBL)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="fiveyear_Oil"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" (keypress)="genk.restrictData($event)" formControlName="fiveyear_Oil"
+                  [(ngModel)]="fiveYearForecastBody.fiveyear_Oil" class="inpute" (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)" (change)="
                     fiveYearForecastBody.fiveyear_Oil =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="fiveYearForecastBody.fiveyear_Oil"
-                />
+                  " [value]="fiveYearForecastBody.fiveyear_Oil" />
               </div>
             </div>
           </div>
@@ -698,28 +500,18 @@
           <div style="width: 30%">
             <label class="labelwp">Condensate (MMBBL)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="fiveyear_Condensate"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" (keypress)="genk.restrictData($event)" formControlName="fiveyear_Condensate"
+                  [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     fiveYearForecastBody.fiveyear_Condensate =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="fiveYearForecastBody.fiveyear_Condensate"
-                />
+                  " [value]="fiveYearForecastBody.fiveyear_Condensate" />
               </div>
             </div>
           </div>
@@ -730,27 +522,17 @@
           <div style="width: 30%">
             <label class="labelwp">AG (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  formControlName="fiveyear_AG"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" formControlName="fiveyear_AG" [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
+                  class="inpute" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     fiveYearForecastBody.fiveyear_AG =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="fiveYearForecastBody.fiveyear_AG"
-                />
+                  " [value]="fiveYearForecastBody.fiveyear_AG" />
               </div>
             </div>
           </div>
@@ -758,27 +540,17 @@
           <div style="width: 30%">
             <label class="labelwp">NAG (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="text"
-                  formControlName="fiveyear_NAG"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input type="text" formControlName="fiveyear_NAG" [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
+                  class="inpute" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     fiveYearForecastBody.fiveyear_NAG =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="fiveYearForecastBody.fiveyear_NAG"
-                />
+                  " [value]="fiveYearForecastBody.fiveyear_NAG" />
               </div>
             </div>
           </div>
@@ -786,21 +558,14 @@
           <div style="width: 30%">
             <label class="labelwp">Upload Yearly Production Forcast</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  type="file"
-                  accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
-                  formControlName="YPFFile"
-                  (change)="saveYPFDoc($event)"
-                  class="inpute"
-                />
+                ">
+                <input type="file" accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx" formControlName="YPFFile"
+                  (change)="saveYPFDoc($event)" class="inpute" />
               </div>
               <div *ngIf="f['YPFFile'].invalid">
                 <span *ngIf="f['YPFFile'].errors['incorrect']">
@@ -821,23 +586,18 @@
       <br />
     </div>
 
-    <div
-      *ngIf="this.genk.fieldWell === 'GAS WELL'"
-      style="
+    <div *ngIf="this.genk.fieldWell === 'GAS WELL'" style="
         background-color: white;
         border-radius: 5px;
         box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
         padding: 20px;
-      "
-    >
-      <div
-        style="
+      ">
+      <div style="
           font-size: 25px;
           font-weight: 500;
           text-align: center;
           padding-bottom: 20px;
-        "
-      >
+        ">
         <span>GAS PRODUCTION ACTIVITIES</span><br /><br />
       </div>
       <br />
@@ -847,26 +607,17 @@
           <div style="width: 30%; margin-top: auto">
             <label id="Co" class="labelwp">Actual Gas Produced (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  formControlName="current_Actual_Year"
-                  [(ngModel)]="gasproductionBody.current_Actual_Year"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input formControlName="current_Actual_Year" [(ngModel)]="gasproductionBody.current_Actual_Year"
+                  class="inpute" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.current_Actual_Year =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.current_Actual_Year"
-                />
+                  " [value]="gasproductionBody.current_Actual_Year" />
               </div>
             </div>
           </div>
@@ -875,11 +626,7 @@
             <label class="labelwp">Utilized (MMscf)</label>
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
-                <select
-                  class="dropwp"
-                  formControlName="utilized"
-                  [(ngModel)]="gasproductionBody.utilized"
-                >
+                <select class="dropwp" formControlName="utilized" [(ngModel)]="gasproductionBody.utilized">
                   <option selected disabled>-- Select an Option --</option>
                   <option value="Fuel Gas">Fuel Gas</option>
                   <option value="Re-Injection/Gas Lift">
@@ -893,26 +640,17 @@
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp">Flared (MMscf)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="flared"
-                  [(ngModel)]="gasproductionBody.flared"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="flared"
+                  [(ngModel)]="gasproductionBody.flared" class="inpute" (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.flared = genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.flared"
-                />
+                  " [value]="gasproductionBody.flared" />
               </div>
             </div>
           </div>
@@ -920,31 +658,20 @@
         <br />
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="ContentPlaceHolder2_Label13" class="labelwp"
-              >Proposed Gas Production (BSCF)</label
-            >
+            <label id="ContentPlaceHolder2_Label13" class="labelwp">Proposed Gas Production (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="proposed_production"
-                  [(ngModel)]="gasproductionBody.proposed_production"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="proposed_production"
+                  [(ngModel)]="gasproductionBody.proposed_production" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.proposed_production =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.proposed_production"
-                />
+                  " [value]="gasproductionBody.proposed_production" />
               </div>
             </div>
           </div>
@@ -952,27 +679,18 @@
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp">Proposed Utilization (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="proposed_utilization"
-                  [(ngModel)]="gasproductionBody.proposed_utilization"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="proposed_utilization"
+                  [(ngModel)]="gasproductionBody.proposed_utilization" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.proposed_utilization =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.proposed_utilization"
-                />
+                  " [value]="gasproductionBody.proposed_utilization" />
               </div>
             </div>
           </div>
@@ -980,27 +698,18 @@
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp">Estimated Flare Volume (BSCF)</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="proposed_flaring"
-                  [(ngModel)]="gasproductionBody.proposed_flaring"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="proposed_flaring"
+                  [(ngModel)]="gasproductionBody.proposed_flaring" class="inpute" (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.proposed_flaring =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.proposed_flaring"
-                />
+                  " [value]="gasproductionBody.proposed_flaring" />
               </div>
             </div>
           </div>
@@ -1008,31 +717,20 @@
         <br />
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="ContentPlaceHolder2_Label13" class="labelwp"
-              >No of Gas Well Planned</label
-            >
+            <label id="ContentPlaceHolder2_Label13" class="labelwp">No of Gas Well Planned</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="no_of_gas_well_planned"
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="no_of_gas_well_planned"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.no_of_gas_well_planned =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.no_of_gas_well_planned"
-                />
+                  " [value]="gasproductionBody.no_of_gas_well_planned" />
               </div>
             </div>
           </div>
@@ -1040,27 +738,18 @@
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp">No. of Gas Well(s) Drilled</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="no_of_gas_well_drilled"
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="no_of_gas_well_drilled"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.no_of_gas_well_drilled =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.no_of_gas_well_drilled"
-                />
+                  " [value]="gasproductionBody.no_of_gas_well_drilled" />
               </div>
             </div>
           </div>
@@ -1069,11 +758,8 @@
             <label class="labelwp">Do You Have a Gas Handling Facility ?</label>
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
-                <select
-                  class="dropwp"
-                  formControlName="is_there_a_gas_plant"
-                  [(ngModel)]="gasproductionBody.is_there_a_gas_plant"
-                >
+                <select class="dropwp" formControlName="is_there_a_gas_plant"
+                  [(ngModel)]="gasproductionBody.is_there_a_gas_plant">
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
                   <option value="NO">No</option>
@@ -1090,11 +776,8 @@
             <label class="labelwp">Gas Flare Penalty Payment made?</label>
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
-                <select
-                  class="dropwp"
-                  formControlName="gas_flare_Royalty_payment"
-                  [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment"
-                >
+                <select class="dropwp" formControlName="gas_flare_Royalty_payment"
+                  [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment">
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
                   <option value="NO">No</option>
@@ -1106,27 +789,18 @@
           <div style="width: 30%">
             <label class="labelwp">No. of gas wells completed</label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 10px;
                   padding: 7px 10px;
-                "
-              >
-                <input
-                  (keypress)="genk.restrictData($event)"
-                  formControlName="number_of_gas_wells_completed"
-                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
+                ">
+                <input (keypress)="genk.restrictData($event)" formControlName="number_of_gas_wells_completed"
+                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed" class="inpute"
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
                     gasproductionBody.number_of_gas_wells_completed =
                       genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.number_of_gas_wells_completed"
-                />
+                  " [value]="gasproductionBody.number_of_gas_wells_completed" />
               </div>
             </div>
           </div>
@@ -1134,20 +808,14 @@
           <div style="width: 30%">
             <label class="labelwp"> Remarks </label>
             <div style="display: flex">
-              <div
-                style="
+              <div style="
                   box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                   width: 100%;
                   border-radius: 20px;
                   padding: 7px 10px;
-                "
-              >
-                <textarea
-                  formControlName="remarks_"
-                  [(ngModel)]="gasproductionBody.remarks_"
-                  rows="2"
-                  class="inpute"
-                ></textarea>
+                ">
+                <textarea formControlName="remarks_" [(ngModel)]="gasproductionBody.remarks_" rows="2"
+                  class="inpute"></textarea>
               </div>
             </div>
           </div>
@@ -1164,4 +832,9 @@
       <br />
     </div>
   </div>
+</div>
+<br><br>
+<div style="text-align: center;">
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'reservesupdate']"
+    class="nextbtn">Next</button>
 </div>
