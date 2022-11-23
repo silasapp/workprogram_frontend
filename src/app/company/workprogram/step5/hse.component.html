@@ -892,9 +892,9 @@
           <select
             class="input"
             type="inpute"
-            formControlName="was_Inspection_and_Maintenance_of_each_of_your_facility_carried_out"
+            formControlName="was_the_inspection_and_maintenemce"
             [(ngModel)]="
-              inspectionMaintenanceBody.was_Inspection_and_Maintenance_of_each_of_your_facility_carried_out
+              inspectionMaintenanceBody.was_the_inspection_and_maintenemce
             "
           >
             <option selected disabled>---- Please Select an Option ----</option>
@@ -1008,27 +1008,26 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="isTabVisible_8" class="wptablebox">
+
+  <div *ngIf="inspectionMaintenances.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_8">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of himColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_8">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of inspectionMaintenances">
+            <td *ngFor="let colDef of himColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_HSE_IM($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_IM(row)"
               >
                 Delete
               </button>
@@ -1038,6 +1037,7 @@
       </table>
     </div>
   </div>
+
   <hr size="10" />
   <br />
 
@@ -1305,8 +1305,8 @@
         "
       >
         <select
-          formControlName="condition_of_equipment"
-          [(ngModel)]="asset_PRE_Body.condition_of_equipment"
+          formControlName="condition_of_Equipment"
+          [(ngModel)]="asset_PRE_Body.condition_of_Equipment"
           class="input"
         >
           <option selected disabled>---- Please Select Category ----</option>
@@ -1374,27 +1374,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_9" class="wptablebox">
+
+  <div *ngIf="assetRegisterTemplates.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_9">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of harColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_9">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of assetRegisterTemplates">
+            <td *ngFor="let colDef of harColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_AssetRegister_PRE($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_AssetRegister_PRE(row)"
               >
                 Delete
               </button>
@@ -1404,6 +1403,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
   <br />
@@ -1681,7 +1681,7 @@
           >
             <input
               formControlName="maximum_Inspection_numbererval"
-              [(ngModel)]="asset_RBI_Body.maximum_Inspection_numbererval"
+              [(ngModel)]="asset_RBI_Body.maximum_Inspection_Interval"
               type="text"
               class="inpute"
             />
@@ -1746,7 +1746,7 @@
         >
           <input
             formControlName="rBI_Assessment_Date"
-            [(ngModel)]="asset_RBI_Body.rBI_Assessment_Date"
+            [(ngModel)]="asset_RBI_Body.rbI_Assessment_Date"
             type="date"
             class="inpute"
           />
@@ -1815,7 +1815,7 @@
           <select
             class="input"
             formControlName="condition_of_equipment"
-            [(ngModel)]="asset_RBI_Body.condition_of_equipment"
+            [(ngModel)]="asset_RBI_Body.condition_of_Equipment"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Pass">Pass</option>
@@ -1881,27 +1881,26 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="isTabVisible_10" class="wptablebox">
+
+  <div *ngIf="assetRegisterTemplateRBIs.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_10">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of harrbiColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_10">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of assetRegisterTemplateRBIs">
+            <td *ngFor="let colDef of harrbiColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_AssetRegister_RBI($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_AssetRegister_RBI(row)"
               >
                 Delete
               </button>
@@ -2007,8 +2006,8 @@
               <input
                 type="text"
                 class="inpute"
-                formControlName="lGA"
-                [(ngModel)]="oilSpill_Body.lGA"
+                formControlName="lga"
+                [(ngModel)]="oilSpill_Body.lga"
               />
             </div>
           </div>
@@ -2154,27 +2153,26 @@
     </div>
   </div>
   <br /><br />
-  <div *ngIf="isTabVisible_11" class="wptablebox">
+
+  <div *ngIf="oilSpillReportings.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_11">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hosrColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_11">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of oilSpillReportings">
+            <td *ngFor="let colDef of hosrColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_OilSpill($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_OilSpill(row)"
               >
                 Delete
               </button>
@@ -2184,6 +2182,7 @@
       </table>
     </div>
   </div>
+
   <hr size="10" />
   <br />
 
@@ -2196,6 +2195,28 @@
     <hr size="5" />
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">No. of Spills Reported</label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              (keypress)="genk.restrictData($event)"
+              class="inpute"
+              formControlName="no_of_spills_reported"
+              [(ngModel)]="causesOfSpill_Body.no_of_spills_reported"
+            />
+          </div>
+        </div>
+      </div>
+
       <div style="width: 30%">
         <br />
         <label class="labelwp">Total Quantity Spilled</label>
@@ -2428,27 +2449,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_12" class="wptablebox">
+
+  <div *ngIf="causeOfSpills.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_12">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hcosColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_12">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of causeOfSpills">
+            <td *ngFor="let colDef of hcosColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_CausesOfSpill($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_CausesOfSpill(row)"
               >
                 Delete
               </button>
@@ -2458,6 +2478,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
 
@@ -2715,27 +2736,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_13" class="wptablebox">
+
+  <div *ngIf="accidentIncidentReportings.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_13">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hairColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_13">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of accidentIncidentReportings">
+            <td *ngFor="let colDef of hairColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_AccidentIncidence($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_AccidentIncidence(row)"
               >
                 Delete
               </button>
@@ -2813,27 +2833,28 @@
       </button>
     </div>
   </div>
-  <div *ngIf="isTabVisible_14" class="wptablebox">
+
+  <br />
+
+  <div *ngIf="ospRegulations.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_14">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hosprColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_14">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of ospRegulations">
+            <td *ngFor="let colDef of hosprColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_OSP($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_OSP(row)"
               >
                 Delete
               </button>
@@ -2843,6 +2864,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <br />
   <hr size="10" />
@@ -2970,27 +2992,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_15" class="wptablebox">
+
+  <div *ngIf="communityDisturbances.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_15">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hcdColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_15">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of communityDisturbances">
+            <td *ngFor="let colDef of hcdColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_CommunityDisturbance($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_CommunityDisturbance(row)"
               >
                 Delete
               </button>
@@ -3000,6 +3021,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
   <br />
@@ -3023,8 +3045,7 @@
           "
         >
           <select
-            class="input"
-            type="inpute"
+            class="inpute"
             formControlName="fatalities_Type"
             [(ngModel)]="fatality_Body.fatalities_Type"
           >
@@ -3050,7 +3071,6 @@
             "
           >
             <input
-              type="number"
               class="inpute"
               formControlName="current_year_DATA"
               [(ngModel)]="fatality_Body.current_year_DATA"
@@ -3070,7 +3090,6 @@
             "
           >
             <input
-              type="number"
               class="inpute"
               formControlName="proposed_year_DATA"
               [(ngModel)]="fatality_Body.proposed_year_DATA"
@@ -3091,8 +3110,7 @@
         "
       >
         <select
-          class="input"
-          type="inpute"
+          class="inpute"
           formControlName="type_of_incidence"
           [(ngModel)]="fatality_Body.type_of_incidence"
         >
@@ -3112,27 +3130,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_16" class="wptablebox">
+
+  <div *ngIf="fatalitiesCasualties.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_16">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hfcColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_16">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of fatalitiesCasualties">
+            <td *ngFor="let colDef of hfcColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_Fatality($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_Fatality(row)"
               >
                 Delete
               </button>
@@ -3142,6 +3159,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
   <br /><br />
@@ -3227,27 +3245,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_17" class="wptablebox">
+
+  <div *ngIf="lossPreventionStudies.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_17">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hlpsColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_17">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of lossPreventionStudies">
+            <td *ngFor="let colDef of hlpsColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_DesignSafety($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_DesignSafety(row)"
               >
                 Delete
               </button>
@@ -3257,6 +3274,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
   <br /><br />
@@ -3390,27 +3408,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_18" class="wptablebox">
+
+  <div *ngIf="environmentalStudiesUpdatedList.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_18">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hesColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_18">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of environmentalStudiesUpdatedList">
+            <td *ngFor="let colDef of hesColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_ESU($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_ESU(row)"
               >
                 Delete
               </button>
@@ -3420,6 +3437,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr />
   <div [formGroup]="Environmental_Studies_Form">
@@ -3532,27 +3550,26 @@
     </div>
   </div>
   <br />
-  <div *ngIf="isTabVisible_19" class="wptablebox">
+
+  <div *ngIf="environmentalStudies.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_19">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of hesnColDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_19">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of environmentalStudies">
+            <td *ngFor="let colDef of hesnColDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
-                (click)="Delete_ES($event)"
-                value="{{ y.value.id }}($event)"
-                style="background-color: darkred"
-                class="submitbtn"
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_ES(row)"
               >
                 Delete
               </button>
@@ -3562,6 +3579,7 @@
       </table>
     </div>
   </div>
+
   <br />
   <hr size="10" />
 

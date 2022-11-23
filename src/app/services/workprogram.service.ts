@@ -3666,7 +3666,7 @@ export class WorkProgramService {
   }
 
   post_HSE_Management(
-    conbody: FormData,
+    conbody: HSE_MANAGEMENT_POSITION,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3696,7 +3696,7 @@ export class WorkProgramService {
   }
 
   post_HSE_SafetyCulture(
-    conbody: FormData,
+    conbody: HSE_SAFETY_CULTURE_TRAINING | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3726,7 +3726,7 @@ export class WorkProgramService {
   }
 
   post_HSE_Occupational(
-    conbody: FormData,
+    conbody: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3755,7 +3755,7 @@ export class WorkProgramService {
       );
   }
   post_HSE_QualityControl(
-    conbody: FormData,
+    conbody: HSE_QUALITY_CONTROL | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3785,7 +3785,7 @@ export class WorkProgramService {
   }
 
   post_HSE_ClimateChange(
-    conbody: FormData,
+    conbody: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3854,7 +3854,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_inspection_and_maintenance_new`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_INSPECTION_AND_MAINTENANCE_FACILITY_TYPE_NEW`,
         conbody,
         {
           params: {

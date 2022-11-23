@@ -389,6 +389,470 @@ export class SWPHseComponent implements OnInit {
     },
   ];
 
+  himColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'name_of_facility',
+      header: 'Name of Facility',
+    },
+    {
+      columnDef: 'was_the_inspection_and_maintenemce',
+      header:
+        'Was Inspection and Maintenance of each of your facility carried out?',
+    },
+    {
+      columnDef: 'type_of_Inspection_and_Maintenance',
+      header: 'Type of Inspection Maintenance',
+    },
+    {
+      columnDef: 'when_was_it_carried_out',
+      header: 'Date of Last Inspection / Maintenance',
+    },
+    {
+      columnDef: 'if_RBI_was_approval_granted',
+      header: 'If RBI , Was Approval Granted ?',
+    },
+    {
+      columnDef: 'if_No_Give_reasonS',
+      header: 'If NO , Give Reason',
+    },
+  ];
+
+  harColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'facility',
+      header: 'Facility	',
+    },
+    {
+      columnDef: 'equipment_type',
+      header: '	Equipment Type',
+    },
+    {
+      columnDef: 'equipment_description',
+      header: 'Equipment Description',
+    },
+    {
+      columnDef: 'equipment_serial_number',
+      header: 'Equipment Serial Number',
+    },
+    {
+      columnDef: 'equipment_tag_number',
+      header: 'Equipment Tag Number',
+    },
+    {
+      columnDef: 'equipment_manufacturer',
+      header: 'Equipment Manufacturer',
+    },
+    {
+      columnDef: 'equipment_Installation_date',
+      header: 'Equipment Installation Date',
+    },
+    {
+      columnDef: 'last_inspection_date',
+      header: 'Last Inspection Date',
+    },
+    {
+      columnDef: 'last_Inspection_Type_Performed',
+      header: 'Last Inspection Type Performed',
+    },
+    {
+      columnDef: 'next_Inspection_Date',
+      header: 'Next Inspection Date',
+    },
+
+    {
+      columnDef: 'proposed_Inspection_Type',
+      header: 'Proposed Inspection Type',
+    },
+    // {
+    //   columnDef: 'equipment_Inspected_as_and_when_due',
+    //   header: 'Equipment Inspected as and when due',
+    // },
+    {
+      columnDef: 'state_reason',
+      header: 'State Reason',
+    },
+    {
+      columnDef: 'condition_of_Equipment',
+      header: 'Condition of Equipment (External)',
+    },
+    {
+      columnDef: 'function_Test_Result',
+      header: 'Function – Test Result',
+    },
+    {
+      columnDef: 'inspection_Report_Review',
+      header: 'Inspection Report Review',
+    },
+  ];
+
+  harrbiColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'facility',
+      header: 'Facility	',
+    },
+    {
+      columnDef: 'equipment_type',
+      header: '	Equipment Type',
+    },
+    {
+      columnDef: 'equipment_description',
+      header: 'Equipment Description',
+    },
+    {
+      columnDef: 'equipment_serial_number',
+      header: 'Equipment Serial Number',
+    },
+    {
+      columnDef: 'equipment_tag_number',
+      header: 'Equipment Tag Number',
+    },
+    {
+      columnDef: 'equipment_manufacturer',
+      header: 'Equipment Manufacturer',
+    },
+    {
+      columnDef: 'equipment_Installation_date',
+      header: 'Equipment Installation Date',
+    },
+    {
+      columnDef: 'last_inspection_date',
+      header: 'Last Inspection Date',
+    },
+    {
+      columnDef: 'last_Inspection_Type_Performed',
+      header: 'Last Inspection Type Performed',
+    },
+    {
+      columnDef: 'likelihood_of_Failure',
+      header: 'Likelihood of Failure',
+    },
+    {
+      columnDef: 'consequence_of_Failure',
+      header: 'Consequence of Failure',
+    },
+    {
+      columnDef: 'maximum_Inspection_Interval',
+      header: 'Maximum Inspection Interval',
+    },
+
+    {
+      columnDef: 'next_Inspection_Date',
+      header: 'Next Inspection Date',
+    },
+    {
+      columnDef: 'rbI_Assessment_Date',
+      header: 'RBI Assessment Date',
+    },
+
+    {
+      columnDef: 'proposed_Inspection_Type',
+      header: 'Proposed Inspection Type',
+    },
+    {
+      columnDef: 'equipment_Inspected_as_and_when_due',
+      header: 'Equipment Inspected as and when due',
+    },
+    {
+      columnDef: 'state_reason',
+      header: 'State Reason',
+    },
+    {
+      columnDef: 'condition_of_Equipment',
+      header: 'Condition of Equipment (External)',
+    },
+    {
+      columnDef: 'function_Test_Result',
+      header: 'Function – Test Result',
+    },
+    {
+      columnDef: 'inspection_Report_Review',
+      header: 'Inspection Report Review',
+    },
+  ];
+
+  hosrColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'incident_Oil_Spill_Ref_No',
+      header: 'Incident Oil Spill Ref No',
+    },
+    {
+      columnDef: 'facility_Equipment',
+      header: 'Facility Equipment',
+    },
+    {
+      columnDef: 'location',
+      header: 'Location',
+    },
+    {
+      columnDef: 'lga',
+      header: 'LGA',
+    },
+    {
+      columnDef: 'state_',
+      header: 'State',
+    },
+    {
+      columnDef: 'date_of_Spill',
+      header: 'Date of Spill',
+    },
+    {
+      columnDef: 'type_of_operation_at_spill_site',
+      header: 'Type of operation at spill site',
+    },
+    {
+      columnDef: 'cause_of_spill',
+      header: 'Cause of spill',
+    },
+    {
+      columnDef: 'volume_of_spill_bbls',
+      header: 'Volume of spill(bbls)',
+    },
+    {
+      columnDef: 'volume_recovered_bbls',
+      header: 'Volume Recovered (bbls)',
+    },
+  ];
+
+  hcosColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'no_of_spills_reported',
+      header: 'No. Of Spills Reported',
+    },
+    {
+      columnDef: 'total_Quantity_Spilled',
+      header: 'Total Quantity Spilled',
+    },
+    {
+      columnDef: 'total_Quantity_Recovered',
+      header: 'Total Quantity Recovered',
+    },
+    {
+      columnDef: 'corrosion',
+      header: 'Corrosion',
+    },
+    {
+      columnDef: 'equipment_Failure',
+      header: 'Equipment Failure',
+    },
+    {
+      columnDef: 'erossion_waves_sand',
+      header: 'Erosion/Waves/Sand',
+    },
+    {
+      columnDef: 'human_Error',
+      header: 'Human Error',
+    },
+    {
+      columnDef: 'mystery',
+      header: 'Mystery',
+    },
+    {
+      columnDef: 'operational_Maintenance_Error',
+      header: 'Operational/Maintenance Error',
+    },
+    {
+      columnDef: 'sabotage',
+      header: 'Sabotage',
+    },
+    {
+      columnDef: 'ytbd',
+      header: 'YTBD',
+    },
+  ];
+
+  hairColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'type_of_Accident_Incidence',
+      header: 'TYPE OF ACCIDENT / INCIDENT',
+    },
+    {
+      columnDef: 'location',
+      header: 'LOCATION',
+    },
+    {
+      columnDef: 'investigation',
+      header: 'INVESTIGATION',
+    },
+    {
+      columnDef: 'date_',
+      header: 'DATE',
+    },
+    {
+      columnDef: 'cause',
+      header: 'CAUSE',
+    },
+    {
+      columnDef: 'frequency',
+      header: 'FREQUENCY',
+    },
+    {
+      columnDef: 'consequence',
+      header: 'CONSEQUENCE',
+    },
+    {
+      columnDef: 'lesson_Learnt',
+      header: 'LESSON LEARNT',
+    },
+  ];
+
+  hosprColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'valueS_',
+      header: 'CATEGORIES',
+    },
+    {
+      columnDef: 'descriptioN_',
+      header: 'VALUES / DESCRIPTION',
+    },
+  ];
+
+  hcdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'oil_spill_reported',
+      header: 'WAS ALL SPILL REPORTED AT AGREED TIMELINE',
+    },
+    {
+      columnDef:
+        'was_there_any_Community_Related_Disturbances_within_your_operational_area',
+      header:
+        'WAS THERE ANY COMMUNITY RELATED DISTURBANCES WITHIN YOUR OPERATIONAL AREA',
+    },
+    {
+      columnDef:
+        'if_YES_Give_details_on_Community_Related_Disturbances_within_your_operational_area',
+      header:
+        'IF YES, GIVE DETAILS ON COMMUNITY RELATED DISTURBANCES WITHIN YOUR OPERATIONAL AREA',
+    },
+    {
+      columnDef: 'was_any_Oil_Spill_recorded_within_your_operational_area',
+      header: 'WAS ANY OIL SPILL RECORDED WITHIN YOUR OPERATIONAL AREA',
+    },
+  ];
+
+  hfcColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'type_of_incidence',
+      header: 'TYPE OF INCIDENCE',
+    },
+    {
+      columnDef: 'fatalities_Type',
+      header: 'CATEGORY',
+    },
+    {
+      columnDef: 'current_year_DATA',
+      header: 'ACTUAL VALUE',
+    },
+    {
+      columnDef: 'proposed_year_DATA',
+      header: 'PROPOSED VALUE',
+    },
+  ];
+
+  hlpsColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'designS_SAFETY_Type',
+      header: 'DESIGNS SAFETY TYPE',
+    },
+    {
+      columnDef: 'designS_SAFETY_Current_year',
+      header: 'DESIGNS SAFETY (Current Year)',
+    },
+    {
+      columnDef: 'designS_SAFETY_Proposed_year',
+      header: 'DESIGNS SAFETY (Proposed Year)',
+    },
+  ];
+
+  hesColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'field_name',
+      header: 'Field Name',
+    },
+    {
+      columnDef: 'type_of_study',
+      header: 'Type of Study',
+    },
+    {
+      columnDef: 'study_title',
+      header: 'Study Title',
+    },
+    {
+      columnDef: 'current_study_status',
+      header: 'Current Study Status',
+    },
+    {
+      columnDef: 'dpR_approval_Status',
+      header: 'NUPRC Approval Status',
+    },
+  ];
+
+  hesnColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'any_Environmental_Studies',
+      header: 'Any Environmental Studies',
+    },
+    {
+      columnDef: 'if_YES_state_Project_Name',
+      header: 'Select Project Name',
+    },
+    {
+      columnDef: 'if_Ongoing',
+      header: 'If Ongoing( Select NA if Not)',
+    },
+    {
+      columnDef: 'status_',
+      header: 'Status',
+    },
+  ];
+
   //lists declarations
   hseTechnicals: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW[] = [];
   hseSafetyStudies: HSE_SAFETY_STUDIES_NEW[] = [];
@@ -397,6 +861,21 @@ export class SWPHseComponent implements OnInit {
   occupationHealthManagements: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT[] = [];
   qualityControlDocuments: HSE_QUALITY_CONTROL[] = [];
   climateChanges: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY[] = [];
+  inspectionMaintenances: HSE_INSPECTION_AND_MAINTENANCE_NEW[] = [];
+  assetRegisterTemplates: HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW[] =
+    [];
+  assetRegisterTemplateRBIs: HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW[] =
+    [];
+  oilSpillReportings: HSE_OIL_SPILL_REPORTING_NEW[] = [];
+  causeOfSpills: HSE_CAUSES_OF_SPILL[] = [];
+  accidentIncidentReportings: HSE_ACCIDENT_INCIDENCE_MODEL[] = [];
+  ospRegulations: HSE_OSP_REGISTRATIONS_NEW[] = [];
+  communityDisturbances: HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW[] =
+    [];
+  fatalitiesCasualties: HSE_FATALITY[] = [];
+  lossPreventionStudies: HSE_DESIGNS_SAFETY[] = [];
+  environmentalStudiesUpdatedList: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED[] = [];
+  environmentalStudies: HSE_ENVIRONMENTAL_STUDIES_NEW[] = [];
   /////////////////////
 
   //#region  form bodies declaration
@@ -611,11 +1090,10 @@ export class SWPHseComponent implements OnInit {
           this.inspectionMaintenanceBody.type_of_Inspection_and_Maintenance,
           [Validators.required]
         ),
-        was_Inspection_and_Maintenance_of_each_of_your_facility_carried_out:
-          new FormControl(
-            this.inspectionMaintenanceBody.was_Inspection_and_Maintenance_of_each_of_your_facility_carried_out,
-            [Validators.required]
-          ),
+        was_the_inspection_and_maintenemce: new FormControl(
+          this.inspectionMaintenanceBody.was_the_inspection_and_maintenemce,
+          [Validators.required]
+        ),
         is_the_inspection_philosophy_Prescriptive_or_RBI_for_each_facility:
           new FormControl(
             this.inspectionMaintenanceBody.is_the_inspection_philosophy_Prescriptive_or_RBI_for_each_facility,
@@ -639,8 +1117,8 @@ export class SWPHseComponent implements OnInit {
 
     this.AssetRegister_Pre_Form = new FormGroup(
       {
-        condition_of_equipment: new FormControl(
-          this.asset_PRE_Body.condition_of_equipment,
+        condition_of_Equipment: new FormControl(
+          this.asset_PRE_Body.condition_of_Equipment,
           [Validators.required]
         ),
         equipment_Inspected_as_and_when_due: new FormControl(
@@ -772,15 +1250,15 @@ export class SWPHseComponent implements OnInit {
           [Validators.required]
         ),
         maximum_Inspection_numbererval: new FormControl(
-          this.asset_RBI_Body.maximum_Inspection_numbererval,
+          this.asset_RBI_Body.maximum_Inspection_Interval,
           [Validators.required]
         ),
         rBI_Assessment_Date: new FormControl(
-          this.asset_RBI_Body.rBI_Assessment_Date,
+          this.asset_RBI_Body.rbI_Assessment_Date,
           [Validators.required]
         ),
         condition_of_equipment: new FormControl(
-          this.asset_RBI_Body.condition_of_equipment,
+          this.asset_RBI_Body.condition_of_Equipment,
           [Validators.required]
         ),
       },
@@ -797,7 +1275,7 @@ export class SWPHseComponent implements OnInit {
           this.oilSpill_Body.facility_Equipment,
           [Validators.required]
         ),
-        lGA: new FormControl(this.oilSpill_Body.lGA, [Validators.required]),
+        lga: new FormControl(this.oilSpill_Body.lga, [Validators.required]),
         state_: new FormControl(this.oilSpill_Body.state_, [
           Validators.required,
         ]),
@@ -1397,9 +1875,16 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        this.loadTable_Occupational(res.data);
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -1473,410 +1958,324 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_InspectionMaintenance_Submit() {
-    let info = {} as HSE_INSPECTION_AND_MAINTENANCE_NEW;
-    this.inspectionMaintenanceBody.id = 0;
-    this.inspectionMaintenanceBody.year_of_WP = this.genk.wpYear;
-    this.inspectionMaintenanceBody.oML_Name = this.genk.OmlName;
-    for (let item in this.inspectionMaintenanceBody) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.inspectionMaintenanceBody[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_InspectionMaintenance(
-        info,
+        this.inspectionMaintenanceBody,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_IM(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   HSE_AssetRegister_PRE_Submit() {
-    let info =
-      {} as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-    this.asset_PRE_Body.id = 0;
-    this.asset_PRE_Body.year_of_WP = this.genk.wpYear;
-    this.asset_PRE_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.asset_PRE_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.asset_PRE_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_AssetRegister_PRE(
-        info,
+        this.asset_PRE_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_AssetRegister_PRE(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_AssetRegister_RBI_Submit() {
-    let info =
-      {} as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-    this.asset_RBI_Body.id = 0;
-    this.asset_RBI_Body.year_of_WP = this.genk.wpYear;
-    this.asset_RBI_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.asset_RBI_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.asset_RBI_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_AssetRegister_RBI(
-        info,
+        this.asset_RBI_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_AssetRegister_RBI(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_OilSpill_Submit() {
-    let info = {} as HSE_OIL_SPILL_REPORTING_NEW;
-    this.oilSpill_Body.id = 0;
-    for (let item in this.oilSpill_Body) {
-      if (item != 'id' && item != 'field_ID' && item != 'date_of_Spill') {
-        info[this.genk.upperText(item)] =
-          this.oilSpill_Body[item].toString() ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_OilSpill(
-        info,
+        this.oilSpill_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_OilSpill(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_CausesOfSpill_Submit() {
-    let info = {} as HSE_CAUSES_OF_SPILL;
-    this.causesOfSpill_Body.id = 0;
-    this.causesOfSpill_Body.year_of_WP = this.genk.wpYear;
-    this.causesOfSpill_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.causesOfSpill_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.causesOfSpill_Body[item].toString() ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Causes_Of_Spill(
-        info,
+        this.causesOfSpill_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_CausesOfSpill(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Accident_Incidence_Submit() {
-    let info = {} as HSE_ACCIDENT_INCIDENCE_MODEL;
-    this.accident_Body.id = 0;
-    for (let item in this.accident_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.accident_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Accident_Incidence(
-        info,
+        this.accident_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_AccidentIncidence(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   HSE_OSP_Registration_Submit() {
-    let info = {} as HSE_OSP_REGISTRATIONS_NEW;
-    this.osp_Reg_Body.id = 0;
-    this.osp_Reg_Body.year_of_WP = this.genk.wpYear;
-    this.osp_Reg_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.osp_Reg_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.osp_Reg_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_OSP_Registrations(
-        info,
+        this.osp_Reg_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_OSP(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Community_Submit() {
-    let info = {} as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
-    this.community_Body.id = 0;
-    this.community_Body.year_of_WP = this.genk.wpYear;
-    this.community_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.community_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.community_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Community(
-        info,
+        this.community_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_CommunityDisturbance(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Fatality_Submit() {
-    let info = {} as HSE_FATALITY;
-    this.fatality_Body.id = 0;
-    this.fatality_Body.year_of_WP = this.genk.wpYear;
-    this.fatality_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.fatality_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.fatality_Body[item].toString() ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Fatality(
-        info,
+        this.fatality_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Fatality(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   HSE_DesignSafety_Submit() {
-    let info = {} as HSE_DESIGNS_SAFETY;
-    this.designSafety_Body.id = 0;
-    this.designSafety_Body.year_of_WP = this.genk.wpYear;
-    this.designSafety_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.designSafety_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] = this.designSafety_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_DesignSafety(
-        info,
+        this.designSafety_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_DesignSafety(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   HSE_Environmental_Studies_Updated_Submit() {
-    let info = {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
-    this.environmental_studies_updated_Body.id = 0;
-    this.environmental_studies_updated_Body.year_of_WP = this.genk.wpYear;
-    this.environmental_studies_updated_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.environmental_studies_updated_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.environmental_studies_updated_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Environmental_Studies_New_Updated(
-        info,
+        this.environmental_studies_updated_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_ESU(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Environmental_Studies_Submit() {
-    let info = {} as HSE_ENVIRONMENTAL_STUDIES_NEW;
-    this.environmental_studies_Body.id = 0;
-    this.environmental_studies_Body.year_of_WP = this.genk.wpYear;
-    this.environmental_studies_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.environmental_studies_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.environmental_studies_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Environmental_Studies_Updated(
-        info,
+        this.environmental_studies_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_ES(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Waste_Management_Submit() {
-    let info = {} as HSE_WASTE_MANAGEMENT_NEW;
-    this.waste_Management_Body.id = 0;
-    this.waste_Management_Body.year_of_WP = this.genk.wpYear;
-    this.waste_Management_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.waste_Management_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.waste_Management_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Waste_Management(
-        info,
+        this.waste_Management_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Waste_Management(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Waste_Management_Facility_Submit() {
-    let info = {} as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
-    this.waste_ManagementFacility_Body.id = 0;
-    this.waste_ManagementFacility_Body.year_of_WP = this.genk.wpYear;
-    this.waste_ManagementFacility_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.waste_ManagementFacility_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.waste_ManagementFacility_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Waste_ManagementFacility(
-        info,
+        this.waste_ManagementFacility_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Waste_Management_Facility(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -1946,6 +2345,7 @@ export class SWPHseComponent implements OnInit {
         }
       });
   }
+
   HSE_Water_Management_Submit() {
     let info = {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
     this.water_Management_Body.id = 0;
@@ -2005,6 +2405,7 @@ export class SWPHseComponent implements OnInit {
         }
       });
   }
+
   HSE_Environmental_Compliance_Chemical_Submit() {
     let info = {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
     this.environmentalComplianceChemical_Body.id = 0;
@@ -2034,6 +2435,7 @@ export class SWPHseComponent implements OnInit {
         }
       });
   }
+
   HSE_Environmental_Studies_Strategic_Plan_Submit() {
     let info = {} as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
     this.environmental_studies_fiveyrs_Body.id = 0;
@@ -2200,6 +2602,7 @@ export class SWPHseComponent implements OnInit {
     this.StatisticsNameDoc = this.gen.trimDocName(this.StatisticsFile.name);
     let dockind = this.gen.getExt(this.StatisticsFile.name);
   }
+
   saveStatisticsDoc_2(DeFile: any) {
     this.Statistics_2File = <File>DeFile.target.files[0];
     if (!this.Statistics_2File) {
@@ -2357,6 +2760,7 @@ export class SWPHseComponent implements OnInit {
     this.WM_Cert_NameDoc = this.gen.trimDocName(this.WM_Cert_File.name);
     let dockind = this.gen.getExt(this.WM_Cert_File.name);
   }
+
   saveEMSDoc(DeFile: any) {
     this.EMSFile = <File>DeFile.target.files[0];
     if (!this.EMSFile) {
@@ -2404,25 +2808,27 @@ export class SWPHseComponent implements OnInit {
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         let safetyInfo = this.safetyBody as HSE_SAFETY_STUDIES_NEW;
-        let accidentInfo = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
+        // let accidentInfo = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
 
-        let inspectionInfo = this
-          .inspectionMaintenanceBody as HSE_INSPECTION_AND_MAINTENANCE_NEW;
-        let asset_PRE_Info = this
-          .asset_PRE_Body as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-        let asset_RBI_Info = this
-          .asset_RBI_Body as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-        var oilSpill_Info = this.oilSpill_Body as HSE_OIL_SPILL_REPORTING_NEW;
-        let causesOfSpill_Info = this.causesOfSpill_Body as HSE_CAUSES_OF_SPILL;
-        let accident_Info = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
-        let osp_Info = this.osp_Reg_Body as HSE_OSP_REGISTRATIONS_NEW;
-        let community_Info = this
-          .community_Body as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
+        // let inspectionInfo = this
+        //   .inspectionMaintenanceBody as HSE_INSPECTION_AND_MAINTENANCE_NEW;
+        // let asset_PRE_Info = this
+        //   .asset_PRE_Body as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+        // let asset_RBI_Info = this
+        //   .asset_RBI_Body as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+        // var oilSpill_Info = this.oilSpill_Body as HSE_OIL_SPILL_REPORTING_NEW;
+        // let causesOfSpill_Info = this.causesOfSpill_Body as HSE_CAUSES_OF_SPILL;
+        // let accident_Info = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
+        // let osp_Info = this.osp_Reg_Body as HSE_OSP_REGISTRATIONS_NEW;
+        // let community_Info = this
+        //   .community_Body as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
+        // let fatality_Info = this.fatality_Body as HSE_FATALITY;
+        // let designSafety_Info = this.designSafety_Body as HSE_DESIGNS_SAFETY;
 
-        let environmental_Studies_Info = this
-          .environmental_studies_Body as HSE_ENVIRONMENTAL_STUDIES_NEW;
-        let environmental_Studies_Updated_Info = this
-          .environmental_studies_updated_Body as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
+        // let environmental_Studies_Info = this
+        //   .environmental_studies_Body as HSE_ENVIRONMENTAL_STUDIES_NEW;
+        // let environmental_Studies_Updated_Info = this
+        //   .environmental_studies_updated_Body as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
         let environmental_Studies_FiveYrs_Info = this
           .environmental_studies_fiveyrs_Body as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
         let waste_Management_Info = this
@@ -2437,8 +2843,6 @@ export class SWPHseComponent implements OnInit {
           .water_Management_Updated_New_Body as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
         let environmentalCompliance_Info = this
           .environmentalCompliance_Body as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
-        let fatality_Info = this.fatality_Body as HSE_FATALITY;
-        let designSafety_Info = this.designSafety_Body as HSE_DESIGNS_SAFETY;
         let water_Management_Updated_New_Info = this
           .water_Management_Updated_New_Body as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
         let environmentalCompliance_Chemical_Info = this
@@ -2450,8 +2854,8 @@ export class SWPHseComponent implements OnInit {
           this.hseTechnicals = res.hseTechnicalSafety;
         }
 
-        if (res.hseSafetyStudies && res.hseSafetyStudies.length > 0) {
-          safetyInfo = res.hseSafetyStudies[0] as HSE_SAFETY_STUDIES_NEW;
+        if (res.hseSafetyStudies) {
+          // safetyInfo = res.hseSafetyStudies[0] as HSE_SAFETY_STUDIES_NEW;
           this.hseSafetyStudies = res.hseSafetyStudies;
         }
 
@@ -2475,63 +2879,55 @@ export class SWPHseComponent implements OnInit {
           this.climateChanges = res.hseClimateChange;
         }
 
-        if (
-          res.hseInspectionMaintenance != null &&
-          res.hseInspectionMaintenance.length > 0
-        ) {
-          inspectionInfo = res
-            .hseInspectionMaintenance[0] as HSE_INSPECTION_AND_MAINTENANCE_NEW;
-          this.loadTable_IM(res.hseInspectionMaintenance);
+        if (res.hseInspectionMaintenance) {
+          this.inspectionMaintenances = res.hseInspectionMaintenanceFacility;
         }
-        if (res.hseAssetRegister != null && res.hseAssetRegister.length > 0) {
-          asset_PRE_Info = res
-            .hseAssetRegister[0] as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-          this.loadTable_AssetRegister_PRE(res.hseAssetRegister);
+
+        if (res.hseAssetRegister) {
+          this.assetRegisterTemplates = res.hseAssetRegister;
         }
-        if (
-          res.hseAssetRegisterRBI != null &&
-          res.hseAssetRegisterRBI.length > 0
-        ) {
-          asset_RBI_Info = res
-            .hseAssetRegisterRBI[0] as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-          this.loadTable_AssetRegister_RBI(res.hseAssetRegisterRBI);
+
+        if (res.hseAssetRegisterRBI) {
+          this.assetRegisterTemplateRBIs = res.hseAssetRegisterRBI;
         }
-        if (res.hseOilSpill != null && res.hseOilSpill.length > 0) {
-          oilSpill_Info = res.hseOilSpill[0] as HSE_OIL_SPILL_REPORTING_NEW;
-          this.loadTable_OilSpill(res.hseOilSpill);
+
+        if (res.hseOilSpill) {
+          this.oilSpillReportings = res.hseOilSpill;
         }
-        if (res.hseCausesOfSpill != null && res.hseCausesOfSpill.length > 0) {
-          causesOfSpill_Info = res.hseCausesOfSpill[0] as HSE_CAUSES_OF_SPILL;
-          this.loadTable_CausesOfSpill(res.hseCausesOfSpill);
+
+        if (res.hseCausesOfSpill) {
+          this.causeOfSpills = res.hseCausesOfSpill;
         }
-        if (res.hseAccidentModel != null && res.hseAccidentModel.length > 0) {
-          accident_Info = res
-            .hseAccidentModel[0] as HSE_ACCIDENT_INCIDENCE_MODEL;
-          this.loadTable_AccidentIncidence(res.hseAccidentModel);
+
+        if (res.hseAccidentIncidenceType) {
+          this.accidentIncidentReportings = res.hseAccidentIncidenceType;
         }
-        if (
-          res.hseOSPRegistrations != null &&
-          res.hseOSPRegistrations.length > 0
-        ) {
-          osp_Info = res.hseOSPRegistrations[0] as HSE_OSP_REGISTRATIONS_NEW;
-          this.loadTable_OSP(res.hseOSPRegistrations);
+
+        if (res.hseospRegistrations) {
+          this.ospRegulations = res.hseospRegistrations;
         }
-        if (
-          res.hseCommunityDisturbance != null &&
-          res.hseCommunityDisturbance.length > 0
-        ) {
-          community_Info = res
-            .hseCommunityDisturbance[0] as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
-          this.loadTable_CommunityDisturbance(res.hseCommunityDisturbance);
+
+        if (res.hseCommunityDisturbance) {
+          this.communityDisturbances = res.hseCommunityDisturbance;
         }
-        if (
-          res.hseEnvironmentalStudies != null &&
-          res.hseEnvironmentalStudies.length > 0
-        ) {
-          environmental_Studies_Info = res
-            .hseEnvironmentalStudies[0] as HSE_ENVIRONMENTAL_STUDIES_NEW;
-          this.loadTable_ES(res.hseEnvironmentalStudies);
+
+        if (res.hseFatality) {
+          this.fatalitiesCasualties = res.hseFatality;
         }
+
+        if (res.hseDesignSafety) {
+          this.lossPreventionStudies = res.hseDesignSafety;
+        }
+
+        if (res.hseEnvironmentalStudiesUpdated) {
+          this.environmentalStudiesUpdatedList =
+            res.hseEnvironmentalStudiesUpdated;
+        }
+
+        if (res.hseEnvironmentalStudies) {
+          this.environmentalStudies = res.hseEnvironmentalStudies;
+        }
+
         if (
           res.hseEnvironmentalFiveYears.length != null &&
           res.hseEnvironmentalFiveYears.length > 0
@@ -2540,14 +2936,7 @@ export class SWPHseComponent implements OnInit {
             .hseEnvironmentalFiveYears[0] as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
           this.loadTable_ESS_Plan(res.hseEnvironmentalFiveYears);
         }
-        if (
-          res.hseEnvironmentalStudiesUpdated != null &&
-          res.hseEnvironmentalStudiesUpdated.length > 0
-        ) {
-          environmental_Studies_Updated_Info = res
-            .hseEnvironmentalStudiesUpdated[0] as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
-          this.loadTable_ESU(res.hseEnvironmentalStudiesUpdated);
-        }
+
         if (
           res.hseWasteManagement != null &&
           res.hseWasteManagement.length > 0
@@ -2556,6 +2945,7 @@ export class SWPHseComponent implements OnInit {
             .hseWasteManagement[0] as HSE_WASTE_MANAGEMENT_NEW;
           this.loadTable_Waste_Management(res.hseWasteManagement);
         }
+
         if (
           res.hseWasteManagementType != null &&
           res.hseWasteManagementType.length > 0
@@ -2564,6 +2954,7 @@ export class SWPHseComponent implements OnInit {
             .hseWasteManagementType[0] as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
           this.loadTable_Waste_Management_Facility(res.hseWasteManagementType);
         }
+
         if (
           res.hseWasteManagementSystems != null &&
           res.hseWasteManagementSystems.length > 0
@@ -2572,6 +2963,7 @@ export class SWPHseComponent implements OnInit {
             .hseWasteManagementSystems[0] as HSE_WASTE_MANAGEMENT_SYSTEM;
           this.loadTable_Waste_Management_Files(res.hseWasteManagementSystems);
         }
+
         if (
           res.hseProducedWaterMgt != null &&
           res.hseProducedWaterMgt.length > 0
@@ -2580,6 +2972,7 @@ export class SWPHseComponent implements OnInit {
             .hseProducedWaterMgt[0] as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
           this.loadTable_Water_Management(res.hseProducedWaterMgt);
         }
+
         if (
           res.HSEProducedWaterMgtUpdated != null &&
           res.HSEProducedWaterMgtUpdated.length > 0
@@ -2590,6 +2983,7 @@ export class SWPHseComponent implements OnInit {
             res.HSEProducedWaterMgtUpdated
           );
         }
+
         if (
           res.hseEnvironmentalCompliance != null &&
           res.hseEnvironmentalCompliance.length > 0
@@ -2598,14 +2992,7 @@ export class SWPHseComponent implements OnInit {
             .hseEnvironmentalCompliance[0] as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
           this.loadTable_EC(res.hseEnvironmentalCompliance);
         }
-        if (res.hseFatality != null && res.hseFatality.length > 0) {
-          fatality_Info = res.hseFatality[0] as HSE_FATALITY;
-          this.loadTable_Fatality(res.hseFatality);
-        }
-        if (res.hseDesignSafety != null && res.hseDesignSafety.length > 0) {
-          designSafety_Info = res.hseDesignSafety[0] as HSE_DESIGNS_SAFETY;
-          this.loadTable_DesignSafety(res.hseDesignSafety);
-        }
+
         if (
           res.hseEnvironmentalComplianceChemical != null &&
           res.hseEnvironmentalComplianceChemical.length > 0
@@ -2614,6 +3001,7 @@ export class SWPHseComponent implements OnInit {
             .hseEnvironmentalComplianceChemical[0] as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
           this.loadTable_EC_C(res.hseEnvironmentalComplianceChemical);
         }
+
         if (
           res.hseEnvironmentalManagementSystems != null &&
           res.hseEnvironmentalManagementSystems.length > 0
@@ -2624,19 +3012,21 @@ export class SWPHseComponent implements OnInit {
         }
 
         this.safetyBody = safetyInfo;
-        this.inspectionMaintenanceBody = inspectionInfo;
-        this.asset_PRE_Body = asset_PRE_Info;
-        this.asset_RBI_Body = asset_RBI_Info;
-        this.oilSpill_Body = oilSpill_Info;
-        this.causesOfSpill_Body = causesOfSpill_Info;
-        this.accident_Body = accident_Info;
-        this.osp_Reg_Body = osp_Info;
-        this.community_Body = community_Info;
-        this.environmental_studies_Body = environmental_Studies_Info;
+        // this.inspectionMaintenanceBody = inspectionInfo;
+        // this.asset_PRE_Body = asset_PRE_Info;
+        // this.asset_RBI_Body = asset_RBI_Info;
+        // this.oilSpill_Body = oilSpill_Info;
+        // this.causesOfSpill_Body = causesOfSpill_Info;
+        // this.accident_Body = accident_Info;
+        // this.osp_Reg_Body = osp_Info;
+        // this.community_Body = community_Info;
+        // this.fatality_Body = fatality_Info;
+        // this.designSafety_Body = designSafety_Info;
+        // this.environmental_studies_Body = environmental_Studies_Info;
+        // this.environmental_studies_updated_Body =
+        //   environmental_Studies_Updated_Info;
         this.environmental_studies_fiveyrs_Body =
           environmental_Studies_FiveYrs_Info;
-        this.environmental_studies_updated_Body =
-          environmental_Studies_Updated_Info;
         this.waste_Management_Body = waste_Management_Info;
         this.waste_ManagementFacility_Body = waste_Management_Facility_Info;
         this.waste_ManagementFiles_Body = waste_Management_Files_Info;
@@ -2644,8 +3034,6 @@ export class SWPHseComponent implements OnInit {
         this.water_Management_Updated_New_Body = water_Management_Updated_Info;
         this.environmentalCompliance_Body = environmentalCompliance_Info;
         this.environmentalCompliance_Body = environmentalCompliance_Info;
-        this.fatality_Body = fatality_Info;
-        this.designSafety_Body = designSafety_Info;
         this.environmentalComplianceChemical_Body =
           environmentalCompliance_Chemical_Info;
 
@@ -2676,64 +3064,33 @@ export class SWPHseComponent implements OnInit {
     return resultArray;
   }
 
-  loadTable_Technical(data) {
-    this.columnHeader = [];
-    this.columnValue = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader.push(data[0]);
-      this.columnValue.push(result);
-    } else {
-      for (let item1 in this.TechnicalSafetyForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue.push(this.technicalBody[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_Technical(row) {
-    let info = this.technicalBody as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
     this.workprogram
       .post_HSE_TechnicalSafety(
-        info,
+        {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        // if (res.statusCode == 300) {
-        //   this.modalService.logNotice('Error', res.message, 'error');
-        // } else {
-        if (res.statusCode === 200) {
-          // this.loadTable_Technical(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.getHSE();
-        }
 
-        console.log('deleting...', res);
-        // }
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   Delete_HSE_SafetyStudies(row: HSE_SAFETY_STUDIES_NEW) {
     this.workprogram
       .post_HSE_SafetyStudies(
-        null,
+        {} as HSE_SAFETY_STUDIES_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2757,36 +3114,10 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_Management(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.ManagementPositionForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.mgtPositionBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_Management(row: HSE_MANAGEMENT_POSITION) {
     this.workprogram
       .post_HSE_Management(
-        null,
+        {} as HSE_MANAGEMENT_POSITION,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2809,7 +3140,7 @@ export class SWPHseComponent implements OnInit {
   Delete_HSE_SafetyCulture(row: HSE_SAFETY_CULTURE_TRAINING) {
     this.workprogram
       .post_HSE_SafetyCulture(
-        null,
+        {} as HSE_SAFETY_CULTURE_TRAINING,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2826,36 +3157,10 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_Occupational(data) {
-    this.columnHeader_5 = [];
-    this.columnValue_5 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_5.push(data[0]);
-      this.columnValue_5.push(result);
-    } else {
-      for (let item1 in this.OccupationalForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_5.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_5.push(this.occupationalBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_5 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_Occupational(row: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT) {
     this.workprogram
       .post_HSE_Occupational(
-        null,
+        {} as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2875,35 +3180,10 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_Quality(data) {
-    this.columnHeader_6 = [];
-    this.columnValue_6 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_6.push(data[0]);
-      this.columnValue_6.push(result);
-    } else {
-      for (let item1 in this.QualityControlForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_6.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_6.push(this.qualityControlBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_6 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_Quality(row: HSE_QUALITY_CONTROL) {
     this.workprogram
       .post_HSE_QualityControl(
-        null,
+        {} as HSE_QUALITY_CONTROL,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2923,35 +3203,10 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_Climate(data) {
-    this.columnHeader_7 = [];
-    this.columnValue_7 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_7.push(data[0]);
-      this.columnValue_7.push(result);
-    } else {
-      for (let item1 in this.ClimateChangeForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_7.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_7.push(this.climateChangeBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_7 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_Climate(row: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY) {
     this.workprogram
       .post_HSE_ClimateChange(
-        null,
+        {} as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -2971,113 +3226,54 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_IM(data) {
-    this.columnHeader_8 = [];
-    this.columnValue_8 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_8.push(data[0]);
-      this.columnValue_8.push(result);
-    } else {
-      for (let item1 in this.InspectionMaintenanceForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_8.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_8.push(this.inspectionMaintenanceBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_8 = true;
-    this.cd.markForCheck();
-  }
-  Delete_HSE_IM(event) {
+  Delete_HSE_IM(row: HSE_INSPECTION_AND_MAINTENANCE_NEW) {
     this.workprogram
       .post_HSE_InspectionMaintenance(
-        null,
+        {} as HSE_INSPECTION_AND_MAINTENANCE_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_IM(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_AssetRegister_PRE(data) {
-    this.columnHeader_9 = [];
-    this.columnValue_9 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_9.push(data[0]);
-      this.columnValue_9.push(result);
-    } else {
-      for (let item1 in this.AssetRegister_Pre_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_9.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_9.push(this.asset_PRE_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_9 = true;
-    this.cd.markForCheck();
-  }
-  Delete_AssetRegister_PRE(event) {
+  Delete_AssetRegister_PRE(
+    row: HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW
+  ) {
     this.workprogram
       .post_HSE_AssetRegister_PRE(
-        null,
+        {} as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_AssetRegister_PRE(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_AssetRegister_RBI(data) {
-    this.columnHeader_10 = [];
-    this.columnValue_10 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_10.push(data[0]);
-      this.columnValue_10.push(result);
-    } else {
-      for (let item1 in this.AssetRegister_RBI_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_10.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_10.push(this.asset_RBI_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_10 = true;
-    this.cd.markForCheck();
-  }
   Delete_AssetRegister_RBI(event) {
     this.workprogram
       .post_HSE_AssetRegister_RBI(
@@ -3088,343 +3284,199 @@ export class SWPHseComponent implements OnInit {
         event.target.value,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_AssetRegister_RBI(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
       });
   }
 
-  loadTable_OilSpill(data) {
-    this.columnHeader_11 = [];
-    this.columnValue_11 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_11.push(data[0]);
-      this.columnValue_11.push(result);
-    } else {
-      for (let item1 in this.OilSpill_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_11.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_11.push(this.oilSpill_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_11 = true;
-    this.cd.markForCheck();
-  }
-  Delete_OilSpill(event) {
+  Delete_OilSpill(row: HSE_OIL_SPILL_REPORTING_NEW) {
     this.workprogram
       .post_HSE_OilSpill(
-        null,
+        {} as HSE_OIL_SPILL_REPORTING_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_OilSpill(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_CausesOfSpill(data) {
-    this.columnHeader_12 = [];
-    this.columnValue_12 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_12.push(data[0]);
-      this.columnValue_12.push(result);
-    } else {
-      for (let item1 in this.CausesOfSpill_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_12.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_12.push(this.causesOfSpill_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_12 = true;
-    this.cd.markForCheck();
-  }
   Delete_CausesOfSpill(event) {
     this.workprogram
       .post_HSE_Causes_Of_Spill(
-        null,
+        {} as HSE_CAUSES_OF_SPILL,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         event.target.value,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_CausesOfSpill(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_AccidentIncidence(data) {
-    this.columnHeader_13 = [];
-    this.columnValue_13 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_13.push(data[0]);
-      this.columnValue_13.push(result);
-    } else {
-      for (let item1 in this.Accident_Incidence_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_13.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_13.push(this.accident_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_13 = true;
-    this.cd.markForCheck();
-  }
-  Delete_AccidentIncidence(event) {
+  Delete_AccidentIncidence(row: HSE_ACCIDENT_INCIDENCE_MODEL) {
     this.workprogram
       .post_HSE_Accident_Incidence(
-        null,
+        {} as HSE_ACCIDENT_INCIDENCE_MODEL,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_AccidentIncidence(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_OSP(data) {
-    this.columnHeader_14 = [];
-    this.columnValue_14 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_14.push(data[0]);
-      this.columnValue_14.push(result);
-    } else {
-      for (let item1 in this.Accident_Incidence_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_14.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_14.push(this.accident_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_14 = true;
-    this.cd.markForCheck();
-  }
-  Delete_OSP(event) {
+  Delete_OSP(row: HSE_OSP_REGISTRATIONS_NEW) {
     this.workprogram
       .post_HSE_OSP_Registrations(
-        null,
+        {} as HSE_OSP_REGISTRATIONS_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_OSP(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_CommunityDisturbance(data) {
-    this.columnHeader_15 = [];
-    this.columnValue_15 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_15.push(data[0]);
-      this.columnValue_15.push(result);
-    } else {
-      for (let item1 in this.Community_Disturbances_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_15.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_15.push(this.community_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_15 = true;
-    this.cd.markForCheck();
-  }
-  Delete_CommunityDisturbance(event) {
+  Delete_CommunityDisturbance(
+    row: HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW
+  ) {
     this.workprogram
       .post_HSE_Community(
-        null,
+        {} as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_CommunityDisturbance(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_Fatality(data) {
-    this.columnHeader_16 = [];
-    this.columnValue_16 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_16.push(data[0]);
-      this.columnValue_16.push(result);
-    } else {
-      for (let item1 in this.Fatality_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_16.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_16.push(this.fatality_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_16 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Fatality(event) {
+  Delete_Fatality(row: HSE_FATALITY) {
     this.workprogram
       .post_HSE_Fatality(
-        null,
+        {} as HSE_FATALITY,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_Fatality(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_DesignSafety(data) {
-    this.columnHeader_17 = [];
-    this.columnValue_17 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_17.push(data[0]);
-      this.columnValue_17.push(result);
-    } else {
-      for (let item1 in this.Fatality_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_17.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_17.push(this.fatality_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_17 = true;
-    this.cd.markForCheck();
-  }
-  Delete_DesignSafety(event) {
+  Delete_DesignSafety(row: HSE_DESIGNS_SAFETY) {
     this.workprogram
       .post_HSE_DesignSafety(
-        null,
+        {} as HSE_DESIGNS_SAFETY,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_DesignSafety(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_ESU(data) {
-    this.columnHeader_18 = [];
-    this.columnValue_18 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_18.push(data[0]);
-      this.columnValue_18.push(result);
-    } else {
-      for (let item1 in this.Environmental_Studies_Updated_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_18.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_18.push(
-            this.environmental_studies_updated_Body[item1]
-          );
-        }
-      }
-    }
-    this.isTabVisible_18 = true;
-    this.cd.markForCheck();
-  }
-  Delete_ESU(event) {
+  Delete_ESU(row: HSE_ENVIRONMENTAL_STUDIES_NEW) {
     this.workprogram
       .post_HSE_Environmental_Studies_Updated(
-        null,
+        {} as HSE_ENVIRONMENTAL_STUDIES_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_ESU(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -3453,23 +3505,26 @@ export class SWPHseComponent implements OnInit {
     this.isTabVisible_19 = true;
     this.cd.markForCheck();
   }
-  Delete_ES(event) {
+  Delete_ES(row: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED) {
     this.workprogram
       .post_HSE_Environmental_Studies_New_Updated(
-        null,
+        {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.Delete_ES(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 

@@ -99,6 +99,7 @@ export class HSE_INSPECTION_AND_MAINTENANCE_NEW {
   facility_Type: string = '';
   type_of_Inspection_and_Maintenance: string = '';
   when_was_it_carried_out: string = '';
+  was_the_inspection_and_maintenemce: string = '';
   was_Inspection_and_Maintenance_of_each_of_your_facility_carried_out: string =
     '';
   is_the_inspection_philosophy_Prescriptive_or_RBI_for_each_facility: string =
@@ -129,6 +130,7 @@ export class HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRAT
   equipment_Inspected_as_and_when_due: string = '';
   state_reason: string = '';
   condition_of_equipment: string = '';
+  condition_of_Equipment: string = '';
   function_Test_Result: string = '';
   inspection_Report_Review: string = '';
 }
@@ -149,13 +151,13 @@ export class HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW {
   last_Inspection_Type_Performed: string = '';
   likelihood_of_Failure: string = '';
   consequence_of_Failure: string = '';
-  maximum_Inspection_numbererval: string = '';
+  maximum_Inspection_Interval: string = '';
   next_Inspection_Date: string = '';
   proposed_Inspection_Type: string = '';
-  rBI_Assessment_Date: Date;
+  rbI_Assessment_Date: Date;
   equipment_Inspected_as_and_when_due: string = '';
   state_reason: string = '';
-  condition_of_equipment: string = '';
+  condition_of_Equipment: string = '';
   function_Test_Result: string = '';
   inspection_Report_Review: string = '';
 }
@@ -168,7 +170,7 @@ export class HSE_OIL_SPILL_REPORTING_NEW {
   incident_Oil_Spill_Ref_No: string = '';
   facility_Equipment: string = '';
   location: string = '';
-  lGA: string = '';
+  lga: string = '';
   state_: string = '';
   date_of_Spill: Date;
   type_of_operation_at_spill_site: string = '';
