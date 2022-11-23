@@ -1,131 +1,153 @@
-<div style="margin-top:1%;">
-<div *ngIf="genk.isAdmin" class="row">
-  <div class="col-md-3">
-    <div class="card bg-primary p-20">
-        <div class="media widget-ten">
-            <div class="media-left meida media-middle">
-                <span><i class="ti-bag f-s-40"></i></span>
-            </div>
-
-               <div class="media-body media-text-right">
-                <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.deskCount}} </h2>
-                <p style="font-weight:bold"><a href="/application/mydesk" class="color-white"> My Desk </a></p>
-        </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-warning p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allProcessingCount}}</h2>
-              <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> Processing Applications </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-dark p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApplicationsCount}} </h2>
-              <p style="font-weight:bold"><a href="/application/allapplications" class="color-white" > All Applications </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-success p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApprovalsCount}} </h2>
-              <p style="font-weight:bold"><a href="/application/allapprovals" class="color-white"> All Approvals </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-
-</div>
-<hr/>
-<br/>
-  <div
-      style="text-align: center;margin: 0px auto;display:block; font-size: medium;
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: 300; text-shadow: 1px 1px 2px rgb(11, 43, 148);">
-      <!-- <h1> WORK PROGRAMME </h1>
-      <h1>Year 2022</h1> -->
-  </div><br><br>
 <div>
+  <!-- <div *ngIf="genk.isAdmin" class="row">
+    <div class="col-md-3">
+      <div class="card bg-primary p-20">
+        <div class="media widget-ten">
+          <div class="media-left meida media-middle">
+            <span><i class="ti-bag f-s-40"></i></span>
+          </div>
 
-  <!-- The company calculated Operational Data -->
-   <div style="display: flex; width: 100%;">
-    <div style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
-      
-      
+          <div class="media-body media-text-right">
+            <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.deskCount}} </h2>
+            <p style="font-weight:bold"><a href="/application/mydesk" class="color-white"> My Desk </a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-warning p-20">
+        <div class="media widget-ten">
+          <div class="media-left meida media-middle">
+            <span><i class="ti-bag f-s-40"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allProcessingCount}}</h2>
+            <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> Processing
+                Applications </a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-dark p-20">
+        <div class="media widget-ten">
+          <div class="media-left meida media-middle">
+            <span><i class="ti-bag f-s-40"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApplicationsCount}} </h2>
+            <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> All Applications
+              </a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-success p-20">
+        <div class="media widget-ten">
+          <div class="media-left meida media-middle">
+            <span><i class="ti-bag f-s-40"></i></span>
+          </div>
+          <div class="media-body media-text-right">
+            <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApprovalsCount}} </h2>
+            <p style="font-weight:bold"><a href="/application/allapprovals" class="color-white"> All Approvals </a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr />
+  <br />
+  <div
+    style="text-align: center;margin: 0px auto;display:block; font-size: medium;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: 300; text-shadow: 1px 1px 2px rgb(11, 43, 148);">
+    <h1> WORK PROGRAMME </h1>
+      <h1>Year 2022</h1>
+  </div> -->
+<div style="display: flex;">
+  <div style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
+    <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">widgets</span>
+    <span >{{auth.currentUserValue.companyName}}</span>
+  </div>
+</div>
+
+  <div>
+
+    <!-- The company calculated Operational Data -->
+    <div style="display: flex; width: 100%;">
+      <div
+        style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
+
+
         <div style="width: 90%; height: 60%; margin: 0 5%;">
           <span class="left">
             <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
           <span class="right">
-             <span class="top"> OIL & CONDENSATE</span>  <br/> 
-             <span class="buttom">{{dashboardGasBudgetAndReserve.oilCondensate}} BBL</span>
-            </span>
+            <span class="top"> OIL & CONDENSATE</span> <br />
+            <span class="buttom">{{dashboardGasBudgetAndReserve.oilCondensate}} BBL</span>
+          </span>
         </div>
-        <hr/>
+        <hr />
         <div style="width: 90%; height: 40%; margin: 0 auto;">
-          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves (ANNUAL)</span></span>
+          <span class="below" style="float: left;">
+            <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+              style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves (ANNUAL)</span>
+          </span>
         </div>
-      
-    </div>
 
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/wallet.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">PRODUCTION COST</span>  <br/> 
-           <span class="buttom">&#36;{{dashboardGasBudgetAndReserve.directProdCost}}</span>
+      </div>
+
+      <div
+        style="width: 30%; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; background-color: goldenrod; box-shadow: 3px 3px 5px 3px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 5px; text-align: center;">
+        <div style=" padding: 10px 0; border-bottom:  solid 1px darkslategrey;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="padding-left: 10px">
+              <span class="material-icons"
+                style="font-size: 130px; opacity: 0.9; color: rgb(214, 214, 234);">microwave</span>
+            </div>
+
+            <div style="color: white; padding: 10px 20px 0 0;">
+              <span style="font-weight: 900; font-size: 50px">&#36;{{dashboardGasBudgetAndReserve.directProdCost}}40000</span><br><br>
+              <span style="font-size: 19px; font-weight: 900; color: rgb(227, 227, 236);">PRODUCTION COST</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 15px; font-weight: 700; color: rgb(72, 68, 68);">
+          <span>{{previousYear}} Budget Performance</span>
+        </div>
+      </div>
+
+      <div
+        style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
+        <div style="width: 100%; height: 60%; margin: 0;">
+          <span class="right" style="float: left;">
+            <span class="top">Gas Capacity</span> <br />
+            <span class="buttom">{{dashboardGasBudgetAndReserve.gasPlantCapacity}} SCF</span>
           </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Budget Performance</span></span>
-      </div>
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 100%; height: 60%; margin: 0;">
-        <span class="right" style="float: left;">
-          <span class="top">Gas Capacity</span>  <br/> 
-           <span class="buttom">{{dashboardGasBudgetAndReserve.gasPlantCapacity}} SCF</span>
-        </span>
-        <span class="right">
-           <span class="top">FLARED</span>  <br/> 
-           <span class="buttom">{{dashboardGasBudgetAndReserve.gasFlareds}} SCF</span>
+          <span class="right">
+            <span class="top">FLARED</span> <br />
+            <span class="buttom">{{dashboardGasBudgetAndReserve.gasFlareds}} SCF</span>
           </span>
+        </div>
+        <hr />
+        <div style="width: 90%; height: 40%; margin: 0 auto;">
+          <span class="below" style="float: left;">
+            <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+              style=" FLOAT: RIGHT;font-size: larger;">{{previousYear}} Gas Production</span>
+          </span>
+        </div>
       </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT;font-size: larger;">{{previousYear}} Gas Production</span></span>
-      </div>
-    </div>
 
-    <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
+      <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
       <div style="width: 90%; height: 60%; margin: 0 5%;">
         <span class="left">
           <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
         <span class="right">
-           <span class="top">OIL CONDENSATE</span>  <br/> 
+           <span class="top">OIL CONDENSATE</span>  <br/>
            <span class="buttom">1000L</span>
           </span>
       </div>
@@ -135,63 +157,75 @@
       </div>
     </div> -->
 
-  </div> 
+    </div>
 
-  <div style="display: flex; width: 100%;">
-    <div style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
-      
-      
+    <div style="display: flex; width: 100%;">
+      <div
+        style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
+
+
         <div style="width: 90%; height: 60%; margin: 0 5%;">
           <span class="left">
             <img src="/assets/data/images/opl.png" style="height:100%" alt="pis"></span>
           <span class="right">
-             <span class="top">Total Number</span>  <br/> 
-             <span class="buttom">{{dashboardBody.opL_Count}}</span>
-            </span>
+            <span class="top">Total Number</span> <br />
+            <span class="buttom">{{dashboardBody.opL_Count}}</span>
+          </span>
         </div>
-        <hr/>
+        <hr />
         <div style="width: 90%; height: 40%; margin: 0 auto;">
-          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Prospecting License (OPL)</span></span>
+          <span class="below" style="float: left;">
+            <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+              style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Prospecting License (OPL)</span>
+          </span>
         </div>
-      
-    </div>
 
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/oml.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">Total Number</span>  <br/> 
-           <span class="buttom">{{dashboardBody.omL_Count}}</span>
+      </div>
+
+      <div
+        style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
+        <div style="width: 90%; height: 60%; margin: 0 5%;">
+          <span class="left">
+            <img src="/assets/data/images/oml.png" style="height:100%" alt="pis"></span>
+          <span class="right">
+            <span class="top">Total Number</span> <br />
+            <span class="buttom">{{dashboardBody.omL_Count}}</span>
           </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Mining License (OML)</span></span>
-      </div>
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/field.gif" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">Total Number</span>  <br/> 
-           <span class="buttom">{{dashboardBody.no_Of_ProducingFields_Count}}</span> 
+        </div>
+        <hr />
+        <div style="width: 90%; height: 40%; margin: 0 auto;">
+          <span class="below" style="float: left;">
+            <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+              style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Mining License (OML)</span>
           </span>
+        </div>
       </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Producing Fields</span></span>
-      </div>
-    </div>
 
-    <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
+      <div
+        style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
+        <div style="width: 90%; height: 60%; margin: 0 5%;">
+          <span class="left">
+            <img src="/assets/data/images/field.gif" style="height:100%" alt="pis"></span>
+          <span class="right">
+            <span class="top">Total Number</span> <br />
+            <span class="buttom">{{dashboardBody.no_Of_ProducingFields_Count}}</span>
+          </span>
+        </div>
+        <hr />
+        <div style="width: 90%; height: 40%; margin: 0 auto;">
+          <span class="below" style="float: left;">
+            <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+              style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Producing Fields</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
       <div style="width: 90%; height: 60%; margin: 0 5%;">
         <span class="left">
           <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
         <span class="right">
-           <span class="top">OIL CONDENSATE</span>  <br/> 
+           <span class="top">OIL CONDENSATE</span>  <br/>
            <span class="buttom">1000L</span>
           </span>
       </div>
@@ -201,27 +235,28 @@
       </div>
     </div> -->
 
-  </div> 
+    </div>
 
 
 
 
 
-  <div style="display: flex; width: 100%;">
-    <div style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin-right: 2%; border-radius: 15px; text-align: center;">
-      <h2 style="
+    <div style="display: flex; width: 100%;">
+      <div
+        style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin-right: 2%; border-radius: 15px; text-align: center;">
+        <h2 style="
       color: yellowgreen;
   ">Net Oil Producduction by Concessions</h2>
-      <div #mychartbox1>
-        <div #firstchart style="width: 100%; height: 500px"></div>
-      </div>
+        <div #mychartbox1>
+          <div #firstchart style="width: 100%; height: 500px"></div>
+        </div>
 
-    </div>
+      </div>
       <!-- <div>
         <div
         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
-   
-       
+
+
         <div  style="margin-left: 10px" class="inpdiv">
           <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
             class="search">
@@ -260,7 +295,7 @@
           <thead>
             <tr>
               <th *ngFor="let h of columns">
-        
+
                 {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
 
               </th>
@@ -288,30 +323,31 @@
             style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;" #pageInput
             type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
             (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
-    
+
         <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
           mat-raised-button>Next</button>
         <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
           <mat-icon>keyboard_double_arrow_right</mat-icon>
         </button>
       </div>
-    
+
     </div>
 
       </div> -->
 
-    <div style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); border-radius: 15px; text-align: center;">
-      <h2 style="
+      <div
+        style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); border-radius: 15px; text-align: center;">
+        <h2 style="
       color: yellowgreen;
   ">Percentage Total Resrves By Concessions</h2>
-      <div #mychartbox2>
-        <div #secondchart style="width: 100%; height: 500px"></div>
+        <div #mychartbox2>
+          <div #secondchart style="width: 100%; height: 500px"></div>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
-</div>
-<!-- <div style="width: 100%; text-align: center; margin: 5% 0;">
+  <!-- <div style="width: 100%; text-align: center; margin: 5% 0;">
   <div style="width: 50%; margin: auto;  background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); border-radius: 15px; text-align: center;">
     <h2>Oil Production Distribution By Terrain</h2>
       <div class="col-md-12" #mychartbox3>
@@ -319,6 +355,4 @@
       </div>
   </div>
 </div> -->
-
-
-  </div>
+</div>

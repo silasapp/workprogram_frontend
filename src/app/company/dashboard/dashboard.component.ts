@@ -6,7 +6,7 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
-import { GenericService, ModalService } from 'src/app/services';
+import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { CdkAriaLive } from '@angular/cdk/a11y';
 import { CompanyService } from 'src/app/services/company.service';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
   dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody = {} as DashboardGasBudgetAndReserveBody;
   modalService: ModalService;
   companyService: CompanyService;
+  auth: AuthenticationService;
 
   cdr: ChangeDetectorRef;
 
@@ -89,12 +90,10 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor(private report: WorkprogrammeReportService, private _companyService: CompanyService, private genReport: ReportService, private modale: ModalService, private gen: GenericService, private cd: ChangeDetectorRef) {
-    this.modalService = modale;
-    this.companyService = _companyService;
+  constructor(private gen: GenericService, private cd: ChangeDetectorRef, private authenticationService: AuthenticationService) {
     this.genk = gen;
     this.cdr = cd;
-
+    this.auth = authenticationService;
   }
 
   ngOnInit(): void {
@@ -102,7 +101,6 @@ export class DashboardComponent implements OnInit {
   ngAfterViewInit() {
     this.getCompanyDashboardReport();
     this.getDashboardGasBudgetAndReserveDetails();
-
   }
 
   // fetchreportI() {

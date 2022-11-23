@@ -27,7 +27,21 @@
           </div>
         </div> -->
 
-        <div style=" display: flex; align-items: center;">
+        <div *ngIf="genk.OmlName" style=" display: flex; align-items: center;">
+          <div class="omlstyle">
+            <span>CONCESSION(S) HELD: </span>
+          </div>
+            <div style="width: 400px">
+              <select formControlName="concession_Held" [value]="genk.OmlName" (change)="changeConcessionHeld($event)" class="basesel">
+                <option selected disabled>-Select Concession-</option>
+                <option *ngFor="let list of concessionHeldList">
+                  {{ list }}
+                </option>
+              </select>
+            </div>
+        </div>
+
+        <div *ngIf="!genk.OmlName" style=" display: flex; align-items: center;">
           <div class="omlstyle">
             <span>CONCESSION(S) HELD: </span>
           </div>
@@ -41,20 +55,40 @@
             </div>
         </div>
 
-        <div style="display: flex; align-items: center;">
-          <div class="omlstyle">
-            <span>Field</span>
-          </div>
-            <div style="width: 400px">
-              <select class="basesel" formControlName="Field" (change)="changeConcessionField($event)">
-                <option>-Select Field-</option>
-                <option
-                  *ngFor="let list2 of Field_List"
-                  [value]="list2.field_ID"
-                >
-                  {{ list2.field_Name }}
-                </option>
-              </select>
+        <div *ngIf="genk.Field_List">
+          <div *ngIf="genk.fieldName" style="display: flex; align-items: center;">
+            <div class="omlstyle">
+              <span>Field</span>
             </div>
+              <div style="width: 400px">
+                <select class="basesel" formControlName="Field" [value]="genk.fieldName" (change)="changeConcessionField($event)">
+                  <option>-Select Field-</option>
+                  <option
+                    *ngFor="let list2 of Field_List"
+                    [value]="list2.field_ID"
+                  >
+                    {{ list2.field_Name }}
+                  </option>
+                </select>
+              </div>
+          </div>
+
+          <div *ngIf="!genk.fieldName" style="display: flex; align-items: center;">
+            <div class="omlstyle">
+              <span>Field</span>
+            </div>
+              <div style="width: 400px">
+                <select class="basesel" formControlName="Field" (change)="changeConcessionField($event)">
+                  <option>-Select Field-</option>
+                  <option
+                    *ngFor="let list2 of Field_List"
+                    [value]="list2.field_ID"
+                  >
+                    {{ list2.field_Name }}
+                  </option>
+                </select>
+              </div>
+          </div>
         </div>
+
       </div>

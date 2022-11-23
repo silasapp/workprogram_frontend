@@ -78,7 +78,7 @@ export class ConcessionBaseComponent implements OnInit {
         } else {
           this.modal.logConcessionSituation(this.concessionHeld);
           this.Field_List = res;
-          this.genk.Field_List = res;
+          this.genk.Field_List = null;
           this.cd.markForCheck();
         }
       });

@@ -2965,7 +2965,7 @@ getWPYears(){
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_budget_performance`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -2974,11 +2974,11 @@ getWPYears(){
         })
       );
   }
-  getFormThreeBudget_2(omlName, year, fieldName) {
+  getFormThreeBudget_2(year) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_budget_proposal_in_naira_dollar`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: {year: year } }
       )
       .pipe(
         retry(this.num),
@@ -3431,7 +3431,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3444,8 +3444,6 @@ getWPYears(){
   post_Exploratory(
     budget: exploratoryActivities,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3453,7 +3451,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3466,8 +3464,6 @@ getWPYears(){
   post_Development(
     budget: developmentDrillingActivities,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3475,7 +3471,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3488,8 +3484,6 @@ getWPYears(){
   post_Facility(
     budget: facilitiesDevelopmentProject,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3497,7 +3491,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3510,8 +3504,6 @@ getWPYears(){
   post_Production(
     budget: productionCost,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3519,7 +3511,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3532,8 +3524,6 @@ getWPYears(){
   post_BudgetProposal(
     budget: budgetProposal,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3541,7 +3531,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -5627,7 +5617,7 @@ getWPYears(){
     year: string,
     omlName: string,
     fieldName: string
-  ) 
+  )
   {
     return this.http
       .post<any>(
