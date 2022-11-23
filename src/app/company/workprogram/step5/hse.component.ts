@@ -853,6 +853,196 @@ export class SWPHseComponent implements OnInit {
     },
   ];
 
+  hwmColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'do_you_have_Waste_Management_facilities',
+      header: 'Do you have Waste Management facilities',
+    },
+    {
+      columnDef: 'if_YES_is_the_facility_registered',
+      header: 'If YES, is the facility registered',
+    },
+    {
+      columnDef: 'if_NO_give_reasons_for_not_being_registered',
+      header: 'If NO, give reasons for not being registered',
+    },
+  ];
+
+  hwmfColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'type_of_Facility',
+      header: 'Type of Facility',
+    },
+    {
+      columnDef: 'location',
+      header: 'Location',
+    },
+    {
+      columnDef: 'approved_or_Not_Approve',
+      header: 'Approved / Not Approved',
+    },
+  ];
+
+  hwmsColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'wasteManagementPlanFilename',
+      header: 'Waste Management Plan',
+    },
+    {
+      columnDef: 'decomCertificateFilename',
+      header: 'Decommissioning Certificates issued in the year',
+    },
+  ];
+
+  hpwmColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'fielD_NAME',
+      header: 'Field Name',
+    },
+    // {
+    //   columnDef: 'concession',
+    //   header: 'Concession',
+    // },
+    {
+      columnDef: 'facilities',
+      header: 'Facilities',
+    },
+    {
+      columnDef: 'deptH_AND_DISTANCE_FROM_SHORELINE',
+      header: 'Depth and Distance from Shoreline',
+    },
+    {
+      columnDef: 'produced_water_volumes',
+      header: 'Produced Water Volumes',
+    },
+    {
+      columnDef: 'disposal_philosophy',
+      header: 'Disposal Philosophy',
+    },
+    {
+      columnDef: 'dpR_APPROVAL_STATUS',
+      header: 'NUPRC Approval Status',
+    },
+  ];
+
+  hpwmnColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'within_which_zone_are_you_operating',
+      header: 'Within which zone are you operating',
+    },
+    {
+      columnDef: 'how_do_you_handle_your_produced_water',
+      header: 'How do you handle your produced water	',
+    },
+    {
+      columnDef: 'export_to_Terminal_with_fluid',
+      header: 'Export to Terminal with fluid (wet crude',
+    },
+  ];
+
+  hpecmColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'are_you_a_Producing_or_Non_Producing_Company',
+      header: 'Are you a Producing or Non-Producing Company',
+    },
+    {
+      columnDef: 'if_YES_have_you_registered_your_Point_Sources',
+      header: 'If YES, have you registered your Point Sources',
+    },
+    {
+      columnDef: 'if_YES_have_you_registered_your_Point_Sources',
+      header: 'If NO, give reasons for not registering your Point Sources',
+    },
+    {
+      columnDef: 'have_you_submitted_your_Environmental_Compliance_Report',
+      header:
+        'If YES (Producing Company), have you submitted your Environmental Compliance Report',
+    },
+    {
+      columnDef: 'if_NO_Give_reasons_for_non_SUBMISSION',
+      header: 'If NO, Give reasons for non-submission',
+    },
+    {
+      columnDef:
+        'have_you_submitted_your_Chemical_Usage_Inventorization_Report',
+      header:
+        'For non-submission	Have you submitted your Chemical Usage Inventorization Report',
+    },
+    {
+      columnDef: 'if_NO_Give_reasons_for_non_submission_2',
+      header: 'If NO, Give reasons for non-submission',
+    },
+  ];
+
+  hpecmnColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'name_of_Chemical',
+      header: 'Name of Chemical',
+    },
+    {
+      columnDef: 'dpR_Approved',
+      header: 'NUPRC Approved',
+    },
+  ];
+
+  hes5yspColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'yeaR_',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'type_of_Study_IA_or_EES',
+      header: 'TYPE OF STUDY (IA OR EES)',
+    },
+  ];
+
+  hemsColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'yeaR_',
+      header: 'Evidence of Submission of Environmental Management System (EMS)',
+    },
+    {
+      columnDef: 'type_of_Study_IA_or_EES',
+      header: 'Evidence of all audits done in the year',
+    },
+  ];
+
   //lists declarations
   hseTechnicals: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW[] = [];
   hseSafetyStudies: HSE_SAFETY_STUDIES_NEW[] = [];
@@ -876,6 +1066,19 @@ export class SWPHseComponent implements OnInit {
   lossPreventionStudies: HSE_DESIGNS_SAFETY[] = [];
   environmentalStudiesUpdatedList: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED[] = [];
   environmentalStudies: HSE_ENVIRONMENTAL_STUDIES_NEW[] = [];
+  wasteManagements: HSE_WASTE_MANAGEMENT_NEW[] = [];
+  wasterManagementFacilities: HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW[] = [];
+  wasterManagementFiles: HSE_WASTE_MANAGEMENT_SYSTEM[] = [];
+  producedWaterManagementUpdatedList: HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED[] =
+    [];
+  producedWaterManagements: HSE_PRODUCED_WATER_MANAGEMENT_NEW[] = [];
+  environmentalComplianceMonitoring: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW[] =
+    [];
+  environmentalComplianceChemicals: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW[] =
+    [];
+  environmentalStudiesFiveYearsSPs: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW[] =
+    [];
+  environmentalManagementSystems: HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM[] = [];
   /////////////////////
 
   //#region  form bodies declaration
@@ -2310,175 +2513,147 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_Waste_Management_Files(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Water_Management_Updated_New_Submit() {
-    let info = {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
-    this.water_Management_Updated_New_Body.id = 0;
-    this.water_Management_Updated_New_Body.year_of_WP = this.genk.wpYear;
-    this.water_Management_Updated_New_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.water_Management_Updated_New_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.water_Management_Updated_New_Body[item].toString() ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Water_Management_New_Updated(
-        info,
+        this.water_Management_Updated_New_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Water_Management_Updated(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Water_Management_Submit() {
-    let info = {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
-    this.water_Management_Body.id = 0;
-    this.water_Management_Body.year_of_WP = this.genk.wpYear;
-    this.water_Management_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.water_Management_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.water_Management_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Water_Management(
-        info,
+        this.water_Management_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Water_Management(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Environmental_Compliance_Submit() {
-    let info = {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
-    this.environmentalCompliance_Body.id = 0;
-    this.environmentalCompliance_Body.year_of_WP = this.genk.wpYear;
-    this.environmentalCompliance_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.environmentalCompliance_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.environmentalCompliance_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Environmental_Compliance(
-        info,
+        this.environmentalCompliance_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EC(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Environmental_Compliance_Chemical_Submit() {
-    let info = {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
-    this.environmentalComplianceChemical_Body.id = 0;
-    this.environmentalComplianceChemical_Body.year_of_WP = this.genk.wpYear;
-    this.environmentalComplianceChemical_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.environmentalComplianceChemical_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.environmentalComplianceChemical_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Environmental_Chemical_Compliance(
-        info,
+        this.environmentalComplianceChemical_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EC_C(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_Environmental_Studies_Strategic_Plan_Submit() {
-    let info = {} as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
-    this.environmental_studies_fiveyrs_Body.id = 0;
-    this.environmental_studies_fiveyrs_Body.year_of_WP = this.genk.wpYear;
-    this.environmental_studies_fiveyrs_Body.oML_Name = this.genk.OmlName;
-    for (let item in this.environmental_studies_fiveyrs_Body) {
-      if (item != 'id' && item != 'field_ID') {
-        info[this.genk.upperText(item)] =
-          this.environmental_studies_fiveyrs_Body[item] ?? '';
-      }
-    }
     this.workprogram
       .post_HSE_Environmental_Studies_Strategic_Plan(
-        info,
+        this.environmental_studies_fiveyrs_Body,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_ESS_Plan(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_EMS_Files_Submit() {
     const formDat: FormData = new FormData();
-    this.eMS_Files_Body.id = 0;
-    for (const key in this.eMS_Files_Body) {
-      if (this.eMS_Files_Body[key]) {
-        formDat.append(key.toString(), this.eMS_Files_Body[key]);
-      }
-    }
+    // this.eMS_Files_Body.id = 0;
+    // for (const key in this.eMS_Files_Body) {
+    //   if (this.eMS_Files_Body[key]) {
+    //     formDat.append(key.toString(), this.eMS_Files_Body[key]);
+    //   }
+    // }
     if (this.EMSFile) {
-      formDat.append(this.EMSNameDoc, this.EMSFile, this.EMSNewName);
+      formDat.append('EMSFilePath', this.EMSFile, this.EMSNewName);
     }
     if (this.AuditsFile) {
-      formDat.append(this.AuditsNameDoc, this.AuditsFile, this.AuditsNewName);
+      formDat.append('AUDITFilePath', this.AuditsFile, this.AuditsNewName);
     }
     this.workprogram
       .post_HSE_EMS_Files(
@@ -2489,13 +2664,16 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EMS_Files(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -2807,46 +2985,6 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        let safetyInfo = this.safetyBody as HSE_SAFETY_STUDIES_NEW;
-        // let accidentInfo = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
-
-        // let inspectionInfo = this
-        //   .inspectionMaintenanceBody as HSE_INSPECTION_AND_MAINTENANCE_NEW;
-        // let asset_PRE_Info = this
-        //   .asset_PRE_Body as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-        // let asset_RBI_Info = this
-        //   .asset_RBI_Body as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-        // var oilSpill_Info = this.oilSpill_Body as HSE_OIL_SPILL_REPORTING_NEW;
-        // let causesOfSpill_Info = this.causesOfSpill_Body as HSE_CAUSES_OF_SPILL;
-        // let accident_Info = this.accident_Body as HSE_ACCIDENT_INCIDENCE_MODEL;
-        // let osp_Info = this.osp_Reg_Body as HSE_OSP_REGISTRATIONS_NEW;
-        // let community_Info = this
-        //   .community_Body as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
-        // let fatality_Info = this.fatality_Body as HSE_FATALITY;
-        // let designSafety_Info = this.designSafety_Body as HSE_DESIGNS_SAFETY;
-
-        // let environmental_Studies_Info = this
-        //   .environmental_studies_Body as HSE_ENVIRONMENTAL_STUDIES_NEW;
-        // let environmental_Studies_Updated_Info = this
-        //   .environmental_studies_updated_Body as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
-        let environmental_Studies_FiveYrs_Info = this
-          .environmental_studies_fiveyrs_Body as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
-        let waste_Management_Info = this
-          .waste_Management_Body as HSE_WASTE_MANAGEMENT_NEW;
-        let waste_Management_Facility_Info = this
-          .waste_ManagementFacility_Body as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
-        let waste_Management_Files_Info = this
-          .waste_ManagementFiles_Body as HSE_WASTE_MANAGEMENT_SYSTEM;
-        let water_Management_Info = this
-          .water_Management_Body as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
-        let water_Management_Updated_Info = this
-          .water_Management_Updated_New_Body as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
-        let environmentalCompliance_Info = this
-          .environmentalCompliance_Body as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
-        let water_Management_Updated_New_Info = this
-          .water_Management_Updated_New_Body as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
-        let environmentalCompliance_Chemical_Info = this
-          .environmentalComplianceChemical_Body as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
 
@@ -2855,7 +2993,6 @@ export class SWPHseComponent implements OnInit {
         }
 
         if (res.hseSafetyStudies) {
-          // safetyInfo = res.hseSafetyStudies[0] as HSE_SAFETY_STUDIES_NEW;
           this.hseSafetyStudies = res.hseSafetyStudies;
         }
 
@@ -2928,114 +3065,45 @@ export class SWPHseComponent implements OnInit {
           this.environmentalStudies = res.hseEnvironmentalStudies;
         }
 
-        if (
-          res.hseEnvironmentalFiveYears.length != null &&
-          res.hseEnvironmentalFiveYears.length > 0
-        ) {
-          environmental_Studies_FiveYrs_Info = res
-            .hseEnvironmentalFiveYears[0] as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
-          this.loadTable_ESS_Plan(res.hseEnvironmentalFiveYears);
+        if (res.hseWasteManagement) {
+          this.wasteManagements = res.hseWasteManagement;
         }
 
-        if (
-          res.hseWasteManagement != null &&
-          res.hseWasteManagement.length > 0
-        ) {
-          waste_Management_Info = res
-            .hseWasteManagement[0] as HSE_WASTE_MANAGEMENT_NEW;
-          this.loadTable_Waste_Management(res.hseWasteManagement);
+        if (res.hseWasteManagementType) {
+          this.wasterManagementFacilities = res.hseWasteManagementType;
         }
 
-        if (
-          res.hseWasteManagementType != null &&
-          res.hseWasteManagementType.length > 0
-        ) {
-          waste_Management_Facility_Info = res
-            .hseWasteManagementType[0] as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
-          this.loadTable_Waste_Management_Facility(res.hseWasteManagementType);
+        if (res.hseWasteManagementSystems) {
+          this.wasterManagementFiles = res.hseWasteManagementSystems;
         }
 
-        if (
-          res.hseWasteManagementSystems != null &&
-          res.hseWasteManagementSystems.length > 0
-        ) {
-          waste_Management_Files_Info = res
-            .hseWasteManagementSystems[0] as HSE_WASTE_MANAGEMENT_SYSTEM;
-          this.loadTable_Waste_Management_Files(res.hseWasteManagementSystems);
+        if (res.hseProducedWaterMgtUpdated) {
+          this.producedWaterManagementUpdatedList =
+            res.hseProducedWaterMgtUpdated;
         }
 
-        if (
-          res.hseProducedWaterMgt != null &&
-          res.hseProducedWaterMgt.length > 0
-        ) {
-          water_Management_Info = res
-            .hseProducedWaterMgt[0] as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
-          this.loadTable_Water_Management(res.hseProducedWaterMgt);
+        if (res.hseProducedWaterMgt) {
+          this.producedWaterManagements = res.hseProducedWaterMgt;
         }
 
-        if (
-          res.HSEProducedWaterMgtUpdated != null &&
-          res.HSEProducedWaterMgtUpdated.length > 0
-        ) {
-          water_Management_Updated_Info = res
-            .HSEProducedWaterMgtUpdated[0] as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
-          this.loadTable_Water_Management_Updated(
-            res.HSEProducedWaterMgtUpdated
-          );
+        if (res.hseEnvironmentalCompliance) {
+          this.environmentalComplianceMonitoring =
+            res.hseEnvironmentalCompliance;
         }
 
-        if (
-          res.hseEnvironmentalCompliance != null &&
-          res.hseEnvironmentalCompliance.length > 0
-        ) {
-          environmentalCompliance_Info = res
-            .hseEnvironmentalCompliance[0] as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
-          this.loadTable_EC(res.hseEnvironmentalCompliance);
+        if (res.hseEnvironmentalComplianceChemical) {
+          this.environmentalComplianceChemicals =
+            res.hseEnvironmentalComplianceChemical;
         }
 
-        if (
-          res.hseEnvironmentalComplianceChemical != null &&
-          res.hseEnvironmentalComplianceChemical.length > 0
-        ) {
-          environmentalCompliance_Chemical_Info = res
-            .hseEnvironmentalComplianceChemical[0] as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
-          this.loadTable_EC_C(res.hseEnvironmentalComplianceChemical);
+        if (res.hseEnvironmentalFiveYears) {
+          this.environmentalStudiesFiveYearsSPs = res.hseEnvironmentalFiveYears;
         }
 
-        if (
-          res.hseEnvironmentalManagementSystems != null &&
-          res.hseEnvironmentalManagementSystems.length > 0
-        ) {
-          eMS_Files_Info = res
-            .hseEnvironmentalManagementSystems[0] as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
-          this.loadTable_EMS_Files(res.hseEnvironmentalManagementSystems);
+        if (res.hseEnvironmentalManagementSystems) {
+          this.environmentalManagementSystems =
+            res.hseEnvironmentalManagementSystems;
         }
-
-        this.safetyBody = safetyInfo;
-        // this.inspectionMaintenanceBody = inspectionInfo;
-        // this.asset_PRE_Body = asset_PRE_Info;
-        // this.asset_RBI_Body = asset_RBI_Info;
-        // this.oilSpill_Body = oilSpill_Info;
-        // this.causesOfSpill_Body = causesOfSpill_Info;
-        // this.accident_Body = accident_Info;
-        // this.osp_Reg_Body = osp_Info;
-        // this.community_Body = community_Info;
-        // this.fatality_Body = fatality_Info;
-        // this.designSafety_Body = designSafety_Info;
-        // this.environmental_studies_Body = environmental_Studies_Info;
-        // this.environmental_studies_updated_Body =
-        //   environmental_Studies_Updated_Info;
-        this.environmental_studies_fiveyrs_Body =
-          environmental_Studies_FiveYrs_Info;
-        this.waste_Management_Body = waste_Management_Info;
-        this.waste_ManagementFacility_Body = waste_Management_Facility_Info;
-        this.waste_ManagementFiles_Body = waste_Management_Files_Info;
-        this.water_Management_Body = water_Management_Info;
-        this.water_Management_Updated_New_Body = water_Management_Updated_Info;
-        this.environmentalCompliance_Body = environmentalCompliance_Info;
-        this.environmentalCompliance_Body = environmentalCompliance_Info;
-        this.environmentalComplianceChemical_Body =
-          environmentalCompliance_Chemical_Info;
 
         this.cd.markForCheck();
       });
@@ -3414,7 +3482,7 @@ export class SWPHseComponent implements OnInit {
   Delete_Fatality(row: HSE_FATALITY) {
     this.workprogram
       .post_HSE_Fatality(
-        {} as HSE_FATALITY,
+        row,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -3480,31 +3548,6 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_ES(data) {
-    this.columnHeader_19 = [];
-    this.columnValue_19 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_19.push(data[0]);
-      this.columnValue_19.push(result);
-    } else {
-      for (let item1 in this.Environmental_Studies_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_19.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_19.push(this.environmental_studies_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_19 = true;
-    this.cd.markForCheck();
-  }
   Delete_ES(row: HSE_ENVIRONMENTAL_STUDIES_NEW) {
     this.workprogram
       .post_HSE_Environmental_Studies_Updated(
@@ -3528,322 +3571,168 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  loadTable_Waste_Management(data) {
-    this.columnHeader_20 = [];
-    this.columnValue_20 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_20.push(data[0]);
-      this.columnValue_20.push(result);
-    } else {
-      for (let item1 in this.Waste_Management_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_20.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_20.push(this.waste_Management_Body[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible_20 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Waste_Management(event) {
+  Delete_Waste_Management(row: HSE_WASTE_MANAGEMENT_NEW) {
     this.workprogram
       .post_HSE_Waste_Management(
-        null,
+        {} as HSE_WASTE_MANAGEMENT_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Waste_Management(event);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_Waste_Management_Facility(data) {
-    this.columnHeader_21 = [];
-    this.columnValue_21 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_21.push(data[0]);
-      this.columnValue_21.push(result);
-    } else {
-      for (let item1 in this.Waste_Management_Facility_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_21.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_21.push(this.waste_ManagementFacility_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_21 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Waste_Management_Facility(event) {
+  Delete_Waste_Management_Facility(
+    row: HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW
+  ) {
     this.workprogram
       .post_HSE_Waste_ManagementFacility(
-        null,
+        {} as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Waste_Management_Facility(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_Waste_Management_Files(data) {
-    this.columnHeader_22 = [];
-    this.columnValue_22 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_22.push(data[0]);
-      this.columnValue_22.push(result);
-    } else {
-      for (let item1 in this.Waste_Management_Files_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_22.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_22.push(this.waste_ManagementFiles_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_22 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Waste_Management_Files(event) {
+  Delete_Waste_Management_Files(row: HSE_WASTE_MANAGEMENT_SYSTEM) {
     this.workprogram
       .post_HSE_Waste_Management_Files(
-        null,
+        {} as FormData,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Waste_Management_Files(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'success');
+        },
       });
   }
 
-  loadTable_Water_Management_Updated(data) {
-    this.columnHeader_23 = [];
-    this.columnValue_23 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_23.push(data[0]);
-      this.columnValue_23.push(result);
-    } else {
-      for (let item1 in this.Water_Management_Updated_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_23.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_23.push(this.water_Management_Updated_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_23 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Water_Management_Updated(event) {
+  Delete_Water_Management_Updated(
+    row: HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED
+  ) {
     this.workprogram
       .post_HSE_Water_Management_New_Updated(
-        null,
+        {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Water_Management_Updated(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_Water_Management(data) {
-    this.columnHeader_24 = [];
-    this.columnValue_24 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_24.push(data[0]);
-      this.columnValue_24.push(result);
-    } else {
-      for (let item1 in this.Water_Management_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_24.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_24.push(this.water_Management_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_24 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Water_Management(event) {
+  Delete_Water_Management(row: HSE_PRODUCED_WATER_MANAGEMENT_NEW) {
     this.workprogram
       .post_HSE_Water_Management(
-        null,
+        row,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Water_Management(res.data);
-        }
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.messsage, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_EC(data) {
-    this.columnHeader_25 = [];
-    this.columnValue_25 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_25.push(data[0]);
-      this.columnValue_25.push(result);
-    } else {
-      for (let item1 in this.EnvironmentalCompliance_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_25.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_25.push(this.environmentalCompliance_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_25 = true;
-    this.cd.markForCheck();
-  }
-  Delete_EC(event) {
+  Delete_EC(row: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW) {
     this.workprogram
       .post_HSE_Environmental_Compliance(
-        null,
+        row,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EC(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_EC_C(data) {
-    this.columnHeader_26 = [];
-    this.columnValue_26 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_26.push(data[0]);
-      this.columnValue_26.push(result);
-    } else {
-      for (let item1 in this.EnvironmentalCompliance_Chemical_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_26.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_26.push(
-            this.environmentalComplianceChemical_Body[item1]
-          );
-        }
-      }
-    }
-    this.isTabVisible_26 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_EC_C(event) {
+  Delete_EC_C(row: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW) {
     this.workprogram
-      .post_HSE_Environmental_Compliance(
-        null,
+      .post_HSE_Environmental_Chemical_Compliance(
+        row,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EC_C(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -3875,65 +3764,49 @@ export class SWPHseComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  Delete_ESS_Plan(event) {
+  Delete_ESS_Plan(row: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW) {
     this.workprogram
-      .post_HSE_Environmental_Chemical_Compliance(
-        null,
+      .post_HSE_Environmental_Studies_Strategic_Plan(
+        row,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-        this.loadTable_ESS_Plan(res.data);
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_EMS_Files(data) {
-    this.columnHeader_28 = [];
-    this.columnValue_28 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_28.push(data[0]);
-      this.columnValue_28.push(result);
-    } else {
-      for (let item1 in this.EMS_Files_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_28.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_28.push(this.eMS_Files_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_28 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_EMS_Files(event) {
+  Delete_EMS_Files(row: HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM) {
     this.workprogram
       .post_HSE_EMS_Files(
-        null,
+        {} as FormData,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_EMS_Files(res.data);
-        }
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 }

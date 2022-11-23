@@ -4180,7 +4180,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new`,
+        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
         conbody,
         {
           params: {
@@ -4444,7 +4444,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM`,
         conbody,
         {
           params: {
