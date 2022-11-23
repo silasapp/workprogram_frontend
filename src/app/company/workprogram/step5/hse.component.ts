@@ -3505,10 +3505,10 @@ export class SWPHseComponent implements OnInit {
     this.isTabVisible_19 = true;
     this.cd.markForCheck();
   }
-  Delete_ES(row: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED) {
+  Delete_ES(row: HSE_ENVIRONMENTAL_STUDIES_NEW) {
     this.workprogram
-      .post_HSE_Environmental_Studies_New_Updated(
-        {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED,
+      .post_HSE_Environmental_Studies_Updated(
+        {} as HSE_ENVIRONMENTAL_STUDIES_NEW,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
