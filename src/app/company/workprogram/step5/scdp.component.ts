@@ -185,35 +185,35 @@ export class SWPScdpComponent implements OnInit {
       header: 'WORK PROGRAM YEAR',
     },
     {
-      columnDef: 'have_you_submitted_all_MoUs_to_DPR',
+      columnDef: 'type_of_project_excuted',
       header: 'TYPE OF PROJECT EXECUTED',
     },
     {
-      columnDef: 'if_NO_why',
+      columnDef: 'year_GMou_was_signed',
       header: 'YEAR GMOU WAS SIGNED',
     },
     {
-      columnDef: 'do_you_have_an_MOU_with_the_communities_for_all_your_assets',
+      columnDef: 'project_Location',
       header: 'PROJECT LOCATION',
     },
     {
-      columnDef: 'mouResponderInPlace',
+      columnDef: 'component_of_project',
       header: 'COMPONENT OF PROJECT',
     },
     {
-      columnDef: 'mouResponderFilename',
+      columnDef: 'actual_Budget_Total_Dollars',
       header: 'ACTUAL BUDGET TOTAL ($)',
     },
     {
-      columnDef: 'mouoscpFilename',
+      columnDef: 'beneficiary_Community',
       header: 'BENEFICIARY COMMUNITY',
     },
     {
-      columnDef: 'mouResponderInPlace',
+      columnDef: 'status_Of_Project',
       header: 'STATUS OF PROJECT',
     },
     {
-      columnDef: 'mouResponderFilename',
+      columnDef: 'mouUploadFilename',
       header: 'MOU File',
     },
   ];
@@ -983,6 +983,31 @@ export class SWPScdpComponent implements OnInit {
   ) {
     this.workprogram
       .post_SDCP_Question(
+        {} as FormData,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        '',
+        row.id,
+        'DELETE'
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getSCDP();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
+      });
+  }
+
+  Delete_SDCP_MOU(
+    row: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_MOU
+  ) {
+    this.workprogram
+      .post_SDCP_MOU(
         {} as FormData,
         this.genk.wpYear,
         this.genk.OmlName,
