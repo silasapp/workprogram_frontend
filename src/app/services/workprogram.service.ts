@@ -3661,17 +3661,18 @@ getWPYears(){
     id,
     actionToDo
   ) {
+    console.log('conbody', conbody);
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_technical_safety_control_studies_new`,
         conbody,
         {
           params: {
-            year: year,
             omlName: omlName,
             fieldName: fieldName,
-            actionToDo,
+            year: year,
             id,
+            actionToDo,
           },
         }
       )
@@ -3743,7 +3744,7 @@ getWPYears(){
   }
 
   post_HSE_Management(
-    conbody: FormData,
+    conbody: HSE_MANAGEMENT_POSITION,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3773,7 +3774,7 @@ getWPYears(){
   }
 
   post_HSE_SafetyCulture(
-    conbody: FormData,
+    conbody: HSE_SAFETY_CULTURE_TRAINING | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3803,7 +3804,7 @@ getWPYears(){
   }
 
   post_HSE_Occupational(
-    conbody: FormData,
+    conbody: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3832,7 +3833,7 @@ getWPYears(){
       );
   }
   post_HSE_QualityControl(
-    conbody: FormData,
+    conbody: HSE_QUALITY_CONTROL | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3862,7 +3863,7 @@ getWPYears(){
   }
 
   post_HSE_ClimateChange(
-    conbody: FormData,
+    conbody: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3931,7 +3932,7 @@ getWPYears(){
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_inspection_and_maintenance_new`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_INSPECTION_AND_MAINTENANCE_FACILITY_TYPE_NEW`,
         conbody,
         {
           params: {
@@ -4257,7 +4258,7 @@ getWPYears(){
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new`,
+        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
         conbody,
         {
           params: {
@@ -4521,7 +4522,7 @@ getWPYears(){
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM`,
         conbody,
         {
           params: {
@@ -4553,7 +4554,7 @@ getWPYears(){
     debugger;
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_planned_and_actual`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL`,
         conbody,
         {
           params: {
