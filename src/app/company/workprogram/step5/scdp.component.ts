@@ -217,6 +217,192 @@ export class SWPScdpComponent implements OnInit {
       header: 'MOU File',
     },
   ];
+
+  hcpColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'type_of_project_excuted',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'year_GMou_was_signed',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'project_Location',
+      header: 'BUDGET PERFORMANCE(PLANNED)',
+    },
+    {
+      columnDef: 'component_of_project',
+      header: 'BUDGET PERFORMANCE (ACTUAL)',
+    },
+    {
+      columnDef: 'actual_Budget_Total_Dollars',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Community',
+      header: 'BENEFICIARY COMMUNITIES',
+    },
+  ];
+
+  hsColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'budget_',
+      header: 'BUDGET',
+    },
+    {
+      columnDef: 'actual_Spent',
+      header: 'ACTUAL SPENT',
+    },
+    {
+      columnDef: 'percentage_Completion_',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Communities_host',
+      header: 'BENEFICIARY (HOST)',
+    },
+    {
+      columnDef: 'beneficiary_Communities_National',
+      header: 'BENEFICIARY (NATIONAL)',
+    },
+  ];
+
+  hssColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'nameOfCommunity',
+      header: 'NAME OF COMMUNITY',
+    },
+    {
+      columnDef: 'year_GMou_was_signed',
+      header: 'YEAR GMOU WAS SIGNED',
+    },
+    {
+      columnDef: 'scholarshipYear',
+      header: 'SCHOLARSHIP YEAR',
+    },
+    {
+      columnDef: 'componentOfScholarship',
+      header: 'COMPONENT OF SCHOLARSHIP',
+    },
+    {
+      columnDef: 'actual_Budget_Total_Dollars',
+      header: 'ACTUAL BUDGET TOTAL (USD)',
+    },
+    {
+      columnDef: 'ssUploadFilename',
+      header: 'BENEFICIARIES',
+    },
+  ];
+
+  htsaColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'budget_',
+      header: 'PLANNED (BUDGET)',
+    },
+    {
+      columnDef: 'actual_Spent',
+      header: 'ACTUAL (BUDGET)',
+    },
+    {
+      columnDef: 'percentage_Completion_',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Communities_host',
+      header: 'BENEFICIARY (HOST)',
+    },
+    {
+      columnDef: 'beneficiary_Communities_National',
+      header: 'BENEFICIARY (NATIONAL)',
+    },
+  ];
+
+  htsdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'NAME OF COMMUNITY',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'YEAR GMOU WAS SIGNED',
+    },
+    {
+      columnDef: 'budget_',
+      header: 'TRAINING YEAR',
+    },
+    {
+      columnDef: 'actual_Spent',
+      header: 'COMPONENT OF TRAINING',
+    },
+    {
+      columnDef: 'percentage_Completion_',
+      header: 'ACTUAL BUDGET TOTAL (USD)',
+    },
+    {
+      columnDef: 'beneficiary_Communities_host',
+      header: 'STATUS OF TRAINING',
+    },
+    {
+      columnDef: 'beneficiary_Communities_National',
+      header: 'Beneficiaries',
+    },
+  ];
+
+  hpcdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'Email',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'Compamy Name',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'attachemnt',
+    },
+  ];
   //#endregion
 
   //#region list declarations
@@ -225,11 +411,22 @@ export class SWPScdpComponent implements OnInit {
   mouQuestions: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION[] =
     [];
   mouProjects: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_MOU[] = [];
+  capitalProjects: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW[] =
+    [];
+  scholarships: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME[] =
+    [];
+  scholarshipSchemes: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME[] =
+    [];
+  trainingSkillsAndAcquisitions: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition[] =
+    [];
+  trainingSkillAndDetails: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME[] =
+    [];
+  picturesForCommunityDevelopments: PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT[] =
+    [];
   //#endregion
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
-    private auth: AuthenticationService,
     private gen: GenericService,
     private modalService: ModalService
   ) {
@@ -487,7 +684,6 @@ export class SWPScdpComponent implements OnInit {
     );
 
     this.getSCDP();
-    this.cd.markForCheck();
   }
 
   //#region Documents Upload Section
@@ -897,84 +1093,42 @@ export class SWPScdpComponent implements OnInit {
     this.workprogram
       .getFormFiveSCDP(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        let scdp_capital_Info = this
-          .scdp_capitalprojects_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
-        let scdp_scholarship_Info = this
-          .scdp_scholarship_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
-        let scdp_scholarship_csr_Info = this
-          .scdp_scholarship_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
-        let scdp_trainingskills_csr_Info = this
-          .scdp_trainingskills_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
-        let scdp_trainingdetails_csr_Info = this
-          .scdp_trainingdetails_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
-        let scdp_pictures_Info = this
-          .scdp_pictures_Body as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
-
         if (res.hseSustainable_CSR) {
           this.sustainableCommunityDPCs = res.hseSustainable_CSR;
+          console.log('logging', this.sustainableCommunityDPCs);
         }
+
         if (res.hseSustainable_Question) {
           this.mouQuestions = res.hseSustainable_Question;
         }
+
         if (res.hseSustainable_MOU) {
           this.mouProjects = res.hseSustainable_MOU;
         }
-        if (
-          res.scdp_capitalprojects_Body != null &&
-          res.hseSustainable_Capital.length > 0
-        ) {
-          scdp_capital_Info = res
-            .hseSustainable_Capital[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
-          this.loadTable_SDCP_Capital(res.hseSustainable_Capital);
-        }
-        if (
-          res.hseSustainable_Schorlarship != null &&
-          res.hseSustainable_Schorlarship.length > 0
-        ) {
-          scdp_scholarship_Info = res
-            .hseSustainable_Schorlarship[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
-          this.loadTable_SDCP_Sch(res.hseSustainable_Schorlarship);
-        }
-        if (
-          res.hseSustainable_Schorlarship_CSR != null &&
-          res.hseSustainable_Schorlarship_CSR.length > 0
-        ) {
-          scdp_scholarship_csr_Info = res
-            .hseSustainable_Schorlarship_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
-          this.loadTable_SDCP_ScholarshipCSR(
-            res.hseSustainable_Schorlarship_CSR
-          );
+
+        if (res.scdp_capitalprojects_Body) {
+          this.capitalProjects = res.scdp_capitalprojects_Body;
         }
 
-        if (
-          res.hseSustainable_Training_CSR != null &&
-          res.hseSustainable_Training_CSR.length > 0
-        ) {
-          scdp_trainingskills_csr_Info = res
-            .hseSustainable_Training_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
-          this.loadTable_SDCP_TrainingSkills(res.hseSustainable_Training_CSR);
+        if (res.hseSustainable_Schorlarship) {
+          this.scholarshipSchemes = res.hseSustainable_Schorlarship;
         }
-        if (
-          res.hseSustainable_TrainingDetails_CSR != null &&
-          res.hseSustainable_TrainingDetails_CSR.length > 0
-        ) {
-          scdp_trainingdetails_csr_Info = res
-            .hseSustainable_TrainingDetails_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
-          this.loadTable_SDCP_TrainingCSR(
-            res.hseSustainable_TrainingDetails_CSR
-          );
+
+        if (res.hseSustainable_Schorlarship_CSR) {
+          this.scholarships = res.hseSustainable_Schorlarship_CSR;
         }
-        if (res.pictureUpload != null && res.pictureUpload.length > 0) {
-          scdp_pictures_Info = res
-            .pictureUpload[0] as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
-          this.loadTable_SDCP_Pictures(res.pictureUpload);
+
+        if (res.hseSustainable_Training_CSR) {
+          this.trainingSkillsAndAcquisitions = res.hseSustainable_Training_CSR;
         }
-        this.scdp_scholarship_Body = scdp_scholarship_Info;
-        this.scdp_scholarship_csr_Body = scdp_scholarship_csr_Info;
-        this.scdp_capitalprojects_Body = scdp_capital_Info;
-        this.scdp_trainingskills_csr_Body = scdp_trainingskills_csr_Info;
-        this.scdp_trainingdetails_csr_Body = scdp_trainingdetails_csr_Info;
-        this.scdp_pictures_Body = scdp_pictures_Info;
+
+        if (res.hseSustainable_TrainingDetails_CSR) {
+          this.trainingSkillAndDetails = res.hseSustainable_TrainingDetails_CSR;
+        }
+
+        if (res.pictureUpload) {
+          this.picturesForCommunityDevelopments = res.pictureUpload;
+        }
       });
   }
 
@@ -1026,33 +1180,6 @@ export class SWPScdpComponent implements OnInit {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
-  }
-
-  loadTable_SDCP_MOU(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.SCDP_MOU_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.scdp_mou_Body[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
   }
 
   Delete_HSE_SDCP_MOU(row: any) {
