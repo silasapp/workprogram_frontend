@@ -4475,7 +4475,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_planned_and_actual`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL`,
         conbody,
         {
           params: {

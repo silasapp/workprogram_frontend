@@ -54,6 +54,61 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPHseComponent implements OnInit {
+  //#region  form bodies declaration
+  technicalBody: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
+    {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
+  safetyBody: HSE_SAFETY_STUDIES_NEW = {} as HSE_SAFETY_STUDIES_NEW;
+  qualityControlBody: HSE_QUALITY_CONTROL = {} as HSE_QUALITY_CONTROL;
+  mgtPositionBody: HSE_MANAGEMENT_POSITION = {} as HSE_MANAGEMENT_POSITION;
+  safetyCultureBody: HSE_SAFETY_CULTURE_TRAINING =
+    {} as HSE_SAFETY_CULTURE_TRAINING;
+  occupationalBody: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT =
+    {} as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
+  climateChangeBody: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY =
+    {} as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY;
+  inspectionMaintenanceBody: HSE_INSPECTION_AND_MAINTENANCE_NEW =
+    {} as HSE_INSPECTION_AND_MAINTENANCE_NEW;
+  asset_PRE_Body: HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW =
+    {} as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+  asset_RBI_Body: HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW =
+    {} as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+  oilSpill_Body: HSE_OIL_SPILL_REPORTING_NEW =
+    {} as HSE_OIL_SPILL_REPORTING_NEW;
+  causesOfSpill_Body: HSE_CAUSES_OF_SPILL = {} as HSE_CAUSES_OF_SPILL;
+  accident_Body: HSE_ACCIDENT_INCIDENCE_MODEL =
+    {} as HSE_ACCIDENT_INCIDENCE_MODEL;
+  osp_Reg_Body: HSE_OSP_REGISTRATIONS_NEW = {} as HSE_OSP_REGISTRATIONS_NEW;
+  community_Body: HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW =
+    {} as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
+  environmental_studies_Body: HSE_ENVIRONMENTAL_STUDIES_NEW =
+    {} as HSE_ENVIRONMENTAL_STUDIES_NEW;
+  environmental_studies_updated_Body: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED =
+    {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
+  environmental_studies_fiveyrs_Body: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW =
+    {} as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
+  waste_Management_Body: HSE_WASTE_MANAGEMENT_NEW =
+    {} as HSE_WASTE_MANAGEMENT_NEW;
+  waste_ManagementFacility_Body: HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW =
+    {} as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
+  waste_ManagementFiles_Body: HSE_WASTE_MANAGEMENT_SYSTEM =
+    {} as HSE_WASTE_MANAGEMENT_SYSTEM;
+
+  water_Management_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW =
+    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
+  water_Management_Updated_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW =
+    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
+  water_Management_Updated_New_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED =
+    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
+  environmentalCompliance_Body: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW =
+    {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
+  fatality_Body: HSE_FATALITY = {} as HSE_FATALITY;
+  designSafety_Body: HSE_DESIGNS_SAFETY = {} as HSE_DESIGNS_SAFETY;
+  environmentalComplianceChemical_Body: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW =
+    {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
+  eMS_Files_Body: HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM =
+    {} as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
+  //#endregion
+
   //#region  documnent objects declaration
   mediatype = 'doc';
 
@@ -142,124 +197,7 @@ export class SWPHseComponent implements OnInit {
   EMS_Files_Form: FormGroup;
   //#endregion
 
-  //#region table columns declaration
-  columnHeader = [];
-  columnValue = [];
-  isTabVisible = false;
-
-  columnHeader_2 = [];
-  columnValue_2 = [];
-  isTabVisible_2 = false;
-
-  columnHeader_3 = [];
-  columnValue_3 = [];
-  isTabVisible_3 = false;
-
-  columnHeader_4 = [];
-  columnValue_4 = [];
-  isTabVisible_4 = false;
-
-  columnHeader_5 = [];
-  columnValue_5 = [];
-  isTabVisible_5 = false;
-
-  columnHeader_6 = [];
-  columnValue_6 = [];
-  isTabVisible_6 = false;
-
-  columnHeader_7 = [];
-  columnValue_7 = [];
-  isTabVisible_7 = false;
-
-  columnHeader_8 = [];
-  columnValue_8 = [];
-  isTabVisible_8 = false;
-
-  columnHeader_9 = [];
-  columnValue_9 = [];
-  isTabVisible_9 = false;
-
-  columnHeader_10 = [];
-  columnValue_10 = [];
-  isTabVisible_10 = false;
-
-  columnHeader_11 = [];
-  columnValue_11 = [];
-  isTabVisible_11 = false;
-
-  columnHeader_12 = [];
-  columnValue_12 = [];
-  isTabVisible_12 = false;
-
-  columnHeader_13 = [];
-  columnValue_13 = [];
-  isTabVisible_13 = false;
-
-  columnHeader_14 = [];
-  columnValue_14 = [];
-  isTabVisible_14 = false;
-
-  columnHeader_15 = [];
-  columnValue_15 = [];
-  isTabVisible_15 = false;
-
-  columnHeader_16 = [];
-  columnValue_16 = [];
-  isTabVisible_16 = false;
-
-  columnHeader_17 = [];
-  columnValue_17 = [];
-  isTabVisible_17 = false;
-
-  columnHeader_18 = [];
-  columnValue_18 = [];
-  isTabVisible_18 = false;
-
-  columnHeader_19 = [];
-  columnValue_19 = [];
-  isTabVisible_19 = false;
-
-  columnHeader_20 = [];
-  columnValue_20 = [];
-  isTabVisible_20 = false;
-
-  columnHeader_21 = [];
-  columnValue_21 = [];
-  isTabVisible_21 = false;
-
-  columnHeader_22 = [];
-  columnValue_22 = [];
-  isTabVisible_22 = false;
-
-  columnHeader_23 = [];
-  columnValue_23 = [];
-  isTabVisible_23 = false;
-
-  columnHeader_24 = [];
-  columnValue_24 = [];
-  isTabVisible_24 = false;
-
-  columnHeader_25 = [];
-  columnValue_25 = [];
-  isTabVisible_25 = false;
-
-  columnHeader_26 = [];
-  columnValue_26 = [];
-  isTabVisible_26 = false;
-
-  columnHeader_27 = [];
-  columnValue_27 = [];
-  isTabVisible_27 = false;
-
-  columnHeader_28 = [];
-  columnValue_28 = [];
-  isTabVisible_28 = false;
-
-  columnHeader_29 = [];
-  columnValue_29 = [];
-  isTabVisible_29 = false;
-  //#endregion
-
+  //#region Column header definitions
   htsColDef = [
     {
       columnDef: 'year_of_WP',
@@ -1042,8 +980,9 @@ export class SWPHseComponent implements OnInit {
       header: 'Evidence of all audits done in the year',
     },
   ];
+  //#endregion
 
-  //lists declarations
+  //#region lists declarations
   hseTechnicals: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW[] = [];
   hseSafetyStudies: HSE_SAFETY_STUDIES_NEW[] = [];
   hseManagementPositions: HSE_MANAGEMENT_POSITION[] = [];
@@ -1079,61 +1018,6 @@ export class SWPHseComponent implements OnInit {
   environmentalStudiesFiveYearsSPs: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW[] =
     [];
   environmentalManagementSystems: HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM[] = [];
-  /////////////////////
-
-  //#region  form bodies declaration
-  technicalBody: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
-    {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
-  safetyBody: HSE_SAFETY_STUDIES_NEW = {} as HSE_SAFETY_STUDIES_NEW;
-  qualityControlBody: HSE_QUALITY_CONTROL = {} as HSE_QUALITY_CONTROL;
-  mgtPositionBody: HSE_MANAGEMENT_POSITION = {} as HSE_MANAGEMENT_POSITION;
-  safetyCultureBody: HSE_SAFETY_CULTURE_TRAINING =
-    {} as HSE_SAFETY_CULTURE_TRAINING;
-  occupationalBody: HSE_OCCUPATIONAL_HEALTH_MANAGEMENT =
-    {} as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
-  climateChangeBody: HSE_CLIMATE_CHANGE_AND_AIR_QUALITY =
-    {} as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY;
-  inspectionMaintenanceBody: HSE_INSPECTION_AND_MAINTENANCE_NEW =
-    {} as HSE_INSPECTION_AND_MAINTENANCE_NEW;
-  asset_PRE_Body: HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW =
-    {} as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-  asset_RBI_Body: HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW =
-    {} as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
-  oilSpill_Body: HSE_OIL_SPILL_REPORTING_NEW =
-    {} as HSE_OIL_SPILL_REPORTING_NEW;
-  causesOfSpill_Body: HSE_CAUSES_OF_SPILL = {} as HSE_CAUSES_OF_SPILL;
-  accident_Body: HSE_ACCIDENT_INCIDENCE_MODEL =
-    {} as HSE_ACCIDENT_INCIDENCE_MODEL;
-  osp_Reg_Body: HSE_OSP_REGISTRATIONS_NEW = {} as HSE_OSP_REGISTRATIONS_NEW;
-  community_Body: HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW =
-    {} as HSE_COMMUNITY_DISTURBANCES_AND_OIL_SPILL_COST_NEW;
-  environmental_studies_Body: HSE_ENVIRONMENTAL_STUDIES_NEW =
-    {} as HSE_ENVIRONMENTAL_STUDIES_NEW;
-  environmental_studies_updated_Body: HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED =
-    {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
-  environmental_studies_fiveyrs_Body: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW =
-    {} as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
-  waste_Management_Body: HSE_WASTE_MANAGEMENT_NEW =
-    {} as HSE_WASTE_MANAGEMENT_NEW;
-  waste_ManagementFacility_Body: HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW =
-    {} as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
-  waste_ManagementFiles_Body: HSE_WASTE_MANAGEMENT_SYSTEM =
-    {} as HSE_WASTE_MANAGEMENT_SYSTEM;
-
-  water_Management_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW =
-    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
-  water_Management_Updated_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW =
-    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
-  water_Management_Updated_New_Body: HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED =
-    {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW_UPDATED;
-  environmentalCompliance_Body: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW =
-    {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
-  fatality_Body: HSE_FATALITY = {} as HSE_FATALITY;
-  designSafety_Body: HSE_DESIGNS_SAFETY = {} as HSE_DESIGNS_SAFETY;
-  environmentalComplianceChemical_Body: HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW =
-    {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
-  eMS_Files_Body: HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM =
-    {} as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
   //#endregion
 
   genk: GenericService;
@@ -3734,34 +3618,6 @@ export class SWPHseComponent implements OnInit {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
-  }
-
-  loadTable_ESS_Plan(data) {
-    this.columnHeader_27 = [];
-    this.columnValue_27 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_27.push(data[0]);
-      this.columnValue_27.push(result);
-    } else {
-      for (let item1 in this.EnvironmentalCompliance_Chemical_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_27.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_27.push(
-            this.environmentalComplianceChemical_Body[item1]
-          );
-        }
-      }
-    }
-    this.isTabVisible_27 = true;
-    this.cd.markForCheck();
   }
 
   Delete_ESS_Plan(row: HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW) {
