@@ -215,11 +215,11 @@ saveResponderDoc(DeFile: any) {
     return;
   }
   if (this.ResponderFile.size < 1 || this.ResponderFile.size > 1024 * 1024 * 50) {
-    this.SCDP_CSR_Form.controls['mOUResponderFilePath'].setErrors({ 'incorrect': true });
+    this.SCDP_Question_Form.controls['mOUResponderFilePath'].setErrors({ 'incorrect': true });
     this.ResponderFile = null;
     return;
   } else {
-    this.SCDP_CSR_Form.controls['mOUResponderFilePath'].setErrors(null);
+    this.SCDP_Question_Form.controls['mOUResponderFilePath'].setErrors(null);
   }
   this.ResponderNewName = this.gen.getExpDoc(this.ResponderFile.name, this.ResponderFile.type);
   this.ResponderNameDoc = this.gen.trimDocName(this.ResponderFile.name);
@@ -232,11 +232,11 @@ saveOSCPDoc(DeFile: any) {
     return;
   }
   if (this.OSCPFile.size < 1 || this.OSCPFile.size > 1024 * 1024 * 50) {
-    this.SCDP_CSR_Form.controls['mOUOSCPFilePath'].setErrors({ 'incorrect': true });
+    this.SCDP_Question_Form.controls['mOUOSCPFilePath'].setErrors({ 'incorrect': true });
     this.OSCPFile = null;
     return;
   } else {
-    this.SCDP_CSR_Form.controls['mOUOSCPFilePath'].setErrors(null);
+    this.SCDP_Question_Form.controls['mOUOSCPFilePath'].setErrors(null);
   }
   this.OSCPNewName = this.gen.getExpDoc(this.OSCPFile.name, this.OSCPFile.type);
   this.OSCPNameDoc = this.gen.trimDocName(this.OSCPFile.name);
@@ -314,14 +314,15 @@ savePictureDoc(DeFile: any) {
     debugger;
     let info = {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL;
     this.scdp_csr_Body.id =  0;
-    this.scdp_csr_Body.year_of_WP = this.genk.wpYear;
-    this.scdp_csr_Body.oML_Name= this.genk.OmlName;
+    // this.scdp_csr_Body.year_of_WP = this.genk.wpYear;
+    // this.scdp_csr_Body.oML_Name= this.genk.OmlName;
     for (let item in this.scdp_csr_Body) {
       if (item != 'id') {
-        info[this.genk.upperText(item)] = this.scdp_csr_Body[item].toString() ?? '';
+        info[this.genk.upperText(item)] = this.scdp_csr_Body[item] ?? '';
 
       }
     }
+    debugger;
     this.workprogram
       .post_SDCP_CSR(info, this.genk.wpYear, this.genk.OmlName,'', '','')
       .subscribe(res => {
