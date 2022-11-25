@@ -140,7 +140,7 @@
               </div>
               <div style="width: 30%; margin: auto 0 0">
                 <label id="ContentPlaceHolder2_Label8" class="labelwp">
-                  Gas production (AG) (BSCF)</label>
+                  Gas production (AG) (Stantard Cubic Feet)</label>
                 <div style="display: flex">
                   <div style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -148,11 +148,15 @@
                       border-radius: 20px;
                       padding: 7px 10px;
                     ">
-                    <input type="text" formControlName="gas_AG" [(ngModel)]="productionoilBody.gas_AG" class="inpute"
-                      (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="
-                        productionoilBody.gas_AG =
-                          genk.addCurrencyDecimal($event)
-                      " [value]="productionoilBody.gas_AG" />
+                    <input type="text"
+                    formControlName="gas_AG" 
+                    [(ngModel)]="productionoilBody.gas_AG" 
+                    class="inpute"
+                    placeholder="1,000,000"
+                    (keypress)="genk.restrictData($event)" 
+                    (keyup)="genk.formatCurrency($event)" 
+                    (change)="productionoilBody.gas_AG =genk.addCurrencyDecimal($event)
+                    "[value]="productionoilBody.gas_AG" />
                   </div>
                 </div>
               </div>
@@ -161,7 +165,7 @@
 
             <div style="display: flex; width: 100%">
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp">Gas production (NAG)(BSCF)</label>
+                <label id="ContentPlaceHolder2_Label8" class="labelwp">Gas production (NAG)(Standard Cubic Feet)</label>
                 <div style="display: flex">
                   <div style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -605,7 +609,7 @@
       <div [formGroup]="GasProductionForm">
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="Co" class="labelwp">Actual Gas Produced (BSCF)</label>
+            <label id="Co" class="labelwp">Actual Gas Produced (Standard Cubic Field)</label>
             <div style="display: flex">
               <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -658,7 +662,7 @@
         <br />
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="ContentPlaceHolder2_Label13" class="labelwp">Proposed Gas Production (BSCF)</label>
+            <label class="labelwp">Proposed Gas Production (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -677,7 +681,7 @@
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
-            <label class="labelwp">Proposed Utilization (BSCF)</label>
+            <label class="labelwp">Proposed Utilization (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -696,7 +700,7 @@
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
-            <label class="labelwp">Estimated Flare Volume (BSCF)</label>
+            <label class="labelwp">Estimated Flare Volume (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div style="
                   box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);

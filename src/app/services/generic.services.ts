@@ -525,6 +525,20 @@ export class GenericService {
     return e.value;
   }
 
+  checkBSCFMin(event, gasMin: HTMLElement) {
+    debugger;
+    let e = event.target as HTMLInputElement;
+    let term = parseFloat(e.value.toString().replace(/,+/g, ''));
+    if (Number(term) < 1000000) {
+      gasMin.textContent = 'Value is too low';
+      gasMin.style.color = 'orange';
+    } else {
+      gasMin.textContent = '';
+    }
+    
+    return e.value;
+  }
+
   restrictData(e) {
     //alert(e.key);
     var x = e.which || e.keycode;

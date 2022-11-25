@@ -16,8 +16,7 @@
       font-size: 25px;
       font-weight: 500;
       text-align: center;
-      padding-bottom: 20px;
-    ">
+      padding-bottom: 20px;">
     <span>FIELD DEVELOPMENT PLAN</span><br /><br />
   </div>
 
@@ -155,11 +154,7 @@
 <br />
 <br />
 
-<div style="
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
-    padding: 20px;
+<div style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;
   ">
   <div style="
       text-align: start;
@@ -189,19 +184,13 @@
       </div>
     </div>
 
-    <br />
+    <br>
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
         <label id="ContentPlaceHolder2_Label13" class="labelwp">Oil (Barrels) </label>
         <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
+          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px; ">
             <input
               type="text"
               formControlName="oil"
@@ -214,30 +203,28 @@
         </div>
       </div>
 
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Gas (SCF)</label>
+      
+      <div style="width: 30%; margin: auto 0 0;">
+        <label class="labelwp">Gas (Standard Cubic Feet)</label>
         <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-              display: flex;
-            "
-          >
-            <input
-              type="text"
+          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 5px; display: flex;">
+ 
+          <input type="text"
               formControlName="gas"
               placeholder="1,000,000"
+              style="border-radius: 5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatNum_Efficient($event.target.value)"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody._gas"
+              (change)="fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin($event, gasMin)"
+              [value]="fielddevelopmentexcessivereserveBody._gas"
             />
-            <span>SCF</span>
+            <span class="barspan">SCF</span>
           </div>
         </div>
+        <small #gasMin></small>
       </div>
+      
 
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Condensate (Barrels)</label>
