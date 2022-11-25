@@ -175,7 +175,7 @@ this.genk=gen;
 
   addMeetingRoom(){
     debugger;
-    this.admin.addMeetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.meetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -190,12 +190,15 @@ this.genk=gen;
     )
    
   }
+
+
+  
 
 
 
   addEmailDuration(){
     debugger;
-    this.admin.addEmailDuration(this.email_notification_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.emailDuration(this.email_notification_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -212,9 +215,11 @@ this.genk=gen;
   }
 
 
+  
+
   addContractTypes(){
     debugger;
-    this.admin.addContractType(this.contractType_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.contractType(this.contractType_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -311,6 +316,61 @@ this.genk=gen;
   addSuperAdmin(){
     debugger;
     this.admin.addPresentationCategories(this.super_Admin_Form.getRawValue(), 'INSERT').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+
+  deleteEmailDuration(){
+    debugger;
+    this.admin.emailDuration(this.email_notification_Form.getRawValue(), 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteMeetingRoom(){
+    debugger;
+    this.admin.meetingRoom(this.meetingroom_Form.getRawValue(), 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteContractTypes(){
+    debugger;
+    this.admin.contractType(this.contractType_Form.getRawValue(), 'DELETE').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){

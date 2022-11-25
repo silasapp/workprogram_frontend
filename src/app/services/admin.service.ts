@@ -71,7 +71,7 @@ export class AdminService {
       )
   }
 
-  addMeetingRoom(e: any, action: string) {
+  meetingRoom(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/admin/admin_meeting_rooms`, { meeting_room: e.meeting_rooms }, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
@@ -81,7 +81,7 @@ export class AdminService {
 
 
 
-  addContractType(e: any, action: string) {
+  contractType(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/admin/admin_categories`, { categories: e.categories }, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
@@ -93,7 +93,7 @@ export class AdminService {
 
 
 
-  addEmailDuration(e: any, action: string) {
+  emailDuration(e: any, action: string) {
     debugger;
     return this.http.post<any>(`${environment.apiUrl}/admin/admin_email_days`, { dayS_: e.dayS_ }, { params: { _action: action } })
       .pipe(retry(this.num),
