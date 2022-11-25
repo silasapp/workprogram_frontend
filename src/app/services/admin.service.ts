@@ -102,7 +102,7 @@ export class AdminService {
         }))
   }
 
-  addDataTypes(e: any, action: string) {
+  DataTypes(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/data_types`, { categories: e.datatype }, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
@@ -121,7 +121,7 @@ export class AdminService {
   }
 
 
-  addPresentationCategories(e: any, action: string) {
+  PresentationCategories(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/admin_presentation_categories`, {  categories: e.categories}, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
@@ -130,7 +130,7 @@ export class AdminService {
   }
 
 
-  addWellCategories(e: any, action: string) {
+  WellCategories(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/admin_well_categories`, {  welltype: e.welltype}, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
@@ -138,7 +138,7 @@ export class AdminService {
         }))
   }
 
-  addSuperAdmin(e: any, action: string) {
+  SuperAdmin(e: any, action: string) {
     return this.http.post<any>(`${environment.apiUrl}/roles_super_admins`, {   email_: e. email_}, { params: { _action: action } })
       .pipe(retry(this.num),
         map((response) => {
