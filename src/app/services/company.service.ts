@@ -62,7 +62,7 @@ export class CompanyService {
 
 
     uploadPresentation(year: string, formData: FormData){
-        
+
         return this.http.post<any>(`${environment.apiUrl}/presentation/uploadpresentation`, formData,
         {params: {year: year}}
         )
@@ -76,29 +76,68 @@ export class CompanyService {
 
 
     getdashboardreport(year: string){
-        debugger;
-        return this.http.get<any>(`${environment.apiUrl}/dashboard/company_dashboard_report`,  {params: {year: year}}
-        )
+        return this.http.get<any>(`${environment.apiUrl}/dashboard/company_dashboard_report`,  {params: {year: year}})
         .pipe(retry(this.num),
         map((response) =>{
-            debugger;
             return response;
-            debugger;
         })
         )
 
     }
 
 
+getCompanyProd(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/COMPANY_MONTHLY_PRODUCTION`,  {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) =>{
+      return response;
+  })
+  )
+}
+
+getCompanyConcessionProd(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/COMPANY_CONCESSION_PRODUCTION`,  {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) =>{
+      return response;
+  })
+  )
+}
+
+getCompanyConcessionReserveOil(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/COMPANY_CONCESSION_RESERVE`,  {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) =>{
+      return response;
+  })
+  )
+}
+
+getCompanyConcessionReserveGas(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/COMPANY_CONCESSION_RESERVE_GAS`,  {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) =>{
+      return response;
+  })
+  )
+}
+
+getCompanyConcessionReserve(year: string) {
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/COMPANY_CONCESSION_RESERVE`,  {params: {year: year}})
+  .pipe(retry(this.num),
+  map((response) =>{
+      return response;
+  })
+  )
+}
+
+
     getdashboardgasbudgetandreserve(year: string){
-        debugger;
-        return this.http.get<any>(`${environment.apiUrl}/dashboard/dashboard_total_gas_budget_reserves_details`,  {params: {year: year}}
+        return this.http.get<any>(`${environment.apiUrl}/dashboard/TOTAL_RESERVE_BUDGET`,  {params: {year: year}}
         )
         .pipe(retry(this.num),
         map((response) =>{
-            debugger;
             return response;
-            debugger;
         })
         )}
 }

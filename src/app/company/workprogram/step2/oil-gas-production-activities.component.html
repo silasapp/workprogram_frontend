@@ -904,9 +904,7 @@
                 <input
                   (keypress)="genk.restrictData($event)"
                   formControlName="flared"
-                  [(ngModel)]="gasproductionBody.flared"
-                  class="inpute"
-                  (keypress)="genk.restrictData($event)"
+                  [(ngModel)]="gasproductionBody.flared" class="inpute"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.flared = genk.addCurrencyDecimal($event)
@@ -937,7 +935,6 @@
                   formControlName="proposed_production"
                   [(ngModel)]="gasproductionBody.proposed_production"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.proposed_production =
@@ -965,7 +962,6 @@
                   formControlName="proposed_utilization"
                   [(ngModel)]="gasproductionBody.proposed_utilization"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.proposed_utilization =
@@ -993,7 +989,6 @@
                   formControlName="proposed_flaring"
                   [(ngModel)]="gasproductionBody.proposed_flaring"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.proposed_flaring =
@@ -1025,7 +1020,6 @@
                   formControlName="no_of_gas_well_planned"
                   [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.no_of_gas_well_planned =
@@ -1053,7 +1047,6 @@
                   formControlName="no_of_gas_well_drilled"
                   [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.no_of_gas_well_drilled =
@@ -1119,7 +1112,6 @@
                   formControlName="number_of_gas_wells_completed"
                   [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.number_of_gas_wells_completed =

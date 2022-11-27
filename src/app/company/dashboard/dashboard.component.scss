@@ -53,3 +53,46 @@ hr{
     font-size: larger;
 }
 
+.dashtop {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: goldenrod;
+  box-shadow: 3px 3px 5px 3px rgb(0, 0, 0, 0.4);
+  margin:2% 2%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dashtopsec {
+  padding: 10px 0;
+  border-bottom:  solid 1px rgb(71, 100, 100);
+}
+
+.dashicon {
+  font-size: 130px;
+  opacity: 0.9;
+  color: rgb(214, 214, 234);
+}
+
+.dashtext {
+  color: white;
+  padding: 10px 20px 0 0;
+}
+
+.dashnumtext {
+  font-size: 19px;
+  font-weight: 900;
+  color: rgb(227, 227, 236);
+}
+
+.dashnum {
+  font-weight: 900;
+  font-size: 50px
+}
+
+.dashbase {
+  font-size: 16px;
+  font-weight: 900;
+  color: rgb(72, 68, 68);
+  padding: 3px;
+}
+
