@@ -188,26 +188,30 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
-        <label id="ContentPlaceHolder2_Label13" class="labelwp">Oil (Barrels) </label>
+        <label class="labelwp">Oil (Barrels) </label>
         <div style="display: flex">
-          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px; ">
+          <div class="minsec">
             <input
               type="text"
               formControlName="oil"
+              placeholder="100,000"
+              style="border-radius:5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatNum_Efficient($event.target.value)"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody._oil"
-            />
+              (change)="fielddevelopmentexcessivereserveBody._oil = genk.checkMMBBLMin($event, oilSand)"
+              [value]="fielddevelopmentexcessivereserveBody._oil"/>
+              <span class="barspan">BBLS</span>
           </div>
         </div>
+        <small #oilSand></small>
       </div>
 
       
       <div style="width: 30%; margin: auto 0 0;">
         <label class="labelwp">Gas (Standard Cubic Feet)</label>
         <div style="display: flex">
-          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 5px; display: flex;">
+          <div class="minsec">
  
           <input type="text"
               formControlName="gas"
@@ -217,8 +221,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin($event, gasMin)"
-              [value]="fielddevelopmentexcessivereserveBody._gas"
-            />
+              [value]="fielddevelopmentexcessivereserveBody._gas"/>
             <span class="barspan">SCF</span>
           </div>
         </div>
@@ -229,23 +232,20 @@
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Condensate (Barrels)</label>
         <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
+          <div class="minsec">
+            <input type="text"
               formControlName="condensate"
               class="inpute"
+              style="border-radius: 5px;"
+              placeholder="100,000"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatNum_Efficient($event.target.value)"
-              [(ngModel)]="fielddevelopmentexcessivereserveBody._condensate"
-            />
+              (change)="fielddevelopmentexcessivereserveBody._condensate = genk.checkMMBBLMin($event, oilMox)"
+              [value]="fielddevelopmentexcessivereserveBody._condensate"/>
+              <span class="barspan">BBLS</span>
           </div>
         </div>
+        <small #oilMox></small>
       </div>
     </div>
     <br /><br />
