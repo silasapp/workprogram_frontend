@@ -114,3 +114,25 @@ export class PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT {
   year_of_WP: string = '';
   uploaded_presentation: File;
 }
+
+export class PLANNING_MINIMUM_REQUIREMENT {
+  id: number = 0;
+  year: string = '';
+  dateCreated: string = '';
+  fieldID: string = '';
+  concessionID: string = '';
+  companyNumber: string = '';
+  reservesRevenue_RemainingReserves: string = '';
+  reservesRevenue_GrossProduction: string = '';
+}
+
+export class MINIMUM_REQUIREMENT {
+  id: number = 0;
+  year: string = '';
+  dateCreated: string = '';
+  fieldID: string = '';
+  concessionID: string = '';
+  companyNumber: string = '';
+  provide_ISO45001_Certification_No: string = '';
+  is_Company_ISO45001_Certified: string = '';
+}

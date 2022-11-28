@@ -94,44 +94,6 @@ export class SWPScdpComponent implements OnInit {
   scdp_pictures_Body: PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT =
     {} as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
 
-  //#region table columns declaration
-  columnHeader = [];
-  columnValue = [];
-  isTabVisible = false;
-
-  columnHeader_2 = [];
-  columnValue_2 = [];
-  isTabVisible_2 = false;
-
-  columnHeader_3 = [];
-  columnValue_3 = [];
-  isTabVisible_3 = false;
-
-  columnHeader_4 = [];
-  columnValue_4 = [];
-  isTabVisible_4 = false;
-
-  columnHeader_5 = [];
-  columnValue_5 = [];
-  isTabVisible_5 = false;
-
-  columnHeader_6 = [];
-  columnValue_6 = [];
-  isTabVisible_6 = false;
-
-  columnHeader_7 = [];
-  columnValue_7 = [];
-  isTabVisible_7 = false;
-
-  columnHeader_8 = [];
-  columnValue_8 = [];
-  isTabVisible_8 = false;
-
-  columnHeader_9 = [];
-  columnValue_9 = [];
-  isTabVisible_9 = false;
-  //#endregion
-
   //#region Column header definitions
   hscdpcColDef = [
     {
@@ -356,31 +318,31 @@ export class SWPScdpComponent implements OnInit {
       header: 'WORK PROGRAM YEAR',
     },
     {
-      columnDef: 'actual_proposed',
+      columnDef: 'nameOfCommunity',
       header: 'NAME OF COMMUNITY',
     },
     {
-      columnDef: 'csR_',
+      columnDef: 'year_GMou_was_signed',
       header: 'YEAR GMOU WAS SIGNED',
     },
     {
-      columnDef: 'budget_',
+      columnDef: 'trainingYear',
       header: 'TRAINING YEAR',
     },
     {
-      columnDef: 'actual_Spent',
+      columnDef: 'componentOfTraining',
       header: 'COMPONENT OF TRAINING',
     },
     {
-      columnDef: 'percentage_Completion_',
+      columnDef: 'actual_Budget_Total_Dollars',
       header: 'ACTUAL BUDGET TOTAL (USD)',
     },
     {
-      columnDef: 'beneficiary_Communities_host',
+      columnDef: 'statusOfTraining',
       header: 'STATUS OF TRAINING',
     },
     {
-      columnDef: 'beneficiary_Communities_National',
+      columnDef: 'tsUploadFilePath',
       header: 'Beneficiaries',
     },
   ];
@@ -391,15 +353,15 @@ export class SWPScdpComponent implements OnInit {
       header: 'WORK PROGRAM YEAR',
     },
     {
-      columnDef: 'actual_proposed',
+      columnDef: 'companyemail',
       header: 'Email',
     },
     {
-      columnDef: 'csR_',
+      columnDef: 'companyName',
       header: 'Compamy Name',
     },
     {
-      columnDef: 'csR_',
+      columnDef: 'uploaded_presentation',
       header: 'attachemnt',
     },
   ];
@@ -1129,6 +1091,8 @@ export class SWPScdpComponent implements OnInit {
         if (res.pictureUpload) {
           this.picturesForCommunityDevelopments = res.pictureUpload;
         }
+
+        this.cd.markForCheck();
       });
   }
 
@@ -1205,32 +1169,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_Capital(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.SCDP_CapitalProjects_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.scdp_capitalprojects_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_SDCP_Capital(row: any) {
     this.workprogram
       .post_SDCP_Capital(
@@ -1252,32 +1190,6 @@ export class SWPScdpComponent implements OnInit {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
-  }
-
-  loadTable_SDCP_ScholarshipCSR(data) {
-    this.columnHeader_4 = [];
-    this.columnValue_4 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_4.push(data[0]);
-      this.columnValue_4.push(result);
-    } else {
-      for (let item1 in this.SCDP_Scholarship_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_4.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_4.push(this.scdp_scholarship_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_4 = true;
-    this.cd.markForCheck();
   }
 
   Delete_HSE_SDCP_ScholarshipCSR(row: any) {
@@ -1303,32 +1215,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_Sch(data) {
-    this.columnHeader_5 = [];
-    this.columnValue_5 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_5.push(data[0]);
-      this.columnValue_5.push(result);
-    } else {
-      for (let item1 in this.SCDP_Scholarship_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_5.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_5.push(this.scdp_scholarship_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_5 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_SDCP_Sch(row: any) {
     this.workprogram
       .post_SDCP_Scholarship(
@@ -1352,31 +1238,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_TrainingSkills(data) {
-    this.columnHeader_6 = [];
-    this.columnValue_6 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_6.push(data[0]);
-      this.columnValue_6.push(result);
-    } else {
-      for (let item1 in this.SCDP_TrainingSkills_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_6.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_6.push(this.scdp_trainingskills_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_6 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_TrainingSkills(row: any) {
     this.workprogram
       .post_SDCP_Training_Skills_CSR(
@@ -1400,31 +1261,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_TrainingCSR(data) {
-    this.columnHeader_7 = [];
-    this.columnValue_7 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_7.push(data[0]);
-      this.columnValue_7.push(result);
-    } else {
-      for (let item1 in this.SCDP_TrainingDetails_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_7.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_7.push(this.scdp_trainingdetails_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_7 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_TrainingSCR(row: any) {
     this.workprogram
       .post_SDCP_Training_Details_CSR(
@@ -1447,31 +1283,7 @@ export class SWPScdpComponent implements OnInit {
         },
       });
   }
-  loadTable_SDCP_Pictures(data) {
-    this.columnHeader_8 = [];
-    this.columnValue_8 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
 
-      this.columnHeader_8.push(data[0]);
-      this.columnValue_8.push(result);
-    } else {
-      for (let item1 in this.SCDP_Pictures_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_8.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_8.push(this.scdp_pictures_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_8 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_Pictures(row: any) {
     this.workprogram
       .post_SDCP_Pictures(

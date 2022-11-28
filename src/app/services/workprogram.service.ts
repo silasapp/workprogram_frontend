@@ -2699,6 +2699,8 @@ import {
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition,
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship,
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW,
+  PLANNING_MINIMUM_REQUIREMENT,
+  MINIMUM_REQUIREMENT,
 } from 'src/app/models/step5_sdcp.model';
 import { Observable, pipe } from 'rxjs';
 import {
@@ -2950,11 +2952,64 @@ export class WorkProgramService {
         params: { omlName: omlName, fieldName: fieldName, year: year },
       })
       .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  getFormFiveSWPR(omlName, year, fieldName) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/Application/Get_Planning_Requirement`, {
+        params: { omlName: omlName, fieldName: fieldName, year: year },
+      })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  getFormFiveHSERequirement(omlName, year, fieldName) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/Application/Get_HSE_Requirement`,
+      {
+        params: { omlName, fieldName, year },
+      }
+    );
+  }
+
+  post_planningMinimumRequirement(
+    conbody: PLANNING_MINIMUM_REQUIREMENT,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/Application/Post_Planning_Requirement`,
+        conbody,
+        { params: { year: year, omlName: omlName } }
+      )
+      .pipe(
         retry(this.num),
         map((response) => {
           return response;
         })
       );
+  }
+
+  post_MinimumRequirement(
+    conbody: MINIMUM_REQUIREMENT,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/Application/Post_HSE_Requirement`,
+      conbody,
+      { params: { year: year, omlName: omlName } }
+    );
   }
 
   concessionSituation(

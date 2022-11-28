@@ -70,7 +70,7 @@
                   <select
                     class="dropwp"
                     formControlName="oil_Royalty_Payment"
-                    [(ngModel)]="productionoilBody.oil_Royalty_Payment"
+                    [value]="productionoilBody.oil_Royalty_Payment"
                   >
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
@@ -92,9 +92,7 @@
                   "
                 >
                   <input
-                    (keypress)="genk.restrictData($event)"
                     formControlName="deferment"
-                    [(ngModel)]="productionoilBody.deferment"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -102,7 +100,7 @@
                       productionoilBody.deferment =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="productionoilBody.deferment"
+                    [(ngModel)]="productionoilBody.deferment"
                   />
                 </div>
               </div>
@@ -119,9 +117,7 @@
                   "
                 >
                   <input
-                    (keypress)="genk.restrictData($event)"
                     formControlName="forecast"
-                    [(ngModel)]="productionoilBody.forecast"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -129,7 +125,7 @@
                       productionoilBody.forecast =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="productionoilBody.forecast"
+                    [(ngModel)]="productionoilBody.forecast"
                   />
                 </div>
               </div>
@@ -149,6 +145,7 @@
                   <div class="inpdivcurrency">
                     <span class="currencywp">$</span>
                     <input
+                      class="inpute"
                       type="text"
                       formControlName="cost_Barrel"
                       (keypress)="genk.restrictData($event)"
@@ -157,8 +154,7 @@
                         productionoilBody.cost_Barrel =
                           genk.addCurrencyDecimal($event)
                       "
-                      [value]="productionoilBody.cost_Barrel"
-                      class="inpute"
+                      [(ngModel)]="productionoilBody.cost_Barrel"
                     />
                   </div>
                 </div>
@@ -180,9 +176,6 @@
                     <input
                       type="text"
                       formControlName="total_Reconciled_National_Crude_Oil_Production"
-                      [(ngModel)]="
-                        productionoilBody.total_Reconciled_National_Crude_Oil_Production
-                      "
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
@@ -190,7 +183,7 @@
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production =
                           genk.addCurrencyDecimal($event)
                       "
-                      [value]="
+                      [(ngModel)]="
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production
                       "
                     />
@@ -213,7 +206,6 @@
                     <input
                       type="text"
                       formControlName="gas_AG"
-                      [(ngModel)]="productionoilBody.gas_AG"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
@@ -221,7 +213,7 @@
                         productionoilBody.gas_AG =
                           genk.addCurrencyDecimal($event)
                       "
-                      [value]="productionoilBody.gas_AG"
+                      [(ngModel)]="productionoilBody.gas_AG"
                     />
                   </div>
                 </div>
@@ -246,7 +238,6 @@
                     <input
                       type="text"
                       formControlName="gas_NAG"
-                      [(ngModel)]="productionoilBody.gas_NAG"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
@@ -254,7 +245,7 @@
                         productionoilBody.gas_NAG =
                           genk.addCurrencyDecimal($event)
                       "
-                      [value]="productionoilBody.gas_NAG"
+                      [(ngModel)]="productionoilBody.gas_NAG"
                     />
                   </div>
                 </div>
@@ -306,19 +297,91 @@
                 [value]="monthlyactivityBody.production_month"
                 (change)="changeActualMonth($event)"
               >
-                <option selected disabled>---- Select a Month ----</option>
-                <option value="January">January</option>
-                <option value="Febuary">Febuary</option>
-                <option value="March">March</option>
-                <option value="April">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="July">July</option>
-                <option value="August">August</option>
-                <option value="September">September</option>
-                <option value="October">October</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
+                <!-- <option disabled>---- Select a Month ----</option> -->
+                <option
+                  value="January"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'January'
+                  "
+                >
+                  January
+                </option>
+                <option
+                  value="Febuary"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'Febuary'
+                  "
+                >
+                  Febuary
+                </option>
+                <option
+                  value="March"
+                  [selected]="monthlyactivityBody.production_month === 'March'"
+                >
+                  March
+                </option>
+                <option
+                  value="April"
+                  [selected]="monthlyactivityBody.production_month === 'April'"
+                >
+                  April
+                </option>
+                <option
+                  value="May"
+                  [selected]="monthlyactivityBody.production_month === 'May'"
+                >
+                  May
+                </option>
+                <option
+                  value="June"
+                  [selected]="monthlyactivityBody.production_month === 'June'"
+                >
+                  June
+                </option>
+                <option
+                  value="July"
+                  [selected]="monthlyactivityBody.production_month === 'July'"
+                >
+                  July
+                </option>
+                <option
+                  value="August"
+                  [selected]="monthlyactivityBody.production_month === 'August'"
+                >
+                  August
+                </option>
+                <option
+                  value="September"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'September'
+                  "
+                >
+                  September
+                </option>
+                <option
+                  value="October"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'October'
+                  "
+                >
+                  October
+                </option>
+                <option
+                  value="November"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'November'
+                  "
+                >
+                  November
+                </option>
+                <option
+                  value="December"
+                  [selected]="
+                    monthlyactivityBody.production_month === 'December'
+                  "
+                >
+                  December
+                </option>
               </select>
             </div>
           </div>
@@ -346,7 +409,6 @@
                     monthlyactivityBody.production =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="monthlyactivityBody.production"
                 />
               </div>
             </div>
@@ -374,7 +436,6 @@
                     monthlyactivityBody.avg_Daily_Production =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="monthlyactivityBody.avg_Daily_Production"
                 />
               </div>
             </div>
@@ -403,7 +464,6 @@
                   (change)="
                     monthlyactivityBody.gas_AG = genk.addCurrencyDecimal($event)
                   "
-                  [value]="monthlyactivityBody.gas_AG"
                 />
               </div>
             </div>
@@ -433,7 +493,6 @@
                     monthlyactivityBody.gas_NAG =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="monthlyactivityBody.gas_NAG"
                 />
               </div>
             </div>
@@ -443,7 +502,7 @@
 
         <div style="text-align: center">
           <button class="quarterbtn" (click)="saveMonthlyActivity()">
-            Save Monthly Production
+            Save {{ monthlyactivityBody.production_month }} Production
           </button>
         </div>
       </div>
@@ -482,19 +541,97 @@
                   [value]="proposedmonthlyBody.production_month"
                   (change)="changeProposedMonth($event)"
                 >
-                  <option selected disabled>---- Select a Month ----</option>
-                  <option value="January">January</option>
-                  <option value="Febuary">Febuary</option>
-                  <option value="March">March</option>
-                  <option value="April">April</option>
-                  <option value="May">May</option>
-                  <option value="June">June</option>
-                  <option value="July">July</option>
-                  <option value="August">August</option>
-                  <option value="September">September</option>
-                  <option value="October">October</option>
-                  <option value="November">November</option>
-                  <option value="December">December</option>
+                  <!-- <option disabled>---- Select a Month ----</option> -->
+                  <option
+                    value="January"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'January'
+                    "
+                  >
+                    January
+                  </option>
+                  <option
+                    value="Febuary"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'Febuary'
+                    "
+                  >
+                    Febuary
+                  </option>
+                  <option
+                    value="March"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'March'
+                    "
+                  >
+                    March
+                  </option>
+                  <option
+                    value="April"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'April'
+                    "
+                  >
+                    April
+                  </option>
+                  <option
+                    value="May"
+                    [selected]="proposedmonthlyBody.production_month === 'May'"
+                  >
+                    May
+                  </option>
+                  <option
+                    value="June"
+                    [selected]="proposedmonthlyBody.production_month === 'June'"
+                  >
+                    June
+                  </option>
+                  <option
+                    value="July"
+                    [selected]="proposedmonthlyBody.production_month === 'July'"
+                  >
+                    July
+                  </option>
+                  <option
+                    value="August"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'August'
+                    "
+                  >
+                    August
+                  </option>
+                  <option
+                    value="September"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'September'
+                    "
+                  >
+                    September
+                  </option>
+                  <option
+                    value="October"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'October'
+                    "
+                  >
+                    October
+                  </option>
+                  <option
+                    value="November"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'November'
+                    "
+                  >
+                    November
+                  </option>
+                  <option
+                    value="December"
+                    [selected]="
+                      proposedmonthlyBody.production_month === 'December'
+                    "
+                  >
+                    December
+                  </option>
                 </select>
               </div>
             </div>
@@ -512,9 +649,7 @@
                 >
                   <input
                     type="text"
-                    (keypress)="genk.restrictData($event)"
                     formControlName="production"
-                    [(ngModel)]="proposedmonthlyBody.production"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -522,7 +657,7 @@
                       proposedmonthlyBody.production =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="proposedmonthlyBody.production"
+                    [(ngModel)]="proposedmonthlyBody.production"
                   />
                 </div>
               </div>
@@ -542,7 +677,6 @@
                   <input
                     type="text"
                     formControlName="avg_Daily_Production"
-                    [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -550,7 +684,7 @@
                       proposedmonthlyBody.avg_Daily_Production =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="proposedmonthlyBody.avg_Daily_Production"
+                    [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
                   />
                 </div>
               </div>
@@ -573,7 +707,6 @@
                   <input
                     type="text"
                     formControlName="gas_AG"
-                    [(ngModel)]="proposedmonthlyBody.gas_AG"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -581,7 +714,7 @@
                       proposedmonthlyBody.gas_AG =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="proposedmonthlyBody.gas_AG"
+                    [(ngModel)]="proposedmonthlyBody.gas_AG"
                   />
                 </div>
               </div>
@@ -601,7 +734,6 @@
                   <input
                     type="text"
                     formControlName="gas_NAG"
-                    [(ngModel)]="proposedmonthlyBody.gas_NAG"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
@@ -609,7 +741,7 @@
                       proposedmonthlyBody.gas_NAG =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="proposedmonthlyBody.gas_NAG"
+                    [(ngModel)]="proposedmonthlyBody.gas_NAG"
                   />
                 </div>
               </div>
@@ -619,7 +751,8 @@
           <br /><br />
           <div style="text-align: center">
             <button class="quarterbtn" (click)="saveProposedActivity()">
-              Save Proposed Monthly Production
+              Save Proposed
+              {{ proposedmonthlyBody.production_month }} Production
             </button>
           </div>
         </div>
@@ -653,15 +786,40 @@
               <select
                 class="dropwp"
                 formControlName="fiveyear_Timeline"
-                [value]="fiveYearForecastBody.fiveyear_Timeline"
+                [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
               >
                 <option selected disabled>---- Select a Year ----</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
+                <option
+                  value="2022"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2022'"
+                >
+                  2022
+                </option>
+                <option
+                  value="2023"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2023'"
+                >
+                  2023
+                </option>
+                <option
+                  value="2024"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2024'"
+                >
+                  2024
+                </option>
+                <option
+                  value="2025"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2025'"
+                >
+                  2025
+                </option>
+                <option
+                  value="2026"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2026'"
+                >
+                  2026
+                </option>
               </select>
             </div>
           </div>
@@ -679,7 +837,6 @@
               >
                 <input
                   type="text"
-                  (keypress)="genk.restrictData($event)"
                   formControlName="fiveyear_Oil"
                   [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
                   class="inpute"
@@ -689,7 +846,6 @@
                     fiveYearForecastBody.fiveyear_Oil =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="fiveYearForecastBody.fiveyear_Oil"
                 />
               </div>
             </div>
@@ -708,7 +864,6 @@
               >
                 <input
                   type="text"
-                  (keypress)="genk.restrictData($event)"
                   formControlName="fiveyear_Condensate"
                   [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
                   class="inpute"
@@ -718,7 +873,6 @@
                     fiveYearForecastBody.fiveyear_Condensate =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="fiveYearForecastBody.fiveyear_Condensate"
                 />
               </div>
             </div>
@@ -741,7 +895,6 @@
                 <input
                   type="text"
                   formControlName="fiveyear_AG"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -749,7 +902,7 @@
                     fiveYearForecastBody.fiveyear_AG =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="fiveYearForecastBody.fiveyear_AG"
+                  [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
                 />
               </div>
             </div>
@@ -769,7 +922,6 @@
                 <input
                   type="text"
                   formControlName="fiveyear_NAG"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -777,7 +929,7 @@
                     fiveYearForecastBody.fiveyear_NAG =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="fiveYearForecastBody.fiveyear_NAG"
+                  [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
                 />
               </div>
             </div>
@@ -857,7 +1009,6 @@
               >
                 <input
                   formControlName="current_Actual_Year"
-                  [(ngModel)]="gasproductionBody.current_Actual_Year"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -865,7 +1016,7 @@
                     gasproductionBody.current_Actual_Year =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.current_Actual_Year"
+                  [(ngModel)]="gasproductionBody.current_Actual_Year"
                 />
               </div>
             </div>
@@ -902,16 +1053,14 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="flared"
-                  [(ngModel)]="gasproductionBody.flared"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.flared = genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.flared"
+                  [(ngModel)]="gasproductionBody.flared"
                 />
               </div>
             </div>
@@ -933,17 +1082,14 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="proposed_production"
-                  [(ngModel)]="gasproductionBody.proposed_production"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     gasproductionBody.proposed_production =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.proposed_production"
+                  [(ngModel)]="gasproductionBody.proposed_production"
                 />
               </div>
             </div>
@@ -961,9 +1107,7 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="proposed_utilization"
-                  [(ngModel)]="gasproductionBody.proposed_utilization"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -971,7 +1115,7 @@
                     gasproductionBody.proposed_utilization =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.proposed_utilization"
+                  [(ngModel)]="gasproductionBody.proposed_utilization"
                 />
               </div>
             </div>
@@ -989,9 +1133,7 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="proposed_flaring"
-                  [(ngModel)]="gasproductionBody.proposed_flaring"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -999,7 +1141,7 @@
                     gasproductionBody.proposed_flaring =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.proposed_flaring"
+                  [(ngModel)]="gasproductionBody.proposed_flaring"
                 />
               </div>
             </div>
@@ -1021,9 +1163,7 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="no_of_gas_well_planned"
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -1031,7 +1171,7 @@
                     gasproductionBody.no_of_gas_well_planned =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.no_of_gas_well_planned"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
                 />
               </div>
             </div>
@@ -1049,9 +1189,7 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="no_of_gas_well_drilled"
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -1059,7 +1197,7 @@
                     gasproductionBody.no_of_gas_well_drilled =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.no_of_gas_well_drilled"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
                 />
               </div>
             </div>
@@ -1115,9 +1253,7 @@
                 "
               >
                 <input
-                  (keypress)="genk.restrictData($event)"
                   formControlName="number_of_gas_wells_completed"
-                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -1125,7 +1261,7 @@
                     gasproductionBody.number_of_gas_wells_completed =
                       genk.addCurrencyDecimal($event)
                   "
-                  [value]="gasproductionBody.number_of_gas_wells_completed"
+                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
                 />
               </div>
             </div>
