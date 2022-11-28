@@ -53,7 +53,7 @@
               <div style="display: flex; width: 100%">
                 <div class="inputshadow">
                   <select class="dropwp" formControlName="oil_Royalty_Payment"
-                    (change)="productionoilBody.oil_Royalty_Payment">
+                    [(ngModel)]="productionoilBody.oil_Royalty_Payment">
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
                     <option value="NO">No</option>
