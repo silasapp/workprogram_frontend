@@ -334,12 +334,12 @@
                   <input type="text" (keypress)="genk.restrictData($event)" formControlName="production" PROPOSED
                     MONTHLY PRODUCTION placeholder="100,000" class="inpute" (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
-                    (change)="proposedmonthlyBody.production =genk.checkMMBBLMin($event.oilMon)"
+                    (change)="proposedmonthlyBody.production =genk.checkMMBBLMin($event,oilMon)"
                     [value]="proposedmonthlyBody.production" />
                   <span class="barspan">BBLS</span>
                 </div>
               </div>
-              <small oilMon></small>
+              <small #oilMon></small>
             </div>
 
             <div style="width: 30%">
