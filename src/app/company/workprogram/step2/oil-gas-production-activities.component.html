@@ -53,7 +53,7 @@
               <div style="display: flex; width: 100%">
                 <div class="inputshadow">
                   <select class="dropwp" formControlName="oil_Royalty_Payment"
-                    [(ngModel)]="productionoilBody.oil_Royalty_Payment">
+                    (change)="productionoilBody.oil_Royalty_Payment">
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
                     <option value="NO">No</option>
@@ -67,8 +67,9 @@
               <div style="display: flex">
                 <div class="minsec">
                   <input (keypress)="genk.restrictData($event)" formControlName="deferment" class="inpute"
-                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" placeholder="100,000"
-                    (change)="productionoilBody.deferment =genk.checkMMBBLMin($event, oilMin)"
+                    (keypress)="genk.restrictData($event)" 
+                    (keyup)="genk.formatCurrency($event)" placeholder="100,000"
+                    (change)="productionoilBody.deferment = genk.checkMMBBLMin($event, oilMin)"
                     [value]="productionoilBody.deferment" />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -559,7 +560,7 @@
                   [(ngModel)]="gasproductionBody.current_Actual_Year" class="inpute"
                   (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
                   (change)="gasproductionBody.current_Actual_Year = genk.checkBSCFMin ($event, gasMaxa)"
-                  [value]="gasproductionBody.current_Actual_Year" />
+                  [value]="gasproductionBody.current_Actual_Year"/>
                 <span class="barspan">SCF</span>
               </div>
             </div>
