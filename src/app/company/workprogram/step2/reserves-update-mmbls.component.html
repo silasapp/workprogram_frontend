@@ -998,14 +998,7 @@
     <div style="width: 30%">
       <label class="labelwp">Reserve Replacement Ratio Value</label>
       <div style="display: flex">
-        <div
-          style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            border-radius: 20px;
-            padding: 7px 10px;
-          "
-        >
+        <div class="minsec">
           <input
             type="text"
             class="inpute"
@@ -1059,7 +1052,7 @@
             (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="reserveUpdateDepletionRateBody._oil = genk.checkBSCFMin($event, oilNaf)"
             [value]="reserveUpdateDepletionRateBody._oil"/>
-            <span class="barspan">BSCF</span>
+            <span class="barspan">BBLS</span>
         </div>
       </div>
       <small #oilNaf></small>
@@ -1074,11 +1067,12 @@
             class="inpute"
             style="border-radius: 5px;"
             formControlName="cONDENSATE"
+            placeholder="100,000"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="reserveUpdateDepletionRateBody._condensate = genk.checkMMBBLMin($event, oilVax)"
             [value]="reserveUpdateDepletionRateBody._condensate"/>
-            <span class="barspan">BSCF</span>
+            <span class="barspan">BBLS</span>
         </div>
       </div>
       <small #oilVax></small>
