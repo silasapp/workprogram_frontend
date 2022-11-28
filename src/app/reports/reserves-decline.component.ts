@@ -26,11 +26,11 @@ export class ReservesDeclineComponent implements OnInit {
   
      columns = [
       {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "OML  NAME"
       },
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -38,7 +38,7 @@ export class ReservesDeclineComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -54,37 +54,37 @@ export class ReservesDeclineComponent implements OnInit {
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "reserves_Decline_Was_there_a_decline_in_reserve",
+          "columnDef": "reserves_decline_was_there_a_decline_in_reserve",
           "header": "RESERVES DECLINE WAS THERE A DECLINE IN RESERVE"
       },
       {
-          "columnDef": "reserves_Decline_Reason_for_Decline",
+          "columnDef": "reserves_decline_reason_for_decline",
           "header": "RESERVES DECLINE REASON FOR DECLINE"
       },
       {
-          "columnDef": "reserves_Decline_Oil",
+          "columnDef": "reserves_decline_oil",
           "header": "RESERVES DECLINE OIL"
       },
       {
-          "columnDef": "reserves_Decline_Condensate",
+          "columnDef": "reserves_decline_condensate",
           "header": "RESERVES DECLINE CONDENSATE"
       },
       {
-          "columnDef": "reserves_Decline_AG",
+          "columnDef": "reserves_decline_ag",
           "header": "RESERVES DECLINE AG"
       },
       {
-          "columnDef": "reserves_Decline_NAG",
+          "columnDef": "reserves_decline_nag",
           "header": "RESERVES DECLINE NAG"
       }];
 
       repcolumns = [
         {
-            "columnDef": "omL_Name",
+            "columnDef": "oml_name",
             "header": "OML  NAME"
         },
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -92,7 +92,7 @@ export class ReservesDeclineComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -108,27 +108,27 @@ export class ReservesDeclineComponent implements OnInit {
           "header": "CONTRACT TYPE"
       },
         {
-            "columnDef": "reserves_Decline_Was_there_a_decline_in_reserve",
+            "columnDef": "reserves_decline_was_there_a_decline_in_reserve",
             "header": "RESERVES DECLINE WAS THERE A DECLINE IN RESERVE"
         },
         {
-            "columnDef": "reserves_Decline_Reason_for_Decline",
+            "columnDef": "reserves_decline_reason_for_decline",
             "header": "RESERVES DECLINE REASON FOR DECLINE"
         },
         {
-            "columnDef": "reserves_Decline_Oil",
+            "columnDef": "reserves_decline_oil",
             "header": "RESERVES DECLINE OIL"
         },
         {
-            "columnDef": "reserves_Decline_Condensate",
+            "columnDef": "reserves_decline_condensate",
             "header": "RESERVES DECLINE CONDENSATE"
         },
         {
-            "columnDef": "reserves_Decline_AG",
+            "columnDef": "reserves_decline_ag",
             "header": "RESERVES DECLINE AG"
         },
         {
-            "columnDef": "reserves_Decline_NAG",
+            "columnDef": "reserves_decline_nag",
             "header": "RESERVES DECLINE NAG"
         }];
 

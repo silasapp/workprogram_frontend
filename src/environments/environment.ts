@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://workprogramtest.azurewebsites.net/api',
+   
+  //apiUrl: 'https://localhost:7129/api'
 };
 
 /*

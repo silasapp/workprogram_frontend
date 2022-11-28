@@ -25,7 +25,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
   
    columns = [
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -49,7 +49,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
         "header": "CONSESSION TYPE"
     },
       {
-          "columnDef": "list_of_Projects",
+          "columnDef": "list_of_projects",
           "header": "LIST OF PROJECTS"
       },
       {
@@ -63,7 +63,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
 
       repcolumns = [
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -71,7 +71,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -87,7 +87,7 @@ export class FacilitiesProjectPerformanceComponent implements OnInit {
           "header": "CONSESSION TYPE"
       },
         {
-            "columnDef": "list_of_Projects",
+            "columnDef": "list_of_projects",
             "header": "LIST OF PROJECTS"
         },
         {

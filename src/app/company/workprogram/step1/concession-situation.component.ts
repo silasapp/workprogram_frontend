@@ -247,8 +247,6 @@ export class SWPConcessionSituationComponent implements OnInit {
         this.genk.isStep1 = true;
         this.cd.markForCheck();
         console.log(this.royaltyBody.royalty_ID);
-
-        this.loadTable();
       });
   }
 

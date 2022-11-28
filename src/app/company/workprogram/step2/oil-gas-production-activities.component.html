@@ -104,7 +104,9 @@
                   />
                 </div>
               </div>
+              <small #oilMin></small>
             </div>
+
             <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Forecast (Barrels)</label>
               <div style="display: flex">
@@ -129,6 +131,7 @@
                   />
                 </div>
               </div>
+              <small #oilMic></small>
             </div>
           </div>
           <br />
@@ -191,8 +194,8 @@
                 </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp">
-                  Gas production (AG) (BSCF)</label
+                <label class="labelwp">
+                  Gas production (AG) (Stantard Cubic Feet)</label
                 >
                 <div style="display: flex">
                   <div
@@ -217,14 +220,15 @@
                     />
                   </div>
                 </div>
+                <small #gasmaxx></small>
               </div>
             </div>
             <br />
 
             <div style="display: flex; width: 100%">
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label8" class="labelwp"
-                  >Gas production (NAG)(BSCF)</label
+                <label class="labelwp"
+                  >Gas production (NAG)(Standard Cubic Feet)</label
                 >
                 <div style="display: flex">
                   <div
@@ -249,6 +253,7 @@
                     />
                   </div>
                 </div>
+                <small #gasMac></small>
               </div>
             </div>
 
@@ -387,21 +392,14 @@
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp">Production (BBLS)</label>
+            <label class="labelwp">Production (Barrels )</label>
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 20px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   (keypress)="genk.restrictData($event)"
                   type="text"
                   formControlName="production"
-                  [(ngModel)]="monthlyactivityBody.production"
+                  placeholder="100,000"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -412,6 +410,7 @@
                 />
               </div>
             </div>
+            <small #oilMe></small>
           </div>
 
           <div style="width: 30%">
@@ -444,7 +443,9 @@
         <br />
         <div style="display: flex; width: 100%">
           <div style="margin-right: 5%; width: 30%">
-            <label class="labelwp">Gas Production (AG)(BSCF)</label>
+            <label class="labelwp"
+              >Gas Production (AG)(Standard Cubic Feet)</label
+            >
             <div style="display: flex">
               <div
                 style="
@@ -467,11 +468,12 @@
                 />
               </div>
             </div>
+            <small #gasDec></small>
           </div>
 
           <div style="width: 30%">
             <label class="labelwp"
-              >Gas Average Daily Production (NAG)(BSCF)</label
+              >Gas Average Daily Production (NAG)(Standard Cubic Feet)</label
             >
             <div style="display: flex">
               <div
@@ -496,6 +498,7 @@
                 />
               </div>
             </div>
+            <small #gaspro></small>
           </div>
         </div>
         <br /><br />
@@ -637,7 +640,7 @@
             </div>
 
             <div style="width: 30%">
-              <label class="labelwp">Production (BBLS)</label>
+              <label class="labelwp">Production (Barrels)</label>
               <div style="display: flex">
                 <div
                   style="
@@ -661,6 +664,7 @@
                   />
                 </div>
               </div>
+              <small #oilMon></small>
             </div>
 
             <div style="width: 30%">
@@ -694,7 +698,9 @@
 
           <div style="display: flex; width: 100%">
             <div style="margin-right: 5%; width: 30%">
-              <label class="labelwp">Gas Production (AG)(BSCF)</label>
+              <label class="labelwp"
+                >Gas Production (AG)(Standard Cubic Feet)</label
+              >
               <div style="display: flex">
                 <div
                   style="
@@ -718,10 +724,13 @@
                   />
                 </div>
               </div>
+              <small #gasdan></small>
             </div>
 
             <div style="width: 30%">
-              <label class="labelwp">Gas Production (NAG)(BSCF)</label>
+              <label class="labelwp"
+                >Gas Production (NAG)(Standard Cubic Feet)</label
+              >
               <div style="display: flex">
                 <div
                   style="
@@ -745,6 +754,7 @@
                   />
                 </div>
               </div>
+              <small #gasBox></small>
             </div>
           </div>
           <br />
@@ -825,7 +835,7 @@
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp">Oil (MMBBL)</label>
+            <label class="labelwp">Oil (Barrels)</label>
             <div style="display: flex">
               <div
                 style="
@@ -849,10 +859,11 @@
                 />
               </div>
             </div>
+            <small #oilNac></small>
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp">Condensate (MMBBL)</label>
+            <label class="labelwp">Condensate (Barrels)</label>
             <div style="display: flex">
               <div
                 style="
@@ -876,13 +887,14 @@
                 />
               </div>
             </div>
+            <small #oilTax></small>
           </div>
         </div>
         <br />
 
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%">
-            <label class="labelwp">AG (BSCF)</label>
+            <label class="labelwp">AG (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div
                 style="
@@ -906,10 +918,11 @@
                 />
               </div>
             </div>
+            <small #oilNaz></small>
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp">NAG (BSCF)</label>
+            <label class="labelwp">NAG (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div
                 style="
@@ -933,6 +946,7 @@
                 />
               </div>
             </div>
+            <small #oilFus></small>
           </div>
 
           <div style="width: 30%">
@@ -997,7 +1011,9 @@
       <div [formGroup]="GasProductionForm">
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="Co" class="labelwp">Actual Gas Produced (BSCF)</label>
+            <label class="labelwp"
+              >Actual Gas Produced (Standard Cubic Field)</label
+            >
             <div style="display: flex">
               <div
                 style="
@@ -1020,10 +1036,11 @@
                 />
               </div>
             </div>
+            <small #gasMaxa></small>
           </div>
 
           <div style="width: 30%">
-            <label class="labelwp">Utilized (MMscf)</label>
+            <label class="labelwp">Utilized (Standard Cubic Feet)</label>
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
                 <select
@@ -1042,7 +1059,7 @@
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
-            <label class="labelwp">Flared (MMscf)</label>
+            <label class="labelwp">Flared (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div
                 style="
@@ -1064,13 +1081,14 @@
                 />
               </div>
             </div>
+            <small #gasMax></small>
           </div>
         </div>
         <br />
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%; margin-top: auto">
-            <label id="ContentPlaceHolder2_Label13" class="labelwp"
-              >Proposed Gas Production (BSCF)</label
+            <label class="labelwp"
+              >Proposed Gas Production (Standard Cubic Feet)</label
             >
             <div style="display: flex">
               <div
@@ -1093,10 +1111,13 @@
                 />
               </div>
             </div>
+            <small #gasMinin></small>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
-            <label class="labelwp">Proposed Utilization (BSCF)</label>
+            <label class="labelwp"
+              >Proposed Utilization (Standard Cubic Feet)</label
+            >
             <div style="display: flex">
               <div
                 style="
@@ -1119,10 +1140,13 @@
                 />
               </div>
             </div>
+            <small #gasMini></small>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
-            <label class="labelwp">Estimated Flare Volume (BSCF)</label>
+            <label class="labelwp"
+              >Estimated Flare Volume (Standard Cubic Feet)</label
+            >
             <div style="display: flex">
               <div
                 style="
@@ -1145,6 +1169,7 @@
                 />
               </div>
             </div>
+            <small #gasmin></small>
           </div>
         </div>
         <br />
@@ -1300,4 +1325,18 @@
       <br />
     </div>
   </div>
+</div>
+<br /><br />
+<div style="text-align: center">
+  <button
+    [routerLink]="[
+      '/' + genk.company,
+      genk.workprogram,
+      'step2',
+      'reservesupdate'
+    ]"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>

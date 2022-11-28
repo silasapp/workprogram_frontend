@@ -25,7 +25,7 @@ export class HSEManagementPositionComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class HSEManagementPositionComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -49,17 +49,17 @@ export class HSEManagementPositionComponent implements OnInit {
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "organogramrFilePath",
+          "columnDef": "organogramrfilepath",
           "header": "ORGANOGRAM FILE"
       },
       {
-          "columnDef": "promotionLetterFilePath",
+          "columnDef": "promotionletterfilepath",
           "header": "PROMOTION LETTER"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -67,7 +67,7 @@ export class HSEManagementPositionComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -83,11 +83,11 @@ export class HSEManagementPositionComponent implements OnInit {
           "header": "CONTRACT TYPE"
       },
         {
-            "columnDef": "organogramrFilePath",
+            "columnDef": "organogramrfilepath",
             "header": "ORGANOGRAM FILE"
         },
         {
-            "columnDef": "promotionLetterFilePath",
+            "columnDef": "promotionletterfilepath",
             "header": "PROMOTION LETTER"
         }];
 

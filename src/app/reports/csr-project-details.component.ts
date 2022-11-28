@@ -25,7 +25,7 @@ export class CSRProjectDetailsComponent implements OnInit {
   
     columns = [
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -34,10 +34,10 @@ export class CSRProjectDetailsComponent implements OnInit {
       },
       {
         "columnDef": "omL_Name",
-        "header": "CONCESSION HELD"
+        "header": "OML NAME"
     },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -57,11 +57,11 @@ export class CSRProjectDetailsComponent implements OnInit {
           "header": "TYPE OF PROJECT EXCUTED"
       },
       {
-          "columnDef": "year_GMou_was_signed",
+          "columnDef": "year_gmou_was_signed",
           "header": "YEAR GMOU WAS SIGNED"
       },
       {
-          "columnDef": "project_Location",
+          "columnDef": "project_location",
           "header": "PROJECT LOCATION"
       },
       {
@@ -69,24 +69,24 @@ export class CSRProjectDetailsComponent implements OnInit {
           "header": "COMPONENT OF PROJECT"
       },
       {
-          "columnDef": "actual_Budget_Total_Dollars",
+          "columnDef": "actual_budget_total_dollars",
           "header": "ACTUAL BUDGET TOTAL DOLLARS"
       },
       {
-          "columnDef": "beneficiary_Community",
+          "columnDef": "beneficiary_community",
           "header": "BENEFICIARY COMMUNITY"
       },
       {
-          "columnDef": "status_Of_Project",
+          "columnDef": "status_Of_project",
           "header": "STATUS OF PROJECT"
       },
       {
-          "columnDef": "mouUploadFilePath",
+          "columnDef": "mouUploadfilepath",
           "header": "MOU UPLOAD FILEPATH"
       }];
       repcolumns = [
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -95,10 +95,10 @@ export class CSRProjectDetailsComponent implements OnInit {
         },
         {
           "columnDef": "omL_Name",
-          "header": "CONCESSION HELD"
+          "header": "OML NAME"
       },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -118,11 +118,11 @@ export class CSRProjectDetailsComponent implements OnInit {
             "header": "TYPE OF PROJECT EXCUTED"
         },
         {
-            "columnDef": "year_GMou_was_signed",
+            "columnDef": "year_gmou_was_signed",
             "header": "YEAR GMOU WAS SIGNED"
         },
         {
-            "columnDef": "project_Location",
+            "columnDef": "project_location",
             "header": "PROJECT LOCATION"
         },
         {
@@ -130,19 +130,19 @@ export class CSRProjectDetailsComponent implements OnInit {
             "header": "COMPONENT OF PROJECT"
         },
         {
-            "columnDef": "actual_Budget_Total_Dollars",
+            "columnDef": "actual_budget_total_dollars",
             "header": "ACTUAL BUDGET TOTAL DOLLARS"
         },
         {
-            "columnDef": "beneficiary_Community",
+            "columnDef": "beneficiary_community",
             "header": "BENEFICIARY COMMUNITY"
         },
         {
-            "columnDef": "status_Of_Project",
+            "columnDef": "status_Of_project",
             "header": "STATUS OF PROJECT"
         },
         {
-            "columnDef": "mouUploadFilePath",
+            "columnDef": "mouUploadfilepath",
             "header": "MOU UPLOAD FILEPATH"
         }];
 
