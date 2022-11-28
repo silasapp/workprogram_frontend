@@ -138,7 +138,7 @@
                     <input type="text" formControlName="gas_AG" [(ngModel)]="productionoilBody.gas_AG" class="inpute"
                       placeholder="1,000,000" (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
-                      (change)="productionoilBody.gas_AG =genk.checkBSCFMin ($event, gasmaxx)"
+                      (change)="productionoilBody.gas_AG = genk.checkBSCFMin($event, gasmaxx)"
                       [value]="productionoilBody.gas_AG" />
                     <span class="barspan">SCF</span>
                   </div>
