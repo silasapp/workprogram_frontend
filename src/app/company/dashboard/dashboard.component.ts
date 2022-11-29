@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { WorkprogrammeReportService } from '../../services/workprogramme-report.service'
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
@@ -6,7 +6,7 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import { ReportService } from 'src/app/services/report.service';
-import { GenericService, ModalService } from 'src/app/services';
+import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
 import { CdkAriaLive } from '@angular/cdk/a11y';
 import { CompanyService } from 'src/app/services/company.service';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
@@ -21,7 +21,7 @@ declare var $: any;
   styleUrls: ['./dashboard.component.scss', '../../reports/ndr-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   genk: GenericService;
   @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
@@ -32,6 +32,9 @@ export class DashboardComponent implements OnInit {
   @ViewChild('thirdchart', { static: false }) mythirdchart: ElementRef<HTMLDivElement>;
   @ViewChild('mychartbox3', { static: false }) myChartBox3: ElementRef<HTMLDivElement>;
 
+  @ViewChild('fourthchart', { static: false }) myFourthchart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox4', { static: false }) myChartBox4: ElementRef<HTMLDivElement>;
+
   private root: am5.Root;
   pagenum = 0;
   selectedPage = 1;
@@ -40,7 +43,7 @@ export class DashboardComponent implements OnInit {
   firstChartData: any;
   secondChartData: any;
   thirdChartData: any[];
-  fourthChartData: any;
+  fourthChartData: any[];
   dashboardStuff : DashboardModel;   
   adminservice : AdminService;
   c_ColumnHeader = [];
@@ -58,6 +61,7 @@ export class DashboardComponent implements OnInit {
   dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody = {} as DashboardGasBudgetAndReserveBody;
   modalService: ModalService;
   companyService: CompanyService;
+  auth: AuthenticationService;
 
   cdr: ChangeDetectorRef;
 
@@ -93,22 +97,27 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor(private report: WorkprogrammeReportService, private _companyService: CompanyService, private genReport: ReportService, private modale: ModalService, private gen: GenericService, private cd: ChangeDetectorRef, private _adminservice: AdminService) {
-    this.modalService = modale;
-    this.companyService = _companyService;
-    this.adminservice = _adminservice;
+  constructor(private gen: GenericService,
+    private company: CompanyService,
+    private cd: ChangeDetectorRef,
+    private authenticationService: AuthenticationService,
+    private genReport: ReportService) {
     this.genk = gen;
     this.cdr = cd;
-
+    this.auth = authenticationService;
+    this.companyService = company;
   }
   
   ngOnInit(): void {
-    this.getDashboardStuff();
   }
   ngAfterViewInit() {
     this.getCompanyDashboardReport();
     this.getDashboardGasBudgetAndReserveDetails();
-
+    this.getCompanyProduction();
+    this.getCompanyConcessionProd();
+    this.getCompanyConcessionReserveOil();
+    this.getCompanyConcessionReserveGas();
+    this.cd.markForCheck();
   }
 
   // fetchreportI() {
@@ -135,14 +144,13 @@ export class DashboardComponent implements OnInit {
 
   fetchreport() {
     let value = 2021;
-    debugger;
     this.modalService.logCover("Loading data...", true);
     this.firstChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
     this.secondChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
     //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
     // this.plotDoubleBarChart();
-    this.plotDoublePieChart();
-    this.plotDoubleBarChartHorizontal();
+    // this.plotDoublePieChart();
+    // this.plotDoubleBarChartHorizontal();
     this.modalService.togCover();
     this.cd.markForCheck();
 
@@ -323,87 +331,117 @@ export class DashboardComponent implements OnInit {
 
 
   getCompanyDashboardReport() {
-    debugger;
     let value = (this.previousYear).toString();
-    this.companyService.getdashboardreport(value).subscribe(
-      (res) => {
-        debugger;
+    this.companyService.getdashboardreport(value).subscribe((res) => {
         this.dashboardBody = res as CompanyDashboardBody;
-        debugger;
-        debugger;
-        this.fetchreport();
+        //let resse = res;
+        //this.fetchreport();
+        this.cd.markForCheck();
+      }
+    )
+  }
+
+  getCompanyProduction() {
+    let value = (this.previousYear).toString();
+    this.companyService.getCompanyProd(value).subscribe((res) => {
+        this.firstChartData = res;
+        this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+        this.cd.markForCheck();
+      }
+    )
+  }
+
+  getCompanyConcessionProd() {
+    let value = (this.previousYear).toString();
+    this.companyService.getCompanyConcessionProd(value).subscribe((res) => {
+        this.secondChartData = res;
+
+        this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
+        this.cd.markForCheck();
+      }
+    )
+  }
+
+  getCompanyConcessionReserveOil() {
+    let value = (this.previousYear).toString();
+    this.companyService.getCompanyConcessionReserveOil(value).subscribe((res) => {
+        this.thirdChartData = res;
+
+        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
+        this.cd.markForCheck();
+      }
+    )
+  }
+
+  getCompanyConcessionReserveGas() {
+    let value = (this.previousYear).toString();
+    this.companyService.getCompanyConcessionReserveGas(value).subscribe((res) => {
+        this.fourthChartData = res;
+
+        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
         this.cd.markForCheck();
       }
     )
   }
 
   getDashboardGasBudgetAndReserveDetails() {
-    debugger;
     let value = (this.previousYear).toString();
     this.companyService.getdashboardgasbudgetandreserve(value).subscribe(
       (res) => {
-        debugger;
         this.dashboardGasBudgetAndReserve = res as DashboardGasBudgetAndReserveBody;
-        debugger;
         this.cd.markForCheck();
       }
     )
   }
 
 
-
-
   onSubmit() {
     return null;
   }
 
-  plotDoublePieChart() {
-    let selectedColumn = ['concessionName', 'totalReserves'];
-    debugger;
-
-    // this.myChartBox2.nativeElement.removeChild(this.myChartBox2.nativeElement.firstChild);
-    // const node = document.createElement("div");
-    // node.style.width = '100%';
-    // node.style.height = '500px';
-    // this.myChartBox2.nativeElement.appendChild(node);
-    // let bechart = this.myChartBox2.nativeElement.firstChild as HTMLDivElement;
+  plotDoublePieChart(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
+  debugger;
+    chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
+    const node = document.createElement("div");
+    node.style.width = '100%';
+    node.style.height = '450px';
+    chartBox.nativeElement.appendChild(node);
+    let bechart = chartBox.nativeElement.firstChild as HTMLDivElement;
     let sele1 = selectedColumn[0];
     let sele2 = selectedColumn[1];
 
-    this.myChartBox2.nativeElement.style.display = 'block';
-    let chartdata = this.secondChartData;
-    //let chartdata = this.genReport.formatChartData(reportdata, sele1, sele2);
-    this.designDoublePieChart(this.mysecondchart.nativeElement, sele1, sele2, chartdata);
+    chartBox.nativeElement.style.display = 'block';
+    let reportdata = numData;
+    let chartdata = this.genReport.formatChartData(reportdata, sele1, sele2);
+    this.genReport.plotDoublePieChart(bechart, sele1, sele2, chartdata);
   }
 
-  plotDoubleBarChartHorizontal() {
+  plotDoubleBarChartHorizontal(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
     debugger;
     let totalString = "";
-    let selectedColumn = ['concessionName', 'totalNetProduction'];
-    // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
-    // const node = document.createElement("div");
-    // node.style.width = '100%';
-    // node.style.height = '500px';
-    // this.myChartBox1.nativeElement.appendChild(node);
-    // let bechart = this.myChartBox1.nativeElement.firstChild as HTMLDivElement;
-    // let sele1 = selectedColumn[0];
-    // let sele2 = selectedColumn[1];
+    chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
+    const node = document.createElement("div");
+    node.style.width = '100%';
+    node.style.height = '450px';
+    chartBox.nativeElement.appendChild(node);
+    let bechart = chartBox.nativeElement.firstChild as HTMLDivElement;
+    let sele1 = selectedColumn[0];
+    let sele2 = selectedColumn[1];
 
-    //this.myChartBox1.nativeElement.style.display = 'block';
-    let reportdata = this.firstChartData;
-    let chartdata = this.firstChartData;
-    //let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
-    //   for (var i = 0; i < chartdata.length; i++) {
-    //     totalString += chartdata[i].production_month;
+    chartBox.nativeElement.style.display = 'block';
+    let reportdata = numData;
+    //let chartdata = this.firstChartData;
+    let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
+      for (var i = 0; i < chartdata.length; i++) {
+        totalString += chartdata[i].base;
+      }
 
-    //   if (totalString.length > 70) {
-    this.designDoubleBarChartHorizontal(this.myfirstchart.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-    //   }
-    //   else {
-    //     this.designDoubleBarChart(this.myChartBox1.nativeElement, selectedColumn[0], selectedColumn[1], chartdata);
-    //   }
-    // }
-
+      if (totalString.length > 50) {
+        this.genReport.plotDoubleBarChartHorizontal(bechart, selectedColumn[0], selectedColumn[1], chartdata);
+      }
+      else {
+        this.genReport.plotDoubleBarChart(bechart, selectedColumn[0], selectedColumn[1], chartdata);
+      }
   }
 
   // plotDoubleBarChart() {
@@ -475,6 +513,7 @@ export class DashboardComponent implements OnInit {
   }
 
   designDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+    //debugger;
     var root = am5.Root.new(chartdiv);
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -610,7 +649,6 @@ export class DashboardComponent implements OnInit {
   }
 
   designDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
-    debugger;
     var root = am5.Root.new(chartdiv);
 
     root.setThemes([am5themes_Animated.new(root)]);
@@ -769,9 +807,6 @@ export class DashboardComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-
-
-
   Alert(title: string, text: string, icon: any) {
     Swal.fire({
       title: title,
@@ -782,6 +817,30 @@ export class DashboardComponent implements OnInit {
       confirmButtonText: 'Okay'
     })
   }
+
+  // plotDoublePieChart() {
+  //   if (this.selectedColumns.length > 2) {
+  //     alert('Can not plot this chart');
+  //   }
+  //   else {
+  //     debugger;
+  //     this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
+  //     const node = document.createElement("div");
+  //     node.style.width = '100%';
+  //     node.style.height = '500px';
+  //     this.myChartBox.nativeElement.appendChild(node);
+  //     let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
+  //     let sele1 = this.selectedColumns[0].columnDef;
+  //     let sele2 = this.selectedColumns[1].columnDef;
+
+  //     this.myChartBox.nativeElement.style.display = 'block';
+  //     if (this.selectedColumns.length === 2) {
+  //       let reportdata = this.data;
+  //       let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
+  //       this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+  //     }
+  //   }
+  //}
 
 
 }

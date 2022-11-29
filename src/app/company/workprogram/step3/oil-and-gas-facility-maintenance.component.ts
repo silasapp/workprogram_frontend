@@ -96,14 +96,13 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     this.facilitiesProjectPerformanceForm = new FormGroup({
       list_of_Projects : new FormControl(this.facilitiesProjectPerformanceBody.list_of_Projects, Validators.required),
       planned_completion : new FormControl(this.facilitiesProjectPerformanceBody.planned_completion, Validators.required),
-      actual_completion : new FormControl(this.facilitiesProjectPerformanceBody.actual_completion, Validators.required),
-
+      actual_completion : new FormControl(this.facilitiesProjectPerformanceBody.actual_completion, Validators.required)
     });
     this.getBudgetData();
     }
 
     getBudgetData() {
-      this.workprogram.getFormThreeBudget_3(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
+      this.workprogram.getFormThreeBudget_3(this.genk.wpYear)
       .subscribe(res => {
         let oilInfo = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
         let techInfo = this.newTechnologyBody as newTechnologyAndConformityAssessment;
@@ -160,7 +159,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
     debugger;
       this.workprogram
-        .post_OilGas(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+        .post_OilGas(info, this.genk.wpYear, event.target.value, "DELETE")
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -205,7 +204,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       let info = this.newTechnologyBody as newTechnologyAndConformityAssessment;
     debugger;
       this.workprogram
-        .post_Technology(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+        .post_Technology(info, this.genk.wpYear, event.target.value, "DELETE")
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -250,7 +249,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       let info = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
     debugger;
       this.workprogram
-        .post_FacilityProject(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+        .post_FacilityProject(info, this.genk.wpYear, event.target.value, "DELETE")
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -298,7 +297,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         }
       }
       this.workprogram
-        .post_OilGas(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+        .post_OilGas(budgetInfo, this.genk.wpYear, '','')
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -320,11 +319,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           for (let item in this.newTechnologyBody) {
              if (item != 'id' && item != 'field_ID') {
               budgetInfo[this.genk.upperText(item)] = this.newTechnologyBody[item]?.toString() ?? '';
-
             }
           }
           this.workprogram
-            .post_Technology(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+            .post_Technology(budgetInfo, this.genk.wpYear, '','')
             .subscribe(res => {
               debugger;
               if(res.statusCode == 300){
@@ -350,7 +348,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
                 }
               }
               this.workprogram
-                .post_FacilityProject(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+                .post_FacilityProject(budgetInfo, this.genk.wpYear, '','')
                 .subscribe(res => {
                   debugger;
                   if(res.statusCode == 300){

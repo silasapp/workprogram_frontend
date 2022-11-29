@@ -25,22 +25,24 @@
   <div [formGroup]="GasProductionForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
-        <label id="Co" class="labelwp">Actual Gas Produced (BSCF)</label>
+        <label id="Co" class="labelwp">Actual Gas Produced (Standard Cubic Feet)</label>
         <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            ">
-            <input formControlName="current_Actual_Year" [(ngModel)]="gasproductionBody.current_Actual_Year"
-              class="inpute" (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-                gasproductionBody.current_Actual_Year =
-                  genk.formatNum_Efficient($event.target.value)
-              " [value]="gasproductionBody.current_Actual_Year" />
+          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+            <input type="text"
+            formControlName="current_Actual_Year"
+            [(ngModel)]="gasproductionBody.current_Actual_Year"
+            class="inpute" 
+            style="border-radius: 5px;"
+            placeholder="1,000,000" 
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            (change)="gasproductionBody.current_Actual_Year =
+            genk.checkBSCFMin($event, gasMin)"
+            [value]="gasproductionBody.current_Actual_Year"/>
+            <span class="barspan">SCF</span>
           </div>
         </div>
+        <small #gasMin></small>
       </div>
 
       <div style="width: 30%">
@@ -80,7 +82,7 @@
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
-        <label id="ContentPlaceHolder2_Label13" class="labelwp">Proposed Gas Production (BSCF)</label>
+        <label class="labelwp">Proposed Gas Production (Standard Cubic Feet)</label>
         <div style="display: flex">
           <div style="
               box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -99,26 +101,26 @@
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Proposed Utilization (BSCF)</label>
+        <label class="labelwp">Proposed Utilization (Standard Cubic Feet)</label>
         <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            ">
-            <input formControlName="proposed_utilization" [(ngModel)]="gasproductionBody.proposed_utilization"
-              class="inpute" (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-                gasproductionBody.proposed_utilization =
-                  genk.formatNum_Efficient($event.target.value)
-              " [value]="gasproductionBody.proposed_utilization" />
+          <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
+            <input type="text"
+            formControlName="proposed_utilization" 
+            [(ngModel)]="gasproductionBody.proposed_utilization"
+            style="border-radius: 5px;"
+            placeholder="1,000,000"
+            class="inpute" (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)" 
+            (change)="gasproductionBody.proposed_utilization =
+            genk.checkBSCFMin($event, gasMin)" [value]="gasproductionBody.proposed_utilization"/>
+            <span class="barspan">SCF</span>
           </div>
         </div>
+        <small #gasMin></small>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Proposed Flaring (BSCF)</label>
+        <label class="labelwp">Proposed Flaring (Standard Cubic Feet)</label>
         <div style="display: flex">
           <div style="
               box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);

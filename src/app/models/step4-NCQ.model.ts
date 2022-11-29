@@ -129,7 +129,7 @@ export class NIGERIA_CONTENT_Training {
     this.utilized_EQ = model.utilized_EQ;
     this.nigerian_Understudies = model.nigerian_Understudies;
     this.management_Foriegn = model.management_Foriegn;
-    this.management_Local = model.management_Foriegn;
+    this.management_Local = model.management_Local;
     this.staff_Foriegn = model.staff_Foriegn;
     this.staff_Local = model.staff_Local;
     this.actual_Proposed = model.actual_Proposed;

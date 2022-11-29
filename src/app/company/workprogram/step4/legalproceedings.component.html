@@ -36,191 +36,190 @@
   </div>
   <br />
   <div [formGroup]="letigationForm">
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Any Litigation ?</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
+    <div style="width: 50%; margin: auto 0 0">
+      <label class="labelwp">Any Litigation ?</label>
+      <div style="display: flex; width: 100%">
+        <div class="inputshadow" style="border-radius: 0">
+          <select
+            class="dropwp"
+            formControlName="anyLitigation"
+            [(ngModel)]="letigationBody.anyLitigation"
           >
-            <select
-              class="inpute"
-              formControlName="anyLitigation"
-              [(ngModel)]="letigationBody.anyLitigation"
+            <option selected disabled>
+              ---- Please Select an Option ----
+            </option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+    <div *ngIf="letigationBody.anyLitigation == 'YES'">
+      <div  style="display: flex; width: 100%; justify-content: space-between">
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Case Number</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
             >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="YES">YES</option>
-              <option value="NO">NO</option>
-            </select>
+              <input
+                formControlName="case_Number"
+                [(ngModel)]="letigationBody.case_Number"
+                class="inpute"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Case Number</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              formControlName="case_Number"
-              [(ngModel)]="letigationBody.case_Number"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Names of Parties</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              formControlName="names_of_Parties"
-              [(ngModel)]="letigationBody.names_of_Parties"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Jurisdiction</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
-          >
-            <select
-              class="inpute"
-              formControlName="jurisdiction"
-              [(ngModel)]="letigationBody.jurisdiction"
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Names of Parties</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
             >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="NIGERIAN">NIGERIAN</option>
-              <option value="FOREIGN">FOREIGN</option>
-            </select>
+              <input
+                formControlName="names_of_Parties"
+                [(ngModel)]="letigationBody.names_of_Parties"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Jurisdiction</label>
+          <div style="display: flex; width: 100%">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                padding: 5px;
+                border-radius: 20px;
+              "
+            >
+              <select
+                class="inpute"
+                formControlName="jurisdiction"
+                [(ngModel)]="letigationBody.jurisdiction"
+              >
+                <option selected disabled>
+                  ---- Please Select an Option ----
+                </option>
+                <option value="NIGERIAN">NIGERIAN</option>
+                <option value="FOREIGN">FOREIGN</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between;">
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Name of Court</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="name_of_Court"
+                [(ngModel)]="letigationBody.name_of_Court"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Summary of the case</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <textarea
+                type="text" rows="2"
+                formControlName="summary_of_the_case"
+                [(ngModel)]="letigationBody.summary_of_the_case"
+                class="inpute"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Any orders made so far by the court?</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <textarea
+                type="text" rows="2"
+                formControlName="any_orders_made_so_far_by_the_court"
+                [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
+                class="inpute"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between">
+
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Potential Outcome</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="potential_outcome"
+                [(ngModel)]="letigationBody.potential_outcome"
+                class="inpute"
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Name of Court</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="name_of_Court"
-              [(ngModel)]="letigationBody.name_of_Court"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Summary of the case</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="summary_of_the_case"
-              [(ngModel)]="letigationBody.summary_of_the_case"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Any orders made so far by the court?</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="any_orders_made_so_far_by_the_court"
-              [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Potential Outcome</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="potential_outcome"
-              [(ngModel)]="letigationBody.potential_outcome"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <br /><br />
+      <br /><br />
     <div>
       <div style="text-align: center">
         <button class="submitbtn" (click)="saveLitigation()">
@@ -229,8 +228,9 @@
       </div>
       <br />
     </div>
+    </div>
+
   </div>
-  <hr size="10" />
   <br /><br />
 
   <div
@@ -273,6 +273,8 @@
       </tbody>
     </table>
   </div>
+  <hr size="10" />
+  <br><br>
 
   <div style="width: 30%">
     <div style="font-weight: 500; margin-bottom: 5px">
@@ -283,198 +285,197 @@
   <br />
 
   <div [formGroup]="arbitrationForm">
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Any Arbitration ?</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
+    <div style="width: 30%; margin: auto 0 0">
+      <label class="labelwp">Any Arbitration ?</label>
+      <div style="display: flex; width: 100%">
+        <div class="inputshadow" style="border-radius: 0">
+          <select
+            class="dropwp"
+            formControlName="anyLitigation"
+            [(ngModel)]="arbitrationBody.anyArbitration"
           >
-            <select
-              class="inpute"
-              formControlName="anyLitigation"
-              [(ngModel)]="arbitrationBody.anyArbitration"
+            <option selected disabled>
+              ---- Please Select an Option ----
+            </option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+          </select>
+        </div>
+      </div>
+    </div><br><br>
+
+    <div *ngIf="arbitrationBody.anyArbitration == 'YES'">
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Case Number</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
             >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="YES">YES</option>
-              <option value="NO">NO</option>
-            </select>
+              <input
+                formControlName="case_Number"
+                [(ngModel)]="arbitrationBody.case_Number"
+                class="inpute"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Case Number</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              formControlName="case_Number"
-              [(ngModel)]="arbitrationBody.case_Number"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Names of Parties</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              formControlName="names_of_Parties"
-              [(ngModel)]="arbitrationBody.names_of_Parties"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Jurisdiction</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
-          >
-            <select
-              class="inpute"
-              formControlName="jurisdiction"
-              [(ngModel)]="arbitrationBody.jurisdiction"
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Names of Parties</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
             >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="NIGERIAN">NIGERIAN</option>
-              <option value="FOREIGN">FOREIGN</option>
-            </select>
+              <input
+                formControlName="names_of_Parties"
+                [(ngModel)]="arbitrationBody.names_of_Parties"
+                class="inpute"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Name of Court</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="name_of_Court"
-              [(ngModel)]="arbitrationBody.name_of_Court"
-              class="inpute"
-            />
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Jurisdiction</label>
+          <div style="display: flex; width: 100%">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                padding: 5px;
+                border-radius: 20px;
+              "
+            >
+              <select
+                class="inpute"
+                formControlName="jurisdiction"
+                [(ngModel)]="arbitrationBody.jurisdiction"
+              >
+                <option selected disabled>
+                  ---- Please Select an Option ----
+                </option>
+                <option value="NIGERIAN">NIGERIAN</option>
+                <option value="FOREIGN">FOREIGN</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Summary of the case</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="summary_of_the_case"
-              [(ngModel)]="arbitrationBody.summary_of_the_case"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Any orders made so far by the court?</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="any_orders_made_so_far_by_the_court"
-              [(ngModel)]="arbitrationBody.any_orders_made_so_far_by_the_court"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Potential Outcome</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              formControlName="potential_outcome"
-              [(ngModel)]="arbitrationBody.potential_outcome"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <br /><br />
-    <div>
-      <div style="text-align: center">
-        <button class="submitbtn" (click)="saveArbitration()">
-          Submit Arbitration
-        </button>
       </div>
       <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Name of Court</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="name_of_Court"
+                [(ngModel)]="arbitrationBody.name_of_Court"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Summary of the case</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="summary_of_the_case"
+                [(ngModel)]="arbitrationBody.summary_of_the_case"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Any orders made so far by the court?</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="any_orders_made_so_far_by_the_court"
+                [(ngModel)]="arbitrationBody.any_orders_made_so_far_by_the_court"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between">
+
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Potential Outcome</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="potential_outcome"
+                [(ngModel)]="arbitrationBody.potential_outcome"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <br /><br />
+      <div>
+        <div style="text-align: center">
+          <button class="submitbtn" (click)="saveArbitration()">
+            Submit Arbitration
+          </button>
+        </div>
+        <br />
+      </div>
     </div>
 
     <div

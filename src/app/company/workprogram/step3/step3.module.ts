@@ -13,9 +13,10 @@ import { Step3Component } from './step3.component';
 import { SWPBudgetPerformanceComponent } from './budget-performance.component';
 import { SWPBudgetProposalComponent } from './budget-proposal.component';
 import { SWPOilAndGasFacilityMaintenanceComponent } from './oil-and-gas-facility-maintenance.component';
+import { WorkProgramModule } from '../workprogram.module';
 
 @NgModule({
-  declarations: [  
+  declarations: [
     Step3Component,
     SWPBudgetPerformanceComponent,
     SWPBudgetProposalComponent,
@@ -30,7 +31,8 @@ import { SWPOilAndGasFacilityMaintenanceComponent } from './oil-and-gas-facility
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    Step1RoutingModule
+    Step1RoutingModule,
+    WorkProgramModule
   ]
 })
 export class Step3Module { }

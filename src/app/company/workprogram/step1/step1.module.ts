@@ -12,24 +12,26 @@ import { SWPConcessionSituationComponent } from './concession-situation.componen
 import { SWPDrillingOperationsComponent } from './drilling-operations.component';
 import { Step1Component } from './step1.component';
 import { SWPGeophysicalActivitiesComponent } from './geophysical-activities.component';
+import { WorkProgramModule } from "../workprogram.module";
 
 @NgModule({
-  declarations: [
-    Step1Component,
-    SWPConcessionSituationComponent,
-    SWPDrillingOperationsComponent,
-    SWPGeophysicalActivitiesComponent
-  ],
-  imports: [
-    CommonModule,
-    MatDatepickerModule,
-    MatIconModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    Step1RoutingModule
-  ]
+    declarations: [
+        Step1Component,
+        SWPConcessionSituationComponent,
+        SWPDrillingOperationsComponent,
+        SWPGeophysicalActivitiesComponent
+    ],
+    imports: [
+        CommonModule,
+        MatDatepickerModule,
+        MatIconModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        Step1RoutingModule,
+        WorkProgramModule
+    ]
 })
 export class Step1Module { }

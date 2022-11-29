@@ -45,7 +45,7 @@ export class GenericService {
   fieldWell: string = 'GAS WELL';
   fieldID: number;
   OMLList = [];
-  Field_List = [];
+  Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   applicationDetails: ApplicationDetails;
   hseTechnicalSafety: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
@@ -522,6 +522,34 @@ export class GenericService {
     let halfone = this.formatNum(term.split('.')[0]);
     let halftwo = term.split('.')[1];
     e.value = halfone + '.' + halftwo;
+    return e.value;
+  }
+
+  checkBSCFMin(event, gasMin: HTMLElement) {
+    debugger;
+    let e = event.target as HTMLInputElement;
+    let term = parseFloat(e.value.toString().replace(/,+/g, ''));
+    if (Number(term) < 1000000) {
+      gasMin.textContent = 'Value is too low';
+      gasMin.style.color = 'orange';
+    } else {
+      gasMin.textContent = '';
+    }
+    
+    return e.value;
+  }
+
+  checkMMBBLMin(event, oilMin: HTMLElement) {
+    debugger;
+    let e = event.target as HTMLInputElement;
+    let term = parseFloat(e.value.toString().replace(/,+/g, ''));
+    if (Number(term) < 100000) {
+      oilMin.textContent = 'Value is too low';
+      oilMin.style.color = 'orange';
+    } else {
+      oilMin.textContent = '';
+    }
+    
     return e.value;
   }
 

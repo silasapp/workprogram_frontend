@@ -42,6 +42,9 @@ export class ConcessionsfieldsComponent implements OnInit {
   isAddConcession = false;
   isAddField = false;
   isInsert = true;
+  concessionAction = 'INSERT';
+  fieldAction = 'INSERT';
+  concessionList = [];
 
   columns = [
     //   {
@@ -71,6 +74,21 @@ export class ConcessionsfieldsComponent implements OnInit {
     {
       "columnDef": "geological_location",
       "header": "GEOLOGICAL LOCATION"
+    }
+  ]
+
+  fieldColumns = [
+    {
+      "columnDef": "field_ID",
+      "header": "FIELD ID"
+    },
+    {
+      "columnDef": "concession_Held",
+      "header": "CONCESSION."
+    },
+    {
+      "columnDef": "field_Name",
+      "header": "FIELD NAME"
     }
   ]
 
@@ -119,21 +137,22 @@ export class ConcessionsfieldsComponent implements OnInit {
 
 
   getConcessionFields() {
-    this.adminservice.getConcessionFields()
+    this.adminservice.getCompanyConcessions()
       .subscribe(res => {
+        this.concessionList = res.concessions;
         let concessionInfo = {} as ConcessionDetails;
         let fieldInfo = {} as FieldDetails;
-        if (res.companyConcessions != null && res.companyConcessions.length > 0) {
-          concessionInfo = res.companyConcessions[0] as ConcessionDetails;
+        if (res.concessions != null && res.concessions.length > 0) {
+          concessionInfo = res.concessions[0] as ConcessionDetails;
           concessionInfo.date_of_Expiration = this.genk.formDate(concessionInfo.date_of_Expiration);
           concessionInfo.year_of_Grant_Award = this.genk.formDate(concessionInfo.year_of_Grant_Award);
-          this.loadTable_Concession(res.companyConcessions);
-          this.allConcessions = res.companyConcessions;
+          this.loadTable_Concession(res.concessions);
+          this.allConcessions = res.concessions;
         }
-        if (res.companyFields != null && res.companyFields.length > 0) {
-          fieldInfo = res.companyFields[0] as FieldDetails;
-          this.loadTable_Field(res.companyFields);
-          this.allFields = res.companyFields;
+        if (res.fields != null && res.fields.length > 0) {
+          fieldInfo = res.fields[0] as FieldDetails;
+          this.loadTable_Field(res.fields);
+          this.allFields = res.fields;
         }
         // this.fieldBody = fieldInfo;
         // this.concessionBody = concessionInfo;
@@ -201,20 +220,18 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   ConcessionSubmit() {
-    debugger;
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
-debugger;
+
     for (let item in this.concessionBody) {
       //if (item != 'consession_Id' && item != 'date_of_Expiration') {
       if (item != 'consession_Id' ) {
         concessionInfo[this.genk.upperText(item)] = this.concessionBody[item] ?? '';
       }
       else {
-        debugger;
         id = this.concessionBody[item]?.toString();
-        actionToDo = id === '' || id === undefined ? 'INSERT': 'UPDATE';         
+        actionToDo = id === '' || id === undefined ? 'INSERT': 'UPDATE';
       }
     }
     this.adminservice.Post_ConcessionDetails(concessionInfo, id, actionToDo)
@@ -229,7 +246,7 @@ debugger;
         this.togAddConcession();
       })
   }
- 
+
 
   FieldSubmit() {
     //debugger;
@@ -242,11 +259,27 @@ debugger;
       if (item != 'field_ID') {
         fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
       }
-      if (this.fieldBody[item]?.toString() != "undefined") {
-        actionToDo = 'UPDATE';
+      else {
         id = this.fieldBody[item]?.toString();
       }
+
+
+      if (this.fieldAction == 'INSERT') {
+        actionToDo = 'INSERT';
+      }
+      else if(this.fieldAction == 'UPDATE') {
+        actionToDo = 'UPDATE';
+      }
+      else if(this.fieldAction == 'DELETE') {
+        actionToDo = 'DELETE';
+
+      }
     }
+    debugger;
+    let dell = this.concessionList.filter(res => {
+      return res.concession_Held == this.fieldBody['concession_Name'];
+    });
+    fieldInfo['Concession_Id'] = dell[0].consession_Id;
 
     this.adminservice.Post_FieldDetails(fieldInfo, id, actionToDo)
       .subscribe(res => {
@@ -314,6 +347,8 @@ debugger;
     let info = this.allConcessions as ConcessionDetails[];
     let con = info.filter(element => element.consession_Id == event.target.value);
     this.concessionBody = con[0];
+    this.togAddConcession();
+    this.concessionAction = 'UPDATE';
   }
 
   Edit_Field(event) {
@@ -326,36 +361,69 @@ debugger;
   loadTable_Field(data) {
     this.f_ColumnHeader = [];
     this.f_ColumnValue = [];
+    let datae: any[] = data;
 
     if (data != null) {
-      //data= this.filter(data);
+    const res = datae.map(data => this.fieldColumns.reduce((o, k) => (o[k.columnDef] = data[k.columnDef], o), {}));
+
+      data = this.filter(data);
       var result = Object.entries(data).reduce((acc, [key, value]) => {
         acc[key] = value == null ? '' : value;
         return acc;
       }, {});
 
-      this.f_ColumnHeader.push(data[0]);
-      this.f_ColumnValue.push(result);
-
-
+      this.f_ColumnHeader = this.fieldColumns;
+      this.f_ColumnValue = res;
     }
     else {
-      for (let item1 in this.fieldForm.controls) {
+      for (let item1 in this.concessionFieldForm.controls) {
         if (item1 != 'comment') {
           this.f_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
-          this.f_ColumnValue.push(this.fieldBody[item1]);
+          this.f_ColumnValue.push(this.concessionBody[item1]);
         }
       }
     }
 
     this.f_isTabVisible = true;
     this.cd.markForCheck();
+
+
+
+    // this.f_ColumnHeader = [];
+    // this.f_ColumnValue = [];
+
+    // if (data != null) {
+    //   //data= this.filter(data);
+    //   var result = Object.entries(data).reduce((acc, [key, value]) => {
+    //     acc[key] = value == null ? '' : value;
+    //     return acc;
+    //   }, {});
+
+    //   this.f_ColumnHeader.push(data[0]);
+    //   this.f_ColumnValue.push(result);
+
+
+    // }
+    // else {
+    //   for (let item1 in this.fieldForm.controls) {
+    //     if (item1 != 'comment') {
+    //       this.f_ColumnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+    //       this.f_ColumnValue.push(this.fieldBody[item1]);
+    //     }
+    //   }
+    // }
+
+    // this.f_isTabVisible = true;
+    // this.cd.markForCheck();
   }
 
   Delete_Field(event) {
+    this.concessionAction = 'DELETE';
     let info = this.fieldBody as FieldDetails;
+    debugger;
+    let ide = event.target.value;
 
-    this.adminservice.Post_FieldDetails(info, event.target.value, "DELETE")
+    this.adminservice.Post_FieldDetails(info, ide, "DELETE")
       .subscribe(res => {
 
         if (res.statusCode == 300) {
@@ -365,7 +433,7 @@ debugger;
           this.modalService.logNotice("Success", res.message, 'success');
           this.loadTable_Field(res.data);
         }
-      })
+      });
   }
   filter(data) {
     const resultArray = Object.keys(data).map(index => {
@@ -425,6 +493,7 @@ debugger;
     } else {
       this.isAddField = false;
     }
+    this.fieldAction = 'INSERT';
     this.cd.markForCheck();
   }
 
