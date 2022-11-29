@@ -72,7 +72,7 @@ wkpYear: string;
   }
 
   getStrategicPlansOnCompanyBases() {
-    this.workprogram.getStrategicPlans(this.genk.wpYear, this.genk.fieldName, this.genk.OmlName).subscribe(result => {
+    this.workprogram.getStrategicPlans(this.genk.wpYear).subscribe(result => {
       if (result.strategicPlans) {
         this.strategicData = result.strategicPlans;
         this.strategicplansBody = result.strategicPlans[0];
@@ -86,8 +86,9 @@ wkpYear: string;
 
   saveStrategicPlansOnCompanyBases() {
     //console.log(this.strategicplansBody);
+    this.strategicplansBody.activities = this.activities;
     this.strategicplansBody.id = 0;
-    this.workprogram.saveStrategicPlans(this.strategicplansBody, this.genk.wpYear, this.genk.fieldName, this.genk.OmlName)
+    this.workprogram.saveStrategicPlans(this.strategicplansBody, this.genk.wpYear)
     .subscribe(result =>
     {
       this.modalService.logNotice("Success", "Data saved successfully!", 'success');
@@ -98,6 +99,7 @@ wkpYear: string;
   changeActivities(e) {
     debugger;
     let activities = e.target.value;
+    this.activities = activities;
     this.strategicplansBody = {} as STRATEGIC_PLANS_ON_COMPANY_BASES;
     this.strategicplansBody = this.strategicData.filter(res => {
       return res.activities === activities;
@@ -141,7 +143,7 @@ wkpYear: string;
     let info = this.strategicplansBody as STRATEGIC_PLANS_ON_COMPANY_BASES;
 debugger;
     this.workprogram
-      .saveStrategicPlans(info, this.genk.wpYear, this.genk.fieldName, this.genk.OmlName)
+      .saveStrategicPlans(info, this.genk.wpYear)
       .subscribe(res => {
         this.loadTable_StrategicPlan(res.data);
         this.modalService.logNotice("Success", res.message, 'success');

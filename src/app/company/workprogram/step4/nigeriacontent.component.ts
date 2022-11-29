@@ -260,15 +260,11 @@ export class SWPNigeriaContentComponent implements OnInit {
     // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
-  
+
 
   getNigeriaContentTraining() {
     this.workprogram
-      .getNigeriaContentTraining(
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName
-      )
+      .getNigeriaContentTraining(this.genk.wpYear)
       .subscribe((result) => {
         if (result.nigeriaContent) {
           const tempList = result.nigeriaContent;
@@ -358,13 +354,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   // }
 
   saveNigeriaContentTraining() {
-    this.workprogram
-      .saveNigeriaContenttraining(
-        this.nigeriacontenttrainingBody,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        ''
-      )
+    this.workprogram.saveNigeriaContenttraining(this.nigeriacontenttrainingBody, this.genk.wpYear)
       .subscribe((result) => {
         this.modalService.logNotice(
           'Success',
@@ -396,8 +386,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.workprogram
       .saveNigeriaContentQuestion(
         this.seniormanagementstaffBody,
-        this.genk.wpYear,
-        this.genk.OmlName
+        this.genk.wpYear
       )
       .subscribe((result) => {
         this.modalService.logNotice(
@@ -443,7 +432,7 @@ export class SWPNigeriaContentComponent implements OnInit {
       actual_Proposed: this.activeMenu,
       management_Foriegn: this.staffdispositionBody.management_Foriegn,
       management_Local: this.staffdispositionBody.management_Local,
-      nigerian_Understudies: this.staffdispositionBody.staff_Foriegn,
+      nigerian_Understudies: this.staffdispositionBody.nigerian_Understudies,
       staff_Foriegn: this.staffdispositionBody.staff_Foriegn,
       staff_Local: this.staffdispositionBody.staff_Local,
       expatriate_quota_positions:
@@ -454,9 +443,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.workprogram
       .saveAddStaffDisposition(
         model_ as NIGERIA_CONTENT_Training,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName
+        this.genk.wpYear
       )
       .subscribe((result) => {
         this.modalService.logNotice(
