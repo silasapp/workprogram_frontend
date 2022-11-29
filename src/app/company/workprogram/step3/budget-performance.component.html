@@ -20,7 +20,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_Direct_Exploration_and_Production_Activities_NGN"
                                                                 [(ngModel)]="budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN">
                                                 </div>
@@ -32,7 +33,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_Direct_Exploration_and_Production_Activities_USD"
                                                                 [(ngModel)]="budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD">
                                                 </div>
@@ -53,7 +55,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_other_Activities_NGN"
                                                                 [(ngModel)]="budgetBody.budget_for_other_Activities_NGN">
                                                 </div>
@@ -65,7 +68,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="budget_for_other_Activities_USD"
                                                                 [(ngModel)]="budgetBody.budget_for_other_Activities_USD">
                                                 </div>
@@ -86,7 +90,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px  rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="equivalent_Naira_and_Dollar_Component_NGN"
                                                                 [(ngModel)]="budgetBody.equivalent_Naira_and_Dollar_Component_NGN">
                                                 </div>
@@ -98,7 +103,8 @@
                                         <div style="display: flex;">
                                                 <div
                                                         style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                        <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                        <input (keypress)="genk.restrictData($event)"
+                                                                (keyup)="genk.formatCurrency($event)" class="inpute"
                                                                 formControlName="equivalent_Naira_and_Dollar_Component_USD"
                                                                 [(ngModel)]="budgetBody.equivalent_Naira_and_Dollar_Component_USD">
                                                 </div>
@@ -173,7 +179,9 @@
                                                 <div style="display: flex;">
                                                         <div
                                                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                                                                <input (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" class="inpute"
+                                                                <input (keypress)="genk.restrictData($event)"
+                                                                        (keyup)="genk.formatCurrency($event)"
+                                                                        class="inpute"
                                                                         formControlName="aCQUISITION_planned"
                                                                         [(ngModel)]="exploratoryBody.acquisitioN_planned">
                                                         </div>
@@ -970,4 +978,10 @@
 
         <br>
 
+</div>
+
+<br><br>
+<div style="text-align: center;">
+        <button [routerLink]="['/' + genk.company, genk.workprogram, 'step3', 'budgetproposal']"
+                class="nextbtn">Next</button>
 </div>

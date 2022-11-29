@@ -25,7 +25,7 @@ export class LegalLitigationComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class LegalLitigationComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -49,15 +49,15 @@ export class LegalLitigationComponent implements OnInit {
           "header": "CONSESSION TYPE"
       },
       {
-          "columnDef": "anyLitigation",
+          "columnDef": "anylitigation",
           "header": "ANY LITIGATION?"
       },
       {
-          "columnDef": "case_Number",
+          "columnDef": "case_number",
           "header": "CASE NUMBER"
       },
       {
-          "columnDef": "names_of_Parties",
+          "columnDef": "names_of_parties",
           "header": " NAMES OF PARTIES"
       },
       {
@@ -65,7 +65,7 @@ export class LegalLitigationComponent implements OnInit {
           "header": "JURISDICTION"
       },
       {
-          "columnDef": "name_of_Court",
+          "columnDef": "name_of_court",
           "header": " NAME OF COURT"
       },
       {
@@ -83,7 +83,7 @@ export class LegalLitigationComponent implements OnInit {
 
       repcolumns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -91,7 +91,7 @@ export class LegalLitigationComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -107,15 +107,15 @@ export class LegalLitigationComponent implements OnInit {
           "header": "CONSESSION TYPE"
       },
       {
-          "columnDef": "anyLitigation",
+          "columnDef": "anylitigation",
           "header": "ANY LITIGATION?"
       },
       {
-          "columnDef": "case_Number",
+          "columnDef": "case_number",
           "header": "CASE NUMBER"
       },
       {
-          "columnDef": "names_of_Parties",
+          "columnDef": "names_of_parties",
           "header": " NAMES OF PARTIES"
       },
       {
@@ -123,7 +123,7 @@ export class LegalLitigationComponent implements OnInit {
           "header": "JURISDICTION"
       },
       {
-          "columnDef": "name_of_Court",
+          "columnDef": "name_of_court",
           "header": " NAME OF COURT"
       },
       {

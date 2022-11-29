@@ -25,7 +25,7 @@ export class ReservesReplacementRatioComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,11 +33,11 @@ export class ReservesReplacementRatioComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
-          "columnDef": "reserveS_REPLACEMENT_RATIO_VALUE",
+          "columnDef": "reserves_replacement_ratio_value",
           "header": "RESERVES REPLACEMENT RATIO VALUE"
       },
       {
@@ -49,7 +49,7 @@ export class ReservesReplacementRatioComponent implements OnInit {
           "header": "TERRAIN"
       },
       {
-          "columnDef": "trend_Year",
+          "columnDef": "trend_year",
           "header": "TREND YEAR"
       }];
 
@@ -67,7 +67,7 @@ export class ReservesReplacementRatioComponent implements OnInit {
             "header": "YEAR"
         },
         {
-            "columnDef": "reserveS_REPLACEMENT_RATIO_VALUE",
+            "columnDef": "reserves_replacement_ratio_value",
             "header": "RESERVES REPLACEMENT RATIO VALUE"
         },
         {
@@ -79,7 +79,7 @@ export class ReservesReplacementRatioComponent implements OnInit {
             "header": "TERRAIN"
         },
         {
-            "columnDef": "trend_Year",
+            "columnDef": "trend_year",
             "header": "TREND YEAR"
         }];
 

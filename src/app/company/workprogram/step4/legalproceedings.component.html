@@ -526,7 +526,11 @@
     <br />
   </div>
 
-  <div>
+
+
+
+
+  <!-- <div>
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="text-align: center">
         <button class="submitbtn">Previous</button>
@@ -543,7 +547,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="isTabVisible" class="wptablebox">
     <div class="apptable">
@@ -565,4 +569,9 @@
       </table>
     </div>
   </div>
+</div>
+
+<div style="text-align: center;">
+  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']"
+    class="nextbtn">Next</button>
 </div>

@@ -25,7 +25,7 @@ export class ReservesUpdatesDepletionRateComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class ReservesUpdatesDepletionRateComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -53,13 +53,13 @@ export class ReservesUpdatesDepletionRateComponent implements OnInit {
           "header": "AG"
       },
       {
-          "columnDef": "date_Created",
+          "columnDef": "date_created",
           "header": "DATE CREATED"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -67,7 +67,7 @@ export class ReservesUpdatesDepletionRateComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -87,7 +87,7 @@ export class ReservesUpdatesDepletionRateComponent implements OnInit {
             "header": "AG"
         },
         {
-            "columnDef": "date_Created",
+            "columnDef": "date_created",
             "header": "DATE CREATED"
         }];
 

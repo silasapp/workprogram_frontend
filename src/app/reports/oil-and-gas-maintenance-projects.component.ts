@@ -25,7 +25,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -49,7 +49,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
         "header": "CONTRACT TYPE"
     },
       {
-          "columnDef": "major_Projects",
+          "columnDef": "major_projects",
           "header": "MAJOR PROJECTS"
       },
       {
@@ -57,15 +57,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": " NAME"
       },
       {
-          "columnDef": "objective_Drivers_",
+          "columnDef": "objective_drivers_",
           "header": "OBJECTIVE DRIVERS "
       },
       {
-          "columnDef": "approval_License_Permits",
+          "columnDef": "approval_license_permits",
           "header": "APPROVAL LICENSE PERMITS"
       },
       {
-          "columnDef": "completion_Status",
+          "columnDef": "completion_status",
           "header": "COMPLETION STATUS"
       },
       {
@@ -77,15 +77,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": "FEED"
       },
       {
-          "columnDef": "detailed_Engineering",
+          "columnDef": "detailed_engineering",
           "header": "DETAILED ENGINEERING"
       },
       {
-          "columnDef": "construction_Commissioning_",
+          "columnDef": "construction_commissioning_",
           "header": "CONSTRUCTION COMMISSIONING "
       },
       {
-          "columnDef": "production_Product_Offtakers",
+          "columnDef": "production_product_offtakers",
           "header": "PRODUCTION PRODUCT OFFTAKERS"
       },
       {
@@ -93,15 +93,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": "CHALLENGES"
       },
       {
-          "columnDef": "project_Timeline",
+          "columnDef": "project_timeline",
           "header": "PROJECT TIMELINE"
       },
       {
-          "columnDef": "new_Technology_",
+          "columnDef": "new_technology_",
           "header": "NEW TECHNOLOGY "
       },
       {
-          "columnDef": "has_it_been_adopted_by_DPR_",
+          "columnDef": "has_it_been_adopted_by_dpr_",
           "header": "HAS IT BEEN ADOPTED BY DPR "
       },
      
@@ -119,32 +119,32 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
       },
       
       {
-          "columnDef": "actual_capital_expenditure_Current_year_NGN",
+          "columnDef": "actual_capital_expenditure_current_year_ngn",
           "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR NGN"
       },
       {
-          "columnDef": "actual_capital_expenditure_Current_year_USD",
+          "columnDef": "actual_capital_expenditure_current_year_usd",
           "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR USD"
       },
       {
-          "columnDef": "proposed_Capital_Expenditure_NGN",
+          "columnDef": "proposed_capital_expenditure_ngn",
           "header": "PROPOSED CAPITAL EXPENDITURE NGN"
       },
       {
-          "columnDef": "proposed_Capital_Expenditure_USD",
+          "columnDef": "proposed_capital_expenditure_usd",
           "header": "PROPOSED CAPITAL EXPENDITURE USD"
       },
       {
-          "columnDef": "project_Stage",
+          "columnDef": "project_stage",
           "header": "PROJECT STAGE"
       },
       {
-          "columnDef": "nigerian_Content_Value",
+          "columnDef": "nigerian_content_value",
           "header": "NIGERIAN CONTENT VALUE"
       },
       
       {
-          "columnDef": "actual_Proposed",
+          "columnDef": "actual_proposed",
           "header": "ACTUAL PROPOSED"
       },
        {
@@ -154,7 +154,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -162,7 +162,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -178,7 +178,7 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
           "header": "CONTRACT TYPE"
       },
         {
-            "columnDef": "major_Projects",
+            "columnDef": "major_projects",
             "header": "MAJOR PROJECTS"
         },
         {
@@ -186,15 +186,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
             "header": " NAME"
         },
         {
-            "columnDef": "objective_Drivers_",
+            "columnDef": "objective_drivers_",
             "header": "OBJECTIVE DRIVERS "
         },
         {
-            "columnDef": "approval_License_Permits",
+            "columnDef": "approval_license_permits",
             "header": "APPROVAL LICENSE PERMITS"
         },
         {
-            "columnDef": "completion_Status",
+            "columnDef": "completion_status",
             "header": "COMPLETION STATUS"
         },
         {
@@ -206,15 +206,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
             "header": "FEED"
         },
         {
-            "columnDef": "detailed_Engineering",
+            "columnDef": "detailed_engineering",
             "header": "DETAILED ENGINEERING"
         },
         {
-            "columnDef": "construction_Commissioning_",
+            "columnDef": "construction_commissioning_",
             "header": "CONSTRUCTION COMMISSIONING "
         },
         {
-            "columnDef": "production_Product_Offtakers",
+            "columnDef": "production_product_offtakers",
             "header": "PRODUCTION PRODUCT OFFTAKERS"
         },
         {
@@ -222,15 +222,15 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
             "header": "CHALLENGES"
         },
         {
-            "columnDef": "project_Timeline",
+            "columnDef": "project_timeline",
             "header": "PROJECT TIMELINE"
         },
         {
-            "columnDef": "new_Technology_",
+            "columnDef": "new_technology_",
             "header": "NEW TECHNOLOGY "
         },
         {
-            "columnDef": "has_it_been_adopted_by_DPR_",
+            "columnDef": "has_it_been_adopted_by_dpr_",
             "header": "HAS IT BEEN ADOPTED BY DPR "
         },
        
@@ -252,28 +252,28 @@ export class OilAndGasMaintenanceProjectsComponent implements OnInit {
             "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR NGN"
         },
         {
-            "columnDef": "actual_capital_expenditure_Current_year_USD",
+            "columnDef": "actual_capital_expenditure_current_year_usd",
             "header": "ACTUAL CAPITAL EXPENDITURE CURRENT YEAR USD"
         },
         {
-            "columnDef": "proposed_Capital_Expenditure_NGN",
+            "columnDef": "proposed_capital_expenditure_ngn",
             "header": "PROPOSED CAPITAL EXPENDITURE NGN"
         },
         {
-            "columnDef": "proposed_Capital_Expenditure_USD",
+            "columnDef": "proposed_capital_expenditure_usd",
             "header": "PROPOSED CAPITAL EXPENDITURE USD"
         },
         {
-            "columnDef": "project_Stage",
+            "columnDef": "project_stage",
             "header": "PROJECT STAGE"
         },
         {
-            "columnDef": "nigerian_Content_Value",
+            "columnDef": "nigerian_content_value",
             "header": "NIGERIAN CONTENT VALUE"
         },
         
         {
-            "columnDef": "actual_Proposed",
+            "columnDef": "actual_proposed",
             "header": "ACTUAL PROPOSED"
         },
          {

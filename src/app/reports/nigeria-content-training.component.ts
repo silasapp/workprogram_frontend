@@ -34,11 +34,11 @@ export class NigeriaContentTrainingComponent implements OnInit {
           "header": "OML ID"
       },
       {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "OML  NAME"
       },
       {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -46,7 +46,7 @@ export class NigeriaContentTrainingComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -79,35 +79,35 @@ export class NigeriaContentTrainingComponent implements OnInit {
           "header": "EXPATRIATE QUOTA POSITIONS"
       },
       {
-          "columnDef": "utilized_EQ",
+          "columnDef": "utilized_eq",
           "header": "UTILIZED EQ"
       },
       {
-          "columnDef": "nigerian_Understudies",
+          "columnDef": "nigerian_understudies",
           "header": "NIGERIAN UNDERSTUDIES"
       },
       {
-          "columnDef": "management_Foriegn",
+          "columnDef": "management_foriegn",
           "header": "MANAGEMENT FORIEGN"
       },
       {
-          "columnDef": "management_Local",
+          "columnDef": "management_local",
           "header": "MANAGEMENT LOCAL"
       },
       {
-          "columnDef": "staff_Foriegn",
+          "columnDef": "staff_foriegn",
           "header": "STAFF FORIEGN"
       },
       {
-          "columnDef": "staff_Local",
+          "columnDef": "staff_local",
           "header": "STAFF LOCAL"
       },
       {
-          "columnDef": "actual_Proposed",
+          "columnDef": "actual_proposed",
           "header": "ACTUAL PROPOSED"
       },
       {
-          "columnDef": "actual_Proposed_Year",
+          "columnDef": "actual_proposed_year",
           "header": "ACTUAL PROPOSED YEAR"
       }];
 
@@ -121,11 +121,11 @@ export class NigeriaContentTrainingComponent implements OnInit {
             "header": "OML ID"
         },
         {
-            "columnDef": "omL_Name",
+            "columnDef": "oml_name",
             "header": "OML  NAME"
         },
         {
-            "columnDef": "companyName",
+            "columnDef": "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -133,7 +133,7 @@ export class NigeriaContentTrainingComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -166,35 +166,35 @@ export class NigeriaContentTrainingComponent implements OnInit {
             "header": "EXPATRIATE QUOTA POSITIONS"
         },
         {
-            "columnDef": "utilized_EQ",
+            "columnDef": "utilized_eq",
             "header": "UTILIZED EQ"
         },
         {
-            "columnDef": "nigerian_Understudies",
+            "columnDef": "nigerian_understudies",
             "header": "NIGERIAN UNDERSTUDIES"
         },
         {
-            "columnDef": "management_Foriegn",
+            "columnDef": "management_foriegn",
             "header": "MANAGEMENT FORIEGN"
         },
         {
-            "columnDef": "management_Local",
+            "columnDef": "management_local",
             "header": "MANAGEMENT LOCAL"
         },
         {
-            "columnDef": "staff_Foriegn",
+            "columnDef": "staff_foriegn",
             "header": "STAFF FORIEGN"
         },
         {
-            "columnDef": "staff_Local",
+            "columnDef": "staff_local",
             "header": "STAFF LOCAL"
         },
         {
-            "columnDef": "actual_Proposed",
+            "columnDef": "actual_proposed",
             "header": "ACTUAL PROPOSED"
         },
         {
-            "columnDef": "actual_Proposed_Year",
+            "columnDef": "actual_proposed_year",
             "header": "ACTUAL PROPOSED YEAR"
         }];
 

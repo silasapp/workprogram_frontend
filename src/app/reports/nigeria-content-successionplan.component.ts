@@ -25,7 +25,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
   
       columns = [
       {
-          "columnDef":  "companyName",
+          "columnDef":  "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -61,7 +61,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
           "header": "TIMELINE "
       },
       {
-          "columnDef": "position_Occupied_",
+          "columnDef": "position_occupied_",
           "header": "POSITION OCCUPIED "
       },
       {
@@ -69,13 +69,13 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
           "header": "ACTUAL PROPOSED"
       },
       {
-          "columnDef": "actual_Proposed_Year",
+          "columnDef": "actual_proposed_year",
           "header": "ACTUAL PROPOSED YEAR"
       }];
 
       repcolumns = [
         {
-            "columnDef":  "companyName",
+            "columnDef":  "companyname",
             "header": "COMPANY NAME"
         },
         {
@@ -83,7 +83,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
             "header": "COMPANY EMAIL"
         },
         {
-            "columnDef": "year_of_WP",
+            "columnDef": "year_of_wp",
             "header": "YEAR"
         },
         {
@@ -111,7 +111,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
             "header": "TIMELINE "
         },
         {
-            "columnDef": "position_Occupied_",
+            "columnDef": "position_occupied_",
             "header": "POSITION OCCUPIED "
         },
         {
@@ -119,7 +119,7 @@ export class NigeriaContentSuccessionplanComponent implements OnInit {
             "header": "ACTUAL PROPOSED"
         },
         {
-            "columnDef": "actual_Proposed_Year",
+            "columnDef": "actual_proposed_Year",
             "header": "ACTUAL PROPOSED YEAR"
         }];
 
