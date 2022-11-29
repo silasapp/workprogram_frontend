@@ -46,7 +46,7 @@ export class BoardComponent implements OnInit {
   }
 
   checkCompletedSteps() {
-    this.workprogram.getCompletedSteps(this.genk.OmlName).subscribe((res) => {
+    this.workprogram.getCompletedSteps(this.genk.OmlName, this.genk.wpYear).subscribe((res) => {
       this.genk.isStep1 = res.step1;
       this.genk.isStep2 = res.step2;
       this.genk.isStep3 = res.step3;

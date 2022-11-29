@@ -182,6 +182,8 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   loadTable() {
+    this.columnHeader = [];
+    this.columnValue = [];
     for (let item1 in this.ConcessionSituationForm.controls) {
       if (item1 != 'comment') {
         this.columnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
@@ -197,7 +199,6 @@ export class SWPConcessionSituationComponent implements OnInit {
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
@@ -225,15 +226,18 @@ export class SWPConcessionSituationComponent implements OnInit {
           conInfo.date_of_Expiration = this.genk.formDate(
             conInfo.date_of_Expiration
           );
+          this.concessionBody = {} as CONCESSION_SITUATION;
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
           this.genk.isStep1 = true;
           this.cd.markForCheck();
           console.log(this.concessionBody.companyName);
-          this.loadTable();
-        }
 
-        this.getRoyaltyHeld();
+          setTimeout(() => {
+            this.loadTable();
+        }, 2000);
+        }
+          this.getRoyaltyHeld();
       });
   }
 
@@ -241,12 +245,16 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
-        this.royaltyBody = res.royalty[0] as Royalty;
+        if (res.length > 0) {
+          this.royaltyBody = res.royalty[0] as Royalty;
+          console.log(this.royaltyBody.royalty_ID);
+        }
+        else {
+          this.royaltyBody = {} as Royalty;
+        }
         this.cd.markForCheck();
-
         this.genk.isStep1 = true;
         this.cd.markForCheck();
-        console.log(this.royaltyBody.royalty_ID);
       });
   }
 

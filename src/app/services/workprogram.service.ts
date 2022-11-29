@@ -2817,8 +2817,8 @@ getAppsOnMyDesk(){
   )
 }
 
-getCompletedSteps(concessionName){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName}} )
+getCompletedSteps(concessionName, year){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName, year: year}} )
   .pipe(retry(this.num),
   map((response) => {
     return response;
