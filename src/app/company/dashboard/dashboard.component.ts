@@ -12,6 +12,8 @@ import { CompanyService } from 'src/app/services/company.service';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
 import { CompanyDashboardBody, CompanyReportModel, DashboardGasBudgetAndReserveBody } from 'src/app/models/company-details';
 import Swal from 'sweetalert2';
+import { AdminService } from 'src/app/services/admin.service';
+import { DashboardModel } from 'src/app/models/application-details';
 declare var $: any;
 
 @Component({
@@ -42,6 +44,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any[];
+  dashboardStuff : DashboardModel;   
+  adminservice : AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
   f_ColumnHeader = [];
@@ -103,9 +107,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.auth = authenticationService;
     this.companyService = company;
   }
-
+  
   ngOnInit(): void {
-
   }
   ngAfterViewInit() {
     this.getCompanyDashboardReport();
@@ -152,7 +155,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.cd.markForCheck();
 
   }
-
+  getDashboardStuff(){
+    debugger;
+    this.adminservice.getDashboardStuff()
+    .subscribe(res=>
+      {
+        this.dashboardStuff = res;
+      }
+      )
+  }
   // firstChart() {
   //   debugger;
   //   if (this.isBrowser) {
