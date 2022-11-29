@@ -27,21 +27,7 @@
           </div>
         </div> -->
 
-        <div *ngIf="genk.OmlName" style=" display: flex; align-items: center;">
-          <div class="omlstyle">
-            <span>CONCESSION(S) HELD: </span>
-          </div>
-            <div style="width: 400px">
-              <select formControlName="concession_Held" [value]="genk.OmlName" (change)="changeConcessionHeld($event)" class="basesel">
-                <option selected disabled>-Select Concession-</option>
-                <option *ngFor="let list of concessionHeldList">
-                  {{ list }}
-                </option>
-              </select>
-            </div>
-        </div>
-
-        <div *ngIf="!genk.OmlName" style=" display: flex; align-items: center;">
+        <div style=" display: flex; align-items: center;">
           <div class="omlstyle">
             <span>CONCESSION(S) HELD: </span>
           </div>
@@ -54,6 +40,20 @@
               </select>
             </div>
         </div>
+
+        <!-- <div *ngIf="!genk.OmlName" style=" display: flex; align-items: center;">
+          <div class="omlstyle">
+            <span>CONCESSION(S) HELD: </span>
+          </div>
+            <div style="width: 400px">
+              <select formControlName="concession_Held" (change)="changeConcessionHeld($event)" class="basesel">
+                <option selected disabled>-Select Concession-</option>
+                <option *ngFor="let list of concessionHeldList">
+                  {{ list }}
+                </option>
+              </select>
+            </div>
+        </div> -->
 
         <div *ngIf="genk.Field_List">
           <div *ngIf="genk.fieldName" style="display: flex; align-items: center;">
