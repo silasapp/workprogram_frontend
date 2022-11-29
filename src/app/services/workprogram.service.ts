@@ -2798,6 +2798,15 @@ getApplication(id){
   })
   )
 }
+getProcessApplication(id){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/processapplication`, {params:{appID: id}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 getAppsOnMyDesk(){
   debugger;
   return this.http.get<any>(`${environment.apiUrl}/application/getappsonmydesk` )

@@ -12,6 +12,8 @@ import { CompanyService } from 'src/app/services/company.service';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
 import { CompanyDashboardBody, CompanyReportModel, DashboardGasBudgetAndReserveBody } from 'src/app/models/company-details';
 import Swal from 'sweetalert2';
+import { AdminService } from 'src/app/services/admin.service';
+import { DashboardModel } from 'src/app/models/application-details';
 declare var $: any;
 
 @Component({
@@ -39,6 +41,8 @@ export class DashboardComponent implements OnInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any;
+  dashboardStuff : DashboardModel;   
+  adminservice : AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
   f_ColumnHeader = [];
@@ -89,15 +93,17 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  constructor(private report: WorkprogrammeReportService, private _companyService: CompanyService, private genReport: ReportService, private modale: ModalService, private gen: GenericService, private cd: ChangeDetectorRef) {
+  constructor(private report: WorkprogrammeReportService, private _companyService: CompanyService, private genReport: ReportService, private modale: ModalService, private gen: GenericService, private cd: ChangeDetectorRef, private _adminservice: AdminService) {
     this.modalService = modale;
     this.companyService = _companyService;
+    this.adminservice = _adminservice;
     this.genk = gen;
     this.cdr = cd;
 
   }
-
+  
   ngOnInit(): void {
+    this.getDashboardStuff();
   }
   ngAfterViewInit() {
     this.getCompanyDashboardReport();
@@ -141,7 +147,15 @@ export class DashboardComponent implements OnInit {
     this.cd.markForCheck();
 
   }
-
+  getDashboardStuff(){
+    debugger;
+    this.adminservice.getDashboardStuff()
+    .subscribe(res=>
+      {
+        this.dashboardStuff = res;
+      }
+      )
+  }
   // firstChart() {
   //   debugger;
   //   if (this.isBrowser) {
