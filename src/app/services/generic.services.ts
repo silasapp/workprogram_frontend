@@ -45,7 +45,7 @@ export class GenericService {
   fieldWell: string = 'GAS WELL';
   fieldID: number;
   OMLList = [];
-  Field_List = [];
+  Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   applicationDetails: ApplicationDetails;
   hseTechnicalSafety: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =

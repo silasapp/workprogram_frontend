@@ -13,6 +13,7 @@ import { Step5Component } from './step5.component';
 import { SWPHseComponent } from './hse.component';
 import { SWPScdpComponent } from './scdp.component';
 import { SWPRequirementComponent } from './requirement.component';
+import { WorkProgramModule } from '../workprogram.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SWPRequirementComponent } from './requirement.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    Step5RoutingModule
+    Step5RoutingModule,
+    WorkProgramModule
   ]
 })
 export class Step5Module { }

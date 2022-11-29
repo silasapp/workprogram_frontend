@@ -220,9 +220,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
   getLegalLegitation() {
     this.workprogram
       .getlegalLitigation(
-        this.genk.wpYear,
-        this.genk.fieldName,
-        this.genk.OmlName
+        this.genk.wpYear
       )
       .subscribe((result) => {
         if (result.legalLitigation) {
@@ -241,9 +239,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
     this.workprogram
       .saveLegalLitigation(
         this.letigationBody,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName
+        this.genk.wpYear
       )
       .subscribe((result) => {
         this.modalService.logNotice(
@@ -257,11 +253,11 @@ export class SWPLegalProceedingsComponent implements OnInit {
   }
 
   saveArbitration() {
+    //this.arbitrationBody.anyArbitration = "YES";
     this.workprogram
       .saveArbitration(
         this.arbitrationBody,
-        this.genk.wpYear,
-        this.genk.OmlName
+        this.genk.wpYear
       )
       .subscribe((result) => {
         this.modalService.logNotice(
@@ -276,21 +272,20 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
   deleteLitigation(row: any) {
     this.workprogram
-      .deleteLitigation(row, this.genk.wpYear, this.genk.OmlName, '')
+      .deleteLitigation(row, this.genk.wpYear)
       .subscribe((result) => {
         this.modalService.logNotice(
           'Deletion was successful!',
           'Successfully!',
           'success'
         );
-
         this.getLegalLegitation();
       });
   }
 
   deleteArbitration(row: any) {
     this.workprogram
-      .deleteArbitration(row, this.genk.wpYear, this.genk.OmlName, '')
+      .deleteArbitration(row, this.genk.wpYear)
       .subscribe((result) => {
         this.modalService.logNotice(
           'Deletion was successful!',

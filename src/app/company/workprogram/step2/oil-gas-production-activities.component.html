@@ -67,7 +67,7 @@
               <div style="display: flex">
                 <div class="minsec">
                   <input (keypress)="genk.restrictData($event)" formControlName="deferment" class="inpute"
-                    (keypress)="genk.restrictData($event)" 
+                    (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)" placeholder="100,000"
                     (change)="productionoilBody.deferment = genk.checkMMBBLMin($event, oilMin)"
                     [value]="productionoilBody.deferment" />
@@ -472,13 +472,13 @@
             <label class="labelwp">AG (Standard Cubic Feet)</label>
             <div style="display: flex">
               <div class="minsec">
-                <input type="text" formControlName="fiveyear_AG" 
-                class="inpute" 
+                <input type="text" formControlName="fiveyear_AG"
+                class="inpute"
                 placeholder="1,000,000"
                 style="border-radius:5px ;"
-                (keypress)="genk.restrictData($event)" 
-                (keyup)="genk.formatCurrency($event)" 
-                (change)="fiveYearForecastBody.fiveyear_AG = genk.checkBSCFMin($event, oilNaz)" 
+                (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
+                (change)="fiveYearForecastBody.fiveyear_AG = genk.checkBSCFMin($event, oilNaz)"
                 [value]="fiveYearForecastBody.fiveyear_AG" />
                 <span class="barspan">SCF</span>
               </div>
@@ -491,11 +491,11 @@
             <div style="display: flex">
               <div class="minsec">
                 <input type="text" formControlName="fiveyear_NAG"
-                  class="inpute" 
+                  class="inpute"
                   style="border-radius:5px ;"
                   placeholder="1,000,000"
-                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" 
-                  (change)="fiveYearForecastBody.fiveyear_NAG = genk.checkBSCFMin($event, oilFus)" 
+                  (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
+                  (change)="fiveYearForecastBody.fiveyear_NAG = genk.checkBSCFMin($event, oilFus)"
                   [value]="fiveYearForecastBody.fiveyear_NAG" />
                   <span class="barspan">SCF</span>
               </div>
