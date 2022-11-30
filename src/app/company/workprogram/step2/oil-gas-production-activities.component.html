@@ -108,25 +108,22 @@
             <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Forecast (Barrels)</label>
               <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 10px;
-                    padding: 7px 10px;
-                  "
-                >
+                <div class="minsec">
                   <input
                     formControlName="forecast"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
+                    placeholder="100,000"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                      productionoilBody.forecast =
-                        genk.addCurrencyDecimal($event)
+                      productionoilBody.forecast = genk.checkMMBBLMin(
+                        $event,
+                        oilMic
+                      )
                     "
                     [(ngModel)]="productionoilBody.forecast"
                   />
+                  <span class="barspan">BBLS</span>
                 </div>
               </div>
               <small #oilMic></small>
@@ -196,26 +193,23 @@
                   Gas production (AG) (Stantard Cubic Feet)</label
                 >
                 <div style="display: flex">
-                  <div
-                    style="
-                      box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 20px;
-                      padding: 7px 10px;
-                    "
-                  >
+                  <div class="minsec">
                     <input
                       type="text"
                       formControlName="gas_AG"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
+                      placeholder="1,000,000"
                       (change)="
-                        productionoilBody.gas_AG =
-                          genk.addCurrencyDecimal($event)
+                        productionoilBody.gas_AG = genk.checkBSCFMin(
+                          $event,
+                          gasmaxx
+                        )
                       "
                       [(ngModel)]="productionoilBody.gas_AG"
                     />
+                    <span class="barspan">SCF</span>
                   </div>
                 </div>
                 <small #gasmaxx></small>
@@ -229,14 +223,7 @@
                   >Gas production (NAG)(Standard Cubic Feet)</label
                 >
                 <div style="display: flex">
-                  <div
-                    style="
-                      box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 20px;
-                      padding: 7px 10px;
-                    "
-                  >
+                  <div class="minsec">
                     <input
                       type="text"
                       formControlName="gas_NAG"
@@ -244,11 +231,14 @@
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.gas_NAG =
-                          genk.addCurrencyDecimal($event)
+                        productionoilBody.gas_NAG = genk.checkBSCFMin(
+                          $event,
+                          gasmaxx
+                        )
                       "
                       [(ngModel)]="productionoilBody.gas_NAG"
                     />
+                    <span class="barspan">SCF</span>
                   </div>
                 </div>
                 <small #gasMac></small>
@@ -402,10 +392,13 @@
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    monthlyactivityBody.production =
-                      genk.addCurrencyDecimal($event)
+                    monthlyactivityBody.production = genk.checkMMBBLMin(
+                      $event,
+                      oilMe
+                    )
                   "
                 />
+                <span class="barspan">BBLS</span>
               </div>
             </div>
             <small #oilMe></small>
@@ -445,25 +438,23 @@
               >Gas Production (AG)(Standard Cubic Feet)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 20px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   type="text"
                   formControlName="gas_AG"
                   [(ngModel)]="monthlyactivityBody.gas_AG"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    monthlyactivityBody.gas_AG = genk.addCurrencyDecimal($event)
+                    monthlyactivityBody.gas_AG = genk.checkBSCFMin(
+                      $event,
+                      gasDec
+                    )
                   "
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasDec></small>
@@ -474,26 +465,23 @@
               >Gas Average Daily Production (NAG)(Standard Cubic Feet)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 20px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   type="text"
                   formControlName="gas_NAG"
                   [(ngModel)]="monthlyactivityBody.gas_NAG"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    monthlyactivityBody.gas_NAG =
-                      genk.addCurrencyDecimal($event)
+                    monthlyactivityBody.gas_NAG = genk.checkBSCFMin(
+                      $event,
+                      gaspro
+                    )
                   "
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gaspro></small>
@@ -640,26 +628,23 @@
             <div style="width: 30%">
               <label class="labelwp">Production (Barrels)</label>
               <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 20px;
-                    padding: 7px 10px;
-                  "
-                >
+                <div class="minsec">
                   <input
                     type="text"
                     formControlName="production"
                     class="inpute"
+                    placeholder="100,000"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                      proposedmonthlyBody.production =
-                        genk.addCurrencyDecimal($event)
+                      proposedmonthlyBody.production = genk.checkMMBBLMin(
+                        $event,
+                        oilMon
+                      )
                     "
                     [(ngModel)]="proposedmonthlyBody.production"
                   />
+                  <span class="barspan">BBLS</span>
                 </div>
               </div>
               <small #oilMon></small>
@@ -700,26 +685,23 @@
                 >Gas Production (AG)(Standard Cubic Feet)</label
               >
               <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 20px;
-                    padding: 7px 10px;
-                  "
-                >
+                <div class="minsec">
                   <input
                     type="text"
                     formControlName="gas_AG"
                     class="inpute"
+                    placeholder="1,000,000"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                      proposedmonthlyBody.gas_AG =
-                        genk.addCurrencyDecimal($event)
+                      proposedmonthlyBody.gas_AG = genk.checkBSCFMin(
+                        $event,
+                        gasdan
+                      )
                     "
                     [(ngModel)]="proposedmonthlyBody.gas_AG"
                   />
+                  <span class="barspan">SCF</span>
                 </div>
               </div>
               <small #gasdan></small>
@@ -730,26 +712,20 @@
                 >Gas Production (NAG)(Standard Cubic Feet)</label
               >
               <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 20px;
-                    padding: 7px 10px;
-                  "
-                >
+                <div class="minsec">
                   <input
                     type="text"
                     formControlName="gas_NAG"
                     class="inpute"
+                    placeholder="1,000,000"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                      proposedmonthlyBody.gas_NAG =
-                        genk.addCurrencyDecimal($event)
+                      proposedmonthlyBody.gas_NAG = genk.checkBSCFMin($event)
                     "
                     [(ngModel)]="proposedmonthlyBody.gas_NAG"
                   />
+                  <span class="barspan">SCF</span>
                 </div>
               </div>
               <small #gasBox></small>
@@ -835,26 +811,23 @@
           <div style="width: 30%">
             <label class="labelwp">Oil (Barrels)</label>
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 20px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   type="text"
                   formControlName="fiveyear_Oil"
                   [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
                   class="inpute"
+                  placeholder="100,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    fiveYearForecastBody.fiveyear_Oil =
-                      genk.addCurrencyDecimal($event)
+                    fiveYearForecastBody.fiveyear_Oil = genk.checkMMBBLMin(
+                      $event,
+                      oilNac
+                    )
                   "
                 />
+                <span class="barspan">BBLS</span>
               </div>
             </div>
             <small #oilNac></small>
@@ -863,26 +836,21 @@
           <div style="width: 30%">
             <label class="labelwp">Condensate (Barrels)</label>
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 20px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   type="text"
                   formControlName="fiveyear_Condensate"
                   [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
                   class="inpute"
+                  placeholder="100,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     fiveYearForecastBody.fiveyear_Condensate =
-                      genk.addCurrencyDecimal($event)
+                      genk.checkMMBBLMin($event, oilTax)
                   "
                 />
+                <span class="barspan">BBLS</span>
               </div>
             </div>
             <small #oilTax></small>
@@ -1009,25 +977,22 @@
               >Actual Gas Produced (Standard Cubic Field)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 10px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   formControlName="current_Actual_Year"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    gasproductionBody.current_Actual_Year =
-                      genk.addCurrencyDecimal($event)
+                    gasproductionBody.current_Actual_Year = genk.checkBSCFMin(
+                      $event,
+                      gasMaxa
+                    )
                   "
                   [(ngModel)]="gasproductionBody.current_Actual_Year"
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasMaxa></small>
@@ -1055,24 +1020,19 @@
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp">Flared (Standard Cubic Feet)</label>
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 10px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   formControlName="flared"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    gasproductionBody.flared = genk.addCurrencyDecimal($event)
+                    gasproductionBody.flared = genk.checkBSCFMin($event, gasMax)
                   "
                   [(ngModel)]="gasproductionBody.flared"
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasMax></small>
@@ -1085,24 +1045,21 @@
               >Proposed Gas Production (Standard Cubic Feet)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 10px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   formControlName="proposed_production"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    gasproductionBody.proposed_production =
-                      genk.addCurrencyDecimal($event)
+                    gasproductionBody.proposed_production = genk.checkBSCFMin(
+                      $event,
+                      gasMinin
+                    )
                   "
                   [(ngModel)]="gasproductionBody.proposed_production"
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasMinin></small>
@@ -1113,25 +1070,22 @@
               >Proposed Utilization (Standard Cubic Feet)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 10px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   formControlName="proposed_utilization"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    gasproductionBody.proposed_utilization =
-                      genk.addCurrencyDecimal($event)
+                    gasproductionBody.proposed_utilization = genk.checkBSCFMin(
+                      $event,
+                      gasMini
+                    )
                   "
                   [(ngModel)]="gasproductionBody.proposed_utilization"
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasMini></small>
@@ -1142,25 +1096,22 @@
               >Estimated Flare Volume (Standard Cubic Feet)</label
             >
             <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 10px;
-                  padding: 7px 10px;
-                "
-              >
+              <div class="minsec">
                 <input
                   formControlName="proposed_flaring"
                   class="inpute"
+                  placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
-                    gasproductionBody.proposed_flaring =
-                      genk.addCurrencyDecimal($event)
+                    gasproductionBody.proposed_flaring = genk.checkBSCFMin(
+                      $event,
+                      gasmin
+                    )
                   "
                   [(ngModel)]="gasproductionBody.proposed_flaring"
                 />
+                <span class="barspan">SCF</span>
               </div>
             </div>
             <small #gasmin></small>
