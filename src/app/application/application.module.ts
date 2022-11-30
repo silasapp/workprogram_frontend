@@ -18,32 +18,33 @@ import { MydeskComponent } from './mydesk/mydesk.component';
 import { AllcompaniesComponent } from './allcompanies/allcompanies.component';
 import { ProcessApplicationComponent } from './process-application/process-application.component';
 import { AllapprovalsComponent } from './allapprovals/allapprovals.component';
+import { PushApplicationFormComponent } from './process-application/push-application-form/push-application-form.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
-
-
-  @NgModule({
-    imports: [
-      CommonModule,
-      ApplicationRoutingModule,
-      MatFormFieldModule,
-      MatTableModule,
-      MatInputModule,
-      FormsModule,
-      ReactiveFormsModule,
-      MatPaginatorModule,
-      MatIconModule,
-      MatDialogModule,
-      MatSelectModule,
-      MatButtonModule
-    ],
-    declarations: [
-      AllApplicationsComponent,
-      ProcessApplicationComponent,
-      ViewApplicationComponent,
-      MydeskComponent,
-      AllcompaniesComponent,
-      AllapprovalsComponent
-
-    ]
-  })
-  export class ApplicationModule{ }
+@NgModule({
+  imports: [
+    CommonModule,
+    ApplicationRoutingModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatButtonModule,
+    NgMultiSelectDropDownModule,
+  ],
+  declarations: [
+    AllApplicationsComponent,
+    ProcessApplicationComponent,
+    ViewApplicationComponent,
+    MydeskComponent,
+    AllcompaniesComponent,
+    AllapprovalsComponent,
+    PushApplicationFormComponent,
+  ],
+})
+export class ApplicationModule {}

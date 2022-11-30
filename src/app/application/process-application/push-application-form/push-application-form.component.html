@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Push Application</h1>
+<div mat-dialog-content class="modal-width">
+  <form [formGroup]="form">
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Desk</label>
+      <input name="deskID" formControlName="deskID" class="form-control" />
+      <div
+        *ngIf="form.get('deskID')?.touched && form.get('deskID')?.invalid"
+        class="alert alert-danger"
+      >
+        Desk is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Application</label>
+      <ng-multiselect-dropdown
+        [placeholder]="'Select document(s)'"
+        [settings]="appsDropdownSettings"
+        [data]="apps"
+        formArrayName="docId"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+        (onDeSelect)="onDeSelect($event)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Comment</label>
+      <input name="comment" formControlName="comment" class="form-control" />
+      <div
+        *ngIf="form.get('comment')?.touched && form.get('comment')?.invalid"
+        class="alert alert-danger"
+      >
+        Comment is required!
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-raised-button [disabled]="form.invalid">Push</button>
+</div>

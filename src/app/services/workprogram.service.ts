@@ -2766,85 +2766,109 @@ export class WorkProgramService {
 
   constructor(private http: HttpClient, private gen: GenericService) {}
 
-getConcessionHeld(id, year){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {params:{mycompanyId: id, myyear: year}} )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+  getConcessionHeld(id, year) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {
+        params: { mycompanyId: id, myyear: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
 
-getConcessionField(concessionName, companyId){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concessions_fields`, {params:{concessionID: concessionName, companyID:companyId }} )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response;
-  })
-  )
-}
-getApplications(){
-  return this.http.get<any>(`${environment.apiUrl}/application/all-applications`)
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
-getApplication(id){
-  debugger;
-  return this.http.get<any>(`${environment.apiUrl}/application/viewapplication`, {params:{appID: id}} )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
-getProcessApplication(id){
-  debugger;
-  return this.http.get<any>(`${environment.apiUrl}/application/processapplication`, {params:{appID: id}} )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
-getAppsOnMyDesk(){
-  debugger;
-  return this.http.get<any>(`${environment.apiUrl}/application/getappsonmydesk` )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+  getConcessionField(concessionName, companyId) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/get_concessions_fields`, {
+        params: { concessionID: concessionName, companyID: companyId },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+  getApplications() {
+    return this.http
+      .get<any>(`${environment.apiUrl}/application/all-applications`)
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+  getApplication(id) {
+    debugger;
+    return this.http
+      .get<any>(`${environment.apiUrl}/application/viewapplication`, {
+        params: { appID: id },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+  getProcessApplication(id) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/application/processapplication`, {
+        params: { appID: id },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+  getAppsOnMyDesk() {
+    return this.http
+      .get<any>(`${environment.apiUrl}/application/getappsonmydesk`)
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
 
-getCompletedSteps(concessionName, year){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName, year: year}} )
-  .pipe(retry(this.num),
-  map((response) => {
-    return response;
-  })
-  )
-}
+  getCompletedSteps(concessionName, year) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {
+        params: { omlname: concessionName, year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
 
-getWPYears(){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/GETWORKPROGRAMYEARS`)
-  .pipe(retry(this.num),
-  map((response) => {
-    return response
-  })
-  )
-}
+  getWPYears() {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/GETWORKPROGRAMYEARS`)
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
 
-// getWPYearList(){
-//     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
-//     .pipe(retry(this.num),
-//     map((response) => {
-//       return response
-//     })
-//     )
-// }
+  // getWPYearList(){
+  //     return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_wpyear_list`)
+  //     .pipe(retry(this.num),
+  //     map((response) => {
+  //       return response
+  //     })
+  //     )
+  // }
   // getConcessionHeld(id, year) {
   //   return this.http
   //     .get<any>(`${environment.apiUrl}/workprogramme/get_concession_held`, {
@@ -2989,7 +3013,7 @@ getWPYears(){
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_budget_proposal_in_naira_dollar`,
-        { params: {year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -3303,14 +3327,14 @@ getWPYears(){
       );
   }
 
-// saveNigeriaUploadSuccessionPlan(conbody: NIGERIA_CONTENT_Upload_Succession_Plan, year: string, omlName: string){
-// return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`, conbody, {params: {year: year, omlName: omlName}})
-// .pipe(retry(this.num),
-// map((response) => {
-//   return response
-// })
-// )
-// }
+  // saveNigeriaUploadSuccessionPlan(conbody: NIGERIA_CONTENT_Upload_Succession_Plan, year: string, omlName: string){
+  // return this.http.post<any>(`${environment.apiUrl}/workprogramme/post_nigeria_content_upload_succession_plan`, conbody, {params: {year: year, omlName: omlName}})
+  // .pipe(retry(this.num),
+  // map((response) => {
+  //   return response
+  // })
+  // )
+  // }
   saveGasProduction(
     conbody: GAS_PRODUCTION_ACTIVITY,
     year: string,
@@ -3565,12 +3589,7 @@ getWPYears(){
       );
   }
 
-  post_Production(
-    budget: productionCost,
-    year: string,
-    id,
-    actionToDo
-  ) {
+  post_Production(budget: productionCost, year: string, id, actionToDo) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
@@ -3585,12 +3604,7 @@ getWPYears(){
       );
   }
 
-  post_BudgetProposal(
-    budget: budgetProposal,
-    year: string,
-    id,
-    actionToDo
-  ) {
+  post_BudgetProposal(budget: budgetProposal, year: string, id, actionToDo) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
@@ -4934,15 +4948,12 @@ getWPYears(){
       );
   }
 
-  saveNigeriaContentQuestion(
-    conbody: NIGERIA_CONTENT_QUESTION,
-    year: string
-  ) {
+  saveNigeriaContentQuestion(conbody: NIGERIA_CONTENT_QUESTION, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_question`,
         conbody,
-        { params: { year: year} }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -4974,13 +4985,12 @@ getWPYears(){
       .pipe(retry(this.num));
   }
 
-  saveNigeriaContenttraining(
-    conbody: NIGERIA_CONTENT_Training,
-    year: string
-  ) {
+  saveNigeriaContenttraining(conbody: NIGERIA_CONTENT_Training, year: string) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, { params: { year: year } }
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
+        conbody,
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5309,15 +5319,12 @@ getWPYears(){
       );
   }
 
-  saveStrategicPlans(
-    conbody: STRATEGIC_PLANS_ON_COMPANY_BASES,
-    year: string
-  ) {
+  saveStrategicPlans(conbody: STRATEGIC_PLANS_ON_COMPANY_BASES, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_STRATEGIC_PLANS_ON_COMPANY_BASES`,
         conbody,
-        { params: {year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5327,15 +5334,12 @@ getWPYears(){
       );
   }
 
-  saveLegalLitigation(
-    conbody: LEGAL_LITIGATION,
-    year: string
-  ) {
+  saveLegalLitigation(conbody: LEGAL_LITIGATION, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_LEGAL_LITIGATION`,
         conbody,
-        { params: {year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5350,7 +5354,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_legal_arbitration`,
         conbody,
-        { params: { year: year} }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5409,15 +5413,12 @@ getWPYears(){
       );
   }
 
-  saveAddStaffDisposition(
-    conbody: NIGERIA_CONTENT_Training,
-    year: string
-  ) {
+  saveAddStaffDisposition(conbody: NIGERIA_CONTENT_Training, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
         conbody,
-        { params: { year: year} }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5567,10 +5568,7 @@ getWPYears(){
       );
   }
 
-  deleteLitigation(
-    conbody: any,
-    year: string
-  ) {
+  deleteLitigation(conbody: any, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_LEGAL_LITIGATION`,
@@ -5600,10 +5598,7 @@ getWPYears(){
   //     );
   // }
 
-  deleteArbitration(
-    conbody: any,
-    year: string
-  ) {
+  deleteArbitration(conbody: any, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_legal_arbitration`,
@@ -5658,8 +5653,7 @@ getWPYears(){
     year: string,
     omlName: string,
     fieldName: string
-  )
-  {
+  ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_DEPLETION_RATE`,
@@ -5772,6 +5766,16 @@ getWPYears(){
         retry(this.num),
         map((res) => res)
       );
+  }
+
+  pushApplication(deskID: string, comment: string, selectedApps: string[]) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/api/Application/PushApplication`,
+      {},
+      {
+        params: { deskID, comment, selectedApps },
+      }
+    );
   }
 
   // deleteNigeriaContentTraining(id: any) {
