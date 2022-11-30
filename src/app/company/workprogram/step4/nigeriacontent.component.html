@@ -1,22 +1,22 @@
 <div style="
-    background-color: white;
     border-radius: 5px;
     box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
     padding: 20px;
+    background-color: white;
   ">
-  <h1 style="
+  <h6 style="
       text-shadow: 1px 1px rgb(130, 23, 23);
       color: rgb(255, 157, 0);
       margin-left: 75%;
       font-size: 18px;
     ">
     Note:*All Fields are Mandatory
-  </h1>
+  </h6>
   <div style="
       font-size: 25px;
       font-weight: 500;
       text-align: center;
-      padding-bottom: 20px;
+
     ">
     <span style="font-weight: 600">NIGERIA CONTENT</span>
   </div>
@@ -26,12 +26,9 @@
     <div style="width: 100%">
       <div style="width: 100%">
         <div style="font-weight: 500; margin-bottom: 5px">
-          <span style="font-weight: 600; font-size: 20px">Staff Disposition - Training for Nigerians</span>
+          <span style="font-weight: 500; font-size: 18px; color: teal;">Staff Disposition - Training for Nigerians</span>
         </div>
-      </div>
-      <br />
-      <hr size="5" />
-      <br />
+      </div><br>
 
       <div style="margin: 0 1% 0 1%">
         <div class="menu-container">
@@ -51,13 +48,12 @@
           </div>
         </div>
         <div class="menu-content">
-          <div *ngIf="activeMenu === 'Actual Year'" style="background-color: white">
+          <div *ngIf="activeMenu === 'Actual Year'">
             <div style="
                 display: flex;
                 width: 100%;
                 margin-bottom: 10px;
                 justify-content: space-between;
-                background-color: white;
               ">
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -98,7 +94,7 @@
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
-                background-color: white;
+
               ">
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">Nigerian Understudies</label>
@@ -109,8 +105,7 @@
                       border-radius: 10px;
                       padding: 7px 10px;
                     ">
-                    <input type="text" formControlName="nigerian_Understudies"
-                      [(ngModel)]="staffdispositionBody.nigerian_Understudies" class="inpute" />
+                    <input formControlName="nigerian_Understudies" [(ngModel)]="staffdispositionBody.nigerian_Understudies" class="inpute" />
                   </div>
                 </div>
               </div>
@@ -188,7 +183,7 @@
             </div>
           </div>
 
-          <div style="background-color: white" *ngIf="activeMenu === 'Proposed Year'">
+          <div *ngIf="activeMenu === 'Proposed Year'">
             <div style="display: flex; width: 100%; justify-content: space-between">
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -251,8 +246,7 @@
                       border-radius: 10px;
                       padding: 7px 10px;
                     ">
-                    <input formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn"
-                      class="inpute" />
+                    <input formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn" class="inpute" />
                   </div>
                 </div>
               </div>
@@ -266,8 +260,7 @@
                       border-radius: 10px;
                       padding: 7px 10px;
                     ">
-                    <input formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local"
-                      class="inpute" />
+                    <input formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local" class="inpute" />
                   </div>
                 </div>
               </div>
@@ -317,9 +310,7 @@
         </div>
       </div>
     </div>
-    <br /><br />
-
-    <hr size="5" />
+    <br />
   </div>
 
   <div #divTable style="
@@ -353,18 +344,13 @@
     </table>
   </div>
 </div>
-<br />
+<br /><br>
 
-<hr size="10" />
-<br /><br />
-
-<div [formGroup]="seniormanagementstaffForm">
+<div [formGroup]="seniormanagementstaffForm" style="background-color: white; padding: 0 20px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); border-radius: 10px;">
+  <div style="font-size: 20px; font-weight: 500; padding: 20px 0; color: teal;">
+    <span>Senior / Management Staff </span>
+  </div>
   <div style="width: 30%;">
-    <div style="font-weight: 500; margin-bottom: 5px">
-      <span>Senior / Management Staff </span>
-    </div>
-    <hr size="5" />
-    <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 100%">
         <label class="labelwp">Do you have a valid Expatriate Quota for your foreign staff</label>
@@ -488,19 +474,17 @@
     </div>
     <br />
   </div>
-  <hr size="10" />
-  <br /><br />
 </div>
+<br><br><br>
 
-<div [formGroup]="uploadsuccessionForm">
+<div [formGroup]="uploadsuccessionForm" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 2px 2px 4px 2px rgb(0, 0, 0, 0.3)">
   <div style="width: 100%">
     <div style="width: 30%">
-      <div style="font-weight: 500; margin-bottom: 5px">
+      <div style="font-weight: 500; margin-bottom: 5px; font-size: 18px; color: teal;">
         <span>Upload Succession Plan</span>
       </div>
     </div>
   </div>
-  <hr size="5" />
   <br />
 
   <div style="margin: 0 1% 0 1%">
@@ -709,7 +693,11 @@
         </div>
       </div>
 
-      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+      <div #divTable style="
+          overflow: hidden;
+          overflow-x: auto;
+          box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+        ">
         <table #codeTable class="apptable" cellPadding="10px">
           <thead>
             <tr>

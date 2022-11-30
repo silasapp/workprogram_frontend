@@ -24,6 +24,7 @@ export class AppComponent {
   constructor(private auth: AuthenticationService, private gen: GenericService, private modal: ModalService, private cd: ChangeDetectorRef) {
     this.genk = gen;
     this.authenticationService = auth;
+    this.genk.wpYear = localStorage.getItem('wkpYear');
     if (this.authenticationService.currentUserValue) {
       this.genk.isAdmin = this.authenticationService.currentUserValue.companyName === 'Admin';
     }

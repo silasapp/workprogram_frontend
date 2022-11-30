@@ -54,10 +54,9 @@ export class CompanyDashboardBody {
 }
 
 export class DashboardGasBudgetAndReserveBody {
-    gasPlantCapacity: number;
-    gasFlareds: number;
-    directProdCost: number;
-    oilCondensate: number;
+  reserveOilCondensate: number;
+  reserveAGNAG: number;
+  prodCost: number;
 }
 
 export class CompanyReportModel {

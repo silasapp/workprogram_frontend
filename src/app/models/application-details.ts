@@ -39,6 +39,7 @@ export class ApplicationDetails{
     staff_SBU : string;
     staff_Role : string;
     sort: number;
+    desk_ID: number
     }
 
     export class ApplicationHistory {

@@ -2800,6 +2800,15 @@ getApplication(id){
   })
   )
 }
+getProcessApplication(id){
+  debugger;
+  return this.http.get<any>(`${environment.apiUrl}/application/processapplication`, {params:{appID: id}} )
+  .pipe(retry(this.num),
+  map((response) => {
+    return response
+  })
+  )
+}
 getAppsOnMyDesk(){
   debugger;
   return this.http.get<any>(`${environment.apiUrl}/application/getappsonmydesk` )
@@ -2810,8 +2819,8 @@ getAppsOnMyDesk(){
   )
 }
 
-getCompletedSteps(concessionName){
-  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName}} )
+getCompletedSteps(concessionName, year){
+  return this.http.get<any>(`${environment.apiUrl}/workprogramme/getcompletedpages`, {params:{omlname: concessionName, year: year}} )
   .pipe(retry(this.num),
   map((response) => {
     return response;
@@ -2967,7 +2976,7 @@ getWPYears(){
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_budget_performance`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -2976,11 +2985,11 @@ getWPYears(){
         })
       );
   }
-  getFormThreeBudget_2(omlName, year, fieldName) {
+  getFormThreeBudget_2(year) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_budget_proposal_in_naira_dollar`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: {year: year } }
       )
       .pipe(
         retry(this.num),
@@ -2990,11 +2999,11 @@ getWPYears(){
       );
   }
 
-  getFormThreeBudget_3(omlName, year, fieldName) {
+  getFormThreeBudget_3(year) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_oil_gas_facility_maintenance`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -3486,7 +3495,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3499,8 +3508,6 @@ getWPYears(){
   post_Exploratory(
     budget: exploratoryActivities,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3508,7 +3515,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3521,8 +3528,6 @@ getWPYears(){
   post_Development(
     budget: developmentDrillingActivities,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3530,7 +3535,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3543,8 +3548,6 @@ getWPYears(){
   post_Facility(
     budget: facilitiesDevelopmentProject,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3552,7 +3555,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3565,8 +3568,6 @@ getWPYears(){
   post_Production(
     budget: productionCost,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3574,7 +3575,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3587,8 +3588,6 @@ getWPYears(){
   post_BudgetProposal(
     budget: budgetProposal,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3596,7 +3595,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3631,8 +3630,6 @@ getWPYears(){
   post_OilGas(
     budget: oilAndGasFacilityMaintenanceProject,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3640,7 +3637,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_oil_and_gas_facility_maintenance_project`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3653,8 +3650,6 @@ getWPYears(){
   post_Technology(
     budget: newTechnologyAndConformityAssessment,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3662,7 +3657,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_oil_condensate_production_activities_new_technology_conformity_assessment`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3675,8 +3670,6 @@ getWPYears(){
   post_FacilityProject(
     budget: facilitiesProjectPerformance,
     year: string,
-    omlName: string,
-    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3684,7 +3677,7 @@ getWPYears(){
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_facilities_project_performance`,
         budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year: year, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -4943,14 +4936,13 @@ getWPYears(){
 
   saveNigeriaContentQuestion(
     conbody: NIGERIA_CONTENT_QUESTION,
-    year: string,
-    omlName: string
+    year: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_question`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year} }
       )
       .pipe(
         retry(this.num),
@@ -4984,15 +4976,11 @@ getWPYears(){
 
   saveNigeriaContenttraining(
     conbody: NIGERIA_CONTENT_Training,
-    year: string,
-    omlName: string,
-    fieldName: string
+    year: string
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training?omlName=${omlName}&fieldName=${fieldName}&year=${year}`,
-        conbody
-        // { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`, conbody, { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5284,11 +5272,11 @@ getWPYears(){
       );
   }
 
-  getNigeriaContentTraining(year: string, omlName: string, fieldName: string) {
+  getNigeriaContentTraining(year: string) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_NIGERIA_CONTENT`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5307,11 +5295,11 @@ getWPYears(){
   // )
   // }
 
-  getStrategicPlans(year: string, fieldName: string, omlName: string) {
+  getStrategicPlans(year: string) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_STRATEGIC_PLANS`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5323,15 +5311,13 @@ getWPYears(){
 
   saveStrategicPlans(
     conbody: STRATEGIC_PLANS_ON_COMPANY_BASES,
-    year: string,
-    fieldName: string,
-    omlName: string
+    year: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_STRATEGIC_PLANS_ON_COMPANY_BASES`,
         conbody,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: {year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5343,15 +5329,13 @@ getWPYears(){
 
   saveLegalLitigation(
     conbody: LEGAL_LITIGATION,
-    year: string,
-    omlName: string,
-    fieldName: string
+    year: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_LEGAL_LITIGATION`,
         conbody,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: {year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5361,12 +5345,12 @@ getWPYears(){
       );
   }
 
-  saveArbitration(conbody: LEGAL_ARBITRATION, year: string, omlName: string) {
+  saveArbitration(conbody: LEGAL_ARBITRATION, year: string) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_legal_arbitration`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year} }
       )
       .pipe(
         retry(this.num),
@@ -5376,11 +5360,11 @@ getWPYears(){
       );
   }
 
-  getlegalLitigation(year: string, fieldName: string, omlName: string) {
+  getlegalLitigation(year: string) {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/GET_FORM_FOUR_LEGAL_PROCEEDINGS`,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        { params: { year: year } }
       )
       .pipe(
         retry(this.num),
@@ -5427,15 +5411,13 @@ getWPYears(){
 
   saveAddStaffDisposition(
     conbody: NIGERIA_CONTENT_Training,
-    year: string,
-    omlName: string,
-    fieldName: string
+    year: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
         conbody,
-        { params: { year: year, omlName: omlName, fieldName: fieldName } }
+        { params: { year: year} }
       )
       .pipe(
         retry(this.num),
@@ -5587,9 +5569,7 @@ getWPYears(){
 
   deleteLitigation(
     conbody: any,
-    year: string,
-    omlName: string,
-    fieldName: string
+    year: string
   ) {
     return this.http
       .post<any>(
@@ -5597,8 +5577,6 @@ getWPYears(){
         conbody,
         {
           params: {
-            omlName: omlName,
-            fieldName: fieldName,
             year: year,
             actionTodo: 'DELETE',
           },
@@ -5624,9 +5602,7 @@ getWPYears(){
 
   deleteArbitration(
     conbody: any,
-    year: string,
-    omlName: string,
-    fieldName: string
+    year: string
   ) {
     return this.http
       .post<any>(
@@ -5634,8 +5610,6 @@ getWPYears(){
         conbody,
         {
           params: {
-            omlName: omlName,
-            fieldName: fieldName,
             year: year,
             actionTodo: 'DELETE',
           },
@@ -5684,7 +5658,7 @@ getWPYears(){
     year: string,
     omlName: string,
     fieldName: string
-  ) 
+  )
   {
     return this.http
       .post<any>(

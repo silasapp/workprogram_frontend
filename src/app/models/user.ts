@@ -7,3 +7,9 @@
     token?: string;
     code?: string;
 }
+
+export class WorkData {
+  wkpYear: string;
+  wkpConcession: string;
+  wkpField: string;
+}

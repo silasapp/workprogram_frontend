@@ -46,7 +46,6 @@ const routes: Routes = [
 
 {
   path: 'workprogram',
-  component: BoardComponent,
   loadChildren: () => import('./workprogram/workprogram.module').then(m => m.WorkProgramModule)
 }
 ];

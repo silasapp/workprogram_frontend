@@ -16,9 +16,10 @@ import { SWPReserveUpdateComponent } from './reserves-update-mmbls.component';
 import { SWPWorkoverRecompletionComponent } from './workover-recompletion.component';
 import { Step2Component } from './step2.component';
 import { OilGasProductionActivitiesComponent } from './oil-gas-production-activities.component';
+import { WorkProgramModule } from '../workprogram.module';
 
 @NgModule({
-  declarations: [  
+  declarations: [
     Step2Component,
     SWPFieldDevelopmentComponent,
     SWPGasProductionComponent,
@@ -37,7 +38,8 @@ import { OilGasProductionActivitiesComponent } from './oil-gas-production-activi
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    Step2RoutingModule
+    Step2RoutingModule,
+    WorkProgramModule
   ]
 })
 export class Step2Module { }

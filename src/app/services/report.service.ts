@@ -32,6 +32,7 @@ fetch(url, year){
   )
 }
 
+
 performanceEvaluation(url, year){
   return this.http.get<any>(`${environment.apiUrl}/workprogramme/${url}`,{params:{year: year}})
   .pipe(retry(this.num),
@@ -78,16 +79,16 @@ plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 
   series.data.setAll(data);
 
-  var legend = chart.children.push(am5.Legend.new(root, {
-    centerX: am5.percent(50),
-    x: am5.percent(50),
-    marginTop: 15,
-    marginBottom: 15
-  }));
+  // var legend = chart.children.push(am5.Legend.new(root, {
+  //   centerX: am5.percent(50),
+  //   x: am5.percent(50),
+  //   marginTop: 15,
+  //   marginBottom: 15
+  // }));
 
-  if (data.length < 21) {
-    legend.data.setAll(series.dataItems);
-  }
+  // if (data.length < 21) {
+  //   legend.data.setAll(series.dataItems);
+  // }
 
 
 
@@ -339,7 +340,7 @@ formatChartData(data: any[], baseval: string, valtype: string) {
     //debugger;
     valist = [];
   }
-  //debugger;
+  debugger;
   this.baselist = [];
   this.valuelist = [];
   let arr = this.chartArray;

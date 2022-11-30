@@ -147,22 +147,26 @@
       <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
         <table #myTable2 class="apptable" cellPadding="10" cellSpacing="15">
           <thead>
-            <tr *ngFor="let h of f_ColumnHeader">
-              <th *ngFor="let d of h | keyvalue">
-                {{d.key | titlecase}}
-              </th>
-            </tr>
+            <th *ngFor="let h of fieldColumns">
+              {{h.header}}
+            </th>
+            <th>EDIT</th>
+            <th>DELETE</th>
           </thead>
-          <tbody #myTbody2 *ngFor="let item of f_ColumnValue">
-            <tr *ngFor="let y of item | keyvalue">
-              <td *ngFor="let x of y.value | keyvalue">
-                {{x.value}}
+          <tbody #myTbody2 style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+            <tr *ngFor="let row of f_ColumnValue">
+              <td *ngFor="let h of fieldColumns">
+                {{row[h.columnDef]}}
               </td>
               <td>
-                <button (click)="Edit_Field($event)" value={{y.value.field_ID}} style="background-color: green;"
+                <button (click)="Edit_Field($event)" value={{row.field_ID}}
+                  style="background-color: green; color: white; outline: none; border: none; padding: 3px 15px; border-radius: 5px;"
                   class="submitbtn">Edit</button>
-                <button (click)="Delete_Field($event)" value={{y.value.field_ID}}
-                  style="background-color: rgb(202, 9, 9);" class="submitbtn">Delete</button>
+              </td>
+              <td>
+                <button (click)="Delete_Field($event)" value={{row.field_ID}}
+                  style="background-color: rgb(188, 28, 28); color: white; outline: none; border: none; padding: 3px 15px; border-radius: 5px;"
+                  class="submitbtn">Delete</button>
               </td>
             </tr>
           </tbody>
@@ -203,8 +207,7 @@
                 <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type </span>
                 <select class="form-select" formControlName='consession_Type'
                   [(ngModel)]="concessionBody.consession_Type">
-                  <option selected disabled>--Please Select concession type--
-                  <option>
+                  <option selected disabled>--Please Select concession type--<option>
                   <option *ngFor="let val of genk.concessiontype" value={{val.value}}>{{val.value}}</option>
                 </select>
               </div>

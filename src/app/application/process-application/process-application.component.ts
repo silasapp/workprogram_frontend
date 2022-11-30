@@ -50,27 +50,27 @@ export class ProcessApplicationComponent implements OnInit {
   }
 
   loadTable_Desk(data) {
-
+    debugger;
     if (data != null) {
       this.columnValue_Desk = data;
     }
   }
 
   loadTable_History(data) {
-    debugger;
+    
     if (data != null) {
       this.columnValue_History = data;
     }
   }
   loadTable_Document(data) {
-    debugger;
+    
     if (data != null) {
       this.documentDetails = data;
     }
   }
 
   togPushModal() {
-    debugger;
+    
     if(!this.isPushModal) {
       this.isPushModal = true;
     } else {

@@ -13,6 +13,7 @@ import { Step4Component } from './step4.component';
 import { SWPNigeriaContentComponent } from './nigeriacontent.component';
 import { SWPStrategicPlansComponent } from './strategicplans.component';
 import { SWPLegalProceedingsComponent } from './legalproceedings.component';
+import { WorkProgramModule } from '../workprogram.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SWPLegalProceedingsComponent } from './legalproceedings.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    Step4RoutingModule
+    Step4RoutingModule,
+    WorkProgramModule
   ]
 })
 export class Step4Module { }

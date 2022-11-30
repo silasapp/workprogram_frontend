@@ -4,6 +4,7 @@ import { AuthenticationService, GenericService, ModalService } from 'src/app/ser
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import { BrowserModule } from '@angular/platform-browser'
 import { Router } from '@angular/router';
+import { ApplicationDetails } from 'src/app/models/application-details';
 
 @Component({
   selector: 'app-mydesk',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 
   export class MydeskComponent implements OnInit {
+    applicationDetails:ApplicationDetails;
     selectedColumns: any[] = [];
     genk: GenericService;
     columnHeader = [];
@@ -111,8 +113,8 @@ import { Router } from '@angular/router';
       return resultArray;
     }
     Process_Application(event) {
-     
-      this.workprogram.getApplication(event.target.value)
+     debugger;
+      this.workprogram.getProcessApplication(event.target.value)
         .subscribe(res => {
           if (res.statusCode == 300) {
             this.modalService.logNotice("Error", res.message, 'error');

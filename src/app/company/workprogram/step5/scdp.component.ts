@@ -787,6 +787,8 @@ export class SWPScdpComponent implements OnInit {
   //#endregion
 
   SDCP_CSR_Submit() {
+    this.scdp_csr_Body.id=0;
+    debugger;
     this.workprogram
       .post_SDCP_CSR(
         this.scdp_csr_Body,
