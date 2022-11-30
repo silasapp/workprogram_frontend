@@ -42,18 +42,17 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   getBudgetData() {
-    this.workprogram.getFormThreeBudget_2(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
+    this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
     .subscribe(res => {
       let budgetInfo = this.budgetProposalBody as budgetProposal;
       let capexInfo = this.capexOpexBody as capexOpex;
 
-      debugger;
       if(res.budgetProposalComponents != null && res.budgetProposalComponents.length > 0){
        budgetInfo = res.budgetProposalComponents[0] as budgetProposal;
        this.loadTable_Budget(res.budgetProposalComponents);
        this.genk.isStep3 = true;
       }
-      if(res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0){
+      if(res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
         capexInfo = res.budgetCapexOpex[0] as capexOpex;
         this.loadTable_Opex(res.budgetCapexOpex);
         this.genk.isStep3 = true;
@@ -83,7 +82,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       remarks: new FormControl(this.capexOpexBody.remarks, Validators.required)
     });
 
-
+    this.getBudgetData();
   }
 
 
@@ -119,7 +118,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     let info = this.budgetProposalBody as budgetProposal;
   debugger;
     this.workprogram
-      .post_BudgetProposal(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+      .post_BudgetProposal(info, this.genk.wpYear, event.target.value, "DELETE")
       .subscribe(res => {
         debugger;
         if(res.statusCode == 300){
@@ -201,18 +200,19 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
   saveBudgetProposal(){
     let budgetInfo = {} as budgetProposal;
-    this.budgetProposalBody.companyNumber = 0;
     this.budgetProposalBody.id =  0;
     this.budgetProposalBody.year_of_WP = this.genk.wpYear;
     this.budgetProposalBody.omL_Name= this.genk.OmlName;
-    for (let item in this.budgetProposalBody) {
-            if (item != 'id' && item != 'field_ID') {
-        budgetInfo[this.genk.upperText(item)] = this.budgetProposalBody[item]?.toString() ?? '';
 
-      }
+    for (let item in this.budgetProposalBody) {
+        if (item != 'id' && item != 'field_ID' && item.toLocaleLowerCase() != 'date_created') {
+          budgetInfo[this.genk.upperText(item)] = this.budgetProposalBody[item]?.toString() ?? '';
+        }
     }
+    budgetInfo.companyNumber = 0;
+
     this.workprogram
-      .post_BudgetProposal(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+      .post_BudgetProposal(budgetInfo, this.genk.wpYear, '','')
       .subscribe(res => {
         debugger;
         if(res.statusCode == 300){
@@ -225,18 +225,19 @@ export class SWPBudgetProposalComponent implements OnInit {
       })
       }
 
-      saveOpex(){
+      saveOpex() {
         let budgetInfo = {} as capexOpex;
-        this.capexOpexBody.companyNumber = 0;
+        //this.capexOpexBody.companyNumber = 0;
         this.capexOpexBody.id =  0;
         this.capexOpexBody.year_of_WP = this.genk.wpYear;
-        this.capexOpexBody.omL_Name= this.genk.OmlName;
+        //this.capexOpexBody.omL_Name= this.genk.OmlName;
         for (let item in this.capexOpexBody) {
           if (item != 'id' && item != 'field_ID') {
-            budgetInfo[this.genk.upperText(item)] = this.capexOpexBody[item]?.toString() ?? '';
-
+            budgetInfo[item] = this.capexOpexBody[item]?.toString() ?? '';
           }
         }
+        budgetInfo.companyNumber = 0;
+
         this.workprogram
           .post_Opex(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
           .subscribe(res => {
@@ -249,6 +250,6 @@ export class SWPBudgetProposalComponent implements OnInit {
             this.modalService.logNotice("Success", res.message, 'success');
             }
           })
-          }
+        }
 
 }

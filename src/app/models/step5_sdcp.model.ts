@@ -2,11 +2,12 @@
 
 export class HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL {
     id : number =0;
-    oML_id : number = 0;
+    oML_ID : number = 0;
     oML_Name : string ='';
     year_of_WP : string ='';
     description_of_Projects_Planned : string ='';
     description_of_Projects_Actual : string ='';
+
 }
 
 export class HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION {

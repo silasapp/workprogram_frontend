@@ -2,9 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit,
-  OnChanges,
-  SimpleChanges,
+  OnInit
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -15,12 +13,12 @@ import {
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
+  selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardComponent implements OnInit, OnChanges {
-  boardForm: FormGroup;
+export class BoardComponent implements OnInit {
   wkpYear: string;
   wkpYearList = [];
   concessionHeld: string;
@@ -34,80 +32,21 @@ export class BoardComponent implements OnInit, OnChanges {
     private gen: GenericService,
     private modal: ModalService,
     private auth: AuthenticationService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private modalService: ModalService
   ) {
     this.genk = gen;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('Rerendering board changes');
-  }
-
-  ngOnInit(): void {
-    console.log('Rerendering board onit');
-    this.boardForm = new FormGroup(
-      {
-        year: new FormControl(this.wkpYear, [Validators.required]),
-        concession_Held: new FormControl(this.concessionHeld, [
-          Validators.required,
-        ]),
-        Field: new FormControl(this.field, [Validators.required]),
-      },
-      {}
-    );
-    this.getWPYearList();
-  }
-
-  changeWPYear(e) {
-    this.wkpYear = e.target.value;
-    this.genk.wpYear = this.wkpYear;
-    this.workprogram
-      .getConcessionHeld(this.auth.currentUserValue.companyId, this.wkpYear)
-      .subscribe((res) => {
-        this.concessionHeldList = res;
-        this.genk.OMLList = res;
-        this.cd.markForCheck();
-      });
-  }
-
-  changeConcessionHeld(e) {
-    this.concessionHeld = e.target.value;
-    this.genk.OmlName = this.concessionHeld;
-    //this.genk.OmlID = this.concessionHeld;
-    this.cd.markForCheck();
-    this.checkCompletedSteps();
-
-    this.workprogram
-      .getConcessionField(this.concessionHeld, null)
-      .subscribe((res: any[]) => {
-        if (res.length > 0) {
-          this.Field_List = res;
-          this.genk.Field_List = res;
-          this.cd.markForCheck();
-        } else {
-          this.modal.logConcessionSituation(this.concessionHeld);
-          this.Field_List = res;
-          this.genk.Field_List = res;
-          this.cd.markForCheck();
-        }
-      });
-  }
-
-  changeConcessionField(e) {
-    this.field = e.target.value;
-    this.genk.fieldName = this.field;
-    this.modal.logConcessionSituation(this.concessionHeld);
-  }
-
-  getWPYearList() {
-    this.workprogram.getWPYearList().subscribe((res) => {
-      this.wkpYearList = res;
-      this.cd.markForCheck();
+    this.modalService.concessionSitu.subscribe((res) => {
+      this.checkCompletedSteps();
     });
   }
 
+  ngOnInit(): void {
+    this.checkCompletedSteps();
+  }
+
   checkCompletedSteps() {
-    this.workprogram.getCompletedSteps(this.concessionHeld).subscribe((res) => {
+    this.workprogram.getCompletedSteps(this.genk.OmlName, this.genk.wpYear).subscribe((res) => {
       this.genk.isStep1 = res.step1;
       this.genk.isStep2 = res.step2;
       this.genk.isStep3 = res.step3;

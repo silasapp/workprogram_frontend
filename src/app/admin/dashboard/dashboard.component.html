@@ -1,325 +1,453 @@
-<div style="margin-top:1%;">
-<div *ngIf="genk.isAdmin" class="row">
-  <div class="col-md-3">
-    <div class="card bg-primary p-20">
-        <div class="media widget-ten">
-            <div class="media-left meida media-middle">
-                <span><i class="ti-bag f-s-40"></i></span>
-            </div>
-
-               <div class="media-body media-text-right">
-                <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.deskCount}} </h2>
-                <p style="font-weight:bold"><a href="/application/mydesk" class="color-white"> My Desk </a></p>
-        </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-warning p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allProcessingCount}}</h2>
-              <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> Processing Applications </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-dark p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allApplicationsCount}} </h2>
-              <p style="font-weight:bold"><a href="/application/allapplications" class="color-white" > All Applications </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-<div class="col-md-3">
-  <div class="card bg-success p-20">
-      <div class="media widget-ten">
-          <div class="media-left meida media-middle">
-              <span><i class="ti-bag f-s-40"></i></span>
-          </div>
-             <div class="media-body media-text-right">
-              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allApprovalsCount}} </h2>
-              <p style="font-weight:bold"><a href="/application/allapprovals" class="color-white"> All Approvals </a></p>
-             
-      </div>
-      </div>
-  </div>
-</div>
-
-</div>
-<hr/>
-<br/>
-  <div
-      style="text-align: center;margin: 0px auto;display:block; font-size: medium;
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: 300; text-shadow: 1px 1px 2px rgb(11, 43, 148);">
-      <!-- <h1> WORK PROGRAMME </h1>
-      <h1>Year 2022</h1> -->
-  </div><br><br>
 <div>
-
-  <!-- The company calculated Operational Data -->
-   <div style="display: flex; width: 100%;">
-    <div style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
-      
-      
-        <div style="width: 90%; height: 60%; margin: 0 5%;">
-          <span class="left">
-            <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
-          <span class="right">
-             <span class="top"> OIL & CONDENSATE</span>  <br/> 
-             <span class="buttom">{{dashboardGasBudgetAndReserve.oilCondensate}} BBL</span>
-            </span>
-        </div>
-        <hr/>
-        <div style="width: 90%; height: 40%; margin: 0 auto;">
-          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves (ANNUAL)</span></span>
-        </div>
-      
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/wallet.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">PRODUCTION COST</span>  <br/> 
-           <span class="buttom">&#36;{{dashboardGasBudgetAndReserve.directProdCost}}</span>
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Budget Performance</span></span>
-      </div>
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 100%; height: 60%; margin: 0;">
-        <span  >
-          <span class="top">Gas Capacity</span>  <br/> 
-           <span class="buttom">{{dashboardGasBudgetAndReserve.gasPlantCapacity}} SCF</span>
-    
-        <br/>
-      
-           <span class="top">FLARED</span>  <br/> 
-           <span class="buttom">{{dashboardGasBudgetAndReserve.gasFlareds}} SCF</span>
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT;font-size: larger;">{{previousYear}} Gas Production</span></span>
-      </div>
-    </div>
-
-    <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">OIL CONDENSATE</span>  <br/> 
-           <span class="buttom">1000L</span>
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
-      </div>
-    </div> -->
-
-  </div> 
-
-  <div style="display: flex; width: 100%;">
-    <div style="width: 31%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2% 2% 0%; border-radius: 15px; text-align: center; height: 170px">
-      
-      
-        <div style="width: 90%; height: 60%; margin: 0 5%;">
-          <span class="left">
-            <img src="/assets/data/images/opl.png" style="height:100%" alt="pis"></span>
-          <span class="right">
-             <span class="top">Total Number</span>  <br/> 
-             <span class="buttom">{{dashboardBody.opL_Count}}</span>
-            </span>
-        </div>
-        <hr/>
-        <div style="width: 90%; height: 40%; margin: 0 auto;">
-          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Prospecting License (OPL)</span></span>
-        </div>
-      
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/oml.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">Total Number</span>  <br/> 
-           <span class="buttom">{{dashboardBody.omL_Count}}</span>
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Mining License (OML)</span></span>
-      </div>
-    </div>
-
-    <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/field.gif" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">Total Number</span>  <br/> 
-           <span class="buttom">{{dashboardBody.no_Of_ProducingFields_Count}}</span> 
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Producing Fields</span></span>
-      </div>
-    </div>
-
-    <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
-      <div style="width: 90%; height: 60%; margin: 0 5%;">
-        <span class="left">
-          <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
-        <span class="right">
-           <span class="top">OIL CONDENSATE</span>  <br/> 
-           <span class="buttom">1000L</span>
-          </span>
-      </div>
-      <hr/>
-      <div style="width: 90%; height: 40%; margin: 0 auto;">
-        <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
-      </div>
-    </div> -->
-
-  </div> 
-
-
-
-
-
-  <div style="display: flex; width: 100%;">
-    <div style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin-right: 2%; border-radius: 15px; text-align: center;">
-      <h2 style="
-      color: yellowgreen;
-  ">Net Oil Producduction by Concessions</h2>
-      <div #mychartbox1>
-        <div #firstchart style="width: 100%; height: 500px"></div>
-      </div>
-
-    </div>
-      <!-- <div>
-        <div
-        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
-   
+  <div *ngIf="genk.isAdmin" class="row">
+     <div class="col-md-3">
+       <div class="card bg-primary p-20">
+         <div class="media widget-ten">
+           <div class="media-left meida media-middle">
+             <span><i class="ti-bag f-s-40"></i></span>
+           </div>
+ 
+           <div class="media-body media-text-right">
+             <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.deskCount}} </h2>
+             <p style="font-weight:bold"><a href="/application/mydesk" class="color-white"> My Desk </a></p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-3">
+       <div class="card bg-warning p-20">
+         <div class="media widget-ten">
+           <div class="media-left meida media-middle">
+             <span><i class="ti-bag f-s-40"></i></span>
+           </div>
+           <div class="media-body media-text-right">
+             <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allProcessingCount}}</h2>
+             <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> Processing
+                 Applications </a></p>
+ 
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-3">
+       <div class="card bg-dark p-20">
+         <div class="media widget-ten">
+           <div class="media-left meida media-middle">
+             <span><i class="ti-bag f-s-40"></i></span>
+           </div>
+           <div class="media-body media-text-right">
+             <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApplicationsCount}} </h2>
+             <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> All Applications
+               </a></p>
+ 
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-3">
+       <div class="card bg-success p-20">
+         <div class="media widget-ten">
+           <div class="media-left meida media-middle">
+             <span><i class="ti-bag f-s-40"></i></span>
+           </div>
+           <div class="media-body media-text-right">
+             <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff.allApprovalsCount}} </h2>
+             <p style="font-weight:bold"><a href="/application/allapprovals" class="color-white"> All Approvals </a></p>
+ 
+           </div>
+         </div>
+       </div>
+     </div>
+ 
+   </div>
+   <hr />
+   <br />
+   <!-- <div>
+     style="text-align: center;margin: 0px auto;display:block; font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: 300; text-shadow: 1px 1px 2px rgb(11, 43, 148);">
+     <h1> WORK PROGRAMME </h1>
+       <h1>Year 2022</h1>
+   </div>  -->
+   <div style="display: flex; justify-content: space-between;">
+     <div
+       style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
+       <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">widgets</span>
+       <span>{{auth.currentUserValue.companyName}}</span>
+     </div>
+     <div
+       style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
+       <span class="material-icons"
+         style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">schedule</span>
+       <span>Year: {{previousYear}}/{{previousYear + 1}}</span>
+     </div>
+   </div>
+ 
+   <div>
+ 
+     <!-- The company calculated Operational Data -->
+     <div style="display: inline-flex; flex-wrap: wrap; width: 100%;">
+       <div class="dashtop" style="background-color: rgb(27, 94, 146);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver;">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">token</span>
+             </div>
+ 
+             <div class="dashtext">
+               <span class="dashnum">{{dashboardGasBudgetAndReserve.reserveOilCondensate}}</span><span>BBL</span><br><br>
+               <span class="dashnumtext">OIL & CONDENSATE</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase" style="color: gainsboro;">
+           <span>OIL RESERVES (ANNUAL)</span>
+         </div>
+       </div>
+ 
+       <div class="dashtop" style="background-color: rgb(19, 124, 105);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver;">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">whatshot</span>
+             </div>
+ 
+             <div class="dashtext">
+               <span class="dashnum">{{dashboardGasBudgetAndReserve.reserveAGNAG}}</span><span>BBL</span><br><br>
+               <span class="dashnumtext">AG & NAG</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase" style="color: gainsboro;">
+           <span>GAS RESERVES (ANNUAL)</span>
+         </div>
+       </div>
+ 
+       <div class="dashtop">
+         <div class="dashtopsec">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">microwave</span>
+             </div>
+ 
+             <div class="dashtext">
+               <span class="dashnum">&#36;{{dashboardGasBudgetAndReserve.prodCost}}</span><br><br>
+               <span class="dashnumtext">PRODUCTION COST</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase">
+           <span>BUDGET PERFORMANCE</span>
+         </div>
+       </div>
+ 
+       <!-- <div class="dashtop" style="background-color: rgb(19, 124, 105);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
+           <div style="padding: 0 20px; margin-top: 20px;">
+             <div class="divcent" style="margin-bottom: 50px; justify-content: space-between;">
+               <div style="margin-right: 40px; color: white;">
+                 <span
+                   style="font-size: 45px; font-weight: 900; color: white;">{{dashboardGasBudgetAndReserve.reserveAGNAG}}</span><span>SCF</span>
+               </div>
+ 
+               <div class="dashnumtext">
+                 <span>GAS CAPACITY</span>
+               </div>
+             </div>
+             <div class="divcent" style="justify-content: space-between;">
+               <div style=" margin-right: 40px; color: white;">
+                 <span
+                   style="font-size: 45px; font-weight: 900; color: white;">{{dashboardGasBudgetAndReserve.prodCost}}</span><span>SCF</span>
+               </div>
+ 
+               <div class="dashnumtext">
+                 <span>FLARED</span>
+               </div>
+             </div>
+           </div>
+           <span class="right" style="float: left;">
+             <span class="top">Gas Capacity</span> <br/>
+             <span class="buttom">{{dashboardGasBudgetAndReserve.gasPlantCapacity}} SCF</span>
+           </span>
+           <span class="right">
+             <span class="top">FLARED</span> <br/>
+             <span class="buttom">{{dashboardGasBudgetAndReserve.gasFlareds}} SCF</span>
+           </span>
+         </div>
+         <div class="dashbase" style="color: gainsboro">
+           <span>GAS PRODUCTION</span>
+         </div>
+       </div>  -->
+ 
+ <<<<<<< HEAD
+     <div style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
+       <div style="width: 100%; height: 60%; margin: 0;">
+         <span  >
+           <span class="top">Gas Capacity</span>  <br/> 
+            <span class="buttom">{{dashboardGasBudgetAndReserve.gasPlantCapacity}} SCF</span>
+     
+         <br/>
        
-        <div  style="margin-left: 10px" class="inpdiv">
-          <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
-            class="search">
-        </div>
-        <div style="width: 225px;" class="inpdiv">
-          <select id="time" class="form-select inpute" (change)="resize($event)">
-            <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
-          </select>
-        </div>
-
-        <div style="display: flex;">
-          <button (click)="genk.printData(myTable)" class="rebtn" style="background-color: rgb(9, 96, 127);">
-            <mat-icon style="font-size: 20px;">print</mat-icon> Print
-          </button>
-          <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
-            <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
-          </button>
-          <button (click)="genk.copyTable(myTable)" class="rebtn"
-            style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
-            <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
-          </button>
-          <button (click)="togOptions()" mat-mini-fab style="background-color: whitesmoke; color: black; font-weight: 500; margin-left: 15px;">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </div>
-      </div>
-
-      <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
-          <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
-            <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
-          </button>
-        </div>
-
-      <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
-        <table #myTable class="apptable" cellPadding="10">
-          <thead>
-            <tr>
-              <th *ngFor="let h of columns">
-        
-                {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
-
-              </th>
-            </tr>
-          </thead>
-          <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
-            <tr *ngFor="let row of arrayRows">
-              <td *ngFor="let h of columns">
-                {{row[h.columnDef]}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div
-      style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
-      <div
-        style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); background-color: white;">
-        <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
-          <mat-icon>keyboard_double_arrow_left</mat-icon>
-        </button>
-        <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
-        <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
-            style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;" #pageInput
-            type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
-            (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
-    
-        <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
-          mat-raised-button>Next</button>
-        <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
-          <mat-icon>keyboard_double_arrow_right</mat-icon>
-        </button>
-      </div>
-    
-    </div>
-
-      </div> -->
-
-    <div style="width: 50%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); border-radius: 15px; text-align: center;">
-      <h2 style="
-      color: yellowgreen;
-  ">Percentage Total Resrves By Concessions</h2>
-      <div #mychartbox2>
-        <div #secondchart style="width: 100%; height: 500px"></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- <div style="width: 100%; text-align: center; margin: 5% 0;">
-  <div style="width: 50%; margin: auto;  background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); border-radius: 15px; text-align: center;">
-    <h2>Oil Production Distribution By Terrain</h2>
-      <div class="col-md-12" #mychartbox3>
-        <div #thirdchart style="width: 100%; height: 500px"></div>
-      </div>
-  </div>
-</div> -->
-
-
-  </div>
+            <span class="top">FLARED</span>  <br/> 
+            <span class="buttom">{{dashboardGasBudgetAndReserve.gasFlareds}} SCF</span>
+           </span>
+       </div>
+       <hr/>
+       <div style="width: 90%; height: 40%; margin: 0 auto;">
+         <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT;font-size: larger;">{{previousYear}} Gas Production</span></span>
+       </div>
+     </div>
+ 
+     <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
+ =======
+       <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
+ >>>>>>> 045ecc266e103dcf06455a56820cb6cba2ba5716
+       <div style="width: 90%; height: 60%; margin: 0 5%;">
+         <span class="left">
+           <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
+         <span class="right">
+            <span class="top">OIL CONDENSATE</span>  <br/>
+            <span class="buttom">1000L</span>
+           </span>
+       </div>
+       <hr/>
+       <div style="width: 90%; height: 40%; margin: 0 auto;">
+         <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
+       </div>
+     </div> -->
+ 
+ 
+       <div class="dashtop" style="background-color: rgb(104, 111, 127);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">join_inner</span>
+             </div>
+ 
+             <div class="dashtext" style="padding: 0 42px;">
+               <span class="dashnum">{{dashboardBody.opL_Count}}</span><br><br>
+               <span class="dashnumtext">TOTAL OPLs</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase" style="color: gainsboro;">
+           <span>OIL PROSPECTING LICENSE (OPL)</span>
+         </div>
+       </div>
+ 
+       <div class="dashtop" style="background-color: rgb(145, 51, 62);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">join_inner</span>
+             </div>
+ 
+             <div class="dashtext" style="padding: 0 40px;">
+               <span class="dashnum">{{dashboardBody.omL_Count}}</span><br><br>
+               <span class="dashnumtext">TOTAL OMLs</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase" style="color: gainsboro;">
+           <span>OIL MINING LICENSE (OML)</span>
+         </div>
+       </div>
+ 
+       <div class="dashtop" style="background-color: rgb(93, 47, 120);">
+         <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
+           <div class="divcent">
+             <div style="padding-left: 10px">
+               <span class="material-icons dashicon">opacity</span>
+             </div>
+ 
+             <div class="dashtext" style="padding: 0 40px;">
+               <span class="dashnum">{{dashboardBody.no_Of_ProducingFields_Count}}</span><br><br>
+               <span class="dashnumtext">TOTAL FIELDS</span>
+             </div>
+           </div>
+         </div>
+         <div class="dashbase" style="color: gainsboro;">
+           <span>PRODUCING FIELDS</span>
+         </div>
+       </div>
+     </div>
+       <br><br><br>
+ 
+       <!-- <div
+         style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
+         <div style="width: 90%; height: 60%; margin: 0 5%;">
+           <span class="left">
+             <img src="/assets/data/images/oml.png" style="height:100%" alt="pis"></span>
+           <span class="right">
+             <span class="top">Total Number</span> <br />
+             <span class="buttom">{{dashboardBody.omL_Count}}</span>
+           </span>
+         </div>
+         <hr />
+         <div style="width: 90%; height: 40%; margin: 0 auto;">
+           <span class="below" style="float: left;">
+             <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+               style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Oil Mining License (OML)</span>
+           </span>
+         </div>
+       </div>
+ 
+       <div
+         style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
+         <div style="width: 90%; height: 60%; margin: 0 5%;">
+           <span class="left">
+             <img src="/assets/data/images/field.gif" style="height:100%" alt="pis"></span>
+           <span class="right">
+             <span class="top">Total Number</span> <br />
+             <span class="buttom">{{dashboardBody.no_Of_ProducingFields_Count}}</span>
+           </span>
+         </div>
+         <hr />
+         <div style="width: 90%; height: 40%; margin: 0 auto;">
+           <span class="below" style="float: left;">
+             <mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span
+               style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Producing Fields</span>
+           </span>
+         </div>
+       </div> -->
+ 
+       <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
+       <div style="width: 90%; height: 60%; margin: 0 5%;">
+         <span class="left">
+           <img src="/assets/data/images/storage.png" style="height:100%" alt="pis"></span>
+         <span class="right">
+            <span class="top">OIL CONDENSATE</span>  <br/>
+            <span class="buttom">1000L</span>
+           </span>
+       </div>
+       <hr/>
+       <div style="width: 90%; height: 40%; margin: 0 auto;">
+         <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
+       </div>
+     </div> -->
+ 
+     <div style="display: flex; margin-bottom: 30px">
+       <div
+       style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
+       <span class="material-icons"
+         style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">schedule</span>
+       <span>Year: {{previousYear}}/{{previousYear + 1}}</span>
+     </div>
+     </div>
+ 
+ 
+ 
+       <div style="display: flex; width: 100%;">
+         <div style="width: 50%; background-color: white; padding: 10px 0 0 0; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
+           <span style="color: darkslategrey; font-weight: 900; font-size: 18px;">Total Oil Producduction by Month</span>
+           <div #mychartbox1>
+             <div #firstchart style="width: 100%; height: 600px"></div>
+           </div>
+         </div>
+         <!-- <div>
+         <div
+         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
+ 
+ 
+         <div  style="margin-left: 10px" class="inpdiv">
+           <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
+             class="search">
+         </div>
+         <div style="width: 225px;" class="inpdiv">
+           <select id="time" class="form-select inpute" (change)="resize($event)">
+             <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
+           </select>
+         </div>
+ 
+         <div style="display: flex;">
+           <button (click)="genk.printData(myTable)" class="rebtn" style="background-color: rgb(9, 96, 127);">
+             <mat-icon style="font-size: 20px;">print</mat-icon> Print
+           </button>
+           <button (click)="genk.tableToCSVReport(myTable)" class="rebtn" style="margin: 0 20px; background-color: teal;">
+             <mat-icon style="font-size: 20px;">file_download</mat-icon> Excel
+           </button>
+           <button (click)="genk.copyTable(myTable)" class="rebtn"
+             style="background-color: whitesmoke; color: darkslategrey; font-weight: 500;">
+             <mat-icon style="font-size: 20px;">content_copy</mat-icon> Copy
+           </button>
+           <button (click)="togOptions()" mat-mini-fab style="background-color: whitesmoke; color: black; font-weight: 500; margin-left: 15px;">
+             <mat-icon>more_vert</mat-icon>
+           </button>
+         </div>
+       </div>
+ 
+       <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
+           <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
+             <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
+           </button>
+         </div>
+ 
+       <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
+         <table #myTable class="apptable" cellPadding="10">
+           <thead>
+             <tr>
+               <th *ngFor="let h of columns">
+ 
+                 {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
+ 
+               </th>
+             </tr>
+           </thead>
+           <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);">
+             <tr *ngFor="let row of arrayRows">
+               <td *ngFor="let h of columns">
+                 {{row[h.columnDef]}}
+               </td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+ 
+       <div
+       style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
+       <div
+         style="display: flex; align-items: center; padding: 5px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.4); background-color: white;">
+         <button (click)="firstPage()" mat-mini-fab style="background-color: grey;" [disabled]="selectedPage < 2">
+           <mat-icon>keyboard_double_arrow_left</mat-icon>
+         </button>
+         <button [disabled]="selectedPage < 2" style="margin: 0 10px;" (click)="goPrev()" mat-raised-button>Prev</button>
+         <div style="font-weight: 600; color: rgb(84, 92, 92);">Page <input
+             style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;" #pageInput
+             type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+             (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
+ 
+         <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
+           mat-raised-button>Next</button>
+         <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
+           <mat-icon>keyboard_double_arrow_right</mat-icon>
+         </button>
+       </div>
+ 
+     </div>
+ 
+       </div> -->
+ 
+         <div style="width: 50%; background-color: white; padding: 10px 0 0 0; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
+           <span style="color: darkslategrey; font-weight: 900; font-size: 18px;">Total Production by Concessions</span>
+           <div #mychartbox2>
+             <div #secondchart style="width: 100%; height: 450px"></div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div style="display: flex; margin: 40px 0 20px 0;">
+   <div style="width: 50%; margin-right: 20px;  background-color: white; padding: 5px; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
+     <h2>Oil & Condensate Reserve by Concession</h2>
+       <div #mychartbox3>
+         <div #thirdchart style="width: 100%; height: 500px"></div>
+       </div>
+   </div>
+ 
+   <div style="width: 50%; margin: auto;  background-color: white; padding: 5px; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
+     <h2>AG & NAG Reserve by Concession</h2>
+       <div #mychartbox4>
+         <div #fourthchart style="width: 100%; height: 500px"></div>
+       </div>
+   </div>
+ </div>
+   </div>
+ 

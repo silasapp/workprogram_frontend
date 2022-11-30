@@ -252,6 +252,11 @@ export class AdminService {
       )
   }
 
+  getCompanyConcessions(){
+    return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_field_concessions`)
+    .pipe(retry(this.num), map((response) =>{ return response }))
+  }
+
       getConcessionFields(){
         return this.http.get<any>(`${environment.apiUrl}/workprogramme/get_concessions_field`, {params: {companyNumber: 0}})
         .pipe(retry(this.num), map((response) =>{ return response }))

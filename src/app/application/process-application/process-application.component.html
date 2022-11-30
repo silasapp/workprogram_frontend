@@ -26,16 +26,16 @@
 
                             <table class="table table-bordered table-striped" style="resize:both">
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>View Submissions</td>
                                         <td class="text-left text-danger">
-                                            <!-- <a href="/Applications/ViewDta/"{{genk.appID}} target="_blank"> <b>Click to Data Submissions</b> </a> -->
+                                            <a href="/Applications/ViewDta/"{{genk.appID}} target="_blank"> <b>Click to Data Submissions</b> </a>
                                             <a href="" target="_blank"> <b>Click to Data Submissions</b> </a>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td> Reference </td>
-                                        <td class="text-left text-dark"><b>{{applicationDetails?.application.referenceNo}} </b></td>
+                                        <td class="text-left text-dark"><b>{{this.applicationDetails?.application.referenceNo}} </b></td>
                                     </tr>
                                     
                                     <tr>
@@ -44,41 +44,43 @@
                                     </tr>
 
                                     <tr>
-                                        <td class="">Concession - Field</td>
-                                        <td class="text-left">{{applicationDetails?.concession.concession_Unique_ID}} - {{applicationDetails?.field.field_Name}} </td>
+                                        <td class="">Concession (Field)</td>
+                                        <td class="text-left">{{this.applicationDetails?.concession.concession_Unique_ID}} 
+                                            <!-- - {{this.applicationDetails?.field.field_Name}} -->
+                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td> Reference </td>
-                                        <td class="text-left text-dark"><b>{{applicationDetails?.application.referenceNo}} </b></td>
+                                        <td> Year </td>
+                                        <td class="text-left text-dark"><b>{{this.applicationDetails?.application.yearOfWKP}} </b></td>
                                     </tr>
                                     <tr>
                                         <td class="">Company Name</td>
                                         <td class="text-left">
-                                            <a class="text-primary" href="/Companies/FullCompanyProfile/companyemail" ><b> {{applicationDetails?.company.companY_NAME}} </b></a>
+                                            <a class="text-primary" href="/Companies/FullCompanyProfile/companyemail" ><b> {{this.applicationDetails?.company.companY_NAME}} </b></a>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="">Company Email</td>
-                                        <td class="text-left"> {{applicationDetails?.company.email}} </td>
+                                        <td class="text-left"> {{this.applicationDetails?.company.email}} </td>
                                     </tr>
 
                                     <tr>
                                         <td> Status </td>
-                                        <!-- <td class="text-left"> <span class="btn btn-sm">  {{applicationDetails.application?.status}} </span> </td> -->
+                                        <!-- <td class="text-left"> <span class="btn btn-sm">  {{this.applicationDetails.application?.status}} </span> </td> -->
                                     </tr>
 
                                     <tr>
                                         <td>Date Applied</td>
 
-                                        <td class="text-left"><b>{{applicationDetails.application?.createdAt}}</b>
+                                        <td class="text-left"><b>{{this.applicationDetails?.application.createdAt}}</b>
                                         </td>
                                     </tr>
                                
                                     <tr>
                                         <td> Payment Status </td>
-                                        <td class="text-left"> <span class="btn btn-dark btn-sm"> {{applicationDetails.application?.paymentStatus}} </span> </td>
+                                        <td class="text-left"> <span class="btn btn-dark btn-sm"> {{this.applicationDetails?.application.paymentStatus}} </span> </td>
                                     </tr>
 
                                     <tr>
@@ -120,7 +122,7 @@
                                     <tbody #myTbody>
                                         <tr table-row *ngFor="let item of columnValue_Desk">
                                             <td>
-                                                {{item.staff_Name}}
+                                                {{item.staff_Email}}
                                             </td> 
                                             <td>
                                                 {{item.staff_Role}}({{item.staff_SBU}})
@@ -181,13 +183,13 @@
                                 <h4> Operations Controls </h4>
                                 <hr />
 
-                                <a class="btn btn-primary btn-block" href="/application/applicationdata"> View Data Submission </a>
+                                <!-- <a class="btn btn-primary btn-block" href="/application/applicationdata"> View Data Submission </a> -->
                                 <p></p>
-                                <button class="btn btn-dark btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#StradReportModal"> Add Report </button>
-                                <p></p>
+                                <!-- <button class="btn btn-dark btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Add Report </button>
+                                <p></p> -->
                                 <button (click)="togPushModal()" class="btn btn-success btn-block"> Push Application </button>
                                 <p></p>
-                                <button class="btn btn-danger btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#StradReportModal"> Send Back </button>
+                                <button class="btn btn-danger btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Send Back </button>
                                 <p></p>
                         </div>
 
@@ -195,14 +197,14 @@
                         <br />
 
                       
-                        <div class="card-black">
+                        <!-- <div class="card-black">
 
                             <h4> Application Reports </h4>
 
                             <hr />
 
 
-                        </div>
+                        </div> -->
 
 
                     </div>
