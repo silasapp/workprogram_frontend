@@ -124,9 +124,10 @@ export class MydeskComponent implements OnInit {
     const year = event.target.value;
 
     this.workprogram.getProcessApplication(year).subscribe((res) => {
+      console.log('process', res);
       if (res.statusCode === 200) {
         this.genk.applicationDetails = res.data;
-        this.router.navigate(['/application/process-application']);
+        this.router.navigate(['/application/process-application/' + year]);
       } else this.modalService.logNotice('Error', res.message, 'error');
     });
   }

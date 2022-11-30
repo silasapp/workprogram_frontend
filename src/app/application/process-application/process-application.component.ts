@@ -18,7 +18,7 @@ import {
   Staff,
   SubmittedDocument,
 } from 'src/app/models/application-details';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PushApplicationFormComponent } from './push-application-form/push-application-form.component';
 import { SendBackFormComponent } from './send-back-form/send-back-form.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -31,7 +31,12 @@ import { Subject } from 'rxjs';
 })
 export class ProcessApplicationComponent implements OnInit {
   public applications$ = new Subject<Application[]>();
+  public applicationDetails$ = new Subject<ApplicationDetails>();
+  public staffDetails$ = new Subject<Staff>();
+  public applicationHistory$ = new Subject<any>();
+
   public applications: Application[] = [];
+  public year: string;
 
   genk: GenericService;
   columnHeader_Desk;
@@ -41,7 +46,6 @@ export class ProcessApplicationComponent implements OnInit {
   columnValue_History;
   applicationDetails: ApplicationDetails;
   staffDetails: Staff = {} as Staff;
-  documentDetails;
   isPushModal;
   pushFieldForm: FormGroup;
 
@@ -52,38 +56,47 @@ export class ProcessApplicationComponent implements OnInit {
     private auth: AuthenticationService,
     private modalService: ModalService,
     public dialog: MatDialog,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private route: ActivatedRoute
   ) {
     this.genk = gen;
+    this.route.params.subscribe((param) => {
+      this.year = param['year'];
+    });
   }
+
   ngOnInit(): void {
-    this.getApplication();
+    this.applicationDetails = this.genk.applicationDetails;
+    this.applicationDetails$.next(this.applicationDetails);
+
+    if (!this.applicationDetails) this.getApplicationProcess();
   }
-  getApplication() {
-    this.workprogram.getAppsOnMyDesk().subscribe({
+
+  getApplicationProcess() {
+    this.workprogram.getProcessApplication(this.year).subscribe({
       next: (res) => {
-        console.log('resss', res);
-        if (res.statusCode === 200) {
-          this.applications$.next(res.data);
-          this.applications = res.data;
-        }
-        // this.cd.markForCheck();
+        this.applicationDetails = res.data;
+        this.applicationDetails$.next(this.applicationDetails);
+
+        this.loadApplication();
+      },
+      error: (error) => {
+        this.modalService.logNotice('Error', error.message, 'error');
       },
     });
+  }
 
-    console.log('genk', this.genk.applicationDetails);
-
+  loadApplication() {
     if (this.genk.applicationDetails != null) {
       this.genk.appID = this.genk.applicationDetails.application.id;
       this.applicationDetails = this.genk.applicationDetails;
 
-      console.log('application details', this.applicationDetails);
-
-      this.loadTable_Desk(this.applicationDetails.staff);
-      this.loadTable_History(this.applicationDetails.application_History);
-      this.loadTable_Document(this.applicationDetails.document);
-
-      this.cd.markForCheck();
+      // this.loadTable_Desk(this.applicationDetails.staff);
+      // this.loadTable_History(this.applicationDetails.application_History);
+      this.staffDetails$.next(this.applicationDetails.staff);
+      this.applicationHistory$.next(
+        this.applicationDetails.application_History
+      );
     }
   }
 
@@ -96,11 +109,6 @@ export class ProcessApplicationComponent implements OnInit {
   loadTable_History(data) {
     if (data != null) {
       this.columnValue_History = data;
-    }
-  }
-  loadTable_Document(data) {
-    if (data != null) {
-      this.documentDetails = data;
     }
   }
 
@@ -134,7 +142,6 @@ export class ProcessApplicationComponent implements OnInit {
     );
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getApplication();
       this.cd.markForCheck();
     });
   }
@@ -160,7 +167,6 @@ export class ProcessApplicationComponent implements OnInit {
     );
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getApplication();
       this.cd.markForCheck();
     });
   }

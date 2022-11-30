@@ -5,7 +5,7 @@
   class="card-black"
   style="background: rgb(255, 255, 255) !important; padding: 10px"
 >
-  <input type="text" id="txtRequestId" hidden value="{{ this.genk.appID }}" />
+  <input type="text" id="txtRequestId" hidden value="{{ genk.appID }}" />
 
   <div class="card-body">
     <div class="row">
@@ -31,7 +31,11 @@
               <tr>
                 <td>Reference</td>
                 <td class="text-left text-dark">
-                  <b>{{ this.applicationDetails?.application.referenceNo }} </b>
+                  <b
+                    >{{
+                      (applicationDetails$ | async)?.application.referenceNo
+                    }}
+                  </b>
                 </td>
               </tr>
 
@@ -43,15 +47,20 @@
               <tr>
                 <td class="">Concession (Field)</td>
                 <td class="text-left">
-                  {{ this.applicationDetails?.concession.concession_Unique_ID }}
-                  <!-- - {{this.applicationDetails?.field.field_Name}} -->
+                  {{
+                    (applicationDetails$ | async)?.concession
+                      .concession_Unique_ID
+                  }}
+                  <!-- - {{(applicationDetails$ | async).field.field_Name}} -->
                 </td>
               </tr>
 
               <tr>
                 <td>Year</td>
                 <td class="text-left text-dark">
-                  <b>{{ this.applicationDetails?.application.yearOfWKP }} </b>
+                  <b
+                    >{{ (applicationDetails$ | async)?.application.yearOfWKP }}
+                  </b>
                 </td>
               </tr>
               <tr>
@@ -61,7 +70,7 @@
                     class="text-primary"
                     href="/Companies/FullCompanyProfile/companyemail"
                     ><b>
-                      {{ this.applicationDetails?.company.companY_NAME }}
+                      {{ (applicationDetails$ | async)?.company.companY_NAME }}
                     </b></a
                   >
                 </td>
@@ -70,20 +79,26 @@
               <tr>
                 <td class="">Company Email</td>
                 <td class="text-left">
-                  {{ this.applicationDetails?.company.email }}
+                  {{ (applicationDetails$ | async)?.company.email }}
                 </td>
               </tr>
 
               <tr>
                 <td>Status</td>
-                <!-- <td class="text-left"> <span class="btn btn-sm">  {{this.applicationDetails.application?.status}} </span> </td> -->
+                <td class="text-left">
+                  <span class="btn btn-sm">
+                    {{ (applicationDetails$ | async)?.application.status }}
+                  </span>
+                </td>
               </tr>
 
               <tr>
                 <td>Date Applied</td>
 
                 <td class="text-left">
-                  <b>{{ this.applicationDetails?.application.createdAt }}</b>
+                  <b>{{
+                    (applicationDetails$ | async)?.application.createdAt
+                  }}</b>
                 </td>
               </tr>
 
@@ -91,7 +106,9 @@
                 <td>Payment Status</td>
                 <td class="text-left">
                   <span class="btn btn-dark btn-sm">
-                    {{ this.applicationDetails?.application.paymentStatus }}
+                    {{
+                      (applicationDetails$ | async)?.application.paymentStatus
+                    }}
                   </span>
                 </td>
               </tr>
@@ -99,27 +116,33 @@
               <tr>
                 <td>Documents Attached</td>
                 <td class="text-left">
-                  <div *ngFor="let item of documentDetails">
-                    <a
-                      href="{{ item.docSource }}"
-                      target="_blank"
-                      style="color: darkslategrey; font-size: small"
+                  <div style="max-height: 400px; overflow-y: scroll">
+                    <div
+                      *ngFor="
+                        let item of (applicationDetails$ | async)?.document
+                      "
                     >
-                      <div
-                        class=""
-                        style="
-                          border: 1px solid #dadada;
-                          padding: 10px;
-                          margin-top: 10px;
-                          cursor: pointer;
-                        "
-                        title="Click to view document"
+                      <a
+                        href="{{ item.docSource }}"
+                        target="_blank"
+                        style="color: darkslategrey; font-size: small"
                       >
-                        <i class="fas fa-file-alt fa-lg"> </i>
-                        <b> {{ item.documentCategory }} </b>
-                      </div>
-                    </a>
-                    <hr />
+                        <div
+                          class=""
+                          style="
+                            border: 1px solid #dadada;
+                            padding: 10px;
+                            margin-top: 10px;
+                            cursor: pointer;
+                          "
+                          title="Click to view document"
+                        >
+                          <i class="fas fa-file-alt fa-lg"> </i>
+                          <b> {{ item.documentCategory }} </b>
+                        </div>
+                      </a>
+                      <hr />
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -144,7 +167,10 @@
               </thead>
 
               <tbody #myTbody>
-                <tr table-row *ngFor="let item of columnValue_Desk">
+                <tr
+                  table-row
+                  *ngFor="let item of (applicationDetails$ | async)?.staff"
+                >
                   <td>
                     {{ item.staff_Email }}
                   </td>
@@ -162,7 +188,7 @@
             <table class="table table-bordered table-striped">
               <caption>
                 <a
-                  href="/Applications/ApplicationHistory/{{ this.genk.appID }}"
+                  href="/Applications/ApplicationHistory/{{ genk.appID }}"
                   class="text-primary"
                   target="_blank"
                   title="Click to view application history"
@@ -179,7 +205,13 @@
                 </tr>
               </thead>
               <tbody #myTbod>
-                <tr table-row *ngFor="let item of columnValue_History">
+                <tr
+                  table-row
+                  *ngFor="
+                    let item of (applicationDetails$ | async)
+                      ?.application_History
+                  "
+                >
                   <td>
                     {{ item.staff_Email }}
                   </td>
@@ -246,47 +278,6 @@
 
     <p><br /></p>
   </div>
-</div>
-
-<div *ngIf="isPushModal == true" class="modal">
-  <h1>HELLO</h1>
-  <!-- <div [formGroup]="pushFieldForm" (ngSubmit)="PushApplication()" class="modalbig">
-      <div style="display: flex; align-items: center; background-color: rgb(53, 67, 67); color: white; text-align: center; font-weight: 500; font-size: 17px;">
-        <div style="width: 85%; padding: 7px 0 0 3%;"><span> Push Application</span></div>
-        <div (click)="togPushModal()" style="background-color: red; padding: 7px 0; width: 15%;"><span style="color: white;" class="material-icons">close</span></div>
-      </div>
-      <div>
-        <div style="padding: 20px;">
-            <div class="modal-body">
-
-                <div>
-                    <p> </p>
-                    <textarea id="txtPushComment" rows="15" class="form-control rounded-0" placeholder="Comment here..."></textarea>
-                    <br />
-                    <p></p>
-                    <div id="" class="text-danger"> </div>
-                </div>
-
-                <p></p>
-                <table class="table table-bordered table-hover" style="font-size:smaller" id="StaffPushTable">
-                        <thead>
-                            <tr>
-                                <th>Fullname</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                </table> -->
-
-  <!-- </div> -->
-  <!-- </div> -->
-
-  <!-- <div style="text-align: center;">
-          <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;" (click)="FieldSubmit()">Add Field</button>
-        </div>
-      </div> -->
-  <!-- </div>  -->
 </div>
 
 <div class="modal" id="AppReportModal">

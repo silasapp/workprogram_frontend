@@ -46,10 +46,8 @@ export class SendBackFormComponent implements OnInit {
   }
 
   rejectApplication() {
-    console.log('clicked');
     const selectedapps = [];
     selectedapps.push(this.appDetails.application.id as unknown as string);
-    selectedapps.push(1);
     this.appService
       .rejectApplication(
         this.appDetails.staff[0].desk_ID,
