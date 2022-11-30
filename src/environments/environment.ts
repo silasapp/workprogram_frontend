@@ -4,13 +4,9 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  apiUrl: 'https://localhost:7129/api',
-=======
   //apiUrl: 'https://workprogramtest.azurewebsites.net/api',
 
   apiUrl: 'https://localhost:7129/api'
->>>>>>> 045ecc266e103dcf06455a56820cb6cba2ba5716
 };
 
 /*
