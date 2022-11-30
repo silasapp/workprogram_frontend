@@ -19,6 +19,7 @@ import { AllcompaniesComponent } from './allcompanies/allcompanies.component';
 import { ProcessApplicationComponent } from './process-application/process-application.component';
 import { AllapprovalsComponent } from './allapprovals/allapprovals.component';
 import { PushApplicationFormComponent } from './process-application/push-application-form/push-application-form.component';
+import { SendBackFormComponent } from './process-application/send-back-form/send-back-form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     AllcompaniesComponent,
     AllapprovalsComponent,
     PushApplicationFormComponent,
+    SendBackFormComponent,
   ],
 })
 export class ApplicationModule {}

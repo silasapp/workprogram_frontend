@@ -5768,12 +5768,22 @@ export class WorkProgramService {
       );
   }
 
-  pushApplication(deskID: string, comment: string, selectedApps: string[]) {
+  pushApplication(deskID: number, comment: string, selectedApps: string[]) {
     return this.http.post<any>(
       `${environment.apiUrl}/api/Application/PushApplication`,
       {},
       {
-        params: { deskID, comment, selectedApps },
+        params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },
+      }
+    );
+  }
+
+  rejectApplication(deskID: number, comment: string, selectedApps: string[]) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/api/Application/RejectApplication`,
+      {},
+      {
+        params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },
       }
     );
   }

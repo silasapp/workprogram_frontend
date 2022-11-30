@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Push Application</h1>
+<h1 mat-dialog-title>Send Back Application</h1>
 <div mat-dialog-content class="modal-width">
   <form [formGroup]="form">
     <div class="fomr-group" style="margin-bottom: 10px">
@@ -23,8 +23,8 @@
   <button
     mat-raised-button
     [disabled]="form.invalid"
-    (click)="pushApplication()"
+    (click)="rejectApplication()"
   >
-    Push
+    Send Back
   </button>
 </div>

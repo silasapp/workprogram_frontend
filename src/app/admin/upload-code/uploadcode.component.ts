@@ -1,20 +1,33 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { COMPANY_CODE } from 'src/app/models/admin.model';
 import { CodeFields } from 'src/app/models/company-details';
-import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
-import { AdminService } from 'src/app/services/admin.service'
+import {
+  AuthenticationService,
+  GenericService,
+  ModalService,
+} from 'src/app/services';
+import { AdminService } from 'src/app/services/admin.service';
 
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-add-concession',
   templateUrl: './uploadcode.component.html',
   styleUrls: ['../admin.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadCodeComponent implements OnInit {
   genk: GenericService;
@@ -29,7 +42,6 @@ export class UploadCodeComponent implements OnInit {
   displayStyle = false;
   auth: AuthenticationService;
 
-
   codeBody: CodeFields = {} as CodeFields;
 
   //#region  documnent objects declaration
@@ -37,59 +49,46 @@ export class UploadCodeComponent implements OnInit {
   CompanyCodeNewName: string;
   CompanyCodeNameDoc: string;
 
-
-
   //#region form groups declaration
   CompanyCodeForm: FormGroup;
-
-
 
   //#region  form bodies declaration
   companycodeBody: COMPANY_CODE = {} as COMPANY_CODE;
 
   columns = [
     {
-      "columnDef": "companyname",
-      "header": "COMPANY NAME"
+      columnDef: 'companyname',
+      header: 'COMPANY NAME',
     },
     {
-      "columnDef": "companycode",
-      "header": "COMPANY CODE"
+      columnDef: 'companycode',
+      header: 'COMPANY CODE',
     },
     {
-
-      "columnDef": "created_by",
-      "header": "CREATED BY"
-
+      columnDef: 'created_by',
+      header: 'CREATED BY',
     },
     {
-      "columnDef": "date_created",
-      "header": "DATE CREATED"
+      columnDef: 'date_created',
+      header: 'DATE CREATED',
     },
     {
-      "columnDef": "isactive",
-      "header": "ACTIVE STATUS"
+      columnDef: 'isactive',
+      header: 'ACTIVE STATUS',
     },
+  ];
 
-
-
-  ]
-
-
-
-
-
-
-  constructor(private admin: AdminService,
+  constructor(
+    private admin: AdminService,
     private authenticationService: AuthenticationService,
     private cd: ChangeDetectorRef,
     private modalService: ModalService,
-    private gen: GenericService) {
+    private gen: GenericService
+  ) {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
     this.auth = authenticationService;
-
   }
 
   ngOnInit() {
@@ -97,16 +96,16 @@ export class UploadCodeComponent implements OnInit {
     this.fetchdata();
     this.genk.sizePerPage = this.genk.sizeten;
 
-
-
-
     this.CompanyCodeForm = new FormGroup(
       {
-        companycodeFilePath: new FormControl(this.companycodeBody.companycodeFilePath, [Validators.required])
-      }, {});
+        companycodeFilePath: new FormControl(
+          this.companycodeBody.companycodeFilePath,
+          [Validators.required]
+        ),
+      },
+      {}
+    );
   }
-
-
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
@@ -117,42 +116,48 @@ export class UploadCodeComponent implements OnInit {
   }
 
   assignDataRows() {
-    this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
     this.cd.markForCheck();
   }
 
   fetchdata() {
-    this.admin.fetch("get_companycodes").subscribe(
-      (res) => {
-        this.data = this.arrangeDate(res.data as any[]);
-        this.assignDataRows();
-        this.assignPageNum();
-        this.cd.markForCheck();
-      }
-    )
+    this.admin.fetch('get_companycodes').subscribe((res) => {
+      this.data = this.arrangeDate(res.data as any[]);
+      this.assignDataRows();
+      this.assignPageNum();
+      this.cd.markForCheck();
+    });
   }
 
   saveCompanyCodeDoc(DeFile: any) {
-
     this.CompanyCodeFile = <File>DeFile.target.files[0];
     if (!this.CompanyCodeFile) {
       return;
     }
-    if (this.CompanyCodeFile.size < 1 || this.CompanyCodeFile.size > 1024 * 1024 * 50) {
-      this.CompanyCodeForm.controls['companycodeFilePath'].setErrors({ 'incorrect': true });
+    if (
+      this.CompanyCodeFile.size < 1 ||
+      this.CompanyCodeFile.size > 1024 * 1024 * 50
+    ) {
+      this.CompanyCodeForm.controls['companycodeFilePath'].setErrors({
+        incorrect: true,
+      });
       this.CompanyCodeFile = null;
       return;
     } else {
       this.CompanyCodeForm.controls['companycodeFilePath'].setErrors(null);
     }
-    this.CompanyCodeNewName = this.gen.getExpDoc(this.CompanyCodeFile.name, this.CompanyCodeFile.type);
+    this.CompanyCodeNewName = this.gen.getExpDoc(
+      this.CompanyCodeFile.name,
+      this.CompanyCodeFile.type
+    );
     this.CompanyCodeNameDoc = this.gen.trimDocName(this.CompanyCodeFile.name);
     // let dockind = this.gen.getExt(this.CompanyCodeFile.name);
   }
 
-
   Company_Code_Submit() {
-
     const formDat: FormData = new FormData();
     this.companycodeBody.id = 0;
     for (const key in this.companycodeBody) {
@@ -162,38 +167,31 @@ export class UploadCodeComponent implements OnInit {
     }
 
     if (this.CompanyCodeFile) {
-      formDat.append(this.CompanyCodeNameDoc, this.CompanyCodeFile, this.CompanyCodeNewName);
+      formDat.append(
+        this.CompanyCodeNameDoc,
+        this.CompanyCodeFile,
+        this.CompanyCodeNewName
+      );
     }
-    this.admin.uploadCompanyCode(formDat)
-      .subscribe(res => {
-
-        if (res.statusCode == 300) {
-          this.modalService.logNotice("Error", res.message, 'error');
-        }
-        else {
-          //this.loadTable_Management(res.data);
-          this.modalService.logNotice("Success", res.message, 'success');
-        }
-      })
+    this.admin.uploadCompanyCode(formDat).subscribe((res) => {
+      if (res.statusCode == 300) {
+        this.modalService.logNotice('Error', res.message, 'error');
+      } else {
+        //this.loadTable_Management(res.data);
+        this.modalService.logNotice('Success', res.message, 'success');
+      }
+    });
   }
-
-
-
 
   fetchcompanycode() {
-    this.admin.codefetch("GET_COMPANY_CODES").subscribe(
-      (res) => {
-          this.data = res.data as any[];
-            if(this.data.length>0) this.selectedPage=1;
-            this.assignDataRows();
-        this.assignPageNum();
-        this.cd.markForCheck();
-      }
-    )
+    this.admin.codefetch('GET_COMPANY_CODES').subscribe((res) => {
+      this.data = res.data as any[];
+      if (this.data.length > 0) this.selectedPage = 1;
+      this.assignDataRows();
+      this.assignPageNum();
+      this.cd.markForCheck();
+    });
   }
-
-
-
 
   // searchTable(input: HTMLInputElement, table: HTMLTableElement) {
   //   var filter, found, tr, td, i, j;
@@ -244,7 +242,7 @@ export class UploadCodeComponent implements OnInit {
   resize(e) {
     let value = e.target.value;
     if (value === 'all') {
-      value = this.pagenum * this.genk.sizePerPage
+      value = this.pagenum * this.genk.sizePerPage;
     }
     this.genk.sizePerPage = Number(value);
     this.assignDataRows();
@@ -255,8 +253,12 @@ export class UploadCodeComponent implements OnInit {
   arrangeDate(mydata: any[]) {
     let i = 0;
     while (i < mydata.length) {
-      let datePipe = new DatePipe("en-US");
-      mydata[i].when_was_the_date_of_your_last_ndr_submission = datePipe.transform(mydata[i].when_was_the_date_of_your_last_ndr_submission, 'dd MMM, y');
+      let datePipe = new DatePipe('en-US');
+      mydata[i].when_was_the_date_of_your_last_ndr_submission =
+        datePipe.transform(
+          mydata[i].when_was_the_date_of_your_last_ndr_submission,
+          'dd MMM, y'
+        );
       i++;
     }
     return mydata;
@@ -270,19 +272,19 @@ export class UploadCodeComponent implements OnInit {
   closePopup() {
     this.displayStyle = false;
     this.cd.markForCheck();
-    this.codeBody= {} as CodeFields;
+    this.codeBody = {} as CodeFields;
   }
 
   //   Edit_CodeForm(event) {
   //     // let u= event.target.value as CodeFields;
-  //     // debugger;
+  //     //
 
   //     // this.uu = u.id;
-  //     debugger;
+  //
   //     let info = this.data as CodeFields[];
-  //     debugger;
+  //
   //     let con = info.filter(element => element.id == event.target.value);
-  // debugger;
+  //
   //     this.codeBody = con[0];
 
   //   }
@@ -292,43 +294,34 @@ export class UploadCodeComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
-    this.admin.updateCompanyCode(this.codeBody.id, this.codeBody.companyname, this.codeBody.isactive).subscribe(
-      (res)=>{
-
-        if(res.statusCode == 200){
-          debugger;
+    this.admin
+      .updateCompanyCode(
+        this.codeBody.id,
+        this.codeBody.companyname,
+        this.codeBody.isactive
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 200) {
           this.closePopup();
-          this.Alert("Success", res.message,  "success")
-         this.codeBody= {} as CodeFields;
-        }
-        else{
-          this.Alert("Error",res.message, "error")
+          this.Alert('Success', res.message, 'success');
+          this.codeBody = {} as CodeFields;
+        } else {
+          this.Alert('Error', res.message, 'error');
         }
         // this.fetchdata();
-        debugger;
+
         this.fetchcompanycode();
-      }
-    )
-
-
+      });
   }
 
-
-  Alert(title: string, text: string, icon: any){
+  Alert(title: string, text: string, icon: any) {
     Swal.fire({
       title: title,
       text: text,
       icon: icon,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Okay'
-    })
+      confirmButtonText: 'Okay',
+    });
   }
-
-
-
-
 }
-
-

@@ -20,6 +20,7 @@ import {
 } from 'src/app/models/application-details';
 import { Router } from '@angular/router';
 import { PushApplicationFormComponent } from './push-application-form/push-application-form.component';
+import { SendBackFormComponent } from './send-back-form/send-back-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 
@@ -57,7 +58,6 @@ export class ProcessApplicationComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getApplication();
-    console.log('application detail', this.genk.applicationDetails);
   }
   getApplication() {
     this.workprogram.getAppsOnMyDesk().subscribe({
@@ -71,6 +71,8 @@ export class ProcessApplicationComponent implements OnInit {
       },
     });
 
+    console.log('genk', this.genk.applicationDetails);
+
     if (this.genk.applicationDetails != null) {
       this.genk.appID = this.genk.applicationDetails.application.id;
       this.applicationDetails = this.genk.applicationDetails;
@@ -80,6 +82,8 @@ export class ProcessApplicationComponent implements OnInit {
       this.loadTable_Desk(this.applicationDetails.staff);
       this.loadTable_History(this.applicationDetails.application_History);
       this.loadTable_Document(this.applicationDetails.document);
+
+      this.cd.markForCheck();
     }
   }
 
@@ -114,8 +118,35 @@ export class ProcessApplicationComponent implements OnInit {
       applications: {
         data: {
           applications: this.applications,
+          applicationDetails: this.applicationDetails,
         },
         form: PushApplicationFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(
+      operationsConfiguration['applications'].form,
+      {
+        data: {
+          data: operationsConfiguration['applications'].data,
+        },
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getApplication();
+      this.cd.markForCheck();
+    });
+  }
+
+  sendBackApplication() {
+    const operationsConfiguration = {
+      applications: {
+        data: {
+          applications: this.applications,
+          applicationDetails: this.applicationDetails,
+        },
+        form: SendBackFormComponent,
       },
     };
 

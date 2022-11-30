@@ -1,7 +1,10 @@
 <br /><br />
 <h1>Application Details</h1>
 
-<div class="card-black" style="background: rgb(255, 255, 255) !important">
+<div
+  class="card-black"
+  style="background: rgb(255, 255, 255) !important; padding: 10px"
+>
   <input type="text" id="txtRequestId" hidden value="{{ this.genk.appID }}" />
 
   <div class="card-body">
@@ -221,6 +224,7 @@
             data-backdrop="static"
             data-keyboard="false"
             data-target="#AppModal"
+            (click)="sendBackApplication()"
           >
             Send Back
           </button>

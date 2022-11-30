@@ -1,18 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 import {
   Application,
   ApplicationDetails,
@@ -20,12 +13,14 @@ import {
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
-  selector: 'app-push-application-form',
-  templateUrl: './push-application-form.component.html',
-  styleUrls: ['./push-application-form.component.css'],
+  selector: 'app-send-back-form',
+  templateUrl: './send-back-form.component.html',
+  styleUrls: ['./send-back-form.component.css'],
 })
-export class PushApplicationFormComponent implements OnInit {
+export class SendBackFormComponent implements OnInit {
   public form: FormGroup;
+  public offices: string[] = ['HQ', 'ZO', 'FO'];
+  public apps: Application[] = [];
   public appDetails: ApplicationDetails;
   public selectedApps = [];
   public appsDropdownSettings: IDropdownSettings = {};
@@ -33,10 +28,11 @@ export class PushApplicationFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private appService: WorkProgramService,
-    public dialogRef: MatDialogRef<PushApplicationFormComponent>,
+    public dialogRef: MatDialogRef<SendBackFormComponent>,
     private formBuilder: FormBuilder,
     public dialog: MatDialog
   ) {
+    this.apps = data.data.applications;
     this.appDetails = data.data.applicationDetails;
 
     this.form = this.formBuilder.group({
@@ -49,17 +45,20 @@ export class PushApplicationFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  pushApplication() {
+  rejectApplication() {
+    console.log('clicked');
     const selectedapps = [];
     selectedapps.push(this.appDetails.application.id as unknown as string);
+    selectedapps.push(1);
     this.appService
-      .pushApplication(
+      .rejectApplication(
         this.appDetails.staff[0].desk_ID,
         this.form.value.comment,
         selectedapps
       )
       .subscribe({
         next: (res) => {
+          console.log('ressss', res);
           if (res.success) {
             this.dialogRef.close();
           }

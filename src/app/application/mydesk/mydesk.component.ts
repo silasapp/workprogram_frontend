@@ -10,7 +10,6 @@ import {
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ApplicationDetails } from 'src/app/models/application-details';
 
@@ -91,7 +90,7 @@ export class MydeskComponent implements OnInit {
       acc[key] = value == null ? '' : value;
       return acc;
     }, {});
-    debugger;
+
     this.columnHeader.push(data[0]);
     this.columnValue.push(result);
 
@@ -122,14 +121,13 @@ export class MydeskComponent implements OnInit {
   }
 
   Process_Application(event) {
-    debugger;
-    this.workprogram
-      .getProcessApplication(event.target.value)
-      .subscribe((res) => {
-        if (res.statusCode === 200) {
-          this.genk.applicationDetails = res.data;
-          this.router.navigate(['/application/process-application']);
-        } else this.modalService.logNotice('Error', res.message, 'error');
-      });
+    const year = event.target.value;
+
+    this.workprogram.getProcessApplication(year).subscribe((res) => {
+      if (res.statusCode === 200) {
+        this.genk.applicationDetails = res.data;
+        this.router.navigate(['/application/process-application']);
+      } else this.modalService.logNotice('Error', res.message, 'error');
+    });
   }
 }
