@@ -19,16 +19,19 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void{
+    debugger;
     this.companyService.getCompanyDetails().subscribe(
+    
       (res) =>{
-        this.d = res
+        debugger;
+        this.d = res.data;
       }
     );
     this.d = this.companyService.currentCompanyValue
     this.initForm();
     this.companyService.opl().subscribe(
       (res) => {
-        console.log(res)
+        console.log(res.data)
       }
     );
   }
@@ -47,8 +50,8 @@ export class CompanyDetailsComponent implements OnInit {
       contact_Person:[d.contact_Person || "", Validators.required],
       phone_No:[d.phone_No, Validators.required],
       email_Address:[d.email_Address, Validators.required],
-      name_of_MD_CEO:[d.name_of_MD_CEO],
-      phone_NO_of_MD_CEO:[d.phone_NO_of_MD_CEO],
+      name_of_MD_CEO:[d.name_of_MD_CEO, Validators.required],
+      phone_NO_of_MD_CEO:[d.phone_NO_of_MD_CEO, Validators.required],
       alternate_Contact_Person:[""],
       phone_No_alt:[""],
       email_Address_alt: [""],
@@ -63,14 +66,17 @@ export class CompanyDetailsComponent implements OnInit {
     return this.companyDetailsForm.controls;
   }
 
-  getCompanyDetails(){
-    //const details = this.auth.currentUserValue
-    this.companyService.getCompanyDetails().subscribe(
-      (res) => {
-        this.companyDetails = res
-      }
-    );
-   }
+  // debugger;
+  // getCompanyDetails(){
+  //   debugger;
+  //   //const details = this.auth.currentUserValue
+  //   this.companyService.getCompanyDetails().subscribe(
+  //     (res) => {
+  //       debugger;
+  //       this.companyDetails = res.data;
+  //     }
+  //   );
+  //  }
   onSubmit(){
     this.companyService.editCompanyDetails(this.companyDetailsForm.getRawValue()).subscribe(
       (res) =>{

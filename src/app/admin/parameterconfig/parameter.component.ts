@@ -175,7 +175,7 @@ this.genk=gen;
 
   addMeetingRoom(){
     debugger;
-    this.admin.addMeetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.meetingRoom(this.meetingroom_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -190,12 +190,15 @@ this.genk=gen;
     )
    
   }
+
+
+  
 
 
 
   addEmailDuration(){
     debugger;
-    this.admin.addEmailDuration(this.email_notification_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.emailDuration(this.email_notification_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -212,9 +215,11 @@ this.genk=gen;
   }
 
 
+  
+
   addContractTypes(){
     debugger;
-    this.admin.addContractType(this.contractType_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.contractType(this.contractType_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -233,7 +238,7 @@ this.genk=gen;
 
   addDataTypes(){
     debugger;
-    this.admin.addDataTypes(this.dataForm_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.DataTypes(this.dataForm_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -253,7 +258,7 @@ this.genk=gen;
 
   addPenalities(){
     debugger;
-    this.admin.addDataTypes(this.penalties_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.addPenalities(this.penalties_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -274,7 +279,7 @@ this.genk=gen;
   
   addPresentationCategories(){
     debugger;
-    this.admin.addPresentationCategories(this.presentation_Categories_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.PresentationCategories(this.presentation_Categories_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -292,7 +297,7 @@ this.genk=gen;
 
   addWellCategories(){
     debugger;
-    this.admin.addPresentationCategories(this.well_Categories_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.WellCategories(this.well_Categories_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -310,7 +315,7 @@ this.genk=gen;
 
   addSuperAdmin(){
     debugger;
-    this.admin.addPresentationCategories(this.super_Admin_Form.getRawValue(), 'INSERT').subscribe(
+    this.admin.SuperAdmin(this.super_Admin_Form.getRawValue(), 'INSERT').subscribe(
       (res)=>{
      debugger;
         if(res.statusCode==200){
@@ -326,6 +331,132 @@ this.genk=gen;
    
   }
 
+
+  deleteEmailDuration(e:any){
+    debugger;
+    this.admin.emailDuration(e, 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteMeetingRoom(e:any){
+    debugger;
+    this.admin.meetingRoom(e, 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteContractTypes(e:any){
+    debugger;
+    this.admin.contractType(e, 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteDataTypes(e:any){
+    debugger;
+    this.admin.DataTypes(e, 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deletePresentationCategories(e:any){
+    debugger;
+    this.admin.PresentationCategories(e, 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteWellCategories(){
+    debugger;
+    this.admin.WellCategories(this.well_Categories_Form.getRawValue(), 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
+
+  deleteSuperAdmin(){
+    debugger;
+    this.admin.SuperAdmin(this.super_Admin_Form.getRawValue(), 'DELETE').subscribe(
+      (res)=>{
+     debugger;
+        if(res.statusCode==200){
+          this.Alert("Success", res.message, "success")
+          this.fetchdata();
+        }
+        else{
+          this.Alert("Error", res.message, "error")
+        }
+        this.initForm();
+      }
+    )
+   
+  }
 
 
   Alert(title: string, text: string, icon: any) {

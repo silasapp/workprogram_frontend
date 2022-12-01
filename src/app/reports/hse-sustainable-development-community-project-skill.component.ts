@@ -33,7 +33,7 @@ export class HSESustainableDevelopmentCommunityProjectSkillComponent implements 
           "header": "COMPANY EMAIL"
       },
       {
-        "columnDef": "omL_Name",
+        "columnDef": "oml_name",
         "header": "CONCESSION HELD"
     },
       {
@@ -95,7 +95,7 @@ export class HSESustainableDevelopmentCommunityProjectSkillComponent implements 
             "header": "COMPANY EMAIL"
         },
         {
-          "columnDef": "omL_Name",
+          "columnDef": "oml_name",
           "header": "CONCESSION HELD" 
       },
         {
