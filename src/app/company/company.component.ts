@@ -32,7 +32,6 @@ export class CompanyComponent implements OnInit {
       this.genk = gen;
       this.auth = authenticationService;
    }
-
   ngOnInit(): void {}
 
 

@@ -143,4 +143,11 @@ getCompanyConcessionReserve(year: string) {
             return response;
         })
         )}
+
+
+        changePassword(e:any) {
+            return this.http.get<any>(`${environment.apiUrl}/account/changePassword`, { params: {currentPassword:e.currentPassword, newPassword:e.newPassword}})
+                .pipe(retry(this.num));
+        }
+    
 }
