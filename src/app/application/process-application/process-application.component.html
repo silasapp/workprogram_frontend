@@ -246,7 +246,13 @@
           <p></p>
           <!-- <button class="btn btn-dark btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Add Report </button>
                                 <p></p> -->
-          <button (click)="pushApplication()" class="btn btn-success btn-block">
+          <button
+            (click)="pushApplication()"
+            class="btn btn-success btn-block"
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role !== 'Executive'
+            "
+          >
             Push Application
           </button>
           <p></p>
@@ -259,6 +265,21 @@
             (click)="sendBackApplication()"
           >
             Send Back
+          </button>
+          <p></p>
+          <p></p>
+          <button
+            class="btn btn-primary btn-block"
+            data-toggle="modal"
+            data-backdrop="static"
+            data-keyboard="false"
+            data-target="#AppModal"
+            (click)="approveApplication()"
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role === 'Executive'
+            "
+          >
+            Approve
           </button>
           <p></p>
         </div>

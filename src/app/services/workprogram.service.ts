@@ -5788,6 +5788,16 @@ export class WorkProgramService {
     );
   }
 
+  approveApplication(deskID: number, comment: string, selectedApps: string[]) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/api/Application/ApproveApplication`,
+      {},
+      {
+        params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },
+      }
+    );
+  }
+
   // deleteNigeriaContentTraining(id: any) {
   //   return this.http
   //     .delete<any>(

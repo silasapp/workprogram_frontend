@@ -1,28 +1,22 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import {
   AuthenticationService,
   GenericService,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
-import { BrowserModule } from '@angular/platform-browser';
 import {
   Application,
   ApplicationDetails,
   Staff,
-  SubmittedDocument,
 } from 'src/app/models/application-details';
 import { ActivatedRoute } from '@angular/router';
 import { PushApplicationFormComponent } from './push-application-form/push-application-form.component';
 import { SendBackFormComponent } from './send-back-form/send-back-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
+import { ApproveFormComponent } from './approve-form/approve-form.component';
 
 @Component({
   selector: 'app-process-application',
@@ -38,16 +32,8 @@ export class ProcessApplicationComponent implements OnInit {
   public applications: Application[] = [];
   public year: string;
 
-  genk: GenericService;
-  columnHeader_Desk;
-  columnValue_Desk;
-  isTabVisible = false;
-  columnHeader_History = {};
-  columnValue_History;
   applicationDetails: ApplicationDetails;
   staffDetails: Staff = {} as Staff;
-  isPushModal;
-  pushFieldForm: FormGroup;
 
   constructor(
     private workprogram: WorkProgramService,
@@ -57,7 +43,8 @@ export class ProcessApplicationComponent implements OnInit {
     private modalService: ModalService,
     public dialog: MatDialog,
     private cd: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public genk: GenericService
   ) {
     this.genk = gen;
     this.route.params.subscribe((param) => {
@@ -77,48 +64,12 @@ export class ProcessApplicationComponent implements OnInit {
       next: (res) => {
         this.applicationDetails = res.data;
         this.applicationDetails$.next(this.applicationDetails);
-
-        this.loadApplication();
+        this.genk.appID = this.genk.applicationDetails.application.id;
       },
       error: (error) => {
         this.modalService.logNotice('Error', error.message, 'error');
       },
     });
-  }
-
-  loadApplication() {
-    if (this.genk.applicationDetails != null) {
-      this.genk.appID = this.genk.applicationDetails.application.id;
-      this.applicationDetails = this.genk.applicationDetails;
-
-      // this.loadTable_Desk(this.applicationDetails.staff);
-      // this.loadTable_History(this.applicationDetails.application_History);
-      this.staffDetails$.next(this.applicationDetails.staff);
-      this.applicationHistory$.next(
-        this.applicationDetails.application_History
-      );
-    }
-  }
-
-  loadTable_Desk(data) {
-    if (data != null) {
-      this.columnValue_Desk = data;
-    }
-  }
-
-  loadTable_History(data) {
-    if (data != null) {
-      this.columnValue_History = data;
-    }
-  }
-
-  togPushModal() {
-    if (!this.isPushModal) {
-      this.isPushModal = true;
-    } else {
-      this.isPushModal = false;
-    }
-    this.cd.markForCheck();
   }
 
   pushApplication() {
@@ -154,6 +105,31 @@ export class ProcessApplicationComponent implements OnInit {
           applicationDetails: this.applicationDetails,
         },
         form: SendBackFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(
+      operationsConfiguration['applications'].form,
+      {
+        data: {
+          data: operationsConfiguration['applications'].data,
+        },
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.cd.markForCheck();
+    });
+  }
+
+  approveApplication() {
+    const operationsConfiguration = {
+      applications: {
+        data: {
+          applications: this.applications,
+          applicationDetails: this.applicationDetails,
+        },
+        form: ApproveFormComponent,
       },
     };
 

@@ -21,6 +21,7 @@ import { AllapprovalsComponent } from './allapprovals/allapprovals.component';
 import { PushApplicationFormComponent } from './process-application/push-application-form/push-application-form.component';
 import { SendBackFormComponent } from './process-application/send-back-form/send-back-form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ApproveFormComponent } from './process-application/approve-form/approve-form.component';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     AllapprovalsComponent,
     PushApplicationFormComponent,
     SendBackFormComponent,
+    ApproveFormComponent,
   ],
 })
 export class ApplicationModule {}

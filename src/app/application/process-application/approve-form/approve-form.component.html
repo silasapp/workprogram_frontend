@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Approve Application</h1>
+<div mat-dialog-content class="modal-width">
+  <form [formGroup]="form">
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Comment</label>
+      <textarea
+        name="comment"
+        formControlName="comment"
+        class="form-control"
+        rows="10"
+      ></textarea>
+      <div
+        *ngIf="form.get('comment')?.touched && form.get('comment')?.invalid"
+        class="alert alert-danger"
+      >
+        Comment is required!
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    mat-raised-button
+    [disabled]="form.invalid"
+    (click)="approveApplication()"
+  >
+    Approve
+  </button>
+</div>
