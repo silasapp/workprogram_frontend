@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
                         const admin_url = '/admin/dashboard';
 
                         this.returnUrl = '';
-                        if (this.genk.isAdmin ) {this.locate.replaceState(admin_url);}
+                        if (this.genk.company === "Admin" ) {this.locate.replaceState(admin_url);}
                         else{this.locate.replaceState(comp_url);}
                         window.location.reload();
 

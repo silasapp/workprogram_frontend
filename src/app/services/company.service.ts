@@ -25,9 +25,11 @@ export class CompanyService {
     }
 
     editCompanyDetails(details: any){
+        debugger;
         return this.http.post<any>(`${environment.apiUrl}/presentation/editcompanydetails`, details)
         .pipe(retry(this.num),
             map((response) =>{
+                debugger;
                 return response;
             } )
         );
@@ -38,7 +40,8 @@ export class CompanyService {
         return this.http.get<any>(`${environment.apiUrl}/presentation/getcompanydetails`, {params: {companyName: d.companyName, companyEmail: d.companyEmail, companyId: d.companyId }})
         .pipe(retry(this.num),
         map((response) => {
-            localStorage.setItem('currentCompany', JSON.stringify(response))
+            debugger;
+            localStorage.setItem('currentCompany', JSON.stringify(response.data))
             return response
         })
         )
