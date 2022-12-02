@@ -1,14 +1,24 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import Swal from 'sweetalert2';
-import { AuthenticationService, GenericService, ModalService } from './services';
+import {
+  AuthenticationService,
+  GenericService,
+  ModalService,
+} from './services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   @ViewChild('cover', { static: false }) myCover: ElementRef<HTMLDivElement>;
@@ -21,30 +31,35 @@ export class AppComponent {
   color: ThemePalette = 'accent';
   mode: ProgressSpinnerMode = 'indeterminate';
 
-  constructor(private auth: AuthenticationService, private gen: GenericService, private modal: ModalService, private cd: ChangeDetectorRef) {
+  constructor(
+    private auth: AuthenticationService,
+    private gen: GenericService,
+    private modal: ModalService,
+    private cd: ChangeDetectorRef
+  ) {
     this.genk = gen;
     this.authenticationService = auth;
     this.genk.wpYear = localStorage.getItem('wkpYear');
     if (this.authenticationService.currentUserValue) {
-      this.genk.isAdmin = this.authenticationService.currentUserValue.companyName === 'Admin';
+      this.genk.isAdmin =
+        this.authenticationService.currentUserValue.companyName === 'Admin';
     }
 
     this.modalService = modal;
-    this.modalService.notice.subscribe(res => {
+    this.modalService.notice.subscribe((res) => {
       this.logNoteModal(res);
     });
 
-    this.modalService.emodal.subscribe(res => {
+    this.modalService.emodal.subscribe((res) => {
       this.logEmodal(res);
     });
 
-    this.modalService.cover.subscribe(res => {
+    this.modalService.cover.subscribe((res) => {
       if (res) {
         this.logCoverModal(res);
+      } else {
+        this.togCover();
       }
-       else {
-         this.togCover();
-       }
     });
 
     // this.modalService.cover.subscribe(res => {
@@ -59,23 +74,26 @@ export class AppComponent {
       icon: icon,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Okay'
-    })
+      confirmButtonText: 'Okay',
+    });
   }
 
   logNoteModal(res: boolean) {
-    this.Alert(this.modalService.body, this.modalService.head, this.modalService.icon);
+    this.Alert(
+      this.modalService.body,
+      this.modalService.head,
+      this.modalService.icon
+    );
     this.cd.markForCheck();
   }
 
   logCoverModal(res: boolean) {
-      this.coverModal = res;
-      this.showModal();
-      this.cd.markForCheck();
+    this.coverModal = res;
+    this.showModal();
+    this.cd.markForCheck();
   }
 
   logEmodal(res: boolean) {
-    debugger;
     this.closeModal();
     this.eModal = res;
     this.cd.markForCheck();
@@ -93,7 +111,7 @@ export class AppComponent {
   }
   endCover() {
     //if (this.modalService.isNonBlocker) {
-      this.togCover();
+    this.togCover();
     //}
   }
 
@@ -115,11 +133,11 @@ export class AppComponent {
       </div>
     </div>
   </div>`;
-  // let dell = this.myCover.nativeElement.firstElementChild as HTMLDivElement;
-  //   dell.onclick = function() {this.myCover.nativeElement.innerHTML = "";}
+    // let dell = this.myCover.nativeElement.firstElementChild as HTMLDivElement;
+    //   dell.onclick = function() {this.myCover.nativeElement.innerHTML = "";}
   }
 
   closeModal() {
-    this.myCover.nativeElement.innerHTML = "";
+    this.myCover.nativeElement.innerHTML = '';
   }
 }

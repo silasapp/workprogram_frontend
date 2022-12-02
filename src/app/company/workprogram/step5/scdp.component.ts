@@ -94,44 +94,6 @@ export class SWPScdpComponent implements OnInit {
   scdp_pictures_Body: PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT =
     {} as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
 
-  //#region table columns declaration
-  columnHeader = [];
-  columnValue = [];
-  isTabVisible = false;
-
-  columnHeader_2 = [];
-  columnValue_2 = [];
-  isTabVisible_2 = false;
-
-  columnHeader_3 = [];
-  columnValue_3 = [];
-  isTabVisible_3 = false;
-
-  columnHeader_4 = [];
-  columnValue_4 = [];
-  isTabVisible_4 = false;
-
-  columnHeader_5 = [];
-  columnValue_5 = [];
-  isTabVisible_5 = false;
-
-  columnHeader_6 = [];
-  columnValue_6 = [];
-  isTabVisible_6 = false;
-
-  columnHeader_7 = [];
-  columnValue_7 = [];
-  isTabVisible_7 = false;
-
-  columnHeader_8 = [];
-  columnValue_8 = [];
-  isTabVisible_8 = false;
-
-  columnHeader_9 = [];
-  columnValue_9 = [];
-  isTabVisible_9 = false;
-  //#endregion
-
   //#region Column header definitions
   hscdpcColDef = [
     {
@@ -217,6 +179,192 @@ export class SWPScdpComponent implements OnInit {
       header: 'MOU File',
     },
   ];
+
+  hcpColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'type_of_project_excuted',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'year_GMou_was_signed',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'project_Location',
+      header: 'BUDGET PERFORMANCE(PLANNED)',
+    },
+    {
+      columnDef: 'component_of_project',
+      header: 'BUDGET PERFORMANCE (ACTUAL)',
+    },
+    {
+      columnDef: 'actual_Budget_Total_Dollars',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Community',
+      header: 'BENEFICIARY COMMUNITIES',
+    },
+  ];
+
+  hsColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'budget_',
+      header: 'BUDGET',
+    },
+    {
+      columnDef: 'actual_Spent',
+      header: 'ACTUAL SPENT',
+    },
+    {
+      columnDef: 'percentage_Completion_',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Communities_host',
+      header: 'BENEFICIARY (HOST)',
+    },
+    {
+      columnDef: 'beneficiary_Communities_National',
+      header: 'BENEFICIARY (NATIONAL)',
+    },
+  ];
+
+  hssColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'nameOfCommunity',
+      header: 'NAME OF COMMUNITY',
+    },
+    {
+      columnDef: 'year_GMou_was_signed',
+      header: 'YEAR GMOU WAS SIGNED',
+    },
+    {
+      columnDef: 'scholarshipYear',
+      header: 'SCHOLARSHIP YEAR',
+    },
+    {
+      columnDef: 'componentOfScholarship',
+      header: 'COMPONENT OF SCHOLARSHIP',
+    },
+    {
+      columnDef: 'actual_Budget_Total_Dollars',
+      header: 'ACTUAL BUDGET TOTAL (USD)',
+    },
+    {
+      columnDef: 'ssUploadFilename',
+      header: 'BENEFICIARIES',
+    },
+  ];
+
+  htsaColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL / PROPOSED',
+    },
+    {
+      columnDef: 'csR_',
+      header: 'PROJECT TITLE',
+    },
+    {
+      columnDef: 'budget_',
+      header: 'PLANNED (BUDGET)',
+    },
+    {
+      columnDef: 'actual_Spent',
+      header: 'ACTUAL (BUDGET)',
+    },
+    {
+      columnDef: 'percentage_Completion_',
+      header: 'PERCENTAGE COMPLETION',
+    },
+    {
+      columnDef: 'beneficiary_Communities_host',
+      header: 'BENEFICIARY (HOST)',
+    },
+    {
+      columnDef: 'beneficiary_Communities_National',
+      header: 'BENEFICIARY (NATIONAL)',
+    },
+  ];
+
+  htsdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'nameOfCommunity',
+      header: 'NAME OF COMMUNITY',
+    },
+    {
+      columnDef: 'year_GMou_was_signed',
+      header: 'YEAR GMOU WAS SIGNED',
+    },
+    {
+      columnDef: 'trainingYear',
+      header: 'TRAINING YEAR',
+    },
+    {
+      columnDef: 'componentOfTraining',
+      header: 'COMPONENT OF TRAINING',
+    },
+    {
+      columnDef: 'actual_Budget_Total_Dollars',
+      header: 'ACTUAL BUDGET TOTAL (USD)',
+    },
+    {
+      columnDef: 'statusOfTraining',
+      header: 'STATUS OF TRAINING',
+    },
+    {
+      columnDef: 'tsUploadFilePath',
+      header: 'Beneficiaries',
+    },
+  ];
+
+  hpcdColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'WORK PROGRAM YEAR',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'Email',
+    },
+    {
+      columnDef: 'companyName',
+      header: 'Compamy Name',
+    },
+    {
+      columnDef: 'uploaded_presentation',
+      header: 'attachemnt',
+    },
+  ];
   //#endregion
 
   //#region list declarations
@@ -225,11 +373,22 @@ export class SWPScdpComponent implements OnInit {
   mouQuestions: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION[] =
     [];
   mouProjects: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_MOU[] = [];
+  capitalProjects: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW[] =
+    [];
+  scholarships: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME[] =
+    [];
+  scholarshipSchemes: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME[] =
+    [];
+  trainingSkillsAndAcquisitions: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition[] =
+    [];
+  trainingSkillAndDetails: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME[] =
+    [];
+  picturesForCommunityDevelopments: PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT[] =
+    [];
   //#endregion
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
-    private auth: AuthenticationService,
     private gen: GenericService,
     private modalService: ModalService
   ) {
@@ -487,7 +646,6 @@ export class SWPScdpComponent implements OnInit {
     );
 
     this.getSCDP();
-    this.cd.markForCheck();
   }
 
   //#region Documents Upload Section
@@ -899,84 +1057,44 @@ export class SWPScdpComponent implements OnInit {
     this.workprogram
       .getFormFiveSCDP(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        let scdp_capital_Info = this
-          .scdp_capitalprojects_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
-        let scdp_scholarship_Info = this
-          .scdp_scholarship_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
-        let scdp_scholarship_csr_Info = this
-          .scdp_scholarship_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
-        let scdp_trainingskills_csr_Info = this
-          .scdp_trainingskills_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
-        let scdp_trainingdetails_csr_Info = this
-          .scdp_trainingdetails_csr_Body as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
-        let scdp_pictures_Info = this
-          .scdp_pictures_Body as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
-
         if (res.hseSustainable_CSR) {
           this.sustainableCommunityDPCs = res.hseSustainable_CSR;
+          console.log('logging', this.sustainableCommunityDPCs);
         }
+
         if (res.hseSustainable_Question) {
           this.mouQuestions = res.hseSustainable_Question;
         }
+
         if (res.hseSustainable_MOU) {
           this.mouProjects = res.hseSustainable_MOU;
         }
-        if (
-          res.scdp_capitalprojects_Body != null &&
-          res.hseSustainable_Capital.length > 0
-        ) {
-          scdp_capital_Info = res
-            .hseSustainable_Capital[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
-          this.loadTable_SDCP_Capital(res.hseSustainable_Capital);
-        }
-        if (
-          res.hseSustainable_Schorlarship != null &&
-          res.hseSustainable_Schorlarship.length > 0
-        ) {
-          scdp_scholarship_Info = res
-            .hseSustainable_Schorlarship[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
-          this.loadTable_SDCP_Sch(res.hseSustainable_Schorlarship);
-        }
-        if (
-          res.hseSustainable_Schorlarship_CSR != null &&
-          res.hseSustainable_Schorlarship_CSR.length > 0
-        ) {
-          scdp_scholarship_csr_Info = res
-            .hseSustainable_Schorlarship_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
-          this.loadTable_SDCP_ScholarshipCSR(
-            res.hseSustainable_Schorlarship_CSR
-          );
+
+        if (res.scdp_capitalprojects_Body) {
+          this.capitalProjects = res.scdp_capitalprojects_Body;
         }
 
-        if (
-          res.hseSustainable_Training_CSR != null &&
-          res.hseSustainable_Training_CSR.length > 0
-        ) {
-          scdp_trainingskills_csr_Info = res
-            .hseSustainable_Training_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Training_Skill_Acquisition;
-          this.loadTable_SDCP_TrainingSkills(res.hseSustainable_Training_CSR);
+        if (res.hseSustainable_Schorlarship) {
+          this.scholarshipSchemes = res.hseSustainable_Schorlarship;
         }
-        if (
-          res.hseSustainable_TrainingDetails_CSR != null &&
-          res.hseSustainable_TrainingDetails_CSR.length > 0
-        ) {
-          scdp_trainingdetails_csr_Info = res
-            .hseSustainable_TrainingDetails_CSR[0] as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
-          this.loadTable_SDCP_TrainingCSR(
-            res.hseSustainable_TrainingDetails_CSR
-          );
+
+        if (res.hseSustainable_Schorlarship_CSR) {
+          this.scholarships = res.hseSustainable_Schorlarship_CSR;
         }
-        if (res.pictureUpload != null && res.pictureUpload.length > 0) {
-          scdp_pictures_Info = res
-            .pictureUpload[0] as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
-          this.loadTable_SDCP_Pictures(res.pictureUpload);
+
+        if (res.hseSustainable_Training_CSR) {
+          this.trainingSkillsAndAcquisitions = res.hseSustainable_Training_CSR;
         }
-        this.scdp_scholarship_Body = scdp_scholarship_Info;
-        this.scdp_scholarship_csr_Body = scdp_scholarship_csr_Info;
-        this.scdp_capitalprojects_Body = scdp_capital_Info;
-        this.scdp_trainingskills_csr_Body = scdp_trainingskills_csr_Info;
-        this.scdp_trainingdetails_csr_Body = scdp_trainingdetails_csr_Info;
-        this.scdp_pictures_Body = scdp_pictures_Info;
+
+        if (res.hseSustainable_TrainingDetails_CSR) {
+          this.trainingSkillAndDetails = res.hseSustainable_TrainingDetails_CSR;
+        }
+
+        if (res.pictureUpload) {
+          this.picturesForCommunityDevelopments = res.pictureUpload;
+        }
+
+        this.cd.markForCheck();
       });
   }
 
@@ -1030,33 +1148,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_MOU(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.SCDP_MOU_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.scdp_mou_Body[item1]);
-        }
-      }
-    }
-
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_SDCP_MOU(row: any) {
     this.workprogram
       .post_SDCP_MOU(
@@ -1078,32 +1169,6 @@ export class SWPScdpComponent implements OnInit {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
-  }
-
-  loadTable_SDCP_Capital(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.SCDP_CapitalProjects_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.scdp_capitalprojects_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
   }
 
   Delete_SDCP_Capital(row: any) {
@@ -1129,32 +1194,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_ScholarshipCSR(data) {
-    this.columnHeader_4 = [];
-    this.columnValue_4 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_4.push(data[0]);
-      this.columnValue_4.push(result);
-    } else {
-      for (let item1 in this.SCDP_Scholarship_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_4.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_4.push(this.scdp_scholarship_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_4 = true;
-    this.cd.markForCheck();
-  }
-
   Delete_HSE_SDCP_ScholarshipCSR(row: any) {
     this.workprogram
       .post_SDCP_Scholarship_CSR(
@@ -1176,32 +1215,6 @@ export class SWPScdpComponent implements OnInit {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
-  }
-
-  loadTable_SDCP_Sch(data) {
-    this.columnHeader_5 = [];
-    this.columnValue_5 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_5.push(data[0]);
-      this.columnValue_5.push(result);
-    } else {
-      for (let item1 in this.SCDP_Scholarship_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_5.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_5.push(this.scdp_scholarship_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_5 = true;
-    this.cd.markForCheck();
   }
 
   Delete_HSE_SDCP_Sch(row: any) {
@@ -1227,31 +1240,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_TrainingSkills(data) {
-    this.columnHeader_6 = [];
-    this.columnValue_6 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_6.push(data[0]);
-      this.columnValue_6.push(result);
-    } else {
-      for (let item1 in this.SCDP_TrainingSkills_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_6.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_6.push(this.scdp_trainingskills_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_6 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_TrainingSkills(row: any) {
     this.workprogram
       .post_SDCP_Training_Skills_CSR(
@@ -1275,31 +1263,6 @@ export class SWPScdpComponent implements OnInit {
       });
   }
 
-  loadTable_SDCP_TrainingCSR(data) {
-    this.columnHeader_7 = [];
-    this.columnValue_7 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_7.push(data[0]);
-      this.columnValue_7.push(result);
-    } else {
-      for (let item1 in this.SCDP_TrainingDetails_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_7.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_7.push(this.scdp_trainingdetails_csr_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_7 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_TrainingSCR(row: any) {
     this.workprogram
       .post_SDCP_Training_Details_CSR(
@@ -1322,31 +1285,7 @@ export class SWPScdpComponent implements OnInit {
         },
       });
   }
-  loadTable_SDCP_Pictures(data) {
-    this.columnHeader_8 = [];
-    this.columnValue_8 = [];
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
 
-      this.columnHeader_8.push(data[0]);
-      this.columnValue_8.push(result);
-    } else {
-      for (let item1 in this.SCDP_Pictures_CSR_Form.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_8.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_8.push(this.scdp_pictures_Body[item1]);
-        }
-      }
-    }
-    this.isTabVisible_8 = true;
-    this.cd.markForCheck();
-  }
   Delete_HSE_SDCP_Pictures(row: any) {
     this.workprogram
       .post_SDCP_Pictures(

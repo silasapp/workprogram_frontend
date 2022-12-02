@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApplicationComponent } from './application.component';
+import { ApproveFormComponent } from './approve-form.component';
 
-describe('ApplicationComponent', () => {
-  let component: ApplicationComponent;
-  let fixture: ComponentFixture<ApplicationComponent>;
+describe('ApproveFormComponent', () => {
+  let component: ApproveFormComponent;
+  let fixture: ComponentFixture<ApproveFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApplicationComponent],
+      declarations: [ApproveFormComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ApplicationComponent);
+    fixture = TestBed.createComponent(ApproveFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
