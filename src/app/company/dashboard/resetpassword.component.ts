@@ -38,6 +38,7 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     onSubmit() {
+        debugger;
 this.company.changePassword(this.resetPasswordForm.getRawValue()).subscribe(
     (res)=>{
         debugger;

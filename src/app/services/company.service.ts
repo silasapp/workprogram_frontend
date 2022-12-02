@@ -135,19 +135,25 @@ getCompanyConcessionReserve(year: string) {
 }
 
 
-    getdashboardgasbudgetandreserve(year: string){
-        return this.http.get<any>(`${environment.apiUrl}/dashboard/TOTAL_RESERVE_BUDGET`,  {params: {year: year}}
+    getdashboardgasbudgetandreserve(year: string) {
+        return this.http.get<any>(`${environment.apiUrl}/dashboard/TOTAL_RESERVE_BUDGET`, { params: { year: year } }
         )
-        .pipe(retry(this.num),
-        map((response) =>{
-            return response;
-        })
-        )}
+            .pipe(retry(this.num),
+                map((response) => {
+                    return response;
+                })
+            )
+    }
 
 
-        changePassword(e:any) {
-            return this.http.get<any>(`${environment.apiUrl}/account/changePassword`, { params: {currentPassword:e.currentPassword, newPassword:e.newPassword}})
-                .pipe(retry(this.num));
-        }
+    changePassword(e: any) {
+        debugger;
+        return this.http.post<any>(`${environment.apiUrl}/account/ResetPassword`, '', { params: { currentPassword: e.currentPassword, newPassword: e.newPassword } })
+            .pipe(retry(this.num),
+                map((response) => {
+                    return response;
+                })
+            )
+    }
     
 }
