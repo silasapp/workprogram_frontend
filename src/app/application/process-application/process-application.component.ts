@@ -53,10 +53,11 @@ export class ProcessApplicationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.applicationDetails = this.genk.applicationDetails;
-    this.applicationDetails$.next(this.applicationDetails);
+    // this.applicationDetails = this.genk.applicationDetails;
+    // this.applicationDetails$.next(this.applicationDetails);
 
-    if (!this.applicationDetails) this.getApplicationProcess();
+    // if (!this.applicationDetails)
+    this.getApplicationProcess();
   }
 
   getApplicationProcess() {
