@@ -85,7 +85,6 @@
               <div style="display: flex">
                 <div class="minsec">
                   <input
-                    (keypress)="genk.restrictData($event)"
                     formControlName="deferment"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
@@ -121,7 +120,7 @@
                         oilMic
                       )
                     "
-                    [(ngModel)]="productionoilBody.forecast"
+                    [value]="productionoilBody.forecast"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -152,7 +151,7 @@
                         productionoilBody.cost_Barrel =
                           genk.addCurrencyDecimal($event)
                       "
-                      [(ngModel)]="productionoilBody.cost_Barrel"
+                      [value]="productionoilBody.cost_Barrel"
                     />
                   </div>
                 </div>
@@ -181,7 +180,7 @@
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production =
                           genk.addCurrencyDecimal($event)
                       "
-                      [(ngModel)]="
+                      [value]="
                         productionoilBody.total_Reconciled_National_Crude_Oil_Production
                       "
                     />
@@ -207,7 +206,7 @@
                           gasmaxx
                         )
                       "
-                      [(ngModel)]="productionoilBody.gas_AG"
+                      [value]="productionoilBody.gas_AG"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -236,7 +235,7 @@
                           gasmaxx
                         )
                       "
-                      [(ngModel)]="productionoilBody.gas_NAG"
+                      [value]="productionoilBody.gas_NAG"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -397,6 +396,7 @@
                       oilMe
                     )
                   "
+                  [value]="monthlyactivityBody.production"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -418,7 +418,6 @@
                 <input
                   type="text"
                   formControlName="avg_Daily_Production"
-                  [(ngModel)]="monthlyactivityBody.avg_Daily_Production"
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
@@ -426,6 +425,7 @@
                     monthlyactivityBody.avg_Daily_Production =
                       genk.addCurrencyDecimal($event)
                   "
+                  [value]="monthlyactivityBody.avg_Daily_Production"
                 />
               </div>
             </div>
@@ -442,7 +442,6 @@
                 <input
                   type="text"
                   formControlName="gas_AG"
-                  [(ngModel)]="monthlyactivityBody.gas_AG"
                   class="inpute"
                   placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
@@ -453,6 +452,7 @@
                       gasDec
                     )
                   "
+                  [value]="monthlyactivityBody.gas_AG"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -469,7 +469,6 @@
                 <input
                   type="text"
                   formControlName="gas_NAG"
-                  [(ngModel)]="monthlyactivityBody.gas_NAG"
                   class="inpute"
                   placeholder="1,000,000"
                   (keypress)="genk.restrictData($event)"
@@ -480,6 +479,7 @@
                       gaspro
                     )
                   "
+                  [value]="monthlyactivityBody.gas_NAG"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -642,7 +642,7 @@
                         oilMon
                       )
                     "
-                    [(ngModel)]="proposedmonthlyBody.production"
+                    [value]="proposedmonthlyBody.production"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -671,7 +671,7 @@
                       proposedmonthlyBody.avg_Daily_Production =
                         genk.addCurrencyDecimal($event)
                     "
-                    [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
+                    [value]="proposedmonthlyBody.avg_Daily_Production"
                   />
                 </div>
               </div>
@@ -699,7 +699,7 @@
                         gasdan
                       )
                     "
-                    [(ngModel)]="proposedmonthlyBody.gas_AG"
+                    [value]="proposedmonthlyBody.gas_AG"
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -723,7 +723,7 @@
                     (change)="
                       proposedmonthlyBody.gas_NAG = genk.checkBSCFMin($event)
                     "
-                    [(ngModel)]="proposedmonthlyBody.gas_NAG"
+                    [value]="proposedmonthlyBody.gas_NAG"
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -815,7 +815,6 @@
                 <input
                   type="text"
                   formControlName="fiveyear_Oil"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
                   class="inpute"
                   placeholder="100,000"
                   (keypress)="genk.restrictData($event)"
@@ -826,6 +825,7 @@
                       oilNac
                     )
                   "
+                  [value]="fiveYearForecastBody.fiveyear_Oil"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -840,7 +840,6 @@
                 <input
                   type="text"
                   formControlName="fiveyear_Condensate"
-                  [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
                   class="inpute"
                   placeholder="100,000"
                   (keypress)="genk.restrictData($event)"
@@ -849,6 +848,7 @@
                     fiveYearForecastBody.fiveyear_Condensate =
                       genk.checkMMBBLMin($event, oilTax)
                   "
+                  [value]="fiveYearForecastBody.fiveyear_Condensate"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -990,7 +990,7 @@
                       gasMaxa
                     )
                   "
-                  [(ngModel)]="gasproductionBody.current_Actual_Year"
+                  [value]="gasproductionBody.current_Actual_Year"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1030,7 +1030,7 @@
                   (change)="
                     gasproductionBody.flared = genk.checkBSCFMin($event, gasMax)
                   "
-                  [(ngModel)]="gasproductionBody.flared"
+                  [value]="gasproductionBody.flared"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1057,7 +1057,7 @@
                       gasMinin
                     )
                   "
-                  [(ngModel)]="gasproductionBody.proposed_production"
+                  [value]="gasproductionBody.proposed_production"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1083,7 +1083,7 @@
                       gasMini
                     )
                   "
-                  [(ngModel)]="gasproductionBody.proposed_utilization"
+                  [value]="gasproductionBody.proposed_utilization"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1109,7 +1109,7 @@
                       gasmin
                     )
                   "
-                  [(ngModel)]="gasproductionBody.proposed_flaring"
+                  [value]="gasproductionBody.proposed_flaring"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1141,7 +1141,7 @@
                     gasproductionBody.no_of_gas_well_planned =
                       genk.addCurrencyDecimal($event)
                   "
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
+                  [value]="gasproductionBody.no_of_gas_well_planned"
                 />
               </div>
             </div>
@@ -1167,7 +1167,7 @@
                     gasproductionBody.no_of_gas_well_drilled =
                       genk.addCurrencyDecimal($event)
                   "
-                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
+                  [value]="gasproductionBody.no_of_gas_well_drilled"
                 />
               </div>
             </div>
@@ -1231,7 +1231,7 @@
                     gasproductionBody.number_of_gas_wells_completed =
                       genk.addCurrencyDecimal($event)
                   "
-                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
+                  [value]="gasproductionBody.number_of_gas_wells_completed"
                 />
               </div>
             </div>
