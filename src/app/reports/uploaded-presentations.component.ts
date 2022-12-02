@@ -25,7 +25,7 @@ export class UploadedPresentationsComponent implements OnInit {
   
      columns = [
         {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -33,7 +33,7 @@ export class UploadedPresentationsComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {
@@ -51,7 +51,7 @@ export class UploadedPresentationsComponent implements OnInit {
 
       repcolumns = [
         {
-          "columnDef": "companyName",
+          "columnDef": "companyname",
           "header": "COMPANY NAME"
       },
       {
@@ -59,7 +59,7 @@ export class UploadedPresentationsComponent implements OnInit {
           "header": "COMPANY EMAIL"
       },
       {
-          "columnDef": "year_of_WP",
+          "columnDef": "year_of_wp",
           "header": "YEAR"
       },
       {

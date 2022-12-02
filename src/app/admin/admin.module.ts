@@ -18,6 +18,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { UploadCodeComponent } from './upload-code/uploadcode.component';
 import { ReportEditorComponent } from './report-editor/reporteditor.component';
 import { ParameterConfigComponent } from './parameterconfig/parameter.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
+import { PresentationModule } from '../company/presentation/presentation.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -28,6 +34,7 @@ import { ParameterConfigComponent } from './parameterconfig/parameter.component'
     AdminRoutingModule,
     MatFormFieldModule,
     MatTableModule,
+    MatSortModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
@@ -35,7 +42,11 @@ import { ParameterConfigComponent } from './parameterconfig/parameter.component'
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    PresentationModule
   ],
   declarations: [
     AddUsersComponent,
@@ -44,7 +55,8 @@ import { ParameterConfigComponent } from './parameterconfig/parameter.component'
     UpdateUserComponent,
     UploadCodeComponent,
     ReportEditorComponent,
-    ParameterConfigComponent
+    ParameterConfigComponent,
+    DashboardComponent
   ]
 })
 export class AdminModule { }

@@ -87,9 +87,12 @@ export class LoginComponent implements OnInit {
                       default:
                         this.isSpinner = false;
                         this.cd.markForCheck();
-                        const url = '/company/dashboard';
+                        const comp_url = '/company/dashboard';
+                        const admin_url = '/admin/dashboard';
+
                         this.returnUrl = '';
-                        this.locate.replaceState(url);
+                        if (this.genk.company === "Admin" ) {this.locate.replaceState(admin_url);}
+                        else{this.locate.replaceState(comp_url);}
                         window.location.reload();
 
                         // this.clearForm();
