@@ -33,6 +33,7 @@ export class UploadPresentationComponent implements OnInit {
     return this.uploadPresentationForm.controls;
   }
 onSubmit(){
+  debugger;
   var file: File = this.f['source'].value
   var formData : FormData = new FormData();
   formData.append("document",file, file.name)
