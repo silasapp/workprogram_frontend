@@ -1,203 +1,292 @@
+<br /><br />
+<h1>Application Details</h1>
 
-<br/><br/>
-<h1> Application Details </h1>
+<div
+  class="card-black"
+  style="background: rgb(255, 255, 255) !important; padding: 10px"
+>
+  <input type="text" id="txtRequestId" hidden value="{{ genk.appID }}" />
 
-<div class="card-black" style="background: rgb(255, 255, 255)!important">
- 
-
-            <input type="text" id="txtRequestId" hidden value={{this.genk.appID}} />
-
-            <div class="card-body">
-
-                <div class="row">
-
-                    <div class="col-sm-12">
-
-                        <hr />
-
-                    </div>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-sm-5">
-
-                        <div class="table-responsive">
-
-                            <table class="table table-bordered table-striped" style="resize:both">
-                                <tbody>
-                                    <!-- <tr>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered table-striped"
+            style="resize: both"
+          >
+            <tbody>
+              <!-- <tr>
                                         <td>View Submissions</td>
                                         <td class="text-left text-danger">
                                             <a href="/Applications/ViewDta/"{{genk.appID}} target="_blank"> <b>Click to Data Submissions</b> </a>
                                             <a href="" target="_blank"> <b>Click to Data Submissions</b> </a>
                                         </td>
                                     </tr> -->
-                                    <tr>
-                                        <td> Reference </td>
-                                        <td class="text-left text-dark"><b>{{this.applicationDetails?.application.referenceNo}} </b></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>Type </td>
-                                        <td class="text-left text-dark"><b>New</b></td>
-                                    </tr>
+              <tr>
+                <td>Reference</td>
+                <td class="text-left text-dark">
+                  <b
+                    >{{
+                      (applicationDetails$ | async)?.application.referenceNo
+                    }}
+                  </b>
+                </td>
+              </tr>
 
-                                    <tr>
-                                        <td class="">Concession (Field)</td>
-                                        <td class="text-left">{{this.applicationDetails?.concession.concession_Unique_ID}} 
-                                            <!-- - {{this.applicationDetails?.field.field_Name}} -->
-                                         </td>
-                                    </tr>
+              <tr>
+                <td>Type</td>
+                <td class="text-left text-dark"><b>New</b></td>
+              </tr>
 
-                                    <tr>
-                                        <td> Year </td>
-                                        <td class="text-left text-dark"><b>{{this.applicationDetails?.application.yearOfWKP}} </b></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">Company Name</td>
-                                        <td class="text-left">
-                                            <a class="text-primary" href="/Companies/FullCompanyProfile/companyemail" ><b> {{this.applicationDetails?.company.companY_NAME}} </b></a>
-                                        </td>
-                                    </tr>
+              <tr>
+                <td class="">Concession (Field)</td>
+                <td class="text-left">
+                  {{
+                    (applicationDetails$ | async)?.concession
+                      .concession_Unique_ID
+                  }}
+                  <!-- - {{(applicationDetails$ | async).field.field_Name}} -->
+                </td>
+              </tr>
 
-                                    <tr>
-                                        <td class="">Company Email</td>
-                                        <td class="text-left"> {{this.applicationDetails?.company.email}} </td>
-                                    </tr>
+              <tr>
+                <td>Year</td>
+                <td class="text-left text-dark">
+                  <b
+                    >{{ (applicationDetails$ | async)?.application.yearOfWKP }}
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td class="">Company Name</td>
+                <td class="text-left">
+                  <a
+                    class="text-primary"
+                    href="/Companies/FullCompanyProfile/companyemail"
+                    ><b>
+                      {{ (applicationDetails$ | async)?.company.companY_NAME }}
+                    </b></a
+                  >
+                </td>
+              </tr>
 
-                                    <tr>
-                                        <td> Status </td>
-                                        <!-- <td class="text-left"> <span class="btn btn-sm">  {{this.applicationDetails.application?.status}} </span> </td> -->
-                                    </tr>
+              <tr>
+                <td class="">Company Email</td>
+                <td class="text-left">
+                  {{ (applicationDetails$ | async)?.company.email }}
+                </td>
+              </tr>
 
-                                    <tr>
-                                        <td>Date Applied</td>
+              <tr>
+                <td>Status</td>
+                <td class="text-left">
+                  <span class="btn btn-sm">
+                    {{ (applicationDetails$ | async)?.application.status }}
+                  </span>
+                </td>
+              </tr>
 
-                                        <td class="text-left"><b>{{this.applicationDetails?.application.createdAt}}</b>
-                                        </td>
-                                    </tr>
-                               
-                                    <tr>
-                                        <td> Payment Status </td>
-                                        <td class="text-left"> <span class="btn btn-dark btn-sm"> {{this.applicationDetails?.application.paymentStatus}} </span> </td>
-                                    </tr>
+              <tr>
+                <td>Date Applied</td>
 
-                                    <tr>
-                                        <td>
-                                            Documents Attached
-                                        </td>
-                                        <td class="text-left">
-                                            <div *ngFor="let item of documentDetails">
-                                            
-                                                <a href="{{item.docSource}}" target="_blank" style="color:darkslategrey; font-size:small">
-                                                    <div class="" style="border:1px solid #dadada; padding:10px; margin-top:10px; cursor:pointer" title="Click to view document">
-                                                        <i class="fas fa-file-alt fa-lg"> </i>
-                                                        <b> {{item.documentCategory}}  </b>
-                                                    </div>
-                                                </a>
-                                                <hr />
-                               
-                                            </div>
-                                        </td>
-                                        </tr>
-                                        </tbody>
-                                        </table>
-                         </div>
-                    </div>
-                    <div class="col-sm-4">
+                <td class="text-left">
+                  <b>{{
+                    (applicationDetails$ | async)?.application.createdAt
+                  }}</b>
+                </td>
+              </tr>
 
-                        <div>
+              <tr>
+                <td>Payment Status</td>
+                <td class="text-left">
+                  <span class="btn btn-dark btn-sm">
+                    {{
+                      (applicationDetails$ | async)?.application.paymentStatus
+                    }}
+                  </span>
+                </td>
+              </tr>
 
-                            <div class="card-black">
-                                <h4> <b>Current Desk</b> </h4>
-                                <table #myTable class="apptablereport table table-bordered" cellPadding="10">
-                                    <thead>
-                                        <tr>
-                                            <th>Staff</th>
-                                            <th>Role (SBU)</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody #myTbody>
-                                        <tr table-row *ngFor="let item of columnValue_Desk">
-                                            <td>
-                                                {{item.staff_Email}}
-                                            </td> 
-                                            <td>
-                                                {{item.staff_Role}}({{item.staff_SBU}})
-                                            </td> 
-                                        </tr>
-                                    </tbody>
-                                </table> 
-                     
-                            </div>
-                           
-                            <br />
-
-
-                            <div class="table-responsive card-black">
-                                <h4 class=""><b>Last 3 Application History</b></h4>
-
-                                <table class="table table-bordered table-striped">
-                                    <caption> <a href="/Applications/ApplicationHistory/{{this.genk.appID}}" class="text-primary" target="_blank" title="Click to view application history"> See more </a> </caption>
-                                        <thead >
-                                            <tr>
-                                                <th>Staff</th>
-                                                <!-- <th>Action</th> -->
-                                                <th>Comment</th>
-                                                <th>Date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody #myTbod>
-                                            <tr table-row *ngFor="let item of columnValue_History">
-                                                <td>
-                                                    {{item.staff_Email}}
-                                                </td> 
-                                                <td>
-                                                    {{item.comment}}
-                                                </td> 
-                                                <td>
-                                                    {{item.date}}
-                                                </td> 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                  </div>
-
-                            <br />
-
+              <tr>
+                <td>Documents Attached</td>
+                <td class="text-left">
+                  <div style="max-height: 400px; overflow-y: scroll">
+                    <div
+                      *ngFor="
+                        let item of (applicationDetails$ | async)?.document
+                      "
+                    >
+                      <a
+                        href="{{ item.docSource }}"
+                        target="_blank"
+                        style="color: darkslategrey; font-size: small"
+                      >
+                        <div
+                          class=""
+                          style="
+                            border: 1px solid #dadada;
+                            padding: 10px;
+                            margin-top: 10px;
+                            cursor: pointer;
+                          "
+                          title="Click to view document"
+                        >
+                          <i class="fas fa-file-alt fa-lg"> </i>
+                          <b> {{ item.documentCategory }} </b>
                         </div>
-
+                      </a>
+                      <hr />
                     </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <div class="card-black">
+            <h4><b>Current Desk</b></h4>
+            <table
+              #myTable
+              class="apptablereport table table-bordered"
+              cellPadding="10"
+            >
+              <thead>
+                <tr>
+                  <th>Staff</th>
+                  <th>Role (SBU)</th>
+                </tr>
+              </thead>
 
+              <tbody #myTbody>
+                <tr
+                  table-row
+                  *ngFor="let item of (applicationDetails$ | async)?.staff"
+                >
+                  <td>
+                    {{ item.staff_Email }}
+                  </td>
+                  <td>{{ item.staff_Role }}({{ item.staff_SBU }})</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <div class="col-sm-3">
+          <br />
 
-                       
-                        <div class="card-black">
+          <div class="table-responsive card-black">
+            <h4 class=""><b>Last 3 Application History</b></h4>
 
-                          
-                                <input type="text" hidden id="txtProcessID" value="generalClass.Encrypt(opt.ProccessId.ToString())" />
+            <table class="table table-bordered table-striped">
+              <caption>
+                <a
+                  href="/Applications/ApplicationHistory/{{ genk.appID }}"
+                  class="text-primary"
+                  target="_blank"
+                  title="Click to view application history"
+                >
+                  See more
+                </a>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Staff</th>
+                  <!-- <th>Action</th> -->
+                  <th>Comment</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody #myTbod>
+                <tr
+                  table-row
+                  *ngFor="
+                    let item of (applicationDetails$ | async)
+                      ?.application_History
+                  "
+                >
+                  <td>
+                    {{ item.staff_Email }}
+                  </td>
+                  <td>
+                    {{ item.comment }}
+                  </td>
+                  <td>
+                    {{ item.date }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                                <h4> Operations Controls </h4>
-                                <hr />
+          <br />
+        </div>
+      </div>
 
-                                <!-- <a class="btn btn-primary btn-block" href="/application/applicationdata"> View Data Submission </a> -->
-                                <p></p>
-                                <!-- <button class="btn btn-dark btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Add Report </button>
+      <div class="col-sm-3">
+        <div class="card-black">
+          <input
+            type="text"
+            hidden
+            id="txtProcessID"
+            value="generalClass.Encrypt(opt.ProccessId.ToString())"
+          />
+
+          <h4>Operations Controls</h4>
+          <hr />
+
+          <!-- <a class="btn btn-primary btn-block" href="/application/applicationdata"> View Data Submission </a> -->
+          <p></p>
+          <!-- <button class="btn btn-dark btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Add Report </button>
                                 <p></p> -->
-                                <button (click)="togPushModal()" class="btn btn-success btn-block"> Push Application </button>
-                                <p></p>
-                                <button class="btn btn-danger btn-block" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#AppModal"> Send Back </button>
-                                <p></p>
-                        </div>
+          <button
+            (click)="pushApplication()"
+            class="btn btn-success btn-block"
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role !== 'Executive'
+            "
+          >
+            Push Application
+          </button>
+          <p></p>
+          <button
+            class="btn btn-danger btn-block"
+            data-toggle="modal"
+            data-backdrop="static"
+            data-keyboard="false"
+            data-target="#AppModal"
+            (click)="sendBackApplication()"
+          >
+            Send Back
+          </button>
+          <p></p>
+          <p></p>
+          <button
+            class="btn btn-primary btn-block"
+            data-toggle="modal"
+            data-backdrop="static"
+            data-keyboard="false"
+            data-target="#AppModal"
+            (click)="approveApplication()"
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role === 'Executive'
+            "
+          >
+            Approve
+          </button>
+          <p></p>
+        </div>
 
+        <br />
 
-                        <br />
-
-                      
-                        <!-- <div class="card-black">
+        <!-- <div class="card-black">
 
                             <h4> Application Reports </h4>
 
@@ -205,240 +294,233 @@
 
 
                         </div> -->
-
-
-                    </div>
-
-                </div>
-
-                <p><br /></p>
-
-            </div>   
-</div>
-
-
-<div *ngIf="isPushModal == true" class="modal">
-    <h1>HELLO</h1>
-    <!-- <div [formGroup]="pushFieldForm" (ngSubmit)="PushApplication()" class="modalbig">
-      <div style="display: flex; align-items: center; background-color: rgb(53, 67, 67); color: white; text-align: center; font-weight: 500; font-size: 17px;">
-        <div style="width: 85%; padding: 7px 0 0 3%;"><span> Push Application</span></div>
-        <div (click)="togPushModal()" style="background-color: red; padding: 7px 0; width: 15%;"><span style="color: white;" class="material-icons">close</span></div>
       </div>
-      <div>
-        <div style="padding: 20px;">
-            <div class="modal-body">
+    </div>
 
-                <div>
-                    <p> </p>
-                    <textarea id="txtPushComment" rows="15" class="form-control rounded-0" placeholder="Comment here..."></textarea>
-                    <br />
-                    <p></p>
-                    <div id="" class="text-danger"> </div>
-                </div>
-
-                <p></p>
-                <table class="table table-bordered table-hover" style="font-size:smaller" id="StaffPushTable">
-                        <thead>
-                            <tr>
-                                <th>Fullname</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                </table> -->
-
-            <!-- </div> -->
-        <!-- </div> -->
-
-        <!-- <div style="text-align: center;">
-          <button class="btn px-5" type="submit" style="background-color:teal; color:#fff;" (click)="FieldSubmit()">Add Field</button>
-        </div>
-      </div> -->
-    <!-- </div>  -->
+    <p><br /></p>
   </div>
-
+</div>
 
 <div class="modal" id="AppReportModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content card-black" id="AppReportLoader">
-            <div class="modal-header">
-                <h4 class="modal-title"> Add a report to this application </h4>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content card-black" id="AppReportLoader">
+      <div class="modal-header">
+        <h4 class="modal-title">Add a report to this application</h4>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
-                </button>
-            </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
+        </button>
+      </div>
 
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <br />
-                    <textarea id="txtAppReport" style="max-width:100%" rows="15" cols="168" placeholder="Some report here..."></textarea>
-                </div>
-
-                <button class="btn btn-facebook" id="btnSaveReport"> Send Report </button>
-                <p></p>
-                <div id="ReportModalInfo" class="text-danger"> </div>
-
-            </div>
-
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <br />
+          <textarea
+            id="txtAppReport"
+            style="max-width: 100%"
+            rows="15"
+            cols="168"
+            placeholder="Some report here..."
+          ></textarea>
         </div>
+
+        <button class="btn btn-facebook" id="btnSaveReport">Send Report</button>
+        <p></p>
+        <div id="ReportModalInfo" class="text-danger"></div>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 <div class="modal" id="AppEditReportModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content card-black" id="AppEditReportLoadder">
-            <div class="modal-header">
-                <h4 class="modal-title"> Edit this application report </h4>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content card-black" id="AppEditReportLoadder">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit this application report</h4>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
-                </button>
-            </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
+        </button>
+      </div>
 
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <input id="txtEditReportID" value="" hidden />
-                    <label for="comment">Comment:</label>
-                    <br />
-                    <textarea id="txtEditAppReport" style="max-width:100%" rows="15" cols="168" placeholder="Some report here...Max(100)"></textarea>
-                </div>
-
-                <button class="btn btn-info" id="btnEditReport"><i class="fa fa-pen"> </i> Edit Report </button>
-                <p></p>
-                <div id="EditReportModalInfo"> </div>
-
-            </div>
-
+      <div class="modal-body">
+        <div class="form-group">
+          <input id="txtEditReportID" value="" hidden />
+          <label for="comment">Comment:</label>
+          <br />
+          <textarea
+            id="txtEditAppReport"
+            style="max-width: 100%"
+            rows="15"
+            cols="168"
+            placeholder="Some report here...Max(100)"
+          ></textarea>
         </div>
+
+        <button class="btn btn-info" id="btnEditReport">
+          <i class="fa fa-pen"> </i> Edit Report
+        </button>
+        <p></p>
+        <div id="EditReportModalInfo"></div>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 <div class="modal" id="AppSchduleModal">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content card-black" id="AppSchduleLoadder">
-            <div class="modal-header">
-                <h4 class="modal-title"> Create a schedule </h4>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content card-black" id="AppSchduleLoadder">
+      <div class="modal-header">
+        <h4 class="modal-title">Create a schedule</h4>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
-                </button>
-            </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
+        </button>
+      </div>
 
-            <div class="modal-body">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="comment">Schedule Type:</label>
+          <br />
+          <select class="form-control" id="txtSchduleType">
+            <option>Meeting</option>
+            <option>Presentation</option>
+            <option>Inspection</option>
+          </select>
 
-                <div class="form-group">
+          <p></p>
 
-                    <label for="comment">Schedule Type:</label>
-                    <br />
-                    <select class="form-control" id="txtSchduleType">
-                        <option> Meeting </option>
-                        <option> Presentation </option>
-                        <option> Inspection </option>
-                    </select>
+          <label for="comment">Select Date:</label>
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            id="txtSchduleDate"
+            value=""
+          />
 
-                    <p></p>
+          <p></p>
 
-                    <label for="comment">Select Date:</label>
-                    <br />
-                    <input type="text" class="form-control" id="txtSchduleDate" value="" />
+          <label for="comment">Select Location:</label>
+          <br />
+          <select class="form-control" id="txtSchduleLocation">
+            <option>Applicant Facility</option>
+            <option>NUPRC Head Office</option>
+            <option>NUPRC Field Office - Facility Location</option>
+            <option>Online (MS Teams)</option>
+          </select>
 
-                    <p></p>
+          <p></p>
 
-                    <label for="comment">Select Location:</label>
-                    <br />
-                    <select class="form-control" id="txtSchduleLocation">
-                        <option> Applicant Facility </option>
-                        <option> NUPRC Head Office </option>
-                        <option> NUPRC Field Office - Facility Location </option>
-                        <option> Online (MS Teams) </option>
-                    </select>
-
-                    <p></p>
-
-                    <label for="comment">Comment:</label>
-                    <br />
-                    <textarea id="txtSchduleComment" style="max-width:100%" rows="3" cols="68" placeholder="Some report here...Max(100)"></textarea>
-                </div>
-
-                <button class="btn btn-linkedin" id="btnSaveSchdule">Save Schedule</button>
-                <p></p>
-                <div id="SchduleModalInfo"> </div>
-
-            </div>
-
+          <label for="comment">Comment:</label>
+          <br />
+          <textarea
+            id="txtSchduleComment"
+            style="max-width: 100%"
+            rows="3"
+            cols="68"
+            placeholder="Some report here...Max(100)"
+          ></textarea>
         </div>
+
+        <button class="btn btn-linkedin" id="btnSaveSchdule">
+          Save Schedule
+        </button>
+        <p></p>
+        <div id="SchduleModalInfo"></div>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 <div class="modal" id="AppEditSchduleModal">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content card-black" id="AppEditSchduleLoadder">
-            <div class="modal-header">
-                <h4 class="modal-title"> Edit this schedule </h4>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content card-black" id="AppEditSchduleLoadder">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit this schedule</h4>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
-                </button>
-            </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="btn btn-danger btn-sm">Close</span>
+        </button>
+      </div>
 
-            <div class="modal-body">
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" id="txtEditSchduleID" hidden />
 
-                <div class="form-group">
+          <label for="comment">Schedule Type:</label>
+          <br />
+          <select class="form-control" id="txtEditSchduleType">
+            <option>Meeting</option>
+            <option>Presentation</option>
+            <option>Inspection</option>
+          </select>
 
-                    <input type="text" id="txtEditSchduleID" hidden />
+          <p></p>
 
-                    <label for="comment">Schedule Type:</label>
-                    <br />
-                    <select class="form-control" id="txtEditSchduleType">
-                        <option> Meeting </option>
-                        <option> Presentation </option>
-                        <option> Inspection </option>
-                    </select>
+          <label for="comment">Select Date:</label>
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            id="txtEditSchduleDate"
+            value=""
+          />
 
-                    <p></p>
+          <p></p>
 
-                    <label for="comment">Select Date:</label>
-                    <br />
-                    <input type="text" class="form-control" id="txtEditSchduleDate" value="" />
+          <label for="comment">Select Location:</label>
 
-                    <p></p>
+          <br />
+          <select class="form-control" id="txtEditSchduleLocation">
+            <option>Applicant Facility</option>
+            <option>NUPRC Head Office</option>
+            <option>NUPRC Field Office - Facility Location</option>
+            <option>Online (MS Teams)</option>
+          </select>
 
-                    <label for="comment">Select Location:</label>
+          <p></p>
 
-                    <br />
-                    <select class="form-control" id="txtEditSchduleLocation">
-                        <option> Applicant Facility </option>
-                        <option> NUPRC Head Office </option>
-                        <option> NUPRC Field Office - Facility Location </option>
-                        <option> Online (MS Teams) </option>
-                    </select>
-
-                    <p></p>
-
-                    <label for="comment">Comment:</label>
-                    <br />
-                    <textarea id="txtEditSchduleComment" style="max-width:100%" rows="3" cols="68" placeholder="Some report here...Max(100)"></textarea>
-                </div>
-
-                <button class="btn btn-tumblr" id="btnEditSchdule"> <i class="fa fa-pencil"></i> Edit Schedule</button>
-
-                <p></p>
-
-                <div id="EditSchduleModalInfo"> </div>
-
-            </div>
+          <label for="comment">Comment:</label>
+          <br />
+          <textarea
+            id="txtEditSchduleComment"
+            style="max-width: 100%"
+            rows="3"
+            cols="68"
+            placeholder="Some report here...Max(100)"
+          ></textarea>
         </div>
-    </div>
-</div>
 
+        <button class="btn btn-tumblr" id="btnEditSchdule">
+          <i class="fa fa-pencil"></i> Edit Schedule
+        </button>
+
+        <p></p>
+
+        <div id="EditSchduleModalInfo"></div>
+      </div>
+    </div>
+  </div>
+</div>

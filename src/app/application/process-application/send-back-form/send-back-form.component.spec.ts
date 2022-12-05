@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApplicationComponent } from './application.component';
+import { SendBackFormComponent } from './send-back-form.component';
 
-describe('ApplicationComponent', () => {
-  let component: ApplicationComponent;
-  let fixture: ComponentFixture<ApplicationComponent>;
+describe('SendBackFormComponent', () => {
+  let component: SendBackFormComponent;
+  let fixture: ComponentFixture<SendBackFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApplicationComponent],
+      declarations: [SendBackFormComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ApplicationComponent);
+    fixture = TestBed.createComponent(SendBackFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
