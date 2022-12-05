@@ -1,4 +1,19 @@
-
+<div>
+  <div *ngIf="time" style="padding: 20px; border-radius: 20px;">
+    <div>
+      <span class="material-icons schedule"></span><span style="font-size: 18px; font-weight: 600;">Presentation Time: <span style="color: green;">{{time}}</span></span>
+    </div>
+    <br>
+    <div>
+      <span class="material-icons schedule"></span><span style="font-size: 18px; font-weight: 600;">Presentation Date: <span style="color: green;">{{date}}</span></span>
+    </div>
+  </div>
+  <div *ngIf="!time">
+    <div>
+      <span class="material-icons schedule"></span><span style="font-size: 18px; font-weight: 600;">No Presentation Time & Date</span>
+    </div>
+  </div>
+</div>
 <div class="container mt-5">
 <form [formGroup]="selectDateForm" (ngSubmit)="onSubmit()">
 <div class="container">

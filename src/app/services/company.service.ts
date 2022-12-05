@@ -51,6 +51,16 @@ export class CompanyService {
         })
         )
     }
+
+    getPresentation(){
+      return this.http.get<any>(`${environment.apiUrl}/presentation/GET_PRESENTATION_DATETIME`)
+      .pipe(retry(this.num),
+          map((response) => {
+              return response
+          })
+      )
+  }
+
     schedulePresentation(time: string, date: string){
         return this.http.post<any>(`${environment.apiUrl}/presentation/schedulepresentation`, '' , {params: {time: time, date: date}})
         .pipe(retry(this.num),
