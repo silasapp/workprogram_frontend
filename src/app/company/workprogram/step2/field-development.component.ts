@@ -169,6 +169,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         }
         if (res.unitization) {
           this.unitizationBody = res.unitization;
+          this.unitizationBody.is_any_of_your_field_straddling = 'NO';
         }
 
         this.cd.markForCheck();
