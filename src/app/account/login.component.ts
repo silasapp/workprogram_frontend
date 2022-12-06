@@ -89,9 +89,9 @@ export class LoginComponent implements OnInit {
                         this.cd.markForCheck();
                         const comp_url = '/company/dashboard';
                         const admin_url = '/admin/dashboard';
-
+debugger;
                         this.returnUrl = '';
-                        if (this.genk.company === "Admin" ) {this.locate.replaceState(admin_url);}
+                        if (this.genk.isAdmin) {this.locate.replaceState(admin_url);}
                         else{this.locate.replaceState(comp_url);}
                         window.location.reload();
 
