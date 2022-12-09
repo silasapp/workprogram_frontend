@@ -73,6 +73,14 @@ const routes: Routes = [
         (m) => m.PerformanceEvaluationModule
       ),
   },
+  {
+    path: 'process-flow-configuration',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import(
+        './process-flow-configuration/process-flow-configuration.module'
+      ).then((m) => m.ProcessFlowConfigurationModule),
+  },
 ];
 
 @NgModule({

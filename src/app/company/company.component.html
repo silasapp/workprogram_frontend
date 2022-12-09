@@ -1,453 +1,949 @@
-<div style="background-color:rgb(218, 218, 227);">
-    <div class="layout-top">
-        <div class="divmid">
-            <img class="layout-logo" src="assets/NUPRC-logo.png">
-            <span style="font-size: 18px; color: rgb(18, 77, 44); font-weight: 900; text-shadow: 1.5px 1.5px 2px rgb(0, 0, 0, 0.3);">WORK PROGRAMME</span>
-        </div>
-        <div class="divmid">
-            <div style="display: flex; align-items: center; margin-right: 20px;">
-                <span class="material-icons" style="margin-right: 5px; font-size: 30px; color: rgb(9, 79, 104);">account_circle</span>
-                <span style="font-weight: 500; color: rgb(23, 90, 52); text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);">{{auth.currentUserValue?.companyEmail}}</span>
-            </div>
-
-            <div (click)="logout()" style="display: flex; align-items: center; background-color:  rgb(9, 79, 104); box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3); color: whitesmoke; padding: 5px 10px; border-radius: 10px;">
-                <span class="material-icons" style="margin-right: 5px;">logout</span>
-                <span style="font-weight: 500;">Logout</span>
-            </div>
-        </div>
+<div style="background-color: rgb(218, 218, 227)">
+  <div class="layout-top">
+    <div class="divmid">
+      <img class="layout-logo" src="assets/NUPRC-logo.png" />
+      <span
+        style="
+          font-size: 18px;
+          color: rgb(18, 77, 44);
+          font-weight: 900;
+          text-shadow: 1.5px 1.5px 2px rgb(0, 0, 0, 0.3);
+        "
+        >WORK PROGRAMME</span
+      >
     </div>
-    <div style="display: flex; width: 100%;">
-        <div class="sidebar-box">
-            <div class="layout-box">
-                <div>
-                    <div *ngIf="genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.dashboard]" routerLinkActive="active">
-                        <span class="material-icons layout-icon">dashboard</span>
-                        <span>Dashboard</span>
-                    </div>
-                    <div *ngIf="genk.isAdmin" (click)="scheduleExpand= scheduleExpand == 'more'?'less':'more'; toggle_application()">
-                        <div class="layout-div layout-pad layout-line" >
-                            <span class="material-icons layout-icon">event_note</span>
-                            <span class="divmid" style="width: 100%;">Application <span class="material-icons expand-icon" style="margin-left: auto">{{scheduleExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isApplication" [class]="entryStyle">
-                            <div class="divmid child-div" [routerLink]="['/application', 'mydesk']" routerLinkActive="active">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>My Desk</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/application', 'all-applications']" routerLinkActive="active">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>All Applications</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/application', 'all-companies']" routerLinkActive="active">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>All Companies</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'select-date']" routerLinkActive="active">
-                        <span class="material-icons layout-icon">event</span>
-                        <span>Presentation Date Time</span>
-                    </div>
-                    <div *ngIf="!genk.isAdmin" class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.presentation, 'upload-presentation']" routerLinkActive="active">
-                        <span class="material-icons layout-icon">upload</span>
-                        <span>Upload Presentation</span>
-                    </div>
-                    <div *ngIf="!genk.isAdmin" [routerLink]="['/' + genk.company, 'details']" routerLinkActive="active" class="layout-div layout-pad layout-line" >
-                        <span class="material-icons layout-icon">newspaper</span>
-                        <span>Company Details</span>
-                    </div>
-                    <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, genk.workprogram]" routerLinkActive="active">
-                        <span class="material-icons layout-icon">table_chart</span>
-                        <span>Work Programme</span>
-                    </div>
+    <div class="divmid">
+      <div style="display: flex; align-items: center; margin-right: 20px">
+        <span
+          class="material-icons"
+          style="margin-right: 5px; font-size: 30px; color: rgb(9, 79, 104)"
+          >account_circle</span
+        >
+        <span
+          style="
+            font-weight: 500;
+            color: rgb(23, 90, 52);
+            text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+          "
+          >{{ auth.currentUserValue?.companyEmail }}</span
+        >
+      </div>
 
-                    <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, 'concessionsfields']" routerLinkActive="active">
-                        <span class="material-icons layout-icon">table_chart</span>
-                        <span>Concessions & Fields</span>
-                    </div>
-                    <div class="layout-div layout-pad layout-line" [routerLink]="['/' + genk.company, 'resetpassword']" routerLinkActive="active">
-                        <span class="material-icons layout-icon">enhanced_encryption</span>
-                        <span>Password Reset</span>
-                    </div>
-                    <div *ngIf="genk.isAdmin" (click)="scheduleExpand= scheduleExpand == 'more'?'less':'more'; toggle_presentation_schedule()">
-                        <div class="layout-div layout-pad layout-line" >
-                            <span class="material-icons layout-icon">event_note</span>
-                            <span class="divmid" style="width: 100%;">Performance Schedule <span class="material-icons expand-icon" style="margin-left: auto">{{scheduleExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isPresentationSchedule" [class]="entryStyle">
-                            <div class="divmid child-div" [routerLink]="['/schedule/scribes']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Scribes & Chairmen</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/schedule/divisional']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Divisional</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div #evac *ngIf="genk.isAdmin" (click)="evaluationExpand= evaluationExpand == 'more'?'less':'more'; toggle_presentation_evaluation(evac)">
-                        <div class="layout-div layout-pad layout-line">
-                            <span class="material-icons layout-icon">leaderboard</span>
-                            <span class="divmid" style="width: 100%;">Performance Evaluation<span class="material-icons expand-icon" style="margin-left: auto">{{evaluationExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isPresentationEvaluation" [class]="entryStyle">
-                            <div class="divmid child-div" [routerLink]="['/' + genk.performance, 'opl_recalibrated_scale']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>OPL Recalibrated Scaled</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/' + genk.performance, 'opl_aggregated_score']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>OPL Aggregated Score (%)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.performance, 'oml_recalibrated_scale']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>OML Recalibrated Scaled</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/' + genk.performance, 'oml_aggregated_score']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>OML Aggregated Score (%)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="layout-div layout-pad">
+      <div
+        (click)="logout()"
+        style="
+          display: flex;
+          align-items: center;
+          background-color: rgb(9, 79, 104);
+          box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.3);
+          color: whitesmoke;
+          padding: 5px 10px;
+          border-radius: 10px;
+        "
+      >
+        <span class="material-icons" style="margin-right: 5px">logout</span>
+        <span style="font-weight: 500">Logout</span>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; width: 100%">
+    <div class="sidebar-box">
+      <div class="layout-box">
+        <div>
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, genk.dashboard]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">dashboard</span>
+            <span>Dashboard</span>
+          </div>
+          <div
+            *ngIf="genk.isAdmin"
+            (click)="
+              scheduleExpand = scheduleExpand == 'more' ? 'less' : 'more';
+              toggle_application()
+            "
+          >
+            <div class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">event_note</span>
+              <span class="divmid" style="width: 100%"
+                >Application
+                <span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    scheduleExpand == "more" ? "expand_more" : "expand_less"
+                  }}</span
+                ></span
+              >
+            </div>
+            <div *ngIf="isApplication" [class]="entryStyle">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/application', 'mydesk']"
+                routerLinkActive="active"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>My Desk</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/application', 'all-applications']"
+                routerLinkActive="active"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>All Applications</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/application', 'all-companies']"
+                routerLinkActive="active"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>All Companies</span>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="!genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="[
+              '/' + genk.company,
+              genk.presentation,
+              'select-date'
+            ]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">event</span>
+            <span>Presentation Date Time</span>
+          </div>
+          <div
+            *ngIf="!genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="[
+              '/' + genk.company,
+              genk.presentation,
+              'upload-presentation'
+            ]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">upload</span>
+            <span>Upload Presentation</span>
+          </div>
+          <div
+            *ngIf="!genk.isAdmin"
+            [routerLink]="['/' + genk.company, 'details']"
+            routerLinkActive="active"
+            class="layout-div layout-pad layout-line"
+          >
+            <span class="material-icons layout-icon">newspaper</span>
+            <span>Company Details</span>
+          </div>
+          <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, genk.workprogram]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">table_chart</span>
+            <span>Work Programme</span>
+          </div>
+
+          <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, 'concessionsfields']"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">table_chart</span>
+            <span>Concessions & Fields</span>
+          </div>
+
+          <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, 'resetpassword']"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">enhanced_encryption</span>
+            <span>Password Reset</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            (click)="
+              scheduleExpand = scheduleExpand == 'more' ? 'less' : 'more';
+              toggle_presentation_schedule()
+            "
+          >
+            <div class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">event_note</span>
+              <span class="divmid" style="width: 100%"
+                >Performance Schedule
+                <span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    scheduleExpand == "more" ? "expand_more" : "expand_less"
+                  }}</span
+                ></span
+              >
+            </div>
+            <div *ngIf="isPresentationSchedule" [class]="entryStyle">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/schedule/scribes']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Scribes & Chairmen</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/schedule/divisional']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Divisional</span>
+              </div>
+            </div>
+          </div>
+          <div
+            #evac
+            *ngIf="genk.isAdmin"
+            (click)="
+              evaluationExpand = evaluationExpand == 'more' ? 'less' : 'more';
+              toggle_presentation_evaluation(evac)
+            "
+          >
+            <div class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">leaderboard</span>
+              <span class="divmid" style="width: 100%"
+                >Performance Evaluation<span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    evaluationExpand == "more" ? "expand_more" : "expand_less"
+                  }}</span
+                ></span
+              >
+            </div>
+            <div *ngIf="isPresentationEvaluation" [class]="entryStyle">
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.performance,
+                  'opl_recalibrated_scale'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>OPL Recalibrated Scaled</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.performance, 'opl_aggregated_score']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>OPL Aggregated Score (%)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.performance,
+                  'oml_recalibrated_scale'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>OML Recalibrated Scaled</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.performance, 'oml_aggregated_score']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>OML Aggregated Score (%)</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="layout-div layout-pad">
                         <span class="material-icons layout-icon">leaderboard</span>
                         <span class="layout-line">Presentation Evaluation</span>
                     </div> -->
-                    <div (click)="reportExpand= reportExpand == 'more'?'less':'more'; toggle_reports(reportem)">
-                        <div #reportem class="layout-div layout-pad layout-line">
-                            <span class="material-icons layout-icon">assignment</span>
-                            <span class="divmid">Reports (Data Uploaded)<span class="material-icons expand-icon" style="margin-left: auto">{{reportExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isReports" class="layout-child">
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'concessionsinformation']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Check Concession Status</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/' + genk.reports, 'concessionsituation']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Concession Situation</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/' + genk.reports, 'geophysicalactivities']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Geophysical Activities (Acquisition)</span>
-                            </div>
-                            <div class="divmid  child-div" [routerLink]="['/' + genk.reports, 'geophysicalprocessing']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Geophysical Activities (Processing)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'drilling_operations']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Drilling Operations</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'workovers_recompletion']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Well Completion</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'initial_wellcompletion']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Initial Well Completion</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'fdp_tosubmit']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Field Development Plan</span>
-                            </div>
-                            <!-- <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'fdp_tosubmit']">
+          <div
+            (click)="
+              reportExpand = reportExpand == 'more' ? 'less' : 'more';
+              toggle_reports(reportem)
+            "
+          >
+            <div #reportem class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">assignment</span>
+              <span class="divmid"
+                >Reports (Data Uploaded)<span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    reportExpand == "more" ? "expand_more" : "expand_less"
+                  }}</span
+                ></span
+              >
+            </div>
+            <div *ngIf="isReports" class="layout-child">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'concessionsinformation']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Check Concession Status</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'concessionsituation']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Concession Situation</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'geophysicalactivities']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Geophysical Activities (Acquisition)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'geophysicalprocessing']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Geophysical Activities (Processing)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'drilling_operations']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Drilling Operations</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'workovers_recompletion']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Well Completion</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'initial_wellcompletion']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Initial Well Completion</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'fdp_tosubmit']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Field Development Plan</span>
+              </div>
+              <!-- <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'fdp_tosubmit']">
                                 <span class="material-icons child-icon">ac_unit</span>
                                 <span>Field to submit FDP</span>
                             </div> -->
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'fdp_fieldstatus']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Field & Development Plan Status</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'fdp_expected_reserves']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Expected Reserve</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'ndr']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>NDR Data</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_condensate_production_activities']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Oil / Condensate Production</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_condensate_monthly_activities']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Monthly Oil Production</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_condensate_monthly_activities_proposed']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Monthly Oil Proposed Production</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_condensate_monthly_activities_proposed_fiveyears']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>5yr Oil Production Forecast</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'gas_production_activities']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Gas Production Activities</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'gas_production_activities_domestic_supply']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Project planned (Domestic Gas Supply)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'unitization']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Unitization</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'concession_reserves_for_1st_january']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Concession Reserves for preceding year (as at 1st January)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'concession_reserves_for_current_year']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Concession Reserves (as at 1st January)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'concession_reserves_for_current_year']">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'fdp_fieldstatus']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Field & Development Plan Status</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'fdp_expected_reserves']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Expected Reserve</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'ndr']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>NDR Data</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'oil_condensate_production_activities'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Oil / Condensate Production</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'oil_condensate_monthly_activities'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Monthly Oil Production</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'oil_condensate_monthly_activities_proposed'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Monthly Oil Proposed Production</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'oil_condensate_monthly_activities_proposed_fiveyears'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>5yr Oil Production Forecast</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'gas_production_activities']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Gas Production Activities</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'gas_production_activities_domestic_supply'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Project planned (Domestic Gas Supply)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'unitization']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Unitization</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'concession_reserves_for_1st_january'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span
+                  >Concession Reserves for preceding year (as at 1st
+                  January)</span
+                >
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'concession_reserves_for_current_year'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Concession Reserves (as at 1st January)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'concession_reserves_for_current_year'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Company Annual Production</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'reserves_addition']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Reserves Addition</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'reserves_decline']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Reserves declines</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'reserves_life_index']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Life Index (Years)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'reserves_updates_depletion_rate'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Depletion Rate (%)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'reserves_oil_condensate_mmbbl'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Reserves Update (mmbls)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'reserves_oil_condensate_production'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Five Year Reservation Projection</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'reserves_replacement_ratio'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>5yr Trend For Concession Reserve Replacement Ratio</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'budget_capex_opex']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Capex & Opex</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'oil_and_gas_maintenance_projects'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Major Projects and Upgrades</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'oil_condensate_conformity']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>New Technology and Conformity Assessment</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'facilities_project_performance'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Facilities Project Performance</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'legal_litigation']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Legal (Litigation)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'legal_arbitration']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Legal (Arbiration)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'nigeria_content_training']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Staff Deposition</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'nigeria_content_successionplan'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Succession Plan </span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'strategic_plans_on_company_basis'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Strategic Plan</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_technical_safety_control_studies_new'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Technical Safety Control Studies</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'hse_management_position']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Management Position</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_safety_culture_training'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Safety and Culture Training</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_occupational_health_management'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Occupational Health Management</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'hse_quality_control']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Quality Control</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_climate_change_and_air_quality'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Climate Change and Air Control</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_inspection_and_maintenance_facility_type_new'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Inspection & Maintenance</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'prescription_strategy']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Asset Register Template (Prescription Strategy)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'rbi']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Asset Register Template (RBI)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'oil_spill_reporting']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Oil Spill Reporting</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'causes_of_oil_spill']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Cause of Oil Spill</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'incident_reporting']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Accident/Incident Reporting</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'osp_registration']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Osp Registration</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'waste_management']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Waste Management</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'environmental_management_system'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Environmental Management System</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'waste_management_upload']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Waste Management (Upload)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'water_management']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Water Management</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'water_management_zone']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Water Management (Zone)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'planned_and_actual_projects'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Planned & Actual Projects</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'csr_project_details']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>CRS (Project Details)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'hse_sustainable_development_community_project_program_csr_new'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Capital Development</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'scholarships']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Scholarship</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'training_and_skill_acquisition'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Training & Skill Acquisition</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'uploaded_community_development_projects'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Pictures (Community Projects)</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.reports, 'uploaded_presentations']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Uploaded Presentations</span>
+              </div>
+            </div>
+          </div>
 
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Company Annual Production</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_addition']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Reserves Addition</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_decline']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Reserves declines</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_life_index']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Life Index (Years)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_updates_depletion_rate']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Depletion Rate (%)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_oil_condensate_mmbbl']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Reserves Update (mmbls)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_oil_condensate_production']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Five Year Reservation Projection</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'reserves_replacement_ratio']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>5yr Trend For Concession Reserve Replacement Ratio</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'budget_capex_opex']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Capex & Opex</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_and_gas_maintenance_projects']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Major Projects and Upgrades</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_condensate_conformity']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>New Technology and Conformity Assessment</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'facilities_project_performance']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Facilities Project Performance</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'legal_litigation']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Legal (Litigation)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'legal_arbitration']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Legal (Arbiration)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'nigeria_content_training']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Staff Deposition</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'nigeria_content_successionplan']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Succession Plan </span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'strategic_plans_on_company_basis']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Strategic Plan</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_technical_safety_control_studies_new']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Technical Safety Control Studies</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_management_position']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Management Position</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_safety_culture_training']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Safety and Culture Training</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_occupational_health_management']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Occupational Health Management</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_quality_control']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Quality Control</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_climate_change_and_air_quality']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Climate Change and Air Control</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'hse_inspection_and_maintenance_facility_type_new']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Inspection & Maintenance</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'prescription_strategy']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Asset Register Template (Prescription Strategy)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'rbi']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Asset Register Template (RBI)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'oil_spill_reporting']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Oil Spill Reporting</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'causes_of_oil_spill']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Cause of Oil Spill</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'incident_reporting']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Accident/Incident Reporting</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'osp_registration']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Osp Registration</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'waste_management']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Waste Management</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'environmental_management_system']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Environmental Management System</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'waste_management_upload']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Waste Management (Upload)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'water_management']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Water Management</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'water_management_zone']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Water Management (Zone)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'planned_and_actual_projects']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Planned & Actual Projects</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'csr_project_details']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>CRS (Project Details)</span>
-                            </div>
-                            <div class="divmid child-div"  [routerLink]="['/' + genk.reports, 'hse_sustainable_development_community_project_program_csr_new']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Capital Development</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'scholarships']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Scholarship</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'training_and_skill_acquisition']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Training & Skill Acquisition</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'uploaded_community_development_projects']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Pictures (Community Projects)</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'uploaded_presentations']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Uploaded Presentations</span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div *ngIf="genk.isAdmin" (click)="reportWorkExpand= reportWorkExpand == 'more'?'less':'more'; toggle_work_program_report()">
-                        <div class="layout-div layout-pad layout-line">
-                            <span class="material-icons layout-icon">post_add</span>
-                            <span class="divmid" style="width: 100%;">Work Program Report<span class="material-icons expand-icon" style="margin-left: auto">{{reportWorkExpand=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isWorkProgramReport" [class]="entryStyle">
-                            <div class="divmid child-div" [routerLink]="['/' + 'generalreport']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>General Report</span>
-                            </div>
-                            <div class="divmid  child-div">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Concessions Status Report</span>
-                            </div>
-                            <div class="divmid  child-div">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Companies Status Report</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="layout-div layout-pad">
+          <div
+            *ngIf="genk.isAdmin"
+            (click)="
+              reportWorkExpand = reportWorkExpand == 'more' ? 'less' : 'more';
+              toggle_work_program_report()
+            "
+          >
+            <div class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">post_add</span>
+              <span class="divmid" style="width: 100%"
+                >Work Program Report<span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    reportWorkExpand == "more" ? "expand_more" : "expand_less"
+                  }}</span
+                ></span
+              >
+            </div>
+            <div *ngIf="isWorkProgramReport" [class]="entryStyle">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + 'generalreport']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>General Report</span>
+              </div>
+              <div class="divmid child-div">
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Concessions Status Report</span>
+              </div>
+              <div class="divmid child-div">
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Companies Status Report</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="layout-div layout-pad">
                         <span class="material-icons layout-icon">post_add</span>
                         <span class="layout-line">Work Program Report</span>
                     </div> -->
-                    <div *ngIf="genk.isAdmin" (click)="reportAdminstration= reportAdminstration == 'more'?'less':'more'; toggle_adminstration(reportAdmin)">
-                        <div #reportAdmin class="layout-div layout-pad layout-line">
-                            <span class="material-icons layout-icon">cases</span>
-                            <span class="divmid" style="width: 100%;">Adminstration<span class="material-icons expand-icon" style="margin-left: auto">{{reportAdminstration=='more'?'expand_more' : 'expand_less'  }}</span></span>
-                        </div>
-                        <div *ngIf="isAdminstration" class="layout-child">
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'upload_code']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Upload Code</span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'add_users']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Add Users/ Companies</span>
-                            </div>
-
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'add_concession']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Add Concession</span>
-                            </div>
-
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'uploaded_company']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Uploaded Company Details</span>
-                            </div>
-                             <div class="divmid child-div" [routerLink]="['/' + genk.reports, 'uploaded_community_development_projects']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Data Upload Window </span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'upload_code']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Report Editors </span>
-                            </div>
-                            <div class="divmid child-div" [routerLink]="['/' + genk.admin, 'parameter_config']">
-                                <span class="material-icons child-icon">ac_unit</span>
-                                <span>Parameter Configuration</span>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
+          <div
+            *ngIf="genk.isAdmin"
+            (click)="
+              reportAdminstration =
+                reportAdminstration == 'more' ? 'less' : 'more';
+              toggle_adminstration(reportAdmin)
+            "
+          >
+            <div #reportAdmin class="layout-div layout-pad layout-line">
+              <span class="material-icons layout-icon">cases</span>
+              <span class="divmid" style="width: 100%"
+                >Adminstration<span
+                  class="material-icons expand-icon"
+                  style="margin-left: auto"
+                  >{{
+                    reportAdminstration == "more"
+                      ? "expand_more"
+                      : "expand_less"
+                  }}</span
+                ></span
+              >
             </div>
+
+            <div *ngIf="isAdminstration" class="layout-child">
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'upload_code']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Upload Code</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'add_users']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Add Users/ Companies</span>
+              </div>
+
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'add_concession']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Add Concession</span>
+              </div>
+
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'uploaded_company']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Uploaded Company Details</span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="[
+                  '/' + genk.reports,
+                  'uploaded_community_development_projects'
+                ]"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Data Upload Window </span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'upload_code']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Report Editors </span>
+              </div>
+              <div
+                class="divmid child-div"
+                [routerLink]="['/' + genk.admin, 'parameter_config']"
+              >
+                <span class="material-icons child-icon">ac_unit</span>
+                <span>Parameter Configuration</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'process-flow-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">enhanced_encryption</span>
+            <span>Configure Process Flow</span>
+          </div>
         </div>
-        <div class="page-size">
-            <router-outlet></router-outlet>
-        </div>
+      </div>
     </div>
+    <div class="page-size">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
 
 <script src="/src/assets/jquery.waypoints.min.js"></script>

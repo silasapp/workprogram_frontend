@@ -1,16 +1,35 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
-import { WorkprogrammeReportService } from '../../services/workprogramme-report.service'
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Inject,
+  NgZone,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
+import { WorkprogrammeReportService } from '../../services/workprogramme-report.service';
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
-import * as am5percent from "@amcharts/amcharts5/percent";
-import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
+import * as am5percent from '@amcharts/amcharts5/percent';
+import * as am5plugins_exporting from '@amcharts/amcharts5/plugins/exporting';
 import { ReportService } from 'src/app/services/report.service';
-import { AuthenticationService, GenericService, ModalService } from 'src/app/services';
+import {
+  AuthenticationService,
+  GenericService,
+  ModalService,
+} from 'src/app/services';
 import { CdkAriaLive } from '@angular/cdk/a11y';
 import { CompanyService } from 'src/app/services/company.service';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
-import { CompanyDashboardBody, CompanyReportModel, DashboardGasBudgetAndReserveBody } from 'src/app/models/company-details';
+import {
+  CompanyDashboardBody,
+  CompanyReportModel,
+  DashboardGasBudgetAndReserveBody,
+} from 'src/app/models/company-details';
 import Swal from 'sweetalert2';
 import { AdminService } from 'src/app/services/admin.service';
 import { DashboardModel } from 'src/app/models/application-details';
@@ -18,22 +37,33 @@ declare var $: any;
 
 @Component({
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss', '../../reports/ndr-report.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: [
+    './dashboard.component.scss',
+    '../../reports/ndr-report.component.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   genk: GenericService;
-  @ViewChild('firstchart', { static: false }) myfirstchart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox1', { static: false }) myChartBox1: ElementRef<HTMLDivElement>;
+  @ViewChild('firstchart', { static: false })
+  myfirstchart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox1', { static: false })
+  myChartBox1: ElementRef<HTMLDivElement>;
 
-  @ViewChild('secondchart', { static: false }) mysecondchart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox2', { static: false }) myChartBox2: ElementRef<HTMLDivElement>;
+  @ViewChild('secondchart', { static: false })
+  mysecondchart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox2', { static: false })
+  myChartBox2: ElementRef<HTMLDivElement>;
 
-  @ViewChild('thirdchart', { static: false }) mythirdchart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox3', { static: false }) myChartBox3: ElementRef<HTMLDivElement>;
+  @ViewChild('thirdchart', { static: false })
+  mythirdchart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox3', { static: false })
+  myChartBox3: ElementRef<HTMLDivElement>;
 
-  @ViewChild('fourthchart', { static: false }) myFourthchart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox4', { static: false }) myChartBox4: ElementRef<HTMLDivElement>;
+  @ViewChild('fourthchart', { static: false })
+  myFourthchart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox4', { static: false })
+  myChartBox4: ElementRef<HTMLDivElement>;
 
   private root: am5.Root;
   pagenum = 0;
@@ -44,8 +74,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any[];
-  dashboardStuff : DashboardModel;   
-  adminservice : AdminService;
+  dashboardStuff: DashboardModel;
+
   c_ColumnHeader = [];
   c_ColumnValue = [];
   f_ColumnHeader = [];
@@ -58,59 +88,64 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   isTableOpt = false;
   isSpecifyColumns = false;
   dashboardBody: CompanyDashboardBody = {} as CompanyDashboardBody;
-  dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody = {} as DashboardGasBudgetAndReserveBody;
-  modalService: ModalService;
-  companyService: CompanyService;
-  auth: AuthenticationService;
+  dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody =
+    {} as DashboardGasBudgetAndReserveBody;
 
   cdr: ChangeDetectorRef;
 
   columns = [
     {
-      "columnDef": "concessionName",
-      "header": "CONCESSION NAME"
+      columnDef: 'concessionName',
+      header: 'CONCESSION NAME',
     },
     {
-      "columnDef": "totalNetProduction",
-      "header": "TOTAL PRODUCTION"
+      columnDef: 'totalNetProduction',
+      header: 'TOTAL PRODUCTION',
     },
 
     {
-      "columnDef": "totalReserves",
-      "header": "TOTAL RESERVES"
-    }
+      columnDef: 'totalReserves',
+      header: 'TOTAL RESERVES',
+    },
   ];
 
   repcolumns = [
     {
-      "columnDef": "concessionName",
-      "header": "CONCESSION NAME"
+      columnDef: 'concessionName',
+      header: 'CONCESSION NAME',
     },
     {
-      "columnDef": "totalNetProduction",
-      "header": "TOTAL PRODUCTION"
+      columnDef: 'totalNetProduction',
+      header: 'TOTAL PRODUCTION',
     },
 
     {
-      "columnDef": "totalReserves",
-      "header": "TOTAL RESERVES"
-    }
+      columnDef: 'totalReserves',
+      header: 'TOTAL RESERVES',
+    },
   ];
 
-  constructor(private gen: GenericService,
+  constructor(
+    private gen: GenericService,
     private company: CompanyService,
     private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
-    private genReport: ReportService) {
+    private genReport: ReportService,
+    public adminservice: AdminService,
+    public modalService: ModalService,
+    public companyService: CompanyService,
+    public auth: AuthenticationService
+  ) {
     this.genk = gen;
     this.cdr = cd;
     this.auth = authenticationService;
     this.companyService = company;
   }
-  
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
+
   ngAfterViewInit() {
+    this.getDashboardStuff();
     this.getCompanyDashboardReport();
     this.getDashboardGasBudgetAndReserveDetails();
     this.getCompanyProduction();
@@ -141,29 +176,31 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   // }
 
-
   fetchreport() {
     let value = 2021;
-    this.modalService.logCover("Loading data...", true);
-    this.firstChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
-    this.secondChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
+    this.modalService.logCover('Loading data...', true);
+    this.firstChartData = this.dashboardBody
+      .companyReportModels as CompanyReportModel[];
+    this.secondChartData = this.dashboardBody
+      .companyReportModels as CompanyReportModel[];
     //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
     // this.plotDoubleBarChart();
     // this.plotDoublePieChart();
     // this.plotDoubleBarChartHorizontal();
     this.modalService.togCover();
     this.cd.markForCheck();
+  }
 
-  }
-  getDashboardStuff(){
+  getDashboardStuff() {
+    console.log('in get dahs');
     debugger;
-    this.adminservice.getDashboardStuff()
-    .subscribe(res=>
-      {
-        this.dashboardStuff = res;
-      }
-      )
+    this.adminservice.getDashboardStuff().subscribe((res) => {
+      console.log('dashbaord', res);
+      this.dashboardStuff = res;
+      this.cd.markForCheck();
+    });
   }
+
   // firstChart() {
   //   debugger;
   //   if (this.isBrowser) {
@@ -261,8 +298,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     let data = this.secondChartData
   //     data.length > 0 ? $('#secondchart').show() : $('#secondchart').hide()
 
-
-
   //     // Create series
   //     let series = chart.series.push(
   //       am5percent.PieSeries.new(root, {
@@ -305,8 +340,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     let data = this.thirdChartData
   //     data.length > 0 ? $('#thirdchart').show() : $('#thirdchart').hide()
 
-
-
   //     // Create series
   //     let series = chart.series.push(
   //       am5percent.PieSeries.new(root, {
@@ -329,80 +362,97 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   // }
 
-
   getCompanyDashboardReport() {
-    let value = (this.previousYear).toString();
+    let value = this.previousYear.toString();
     this.companyService.getdashboardreport(value).subscribe((res) => {
-        this.dashboardBody = res as CompanyDashboardBody;
-        //let resse = res;
-        //this.fetchreport();
-        this.cd.markForCheck();
-      }
-    )
+      this.dashboardBody = res as CompanyDashboardBody;
+      //let resse = res;
+      //this.fetchreport();
+      this.cd.markForCheck();
+    });
   }
 
   getCompanyProduction() {
-    let value = (this.previousYear).toString();
+    let value = this.previousYear.toString();
     this.companyService.getCompanyProd(value).subscribe((res) => {
-        this.firstChartData = res;
-        this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
-        this.cd.markForCheck();
-      }
-    )
+      this.firstChartData = res;
+      this.plotDoubleBarChartHorizontal(
+        ['month', 'prodMonth'],
+        this.myChartBox1,
+        this.firstChartData
+      );
+      this.cd.markForCheck();
+    });
   }
 
   getCompanyConcessionProd() {
-    let value = (this.previousYear).toString();
+    let value = this.previousYear.toString();
     this.companyService.getCompanyConcessionProd(value).subscribe((res) => {
-        this.secondChartData = res;
+      this.secondChartData = res;
 
-        this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
-        this.cd.markForCheck();
-      }
-    )
+      this.plotDoublePieChart(
+        ['omlname', 'prod'],
+        this.myChartBox2,
+        this.secondChartData
+      );
+      this.cd.markForCheck();
+    });
   }
 
   getCompanyConcessionReserveOil() {
-    let value = (this.previousYear).toString();
-    this.companyService.getCompanyConcessionReserveOil(value).subscribe((res) => {
+    let value = this.previousYear.toString();
+    this.companyService
+      .getCompanyConcessionReserveOil(value)
+      .subscribe((res) => {
         this.thirdChartData = res;
 
-        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
+        this.plotDoubleBarChartHorizontal(
+          ['omlname', 'reserve'],
+          this.myChartBox3,
+          this.thirdChartData
+        );
         this.cd.markForCheck();
-      }
-    )
+      });
   }
 
   getCompanyConcessionReserveGas() {
-    let value = (this.previousYear).toString();
-    this.companyService.getCompanyConcessionReserveGas(value).subscribe((res) => {
+    let value = this.previousYear.toString();
+    this.companyService
+      .getCompanyConcessionReserveGas(value)
+      .subscribe((res) => {
         this.fourthChartData = res;
 
-        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
+        this.plotDoubleBarChartHorizontal(
+          ['omlname', 'reserve'],
+          this.myChartBox4,
+          this.fourthChartData
+        );
         this.cd.markForCheck();
-      }
-    )
+      });
   }
 
   getDashboardGasBudgetAndReserveDetails() {
-    let value = (this.previousYear).toString();
-    this.companyService.getdashboardgasbudgetandreserve(value).subscribe(
-      (res) => {
-        this.dashboardGasBudgetAndReserve = res as DashboardGasBudgetAndReserveBody;
+    let value = this.previousYear.toString();
+    this.companyService
+      .getdashboardgasbudgetandreserve(value)
+      .subscribe((res) => {
+        this.dashboardGasBudgetAndReserve =
+          res as DashboardGasBudgetAndReserveBody;
         this.cd.markForCheck();
-      }
-    )
+      });
   }
-
 
   onSubmit() {
     return null;
   }
 
-  plotDoublePieChart(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
-  debugger;
+  plotDoublePieChart(
+    selectedColumn: any[],
+    chartBox: ElementRef<HTMLDivElement>,
+    numData
+  ) {
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
-    const node = document.createElement("div");
+    const node = document.createElement('div');
     node.style.width = '100%';
     node.style.height = '450px';
     chartBox.nativeElement.appendChild(node);
@@ -416,11 +466,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.genReport.plotDoublePieChart(bechart, sele1, sele2, chartdata);
   }
 
-  plotDoubleBarChartHorizontal(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
-    debugger;
-    let totalString = "";
+  plotDoubleBarChartHorizontal(
+    selectedColumn: any[],
+    chartBox: ElementRef<HTMLDivElement>,
+    numData
+  ) {
+    let totalString = '';
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
-    const node = document.createElement("div");
+    const node = document.createElement('div');
     node.style.width = '100%';
     node.style.height = '450px';
     chartBox.nativeElement.appendChild(node);
@@ -431,21 +484,33 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     chartBox.nativeElement.style.display = 'block';
     let reportdata = numData;
     //let chartdata = this.firstChartData;
-    let chartdata = this.genReport.formatChartData(reportdata, selectedColumn[0], selectedColumn[1]);
-      for (var i = 0; i < chartdata.length; i++) {
-        totalString += chartdata[i].base;
-      }
+    let chartdata = this.genReport.formatChartData(
+      reportdata,
+      selectedColumn[0],
+      selectedColumn[1]
+    );
+    for (var i = 0; i < chartdata.length; i++) {
+      totalString += chartdata[i].base;
+    }
 
-      if (totalString.length > 50) {
-        this.genReport.plotDoubleBarChartHorizontal(bechart, selectedColumn[0], selectedColumn[1], chartdata);
-      }
-      else {
-        this.genReport.plotDoubleBarChart(bechart, selectedColumn[0], selectedColumn[1], chartdata);
-      }
+    if (totalString.length > 50) {
+      this.genReport.plotDoubleBarChartHorizontal(
+        bechart,
+        selectedColumn[0],
+        selectedColumn[1],
+        chartdata
+      );
+    } else {
+      this.genReport.plotDoubleBarChart(
+        bechart,
+        selectedColumn[0],
+        selectedColumn[1],
+        chartdata
+      );
+    }
   }
 
   // plotDoubleBarChart() {
-  //   debugger;
   //   let totalString = "";
   //   let selectedColumn = ['terrain', 'percentage_Production'];
   //     // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
@@ -474,22 +539,28 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   // }
 
-
-  designDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+  designDoublePieChart(
+    chartdiv: HTMLDivElement,
+    categoryfield: string,
+    valuefield: string,
+    data: any[]
+  ) {
     var root = am5.Root.new(chartdiv);
 
-    root.setThemes([
-      am5themes_Animated.new(root)
-    ]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
-    var chart = root.container.children.push(am5percent.PieChart.new(root, {
-      layout: root.verticalLayout
-    }));
+    var chart = root.container.children.push(
+      am5percent.PieChart.new(root, {
+        layout: root.verticalLayout,
+      })
+    );
 
-    var series = chart.series.push(am5percent.PieSeries.new(root, {
-      valueField: 'totalReserves',
-      categoryField: 'concessionName'
-    }));
+    var series = chart.series.push(
+      am5percent.PieSeries.new(root, {
+        valueField: 'totalReserves',
+        categoryField: 'concessionName',
+      })
+    );
 
     // series.slices.template.adapters.add("fill", function (fill, target) {
     //     return target.dataItem.dataContext["color"];
@@ -497,22 +568,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     series.data.setAll(data);
 
-    var legend = chart.children.push(am5.Legend.new(root, {
-      centerX: am5.percent(50),
-      x: am5.percent(50),
-      marginTop: 15,
-      marginBottom: 15
-    }));
+    var legend = chart.children.push(
+      am5.Legend.new(root, {
+        centerX: am5.percent(50),
+        x: am5.percent(50),
+        marginTop: 15,
+        marginBottom: 15,
+      })
+    );
 
     legend.data.setAll(series.dataItems);
 
     series.appear(1000, 100);
     let exporting = am5plugins_exporting.Exporting.new(root, {
-      menu: am5plugins_exporting.ExportingMenu.new(root, {})
+      menu: am5plugins_exporting.ExportingMenu.new(root, {}),
     });
   }
 
-  designDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+  designDoubleBarChartHorizontal(
+    chartdiv: HTMLDivElement,
+    categoryfield: string,
+    valuefield: string,
+    data: any[]
+  ) {
     //debugger;
     var root = am5.Root.new(chartdiv);
     root.setThemes([am5themes_Animated.new(root)]);
@@ -520,13 +598,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panY: false,
-        layout: root.verticalLayout
+        layout: root.verticalLayout,
       })
     );
 
     var yRenderer = am5xy.AxisRendererY.new(root, {
-      minGridDistance: 30
-    })
+      minGridDistance: 30,
+    });
 
     // Create Y-axis
     let yAxis = chart.yAxes.push(
@@ -534,48 +612,46 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         maxDeviation: 0,
         renderer: yRenderer,
         categoryField: categoryfield,
-        tooltip: am5.Tooltip.new(root, { themeTags: ["axis"] })
+        tooltip: am5.Tooltip.new(root, { themeTags: ['axis'] }),
       })
-
     );
 
     // Create X-Axis
     let xAxis = chart.xAxes.push(
       am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererX.new(root, {})
+        renderer: am5xy.AxisRendererX.new(root, {}),
       })
     );
     yAxis.data.setAll(data);
 
-
     // Create series
     let series1 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Series 1",
+        name: 'Series 1',
         xAxis: xAxis,
         yAxis: yAxis,
         valueXField: valuefield,
         categoryYField: categoryfield,
         tooltip: am5.Tooltip.new(root, {
-          pointerOrientation: "left",
-          labelText: "{valueX}"
-        })
+          pointerOrientation: 'left',
+          labelText: '{valueX}',
+        }),
       })
     );
     series1.data.setAll(data);
 
     series1.columns.template.setAll({
       cornerRadiusTR: 5,
-      cornerRadiusBR: 5
+      cornerRadiusBR: 5,
     });
 
     // Make each column to be of a different color
-    series1.columns.template.adapters.add("fill", function (fill, target) {
-      return chart.get("colors").getIndex(series1.columns.indexOf(target));
+    series1.columns.template.adapters.add('fill', function (fill, target) {
+      return chart.get('colors').getIndex(series1.columns.indexOf(target));
     });
 
-    series1.columns.template.adapters.add("stroke", function (stroke, target) {
-      return chart.get("colors").getIndex(series1.columns.indexOf(target));
+    series1.columns.template.adapters.add('stroke', function (stroke, target) {
+      return chart.get('colors').getIndex(series1.columns.indexOf(target));
     });
 
     // let series2 = chart.series.push(
@@ -594,11 +670,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     // legend.data.setAll(chart.series.values);
 
     // Add cursor
-    chart.set("cursor", am5xy.XYCursor.new(root, {}));
+    chart.set('cursor', am5xy.XYCursor.new(root, {}));
 
     //this.root = root;
     let exporting = am5plugins_exporting.Exporting.new(root, {
-      menu: am5plugins_exporting.ExportingMenu.new(root, {})
+      menu: am5plugins_exporting.ExportingMenu.new(root, {}),
     });
 
     // var legend = chart.children.push(am5.Legend.new(root, {
@@ -609,8 +685,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     // }));
 
     // legend.data.setAll(series1.dataItems);
-
-
 
     //   var root = am5.Root.new(chartdiv);
 
@@ -648,7 +722,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     //   });
   }
 
-  designDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+  designDoubleBarChart(
+    chartdiv: HTMLDivElement,
+    categoryfield: string,
+    valuefield: string,
+    data: any[]
+  ) {
     var root = am5.Root.new(chartdiv);
 
     root.setThemes([am5themes_Animated.new(root)]);
@@ -656,18 +735,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panY: false,
-        layout: root.verticalLayout
+        layout: root.verticalLayout,
       })
     );
 
     var xRenderer = am5xy.AxisRendererX.new(root, {
-      minGridDistance: 30
-    })
+      minGridDistance: 30,
+    });
 
     // Create Y-axis
     let yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {})
+        renderer: am5xy.AxisRendererY.new(root, {}),
       })
     );
 
@@ -677,48 +756,47 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         maxDeviation: 0,
         renderer: xRenderer,
         categoryField: 'terrain',
-        tooltip: am5.Tooltip.new(root, { themeTags: ["axis"] })
+        tooltip: am5.Tooltip.new(root, { themeTags: ['axis'] }),
       })
     );
     xAxis.data.setAll(data);
 
-
     // Create series
     let series1 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Series 1",
+        name: 'Series 1',
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: 'percentage_Production',
         categoryXField: 'terrain',
         tooltip: am5.Tooltip.new(root, {
-          pointerOrientation: "left",
-          labelText: "{valueY}"
-        })
+          pointerOrientation: 'left',
+          labelText: '{valueY}',
+        }),
       })
     );
     series1.data.setAll(data);
 
     series1.columns.template.setAll({
       cornerRadiusTR: 5,
-      cornerRadiusBR: 5
+      cornerRadiusBR: 5,
     });
 
     // Make each column to be of a different color
-    series1.columns.template.adapters.add("fill", function (fill, target) {
-      return chart.get("colors").getIndex(series1.columns.indexOf(target));
+    series1.columns.template.adapters.add('fill', function (fill, target) {
+      return chart.get('colors').getIndex(series1.columns.indexOf(target));
     });
 
-    series1.columns.template.adapters.add("stroke", function (stroke, target) {
-      return chart.get("colors").getIndex(series1.columns.indexOf(target));
+    series1.columns.template.adapters.add('stroke', function (stroke, target) {
+      return chart.get('colors').getIndex(series1.columns.indexOf(target));
     });
 
     // Add cursor
-    chart.set("cursor", am5xy.XYCursor.new(root, {}));
+    chart.set('cursor', am5xy.XYCursor.new(root, {}));
 
     //this.root = root;
     let exporting = am5plugins_exporting.Exporting.new(root, {
-      menu: am5plugins_exporting.ExportingMenu.new(root, {})
+      menu: am5plugins_exporting.ExportingMenu.new(root, {}),
     });
   }
 
@@ -756,14 +834,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   assignDataRows() {
-    this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
     this.cd.markForCheck();
   }
 
   resize(e) {
     let value = e.target.value;
     if (value === 'all') {
-      value = this.pagenum * this.genk.sizePerPage
+      value = this.pagenum * this.genk.sizePerPage;
     }
     this.genk.sizePerPage = Number(value);
     this.assignDataRows();
@@ -791,11 +872,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   pickColumn(value: string, checked: boolean) {
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.repcolumns.filter((x) => x.columnDef == value)[0];
       this.selectedColumns.push(val);
-    }
-    else {
-      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+    } else {
+      let remainingArr = this.selectedColumns.filter(
+        (x) => x.columnDef != value
+      );
       this.selectedColumns = remainingArr;
     }
     this.cd.markForCheck;
@@ -814,8 +896,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       icon: icon,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Okay'
-    })
+      confirmButtonText: 'Okay',
+    });
   }
 
   // plotDoublePieChart() {
@@ -841,6 +923,4 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     }
   //   }
   //}
-
-
 }

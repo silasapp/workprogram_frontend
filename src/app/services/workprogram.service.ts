@@ -5770,7 +5770,7 @@ export class WorkProgramService {
 
   pushApplication(deskID: number, comment: string, selectedApps: string[]) {
     return this.http.post<any>(
-      `${environment.apiUrl}/api/Application/PushApplication`,
+      `${environment.apiUrl}/Application/PushApplication`,
       {},
       {
         params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },
@@ -5780,7 +5780,7 @@ export class WorkProgramService {
 
   rejectApplication(deskID: number, comment: string, selectedApps: string[]) {
     return this.http.post<any>(
-      `${environment.apiUrl}/api/Application/RejectApplication`,
+      `${environment.apiUrl}/Application/RejectApplication`,
       {},
       {
         params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },

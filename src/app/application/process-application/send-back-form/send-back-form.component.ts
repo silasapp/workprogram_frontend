@@ -1,15 +1,17 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import {
   Application,
   ApplicationDetails,
 } from 'src/app/models/application-details';
+import { ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -26,11 +28,14 @@ export class SendBackFormComponent implements OnInit {
   public appsDropdownSettings: IDropdownSettings = {};
 
   constructor(
+    public dialogRef: MatDialogRef<SendBackFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private appService: WorkProgramService,
-    public dialogRef: MatDialogRef<SendBackFormComponent>,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private modalService: ModalService,
+    private route: Router,
+    private cd: ChangeDetectorRef
   ) {
     this.apps = data.data.applications;
     this.appDetails = data.data.applicationDetails;
@@ -56,12 +61,17 @@ export class SendBackFormComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          console.log('ressss', res);
-          if (res.success) {
-            this.dialogRef.close();
-          }
+          this.dialogRef.close();
+          this.modalService.logNotice(res.message, 'Success', 'success');
+          this.route.navigate(['/application/mydesk']);
+          this.cd.markForCheck();
         },
-        error: (error) => {},
+        error: (error) => {
+          this.dialogRef.close();
+          this.modalService.logNotice(error.message, 'Error', 'error');
+          this.route.navigate(['/application/mydesk']);
+          this.cd.markForCheck();
+        },
       });
   }
 }
