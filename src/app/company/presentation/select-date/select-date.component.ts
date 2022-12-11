@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkAriaLive } from '@angular/cdk/a11y';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services';
 import { CompanyService } from 'src/app/services/company.service';
@@ -12,12 +13,18 @@ import Swal from 'sweetalert2';
 })
 export class SelectDateComponent implements OnInit {
   selectDateForm: FormGroup;
+  time: string;
+  date: string;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService, private companyService: CompanyService) {
+  constructor(private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private auth: AuthenticationService,
+    private companyService: CompanyService) {
     this.initForm();
    }
 
   ngOnInit(): void {
+    this.getPresentation();
   }
   initForm(){
     this.selectDateForm = this.fb.group({
@@ -26,14 +33,27 @@ export class SelectDateComponent implements OnInit {
       companyId:[{value:this.auth.currentUserValue.companyId, disabled:true}, Validators.required],
       companyName:[{value:this.auth.currentUserValue.companyName, disabled: true}, Validators.required],
       companyEmail:[{value:this.auth.currentUserValue.companyEmail, disabled: true}, Validators.required],
-      
+
     })
   }
 
   get f() {
     return this.selectDateForm.controls;
   }
+
+  getPresentation(){
+    debugger;
+    this.companyService.getPresentation().subscribe(
+      (res) =>{
+        this.date = res.wp_date;
+        this.time = res.wp_time;
+        this.cd.markForCheck();
+      }
+    )
+  }
+
 onSubmit(){
+  debugger;
   this.companyService.schedulePresentation(this.f['time'].value, this.f['date'].value).subscribe(
     (res) =>{
       if(res.statusCode === 200){

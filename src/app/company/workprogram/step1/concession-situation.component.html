@@ -18,7 +18,13 @@
                         </select>
                     </div>
                 </div>
+                <div *ngIf="submitted" class="eroce">
+                  <span *ngIf="!f['crude_Oil_Royalty'].valid">
+                    Crude Oil Royalty status is required
+                  </span>
+                </div>
             </div>
+
 
             <div style="width: 30%;">
                 <label class="labelwp"> Has Gas Sales Royalty Made?</label>
