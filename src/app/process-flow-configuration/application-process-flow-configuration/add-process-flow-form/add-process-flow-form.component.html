@@ -1,0 +1,66 @@
+<h1 mat-dialog-title>Approve Application</h1>
+<div mat-dialog-content class="modal-width">
+  <form [formGroup]="form">
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Role</label>
+      <select name="roleID" formControlName="roleID" class="form-control">
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let role of roles" [ngValue]="role.id">
+          {{ role.roleId }}
+        </option>
+      </select>
+      <div
+        *ngIf="form.get('roleID')?.touched && form.get('roleID')?.invalid"
+        class="alert alert-danger"
+      >
+        Role is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Strategic Business Unit(SBU)</label>
+      <select name="sbuID" formControlName="sbuID" class="form-control">
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let sbu of sbus" [ngValue]="sbu.id">
+          {{ sbu.sbU_Name }}
+        </option>
+      </select>
+      <div
+        *ngIf="form.get('sbuID')?.touched && form.get('sbuID')?.invalid"
+        class="alert alert-danger"
+      >
+        Role is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Sequence Number</label>
+      <input
+        type="number"
+        name="sort"
+        formControlName="sort"
+        class="form-control"
+      />
+      <div
+        *ngIf="form.get('sort')?.touched && form.get('sort')?.invalid"
+        class="alert alert-danger"
+      >
+        Sequence number is required!
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    mat-raised-button
+    [disabled]="form.invalid"
+    (click)="addProcessFlow()"
+  >
+    Add
+  </button>
+</div>
