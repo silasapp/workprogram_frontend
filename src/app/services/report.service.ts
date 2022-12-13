@@ -26,7 +26,7 @@ fetch(url, year){
   return this.http.get<any>(`${environment.apiUrl}/report/${url}`,{params:{year: year}})
   .pipe(retry(this.num),
   map((response) => {
-    response.data = this.gen.lowerArray(response.data);
+   // response.data = this.gen.lowerArray(response.data);
     return response
   })
   )
