@@ -14,8 +14,6 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
 
-  genk: GenericService;
-  cdr: ChangeDetectorRef;
   title = 'Concession Reserves for current year(as at 1st January)';
   pagenum = 0;
   selectedPage = 1;
@@ -43,13 +41,11 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
 
   constructor(
     private report: ReportService,
-    private cd: ChangeDetectorRef,
-    private gen: GenericService,
+    public cdr: ChangeDetectorRef,
+    public genk: GenericService,
     private modalService: ModalService,
     public dialog: MatDialog
   ) {
-    this.genk = gen;
-    this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
   }
 
@@ -81,12 +77,13 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.cd.markForCheck();
+      this.cdr.markForCheck();
     });
   }
 
   assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+    console.log('pagenum', this.pagenum, this.data.length);
   }
 
   assignDataRows() {
@@ -94,7 +91,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
       this.pageIndex,
       this.pageIndex + this.genk.sizePerPage
     );
-    this.cd.markForCheck();
+    this.cdr.markForCheck();
   }
 
   getProcessFlow() {
@@ -109,12 +106,12 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
         this.assignDataRows();
         this.assignPageNum();
         this.modalService.togCover();
-        this.cd.markForCheck();
+        this.cdr.markForCheck();
       },
       error: (error) => {
         this.modalService.logNotice(error.message, 'Error', 'error');
         this.modalService.togCover();
-        this.cd.markForCheck();
+        this.cdr.markForCheck();
       },
     });
   }
@@ -152,13 +149,13 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     this.genk.sizePerPage = Number(value);
     this.assignDataRows();
     this.assignPageNum();
-    this.cd.markForCheck();
+    this.cdr.markForCheck();
   }
 
   selectColumns() {
     this.columns = this.selectedColumns;
     this.isSpecifyColumns = false;
-    this.cd.markForCheck();
+    this.cdr.markForCheck();
   }
 }
 
