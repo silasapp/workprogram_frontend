@@ -68,7 +68,7 @@
               class="inpute"
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="statusOfReservesPreceeding._company_Reserves_Oil = genk.checkMMBBLMin($event, oilBox)"
               [value]="statusOfReservesPreceeding._company_Reserves_Oil"/>
               <span class="barspan">BBLS</span>
@@ -88,7 +88,7 @@
               style="border-radius: 5px;"
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="statusOfReservesPreceeding._company_Reserves_Condensate = genk.checkMMBBLMin($event, oilNox)"
               [value]="statusOfReservesPreceeding._company_Reserves_Condensate"/>
               <span class="barspan">BBLS</span>
@@ -111,7 +111,7 @@
               style="border-radius: 5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="statusOfReservesPreceeding._company_Reserves_AG = genk.checkBSCFMin($event, gasMox)"
               [value]="statusOfReservesPreceeding._company_Reserves_AG"/>
              <span class="barspan">SCF</span>
@@ -124,17 +124,17 @@
         <label class="labelwp"> 2P reserves (Standard Cubic Feet) - NAG</label>
         <div style="display: flex">
           <div class="minsec">
-            <input type="text" 
+            <input type="text"
               placeholder="1,000,000"
               formControlName="company_Reserves_NAG"
               class="inpute"
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (keyup)="genk.formatCurrency($event)"
               (change)="statusOfReservesPreceeding._company_Reserves_NAG = genk.checkBSCFMin($event, gasMoxx)"
               [value]="statusOfReservesPreceeding._company_Reserves_NAG"/>
-              <span class="barspan">SCF</span>             
+              <span class="barspan">SCF</span>
           </div>
         </div>
         <small #gasMoxx></small>
@@ -155,7 +155,7 @@
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="statusOfReservesPreceeding._company_Reserves_AnnualOilProduction = genk.checkMMBBLMin($event, oilNax)"
               [value]="statusOfReservesPreceeding._company_Reserves_AnnualOilProduction"/>
               <span class="barspan">BBLS</span>
@@ -176,7 +176,6 @@
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesPreceeding._company_Reserves_AnnualCondensateProduction = genk.checkMMBBLMin($event, oilDax)"
               [value]="statusOfReservesPreceeding._company_Reserves_AnnualCondensateProduction"/>
               <span class="barspan">BBLS</span>
@@ -197,7 +196,6 @@
               placeholder="1,000,000"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesPreceeding._company_Reserves_AnnualGasAGProduction = genk.checkBSCFMin($event, oilNax)"
               [value]= "statusOfReservesPreceeding._company_Reserves_AnnualGasAGProduction"/>
               <span class="barspan">SCF</span>
@@ -219,7 +217,6 @@
             style="border-radius: 5px;"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="statusOfReservesPreceeding._company_Reserves_AnnualGasNAGProduction = genk.checkBSCFMin($event, gasBax)"
             [value]="statusOfReservesPreceeding._company_Reserves_AnnualGasNAGProduction"/>
             <span class="barspan">SCF</span>
@@ -292,7 +289,6 @@
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
               style="border-radius: 5px;"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesCurrent._company_Reserves_Oil = genk.checkBSCFMin($event, oilSax)"
               [value]="statusOfReservesCurrent._company_Reserves_Oil"/>
               <span class="barspan">MMLS</span>
@@ -313,7 +309,6 @@
               style="border-radius: 5px;"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesCurrent._company_Reserves_Condensate = genk.checkBSCFMin($event, gasDax)"
               [value]="statusOfReservesCurrent._company_Reserves_Condensate"/>
               <span class="barspan">SCF</span>
@@ -335,9 +330,8 @@
               class="inpute"
               placeholder="1,000,000"
               style="border-radius: 5px;"
-              (keypress)="genk.restrictData($event)" 
+              (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesCurrent._company_Reserves_AG = genk.checkBSCFMin($event, gasSmt)"
               [value]="statusOfReservesCurrent._company_Reserves_AG"/>
               <span class="barspan">SCF</span>
@@ -358,7 +352,6 @@
               placeholder="1,000,000"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="statusOfReservesCurrent._company_Reserves_NAG = genk.checkBSCFMin($event, gasNia)"
               [value]="statusOfReservesCurrent._company_Reserves_NAG"/>
               <span class="barspan">SCF</span>
@@ -434,7 +427,6 @@
               formControlName="fiveyear_Projection_Oil"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil = genk.checkMMBBLMin($event, oilFax)"
               [value]="reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil"/>
               <span class="barspan">BBLS</span>
@@ -455,7 +447,6 @@
               formControlName="fiveyear_Projection_Condensate"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate = genk.checkMMBBLMin($event, oilNet)"
               [value]="reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate"/>
               <span class="barspan">BBLS</span>
@@ -479,7 +470,6 @@
               formControlName="fiveyear_Projection_AG"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG = genk.checkBSCFMin($event, gasMass)"
               [value]="reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG"/>
               <span class="barspan">SCF</span>
@@ -500,7 +490,6 @@
               style="border-radius: 5px;"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG = genk.checkBSCFMin($event, gasTec)"
               [value]="reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG"/>
               <span class="barspan">SCF</span>
@@ -569,7 +558,6 @@
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Oil = genk.checkMMBBLMin($event,oilDaxx)"
               [value]="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Oil"/>
               <span class="barspan">BSCF</span>
@@ -590,7 +578,6 @@
               formControlName="company_Annual_Condensate"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Condensate = genk.checkMMBBLMin($event, gasMif)"
               [value]="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_Condensate"/>
               <span class="barspan">BSCF</span>
@@ -614,7 +601,6 @@
               formControlName="company_Annual_AG"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_AG = genk.checkBSCFMin($event,gasDis)"
               [value]="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_AG"/>
               <span class="barspan">SCF</span>
@@ -636,7 +622,6 @@
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_NAG = genk.checkBSCFMin($event, gasDss)"
               [value]="reserveUpdateOilCondensateCompanyAnnualProductionBody._company_Annual_NAG"/>
               <span class="barspan">SCF</span>
@@ -720,7 +705,6 @@
               style="border-radius: 5px;"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil = genk.checkMMBBLMin($event, oilDs)"
               [value]="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil"/>
               <span class="barspan">BSCF</span>
@@ -742,7 +726,7 @@
               style="border-radius: 5px;"
               formControlName="reserves_Addition_Condensate"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate = genk.checkMMBBLMin($event, oildss)"
               [value]="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate"/>
               <span class="barspan">BSCF</span>
@@ -763,7 +747,6 @@
               formControlName="reserves_Addition_AG"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG = genk.checkBSCFMin($event, gasDs)"
               [value]="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG"/>
               <span class="barspan">SCF</span>
@@ -783,7 +766,6 @@
               formControlName="reserves_Addition_NAG"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG = genk.checkBSCFMin($event, gasDx)"
               [value]="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG"/>
               <span class="barspan">SCF</span>
@@ -866,7 +848,6 @@
               formControlName="reserves_Decline_Oil"
               (keyup)="genk.formatCurrency($event)"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Oil = genk.checkMMBBLMin($event, oilMan)"
               [value]="reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG"/>
             <span class="barspan">BSCF</span>
@@ -889,7 +870,6 @@
               formControlName="reserves_Decline_Condensate"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate =genk.checkBSCFMin($event, oilDsf)"
               [value]="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate"/>
             <span class="barspan">BSCF</span>
@@ -910,7 +890,6 @@
               formControlName="reserves_Decline_AG"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG = genk.checkBSCFMin($event,gasReel)"
               [value]="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG"/>
               <span class="barspan">SCF</span>
@@ -931,7 +910,6 @@
               formControlName="reserves_Decline_NAG"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
               (change)="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG =genk.checkBSCFMin($event, gasXD)"
               [value]="reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG"/>
               <span class="barspan">SCF</span>
@@ -1005,7 +983,6 @@
             formControlName="reserveS_REPLACEMENT_RATIO_VALUE"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               reserveReplacementRatioBody._reserveS_REPLACEMENT_RATIO_VALUE
             "
@@ -1049,7 +1026,6 @@
             style="border-radius: 5px;"
             (keyup)="genk.formatCurrency($event)"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             (change)="reserveUpdateDepletionRateBody._oil = genk.checkBSCFMin($event, oilNaf)"
             [value]="reserveUpdateDepletionRateBody._oil"/>
             <span class="barspan">BBLS</span>
@@ -1069,7 +1045,7 @@
             formControlName="cONDENSATE"
             placeholder="100,000"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            (keyup)="genk.formatCurrency($event)"
             (change)="reserveUpdateDepletionRateBody._condensate = genk.checkMMBBLMin($event, oilVax)"
             [value]="reserveUpdateDepletionRateBody._condensate"/>
             <span class="barspan">BBLS</span>
@@ -1089,7 +1065,7 @@
             placeholder="1,000,000"
             style="border-radius: 5px;"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            (keyup)="genk.formatCurrency($event)"
             (change)="reserveUpdateDepletionRateBody._nag = genk.checkMMBBLMin($event, gasFox)"
             [value]="reserveUpdateDepletionRateBody._nag"/>
             <span class="barspan">SCF</span>
@@ -1131,7 +1107,7 @@
               placeholder="1,000,000"
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="reserveUpdateLifeIndexBody._oil = genk.checkMMBBLMin($event, oilHfx)"
               [value]="reserveUpdateLifeIndexBody._oil"/>
               <span class="barspan">BSCF</span>
@@ -1151,7 +1127,7 @@
               placeholder="1,000,000"
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="reserveUpdateLifeIndexBody._condensate = genk.checkMMBBLMin($event, oilTax)"
               [value]="reserveUpdateLifeIndexBody._condensate"/>
               <span class="barspan">BSCF</span>
@@ -1171,7 +1147,7 @@
               placeholder="1,000,000"
               style="border-radius: 5px;"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="reserveUpdateLifeIndexBody._nag = genk.checkBSCFMin($event, gasPax)"
               [value]="reserveUpdateLifeIndexBody._nag"/>
               <span class="barspan">SCF</span>
@@ -1192,7 +1168,7 @@
             placeholder="1,000,000"
             style="border-radius: 5px;"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            (keyup)="genk.formatCurrency($event)"
             (change)="reserveUpdateLifeIndexBody._ag = genk.checkBSCFMin($event, gasHaw)"
             [value]="reserveUpdateLifeIndexBody._ag"/>
             <span class="barspan">SCF</span>

@@ -58,12 +58,9 @@
                 border-radius: 10px;
                 padding: 7px 10px;
               ">
-              <input (keypress)="genk.restrictData($event)" formControlName="current_year_Actual_Number_data"
+              <input formControlName="current_year_Actual_Number_data"
                 [(ngModel)]="workoverBody.current_year_Actual_Number_data" class="inpute"
-                (keypress)="genk.restrictData($event)" (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-                  workoverBody.current_year_Actual_Number_data =
-                    genk.formatNum_Efficient($event.target.value)
-                " [value]="workoverBody.current_year_Actual_Number_data" />
+                (keypress)="genk.restrictData($event)" (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="workoverBody.current_year_Actual_Number_data" />
             </div>
           </div>
         </div>
@@ -78,11 +75,7 @@
               ">
               <input (keypress)="genk.restrictData($event)" formControlName="proposed_year_data"
                 [(ngModel)]="workoverBody.proposed_year_data" class="inpute" (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-                  workoverBody.proposed_year_data = genk.formatNum_Efficient(
-                    $event.target.value
-                  )
-                " [value]="workoverBody.proposed_year_data" />
+                (keyup)="genk.formatNum_Efficient($event.target.value)" />
             </div>
           </div>
         </div>
@@ -97,11 +90,7 @@
               ">
               <input (keypress)="genk.restrictData($event)" formControlName="daysForCompletion"
                 [(ngModel)]="workoverBody.daysForCompletion" class="inpute" (keypress)="genk.restrictData($event)"
-                (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-                  workoverBody.daysForCompletion = genk.formatNum_Efficient(
-                    $event.target.value
-                  )
-                " [value]="workoverBody.daysForCompletion" />
+                (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="workoverBody.daysForCompletion" />
             </div>
           </div>
         </div>

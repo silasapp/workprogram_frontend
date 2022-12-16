@@ -19,6 +19,7 @@ export class ReportService {
   baselist: any[] = [];
   valuelist: any[] = [];
   chartArray: any[] = [];
+  exporting: any;
 
   constructor( private http: HttpClient, private gen: GenericService) { }
 
@@ -93,7 +94,7 @@ plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 
 
   series.appear(1000, 100);
-  let exporting = am5plugins_exporting.Exporting.new(root, {
+  this.exporting = am5plugins_exporting.Exporting.new(root, {
     menu: am5plugins_exporting.ExportingMenu.new(root, {})
   });
 }
@@ -183,7 +184,7 @@ plotDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, va
       chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
       //this.root = root;
-      let exporting = am5plugins_exporting.Exporting.new(root, {
+      this.exporting = am5plugins_exporting.Exporting.new(root, {
         menu: am5plugins_exporting.ExportingMenu.new(root, {})
       });
 
@@ -306,6 +307,8 @@ plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
       let exporting = am5plugins_exporting.Exporting.new(root, {
         menu: am5plugins_exporting.ExportingMenu.new(root, {})
       });
+
+      exporting.exportImage('png')
 }
 
 formatChartData(data: any[], baseval: string, valtype: string) {
