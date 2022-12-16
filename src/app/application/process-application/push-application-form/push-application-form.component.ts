@@ -11,8 +11,8 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
+//import { IDropdownSettings } from 'ng-multiselect-dropdown';
+//import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 import {
   Application,
   ApplicationDetails,
@@ -28,7 +28,7 @@ export class PushApplicationFormComponent implements OnInit {
   public form: FormGroup;
   public appDetails: ApplicationDetails;
   public selectedApps = [];
-  public appsDropdownSettings: IDropdownSettings = {};
+  //public appsDropdownSettings: IDropdownSettings = {};
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

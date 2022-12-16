@@ -77,6 +77,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       this.getOilProduction();
       this.getGasProduction();
+      cd.markForCheck();
     });
   }
 
@@ -257,6 +258,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
     this.getOilProduction();
     this.getGasProduction();
+    this.cd.markForCheck();
   }
 
   get f() {
@@ -310,8 +312,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
         if (res.oilCondensateProductionMonthlyProposed) {
           this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
-          this.proposedmonthlyBody =
-            res.oilCondensateProductionMonthlyProposed[0];
+          this.proposedmonthlyBody = res.oilCondensateProductionMonthlyProposed[0];
         }
 
         if (res.oilCondensateFiveYears) {
@@ -414,7 +415,6 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveYPFDoc(DeFile: any) {
-    debugger;
     this.YPFFile = <File>DeFile.target.files[0];
     if (!this.YPFFile) {
       return;
@@ -461,6 +461,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
   getFieldWell(event) {
     this.genk.fieldWell = event.target.value;
-    this.cd.markForCheck();
+    setTimeout(() => {
+      this.ngOnInit();
+  }, 1000);
+
   }
 }

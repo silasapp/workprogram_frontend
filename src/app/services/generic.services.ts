@@ -153,6 +153,36 @@ export class GenericService {
     newWin.close();
   }
 
+  printImage() {
+  //   $(document).ready(function () {
+  //     let btn=$('#c-oreder-preview');
+  //     btn.text('download');
+  //     btn.on('click',()=> {
+
+  //         $('#c-invoice').modal('show');
+  //         setTimeout(function () {
+  //             html2canvas(document.querySelector("#c-print")).then(canvas => {
+  //                 //$("#previewBeforeDownload").html(canvas);
+  //                 var imgData = canvas.toDataURL("image/jpeg",1);
+  //                 var pdf = new jsPDF("p", "mm", "a4");
+  //                 var pageWidth = pdf.internal.pageSize.getWidth();
+  //                 var pageHeight = pdf.internal.pageSize.getHeight();
+  //                 var imageWidth = canvas.width;
+  //                 var imageHeight = canvas.height;
+
+  //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
+  //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
+  //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
+  //                 pdf.save("invoice.pdf");
+  //                 //$("#previewBeforeDownload").hide();
+  //                 $('#c-invoice').modal('hide');
+  //             });
+  //         },500);
+
+  //         });
+  // });
+  }
+
   tableToCSV(table: HTMLTableElement) {
     // Variable to store the final csv data
     let csv_data = [];
@@ -280,11 +310,8 @@ export class GenericService {
     let my = cool.value;
     if (cool.value === '' || isNaN(cool.value as any)) {
       cool.value = cool.value.slice(0, -1);
-      //event.preventDefault();
-      //this.cd.markForCheck();
     }
     cool.textContent = cool.value;
-    //this.cd.markForCheck();
   }
 
   lowerArray(lyst: any[]) {
@@ -336,19 +363,62 @@ export class GenericService {
   }
 
   //More efficient and concise implementation
-  formatNum_Efficient(num: string) {
-    if (num.length < 4) return num;
+  formatNum_Efficient(event) {
+    // if (num.length < 4) return num;
 
-    num = num.replace(/,/g, '');
-    const digits = num.split('');
+    // num = num.replace(/,/g, '');
+    // const digits = num.split('');
 
-    for (let p = digits.length - 1; p >= 0; p -= 3) {
-      digits.splice(p + 1, 0, ',');
+    // for (let p = digits.length - 1; p >= 0; p -= 3) {
+    //   digits.splice(p + 1, 0, ',');
+    // }
+
+    // let res = digits.join('');
+
+    // return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
+
+    let vel = event.target.value;
+    if (isFinite(event.key)) {
+      let e = event.target as HTMLInputElement;
+      let term = parseFloat(e.value.toString().replace(/,+/g, '')).toString();
+      let halfone = term.split('.')[0];
+      let halftwo = term.split('.')[1];
+      let isDecimal = halftwo ? true : false;
+      if (halfone.length > 3 && halfone.length < 7) {
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      } else if (halfone.length > 6 && halfone.length < 10) {
+        halfone =
+          halfone.slice(0, halfone.length - 6) +
+          ',' +
+          halfone.slice(halfone.length - 6, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      } else if (halfone.length > 9 && halfone.length < 13) {
+        halfone =
+          halfone.slice(0, halfone.length - 9) +
+          ',' +
+          halfone.slice(halfone.length - 9, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 6) +
+          ',' +
+          halfone.slice(halfone.length - 6, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      }
+      e.value = isDecimal ? halfone + '.' + halftwo : halfone;
+      return true;
+    } else {
+      return false;
+      // let e = event.target as HTMLInputElement;
+      // event.target.value = e.value.slice(0, length -1);
     }
-
-    let res = digits.join('');
-
-    return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
   }
 
   // test(event: Event) {
@@ -423,7 +493,6 @@ export class GenericService {
   }
 
   formatCurrency(event) {
-    //debugger;
     let vel = event.target.value;
     if (isFinite(event.key)) {
       let e = event.target as HTMLInputElement;
@@ -469,7 +538,6 @@ export class GenericService {
   }
 
   pressFormatCurrency(event) {
-    debugger;
     if (isFinite(event.key)) {
       let e = event.target as HTMLInputElement;
       let vel = e.value + event.key;
@@ -522,11 +590,12 @@ export class GenericService {
     let halfone = this.formatNum(term.split('.')[0]);
     let halftwo = term.split('.')[1];
     e.value = halfone + '.' + halftwo;
+    e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 
   checkBSCFMin(event, gasMin: HTMLElement) {
-    debugger;
+    //debugger;
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 10000) {
@@ -535,7 +604,7 @@ export class GenericService {
     } else {
       gasMin.textContent = '';
     }
-
+    e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 
@@ -549,7 +618,7 @@ export class GenericService {
     } else {
       oilMin.textContent = '';
     }
-
+    e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 

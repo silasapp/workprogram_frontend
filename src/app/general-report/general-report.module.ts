@@ -35,6 +35,8 @@ import { GasProductionTerrainComponent } from './gas-production-terrain.componen
 import { GasProductionContractBasisComponent } from './gas-prod-contract-basis.component';
 import { GasFlarePenaltyComponent } from './gas-flare-penalty.component';
 import { AccidentStatisticsComponent } from './accident-statistics.component';
+import { DownloadReportComponent } from './download-report.component';
+import { PDFFileComponent } from './pdffile.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { AccidentStatisticsComponent } from './accident-statistics.component';
     GasFlarePenaltyComponent,
     GeneralReportComponent,
     ExecutiveSummaryComponent,
-    AccidentStatisticsComponent
+    AccidentStatisticsComponent,
+    DownloadReportComponent,
+    PDFFileComponent
   ],
   imports: [
     CommonModule,

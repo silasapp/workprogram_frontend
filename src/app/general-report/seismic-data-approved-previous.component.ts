@@ -5,7 +5,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-seismic-approved',
   templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

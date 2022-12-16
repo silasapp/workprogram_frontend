@@ -20,7 +20,7 @@ import { ProcessApplicationComponent } from './process-application/process-appli
 import { AllapprovalsComponent } from './allapprovals/allapprovals.component';
 import { PushApplicationFormComponent } from './process-application/push-application-form/push-application-form.component';
 import { SendBackFormComponent } from './process-application/send-back-form/send-back-form.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+//import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ApproveFormComponent } from './process-application/approve-form/approve-form.component';
 
 @NgModule({
@@ -36,8 +36,8 @@ import { ApproveFormComponent } from './process-application/approve-form/approve
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    MatButtonModule,
-    NgMultiSelectDropDownModule,
+    MatButtonModule
+    //NgMultiSelectDropDownModule,
   ],
   declarations: [
     AllApplicationsComponent,
