@@ -121,39 +121,45 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.getCompanyConcessionReserveOil();
     this.getCompanyConcessionReserveGas();
     debugger;
-    this.fetchreportI();
+    //this.fetchreportI();
     this.cd.markForCheck();
   
   }
 
-  fetchreportI() {
-    debugger;
-    let value = this.previousYear;
-    debugger;
-    // this.modalService.logCover("Loading data...", true);
-    debugger;
-    this.reportService.fetch("get_general_report", value).subscribe(
-      (res) => {
-        debugger;
-        this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
-        this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-        this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+  // fetchreportI() {
+  //   debugger;
+  //   let value = this.previousYear;
+  //   debugger;
+  //   // this.modalService.logCover("Loading data...", true);
+  // debugger;
+  //   this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
+  //       this.firstChartData = res;
+  //       this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+  //       this.cd.markForCheck();
+  //     }
+  //   )
+  //   // this.reportService.fetch("get_general_report", value).subscribe(
+  //   //   (res) => {
+  //   //     debugger;
+  //   //     this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
+  //   //     this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
+  //   //     this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
         
-        //this.plotDoubleBarChart();
-        //this.plotDoublePieChart();
-        this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
-        this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
-        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
-        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
+  //   //     //this.plotDoubleBarChart();
+  //   //     //this.plotDoublePieChart();
+  //   //     this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
+  //   //     this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+  //   //     this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
+  //   //     this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
 
-       // this.plotDoubleBarChartHorizontal();
-        this.modalService.togCover();
-        this.cd.markForCheck();
-      }
+  //   //    // this.plotDoubleBarChartHorizontal();
+  //   //     this.modalService.togCover();
+  //   //     this.cd.markForCheck();
+  //   //   }
 
-    )
+  //   // )
 
-  }
+  // }
 
 
   fetchreport() {
