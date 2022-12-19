@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PushApplicationFormComponent } from 'src/app/application/process-application/push-application-form/push-application-form.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
 import { AddProcessFlowFormComponent } from './add-process-flow-form/add-process-flow-form.component';
@@ -77,6 +76,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.getProcessFlow();
       this.cdr.markForCheck();
     });
   }

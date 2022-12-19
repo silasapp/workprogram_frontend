@@ -45,7 +45,8 @@ export class ReportService {
   addProcessFlow(model: any) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createProcess`,
-      model
+      {},
+      { params: { ...model } }
     );
   }
 
