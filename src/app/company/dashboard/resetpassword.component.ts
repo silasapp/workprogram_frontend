@@ -67,8 +67,8 @@ export class ResetPasswordComponent implements OnInit {
         const resetPass = { ...resetPasswordFormValue };
     debugger;
         const resetPassDto: ResetPasswordDto = {
-          password: resetPass.password,
-          confirmPassword: resetPass.confirm
+          currentPassword: resetPass.currentPassword,
+          newPassword: resetPass.newPassword
         }
     debugger;
         this.company.changePassword(resetPassDto)
