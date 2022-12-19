@@ -41,6 +41,10 @@
       <div class="sidebar-box">
           <div class="layout-box">
               <div>
+                <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'downloadreport']" routerLinkActive="activel">
+                  <span class="material-icons layout-icon">save_alt</span>
+                  <span>Report Download</span>
+                </div>
 
                   <div *ngIf="genk.isAdmin" class="layout-divtop layout-padtop" [routerLink]="['/' + genk.generalReport, 'executivesummary']" routerLinkActive="activel">
                       <span class="material-icons layout-icon">dashboard</span>

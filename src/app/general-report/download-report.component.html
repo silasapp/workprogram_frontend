@@ -1,8 +1,5 @@
-<button (click)="genk.printData(downdiv)" class="rebtn" style="background-color: rgb(9, 96, 127);">
-  <mat-icon style="font-size: 20px;">print</mat-icon> Print
-</button>
-
-<div #downdiv>
+<button (click)="openPDF()">Print</button>
+<div id="htmlData">
   <div style="background-color: white; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.4); margin: 0 3% 2% 1%">
     <div style="margin-top: 20px; padding-left: 10px;">
       <h1 style="font-size: 20px; font-weight: 600; text-shadow: 0.5px 0.5px 1px rgb(0, 0, 0, 0.3);">EXECUTIVE SUMMARY</h1>
@@ -15,5 +12,9 @@
     </div>
 
 
+  </div>
+
+  <div>
+    <app-seismic-approved></app-seismic-approved>
   </div>
 </div>
