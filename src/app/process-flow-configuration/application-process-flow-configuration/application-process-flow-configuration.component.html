@@ -76,6 +76,23 @@
             <td *ngFor="let h of columns">
               {{ row[h.columnDef] }}
             </td>
+            <button
+              (click)="deleteProcessFlow(row)"
+              mat-mini-fab
+              color="accent"
+              style="margin: 10px"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button
+              (click)="editProcessFlow(row)"
+              mat-mini-fab
+              color="primary"
+              style="margin: 10px"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
           </tr>
         </tbody>
       </table>

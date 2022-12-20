@@ -2,7 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
-import { AddProcessFlowFormComponent } from './add-process-flow-form/add-process-flow-form.component';
+import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
+import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-process-flow.component';
 
 @Component({
   selector: 'app-application-process-flow-configuration',
@@ -66,6 +67,52 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
           sbus: this.sbus,
         },
         form: AddProcessFlowFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
+      data: {
+        data: operationsConfiguration['process'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getProcessFlow();
+      this.cdr.markForCheck();
+    });
+  }
+
+  editProcessFlow(row) {
+    const operationsConfiguration = {
+      process: {
+        data: {
+          targetData: row,
+          roles: this.roles,
+          sbus: this.sbus,
+        },
+        form: AddProcessFlowFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
+      data: {
+        data: operationsConfiguration['process'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getProcessFlow();
+      this.cdr.markForCheck();
+    });
+  }
+
+  deleteProcessFlow(row) {
+    const operationsConfiguration = {
+      process: {
+        data: {
+          targetData: row,
+        },
+        form: DeleteProcessFlowComponent,
       },
     };
 

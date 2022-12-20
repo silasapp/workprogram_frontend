@@ -10,12 +10,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AddProcessFlowFormComponent } from './application-process-flow-configuration/add-process-flow-form/add-process-flow-form.component';
+import { AddProcessFlowFormComponent } from './application-process-flow-configuration/add-process-flow/add-process-flow-form.component';
+import { DeleteProcessFlowComponent } from './application-process-flow-configuration/delete-process-flow-form/delete-process-flow.component';
 
 @NgModule({
   declarations: [
     ApplicationProcessFlowConfigurationComponent,
     AddProcessFlowFormComponent,
+    DeleteProcessFlowComponent,
   ],
   imports: [
     CommonModule,

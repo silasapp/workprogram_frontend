@@ -50,6 +50,22 @@ export class ReportService {
     );
   }
 
+  editProcessFlow(model: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/editProcess`,
+      {},
+      { params: { ...model } }
+    );
+  }
+
+  deleteProcessFlow(id: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/DeleteProcess`,
+      {},
+      { params: { id } }
+    );
+  }
+
   performanceEvaluation(url, year) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/${url}`, {

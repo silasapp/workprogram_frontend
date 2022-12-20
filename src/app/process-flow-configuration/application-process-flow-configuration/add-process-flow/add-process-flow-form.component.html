@@ -57,10 +57,21 @@
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
   <button
+    *ngIf="!targetData"
     mat-raised-button
+    color="primary"
     [disabled]="form.invalid"
     (click)="addProcessFlow()"
   >
     Add
+  </button>
+
+  <button
+    *ngIf="targetData"
+    mat-raised-button
+    [disabled]="form.invalid"
+    (click)="editProcessFlow()"
+  >
+    Edit
   </button>
 </div>
