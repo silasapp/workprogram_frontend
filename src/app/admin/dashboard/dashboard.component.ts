@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any[];
-  dashboardStuff : DashboardModel;   
+  dashboardStuff : DashboardModel;
   adminservice : AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
@@ -110,73 +110,68 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.companyService = company;
     this.reportService=report;
   }
-  
+
   ngOnInit(): void {
   }
   ngAfterViewInit() {
-    this.getCompanyDashboardReport();
-    this.getDashboardGasBudgetAndReserveDetails();
-    this.getCompanyProduction();
-    this.getCompanyConcessionProd();
-    this.getCompanyConcessionReserveOil();
-    this.getCompanyConcessionReserveGas();
-    debugger;
-    //this.fetchreportI();
+    // this.getCompanyDashboardReport();
+    // this.getDashboardGasBudgetAndReserveDetails();
+    // this.getCompanyProduction();
+    // this.getCompanyConcessionProd();
+    // this.getCompanyConcessionReserveOil();
+    // this.getCompanyConcessionReserveGas();
+    // debugger;
+    this.fetchreportI();
     this.cd.markForCheck();
-  
+
   }
 
-  // fetchreportI() {
-  //   debugger;
-  //   let value = this.previousYear;
-  //   debugger;
-  //   // this.modalService.logCover("Loading data...", true);
-  // debugger;
-  //   this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
-  //       this.firstChartData = res;
-  //       this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
-  //       this.cd.markForCheck();
-  //     }
-  //   )
-  //   // this.reportService.fetch("get_general_report", value).subscribe(
-  //   //   (res) => {
-  //   //     debugger;
-  //   //     this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
-  //   //     this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-  //   //     this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-        
-  //   //     //this.plotDoubleBarChart();
-  //   //     //this.plotDoublePieChart();
-  //   //     this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
-  //   //     this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
-  //   //     this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
-  //   //     this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
+  fetchreportI() {
+    let value = this.previousYear;
+    // this.modalService.logCover("Loading data...", true);
+    // this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
+    //     this.firstChartData = res;
+    //     this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+    //     this.cd.markForCheck();
+    //   }
+    // )
+    this.reportService.fetch("get_general_report", value).subscribe(
+      (res) => {
+        debugger;
+        this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
+        this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
+        this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
 
-  //   //    // this.plotDoubleBarChartHorizontal();
-  //   //     this.modalService.togCover();
-  //   //     this.cd.markForCheck();
-  //   //   }
+        //this.plotDoubleBarChart();
+        //this.plotDoublePieChart();
+        this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
+        this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
+        //this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
 
-  //   // )
+       // this.plotDoubleBarChartHorizontal();
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      }
+    )
+  }
+
+
+  // fetchreport() {
+  //   let value = 2021;
+  //   this.modalService.logCover("Loading data...", true);
+  //   this.firstChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
+  //   this.secondChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
+  //   //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+  //   // this.plotDoubleBarChart();
+  //   // this.plotDoublePieChart();
+  //   // this.plotDoubleBarChartHorizontal();
+  //   this.modalService.togCover();
+  //   this.cd.markForCheck();
 
   // }
-
-
-  fetchreport() {
-    let value = 2021;
-    this.modalService.logCover("Loading data...", true);
-    this.firstChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
-    this.secondChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
-    //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-    // this.plotDoubleBarChart();
-    // this.plotDoublePieChart();
-    // this.plotDoubleBarChartHorizontal();
-    this.modalService.togCover();
-    this.cd.markForCheck();
-
-  }
   getDashboardStuff(){
-    
+
     this.adminservice.getDashboardStuff()
     .subscribe(res=>
       {
@@ -185,7 +180,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       )
   }
   // firstChart() {
-  //   
+  //
   //   if (this.isBrowser) {
   //     am5.array.each(am5.registry.rootElements, function(root) {
   //       if (root.dom.id == "firstchart") {
@@ -420,7 +415,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   plotDoublePieChart(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
-  
+
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
     const node = document.createElement("div");
     node.style.width = '100%';
@@ -437,7 +432,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   plotDoubleBarChartHorizontal(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
-    
+
     let totalString = "";
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
     const node = document.createElement("div");
@@ -465,7 +460,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   // plotDoubleBarChart() {
-  //   
+  //
   //   let totalString = "";
   //   let selectedColumn = ['terrain', 'percentage_Production'];
   //     // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
@@ -843,7 +838,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     alert('Can not plot this chart');
   //   }
   //   else {
-  //     
+  //
   //     this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
   //     const node = document.createElement("div");
   //     node.style.width = '100%';

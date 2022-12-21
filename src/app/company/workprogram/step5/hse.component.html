@@ -2720,6 +2720,7 @@
         >
           <input
             type="text"
+            (keypress)="genk.restrictData($event)"
             class="inpute"
             formControlName="frequency"
             [(ngModel)]="accident_Body.frequency"
