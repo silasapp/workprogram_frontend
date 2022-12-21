@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   secondChartData: any;
   thirdChartData: any[];
   fourthChartData: any[];
-  dashboardStuff : DashboardModel;   
+  dashboardStuff : DashboardModel;
   adminservice : AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.auth = authenticationService;
     this.companyService = company;
   }
-  
+
   ngOnInit(): void {
   }
   ngAfterViewInit() {
