@@ -15,6 +15,9 @@ export class SelectDateComponent implements OnInit {
   selectDateForm: FormGroup;
   time: string;
   date: string;
+  start:string;
+  stop:Date;
+  
 
   constructor(private fb: FormBuilder,
     private cd: ChangeDetectorRef,
@@ -25,6 +28,9 @@ export class SelectDateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPresentation();
+    debugger;
+    this.start= "2022-12-12";
+    this.stop=new Date("12/17/2022");
   }
   initForm(){
     this.selectDateForm = this.fb.group({
