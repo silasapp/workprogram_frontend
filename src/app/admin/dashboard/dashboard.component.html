@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="genk.isAdmin" class="row">
      <div class="col-md-3">
-       <div class="card bg-primary p-20">
+       <div class="card p-20" style="display: flex; align-items: center; padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
          <div class="media widget-ten">
            <div class="media-left meida media-middle">
              <span><i class="ti-bag f-s-40"></i></span>
@@ -9,20 +9,28 @@
  
            <div class="media-body media-text-right">
              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.deskCount}} </h2>
-             <p style="font-weight:bold"><a href="/application/mydesk" class="color-white"> My Desk </a></p>
+             <p style="font-weight:bold">
+            <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px; margin-bottom: 10px;"> computer </span>
+
+              <a href="/application/mydesk" class="color-white dashnumtext desk" style="color: black;     display: flex; text-decoration: none;"> My Desk </a></p>
+
+       
            </div>
          </div>
        </div>
      </div>
      <div class="col-md-3">
-       <div class="card bg-warning p-20">
+       <div class="card p-20" style="display: flex; align-items: center; padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
          <div class="media widget-ten">
            <div class="media-left meida media-middle">
              <span><i class="ti-bag f-s-40"></i></span>
            </div>
            <div class="media-body media-text-right">
              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allProcessingCount}}</h2>
-             <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> Processing
+             <p style="font-weight:bold">
+            <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 50%; margin-bottom: 10px;"> hourglass_top</span>
+              
+              <a href="/application/allapplications" class="color-white dashnumtext" style="color: black;     display: flex; text-decoration: none;"> Processing
                  Applications </a></p>
  
            </div>
@@ -30,14 +38,17 @@
        </div>
      </div>
      <div class="col-md-3">
-       <div class="card bg-dark p-20">
+       <div class="card p-20" style="display: flex; align-items: center; padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
          <div class="media widget-ten">
            <div class="media-left meida media-middle">
              <span><i class="ti-bag f-s-40"></i></span>
            </div>
            <div class="media-body media-text-right">
              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allApplicationsCount}} </h2>
-             <p style="font-weight:bold"><a href="/application/allapplications" class="color-white"> All Applications
+             <p style="font-weight:bold">
+            <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 50%; margin-bottom: 10px;">library_books</span>
+              
+              <a href="/application/allapplications" class="color-white dashnumtext" style="color: black;     display: flex; text-decoration: none;"> All Applications
                </a></p>
  
            </div>
@@ -45,14 +56,18 @@
        </div>
      </div>
      <div class="col-md-3">
-       <div class="card bg-success p-20">
+       <div class="card p-20" style="display: flex; align-items: center; padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99);  box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
          <div class="media widget-ten">
            <div class="media-left meida media-middle">
              <span><i class="ti-bag f-s-40"></i></span>
            </div>
            <div class="media-body media-text-right">
              <h2 class="color-white" style="font-weight:bold"> {{this.dashboardStuff?.allApprovalsCount}} </h2>
-             <p style="font-weight:bold"><a href="/application/allapprovals" class="color-white"> All Approvals </a></p>
+             <p style="font-weight:bold">
+            <span class="material-icons" style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 50%; margin-bottom: 10px;"> done_all</span>
+            
+
+              <a href="/application/allapprovals" class="color-white dashnumtext" style="color: black;     display: flex; text-decoration: none;"> All Approvals </a></p>
  
            </div>
          </div>
