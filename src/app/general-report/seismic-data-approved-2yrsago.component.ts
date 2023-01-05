@@ -5,7 +5,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-data-approved-2yrsago',
   templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -91,6 +91,9 @@ export class SeismicDataApproved2yrsagoComponent implements OnInit {
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.reportDownload.subscribe((res) => {
+          this.transferData();
+        });
         this.modalService.generalReport
         .subscribe(res => {
           this.getSeismic();
@@ -230,6 +233,7 @@ export class SeismicDataApproved2yrsagoComponent implements OnInit {
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
         this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
       }
+      this.isChart = true;
     }
   }
 
@@ -262,6 +266,13 @@ export class SeismicDataApproved2yrsagoComponent implements OnInit {
           this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
       }
+      this.isChart = true;
     }
+  }
+
+  transferData() {
+    this.report.seismicActivities2yrsTable = {data: this.data, header: this.columns};
+    this.report.seismicActivities2yrsIsChart = this.isChart;
+    this.report.seismicActivities2yrsSelectedColumns = this.selectedColumns;
   }
 }

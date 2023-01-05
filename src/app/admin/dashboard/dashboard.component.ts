@@ -127,20 +127,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   fetchreportI() {
+    debugger;
     let value = this.previousYear;
     // this.modalService.logCover("Loading data...", true);
     // this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
     //     this.firstChartData = res;
-    //     this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+    //   this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
     //     this.cd.markForCheck();
     //   }
     // )
     this.reportService.fetch("get_general_report", value).subscribe(
       (res) => {
         debugger;
-        this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
-        this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-        this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+        this.firstChartData = res.oiL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_Pivotted_by_company_productionmonth_year;
+        this.secondChartData = res.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
+        this.thirdChartData = res.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
 
         //this.plotDoubleBarChart();
         //this.plotDoublePieChart();
