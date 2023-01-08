@@ -17,6 +17,8 @@ export class ModalService {
     public reloado = this.reload.asObservable();
     private concessionSituCom = new Subject<boolean>();
     public concessionSitu = this.concessionSituCom.asObservable();
+    private reportDownloadCom = new Subject<boolean>();
+    public reportDownload = this.reportDownloadCom.asObservable();
     private generalReportCom = new Subject<boolean>();
     public generalReport = this.generalReportCom.asObservable();
     public head: any;
@@ -24,6 +26,7 @@ export class ModalService {
     public icon: any;
     public isNonBlocker = false;
     public concessionHeld: string;
+    public reportData: string;
     //public generalReportYear: string;
 
     public logYawa(body: any, head: any) {
@@ -81,5 +84,9 @@ export class ModalService {
     public logGeneralReportYear() {
       //this.generalReportYear = year;
       this.generalReportCom.next(true);
+    }
+
+    public logReportDownload() {
+      this.reportDownloadCom.next(true);
     }
 }

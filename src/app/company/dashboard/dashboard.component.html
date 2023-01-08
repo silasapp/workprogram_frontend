@@ -1,13 +1,10 @@
 <div>
- 
-   <hr />
-   <br />
-   <!-- <div>
-     style="text-align: center;margin: 0px auto;display:block; font-size: medium;
+
+   <div style="text-align: center;margin: 0px auto;display:block; font-size: medium;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: 300; text-shadow: 1px 1px 2px rgb(11, 43, 148);">
      <h1> WORK PROGRAMME </h1>
-       <h1>Year 2022</h1>
-   </div>  -->
+       <h1>Year 2023</h1>
+   </div>
    <div style="display: flex; justify-content: space-between;">
      <div
        style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
@@ -18,12 +15,12 @@
        style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
        <span class="material-icons"
          style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">schedule</span>
-       <span>Year: {{previousYear}}/{{previousYear + 1}}</span>
+       <span>Year: {{previousYear - 1}}/{{previousYear}}</span>
      </div>
    </div>
- 
+
    <div>
- 
+
      <!-- The company calculated Operational Data -->
      <div style="display: inline-flex; flex-wrap: wrap; width: 100%;">
        <div class="dashtop" style="background-color: rgb(27, 94, 146);">
@@ -32,7 +29,7 @@
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">token</span>
              </div>
- 
+
              <div class="dashtext">
                <span class="dashnum">{{dashboardGasBudgetAndReserve.reserveOilCondensate}}</span><span>BBL</span><br><br>
                <span class="dashnumtext">OIL & CONDENSATE</span>
@@ -43,14 +40,14 @@
            <span>OIL RESERVES (ANNUAL)</span>
          </div>
        </div>
- 
+
        <div class="dashtop" style="background-color: rgb(19, 124, 105);">
          <div class="dashtopsec" style="border-bottom:  solid 1px silver;">
            <div class="divcent">
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">whatshot</span>
              </div>
- 
+
              <div class="dashtext">
                <span class="dashnum">{{dashboardGasBudgetAndReserve.reserveAGNAG}}</span><span>BBL</span><br><br>
                <span class="dashnumtext">AG & NAG</span>
@@ -61,14 +58,14 @@
            <span>GAS RESERVES (ANNUAL)</span>
          </div>
        </div>
- 
+
        <div class="dashtop">
          <div class="dashtopsec">
            <div class="divcent">
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">microwave</span>
              </div>
- 
+
              <div class="dashtext">
                <span class="dashnum">&#36;{{dashboardGasBudgetAndReserve.prodCost}}</span><br><br>
                <span class="dashnumtext">PRODUCTION COST</span>
@@ -79,7 +76,7 @@
            <span>BUDGET PERFORMANCE</span>
          </div>
        </div>
- 
+
        <!-- <div class="dashtop" style="background-color: rgb(19, 124, 105);">
          <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
            <div style="padding: 0 20px; margin-top: 20px;">
@@ -88,7 +85,7 @@
                  <span
                    style="font-size: 45px; font-weight: 900; color: white;">{{dashboardGasBudgetAndReserve.reserveAGNAG}}</span><span>SCF</span>
                </div>
- 
+
                <div class="dashnumtext">
                  <span>GAS CAPACITY</span>
                </div>
@@ -98,7 +95,7 @@
                  <span
                    style="font-size: 45px; font-weight: 900; color: white;">{{dashboardGasBudgetAndReserve.prodCost}}</span><span>SCF</span>
                </div>
- 
+
                <div class="dashnumtext">
                  <span>FLARED</span>
                </div>
@@ -117,7 +114,7 @@
            <span>GAS PRODUCTION</span>
          </div>
        </div>  -->
- 
+
        <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
        <div style="width: 90%; height: 60%; margin: 0 5%;">
          <span class="left">
@@ -132,15 +129,15 @@
          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
        </div>
      </div> -->
- 
- 
+
+
        <div class="dashtop" style="background-color: rgb(104, 111, 127);">
          <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
            <div class="divcent">
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">join_inner</span>
              </div>
- 
+
              <div class="dashtext" style="padding: 0 42px;">
                <span class="dashnum">{{dashboardBody.opL_Count}}</span><br><br>
                <span class="dashnumtext">TOTAL OPLs</span>
@@ -151,14 +148,14 @@
            <span>OIL PROSPECTING LICENSE (OPL)</span>
          </div>
        </div>
- 
+
        <div class="dashtop" style="background-color: rgb(145, 51, 62);">
          <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
            <div class="divcent">
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">join_inner</span>
              </div>
- 
+
              <div class="dashtext" style="padding: 0 40px;">
                <span class="dashnum">{{dashboardBody.omL_Count}}</span><br><br>
                <span class="dashnumtext">TOTAL OMLs</span>
@@ -169,14 +166,14 @@
            <span>OIL MINING LICENSE (OML)</span>
          </div>
        </div>
- 
+
        <div class="dashtop" style="background-color: rgb(93, 47, 120);">
          <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
            <div class="divcent">
              <div style="padding-left: 10px">
                <span class="material-icons dashicon">opacity</span>
              </div>
- 
+
              <div class="dashtext" style="padding: 0 40px;">
                <span class="dashnum">{{dashboardBody.no_Of_ProducingFields_Count}}</span><br><br>
                <span class="dashnumtext">TOTAL FIELDS</span>
@@ -189,7 +186,7 @@
        </div>
      </div>
        <br><br><br>
- 
+
        <!-- <div
          style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
          <div style="width: 90%; height: 60%; margin: 0 5%;">
@@ -208,7 +205,7 @@
            </span>
          </div>
        </div>
- 
+
        <div
          style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%;  margin-right: 1%; border-radius: 15px; text-align: center; height: 170px">
          <div style="width: 90%; height: 60%; margin: 0 5%;">
@@ -227,7 +224,7 @@
            </span>
          </div>
        </div> -->
- 
+
        <!-- <div style="width: 24.5%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 0% 2% 0.5%;   border-radius: 15px; text-align: center; height: 170px">
        <div style="width: 90%; height: 60%; margin: 0 5%;">
          <span class="left">
@@ -242,7 +239,7 @@
          <span class="below" style="float: left;"><mat-icon style="font-size: 16px; font-size: larger;">autorenew</mat-icon><span  style=" FLOAT: RIGHT; font-size: larger;">{{previousYear}} Reserves</span></span>
        </div>
      </div> -->
- 
+
      <div style="display: flex; margin-bottom: 30px">
        <div
        style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
@@ -251,9 +248,9 @@
        <span>Year: {{previousYear}}/{{previousYear + 1}}</span>
      </div>
      </div>
- 
- 
- 
+
+
+
        <div style="display: flex; width: 100%;">
          <div style="width: 50%; background-color: white; padding: 10px 0 0 0; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
            <span style="color: darkslategrey; font-weight: 900; font-size: 18px;">Total Oil Producduction by Month</span>
@@ -264,8 +261,8 @@
          <!-- <div>
          <div
          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; padding: 0 20px 0 0; box-shadow:  0.5px 0.5px 1px rgb(0, 0, 0, 0.5); background-color: white;">
- 
- 
+
+
          <div  style="margin-left: 10px" class="inpdiv">
            <input #myInput (keyup)='genk.searchTable(myInput, myTbody)' type='text' placeholder="Search Table"
              class="search">
@@ -275,7 +272,7 @@
              <option *ngFor="let val of genk.entries" [value]="val.value">{{val.text}}</option>
            </select>
          </div>
- 
+
          <div style="display: flex;">
            <button (click)="genk.printData(myTable)" class="rebtn" style="background-color: rgb(9, 96, 127);">
              <mat-icon style="font-size: 20px;">print</mat-icon> Print
@@ -292,21 +289,21 @@
            </button>
          </div>
        </div>
- 
+
        <div *ngIf="isSpecifyColumns" style="display: flex; justify-content: right; align-items: center; padding: 8px; width: 96%; margin: 0 auto 5px auto;">
            <button (click)="selectColumns()" class="rebtn" style="background-color:  rgb(9, 79, 104); font-weight: 600;">
              <mat-icon style="font-size: 20px; color: white;">check_circle</mat-icon> Select Columns
            </button>
          </div>
- 
+
        <div #divTable style="overflow: hidden; overflow-x: auto; box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3); width: 98%; margin: auto; background-color: white;">
          <table #myTable class="apptable" cellPadding="10">
            <thead>
              <tr>
                <th *ngFor="let h of columns">
- 
+
                  {{h.header}} <input #che *ngIf="isSpecifyColumns" type="checkbox" name="vehicle1" [value]="h.columnDef" (change)="pickColumn(che.value, che.checked)">
- 
+
                </th>
              </tr>
            </thead>
@@ -319,7 +316,7 @@
            </tbody>
          </table>
        </div>
- 
+
        <div
        style="width: 100%; display: flex; align-items: center; justify-content: end; margin: 20px 0 10px 0; padding-right: 30px;">
        <div
@@ -332,18 +329,18 @@
              style="width: 40px; padding: 5px 0 5px 10px; border: solid 3px dodgerblue; outline: dodgerblue;" #pageInput
              type="text" [value]="selectedPage" (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
              (change)="changePage(pageInput.value)"> of {{pagenum}}</div>
- 
+
          <button [disabled]="selectedPage >= pagenum" style="margin: 0 10px;" color="primary" (click)="goNext()"
            mat-raised-button>Next</button>
          <button [disabled]="selectedPage >= pagenum" (click)="lastPage()" mat-mini-fab color="primary">
            <mat-icon>keyboard_double_arrow_right</mat-icon>
          </button>
        </div>
- 
+
      </div>
- 
+
        </div> -->
- 
+
          <div style="width: 50%; background-color: white; padding: 10px 0 0 0; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
            <span style="color: darkslategrey; font-weight: 900; font-size: 18px;">Total Production by Concessions</span>
            <div #mychartbox2>
@@ -359,7 +356,7 @@
          <div #thirdchart style="width: 100%; height: 500px"></div>
        </div>
    </div>
- 
+
    <div style="width: 50%; margin: auto;  background-color: white; padding: 5px; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
      <h2>AG & NAG Reserve by Concession</h2>
        <div #mychartbox4>
