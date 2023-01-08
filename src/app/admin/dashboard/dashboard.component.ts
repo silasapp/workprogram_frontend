@@ -114,8 +114,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit() {
-    // this.getCompanyDashboardReport();
-    // this.getDashboardGasBudgetAndReserveDetails();
+    this.getCompanyDashboardReport();
+    this.getDashboardGasBudgetAndReserveDetails();
     // this.getCompanyProduction();
     // this.getCompanyConcessionProd();
     // this.getCompanyConcessionReserveOil();
@@ -128,7 +128,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   fetchreportI() {
     debugger;
-    let value = this.previousYear;
+    let value = this.previousYear - 1;
     // this.modalService.logCover("Loading data...", true);
     // this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
     //     this.firstChartData = res;
@@ -136,19 +136,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     //     this.cd.markForCheck();
     //   }
     // )
-    this.reportService.fetch("get_general_report", value).subscribe(
+    this.reportService.getAdminChartData("GET_ADMIN_CHARTDATA", value).subscribe(
       (res) => {
         debugger;
-        this.firstChartData = res.oiL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_Pivotted_by_company_productionmonth_year;
-        this.secondChartData = res.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-        this.thirdChartData = res.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+        this.firstChartData = res.prodByMonth;
+        this.secondChartData = res.reserveByContract.filter(x => x.contractType != null);
+        this.thirdChartData = res.prodByTerrain.filter(x => x.terrain != null);
+        this.fourthChartData = res.reserveByContract;
 
         //this.plotDoubleBarChart();
         //this.plotDoublePieChart();
-        this.plotDoublePieChart(['omlname', 'prod'], this.myChartBox2, this.secondChartData);
+        this.plotDoublePieChart(['contractType', 'prod'], this.myChartBox2, this.secondChartData);
         this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
-        this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox3, this.thirdChartData);
-        //this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
+        //this.plotDoubleBarChartHorizontal(['terrain', 'reserve'], this.myChartBox3, this.thirdChartData);
+        this.plotDoublePieChart(['terrain', 'prodMonth'], this.myChartBox3, this.thirdChartData);
 
        // this.plotDoubleBarChartHorizontal();
         this.modalService.togCover();
@@ -347,7 +348,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
 
   getCompanyDashboardReport() {
-    let value = (this.previousYear).toString();
+    let value = (this.previousYear - 1).toString();
     this.companyService.getdashboardreport(value).subscribe((res) => {
         this.dashboardBody = res as CompanyDashboardBody;
         //let resse = res;
@@ -401,7 +402,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getDashboardGasBudgetAndReserveDetails() {
-    let value = (this.previousYear).toString();
+    let value = (this.previousYear -1).toString();
     this.companyService.getdashboardgasbudgetandreserve(value).subscribe(
       (res) => {
         this.dashboardGasBudgetAndReserve = res as DashboardGasBudgetAndReserveBody;

@@ -60,6 +60,16 @@ performanceEvaluation(url, year){
   )
 }
 
+getAdminChartData(url, year){
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/${url}`,{params:{year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    //response.data = this.gen.lowerArray(response.data);
+    return response
+  })
+  )
+}
+
 
 getYearList(url){
   url = 'reports_yearlist';
