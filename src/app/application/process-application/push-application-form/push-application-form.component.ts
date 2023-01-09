@@ -30,7 +30,7 @@ export class PushApplicationFormComponent implements OnInit {
   public form: FormGroup;
   public appDetails: ApplicationDetails;
   public selectedApps = [];
-  public appsDropdownSettings: IDropdownSettings = {};
+  //public appsDropdownSettings: IDropdownSettings = {};
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

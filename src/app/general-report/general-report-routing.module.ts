@@ -5,6 +5,7 @@ import { AppraisalWellsComponent } from './appraisal-wells.component';
 import { CrudeProductionContractComponent } from './crude-production-contract.component';
 import { CrudeProductionTerrainComponent } from './crude-production-terrain.component';
 import { DevelopmentWellsComponent } from './development-wells.component';
+import { DownloadReportComponent } from './download-report.component';
 import { ExecutiveSummaryComponent } from './executive-summary.component';
 import { ExplorationWellsComponent } from './exploration-wells.component';
 import { GasFlarePenaltyComponent } from './gas-flare-penalty.component';
@@ -16,6 +17,7 @@ import { MonthlyOilProductionComponent } from './monthly-oil-production.componen
 import { OilProductionContractComponent } from './oil-production-contract.component';
 import { OilProductionTerrainComponent } from './oil-production-terrain.component';
 import { OilProductionComponent } from './oil-production.component';
+import { PDFFileComponent } from './pdffile.component';
 import { ReconciledOilProductionComponent } from './reconciled-oil-production.component';
 import { ReserveUpdateComponent } from './reserves-update.component';
 import { SeismicActivitiesApprovedComponent } from './seismic-activities.component';
@@ -120,6 +122,14 @@ const routes: Routes = [
 {
   path: 'accidentstatistics',
   component: AccidentStatisticsComponent
+},
+{
+  path: 'downloadreport',
+  component: DownloadReportComponent
+},
+{
+  path: 'pdffile',
+  component: PDFFileComponent
 }
 ];
 

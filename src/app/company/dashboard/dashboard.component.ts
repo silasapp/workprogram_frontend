@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   thirdChartData: any[];
   fourthChartData: any[];
   dashboardStuff: DashboardModel;
-
+  adminservice: AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
   f_ColumnHeader = [];
@@ -143,7 +143,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {}
-
   ngAfterViewInit() {
     this.getDashboardStuff();
     this.getCompanyDashboardReport();

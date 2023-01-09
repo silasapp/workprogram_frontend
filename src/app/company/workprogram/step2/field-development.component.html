@@ -37,7 +37,7 @@
               formControlName="proposed_number_of_wells_from_approved_FDP"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="
                 fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP
               "
@@ -60,7 +60,7 @@
               formControlName="no_of_wells_drilled_in_current_year"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="
                 fielddevelopmentBody._no_of_wells_drilled_in_current_year
               "
@@ -83,7 +83,7 @@
               formControlName="noof_Producing_Fields"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="fielddevelopmentBody._noof_Producing_Fields"
             />
           </div>
@@ -154,7 +154,7 @@
 <br />
 <br />
 
-<div style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;
+<div style="background-color: white; margin-bottom: 30px; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;
   ">
   <div style="
       text-align: start;
@@ -198,7 +198,7 @@
               style="border-radius:5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._oil = genk.checkMMBBLMin($event, oilSand)"
               [value]="fielddevelopmentexcessivereserveBody._oil"/>
               <span class="barspan">BBLS</span>
@@ -207,19 +207,19 @@
         <small #oilSand></small>
       </div>
 
-      
+
       <div style="width: 30%; margin: auto 0 0;">
         <label class="labelwp">Gas (Standard Cubic Feet)</label>
         <div style="display: flex">
           <div class="minsec">
- 
+
           <input type="text"
               formControlName="gas"
               placeholder="1,000,000"
               style="border-radius: 5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin($event, gasMin)"
               [value]="fielddevelopmentexcessivereserveBody._gas"/>
             <span class="barspan">SCF</span>
@@ -227,7 +227,7 @@
         </div>
         <small #gasMin></small>
       </div>
-      
+
 
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Condensate (Barrels)</label>
@@ -239,7 +239,7 @@
               style="border-radius: 5px;"
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._condensate = genk.checkMMBBLMin($event, oilMox)"
               [value]="fielddevelopmentexcessivereserveBody._condensate"/>
               <span class="barspan">BBLS</span>
@@ -259,7 +259,8 @@
     </div>
   </div>
 
-  <hr />
+</div>
+<div style="background-color: white; margin-bottom: 30px; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
   <div [formGroup]="UnitizationForm">
     <div style="
         text-align: start;
@@ -271,98 +272,98 @@
       <span>UNITIZATION</span>
     </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        <label class="labelwp">Is this field straddling?</label>
-        <br /><br />
-        <div style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            padding: 5px;
-            border-radius: 20px;
-          ">
-          <select class="dropwp" formControlName="is_any_of_your_field_straddling"
-            [(ngModel)]="unitizationBody.is_any_of_your_field_straddling">
-            <option selected disabled>---- Select an Option ----</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label class="labelwp">What Concession is the field straddling (Seperate with a comma if
-          more than one e.g OML 21, OPL 24)?</label>
-        <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            ">
-            <input type="text" formControlName="what_concession_field_straddling"
-              [(ngModel)]="unitizationBody.what_concession_field_straddling" class="inpute" />
-          </div>
-        </div>
-      </div>
-
+    <div class="col-md-4">
+      <label class="labelwp">Is this field straddling?</label>
       <br /><br />
-      <div class="col-md-4">
-        <label class="labelwp">Is the straddled field Producing?</label>
-        <br /><br />
-        <div style="display: flex; width: 100%">
-          <div class="inputshadow">
-            <select class="dropwp" formControlName="straddle_field_producing"
-              [(ngModel)]="unitizationBody.straddle_field_producing">
-              <option selected disabled>--Select an Option --</option>
-              <option value="NO">NO</option>
-              <option value="YES">YES</option>
-            </select>
+      <div style="
+          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+          width: 100%;
+          padding: 5px;
+          border-radius: 5px;
+        ">
+        <select class="dropwp" formControlName="is_any_of_your_field_straddling" [(ngModel)]="unitizationBody.is_any_of_your_field_straddling">
+          <option value="NO" selected>No</option>
+          <option value="YES">Yes</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="unitizationBody.is_any_of_your_field_straddling == 'YES'" style="padding-top: 20px;">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="labelwp">What Concession is the field straddling (Seperate with a comma if
+            more than one e.g OML 21, OPL 24)?</label>
+          <div style="display: flex">
+            <div style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              ">
+              <input type="text" formControlName="what_concession_field_straddling"
+                [(ngModel)]="unitizationBody.what_concession_field_straddling" class="inpute" />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
+        <br /><br />
+        <div class="col-md-4">
+          <label class="labelwp">Is the straddled field Producing?</label>
+          <br /><br />
+          <div style="display: flex; width: 100%">
+            <div class="inputshadow">
+              <select class="dropwp" formControlName="straddle_field_producing"
+                [(ngModel)]="unitizationBody.straddle_field_producing">
+                <option selected disabled>--Select an Option --</option>
+                <option value="NO">NO</option>
+                <option value="YES">YES</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <br />
+          <label class="labelwp">Has NUPRC been notified?</label>
+          <div style="display: flex; width: 100%">
+            <div class="inputshadow">
+              <select class="dropwp" formControlName="has_DPR_been_notified"
+                [(ngModel)]="unitizationBody.has_DPR_been_notified">
+                <option selected disabled>--Select an Option --</option>
+                <option value="NO">NO</option>
+                <option value="YES">YES</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <br />
-        <label class="labelwp">Has NUPRC been notified?</label>
-        <div style="display: flex; width: 100%">
-          <div class="inputshadow">
-            <select class="dropwp" formControlName="has_DPR_been_notified"
-              [(ngModel)]="unitizationBody.has_DPR_been_notified">
-              <option selected disabled>--Select an Option --</option>
-              <option value="NO">NO</option>
-              <option value="YES">YES</option>
-            </select>
+
+        <div class="col-md-4">
+          <br />
+          <label class="labelwp">Has the other party been notified?</label>
+          <div style="display: flex; width: 100%">
+            <div class="inputshadow">
+              <select class="dropwp" formControlName="has_the_other_party_been_notified"
+                [(ngModel)]="unitizationBody.has_the_other_party_been_notified">
+                <option selected disabled>--Select an Option --</option>
+                <option value="NO">NO</option>
+                <option value="YES">YES</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
       <br />
-
-      <div class="col-md-4">
-        <br />
-        <label class="labelwp">Has the other party been notified?</label>
-        <div style="display: flex; width: 100%">
-          <div class="inputshadow">
-            <select class="dropwp" formControlName="has_the_other_party_been_notified"
-              [(ngModel)]="unitizationBody.has_the_other_party_been_notified">
-              <option selected disabled>--Select an Option --</option>
-              <option value="NO">NO</option>
-              <option value="YES">YES</option>
-            </select>
-          </div>
-        </div>
+      <div style="text-align: center">
+        <button [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step2',
+            'initialwellcompletion'
+          ]" class="nextbtn" (click)="saveUnitization()">
+          Save Unitization
+        </button>
       </div>
-    </div>
-    <br />
-    <div style="text-align: center">
-      <button [routerLink]="[
-          '/' + genk.company,
-          genk.workprogram,
-          'step2',
-          'initialwellcompletion'
-        ]" class="nextbtn" (click)="saveUnitization()">
-        Save Unitization
-      </button>
     </div>
   </div>
 </div>

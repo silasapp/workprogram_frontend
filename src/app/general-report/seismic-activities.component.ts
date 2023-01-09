@@ -5,7 +5,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-seismic-activities',
   templateUrl: './seismic-activities.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss']
 })
@@ -89,6 +89,9 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.reportDownload.subscribe((res) => {
+          this.transferData();
+        });
         this.modalService.generalReport
         .subscribe(res => {
           this.getSeismic();
@@ -236,6 +239,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
   }
 
   pickColumn(value: string, checked: boolean) {
+    debugger;
     if (checked) {
       let val = this.repcolumns.filter(x => x.columnDef == value)[0];
       this.selectedColumns.push(val);
@@ -274,6 +278,7 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
         this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
       }
+      this.isChart = true;
     }
   }
 
@@ -306,6 +311,14 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
           this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
       }
+      this.isChart = true;
     }
+  }
+
+  transferData() {
+    this.report.seismicActivitiesTable = {data: this.data, header: this.columns};
+    this.report.seismicActivitiesIsChart = this.isChart;
+    this.report.seismicActivitiesSelectedColumns = this.selectedColumns;
+    this.report.seismicActivitiesText = this.reporttext;
   }
 }

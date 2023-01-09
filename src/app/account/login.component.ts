@@ -6,7 +6,7 @@ import { AuthenticationService, GenericService } from '../services';
 
 @Component({
     templateUrl: 'login.component.html',
-    styleUrls: [ 'login.component.scss'],
+    styleUrls: ['login.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() {
         return this.loginForm.controls;
-     }
+    }
 
-     submit() {
-         this.isSpinner = true;
+    submit() {
+        this.isSpinner = true;
         this.submitted = true;
         // stop here if form is invalid
         // if (this.loginForm.invalid) {
@@ -65,44 +65,44 @@ export class LoginComponent implements OnInit {
         // }
         //alert('my email' + this.email + '  ' + this.password);
         this.isSpinner = true;
-            this.authenticationService.login(this.email, this.password).subscribe(
-                data => {
-                    switch (data.code) {
-                      case 0:
+        this.authenticationService.login(this.email, this.password).subscribe(
+            data => {
+                switch (data.code) {
+                    case 0:
                         this.isSpinner = false;
                         this.togLoginModal();
                         break;
-                      case 2:
+                    case 2:
                         this.passwordError = 'Password is incorrect';
                         this.usernameError = '';
                         this.isSpinner = false;
                         this.cd.markForCheck();
                         break;
-                      case 3:
+                    case 3:
                         this.usernameError = 'This email is not on our record';
                         this.passwordError = '';
                         this.isSpinner = false;
                         this.cd.markForCheck();
                         break;
-                      default:
+                    default:
                         this.isSpinner = false;
                         this.cd.markForCheck();
                         const comp_url = '/company/dashboard';
                         const admin_url = '/admin/dashboard';
-
+                        debugger;
                         this.returnUrl = '';
-                        if (this.genk.company === "Admin" ) {this.locate.replaceState(admin_url);}
-                        else{this.locate.replaceState(comp_url);}
+                        if (this.authenticationService.currentUserValue.companyName === 'Admin') { this.locate.replaceState(admin_url); }
+                        else { this.locate.replaceState(comp_url); }
                         window.location.reload();
 
-                        // this.clearForm();
-                        // this.router.navigate([url]);
-                    }
+                    // this.clearForm();
+                    // this.router.navigate([url]);
                 }
-            );
-     }
+            }
+        );
+    }
 
-     togLoginModal() {
+    togLoginModal() {
         if (this.loginModal) {
             this.loginModal = false;
             this.cd.markForCheck();

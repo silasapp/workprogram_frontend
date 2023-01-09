@@ -5,6 +5,9 @@ import { Location } from '@angular/common';
 import { AuthenticationService, GenericService } from 'src/app/services';
 import Swal from 'sweetalert2';
 import { CompanyService } from 'src/app/services/company.service';
+import { PasswordConfirmationValidatorService } from 'src/app/services/password-confirmation-validator.service';
+import { ResetPasswordDto } from 'src/app/models/auth.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     templateUrl: 'resetpassword.component.html',
@@ -17,13 +20,19 @@ export class ResetPasswordComponent implements OnInit {
     genk: GenericService;
     company: CompanyService;
 
+    showSuccess: boolean;
+    showError: boolean;
+    errorMessage: string;
+
     resetPasswordForm: FormGroup;
 
 
     constructor(private fb: FormBuilder, private authenticationService: AuthenticationService,
         private companyService: CompanyService,
         private cd: ChangeDetectorRef,
-        private gen: GenericService) {
+        private router: Router,
+        private gen: GenericService,
+        private passConfValidator: PasswordConfirmationValidatorService,) {
         this.cdr = cd;
         this.auth = authenticationService;
         this.company=companyService;
@@ -31,19 +40,94 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.resetPasswordForm = this.fb.group({
-            currentPassword: ["", Validators.required],
-            newPassword: ["", Validators.required]
-        })
+        this.resetPasswordForm = new FormGroup({
+            currentPassword: new FormControl('', [Validators.required]),
+            newPassword: new FormControl('', [Validators.required]),
+            confirmNewPassword: new FormControl('')
+        });
+        
+        debugger;
+        this.resetPasswordForm.get('confirmNewPassword').setValidators([Validators.required,
+            this.passConfValidator.validateConfirmPassword(this.resetPasswordForm.get('newPassword'))]);
+       
     }
 
+    public validateControl = (controlName: string) => {
+        return this.resetPasswordForm.get(controlName).invalid && this.resetPasswordForm.get(controlName).touched
+      }
+
+      public hasError = (controlName: string, errorName: string) => {
+        return this.resetPasswordForm.get(controlName).hasError(errorName)
+      }
+
+
+    
+      public resetPassword = (resetPasswordFormValue) => {
+        this.showError = this.showSuccess = false;
+        const resetPass = { ...resetPasswordFormValue };
+    debugger;
+        const resetPassDto: ResetPasswordDto = {
+          currentPassword: resetPass.currentPassword,
+          newPassword: resetPass.newPassword
+        }
+    debugger;
+        this.company.changePassword(resetPassDto)
+          .subscribe(
+            (res)=>{
+                debugger;
+                   if(res.statusCode==200){
+                     this.Alert("Success", res.message, "success");
+                     this.showSuccess = true;
+                     this.authenticationService.logout();
+                     this.router.navigate(['/' + 'login']);    
+                     
+                   }
+                   else{
+                     this.Alert("Error", res.message, "error");
+                     this.showError=true;
+                     this.errorMessage = res.message;
+                   }
+                   
+                 }
+           )
+      }
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     onSubmit() {
+        debugger;
 this.company.changePassword(this.resetPasswordForm.getRawValue()).subscribe(
     (res)=>{
         debugger;
            if(res.statusCode==200){
              this.Alert("Success", res.message, "success")
-          
+             this.authenticationService.logout();
+             this.router.navigate(['/' + 'login']);         
            }
            else{
              this.Alert("Error", res.message, "error")

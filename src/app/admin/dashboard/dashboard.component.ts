@@ -92,6 +92,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     {} as DashboardGasBudgetAndReserveBody;
   modalService: ModalService;
   companyService: CompanyService;
+  reportService: ReportService;
   auth: AuthenticationService;
 
   cdr: ChangeDetectorRef;
@@ -131,6 +132,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   constructor(
     private gen: GenericService,
     private company: CompanyService,
+    private report: ReportService,
     private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
     private genReport: ReportService
@@ -139,62 +141,90 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.cdr = cd;
     this.auth = authenticationService;
     this.companyService = company;
+    this.reportService = report;
   }
 
   ngOnInit(): void {}
   ngAfterViewInit() {
     this.getCompanyDashboardReport();
     this.getDashboardGasBudgetAndReserveDetails();
-    this.getCompanyProduction();
-    this.getCompanyConcessionProd();
-    this.getCompanyConcessionReserveOil();
-    this.getCompanyConcessionReserveGas();
+    // this.getCompanyProduction();
+    // this.getCompanyConcessionProd();
+    // this.getCompanyConcessionReserveOil();
+    // this.getCompanyConcessionReserveGas();
+    // debugger;
+    this.fetchreportI();
     this.cd.markForCheck();
   }
 
-  // fetchreportI() {
+  fetchreportI() {
+    debugger;
+    let value = this.previousYear - 1;
+    // this.modalService.logCover("Loading data...", true);
+    // this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
+    //     this.firstChartData = res;
+    //   this.plotDoubleBarChartHorizontal(['month', 'prodMonth'], this.myChartBox1, this.firstChartData);
+    //     this.cd.markForCheck();
+    //   }
+    // )
+    this.reportService
+      .getAdminChartData('GET_ADMIN_CHARTDATA', value)
+      .subscribe((res) => {
+        debugger;
+        this.firstChartData = res.prodByMonth;
+        this.secondChartData = res.reserveByContract.filter(
+          (x) => x.contractType != null
+        );
+        this.thirdChartData = res.prodByTerrain.filter(
+          (x) => x.terrain != null
+        );
+        this.fourthChartData = res.reserveByContract;
+
+        //this.plotDoubleBarChart();
+        //this.plotDoublePieChart();
+        this.plotDoublePieChart(
+          ['contractType', 'prod'],
+          this.myChartBox2,
+          this.secondChartData
+        );
+        this.plotDoubleBarChartHorizontal(
+          ['month', 'prodMonth'],
+          this.myChartBox1,
+          this.firstChartData
+        );
+        //this.plotDoubleBarChartHorizontal(['terrain', 'reserve'], this.myChartBox3, this.thirdChartData);
+        this.plotDoublePieChart(
+          ['terrain', 'prodMonth'],
+          this.myChartBox3,
+          this.thirdChartData
+        );
+
+        // this.plotDoubleBarChartHorizontal();
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      });
+  }
+
+  // fetchreport() {
   //   let value = 2021;
   //   this.modalService.logCover("Loading data...", true);
-  //   this.report.fetch("general_report", value).subscribe(
-  //     (res) => {
-  //       debugger;
-  //       this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
-  //       this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
-  //       this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-  //       debugger;
-  //       //this.plotDoubleBarChart();
-  //       this.plotDoublePieChart();
-  //       this.plotDoubleBarChartHorizontal();
-  //       this.modalService.togCover();
-  //       this.cd.markForCheck();
-  //     }
-
-  //   )
+  //   this.firstChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
+  //   this.secondChartData = this.dashboardBody.companyReportModels as CompanyReportModel[];
+  //   //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
+  //   // this.plotDoubleBarChart();
+  //   // this.plotDoublePieChart();
+  //   // this.plotDoubleBarChartHorizontal();
+  //   this.modalService.togCover();
+  //   this.cd.markForCheck();
 
   // }
-
-  fetchreport() {
-    let value = 2021;
-    this.modalService.logCover('Loading data...', true);
-    this.firstChartData = this.dashboardBody
-      .companyReportModels as CompanyReportModel[];
-    this.secondChartData = this.dashboardBody
-      .companyReportModels as CompanyReportModel[];
-    //this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-    // this.plotDoubleBarChart();
-    // this.plotDoublePieChart();
-    // this.plotDoubleBarChartHorizontal();
-    this.modalService.togCover();
-    this.cd.markForCheck();
-  }
   getDashboardStuff() {
-    debugger;
     this.adminservice.getDashboardStuff().subscribe((res) => {
       this.dashboardStuff = res;
     });
   }
   // firstChart() {
-  //   debugger;
+  //
   //   if (this.isBrowser) {
   //     am5.array.each(am5.registry.rootElements, function(root) {
   //       if (root.dom.id == "firstchart") {
@@ -355,7 +385,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   // }
 
   getCompanyDashboardReport() {
-    let value = this.previousYear.toString();
+    let value = (this.previousYear - 1).toString();
     this.companyService.getdashboardreport(value).subscribe((res) => {
       this.dashboardBody = res as CompanyDashboardBody;
       //let resse = res;
@@ -424,7 +454,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getDashboardGasBudgetAndReserveDetails() {
-    let value = this.previousYear.toString();
+    let value = (this.previousYear - 1).toString();
     this.companyService
       .getdashboardgasbudgetandreserve(value)
       .subscribe((res) => {
@@ -443,7 +473,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     chartBox: ElementRef<HTMLDivElement>,
     numData
   ) {
-    debugger;
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
     const node = document.createElement('div');
     node.style.width = '100%';
@@ -464,7 +493,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     chartBox: ElementRef<HTMLDivElement>,
     numData
   ) {
-    debugger;
     let totalString = '';
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
     const node = document.createElement('div');
@@ -505,7 +533,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   // plotDoubleBarChart() {
-  //   debugger;
+  //
   //   let totalString = "";
   //   let selectedColumn = ['terrain', 'percentage_Production'];
   //     // this.myChartBox1.nativeElement.removeChild(this.myChartBox1.nativeElement.firstChild);
@@ -586,7 +614,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     valuefield: string,
     data: any[]
   ) {
-    //debugger;
+    //
     var root = am5.Root.new(chartdiv);
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -900,7 +928,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     alert('Can not plot this chart');
   //   }
   //   else {
-  //     debugger;
+  //
   //     this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
   //     const node = document.createElement("div");
   //     node.style.width = '100%';

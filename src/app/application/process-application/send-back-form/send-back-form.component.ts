@@ -25,7 +25,7 @@ export class SendBackFormComponent implements OnInit {
   public apps: Application[] = [];
   public appDetails: ApplicationDetails;
   public selectedApps = [];
-  public appsDropdownSettings: IDropdownSettings = {};
+  //public appsDropdownSettings: IDropdownSettings = {};
 
   constructor(
     public dialogRef: MatDialogRef<SendBackFormComponent>,

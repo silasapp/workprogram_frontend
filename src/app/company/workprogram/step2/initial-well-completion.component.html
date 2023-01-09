@@ -60,11 +60,7 @@
           ">
           <input (keypress)="genk.restrictData($event)" formControlName="current_year_Actual_Number"
             [(ngModel)]="initialBody.current_year_Actual_Number" class="inpute" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-              initialBody.current_year_Actual_Number = genk.formatNum_Efficient(
-                $event.target.value
-              )
-            " [value]="initialBody.current_year_Actual_Number" />
+            (keyup)="genk.formatCurrency($event)" [(ngModel)]="initialBody.current_year_Actual_Number" />
         </div>
       </div>
     </div>
@@ -80,11 +76,7 @@
           ">
           <input (keypress)="genk.restrictData($event)" formControlName="proposed_year_data"
             [(ngModel)]="initialBody.proposed_year_data" class="inpute" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" (change)="
-              initialBody.proposed_year_data = genk.formatNum_Efficient(
-                $event.target.value
-              )
-            " [value]="initialBody.proposed_year_data" />
+            (keyup)="genk.formatCurrency($event)" [(ngModel)]="initialBody.proposed_year_data" />
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
         >
           <option selected value="GAS WELL">GAS WELL</option>
           <option value="OIL WELL">OIL WELL</option>
-          <option value="CONDENSATE WELL">CONDENSATE WELL</option>
+
         </select>
       </div>
     </div>
@@ -388,7 +388,6 @@
                   formControlName="production"
                   placeholder="100,000"
                   class="inpute"
-                  (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
                   (change)="
                     monthlyactivityBody.production = genk.checkMMBBLMin(
@@ -421,11 +420,7 @@
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    monthlyactivityBody.avg_Daily_Production =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="monthlyactivityBody.avg_Daily_Production"
+                  [(ngModel)]="monthlyactivityBody.avg_Daily_Production"
                 />
               </div>
             </div>
@@ -720,9 +715,7 @@
                     placeholder="1,000,000"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
-                    (change)="
-                      proposedmonthlyBody.gas_NAG = genk.checkBSCFMin($event)
-                    "
+                    (change)="proposedmonthlyBody.gas_NAG = genk.checkBSCFMin($event, gasBox)"
                     [value]="proposedmonthlyBody.gas_NAG"
                   />
                   <span class="barspan">SCF</span>
