@@ -2801,8 +2801,8 @@ export class WorkProgramService {
         })
       );
   }
+
   getApplication(id) {
-    debugger;
     return this.http
       .get<any>(`${environment.apiUrl}/application/viewapplication`, {
         params: { appID: id },
@@ -2814,6 +2814,7 @@ export class WorkProgramService {
         })
       );
   }
+
   getProcessApplication(id) {
     return this.http
       .get<any>(`${environment.apiUrl}/application/processapplication`, {
@@ -2826,6 +2827,7 @@ export class WorkProgramService {
         })
       );
   }
+
   getAppsOnMyDesk() {
     return this.http
       .get<any>(`${environment.apiUrl}/application/getappsonmydesk`)

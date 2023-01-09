@@ -22,6 +22,7 @@ import { PushApplicationFormComponent } from './process-application/push-applica
 import { SendBackFormComponent } from './process-application/send-back-form/send-back-form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ApproveFormComponent } from './process-application/approve-form/approve-form.component';
+import { ViewApplicationDataComponent } from './process-application/view-application-data/view-application-data.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { ApproveFormComponent } from './process-application/approve-form/approve
     PushApplicationFormComponent,
     SendBackFormComponent,
     ApproveFormComponent,
+    ViewApplicationDataComponent,
   ],
 })
 export class ApplicationModule {}

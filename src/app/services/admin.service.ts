@@ -385,4 +385,11 @@ export class AdminService {
       })
     );
   }
+
+  getSBUReport(appID) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/application/getsbu_report`,
+      { params: { appID } }
+    );
+  }
 }

@@ -8,8 +8,8 @@ import { ModalService } from './modal.service';
 
 @Injectable({ providedIn: 'root' })
 export class GenericService {
-  sessionStaffID : number;
-  sessionStaffEmail : string;
+  sessionStaffID: number;
+  sessionStaffEmail: string;
   fileData: File = null;
   selectedPage = 1;
   sizeten = 10;
@@ -535,7 +535,7 @@ export class GenericService {
     } else {
       gasMin.textContent = '';
     }
-    
+
     return e.value;
   }
 
@@ -549,7 +549,7 @@ export class GenericService {
     } else {
       oilMin.textContent = '';
     }
-    
+
     return e.value;
   }
 
@@ -664,12 +664,12 @@ export class GenericService {
   }
 
   filter(data) {
-    const resultArray = Object.keys(data).map(index => {
+    const resultArray = Object.keys(data).map((index) => {
       let person = data[index];
       return person;
     });
 
-    resultArray.forEach(element => {
+    resultArray.forEach((element) => {
       delete element['approvalref'];
       delete element['categoryid'];
       delete element['companyid'];
@@ -699,6 +699,4 @@ export class GenericService {
     });
     return resultArray;
   }
-
-
 }

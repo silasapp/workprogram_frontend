@@ -21,13 +21,21 @@
             style="resize: both"
           >
             <tbody>
-              <!-- <tr>
-                                        <td>View Submissions</td>
-                                        <td class="text-left text-danger">
-                                            <a href="/Applications/ViewDta/"{{genk.appID}} target="_blank"> <b>Click to Data Submissions</b> </a>
-                                            <a href="" target="_blank"> <b>Click to Data Submissions</b> </a>
-                                        </td>
-                                    </tr> -->
+              <tr>
+                <td>View Submissions</td>
+                <td class="text-left text-danger">
+                  <a
+                    [routerLink]="[
+                      '/' + genk.application,
+                      'view-application-data',
+                      '1'
+                    ]"
+                    target="_blank"
+                  >
+                    <b>Click to Data Submissions</b>
+                  </a>
+                </td>
+              </tr>
               <tr>
                 <td>Reference</td>
                 <td class="text-left text-dark">
