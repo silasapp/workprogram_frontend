@@ -377,7 +377,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let value = (this.previousYear).toString();
     this.companyService.getCompanyConcessionReserveGas(value).subscribe((res) => {
         this.fourthChartData = res;
-
         this.plotDoubleBarChartHorizontal(['omlname', 'reserve'], this.myChartBox4, this.fourthChartData);
         this.cd.markForCheck();
       }
