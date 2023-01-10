@@ -36,6 +36,21 @@ export class ReportService {
   seismicActivities2yrsIsChart = false;
   seismicActivities2yrsSelectedColumns = [];
 
+  seismicProcessingTable: any;
+  seismicProcessingChart: any;
+  seismicProcessingIsChart = false;
+  seismicProcessingSelectedColumns = [];
+
+  seismicProcessingPreviousTable: any;
+  seismicProcessingPreviousChart: any;
+  seismicProcessingPreviousIsChart = false;
+  seismicProcessingPreviousSelectedColumns = [];
+
+  explorationWellsTable: any;
+  explorationWellsChart: any;
+  explorationWellsIsChart = false;
+  explorationWellsSelectedColumns = [];
+
 
   constructor( private http: HttpClient, private gen: GenericService) { }
 

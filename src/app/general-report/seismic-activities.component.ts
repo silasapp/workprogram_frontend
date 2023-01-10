@@ -143,15 +143,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       )
     }
 
-  //   yearList() {
-  //     this.report.getYearList("concessionsituationyearlist")
-  //         .subscribe((res: any[]) => {
-  //             this.listyear = res;
-  //             this.cd.markForCheck();
-  //         });
-  // }
-
-
     goNext() {
         this.selectedPage++;
         this.assignDataRows();
@@ -190,7 +181,6 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
 
 
   getSeismic() {
-    debugger;
     if (this.genk.reportYear !== undefined || this.genk.reportYear != null) {
       this.modalService.logCover("Loading data...", true);
     this.workprogram.getSeismicActivities(this.genk.reportYear)
@@ -257,15 +247,14 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  plotDoublePieChart() {
-    debugger;
+  async plotDoublePieChart() {
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     }
     else {
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
-      node.style.width = '100%';
+      node.style.width = '70%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
       let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
@@ -276,13 +265,13 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.seismicActivitiesChart = await this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
       }
       this.isChart = true;
     }
   }
 
-  plotDoubleBarChart() {
+  async plotDoubleBarChart() {
     let totalString = "";
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
@@ -305,10 +294,10 @@ export class SeismicActivitiesApprovedComponent implements OnInit {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.seismicActivitiesChart = await this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
         else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.seismicActivitiesChart = await this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
       }
       this.isChart = true;

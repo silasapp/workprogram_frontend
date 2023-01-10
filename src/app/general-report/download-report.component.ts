@@ -57,11 +57,15 @@ export class DownloadReportComponent implements OnInit {
       debugger;
       this.modalService.logReportDownload();
       let seismicData = this.repor.truncateArray(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
-      let seismicTable = this.repor.truncateArray2(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
-      let seismicHeader = this.repor.truncateHeader(this.repor.seismicApprovedTable.header);
+      //let seismicTable = this.repor.truncateArray2(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
+      //let seismicHeader = this.repor.truncateHeader(this.repor.seismicApprovedTable.header);
       let seismicActivitiesData = this.repor.truncateArray(this.repor.seismicActivitiesTable.data, this.repor.seismicActivitiesTable.header);
       let rell = this.repor.seismicActivities2yrsTable.data;
       let seismicActivities2yrsData = this.repor.truncateArray(this.repor.seismicActivities2yrsTable.data, this.repor.seismicActivities2yrsTable.header);
+      let seismicProcessingData = this.repor.truncateArray(this.repor.seismicProcessingTable.data, this.repor.seismicProcessingTable.header);
+      let seismicProcessingPreviousData = this.repor.truncateArray(this.repor.seismicProcessingPreviousTable.data, this.repor.seismicProcessingPreviousTable.header);
+      let explorationWellsData = this.repor.truncateArray(this.repor.explorationWellsTable.data, this.repor.explorationWellsTable.header);
+      let explorationWellsHeader = this.repor.truncateHeader(this.repor.explorationWellsTable.header);
 
       // let DATA: any = document.getElementById('htmlData');
       // html2canvas(DATA).then((canvas) => {
@@ -181,7 +185,11 @@ export class DownloadReportComponent implements OnInit {
         let cap = this.repor.seismicActivitiesSelectedColumns[1].header + " BY " + this.repor.seismicActivitiesSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
         //debugger;
-        PDF.addImage(this.report.exporting, 'PNG', 5, position, 200, 130);
+        PDF.addImage(this.report.seismicActivitiesChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`SEISMIC DATA ACTIVITIES ${this.genk.reportYear}`, 8, 160);
       }
 
 
@@ -190,7 +198,7 @@ export class DownloadReportComponent implements OnInit {
       PDF.setFontSize(14);
       PDF.setTextColor("black");
       PDF.setFont("Trebuchet MS", "normal", "900");
-      PDF.text(`1.2 Seismic Data Approved and 2 Years ago for ${this.genk.reportYear}`, 5, 5);
+      PDF.text(`1.2 Seismic Data Approved and 2 Years ago for ${(Number(this.genk.reportYear) - 2).toString()}`, 5, 5);
 
       if (this.repor.seismicActivities2yrsTable.data.length > 0) {
         let seismicActivities2yrsFilt = seismicActivities2yrsData.map(function(obj) {
@@ -212,6 +220,7 @@ export class DownloadReportComponent implements OnInit {
         },
         margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
       }
+
       PDF.setFontSize(12);
       PDF.setFont("Trebuchet MS", "normal", "900");
       PDF.setTextColor("brown");
@@ -227,7 +236,168 @@ export class DownloadReportComponent implements OnInit {
         let cap = this.repor.seismicActivities2yrsSelectedColumns[1].header + " BY " + this.repor.seismicActivities2yrsSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
         //debugger;
-        PDF.addImage(this.report.exporting, 'PNG', 5, position, 200, 130);
+        PDF.addImage(this.report.seismicActivities2yrsChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`SEISMIC DATA APPROVED AND ACQUIRED TWO YEAR AGO ${(Number(this.genk.reportYear) - 2).toString()}`, 8, 160);
+      }
+
+
+      /////// SEISMIC CURRENT PROCESSING
+      PDF.addPage('a4', 'p');
+      PDF.setFontSize(14);
+      PDF.setTextColor("black");
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.text(`Table 5 Showing Processing and Reprocessing Activities by Companies. ${this.genk.reportYear}`, 5, 5);
+
+      if (this.repor.seismicProcessingTable.data.length > 0) {
+        let seismicProcessingFilt = seismicProcessingData.map(function(obj) {
+          return {
+            companyName: obj.companyName,
+            omL_Name: obj.omL_Name,
+            quantum_Approved: obj.quantum_Approved,
+            quantum: obj.geo_Quantum_of_Data
+          }
+        });
+
+        let seismicProcessingFiltHeader = ["COMPANY NAME", "NO. OF BLOCKS", "TOTAL QUANTUM APPROVED (SQ.KM)", "TOTAL QUANTUM PROCESSED (SQ.KM)"];
+
+        let compressedProcessingData = this.repor.compressReportDataArray(seismicProcessingFilt, 'companyName');
+        autoTable(PDF, {head: [seismicProcessingFiltHeader], body: compressedProcessingData, styles: {
+          fillColor: [220, 220, 220],
+          lineColor: [200, 200, 200],
+          lineWidth: 0.5,
+        },
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
+
+      PDF.setFontSize(12);
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.setTextColor("brown");
+      PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingData, "quantum_Approved").toFixed(2)}`, 100, 285);
+      PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
+      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
+
+      if (this.repor.seismicProcessingIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.seismicProcessingSelectedColumns[1].header + " BY " + this.repor.seismicProcessingSelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.seismicProcessingChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`SEISMIC PROCESSING AND REPROCESSING ACTIVITIES ${this.genk.reportYear}`, 8, 160);
+      }
+
+
+      /////// SEISMIC PROCESSING PREVIOUS
+      PDF.addPage('a4', 'p');
+      PDF.setFontSize(14);
+      PDF.setTextColor("black");
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.text(`Table 5 Showing Processing and Reprocessing Activities by Companies. ${(Number(this.genk.reportYear) - 1).toString()}`, 5, 5);
+
+      if (this.repor.seismicProcessingPreviousTable.data.length > 0) {
+        let seismicProcessingPreviousFilt = seismicProcessingPreviousData.map(function(obj) {
+          return {
+            companyName: obj.companyName,
+            omL_Name: obj.omL_Name,
+            quantum_Approved: obj.quantum_Approved,
+            quantum: obj.geo_Quantum_of_Data
+          }
+        });
+
+        let seismicProcessingPreviousFiltHeader = ["COMPANY NAME", "NO. OF BLOCKS", "TOTAL QUANTUM APPROVED (SQ.KM)", "TOTAL QUANTUM PROCESSED (SQ.KM)"];
+
+        let compressedProcessingPreviousData = this.repor.compressReportDataArray(seismicProcessingPreviousFilt, 'companyName');
+        autoTable(PDF, {head: [seismicProcessingPreviousFiltHeader], body: compressedProcessingPreviousData, styles: {
+          fillColor: [220, 220, 220],
+          lineColor: [200, 200, 200],
+          lineWidth: 0.5,
+        },
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
+
+      PDF.setFontSize(12);
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.setTextColor("brown");
+      PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingPreviousData, "quantum_Approved").toFixed(2)}`, 100, 285);
+      PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingPreviousData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
+      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
+
+      if (this.repor.seismicProcessingPreviousIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.seismicProcessingPreviousSelectedColumns[1].header + " BY " + this.repor.seismicProcessingPreviousSelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.seismicProcessingPreviousChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`SEISMIC PROCESSING AND REPROCESSING ACTIVITIES ${(Number(this.genk.reportYear) - 1).toString()}`, 8, 160);
+      }
+
+
+      /////// EXPLORATION WELLS
+      PDF.addPage('a4', 'p');
+      PDF.setFontSize(14);
+      PDF.setTextColor("black");
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.text(`2.0 EXPLORATION WELLS. ${(Number(this.genk.reportYear) - 1).toString()}`, 5, 5);
+
+      if (this.repor.explorationWellsTable.data.length > 0) {
+        let explorationWellsFilt = explorationWellsData.map(function(obj) {
+          return {
+            companyName: obj.companyName,
+            omL_Name: obj.omL_Name,
+            terrain: obj.terrain,
+            contract_Type: obj.contract_Type,
+            category: obj.category,
+            spud_date: obj.spud_date,
+            number_of_Days_to_Total_Depth: obj.number_of_Days_to_Total_Depth,
+            well_cost: obj.well_cost
+          }
+        });
+
+        let explorationWellsFiltHeader = ["COMPANY NAME", "BLOCK", "TERRAIN", "CONTRACT TYPE", "WELL CLASSIFICATION", "SPUD DATE", "NO. OF DAYS TO TD", "WELL COST (USD)"];
+
+        let compressedexplorationWellsData = this.repor.compressReportDataArray(explorationWellsFilt, 'companyName');
+        autoTable(PDF, {head: [explorationWellsFiltHeader], body: compressedexplorationWellsData, styles: {
+          fillColor: [220, 220, 220],
+          lineColor: [200, 200, 200],
+          lineWidth: 0.5,
+        },
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
+
+      PDF.setFontSize(12);
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.setTextColor("brown");
+      PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(explorationWellsData, "quantum_Approved").toFixed(2)}`, 100, 285);
+      PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(explorationWellsData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
+      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
+
+      if (this.repor.explorationWellsIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.explorationWellsSelectedColumns[1].header + " BY " + this.repor.explorationWellsSelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.explorationWellsChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`EXPLORATION WELLS ${(Number(this.genk.reportYear)).toString()}`, 8, 160);
       }
 
       PDF.save('angular-demo.pdf');
