@@ -29,6 +29,7 @@ export class GenericService {
   performance = 'performance_evaluation';
   workprogram = 'workprogram';
   generalReport = 'generalreport';
+  empty=' ';
 
   reportYear: string;
   submitted = false;
@@ -44,6 +45,7 @@ export class GenericService {
   fieldName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
+  val:number;
   OMLList = [];
   Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -621,6 +623,33 @@ export class GenericService {
     e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
+
+
+  restrictNoOfFoldValue(input) {
+    this.val = parseInt(input);
+    
+    debugger;
+    if (this.val < 1 || this.val > 100) {
+      alert("Please make sure entry is between 1-100.");
+      return "0";
+    }
+    input = this.val.toString();
+    return input;
+  }
+
+
+  restrictRecordLengthValue(input) {
+
+    this.val = parseInt(input);
+
+    if (this.val < 1 || this.val > 59) {
+      alert("Please make sure entry is between 1-59.");
+      return "0"
+    }
+    input = this.val.toString();
+    return input;
+  }
+
 
   restrictData(e) {
     //alert(e.key);
