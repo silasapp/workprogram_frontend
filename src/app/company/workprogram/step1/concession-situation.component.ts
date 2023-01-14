@@ -1,3 +1,4 @@
+import { NONE_TYPE } from '@angular/compiler';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -33,6 +34,9 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
+  fieldValue:string;
+  field:string;
+  boolValue ="true";
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -203,6 +207,8 @@ export class SWPConcessionSituationComponent implements OnInit {
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
+        conInfo.companyName=conInfo.companyName.toLowerCase();
+        conInfo.companyName=conInfo.companyName.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
@@ -241,9 +247,23 @@ export class SWPConcessionSituationComponent implements OnInit {
             this.loadTable();
         }, 2000);
         }
+        debugger;
+        if(this.genk.fieldName){
+          this.field="Field";
+        }
+
+        this.fieldValue=this.genk.OmlName.trim().slice(0,3).toUpperCase();
+
+        if(this.fieldValue==="OEL" || this.fieldValue==="PPL" || this.fieldValue==="OPL" || this.fieldValue==="PEL"){
+          this.boolValue="block";
+        }
+
+        debugger;
           this.getRoyaltyHeld();
       });
   }
+
+ // this.genk.OmlName.
 
   getRoyaltyHeld() {
     debugger;

@@ -249,10 +249,7 @@
           <button
             (click)="pushApplication()"
             class="btn btn-success btn-block"
-            *ngIf="
-              (applicationDetails$ | async)?.staff[0].staff_Role !== 'Executive'
-            "
-          >
+            *ngIf="(applicationDetails$ | async)?.staff[0].staff_Role !== 'Executive'">
             Push Application
           </button>
           <p></p>
@@ -262,8 +259,7 @@
             data-backdrop="static"
             data-keyboard="false"
             data-target="#AppModal"
-            (click)="sendBackApplication()"
-          >
+            (click)="sendBackApplication()">
             Send Back
           </button>
           <p></p>
@@ -275,10 +271,7 @@
             data-keyboard="false"
             data-target="#AppModal"
             (click)="approveApplication()"
-            *ngIf="
-              (applicationDetails$ | async)?.staff[0].staff_Role === 'Executive'
-            "
-          >
+            *ngIf="(applicationDetails$ | async)?.staff[0].staff_Role === 'Executive'">
             Approve
           </button>
           <p></p>

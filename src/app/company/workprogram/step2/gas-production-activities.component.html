@@ -50,7 +50,7 @@
               style="border-radius: 5px"
               placeholder="1,000,000"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="
                 gasproductionBody.current_Actual_Year = genk.checkBSCFMin(
                   $event,
@@ -99,13 +99,8 @@
               formControlName="flared"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.flared = genk.formatNum_Efficient(
-                  $event.target.value
-                )
-              "
-              [value]="gasproductionBody.flared"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.flared"
             />
           </div>
         </div>
@@ -130,12 +125,8 @@
               formControlName="proposed_production"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.proposed_production =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.proposed_production"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.proposed_production"
             />
           </div>
         </div>
@@ -161,7 +152,7 @@
               placeholder="1,000,000"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="
                 gasproductionBody.proposed_utilization = genk.checkBSCFMin(
                   $event,
@@ -191,13 +182,8 @@
               formControlName="proposed_flaring"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.proposed_flaring = genk.formatNum_Efficient(
-                  $event.target.value
-                )
-              "
-              [value]="gasproductionBody.proposed_flaring"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.proposed_flaring"
             />
           </div>
         </div>
@@ -222,12 +208,8 @@
               formControlName="no_of_gas_well_planned"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.no_of_gas_well_planned =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.no_of_gas_well_planned"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
             />
           </div>
         </div>
@@ -248,12 +230,8 @@
               formControlName="no_of_gas_well_drilled"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.no_of_gas_well_drilled =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.no_of_gas_well_drilled"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
             />
           </div>
         </div>
@@ -294,12 +272,8 @@
               formControlName="domestic_gas_obligation"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.domestic_gas_obligation =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.domestic_gas_obligation"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.domestic_gas_obligation"
             />
           </div>
         </div>
@@ -320,14 +294,8 @@
               formControlName="projects_planned_for_Domestic_supply_Gas_to_power_industries_etc"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="
-                gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
-              "
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc"
             />
           </div>
         </div>
@@ -405,12 +373,8 @@
               formControlName="number_of_gas_wells_completed"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.number_of_gas_wells_completed =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.number_of_gas_wells_completed"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
             />
           </div>
         </div>
@@ -434,12 +398,8 @@
             formControlName="number_of_gas_wells_tested"
             class="inpute"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
-            (change)="
-              gasproductionBody.number_of_gas_wells_tested =
-                genk.formatNum_Efficient($event.target.value)
-            "
-            [value]="gasproductionBody.number_of_gas_wells_tested"
+            (keyup)="genk.formatCurrency($event)"
+            [(ngModel)]="gasproductionBody.number_of_gas_wells_tested"
           />
         </div>
       </div>
@@ -497,12 +457,8 @@
               formControlName="domestic_Gas_Supply_DSO"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.domestic_Gas_Supply_DSO =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="gasproductionBody.domestic_Gas_Supply_DSO"
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.domestic_Gas_Supply_DSO"
             />
           </div>
         </div>
@@ -524,14 +480,8 @@
               formControlName="projects_planned_for_Domestic_supply_Gas_to_power_industries_etc"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
-              (change)="
-                gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc =
-                  genk.formatNum_Efficient($event.target.value)
-              "
-              [value]="
-                gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
-              "
+              (keyup)="genk.formatCurrency($event)"
+              [(ngModel)]="gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc"
             />
           </div>
         </div>

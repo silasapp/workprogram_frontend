@@ -37,7 +37,7 @@
               formControlName="proposed_number_of_wells_from_approved_FDP"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="
                 fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP
               "
@@ -60,7 +60,7 @@
               formControlName="no_of_wells_drilled_in_current_year"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="
                 fielddevelopmentBody._no_of_wells_drilled_in_current_year
               "
@@ -83,7 +83,7 @@
               formControlName="noof_Producing_Fields"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="fielddevelopmentBody._noof_Producing_Fields"
             />
           </div>
@@ -198,7 +198,7 @@
               style="border-radius:5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._oil = genk.checkMMBBLMin($event, oilSand)"
               [value]="fielddevelopmentexcessivereserveBody._oil"/>
               <span class="barspan">BBLS</span>
@@ -219,7 +219,7 @@
               style="border-radius: 5px;"
               class="inpute"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin($event, gasMin)"
               [value]="fielddevelopmentexcessivereserveBody._gas"/>
             <span class="barspan">SCF</span>
@@ -239,7 +239,7 @@
               style="border-radius: 5px;"
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
-              (keyup)="genk.formatNum_Efficient($event.target.value)"
+              (keyup)="genk.formatCurrency($event)"
               (change)="fielddevelopmentexcessivereserveBody._condensate = genk.checkMMBBLMin($event, oilMox)"
               [value]="fielddevelopmentexcessivereserveBody._condensate"/>
               <span class="barspan">BBLS</span>

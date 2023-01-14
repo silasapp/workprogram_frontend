@@ -8,7 +8,7 @@
   </div>
   <br>
   <div>
-    <span style="font-weight: 600; color: teal; font-size: 17px;">Categories of Wells Drilled</span><br>
+    <span style="font-weight: 600; color: teal; font-size: 17px;">Categories of Proposed Well</span><br>
     <small style="color: rgb(255, 157, 0); font-weight: 500;">Note*: &nbsp; Fill only for quarters for which you have
       data</small>
   </div><br>
@@ -53,7 +53,8 @@
               <div style="width: 30%;">
                 <label class="labelwp">Well Name</label>
                 <div style="display: flex;">
-                  <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
                     <input type="text" formControlName="wellName" [(ngModel)]="categoryBody.wellName" class="inpute">
                   </div>
                 </div>
@@ -61,7 +62,7 @@
 
               </div>
 
-              <div style="width: 30%">
+              <!-- <div style="width: 30%">
                 <label id="ContentPlaceHolder2_Label13" class="labelwp">Actual/Proposed</label>
                 <div style="display: flex; width: 100%;">
                   <div class="inputshadow">
@@ -72,14 +73,14 @@
                     </select>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label13" class="labelwp">Category</label>
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Well Class</label>
                 <div style="display: flex; width: 100%;">
                   <div class="inputshadow">
                     <select class="dropwp" formControlName="category" [(ngModel)]="categoryBody.category">
-                      <option selected disabled>-- Select Category --</option>
+                      <option selected disabled>-- Select Well Class --</option>
                       <option value="1st Appraisal">1st Appraisal</option>
                       <option value="2nd Appraisal">2nd Appraisal</option>
                       <option value="Development">Development</option>
@@ -151,7 +152,7 @@
 
             <div style="display: flex; width: 100%;  justify-content: space-between;">
               <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label13" class="labelwp">Cored</label>
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Planning Coring</label>
                 <div style="display: flex; width: 100%;">
                   <div class="inputshadow">
                     <select class="dropwp" formControlName="cored" [(ngModel)]="categoryBody.cored">
@@ -165,7 +166,7 @@
 
 
               <div style="width: 30%; margin-top: auto;">
-                <label class="labelwp">Cored Depth Interval (meters)</label>
+                <label class="labelwp">Coring Depth Interval (meters)</label>
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
@@ -178,10 +179,13 @@
               <div style="width: 30%;">
                 <label class="labelwp">Core Cost (USD)</label>
                 <div style="display: flex;">
-                  <div
+                  <div class="inpdivcurrency"
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <span class="currencywp">$</span>
                     <input formControlName="core_Cost_USD" (keypress)="genk.restrictData($event)"
-                      [(ngModel)]="categoryBody.core_Cost_USD" class="inpute">
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="categoryBody.core_Cost_USD = genk.addCurrencyDecimal($event)"
+                      [value]="categoryBody.core_Cost_USD" class="inpute">
                   </div>
                 </div>
               </div>
@@ -217,18 +221,19 @@
               </div>
 
               <div style="width: 30%;">
-                <label class="labelwp">Hydrocarbon Interval(s)</label>
+                <label class="labelwp">Target Reservoirs</label>
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="hydrocarbon_Counts" [(ngModel)]="categoryBody.hydrocarbon_Counts" class="inpute">
+                    <input type="text" formControlName="hydrocarbon_Counts"
+                      [(ngModel)]="categoryBody.hydrocarbon_Counts" class="inpute">
                   </div>
                 </div>
               </div>
             </div>
             <br>
 
-            <div style="display: flex; width: 100%;  justify-content: end;">
+            <!-- <div style="display: flex; width: 100%;  justify-content: end;">
               <div style="width: 30%; margin-right: 5%;">
                 <label class="labelwp">Upload File and Discovery</label>
                 <div style="display: flex;">
@@ -269,18 +274,21 @@
                   Error! This audio format is currently not supported. Try (.mp3/.m4a/.wav/.ogg).
                 </span>
               </div>
-            </div>
-            <br>
+            </div> 
+            <br>-->
 
 
             <div style="display: flex; width: 100%;  justify-content: space-between;">
               <div style="width: 30%; margin-top: auto;">
-                <label class="labelwp"> Total Actual Well Cost(USD) </label>
+                <label class="labelwp"> Estimated Well Cost(USD) </label>
                 <div style="display: flex;">
-                  <div
+                  <div  class="inpdivcurrency" 
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <span class="currencywp">$</span>
                     <input formControlName="well_cost" (keypress)="genk.restrictData($event)"
-                      [(ngModel)]="categoryBody.well_cost" class="inpute">
+                    (keyup)="genk.formatCurrency($event)"
+                      (change)="categoryBody.well_cost= genk.addCurrencyDecimal($event)"
+                      [value]="categoryBody.well_cost" class="inpute">
                   </div>
                 </div>
               </div>
@@ -307,6 +315,7 @@
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
                     <input type="text" formControlName="number_of_Days_to_Total_Depth"
+                    (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.number_of_Days_to_Total_Depth" class="inpute">
                   </div>
                 </div>
@@ -489,7 +498,8 @@
           </div><br>
 
 
-          <div [formGroup]="CostForm" (ngSubmit)="saveWellCost()" style="display: flex; width: 100%;  justify-content: space-between;">
+          <div [formGroup]="CostForm" (ngSubmit)="saveWellCost()"
+            style="display: flex; width: 100%;  justify-content: space-between;">
             <div style="width: 30%; margin-top: auto;">
               <label class="labelwp">Actual Well Name</label>
               <div style="display: flex;">
