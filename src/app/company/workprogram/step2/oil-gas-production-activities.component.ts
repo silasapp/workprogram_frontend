@@ -95,9 +95,13 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       forecast: new FormControl(this.productionoilBody.forecast, [
         Validators.required,
       ]),
+      annualForecastGasAg:new FormControl(this.productionoilBody.annualForecastGasAg, [Validators.required]),
+      annualForecastGasNag:new FormControl(this.productionoilBody.annualForecastGasNag, [Validators.required]),
+      annualForecastCondensate:new FormControl(this.productionoilBody.annualForecastCondensate, [Validators.required]),
       cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
         Validators.required,
       ]),
+      annualForecast:new FormControl(this.productionoilBody.annualForecast, [Validators.required]),
       total_Reconciled_National_Crude_Oil_Production: new FormControl(
         this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,
         [Validators.required]
@@ -149,6 +153,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       gas_NAG: new FormControl(this.proposedmonthlyBody.gas_NAG, [
         Validators.required,
       ]),
+      condensateProd:new FormControl(this.proposedmonthlyBody.condensateProd, [Validators.required])
     });
 
     this.fiveYearForecastForm = new FormGroup({

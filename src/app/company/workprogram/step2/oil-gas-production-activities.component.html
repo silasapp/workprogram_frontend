@@ -19,8 +19,8 @@
           [value]="genk.fieldWell"
           (change)="getFieldWell($event)"
         >
-          <option selected value="GAS WELL">GAS WELL</option>
-          <option value="OIL WELL">OIL WELL</option>
+          <!-- <option selected value="GAS WELL">GAS WELL</option> -->
+          <option value="OIL WELL">Oil and Gas  Production Activities </option>
 
         </select>
       </div>
@@ -80,7 +80,7 @@
               </div>
             </div>
 
-            <div style="width: 30%; margin: auto 0 0">
+            <!-- <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Volume of Deferment (Barrels)</label>
               <div style="display: flex">
                 <div class="minsec">
@@ -102,9 +102,10 @@
                 </div>
               </div>
               <small #oilMin></small>
-            </div>
+            </div> -->
 
-            <div style="width: 30%; margin: auto 0 0">
+
+            <!-- <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Forecast (Barrels)</label>
               <div style="display: flex">
                 <div class="minsec">
@@ -126,15 +127,72 @@
                 </div>
               </div>
               <small #oilMic></small>
-            </div>
+            </div> -->
+          
+
+
+             
+          
           </div>
           <br />
 
           <div>
-            <div
+           <div
               style="display: flex; width: 100%; justify-content: space-between"
-            >
-              <div style="width: 30%">
+            > 
+
+
+
+
+            <div style="width: 30%; margin: auto 0 0">
+              <label class="labelwp">Annual Forecast Oil (Barrels)</label>
+              <div style="display: flex">
+                <div class="minsec">
+                  <input
+                    formControlName="annualForecast"
+                    class="inpute"
+                    (keypress)="genk.restrictData($event)"
+                    placeholder="100,000"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      productionoilBody.annualForecast = genk.checkMMBBLMin(
+                        $event,
+                        oilMic
+                      )
+                    "
+                    [value]="productionoilBody.annualForecast"
+                  />
+                  <span class="barspan">BBLS</span>
+                </div>
+              </div>
+              <small #oilMic></small>
+            </div> 
+       
+            <div style="width: 30%; margin: auto 0 0">
+              <label class="labelwp">Annual Forecast Condensate (Barrels)</label>
+              <div style="display: flex">
+                <div class="minsec">
+                  <input
+                    formControlName="annualForecastCondensate"
+                    class="inpute"
+                    (keypress)="genk.restrictData($event)"
+                    placeholder="100,000"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      productionoilBody.annualForecastCondensate = genk.checkMMBBLMin(
+                        $event,
+                        oilMic
+                      )
+                    "
+                    [value]="productionoilBody.annualForecastCondensate"
+                  />
+                  <span class="barspan">BBLS</span>
+                </div>
+              </div>
+              <small #oilMic></small>
+            </div>
+
+              <!-- <div style="width: 30%">
                 <label id="ContentPlaceHolder2_Label8" class="labelwp"
                   >Cost Barrel (USD)</label
                 >
@@ -155,9 +213,9 @@
                     />
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <div style="width: 30%; margin: auto 0 0">
+              <!-- <div style="width: 30%; margin: auto 0 0">
                 <label id="ContentPlaceHolder2_Label8" class="labelwp"
                   >Total Reconciled Crude Oil Production</label
                 >
@@ -186,8 +244,8 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div style="width: 30%; margin: auto 0 0">
+              </div> -->
+              <!-- <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">
                   Gas production (AG) (Stantard Cubic Feet)</label
                 >
@@ -212,12 +270,12 @@
                   </div>
                 </div>
                 <small #gasmaxx></small>
-              </div>
+              </div> -->
             </div>
-            <br />
+            <br /> 
 
-            <div style="display: flex; width: 100%">
-              <div style="width: 30%">
+            <div  style="display: flex; width: 100%; justify-content: space-between">
+              <!-- <div style="width: 30%">
                 <label class="labelwp"
                   >Gas production (NAG)(Standard Cubic Feet)</label
                 >
@@ -241,7 +299,92 @@
                   </div>
                 </div>
                 <small #gasMac></small>
+              </div> -->
+            
+            
+            
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp"
+                  > Annual Forecast Gas (AG)(Standard Cubic Feet)</label
+                >
+                <div style="display: flex">
+                  <div class="minsec">
+                    <input
+                      type="text"
+                      formControlName="annualForecastGasAg"
+                      class="inpute"
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        productionoilBody.annualForecastGasAg = genk.checkBSCFMin(
+                          $event,
+                          gasmaxx
+                        )
+                      "
+                      [value]="productionoilBody.annualForecastGasAg"
+                    />
+                    <span class="barspan">SCF</span>
+                  </div>
+                </div>
+                <small #gasMac></small>
               </div>
+           
+              <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp"
+                  > Annual Forecast Gas (NAG)(Standard Cubic Feet)</label
+                >
+                <div style="display: flex">
+                  <div class="minsec">
+                    <input
+                      type="text"
+                      formControlName="annualForecastGasNag"
+                      class="inpute"
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        productionoilBody.annualForecastGasNag = genk.checkBSCFMin(
+                          $event,
+                          gasmaxx
+                        )
+                      "
+                      [value]="productionoilBody.annualForecastGasNag"
+                    />
+                    <span class="barspan">SCF</span>
+                  </div>
+                </div>
+                <small #gasMac></small>
+              </div>
+            
+            
+            
+            
+            
+            
+            
             </div>
 
             <br /><br /><br />
@@ -270,7 +413,7 @@
             color: teal;
           "
         >
-          <span>ACTUAL MONTHLY PRODUCTION</span>
+          <!-- <span>ACTUAL MONTHLY PRODUCTION</span>
         </div>
         <div style="display: flex; width: 100%; justify-content: space-between">
           <div style="width: 30%">
@@ -289,7 +432,6 @@
                 [value]="monthlyactivityBody.production_month"
                 (change)="changeActualMonth($event)"
               >
-                <!-- <option disabled>---- Select a Month ----</option> -->
                 <option
                   value="January"
                   [selected]="
@@ -490,8 +632,8 @@
           </button>
         </div>
       </div>
-      <br />
-      <hr size="10" />
+      <br /> -->
+      <!-- <hr size="10" /> -->
 
       <div>
         <div [formGroup]="ProposedMonthlyForm">
@@ -723,6 +865,32 @@
               </div>
               <small #gasBox></small>
             </div>
+
+
+            <div style="width: 30%">
+              <label class="labelwp">Condensate Production (Barrels)</label>
+              <div style="display: flex">
+                <div class="minsec">
+                  <input
+                    type="text"
+                    formControlName="condensateProd"
+                    class="inpute"
+                    placeholder="100,000"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                    proposedmonthlyBody.condensateProd =
+                        genk.checkMMBBLMin($event, oilTax)
+                    "
+                    [value]="proposedmonthlyBody.condensateProd"
+                  />
+                  <span class="barspan">BBLS</span>
+                </div>
+              </div>
+              <small #oilTax></small>
+            </div>
+
+
           </div>
           <br />
           <br /><br />
@@ -942,7 +1110,7 @@
       <br />
     </div>
 
-    <div
+    <!-- <div
       *ngIf="this.genk.fieldWell === 'GAS WELL'"
       style="
         background-color: white;
@@ -1261,7 +1429,7 @@
         </div>
       </div>
       <br />
-    </div>
+    </div> -->
   </div>
 </div>
 <br /><br />

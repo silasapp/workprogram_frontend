@@ -658,6 +658,14 @@ export class GenericService {
     else return false;
   }
 
+  restrictAlphaData(e) {
+    //alert(e.key);
+    var x = e.which || e.keycode;
+    if ((x >= 65 && x <= 90) || (x>=97 && x<=122)) return true;
+    else return false;
+  }
+
+
   setTwoNumberDecimal(event) {
     if (isFinite(event.key)) {
       let e = event.target as HTMLInputElement;

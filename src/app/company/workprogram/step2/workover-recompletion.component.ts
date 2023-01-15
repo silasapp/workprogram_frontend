@@ -1,3 +1,4 @@
+import { ValueAxis } from '@amcharts/amcharts5/xy';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { WORKOVERS_RECOMPLETION_JOB1 } from 'src/app/models/step2-initial';
@@ -50,6 +51,8 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
         do_you_have_approval_for_the_workover_recompletion: new FormControl(this.workoverBody.do_you_have_approval_for_the_workover_recompletion, [Validators.required]),
         remarks: new FormControl(this.workoverBody.remarks, [Validators.required]),
         daysForCompletion: new FormControl(this.workoverBody.daysForCompletion, [Validators.required]),
+        completionWellName: new FormControl(this.workoverBody.completionWellName, [Validators.required]),
+        proposed_workover_Date:new FormControl(this.workoverBody.proposed_workover_Date, [Validators.required])
 
       }, {});
       this.getWorkover();

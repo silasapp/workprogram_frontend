@@ -16,25 +16,25 @@
     <div>
       <div>
         <div class="quarterbox">
-          <div class="quarterspace" [ngClass]="quaterACClassOne" (click)="changeACQuater(1, btn, btn2, btn3)">
+          <div class="quarterspace" [ngClass]="quaterACClassOne" (click)="changeACQuater(1, btn)">
             <div style="margin-bottom: 20px;">
               <span><span style="font-size: 25px;">1</span> Quarter</span>
             </div>
 
           </div>
-          <div class="quarterspace" [ngClass]="quaterACClassTwo" (click)="changeACQuater(2, btn, btn2, btn3)">
+          <div class="quarterspace" [ngClass]="quaterACClassTwo" (click)="changeACQuater(2, btn)">
             <div style="margin-bottom: 20px;">
               <span><span style="font-size: 25px;">2</span> Quarter</span>
             </div>
 
           </div>
-          <div class="quarterspace" [ngClass]="quaterACClassThree" (click)="changeACQuater(3, btn, btn2, btn3)">
+          <div class="quarterspace" [ngClass]="quaterACClassThree" (click)="changeACQuater(3, btn)">
             <div style="margin-bottom: 20px;">
               <span><span style="font-size: 25px;">3</span> Quarter</span>
             </div>
 
           </div>
-          <div class="quarterspace" [ngClass]="quaterACClassFour" (click)="changeACQuater(4, btn, btn2, btn3)">
+          <div class="quarterspace" [ngClass]="quaterACClassFour" (click)="changeACQuater(4, btn)">
             <div style="margin-bottom: 20px;">
               <span> <span style="font-size: 25px;">4</span> Quarter</span>
             </div>
@@ -330,7 +330,7 @@
                   <div class="inputshadow">
                     <select class="dropwp" formControlName="terrain" [(ngModel)]="categoryBody.terrain">
                       <option selected disabled>-- Select an Terrain -- &nbsp; &nbsp;</option>
-                      <option value="Continrental Shelf">Continrental Shelf</option>
+                      <option value="Continrental Shelf">Offshore</option>
                       <option value="Deep Offshore">Deep Offshore</option>
                       <option value="Onshore">Onshore</option>
                     </select>
@@ -442,7 +442,7 @@
                 <div style="display: flex;">
                   <div
                     style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="basin" [(ngModel)]="categoryBody.basin" class="inpute">
+                    <input type="text" formControlName="basin" (keypress)="genk.restrictAlphaData($event)" [(ngModel)]="categoryBody.basin" class="inpute">
                   </div>
                 </div>
               </div>
@@ -472,7 +472,16 @@
             <br>
 
             <div class="toprow">
-
+              <div style="width: 30%;">
+                <label class="labelwp">Surface Cordinates for each Well in Degrees (x,y)</label>
+                <div style="display: flex;">
+                  <div
+                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
+                    <input type="text" formControlName="surface_cordinates_for_each_well_in_degrees"
+                      [(ngModel)]="costProposedBody.surface_cordinates_for_each_well_in_degrees" class="inpute">
+                  </div>
+                </div>
+              </div>
               <div style="width: 30%;">
                 <label class="labelwp">Comments</label>
                 <div style="display: flex;">
@@ -491,7 +500,7 @@
           </div>
 
 
-          <div>
+          <!-- <div>
             <span style="font-weight: 600; color: teal; font-size: 17px;">Actual Well Name and Cost Per Well</span><br>
             <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time.
               Enter N/A or Zero(0) for cost, if none drillied</small>
@@ -587,7 +596,7 @@
 
           <div style="text-align: right; margin-bottom: 5px;">
             <button #btn3 class="submitbtn" (click)="saveCostProposed()">Save Quarter 1</button>
-          </div>
+          </div> -->
           <div style="height: 50px;"></div>
         </div>
       </div>

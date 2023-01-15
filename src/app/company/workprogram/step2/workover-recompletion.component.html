@@ -49,7 +49,7 @@
 
     <div>
       <div class="toprow">
-        <div style="width: 30%">
+        <!-- <div style="width: 30%">
           <label class="labelwp">Actual No. of Completion </label>
           <div style="display: flex">
             <div style="
@@ -63,9 +63,9 @@
                 (keypress)="genk.restrictData($event)" [(ngModel)]="workoverBody.current_year_Actual_Number_data" />
             </div>
           </div>
-        </div>
+        </div> -->
         <div style="width: 30%">
-          <label class="labelwp">Proposed No. Wells(s) For Completion</label>
+          <label class="labelwp"> Proposed No. of Wells for Workover/Recompletion </label>
           <div style="display: flex">
             <div style="
                 box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -79,7 +79,7 @@
           </div>
         </div>
         <div style="width: 30%">
-          <label class="labelwp">Proposed No. Days Spent For Completion</label>
+          <label class="labelwp">Proposed No. of days pent for Workover/Recompletion </label>
           <div style="display: flex">
             <div style="
                 box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -92,6 +92,31 @@
             </div>
           </div>
         </div>
+
+
+        <div style="width: 30%">
+          <label class="labelwp">Proposed Workover/Recompletion Well Name </label>
+          <div style="display: flex">
+            <div style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              ">
+              <input formControlName="completionWellName"
+                [(ngModel)]="workoverBody.completionWellName" class="inpute" />
+            </div>
+          </div>
+        </div>
+
+
+
+
+        
+
+
+
+
       </div>
       <br />
 
@@ -147,7 +172,7 @@
           </div>
         </div>
         <div style="width: 30%; margin-top: auto">
-          <label class="labelwp"> Well Type </label>
+          <label class="labelwp"> Well Purpose  </label>
           <div style="display: flex; width: 100%">
             <div class="inputshadow">
               <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="workoverBody.oil_or_gas_wells"
@@ -161,8 +186,22 @@
         </div>
       </div>
       <br />
-      <div>
-        <div style="width: 30%">
+      <div class="toprow">
+        <div style="width: 30%; margin-top: auto">
+          <label class="labelwp">Proposed Date for Workover/Recompletion</label>
+          <div style="display: flex">
+            <div style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              ">
+              <input type="date" class="inpute" formControlName="proposed_workover_Date"
+              [(ngModel)]="workoverBody.proposed_workover_Date"  />
+            </div>
+          </div>
+        </div>
+        <div style="width: 30; margin-top: auto">
           <label class="labelwp">Remarks</label>
           <div style="display: flex">
             <div style="
