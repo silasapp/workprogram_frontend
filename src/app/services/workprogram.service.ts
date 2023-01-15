@@ -2611,7 +2611,7 @@
 //     omlName: string,
 //     fieldName: string
 //   ) {
-//     debugger;
+//
 //     return this.http
 //       .post<any>(
 //         `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
@@ -2689,6 +2689,13 @@ import {
   HSE_MANAGEMENT_POSITION,
   HSE_OCCUPATIONAL_HEALTH_MANAGEMENT,
   HSE_SAFETY_CULTURE_TRAINING,
+  HSE_OPERATIONS_SAFETY_CASE,
+  environmentManagmentPlan,
+  HSE_REMEDIATION_FUND,
+  HSE_EFFLUENT_COMPLIANCE_MONITORING,
+  HSE_POINT_SOURCE_REGISTRATION,
+  HSE_GHG_MANAGEMENT_PLAN,
+  HSE_HOST_COMMUNITIES_DEVELOPMENT,
 } from '../models/step5_hse.model';
 import {
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL,
@@ -2907,7 +2914,7 @@ export class WorkProgramService {
   //     );
   // }
   // getApplication(id) {
-  //   debugger;
+  //
   //   return this.http
   //     .get<any>(`${environment.apiUrl}/application/viewapplication`, {
   //       params: { appID: id },
@@ -2920,7 +2927,7 @@ export class WorkProgramService {
   //     );
   // }
   // getAppsOnMyDesk() {
-  //   debugger;
+  //
   //   return this.http
   //     .get<any>(`${environment.apiUrl}/application/getappsonmydesk`)
   //     .pipe(
@@ -3066,7 +3073,12 @@ export class WorkProgramService {
   getFormFiveSWPR(omlName, year, fieldName) {
     return this.http
       .get<any>(`${environment.apiUrl}/Application/Get_Planning_Requirement`, {
-        params: { omlName: omlName, fieldName: fieldName, year: year },
+        params: {
+          omlName: omlName,
+          fieldName: fieldName,
+          year: year,
+          actionToDo: 'GET',
+        },
       })
       .pipe(
         map((response) => {
@@ -3807,6 +3819,156 @@ export class WorkProgramService {
       );
   }
 
+  post_HSE_Remediation_Fund(
+    conbody: FormData | HSE_REMEDIATION_FUND,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_remediation_fund`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_Effluent_Monitoring(
+    conbody: FormData | HSE_EFFLUENT_COMPLIANCE_MONITORING,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_effluent_monitoring_compliance`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_PSP(
+    conbody: FormData | HSE_POINT_SOURCE_REGISTRATION,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_point_source_registration`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_GHG(
+    conbody: FormData | HSE_GHG_MANAGEMENT_PLAN,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_ghg_management_plan`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_Host_Communities(
+    conbody: FormData | HSE_HOST_COMMUNITIES_DEVELOPMENT,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_host_communities_development`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   post_HSE_Management(
     conbody: HSE_MANAGEMENT_POSITION,
     year: string,
@@ -4137,7 +4299,7 @@ export class WorkProgramService {
   }
 
   post_HSE_Accident_Incidence(
-    conbody: HSE_ACCIDENT_INCIDENCE_MODEL,
+    conbody: HSE_ACCIDENT_INCIDENCE_MODEL | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -4147,6 +4309,36 @@ export class WorkProgramService {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_accident_incidence`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            id,
+            actionToDo,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_Operations_Safety_Case(
+    conbody: HSE_OPERATIONS_SAFETY_CASE | FormData,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    id,
+    actionToDo
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_operations_safety_case`,
         conbody,
         {
           params: {
@@ -4206,6 +4398,36 @@ export class WorkProgramService {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_community_disturbances_and_oil_spill_cost_new`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            id,
+            actionToDo,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_EMP(
+    conbody: environmentManagmentPlan,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    id,
+    actionToDo
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_environmental_management_plan`,
         conbody,
         {
           params: {
@@ -4615,7 +4837,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL`,
@@ -4873,7 +5094,6 @@ export class WorkProgramService {
   }
 
   post_WorkProgram(year: string, omlName: string, fieldName) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/application/submitapplication`, null, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -4886,7 +5106,6 @@ export class WorkProgramService {
       );
   }
   post_WorkProgramINT(data: any, year: string, concessionID, fieldID) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/application/submitapplication`, data, {
         params: { year: year, concessionID: concessionID, fieldID: fieldID },
@@ -5431,7 +5650,6 @@ export class WorkProgramService {
   }
 
   saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -5439,7 +5657,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );

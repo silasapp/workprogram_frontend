@@ -75,7 +75,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   thirdChartData: any[];
   fourthChartData: any[];
   dashboardStuff: DashboardModel;
-  adminservice: AdminService;
   c_ColumnHeader = [];
   c_ColumnValue = [];
   f_ColumnHeader = [];
@@ -159,11 +158,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //   this.modalService.logCover("Loading data...", true);
   //   this.report.fetch("general_report", value).subscribe(
   //     (res) => {
-  //       debugger;
+  //
   //       this.firstChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_MONTH_YEAR;
   //       this.secondChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_CONTRACT_TYPE
   //       this.thirdChartData = res.data.oiL_CONDENSATE_PRODUCTION_BY_TERRAIN
-  //       debugger;
+  //
   //       //this.plotDoubleBarChart();
   //       this.plotDoublePieChart();
   //       this.plotDoubleBarChartHorizontal();
@@ -192,7 +191,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   getDashboardStuff() {
     console.log('in get dahs');
-    debugger;
+
     this.adminservice.getDashboardStuff().subscribe((res) => {
       console.log('dashbaord', res);
       this.dashboardStuff = res;
@@ -201,7 +200,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   // firstChart() {
-  //   debugger;
+  //
   //   if (this.isBrowser) {
   //     am5.array.each(am5.registry.rootElements, function(root) {
   //       if (root.dom.id == "firstchart") {
@@ -590,7 +589,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     valuefield: string,
     data: any[]
   ) {
-    //debugger;
+    //
     var root = am5.Root.new(chartdiv);
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -904,7 +903,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     alert('Can not plot this chart');
   //   }
   //   else {
-  //     debugger;
+  //
   //     this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
   //     const node = document.createElement("div");
   //     node.style.width = '100%';

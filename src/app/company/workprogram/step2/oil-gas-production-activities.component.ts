@@ -312,7 +312,8 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
         if (res.oilCondensateProductionMonthlyProposed) {
           this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
-          this.proposedmonthlyBody = res.oilCondensateProductionMonthlyProposed[0];
+          this.proposedmonthlyBody =
+            res.oilCondensateProductionMonthlyProposed[0];
         }
 
         if (res.oilCondensateFiveYears) {
@@ -374,7 +375,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   changeActualMonth(e) {
-    //debugger;
+    //
     let month = e.target.value;
     this.monthlyactivityBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity;
@@ -387,7 +388,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   changeProposedMonth(e) {
-    //debugger;
+    //
     let month = e.target.value;
     this.proposedmonthlyBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED;
@@ -401,7 +402,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   changeFiveYearProjection(e) {
-    //debugger;
+    //
     let year = e.target.value;
     this.fiveYearForecastBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION;
@@ -463,7 +464,6 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.genk.fieldWell = event.target.value;
     setTimeout(() => {
       this.ngOnInit();
-  }, 1000);
-
+    }, 1000);
   }
 }

@@ -207,7 +207,6 @@ export class GenericService {
     // Variable to store the final csv data
     let csv_data = [];
     let lastChildList = [];
-    debugger;
 
     let row1 = table.getElementsByTagName('tr')[0];
 
@@ -592,7 +591,7 @@ export class GenericService {
   }
 
   checkBSCFMin(event, gasMin: HTMLElement) {
-    //debugger;
+    //
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 10000) {
@@ -606,7 +605,6 @@ export class GenericService {
   }
 
   checkMMBBLMin(event, oilMin: HTMLElement) {
-    debugger;
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 1000) {

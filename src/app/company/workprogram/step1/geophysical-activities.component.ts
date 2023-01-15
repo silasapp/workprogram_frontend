@@ -397,7 +397,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
-      debugger;
       this.currentACQuater = 4;
       this.acquisitionBody = this.quaterACFourData;
       btn.textContent = 'Save Quarter 4';
@@ -436,7 +435,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   getGeophysical(quaterText: string) {
-    debugger;
     this.workprogram
       .getFormOneGeoPhysical(
         this.genk.OmlName,
@@ -523,7 +521,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
-    debugger;
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
     this.acquisitionBody.budeget_Allocation_NGN =

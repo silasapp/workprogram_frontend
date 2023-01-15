@@ -152,13 +152,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     // this.getCompanyConcessionProd();
     // this.getCompanyConcessionReserveOil();
     // this.getCompanyConcessionReserveGas();
-    // debugger;
+    //
     this.fetchreportI();
     this.cd.markForCheck();
   }
 
   fetchreportI() {
-    debugger;
     let value = this.previousYear - 1;
     // this.modalService.logCover("Loading data...", true);
     // this.companyService.getCompanyProd(value.toString()).subscribe((res) => {
@@ -170,7 +169,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.reportService
       .getAdminChartData('GET_ADMIN_CHARTDATA', value)
       .subscribe((res) => {
-        debugger;
         this.firstChartData = res.prodByMonth;
         this.secondChartData = res.reserveByContract.filter(
           (x) => x.contractType != null

@@ -183,7 +183,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   get f() {
     return this.RoyaltyForm.controls;
- }
+  }
 
   loadTable() {
     this.columnHeader = [];
@@ -239,24 +239,20 @@ export class SWPConcessionSituationComponent implements OnInit {
 
           setTimeout(() => {
             this.loadTable();
-        }, 2000);
+          }, 2000);
         }
-          this.getRoyaltyHeld();
+        this.getRoyaltyHeld();
       });
   }
 
   getRoyaltyHeld() {
-    debugger;
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         if (res.royalty.length > 0) {
-
           this.royaltyBody = res.royalty[0] as Royalty;
           console.log(this.royaltyBody.royalty_ID);
-        }
-        else {
+        } else {
           this.royaltyBody = {} as Royalty;
         }
         this.cd.markForCheck();
@@ -267,9 +263,9 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   submitroyalty() {
     this.submitted = true;
-    if(this.RoyaltyForm.invalid) {
-        this.cd.markForCheck();
-        return;
+    if (this.RoyaltyForm.invalid) {
+      this.cd.markForCheck();
+      return;
     }
     this.workprogram
       .saveRoyalty(

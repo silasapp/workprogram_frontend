@@ -108,7 +108,6 @@ export class AdminService {
   }
 
   emailDuration(e: any, action: string) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/admin/admin_email_days`,

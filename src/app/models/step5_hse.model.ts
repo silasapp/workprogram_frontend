@@ -13,7 +13,157 @@ export class HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW {
   contract_Type: string = '';
   terrain: string = '';
   consession_Type: string = '';
+
+  type_of_facility: string = '';
+  number_of_facilities: string = '';
 }
+
+export class HSE_OPERATIONS_SAFETY_CASE {
+  constructor() {}
+
+  id: number = 0;
+  number_of_facilities: string = '';
+  name_of_facility: string = '';
+  location_of_facility: string = '';
+  type_of_facility: string = '';
+  does_the_facility_have_a_valid_safety_case: string = '';
+  evidence_of_operations_safety_case_approval: string = '';
+  reason_if_no_evidence: string = '';
+}
+
+export class environmentManagmentPlan {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  areThereEMP: string = '';
+  facilityType: string = '';
+  facilityLocation: string = '';
+  remarkIfNoEMP: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
+export class HSE_REMEDIATION_FUND {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  areThereRemediationFund: string = '';
+  evidenceOfPaymentFilename: string = '';
+  evidenceOfPaymentPath: string = '';
+  reasonForNoRemediation: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
+export class HSE_EFFLUENT_COMPLIANCE_MONITORING {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  areThereEvidentOfSampling: string = '';
+  evidenceOfSamplingFilename: string = '';
+  evidenceOfSamplingPath: string = '';
+  reasonForNoEvidenceSampling: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
+export class HSE_POINT_SOURCE_REGISTRATION {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  areTherePointSourcePermit: string = '';
+  evidenceOfPSPFilename: string = '';
+  evidenceOfPSPPath: string = '';
+  reasonForNoPSP: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
+export class HSE_GHG_MANAGEMENT_PLAN {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  doYouHaveGHG: string = '';
+  GHGApprovalFilename: string = '';
+  GHGApprovalPath: string = '';
+  reasonForNoGHG: string = '';
+
+  doYouHaveLDRCertificate: string = '';
+  LDRCertificateFilename: string = '';
+  LDRCertificatePath: string = '';
+  reasonForNoLDR: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
+export class HSE_HOST_COMMUNITIES_DEVELOPMENT {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  doYouHaveEvidenceOfReg: string = '';
+  evidenceOfRegTrustFundFilename: string = '';
+  evidenceOfRegTrustFundPath: string = '';
+  reasonForNoEvidenceOfRegTF: string = '';
+
+  doYouHaveEvidenceOfPay: string = '';
+  evidenceOfPayTrustFundFilename: string = '';
+  evidenceOfPayTrustFundPath: string = '';
+  reasonForNoEvidenceOfPayTF: string = '';
+
+  uploadCommDevPlanApprovalFilename: string = '';
+  uploadCommDevPlanApprovalPath: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
 export class HSE_SAFETY_STUDIES_NEW {
   constructor() {}
 
@@ -58,11 +208,22 @@ export class HSE_SAFETY_CULTURE_TRAINING {
   safetyLast2YearsFilename: File;
   safetyCurrentYearFilePath: string = '';
   safetyLast2YearsFilePath: string = '';
+
+  are_there_training_plans_for_hse: string = 'NO';
+  evidence_of_training_plan_filename: string = '';
+  evidence_of_training_plan_path: string = '';
+  remark: string = '';
 }
 export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
   id: number = 0;
   OHMplanFilePath: File;
   OHMplanCommunicationFilePath: File;
+
+  do_you_have_an_ohm: string = '';
+  reason_for_no_ohm: string = '';
+
+  was_ohm_policy_communicated_to_staff: string = '';
+  reason_why_ohm_was_not_communicated_to_staff: string = '';
 }
 export class HSE_QUALITY_CONTROL {
   id: number = 0;
@@ -235,6 +396,9 @@ export class HSE_ACCIDENT_INCIDENCE_MODEL {
   consequence: string = '';
   lesson_Learnt: string = '';
   frequency: string = '';
+
+  upload_incident_statistics_filename: string = '';
+  remark: string = '';
 }
 
 export class HSE_ACCIDENT_INCIDENCE_REPORTING_NEW {

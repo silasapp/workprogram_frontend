@@ -73,19 +73,19 @@ export class ReportService {
       { params: { ...model } }
     );
   }
-  fetch(url, year) {
-    return this.http
-      .get<any>(`${environment.apiUrl}/report/${url}`, {
-        params: { year: year },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          //response.data = this.gen.lowerArray(response.data);
-          return response;
-        })
-      );
-  }
+  // fetch(url, year) {
+  //   return this.http
+  //     .get<any>(`${environment.apiUrl}/report/${url}`, {
+  //       params: { year: year },
+  //     })
+  //     .pipe(
+  //       retry(this.num),
+  //       map((response) => {
+  //         //response.data = this.gen.lowerArray(response.data);
+  //         return response;
+  //       })
+  //     );
+  // }
 
   deleteProcessFlow(id: any) {
     return this.http.post<any>(
@@ -435,7 +435,7 @@ export class ReportService {
         base: this.baselist[i],
         value: this.valuelist[i],
       });
-      //debugger;
+      //
       valist = [];
     }
     this.baselist = [];
@@ -453,7 +453,7 @@ export class ReportService {
     for (var list of data) {
       this.baselist.push(list[baseval]);
     }
-    debugger;
+
     this.baselist = Array.from(new Set(this.baselist));
     let obj = new Object();
 
@@ -481,15 +481,15 @@ export class ReportService {
           valist = [];
         }
       }
-      debugger;
+
       obj[baseval] = this.baselist[i];
       this.chartArray.push(obj);
 
-      //debugger;
+      //
       valist = [];
       obj = new Object();
     }
-    debugger;
+
     this.baselist = [];
     this.valuelist = [];
     let arr = this.chartArray;
@@ -537,7 +537,7 @@ export class ReportService {
       obj[0] = this.baselist[i];
       this.chartArray.push(obj);
 
-      //debugger;
+      //
       valist = [];
       obj = [];
     }
@@ -557,7 +557,7 @@ export class ReportService {
   }
 
   sumColumn(items: any[], columnName: string) {
-    //debugger;
+    //
     var total = 0;
     for (var item in items) {
       if (

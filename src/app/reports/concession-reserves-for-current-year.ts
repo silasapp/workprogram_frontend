@@ -242,11 +242,9 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
   }
 
   plotDoublePieChart() {
-    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     } else {
-      debugger;
       this.myChartBox.nativeElement.removeChild(
         this.myChartBox.nativeElement.firstChild
       );
@@ -268,7 +266,6 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
   }
 
   plotDoubleBarChart() {
-    debugger;
     let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');

@@ -16,6 +16,7 @@ import {
   RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection,
   RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE,
 } from 'src/app/models/step2-FIPR.model';
+import { PLANNING_MINIMUM_REQUIREMENT } from 'src/app/models/step5_sdcp.model';
 import {
   AuthenticationService,
   GenericService,
@@ -38,6 +39,11 @@ export class SWPReserveUpdateComponent implements OnInit {
   reserveReplacementRatioForm: FormGroup;
   reserveUpdateDepletionRateForm: FormGroup;
   reserveUpdateLifeIndexForm: FormGroup;
+
+  public planningMinimumRequirementForm: FormGroup;
+
+  public planningMinimumRequirementBody: PLANNING_MINIMUM_REQUIREMENT =
+    {} as PLANNING_MINIMUM_REQUIREMENT;
 
   reserveUpdateLifeIndexBody = new RESERVES_UPDATES_LIFE_INDEX();
   reserveUpdateDepletionRateBody = new RESERVES_UPDATES_DEPLETION_RATE();
@@ -78,6 +84,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       // this.getConcessionHeld();
       this.getReserveUpdate();
+      this.getSWPR();
       // this.getReserveUpdateDepletionRate();
     });
   }
@@ -282,7 +289,22 @@ export class SWPReserveUpdateComponent implements OnInit {
       ]),
     });
 
+    this.planningMinimumRequirementForm = new FormGroup(
+      {
+        reservesRevenue_GrossProduction: new FormControl(
+          this.planningMinimumRequirementBody.reservesRevenue_GrossProduction,
+          [Validators.required]
+        ),
+        reservesRevenue_RemainingReserves: new FormControl(
+          this.planningMinimumRequirementBody.reservesRevenue_RemainingReserves,
+          [Validators.required]
+        ),
+      },
+      {}
+    );
+
     this.getReserveUpdate();
+    this.getSWPR();
     this.cd.markForCheck();
   }
 
@@ -531,6 +553,45 @@ export class SWPReserveUpdateComponent implements OnInit {
             'Error',
             'error'
           );
+        },
+      });
+  }
+
+  getSWPR() {
+    if (
+      this.genk.OmlName === undefined ||
+      this.genk.wpYear === undefined
+      // this.genk.fieldName === undefined
+    )
+      return;
+
+    this.workprogram
+      .getFormFiveSWPR(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
+      .subscribe((res) => {
+        if (res[0]) {
+          this.planningMinimumRequirementBody = res[0].data;
+        }
+        this.cd.markForCheck();
+      });
+  }
+
+  Submit_planningMinimumRequirement() {
+    this.workprogram
+      .post_planningMinimumRequirement(
+        this.planningMinimumRequirementBody,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        ''
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.messsage, 'success');
+
+          this.getSWPR();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
