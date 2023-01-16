@@ -47,6 +47,7 @@ import {
   HSE_POINT_SOURCE_REGISTRATION,
   HSE_GHG_MANAGEMENT_PLAN,
   HSE_HOST_COMMUNITIES_DEVELOPMENT,
+  HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE,
 } from 'src/app/models/step5_hse.model';
 import {
   AuthenticationService,
@@ -135,6 +136,10 @@ export class SWPHseComponent implements OnInit {
 
   HostCommunityDevelopmentBody: HSE_HOST_COMMUNITIES_DEVELOPMENT =
     {} as HSE_HOST_COMMUNITIES_DEVELOPMENT;
+
+  wasteManagementDZBody: HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE =
+    {} as HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE;
+
   //#region  documnent objects declaration
   mediatype = 'doc';
 
@@ -149,6 +154,22 @@ export class SWPHseComponent implements OnInit {
   OrganogramFile?: File = null;
   OrganogramNewName: string;
   OrganogramNameDoc: string;
+
+  EvidenceOfEWDPFile?: File = null;
+  EvidenceOfEWDPNewName: string;
+  EvidenceOfEWDPNameDoc: string;
+
+  wasteServicePermitFile?: File = null;
+  wasteServicePermitNewName: string;
+  wasteServicePermitNameDoc: string;
+
+  EvidenceOfPDDCFile?: File = null;
+  EvidenceOfPDDCNewName: string;
+  EvidenceOfPDDCNameDoc: string;
+
+  EvidenceOfReInjectionFile?: File = null;
+  EvidenceOfReInjectionNewName: string;
+  EvidenceOfReInjectionNameDoc: string;
 
   EvidenceOfTrainingPlanFile?: File = null;
   EvidenceOfTrainingPlanNewName: string;
@@ -268,7 +289,7 @@ export class SWPHseComponent implements OnInit {
   pointSourcePermitForm: FormGroup;
   GHGManagementPlanForm: FormGroup;
   HostCommunitiesDevelopmentForm: FormGroup;
-
+  wasteManagementDZForm: FormGroup;
   //#endregion
 
   //#region Column header definitions
@@ -1258,6 +1279,8 @@ export class SWPHseComponent implements OnInit {
   GHGManagementPlans: HSE_GHG_MANAGEMENT_PLAN[] = [];
 
   HostCommunitiesDevelopments: HSE_HOST_COMMUNITIES_DEVELOPMENT[] = [];
+
+  wasteManagementDZs: HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE[] = [];
   //#endregion
 
   genk: GenericService;
@@ -2261,6 +2284,49 @@ export class SWPHseComponent implements OnInit {
       {}
     );
 
+    this.wasteManagementDZForm = new FormGroup(
+      {
+        evidenceOfPayOfPDDCFilename: new FormControl(
+          this.wasteManagementDZBody.evidenceOfPayOfPDDCFilename,
+          [Validators.required]
+        ),
+        wasterContractorNames: new FormControl(
+          this.wasteManagementDZBody.wasterContractorNames,
+          [Validators.required]
+        ),
+        wasteServicePermitFilename: new FormControl(
+          this.wasteManagementDZBody.wasteServicePermitFilename,
+          [Validators.required]
+        ),
+        produceWaterManagementPlan: new FormControl(
+          this.wasteManagementDZBody.produceWaterManagementPlan,
+          [Validators.required]
+        ),
+
+        evidenceOfReInjectionPermitFilename: new FormControl(
+          this.wasteManagementDZBody.evidenceOfReInjectionPermitFilename,
+          [Validators.required]
+        ),
+        reasonForNoEvidenceOfReInjection: new FormControl(
+          this.wasteManagementDZBody.reasonForNoEvidenceOfReInjection,
+          [Validators.required]
+        ),
+        doYouHavePreviousYearWasteInventoryReport: new FormControl(
+          this.wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport,
+          [Validators.required]
+        ),
+        evidenceOfEWDPFilename: new FormControl(
+          this.wasteManagementDZBody.evidenceOfEWDPFilename,
+          [Validators.required]
+        ),
+        reasonForNoEvidenceOfEWDP: new FormControl(
+          this.wasteManagementDZBody.reasonForNoEvidenceOfEWDP,
+          [Validators.required]
+        ),
+      },
+      {}
+    );
+
     this.getHSE();
   }
 
@@ -2529,7 +2595,7 @@ export class SWPHseComponent implements OnInit {
     if (this.EvidenceOfRegTFFile) {
       formDataToSubmit.append(
         this.EvidenceOfRegTFNameDoc,
-        this.GHGApprovalCertificateFile,
+        this.EvidenceOfRegTFFile,
         this.EvidenceOfRegTFNewName
       );
     }
@@ -2537,7 +2603,7 @@ export class SWPHseComponent implements OnInit {
     if (this.EvidenceOfPayTFFile) {
       formDataToSubmit.append(
         this.EvidenceOfPayTFNameDoc,
-        this.LDRCertificateFile,
+        this.EvidenceOfPayTFFile,
         this.EvidenceOfPayTFNewName
       );
     }
@@ -2545,13 +2611,75 @@ export class SWPHseComponent implements OnInit {
     if (this.CommunityDevPlanFile) {
       formDataToSubmit.append(
         this.CommunityDevPlanNameDoc,
-        this.LDRCertificateFile,
+        this.CommunityDevPlanFile,
         this.CommunityDevPlanNewName
       );
     }
 
     this.workprogram
       .post_HSE_GHG(
+        formDataToSubmit,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice(
+            'Form was submitted successfully!',
+            res.message,
+            'success'
+          );
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error, 'error');
+        },
+      });
+  }
+
+  HSE_Waste_Management_DZ_Submit() {
+    const formDataToSubmit: FormData = new FormData();
+    this.wasteManagementDZBody.id = 0;
+    for (const key in this.wasteManagementDZBody) {
+      if (this.wasteManagementDZBody[key]) {
+        formDataToSubmit.append(
+          key.toString(),
+          this.wasteManagementDZBody[key]
+        );
+      }
+    }
+
+    if (this.EvidenceOfPDDCFile) {
+      formDataToSubmit.append(
+        this.EvidenceOfPDDCNameDoc,
+        this.EvidenceOfPDDCFile,
+        this.EvidenceOfEWDPNewName
+      );
+    }
+
+    if (this.wasteServicePermitFile) {
+      formDataToSubmit.append(
+        this.wasteServicePermitNameDoc,
+        this.wasteServicePermitFile,
+        this.wasteServicePermitNewName
+      );
+    }
+
+    if (this.EvidenceOfReInjectionFile) {
+      formDataToSubmit.append(
+        this.EvidenceOfReInjectionNameDoc,
+        this.EvidenceOfReInjectionFile,
+        this.EvidenceOfReInjectionNewName
+      );
+    }
+
+    this.workprogram
+      .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
         this.genk.wpYear,
         this.genk.OmlName,
@@ -3537,6 +3665,35 @@ export class SWPHseComponent implements OnInit {
     let dockind = this.gen.getExt(this.RemediationFundFile.name);
   }
 
+  saveEvidenceOfEWDP(DeFile: any) {
+    this.EvidenceOfEWDPFile = <File>DeFile.target.files[0];
+    if (!this.EvidenceOfEWDPFile) {
+      return;
+    }
+    if (
+      this.EvidenceOfEWDPFile.size < 1 ||
+      this.EvidenceOfEWDPFile.size > 1024 * 1024 * 50
+    ) {
+      this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'].setErrors({
+        incorrect: true,
+      });
+      this.EvidenceOfEWDPFile = null;
+      return;
+    } else {
+      this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'].setErrors(
+        null
+      );
+    }
+    this.EvidenceOfEWDPNewName = this.gen.getExpDoc(
+      this.EvidenceOfEWDPFile.name,
+      this.EvidenceOfEWDPFile.type
+    );
+    this.EvidenceOfEWDPNewName = this.gen.trimDocName(
+      this.EvidenceOfEWDPFile.name
+    );
+    let dockind = this.gen.getExt(this.EvidenceOfEWDPFile.name);
+  }
+
   saveEvidenceOfSamplingPayment(DeFile: any) {
     this.EffluentEvidenceFile = <File>DeFile.target.files[0];
     if (!this.EffluentEvidenceFile) {
@@ -3686,6 +3843,99 @@ export class SWPHseComponent implements OnInit {
       this.EvidenceOfRegTFFile.name
     );
     let dockind = this.gen.getExt(this.EvidenceOfRegTFFile.name);
+  }
+
+  saveEvidenceOfReInjection(DeFile: any) {
+    this.EvidenceOfReInjectionFile = <File>DeFile.target.files[0];
+    if (!this.EvidenceOfReInjectionFile) {
+      return;
+    }
+    if (
+      this.EvidenceOfReInjectionFile.size < 1 ||
+      this.EvidenceOfReInjectionFile.size > 1024 * 1024 * 50
+    ) {
+      this.wasteManagementDZForm.controls[
+        'evidenceOfReInjectionPermitFilename'
+      ].setErrors({
+        incorrect: true,
+      });
+      this.EvidenceOfReInjectionFile = null;
+      return;
+    } else {
+      this.wasteManagementDZForm.controls[
+        'evidenceOfReInjectionPermitFilename'
+      ].setErrors(null);
+    }
+    this.EvidenceOfReInjectionNewName = this.gen.getExpDoc(
+      this.EvidenceOfReInjectionFile.name,
+      this.EvidenceOfReInjectionFile.type
+    );
+    this.EvidenceOfPayTFNameDoc = this.gen.trimDocName(
+      this.EvidenceOfReInjectionFile.name
+    );
+    let dockind = this.gen.getExt(this.EvidenceOfReInjectionFile.name);
+  }
+
+  saveWasteServicePermit(DeFile: any) {
+    this.wasteServicePermitFile = <File>DeFile.target.files[0];
+    if (!this.wasteServicePermitFile) {
+      return;
+    }
+    if (
+      this.wasteServicePermitFile.size < 1 ||
+      this.wasteServicePermitFile.size > 1024 * 1024 * 50
+    ) {
+      this.wasteManagementDZForm.controls[
+        'wasteServicePermitFilename'
+      ].setErrors({
+        incorrect: true,
+      });
+      this.wasteServicePermitFile = null;
+      return;
+    } else {
+      this.wasteManagementDZForm.controls[
+        'wasteServicePermitFilename'
+      ].setErrors(null);
+    }
+    this.wasteServicePermitNewName = this.gen.getExpDoc(
+      this.wasteServicePermitFile.name,
+      this.wasteServicePermitFile.type
+    );
+    this.wasteServicePermitNameDoc = this.gen.trimDocName(
+      this.wasteServicePermitFile.name
+    );
+    let dockind = this.gen.getExt(this.wasteServicePermitFile.name);
+  }
+
+  saveEvidenceOfPDDC(DeFile: any) {
+    this.EvidenceOfPDDCFile = <File>DeFile.target.files[0];
+    if (!this.EvidenceOfPDDCFile) {
+      return;
+    }
+    if (
+      this.EvidenceOfPDDCFile.size < 1 ||
+      this.EvidenceOfPDDCFile.size > 1024 * 1024 * 50
+    ) {
+      this.wasteManagementDZForm.controls[
+        'evidenceOfPayOfPDDCFilename'
+      ].setErrors({
+        incorrect: true,
+      });
+      this.EvidenceOfPDDCFile = null;
+      return;
+    } else {
+      this.wasteManagementDZForm.controls[
+        'evidenceOfPayOfPDDCFilename'
+      ].setErrors(null);
+    }
+    this.EvidenceOfPDDCNewName = this.gen.getExpDoc(
+      this.EvidenceOfPDDCFile.name,
+      this.EvidenceOfPDDCFile.type
+    );
+    this.EvidenceOfPDDCNameDoc = this.gen.trimDocName(
+      this.EvidenceOfPDDCFile.name
+    );
+    let dockind = this.gen.getExt(this.EvidenceOfPDDCFile.name);
   }
 
   saveLDRCertificate(DeFile: any) {
@@ -4267,6 +4517,26 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .post_HSE_Host_Communities(
         {} as HSE_HOST_COMMUNITIES_DEVELOPMENT,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        row.id,
+        'DELETE'
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+      });
+  }
+
+  Delete_HSE_Waste_Management_DZ(row: HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE) {
+    this.workprogram
+      .post_HSE_WASTE_MANAGEMENT_DZ(
+        {} as HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,

@@ -6219,47 +6219,366 @@
         </button>
       </div>
     </div>
+  </div>
 
-    <div *ngIf="HostCommunitiesDevelopments.length > 0" class="wptablebox">
-      <div class="apptable">
-        <table class="wptable">
-          <thead>
-            <tr>
-              <th *ngFor="let h of hhcdColDef">
-                {{ h.header }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let row of HostCommunitiesDevelopments">
-              <td *ngFor="let colDef of hhcdColDef">
-                {{ row[colDef.columnDef] }}
-              </td>
-              <td>
-                <button
-                  class="btn btn-danger btn-sm submitbtn"
-                  (click)="Delete_HSE_Host_Communities_Dev(row)"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div *ngIf="HostCommunitiesDevelopments.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hhcdColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of HostCommunitiesDevelopments">
+            <td *ngFor="let colDef of hhcdColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Host_Communities_Dev(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div [formGroup]="wasteManagementDZForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Waste Management (Discharge Zone) </label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+      "
+    >
+      <div style="width: 30%">
+        <label class="labelwp">Evidence of Payment of PDDC</label>
+
+        <div>
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfPayOfPDDCFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfPDDC($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Waste Contractor's Names</label>
+
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="wasterContractorNames"
+              [(ngModel)]="wasteManagementDZBody.wasterContractorNames"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Waste Contractor's Service Permit</label>
+
+        <div>
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="wasteServicePermitFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveWasteServicePermit($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
       </div>
     </div>
 
-    <br /><br />
-    <hr size="10" />
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >What type of Produced Water Management Plan do you have?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="produceWaterManagementPlan"
+            [(ngModel)]="wasteManagementDZBody.produceWaterManagementPlan"
+          >
+            <option value="DISCHARGE ZONE" selected>Discharge Zone</option>
+            <option value="ZERO DISCHARGE ZONE">Zero Discharge Zone</option>
+          </select>
+        </div>
+      </div>
 
-    <br /><br />
-    <div style="text-align: center">
-      <button
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'scdp']"
-        class="nextbtn"
+      <div
+        *ngIf="
+          wasteManagementDZBody.produceWaterManagementPlan ==
+          'ZERO DISCHARGE ZONE'
+        "
+        style="padding-top: 20px"
       >
-        Next
-      </button>
+        <label class="labelwp">Upload Evidence of Re-injection Permit</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfReInjectionPermitFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfReInjection($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.produceWaterManagementPlan === 'DISCHARGE ZONE'
+        "
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfReInjection"
+                [(ngModel)]="
+                  wasteManagementDZBody.reasonForNoEvidenceOfReInjection
+                "
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
     </div>
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have the previous year Waste Inventory Report?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHavePreviousYearWasteInventoryReport"
+            [(ngModel)]="
+              wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport
+            "
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport ===
+          'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of EWDP Permit</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfEWDPFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfEWDP($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport !==
+          'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfEWDP"
+                [(ngModel)]="wasteManagementDZBody.reasonForNoEvidenceOfEWDP"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <br /><br />
+      <div style="text-align: center">
+        <button (click)="HSE_Host_Communities_Dev_Submit()" class="submitbtn">
+          Add Waste Management (Discharge Zone)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hhcdColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of wasteManagementDZs">
+            <td *ngFor="let colDef of hhcdColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Host_Communities_Dev(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <br /><br />
+  <div style="text-align: center">
+    <button
+      [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'scdp']"
+      class="nextbtn"
+    >
+      Next
+    </button>
   </div>
 </div>

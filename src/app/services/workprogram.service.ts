@@ -2696,6 +2696,7 @@ import {
   HSE_POINT_SOURCE_REGISTRATION,
   HSE_GHG_MANAGEMENT_PLAN,
   HSE_HOST_COMMUNITIES_DEVELOPMENT,
+  HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE,
 } from '../models/step5_hse.model';
 import {
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL,
@@ -3920,6 +3921,36 @@ export class WorkProgramService {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_ghg_management_plan`,
+        conbody,
+        {
+          params: {
+            year: year,
+            omlName: omlName,
+            fieldName: fieldName,
+            actionToDo,
+            id,
+          },
+        }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  post_HSE_WASTE_MANAGEMENT_DZ(
+    conbody: FormData | HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    actionToDo,
+    id
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_hse_waste_management_discharge_zone`,
         conbody,
         {
           params: {

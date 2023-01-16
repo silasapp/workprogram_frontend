@@ -164,9 +164,41 @@ export class HSE_HOST_COMMUNITIES_DEVELOPMENT {
   // approvalCorrespondencesUploadPath: string = '';
 }
 
+export class HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE {
+  id: number = 0;
+  omL_Name: string = '';
+  omL_ID: string = '';
+  companyName: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companY_ID: string = '';
+  companyNumber: number = 0;
+
+  evidenceOfPayOfPDDCFilename: string = '';
+  evidenceOfPayOfPDDCPath: string = '';
+
+  wasterContractorNames: string = '';
+  wasteServicePermitFilename: string = '';
+  wasteServicePermitPath: string = '';
+
+  produceWaterManagementPlan: string = '';
+  evidenceOfReInjectionPermitFilename: string = '';
+  evidenceOfReInjectionPermitPath: string = '';
+  reasonForNoEvidenceOfReInjection: string = '';
+
+  doYouHavePreviousYearWasteInventoryReport: string = '';
+  evidenceOfEWDPFilename: string = '';
+  evidenceOfEWDPPath: string = '';
+  reasonForNoEvidenceOfEWDP: string = '';
+
+  // studyType: string = '';
+  // approvalCorrespondencesUploadFileName: string = '';
+  // approvalCorrespondencesUploadPath: string = '';
+}
+
 export class HSE_SAFETY_STUDIES_NEW {
   constructor() {}
-
+  v;
   id: number = 0;
   companyNumber: number = 0;
   oML_ID: string = '';
