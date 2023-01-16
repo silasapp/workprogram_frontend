@@ -4,7 +4,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-oil-production-monthly',
   templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -65,6 +65,9 @@ export class MonthlyOilProductionComponent implements OnInit {
         this.genk = gen;
         this.cdr = cd;
         this.genk.sizePerPage = this.genk.sizeten;
+        this.modalService.reportDownload.subscribe((res) => {
+          this.transferData();
+        });
         this.modalService.generalReport
         .subscribe(res => {
           this.getCrudeOilProduction();
@@ -186,14 +189,14 @@ export class MonthlyOilProductionComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  plotDoublePieChart() {
+  async plotDoublePieChart() {
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     }
     else {
       this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
       const node = document.createElement("div");
-      node.style.width = '100%';
+      node.style.width = '70%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
       let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
@@ -204,12 +207,13 @@ export class MonthlyOilProductionComponent implements OnInit {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.oilProductionMonthlyChart = await this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
       }
+      this.isChart = true;
     }
   }
 
-  plotDoubleBarChart() {
+  async plotDoubleBarChart() {
     let totalString = "";
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
@@ -232,14 +236,20 @@ export class MonthlyOilProductionComponent implements OnInit {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.oilProductionMonthlyChart = await this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
         else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.oilProductionMonthlyChart = await this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
         }
       }
+      this.isChart = true;
     }
   }
 
+  transferData() {
+    this.report.oilProductionMonthlyTable = {data: this.data, header: this.columns};
+    this.report.oilProductionMonthlyIsChart = this.isChart;
+    this.report.oilProductionMonthlySelectedColumns = this.selectedColumns;
+  }
 
 }

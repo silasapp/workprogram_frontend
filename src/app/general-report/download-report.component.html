@@ -1,4 +1,7 @@
-<button (click)="openPDF()">Print</button>
+
+<button (click)="openPDF()" class="rebtn" style="background-color: rgb(9, 96, 127); padding: 10px 30px; margin: 50px 0 30px 10px;font-weight: 800; font-size: 16px;">
+  <mat-icon style="font-size: 24px; margin-right: 10px;">print</mat-icon> Download Report
+</button>
 <div id="htmlData">
   <div style="background-color: white; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.4); margin: 0 3% 2% 1%">
     <div style="margin-top: 20px; padding-left: 10px; color: darkslategrey;">
@@ -37,4 +40,33 @@
   <div>
     <app-exploration-wells></app-exploration-wells>
   </div>
+
+  <div>
+    <app-appraisal-wells></app-appraisal-wells>
+  </div>
+
+  <div>
+    <app-development-wells></app-development-wells>
+  </div>
+
+  <div>
+    <app-reserves-update></app-reserves-update>
+  </div>
+
+  <div>
+    <app-oil-production></app-oil-production>
+  </div>
+
+  <div>
+    <app-oil-production-contract></app-oil-production-contract>
+  </div>
+
+  <div>
+    <app-oil-production-monthly></app-oil-production-monthly>
+  </div>
+
+  <div>
+    <app-oil-production-terrain></app-oil-production-terrain>
+  </div>
+
 </div>

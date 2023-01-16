@@ -66,9 +66,18 @@
                 </div>
             </div>
         </div>
+        <div class="eroce">
+          <!-- <span *ngIf="f['miscellaneous'].errors['maxlength'] && submitted">
+            Too few characters
+          </span> -->
+          <span *ngIf="f['miscellaneous'].errors['required'] && submitted">
+            Please enter a name for your song!
+          </span>
+        </div>
         <br><br>
         <div style="text-align: center;">
             <button (click)="submitroyalty()" class="submitbtn">Save Royalty</button>
+            
         </div>
     </div>
 </div>
