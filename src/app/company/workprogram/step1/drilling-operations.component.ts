@@ -102,6 +102,7 @@ export class SWPDrillingOperationsComponent implements OnInit {
         propose_well_names: new FormControl(this.categoryBody.propose_well_names, [Validators.required]),
         actual_wells_name: new FormControl(this.categoryBody.actual_wells_name, [Validators.required]),
         comments: new FormControl(this.categoryBody.comments, [Validators.required]),
+        surface_cordinates_for_each_well_in_degrees:new FormControl(this.categoryBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
         'discoveryFile': new FormControl(this.discoveryFile),
         'hydrocarbonFile': new FormControl(this.hydrocarbonFile)
       }, {});

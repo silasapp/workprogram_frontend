@@ -373,8 +373,8 @@
                 formControlName="no_of_Folds"
                 (keypress)="genk.restrictData($event)"
                 [value]="acquisitionBody.no_of_Folds"
+                (ngModelChange)="acquisitionBody.no_of_Folds= genk.restrictNoOfFoldValue($event)"
                
-                (change)="acquisitionBody.no_of_Folds= genk.restrictNoOfFoldValue($event)"
                 class="inpute"
               />
             </div>
@@ -450,8 +450,8 @@
               <input
                 formControlName="geo_Record_Length_of_Data"
                 (keypress)="genk.restrictData($event)"
-                [(ngModel)]="acquisitionBody.geo_Record_Length_of_Data"
-                (ngModelChange)="genk.restrictRecordLengthValue($event)"
+                [value]="acquisitionBody.geo_Record_Length_of_Data"       
+                (ngModelChange)="acquisitionBody.geo_Record_Length_of_Data=genk.restrictRecordLengthValue($event)"
                 class="inpute"
               />
             </div>
