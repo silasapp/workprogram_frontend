@@ -32,7 +32,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 400) {
               debugger;
                 const head = 'An error occurred';
-                this.userdat.logYawa(err.error.message, head);
+                //this.userdat.logYawa(err.error.message, head);
                 return EMPTY;
             }
             return EMPTY;

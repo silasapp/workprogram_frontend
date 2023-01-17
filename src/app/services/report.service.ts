@@ -20,6 +20,37 @@ export class ReportService {
   valuelist: any[] = [];
   chartArray: any[] = [];
   exporting: any;
+  seismicApprovedTable: any;
+  seismicApprovedChart: string;
+  seismicApprovedIsChart = false;
+  seismicApprovedSelectedColumns = [];
+
+  seismicActivitiesTable: any;
+  seismicActivitiesChart: any;
+  seismicActivitiesIsChart = false;
+  seismicActivitiesSelectedColumns = [];
+  seismicActivitiesText: string;
+
+  seismicActivities2yrsTable: any;
+  seismicActivities2yrsChart: any;
+  seismicActivities2yrsIsChart = false;
+  seismicActivities2yrsSelectedColumns = [];
+
+  seismicProcessingTable: any;
+  seismicProcessingChart: any;
+  seismicProcessingIsChart = false;
+  seismicProcessingSelectedColumns = [];
+
+  seismicProcessingPreviousTable: any;
+  seismicProcessingPreviousChart: any;
+  seismicProcessingPreviousIsChart = false;
+  seismicProcessingPreviousSelectedColumns = [];
+
+  explorationWellsTable: any;
+  explorationWellsChart: any;
+  explorationWellsIsChart = false;
+  explorationWellsSelectedColumns = [];
+
 
   constructor( private http: HttpClient, private gen: GenericService) { }
 
@@ -27,7 +58,7 @@ fetch(url, year){
   return this.http.get<any>(`${environment.apiUrl}/report/${url}`,{params:{year: year}})
   .pipe(retry(this.num),
   map((response) => {
-   response.data = this.gen.lowerArray(response.data);
+   //response.data = this.gen.lowerArray(response.data);
     return response
   })
   )
@@ -39,6 +70,16 @@ performanceEvaluation(url, year){
   .pipe(retry(this.num),
   map((response) => {
     response.data = this.gen.lowerArray(response.data);
+    return response
+  })
+  )
+}
+
+getAdminChartData(url, year){
+  return this.http.get<any>(`${environment.apiUrl}/dashboard/${url}`,{params:{year: year}})
+  .pipe(retry(this.num),
+  map((response) => {
+    //response.data = this.gen.lowerArray(response.data);
     return response
   })
   )
@@ -58,7 +99,7 @@ getExecutiveReport(year: string){
   )
 }
 
-plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+async plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
   var root = am5.Root.new(chartdiv);
 
   root.setThemes([
@@ -94,12 +135,15 @@ plotDoublePieChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 
 
   series.appear(1000, 100);
-  this.exporting = am5plugins_exporting.Exporting.new(root, {
+
+  let exporting = am5plugins_exporting.Exporting.new(root, {
     menu: am5plugins_exporting.ExportingMenu.new(root, {})
   });
+
+  return this.chartTimeout(exporting);
 }
 
-plotDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+async plotDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]): Promise<string>  {
   var root = am5.Root.new(chartdiv);
 
       root.setThemes([am5themes_Animated.new(root)]);
@@ -184,9 +228,11 @@ plotDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, va
       chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
       //this.root = root;
-      this.exporting = am5plugins_exporting.Exporting.new(root, {
+      let exporting = am5plugins_exporting.Exporting.new(root, {
         menu: am5plugins_exporting.ExportingMenu.new(root, {})
       });
+
+      return await exporting.export('png');
 
       // var legend = chart.children.push(am5.Legend.new(root, {
       //   centerX: am5.percent(50),
@@ -235,7 +281,7 @@ plotDoubleBarChartHorizontal(chartdiv: HTMLDivElement, categoryfield: string, va
 //   });
 }
 
-plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]) {
+async plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: string, data: any[]): Promise<string> {
   var root = am5.Root.new(chartdiv);
 
       root.setThemes([am5themes_Animated.new(root)]);
@@ -302,13 +348,12 @@ plotDoubleBarChart(chartdiv: HTMLDivElement, categoryfield: string, valuefield: 
 
       // Add cursor
       chart.set("cursor", am5xy.XYCursor.new(root, {}));
-
       //this.root = root;
       let exporting = am5plugins_exporting.Exporting.new(root, {
         menu: am5plugins_exporting.ExportingMenu.new(root, {})
       });
 
-      exporting.exportImage('png')
+      return await exporting.export('png');
 }
 
 formatChartData(data: any[], baseval: string, valtype: string) {
@@ -343,7 +388,111 @@ formatChartData(data: any[], baseval: string, valtype: string) {
     //debugger;
     valist = [];
   }
+  this.baselist = [];
+  this.valuelist = [];
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
+}
+
+compressReportData(data: any[], baseval: string) {
+
+  let valist: any[] = [];
+  let keyArray = Object.keys(data[0]);
+  let objData: any;
+
+  for (var list of data) {
+    this.baselist.push(list[baseval]);
+  }
   debugger;
+  this.baselist = Array.from(new Set(this.baselist));
+  let obj = new Object();
+
+  for (var i = 0; i < this.baselist.length; i++) {
+    //obj[this.baselist[i]] = this.baselist[i];
+    let valarray = data.filter(x => x[baseval] == this.baselist[i]);
+
+    for (var c = 0; c < keyArray.length; c++) {
+      if (keyArray[c] != baseval) {
+        for (var item of valarray) {
+          valist.push(item[keyArray[c]]);
+        }
+
+        let isNumber = valist.every(x => {
+          return typeof x === 'number';
+        });
+
+        if (isNumber) {
+          objData = this.sumArray(valist);
+          //this.valuelist.push(this.sumArray(valist))
+        } else {
+          objData = valist.length;
+        }
+        obj[keyArray[c]] = objData;
+        valist = [];
+      }
+    }
+    debugger;
+    obj[baseval] = this.baselist[i];
+    this.chartArray.push(obj);
+
+    //debugger;
+    valist = [];
+    obj = new Object();
+  }
+  debugger;
+  this.baselist = [];
+  this.valuelist = [];
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
+}
+
+compressReportDataArray(data: any[], baseval: string) {
+
+  let valist: any[] = [];
+  let keyArray = Object.keys(data[0]);
+  let objData: any;
+
+  for (var list of data) {
+    this.baselist.push(list[baseval]);
+  }
+
+  this.baselist = Array.from(new Set(this.baselist));
+  let obj = [];
+
+  for (var i = 0; i < this.baselist.length; i++) {
+    //obj[this.baselist[i]] = this.baselist[i];
+    let valarray = data.filter(x => x[baseval] == this.baselist[i]);
+
+    for (var c = 0; c < keyArray.length; c++) {
+      //if (keyArray[c] != baseval) {
+        for (var item of valarray) {
+          valist.push(item[keyArray[c]]);
+        }
+
+        let isNumber = valist.every(x => {
+          return typeof x === 'number';
+        });
+
+        if (isNumber) {
+          objData = this.sumArray(valist);
+          //this.valuelist.push(this.sumArray(valist))
+        } else {
+          objData = valist.length;
+        }
+        obj.push(objData);
+        valist = [];
+      //}
+    }
+
+    obj[0] = this.baselist[i];
+    this.chartArray.push(obj);
+
+    //debugger;
+    valist = [];
+    obj = [];
+  }
   this.baselist = [];
   this.valuelist = [];
   let arr = this.chartArray;
@@ -385,6 +534,79 @@ addSn(data: any[]) {
     data[i].sn = i + 1;
   }
   return data;
+}
+
+truncateArray(data: any[], columns: any[]) {
+  let obj = new Object();
+  let arr = [];
+  for (var a = 0; a < data.length; a++) {
+    for (var i = 0; i < columns.length; i++) {
+      obj[columns[i].columnDef] = data[a][columns[i].columnDef];
+      //let two = data[i][columns[i].columnDef];
+      //obj[i][columns[i].columnDef] = data[i][columns[i].columnDef];
+      //let obj = { columns[i].columnDef: data[i][columns[i].columnDef]}
+    }
+    arr.push(obj);
+    obj = {};
+  }
+  arr = arr.filter(x => !x.companyName.toLocaleLowerCase().startsWith('test'))
+  return arr;
+}
+
+truncateArray2(data: any[], columns: any[]) {
+  data = data.filter(x => !x.companyName.toLocaleLowerCase().startsWith('test'))
+  let obj = [];
+  let arr = [];
+  for (var a = 0; a < data.length; a++) {
+    for (var i = 0; i < columns.length; i++) {
+      obj.push(data[a][columns[i].columnDef]);
+      //let two = data[i][columns[i].columnDef];
+      //obj[i][columns[i].columnDef] = data[i][columns[i].columnDef];
+      //let obj = { columns[i].columnDef: data[i][columns[i].columnDef]}
+    }
+    arr.push(obj);
+    obj = [];
+  }
+
+  return arr;
+}
+
+truncateHeader(data: any[]) {
+  let new_list = data.map(function(obj) {return obj.header});
+  return new_list;
+  // return {
+  //   id: obj.id,
+  //   order_number: obj.order_number,
+  //   weight: obj.weight
+  // }
+}
+
+totalFromArray(data: any[], baseval: string) {
+ let baseArr = [];
+  for (var list of data) {
+    baseArr.push(Number(list[baseval]));
+  }
+  return this.sumArray(baseArr)
+}
+
+async chartTimeout(exporting: any): Promise<string> {
+
+  return new Promise(async function(res, err){
+    let myExport;
+    let p = new Promise(function(res, err){
+        setTimeout( async function(){
+            myExport = await exporting.export('png');
+            res(myExport);
+        }, 400)
+    })
+    p.then(function(x){
+        console.log(x);
+        res(myExport);
+    })
+
+
+});
+
 }
 
 }
