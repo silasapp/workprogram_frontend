@@ -216,7 +216,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     sail = this.genk.stringArray(this.initialBody) as INITIAL_WELL_COMPLETION_JOB1;
     this.workprogram.saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
     .subscribe(res => {
-      this.modalService.logNotice("Success", res.popText, 'success');
+        this.modalService.logNotice("Success", res.popText, 'success');
     });
   }
 
