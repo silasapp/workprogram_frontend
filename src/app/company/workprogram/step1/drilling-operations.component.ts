@@ -102,6 +102,7 @@ export class SWPDrillingOperationsComponent implements OnInit {
         propose_well_names: new FormControl(this.categoryBody.propose_well_names, [Validators.required]),
         actual_wells_name: new FormControl(this.categoryBody.actual_wells_name, [Validators.required]),
         comments: new FormControl(this.categoryBody.comments, [Validators.required]),
+        surface_cordinates_for_each_well_in_degrees:new FormControl(this.categoryBody.surface_cordinates_for_each_well_in_degrees, [Validators.required]),
         'discoveryFile': new FormControl(this.discoveryFile),
         'hydrocarbonFile': new FormControl(this.hydrocarbonFile)
       }, {});
@@ -200,12 +201,12 @@ export class SWPDrillingOperationsComponent implements OnInit {
     return list
   }
 
-  changeACQuater(quater: number, btn: HTMLButtonElement, btn2: HTMLButtonElement, btn3: HTMLButtonElement) {
+  changeACQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentACQuater = 1;
       btn.textContent = "Save Quarter 1";
-      btn2.textContent = "Save Quarter 1";
-      btn3.textContent = "Save Quarter 1";
+      // btn2.textContent = "Save Quarter 1";
+      // btn2.textContent = "Save Quarter 1";
       this.categoryBody = this.quaterACOneData ? this.quaterACOneData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
       this.costBody = this.quaterCWOneData ? this.quaterCWOneData : new DRILLING_EACH_WELL_COST();
       this.costProposedBody = this.quaterCPOneData ? this.quaterCPOneData : new DRILLING_EACH_WELL_COST_PROPOSED();
@@ -215,8 +216,8 @@ export class SWPDrillingOperationsComponent implements OnInit {
     if (quater === 2) {
       this.currentACQuater = 2;
       btn.textContent = "Save Quarter 2";
-      btn2.textContent = "Save Quarter 2";
-      btn3.textContent = "Save Quarter 2";
+      // btn2.textContent = "Save Quarter 2";
+      // btn2.textContent = "Save Quarter 2";
       this.categoryBody = this.quaterACTwoData ? this.quaterACTwoData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
       this.costBody = this.quaterCWTwoData ? this.quaterCWTwoData : {} as DRILLING_EACH_WELL_COST;
       this.costProposedBody = this.quaterCPTwoData ? this.quaterCPTwoData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
@@ -226,8 +227,8 @@ export class SWPDrillingOperationsComponent implements OnInit {
     if (quater === 3) {
       this.currentACQuater = 3;
       btn.textContent = "Save Quarter 3";
-      btn2.textContent = "Save Quarter 3";
-      btn3.textContent = "Save Quarter 3";
+      // btn2.textContent = "Save Quarter 3";
+      // btn2.textContent = "Save Quarter 3";
       this.categoryBody = this.quaterACThreeData ? this.quaterACThreeData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
       this.costBody = this.quaterCWThreeData ? this.quaterCWThreeData : {} as DRILLING_EACH_WELL_COST;
       this.costProposedBody = this.quaterCPThreeData ? this.quaterCPThreeData : {} as DRILLING_EACH_WELL_COST_PROPOSED;
@@ -237,8 +238,8 @@ export class SWPDrillingOperationsComponent implements OnInit {
     if (quater === 4) {
       this.currentACQuater = 4;
       btn.textContent = "Save Quarter 4";
-      btn2.textContent = "Save Quarter 4";
-      btn3.textContent = "Save Quarter 4";
+      // btn2.textContent = "Save Quarter 4";
+      // btn2.textContent = "Save Quarter 4";
       this.categoryBody = this.quaterACFourData ? this.quaterACFourData : {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
       this.costBody = this.quaterCWFourData ? this.quaterCWFourData : {} as DRILLING_EACH_WELL_COST;
       this.costProposedBody = this.quaterCPFourData ? this.quaterCPFourData : {} as DRILLING_EACH_WELL_COST_PROPOSED;

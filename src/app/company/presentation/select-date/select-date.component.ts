@@ -16,7 +16,7 @@ export class SelectDateComponent implements OnInit {
   time: string;
   date: string;
   start:string;
-  stop:Date;
+  stop:string;
   
 
   constructor(private fb: FormBuilder,
@@ -29,8 +29,8 @@ export class SelectDateComponent implements OnInit {
   ngOnInit(): void {
     this.getPresentation();
     debugger;
-    this.start= "2022-12-12";
-    this.stop=new Date("12/17/2022");
+    // this.start= "2022-12-12";
+    // this.stop=new Date("12/17/2022");
   }
   initForm(){
     this.selectDateForm = this.fb.group({
@@ -46,6 +46,11 @@ export class SelectDateComponent implements OnInit {
   get f() {
     return this.selectDateForm.controls;
   }
+
+  // getStartandStopDate(){
+  //   this.companyService.
+  // }
+
 
   getPresentation(){
     debugger;

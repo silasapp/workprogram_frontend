@@ -29,6 +29,8 @@ export class INITIAL_WELL_COMPLETION_JOB1
         proposed_Completion_Date: string = '';
         cOMPANY_ID: string = '';
         companyNumber: string = '';
+        proposed_initial_name:string='';
+        proposed_completion_days:string='';
     }
 
     export class WORKOVERS_RECOMPLETION_JOB1
@@ -61,4 +63,6 @@ export class INITIAL_WELL_COMPLETION_JOB1
         oil_or_gas_wells: string = '';
         cOMPANY_ID: string = '';
         companyNumber: number;
+        completionWellName:string='';
+        proposed_workover_Date:string='';
     }

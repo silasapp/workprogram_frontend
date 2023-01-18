@@ -66,6 +66,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   YPFNewName: string;
   YPFNameDoc: string;
 
+
+  fiveYearsValues = [];
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -95,9 +98,13 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       forecast: new FormControl(this.productionoilBody.forecast, [
         Validators.required,
       ]),
+      annualForecastGasAg:new FormControl(this.productionoilBody.annualForecastGasAg, [Validators.required]),
+      annualForecastGasNag:new FormControl(this.productionoilBody.annualForecastGasNag, [Validators.required]),
+      annualForecastCondensate:new FormControl(this.productionoilBody.annualForecastCondensate, [Validators.required]),
       cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
         Validators.required,
       ]),
+      annualForecastOil:new FormControl(this.productionoilBody.annualForecastOil, [Validators.required]),
       total_Reconciled_National_Crude_Oil_Production: new FormControl(
         this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,
         [Validators.required]
@@ -149,6 +156,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       gas_NAG: new FormControl(this.proposedmonthlyBody.gas_NAG, [
         Validators.required,
       ]),
+      condensateProd:new FormControl(this.proposedmonthlyBody.condensateProd, [Validators.required])
     });
 
     this.fiveYearForecastForm = new FormGroup({
@@ -255,17 +263,38 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       },
       {}
     );
-
+   
+    this.getFiveYearsValues();
     this.getOilProduction();
     this.getGasProduction();
     this.cd.markForCheck();
+
+
+
   }
 
   get f() {
     return this.fiveYearForecastForm.controls;
   }
 
+
+
+
+  getFiveYearsValues(){
+    debugger;
+    this.fiveYearsValues=[];
+    var num:number = 5; 
+var i:number;
+    for(i =0; i<num; i++){
+      this.fiveYearsValues[i]=(this.genk.wkProposedYear+i);
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    } 
+    debugger;
+  }
+
+
   getGasProduction() {
+    debugger;
     this.workprogram
       .getGasProduction(
         this.genk.wpYear,
@@ -294,6 +323,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   getOilProduction() {
+    debugger;
     this.workprogram
       .getOilProduction(
         this.genk.wpYear,
@@ -319,6 +349,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           this.fiveYearData = res.oilCondensateFiveYears;
           this.fiveYearForecastBody = res.oilCondensateFiveYears[0];
         }
+        
         this.cd.markForCheck();
       });
   }

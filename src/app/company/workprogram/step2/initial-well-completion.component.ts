@@ -44,11 +44,12 @@ export class SWPInitialWellCompletionComponent implements OnInit {
       {
         current_year_Actual_Number: new FormControl(this.initialBody.current_year_Actual_Number, [Validators.required]),
         proposed_year_data: new FormControl(this.initialBody.proposed_year_data, [Validators.required]),
+        proposed_initial_name: new FormControl(this.initialBody.proposed_initial_name, [Validators.required]),
         budeget_Allocation_NGN: new FormControl(this.initialBody.budeget_Allocation_NGN, [Validators.required]),
         budeget_Allocation_USD: new FormControl(this.initialBody.budeget_Allocation_USD, [Validators.required]),
         oil_or_gas_wells: new FormControl(this.initialBody.oil_or_gas_wells, [Validators.required]),
         actual_Completion_Date: new FormControl(this.initialBody.actual_Completion_Date, [Validators.required]),
-        proposed_Completion_Date: new FormControl(this.initialBody.proposed_Completion_Date, [Validators.required]),
+        proposed_completion_days: new FormControl(this.initialBody.proposed_completion_days, [Validators.required]),
         remarks: new FormControl(this.initialBody.remarks, [Validators.required])
       }, {});
       this.getInitialCompletion();
@@ -215,7 +216,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     sail = this.genk.stringArray(this.initialBody) as INITIAL_WELL_COMPLETION_JOB1;
     this.workprogram.saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
     .subscribe(res => {
-      this.modalService.logNotice("Success", res.popText, 'success');
+        this.modalService.logNotice("Success", res.popText, 'success');
     });
   }
 
