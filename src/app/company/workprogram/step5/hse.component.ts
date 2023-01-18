@@ -298,9 +298,17 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'year_of_WP',
       header: 'Work Programme Year',
     },
+    // {
+    //   columnDef: 'facility',
+    //   header: 'Facility',
+    // },
     {
-      columnDef: 'facility',
-      header: 'Facility',
+      columnDef: 'type_of_facility',
+      header: 'Type of Facility',
+    },
+    {
+      columnDef: 'number_of_facilities',
+      header: 'Number of Facility',
     },
     {
       columnDef: 'study_type',
@@ -1301,9 +1309,10 @@ export class SWPHseComponent implements OnInit {
     this.genk.activeStep = 'STEP5';
     this.TechnicalSafetyForm = new FormGroup(
       {
-        facility: new FormControl(this.technicalBody.facility, [
-          Validators.required,
-        ]),
+        number_of_facilities: new FormControl(
+          this.technicalBody.number_of_facilities,
+          [Validators.required]
+        ),
         facility_location: new FormControl(
           this.technicalBody.facility_location,
           [Validators.required]

@@ -1,29 +1,87 @@
 <div>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color:  rgb(9, 79, 104); color: white; font-weight: 500;">
-    <span class="material-icons" style="font-size: 30px;" [routerLink]="['/' + genk.company, genk.workprogram, 'start', ]">account_balance</span>
-    <span style="font-size: 18px;">STEP 4</span>
-    <span class="material-icons" style="font-size: 30px;">arrow_forward_ios</span>
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgb(9, 79, 104);
+      color: white;
+      font-weight: 500;
+    "
+  >
+    <span
+      class="material-icons"
+      style="font-size: 30px"
+      [routerLink]="['/' + genk.company, genk.workprogram, 'start']"
+      >account_balance</span
+    >
+    <span style="font-size: 18px">STEP 4</span>
+    <span class="material-icons" style="font-size: 30px"
+      >arrow_forward_ios</span
+    >
   </div>
 </div>
 <div>
   <app-board></app-board>
 </div>
 <div style="margin: 0 1% 0 1%">
-  <div style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3); margin-bottom: 20px ;">
-      <div style="display: flex; justify-content: space-around; padding: 10px 0 0 0; font-size: 18px; font-weight: 500;">
-          <div style="padding: 15px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'nigeriacontent']" routerLinkActive="wkpactive">
-              <span>Nigeria Content</span>
-          </div>
-          <div style="padding: 15px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'strategicplans']" routerLinkActive="wkpactive">
-              <span>Strategic Plans</span>
-          </div>
-          <div style=" padding: 15px 9%;" [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'legalproceedings']" routerLinkActive="wkpactive">
-              <span>Legal Proceedings</span>
-          </div>
-
+  <div
+    style="
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0 0 0;
+        font-size: 18px;
+        font-weight: 500;
+      "
+    >
+      <div
+        style="padding: 15px 9%"
+        [routerLink]="[
+          '/' + genk.company,
+          genk.workprogram,
+          'step5',
+          'nigeriacontent'
+        ]"
+        routerLinkActive="wkpactive"
+      >
+        <span>Nigeria Content</span>
       </div>
+      <div
+        style="padding: 15px 9%"
+        [routerLink]="[
+          '/' + genk.company,
+          genk.workprogram,
+          'step5',
+          'strategicplans'
+        ]"
+        routerLinkActive="wkpactive"
+      >
+        <span>Strategic Plans</span>
+      </div>
+      <div
+        style="padding: 15px 9%"
+        [routerLink]="[
+          '/' + genk.company,
+          genk.workprogram,
+          'step5',
+          'legalproceedings'
+        ]"
+        routerLinkActive="wkpactive"
+      >
+        <span>Legal Proceedings</span>
+      </div>
+    </div>
   </div>
-  <div style="width: 100%;">
-      <router-outlet></router-outlet>
+  <div style="width: 100%">
+    <router-outlet></router-outlet>
   </div>
 </div>
