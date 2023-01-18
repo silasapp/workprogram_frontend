@@ -1316,7 +1316,7 @@ export class OIL_CONDENSATE_PRODUCTION_ACTIVITy {
   gas_NAG: string = '';
   cOMPANY_ID: string = '';
   companyNumber: number;
-  annualForecast:string='';
+  annualForecastOil:string='';
   annualForecastCondensate:string='';
   annualForecastGasAg:string='';
   annualForecastGasNag:string='';

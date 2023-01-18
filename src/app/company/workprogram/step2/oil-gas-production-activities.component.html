@@ -140,18 +140,18 @@
               <div style="display: flex">
                 <div class="minsec">
                   <input
-                    formControlName="annualForecast"
+                    formControlName="annualForecastOil"
                     class="inpute"
                     (keypress)="genk.restrictData($event)"
                     placeholder="100,000"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                      productionoilBody.annualForecast = genk.checkMMBBLMin(
+                      productionoilBody.annualForecastOil = genk.checkMMBBLMin(
                         $event,
                         oilMic
                       )
                     "
-                    [value]="productionoilBody.annualForecast"
+                    [value]="productionoilBody.annualForecastOil"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -833,7 +833,7 @@
             </div>
 
 
-            <div style="width: 30%">
+            <div style="margin-left: 5%; width: 30%">
               <label class="labelwp">Condensate Production (Barrels)</label>
               <div style="display: flex">
                 <div class="minsec">
@@ -900,12 +900,22 @@
                 [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
               >
-                <option selected disabled>---- Select a Year ----</option>
-                <option
-                  value="2022"
+                <!-- <option selected>---- Select a Year ----</option> -->
+                
+                <option *ngFor="let year of fiveYearsValues" [value]="year" [selected]="fiveYearForecastBody.fiveyear_Timeline===year">{{year}}</option>
+
+
+                <!-- <option
+                  value="year"
                   [selected]="fiveYearForecastBody.fiveyear_Timeline === '2022'"
                 >
                   2022
+                </option>
+                <option
+                  value=""
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === '2023'"
+                >
+                  2023
                 </option>
                 <option
                   value="2023"
@@ -930,7 +940,7 @@
                   [selected]="fiveYearForecastBody.fiveyear_Timeline === '2026'"
                 >
                   2026
-                </option>
+                </option> -->
               </select>
             </div>
           </div>
@@ -1038,7 +1048,7 @@
             <small #oilFus></small>
           </div>
 
-          <div style="width: 30%">
+          <!-- <div style="width: 30%">
             <label class="labelwp">Upload Yearly Production Forcast</label>
             <div style="display: flex">
               <div
@@ -1063,7 +1073,7 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <br />
 

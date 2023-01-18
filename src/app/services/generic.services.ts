@@ -30,6 +30,7 @@ export class GenericService {
   workprogram = 'workprogram';
   generalReport = 'generalreport';
   empty=' ';
+  wkProposedYear= new Date().getFullYear();
 
   reportYear: string;
   submitted = false;
@@ -40,7 +41,7 @@ export class GenericService {
   wpYear: string;
   terrain: string;
   geologicalLocation: string;
-  OmlName: string;
+  OmlName: string='';
   OmlID: number;
   fieldName: string;
   fieldWell: string = 'GAS WELL';
@@ -805,6 +806,10 @@ export class GenericService {
     });
     return resultArray;
   }
-
+  showStepTwo(){
+    debugger;
+    if(this.OmlName.toUpperCase().substring(0,3)=='OML' || this.OmlName.toUpperCase().substring(0,3)=='PML' || this.OmlName.toUpperCase().substring(0,3)=='') return true;
+    return false;
+  }
 
 }

@@ -66,6 +66,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   YPFNewName: string;
   YPFNameDoc: string;
 
+
+  fiveYearsValues = [];
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -101,7 +104,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
         Validators.required,
       ]),
-      annualForecast:new FormControl(this.productionoilBody.annualForecast, [Validators.required]),
+      annualForecastOil:new FormControl(this.productionoilBody.annualForecastOil, [Validators.required]),
       total_Reconciled_National_Crude_Oil_Production: new FormControl(
         this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,
         [Validators.required]
@@ -260,17 +263,38 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       },
       {}
     );
-
+   
+    this.getFiveYearsValues();
     this.getOilProduction();
     this.getGasProduction();
     this.cd.markForCheck();
+
+
+
   }
 
   get f() {
     return this.fiveYearForecastForm.controls;
   }
 
+
+
+
+  getFiveYearsValues(){
+    debugger;
+    this.fiveYearsValues=[];
+    var num:number = 5; 
+var i:number;
+    for(i =0; i<num; i++){
+      this.fiveYearsValues[i]=(this.genk.wkProposedYear+i);
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    } 
+    debugger;
+  }
+
+
   getGasProduction() {
+    debugger;
     this.workprogram
       .getGasProduction(
         this.genk.wpYear,
@@ -299,6 +323,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   getOilProduction() {
+    debugger;
     this.workprogram
       .getOilProduction(
         this.genk.wpYear,
@@ -324,6 +349,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           this.fiveYearData = res.oilCondensateFiveYears;
           this.fiveYearForecastBody = res.oilCondensateFiveYears[0];
         }
+        
         this.cd.markForCheck();
       });
   }
