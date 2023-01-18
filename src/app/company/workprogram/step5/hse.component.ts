@@ -391,12 +391,16 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'safetyCurrentYearFilename',
-      header: 'Accident Statistics for the year',
+      columnDef: 'areThereEvidentOfSampling',
+      header: 'Do you have Evidence of Sampling Certificate?',
     },
     {
-      columnDef: 'safetyLast2YearsFilename',
-      header: 'Accident Statistics for the last 2 years',
+      columnDef: 'evidenceOfSamplingFilename',
+      header: 'Upload Evidence of Payment of Sampling Certificate',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceSampling',
+      header: 'Remark',
     },
   ];
 
@@ -406,12 +410,28 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'safetyCurrentYearFilename',
-      header: 'Accident Statistics for the year',
+      columnDef: 'doYouHaveGHG',
+      header: 'Do you have GHG Management Plan Approval?',
     },
     {
-      columnDef: 'safetyLast2YearsFilename',
-      header: 'Accident Statistics for the last 2 years',
+      columnDef: 'ghgApprovalPath',
+      header: 'Upload GHG Approval Certificate',
+    },
+    {
+      columnDef: 'reasonForNoGHG',
+      header: 'Reason for no GHG',
+    },
+    {
+      columnDef: 'doYouHaveLDRCertificate',
+      header: 'Do you have Leak Detection and Repairs Certificate?',
+    },
+    {
+      columnDef: 'ldrCertificatePath',
+      header: 'Upload Evidence LDR Certificate',
+    },
+    {
+      columnDef: 'reasonForNoLDR',
+      header: 'Reason for no LDR',
     },
   ];
 
@@ -880,36 +900,20 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'type_of_Accident_Incidence',
-      header: 'TYPE OF ACCIDENT / INCIDENT',
+      columnDef: 'areThereEMP',
+      header: 'Do you have EMP',
     },
     {
-      columnDef: 'location',
-      header: 'LOCATION',
+      columnDef: 'facilityType',
+      header: 'Type of Facilities',
     },
     {
-      columnDef: 'investigation',
-      header: 'INVESTIGATION',
+      columnDef: 'facilityLocation',
+      header: 'Facility Location',
     },
     {
-      columnDef: 'date_',
-      header: 'DATE',
-    },
-    {
-      columnDef: 'cause',
-      header: 'CAUSE',
-    },
-    {
-      columnDef: 'frequency',
-      header: 'FREQUENCY',
-    },
-    {
-      columnDef: 'consequence',
-      header: 'CONSEQUENCE',
-    },
-    {
-      columnDef: 'lesson_Learnt',
-      header: 'LESSON LEARNT',
+      columnDef: 'remarkIfNoEMP',
+      header: 'Remark',
     },
   ];
 
@@ -1766,6 +1770,9 @@ export class SWPHseComponent implements OnInit {
           Validators.required,
         ]),
         frequency: new FormControl(this.accident_Body.frequency, [
+          Validators.required,
+        ]),
+        remark: new FormControl(this.accident_Body.remark, [
           Validators.required,
         ]),
       },
@@ -4363,6 +4370,18 @@ export class SWPHseComponent implements OnInit {
           this.operationsSafetyCases = res.hseOperationsSafetyCase;
         }
 
+        if (res.hseEnvironmentalMgtPlans) {
+          this.environmentalManagementPlans = res.hseEnvironmentalMgtPlans;
+        }
+
+        if (res.hseeFluenceCompliences) {
+          this.effluentMonitoringCompliances = res.hseeFluenceCompliences;
+        }
+
+        if (res.hseghGs) {
+          this.GHGManagementPlans = res.hseghGs;
+        }
+
         this.cd.markForCheck();
       });
   }
@@ -4490,8 +4509,28 @@ export class SWPHseComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        row.id,
-        'DELETE'
+        'DELETE',
+        row.id
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+      });
+  }
+
+  Delete_HSE_Effluent_Monitoring(row: HSE_EFFLUENT_COMPLIANCE_MONITORING) {
+    this.workprogram
+      .post_HSE_Effluent_Monitoring(
+        {} as HSE_EFFLUENT_COMPLIANCE_MONITORING,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        'DELETE',
+        row.id
       )
       .subscribe({
         next: (res) => {
@@ -4510,8 +4549,8 @@ export class SWPHseComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        row.id,
-        'DELETE'
+        'DELETE',
+        row.id
       )
       .subscribe({
         next: (res) => {
@@ -4530,8 +4569,8 @@ export class SWPHseComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        row.id,
-        'DELETE'
+        'DELETE',
+        row.id
       )
       .subscribe({
         next: (res) => {
@@ -4550,8 +4589,8 @@ export class SWPHseComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        row.id,
-        'DELETE'
+        'DELETE',
+        row.id
       )
       .subscribe({
         next: (res) => {
@@ -4570,8 +4609,8 @@ export class SWPHseComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        row.id,
-        'DELETE'
+        'DELETE',
+        row.id
       )
       .subscribe({
         next: (res) => {
