@@ -521,8 +521,8 @@
         >
           <select
             class="dropwp"
-            formControlName="are_there_training_plans_for_hse"
-            [(ngModel)]="safetyCultureBody.are_there_training_plans_for_hse"
+            formControlName="AreThereTrainingPlansForHSE"
+            [(ngModel)]="safetyCultureBody.AreThereTrainingPlansForHSE"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -531,7 +531,7 @@
       </div>
 
       <div
-        *ngIf="safetyCultureBody.are_there_training_plans_for_hse == 'YES'"
+        *ngIf="safetyCultureBody.AreThereTrainingPlansForHSE == 'YES'"
         style="padding-top: 20px"
       >
         <label class="labelwp">Upload Evidence of Training Plan</label>
@@ -547,7 +547,7 @@
           >
             <input
               type="file"
-              formControlName="safetyCurrentYearFilename"
+              formControlName="EvidenceOfTrainingPlanFilename"
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfTrainingPlan($event)"
               class="inpute"
@@ -558,7 +558,7 @@
       </div>
 
       <div
-        *ngIf="safetyCultureBody.are_there_training_plans_for_hse !== 'YES'"
+        *ngIf="safetyCultureBody.AreThereTrainingPlansForHSE !== 'YES'"
         style="padding-top: 20px"
       >
         <div class="col-md-4">
@@ -696,8 +696,8 @@
           "
         >
           <select
-            formControlName="do_you_have_an_ohm"
-            [(ngModel)]="occupationalBody.do_you_have_an_ohm"
+            formControlName="DoYouHaveAnOhm"
+            [(ngModel)]="occupationalBody.DoYouHaveAnOhm"
             class="inpute"
           >
             <option selected disabled>---- Please Select an Option ----</option>
@@ -743,8 +743,8 @@
             "
           >
             <textarea
-              formControlName="reason_for_no_ohm"
-              [(ngModel)]="occupationalBody.reason_for_no_ohm"
+              formControlName="ReasonForNoOhm"
+              [(ngModel)]="occupationalBody.ReasonForNoOhm"
               rows="3"
               class="inpute"
             ></textarea>
@@ -767,8 +767,8 @@
           "
         >
           <select
-            formControlName="was_ohm_policy_communicated_to_staff"
-            [(ngModel)]="occupationalBody.was_ohm_policy_communicated_to_staff"
+            formControlName="WasOhmPolicyCommunicatedToStaff"
+            [(ngModel)]="occupationalBody.WasOhmPolicyCommunicatedToStaff"
             class="inpute"
           >
             <option selected disabled>---- Please Select an Option ----</option>
@@ -814,9 +814,9 @@
             "
           >
             <textarea
-              formControlName="reason_why_ohm_was_not_communicated_to_staff"
+              formControlName="ReasonWhyOhmWasNotCommunicatedToStaffFileName"
               [(ngModel)]="
-                occupationalBody.reason_why_ohm_was_not_communicated_to_staff
+                occupationalBody.ReasonWhyOhmWasNotCommunicatedToStaffFileName
               "
               rows="3"
               class="inpute"
@@ -2137,7 +2137,7 @@
               "
             >
               <input
-                type
+                type="text"
                 (keypress)="genk.restrictData($event)"
                 class="inpute"
                 formControlName="incident_Oil_Spill_Ref_No"
@@ -2307,22 +2307,25 @@
         <div style="width: 30%">
           <label class="labelwp"> Volume of spill (bbls)</label>
           <div style="display: flex">
-            <div
-              style="
-                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                width: 100%;
-                border-radius: 20px;
-                padding: 7px 10px;
-              "
-            >
+            <div class="minsec">
               <input
+                type="text"
                 (keypress)="genk.restrictData($event)"
+                (change)="
+                  oilSpill_Body.volume_of_spill_bbls = genk.checkMMBBLMin(
+                    $event,
+                    oilSand
+                  )
+                "
+                style="border-radius: 5px"
                 class="inpute"
                 formControlName="volume_of_spill_bbls"
                 [(ngModel)]="oilSpill_Body.volume_of_spill_bbls"
               />
+              <span class="barspan">BBLS</span>
             </div>
           </div>
+          <small #oilSand></small>
         </div>
       </div>
     </div>
@@ -2330,22 +2333,25 @@
     <div style="width: 30%">
       <label class="labelwp"> Volume recovered (bbls)</label>
       <div style="display: flex">
-        <div
-          style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            border-radius: 20px;
-            padding: 7px 10px;
-          "
-        >
+        <div class="minsec">
           <input
+            type="text"
             (keypress)="genk.restrictData($event)"
+            (change)="
+              oilSpill_Body.volume_recovered_bbls = genk.checkMMBBLMin(
+                $event,
+                oilSand
+              )
+            "
+            style="border-radius: 5px"
             class="inpute"
             formControlName="volume_recovered_bbls"
             [(ngModel)]="oilSpill_Body.volume_recovered_bbls"
           />
+          <span class="barspan">BBLS</span>
         </div>
       </div>
+      <small #oilSand></small>
     </div>
     <br /><br />
     <div style="text-align: center">

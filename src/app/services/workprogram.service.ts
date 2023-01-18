@@ -4068,6 +4068,8 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    console.log('form data', conbody);
+
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_occupational_health_management`,

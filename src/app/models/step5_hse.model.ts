@@ -241,9 +241,9 @@ export class HSE_SAFETY_CULTURE_TRAINING {
   safetyCurrentYearFilePath: string = '';
   safetyLast2YearsFilePath: string = '';
 
-  are_there_training_plans_for_hse: string = 'NO';
-  evidence_of_training_plan_filename: string = '';
-  evidence_of_training_plan_path: string = '';
+  AreThereTrainingPlansForHSE: string = 'NO';
+  EvidenceOfTrainingPlanFilename: string = '';
+  EvidenceOfTrainingPlanPath: string = '';
   remark: string = '';
 }
 export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
@@ -251,11 +251,11 @@ export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
   OHMplanFilePath: File;
   OHMplanCommunicationFilePath: File;
 
-  do_you_have_an_ohm: string = '';
-  reason_for_no_ohm: string = '';
+  DoYouHaveAnOhm: string = '';
+  ReasonForNoOhm: string = '';
 
-  was_ohm_policy_communicated_to_staff: string = '';
-  reason_why_ohm_was_not_communicated_to_staff: string = '';
+  WasOhmPolicyCommunicatedToStaff: string = '';
+  ReasonWhyOhmWasNotCommunicatedToStaffFileName: string = '';
 }
 export class HSE_QUALITY_CONTROL {
   id: number = 0;

@@ -1381,12 +1381,12 @@ export class SWPHseComponent implements OnInit {
           this.safetyCultureBody.safetyCurrentYearFilePath,
           [Validators.required]
         ),
-        evidence_of_training_plan_filename: new FormControl(
-          this.safetyCultureBody.evidence_of_training_plan_filename,
+        EvidenceOfTrainingPlanFilename: new FormControl(
+          this.safetyCultureBody.EvidenceOfTrainingPlanFilename,
           [Validators.required]
         ),
-        are_there_training_plans_for_hse: new FormControl(
-          this.safetyCultureBody.are_there_training_plans_for_hse,
+        AreThereTrainingPlansForHSE: new FormControl(
+          this.safetyCultureBody.AreThereTrainingPlansForHSE,
           [Validators.required]
         ),
         remark: new FormControl(this.safetyCultureBody.remark, [
@@ -1434,20 +1434,18 @@ export class SWPHseComponent implements OnInit {
           this.occupationalBody.OHMplanCommunicationFilePath,
           [Validators.required]
         ),
-        do_you_have_an_ohm: new FormControl(
-          this.occupationalBody.do_you_have_an_ohm,
+        DoYouHaveAnOhm: new FormControl(this.occupationalBody.DoYouHaveAnOhm, [
+          Validators.required,
+        ]),
+        ReasonForNoOhm: new FormControl(this.occupationalBody.ReasonForNoOhm, [
+          Validators.required,
+        ]),
+        WasOhmPolicyCommunicatedToStaff: new FormControl(
+          this.occupationalBody.WasOhmPolicyCommunicatedToStaff,
           [Validators.required]
         ),
-        reason_for_no_ohm: new FormControl(
-          this.occupationalBody.reason_for_no_ohm,
-          [Validators.required]
-        ),
-        was_ohm_policy_communicated_to_staff: new FormControl(
-          this.occupationalBody.was_ohm_policy_communicated_to_staff,
-          [Validators.required]
-        ),
-        reason_why_ohm_was_not_communicated_to_staff: new FormControl(
-          this.occupationalBody.reason_why_ohm_was_not_communicated_to_staff,
+        ReasonWhyOhmWasNotCommunicatedToStaffFileName: new FormControl(
+          this.occupationalBody.ReasonWhyOhmWasNotCommunicatedToStaffFileName,
           [Validators.required]
         ),
       },
@@ -2828,6 +2826,9 @@ export class SWPHseComponent implements OnInit {
     if (this.OHMFile_2) {
       formDat.append(this.OHMNameDoc_2, this.OHMFile_2, this.OHMNewName_2);
     }
+
+    console.log('form data', formDat);
+
     this.workprogram
       .post_HSE_Occupational(
         formDat,
@@ -3626,13 +3627,13 @@ export class SWPHseComponent implements OnInit {
       this.EvidenceOfTrainingPlanFile.size > 1024 * 1024 * 50
     ) {
       this.SafetyCultureTrainingForm.controls[
-        'evidence_of_training_plan_filename'
+        'EvidenceOfTrainingPlanFilename'
       ].setErrors({ incorrect: true });
       this.EvidenceOfTrainingPlanFile = null;
       return;
     } else {
       this.SafetyCultureTrainingForm.controls[
-        'evidence_of_training_plan_filename'
+        'EvidenceOfTrainingPlanFilename'
       ].setErrors(null);
     }
     this.EvidenceOfTrainingPlanNewName = this.gen.getExpDoc(
