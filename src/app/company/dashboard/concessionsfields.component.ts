@@ -45,6 +45,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   concessionAction = 'INSERT';
   fieldAction = 'INSERT';
   concessionList = [];
+  resultconcessionList = [];
 
   columns = [
     //   {
@@ -464,6 +465,13 @@ export class ConcessionsfieldsComponent implements OnInit {
         delete element['emaiL_REMARK']
 
     });
+
+    for(var fieldConces in this.allConcessions){
+      this.resultconcessionList.push[fieldConces];
+    }
+
+
+     resultArray.filter(s => s.toUpperCase().includes('OML') || s.toUpperCase().includes('PML'))
     return resultArray;
   }
 

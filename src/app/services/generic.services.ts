@@ -8,8 +8,8 @@ import { ModalService } from './modal.service';
 
 @Injectable({ providedIn: 'root' })
 export class GenericService {
-  sessionStaffID : number;
-  sessionStaffEmail : string;
+  sessionStaffID: number;
+  sessionStaffEmail: string;
   fileData: File = null;
   selectedPage = 1;
   sizeten = 10;
@@ -29,8 +29,8 @@ export class GenericService {
   performance = 'performance_evaluation';
   workprogram = 'workprogram';
   generalReport = 'generalreport';
-  empty=' ';
-  wkProposedYear= new Date().getFullYear();
+  empty = ' ';
+  wkProposedYear = new Date().getFullYear();
 
   reportYear: string;
   submitted = false;
@@ -41,12 +41,12 @@ export class GenericService {
   wpYear: string;
   terrain: string;
   geologicalLocation: string;
-  OmlName: string='';
+  OmlName: string = '';
   OmlID: number;
   fieldName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
-  val:number;
+  val: number;
   OMLList = [];
   Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -72,7 +72,7 @@ export class GenericService {
     { value: 'SC' },
     { value: 'SR' },
   ];
-  concessiontype = [{ value: 'OML' }, { value: 'OPL' }];
+  concessiontype = [{ value: 'OEL' }, { value: 'OML' }, { value: 'OPL' }, { value: 'PEL' }, { value: 'PML' }, { value: 'PPL' }];
 
   entries = [
     { text: '10 entries', value: '10' },
@@ -81,7 +81,7 @@ export class GenericService {
     { text: 'All entries', value: 'all' },
   ];
 
-  constructor(private modal: ModalService) {}
+  constructor(private modal: ModalService) { }
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.sizePerPage;
@@ -157,33 +157,33 @@ export class GenericService {
   }
 
   printImage() {
-  //   $(document).ready(function () {
-  //     let btn=$('#c-oreder-preview');
-  //     btn.text('download');
-  //     btn.on('click',()=> {
+    //   $(document).ready(function () {
+    //     let btn=$('#c-oreder-preview');
+    //     btn.text('download');
+    //     btn.on('click',()=> {
 
-  //         $('#c-invoice').modal('show');
-  //         setTimeout(function () {
-  //             html2canvas(document.querySelector("#c-print")).then(canvas => {
-  //                 //$("#previewBeforeDownload").html(canvas);
-  //                 var imgData = canvas.toDataURL("image/jpeg",1);
-  //                 var pdf = new jsPDF("p", "mm", "a4");
-  //                 var pageWidth = pdf.internal.pageSize.getWidth();
-  //                 var pageHeight = pdf.internal.pageSize.getHeight();
-  //                 var imageWidth = canvas.width;
-  //                 var imageHeight = canvas.height;
+    //         $('#c-invoice').modal('show');
+    //         setTimeout(function () {
+    //             html2canvas(document.querySelector("#c-print")).then(canvas => {
+    //                 //$("#previewBeforeDownload").html(canvas);
+    //                 var imgData = canvas.toDataURL("image/jpeg",1);
+    //                 var pdf = new jsPDF("p", "mm", "a4");
+    //                 var pageWidth = pdf.internal.pageSize.getWidth();
+    //                 var pageHeight = pdf.internal.pageSize.getHeight();
+    //                 var imageWidth = canvas.width;
+    //                 var imageHeight = canvas.height;
 
-  //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
-  //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
-  //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
-  //                 pdf.save("invoice.pdf");
-  //                 //$("#previewBeforeDownload").hide();
-  //                 $('#c-invoice').modal('hide');
-  //             });
-  //         },500);
+    //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
+    //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
+    //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
+    //                 pdf.save("invoice.pdf");
+    //                 //$("#previewBeforeDownload").hide();
+    //                 $('#c-invoice').modal('hide');
+    //             });
+    //         },500);
 
-  //         });
-  // });
+    //         });
+    // });
   }
 
   tableToCSV(table: HTMLTableElement) {
@@ -628,7 +628,7 @@ export class GenericService {
 
   restrictNoOfFoldValue(input) {
     this.val = parseInt(input);
-    
+
     debugger;
     if (this.val < 1 || this.val > 100) {
       alert("Please make sure entry is between 1-100.");
@@ -662,7 +662,7 @@ export class GenericService {
   restrictAlphaData(e) {
     //alert(e.key);
     var x = e.which || e.keycode;
-    if ((x >= 65 && x <= 90) || (x>=97 && x<=122)) return true;
+    if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122)) return true;
     else return false;
   }
 
@@ -806,9 +806,9 @@ export class GenericService {
     });
     return resultArray;
   }
-  showStepTwo(){
+  showStepTwo() {
     debugger;
-    if(this.OmlName.toUpperCase().substring(0,3)=='OML' || this.OmlName.toUpperCase().substring(0,3)=='PML' || this.OmlName.toUpperCase().substring(0,3)=='') return true;
+    if (this.OmlName.toUpperCase().substring(0, 3) == 'OML' || this.OmlName.toUpperCase().substring(0, 3) == 'PML' || this.OmlName.toUpperCase().substring(0, 3) == '') return true;
     return false;
   }
 
