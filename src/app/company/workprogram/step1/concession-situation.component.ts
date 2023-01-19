@@ -173,7 +173,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-          Validators.required,
+          Validators.required, Validators.maxLength(2)
         ]),
       },
       {}
@@ -266,7 +266,7 @@ export class SWPConcessionSituationComponent implements OnInit {
  // this.genk.OmlName.
 
   getRoyaltyHeld() {
-    debugger;
+    //debugger;
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
@@ -286,7 +286,9 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
+    debugger;
     this.submitted = true;
+    //let rell = this.f['miscellaneous'].errors['required'];
     if(this.RoyaltyForm.invalid) {
         this.cd.markForCheck();
         return;

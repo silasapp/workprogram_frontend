@@ -51,6 +51,41 @@ export class ReportService {
   explorationWellsIsChart = false;
   explorationWellsSelectedColumns = [];
 
+  appraisalWellsTable: any;
+  appraisalWellsChart: any;
+  appraisalWellsIsChart = false;
+  appraisalWellsSelectedColumns = [];
+
+  developmentWellsTable: any;
+  developmentWellsChart: any;
+  developmentWellsIsChart = false;
+  developmentWellsSelectedColumns = [];
+
+  reservesUpdateTable: any;
+  reservesUpdateChart: any;
+  reservesUpdateIsChart = false;
+  reservesUpdateSelectedColumns = [];
+
+  oilProductionTable: any;
+  oilProductionChart: any;
+  oilProductionIsChart = false;
+  oilProductionSelectedColumns = [];
+  oilProductionText: string;
+
+  oilProductionContractTable: any;
+  oilProductionContractChart: any;
+  oilProductionContractIsChart = false;
+  oilProductionContractSelectedColumns = [];
+
+  oilProductionMonthlyTable: any;
+  oilProductionMonthlyChart: any;
+  oilProductionMonthlyIsChart = false;
+  oilProductionMonthlySelectedColumns = [];
+
+  oilProductionTerrainTable: any;
+  oilProductionTerrainChart: any;
+  oilProductionTerrainIsChart = false;
+  oilProductionTerrainSelectedColumns = [];
 
   constructor( private http: HttpClient, private gen: GenericService) { }
 
@@ -500,6 +535,29 @@ compressReportDataArray(data: any[], baseval: string) {
   return arr;
 }
 
+convertDataToArray(data: any[]) {
+
+  let valist: any[] = [];
+  let keyArray = Object.keys(data[0]);
+  let obj = [];
+
+  for (var i = 0; i < data.length; i++) {
+
+    for (var c = 0; c < keyArray.length; c++) {
+        valist.push(data[i][keyArray[c]]);
+    }
+    //obj.push(valist);
+    this.chartArray.push(valist);
+    valist = [];
+    valist = [];
+    obj = [];
+  }
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
+}
+
+
 sumArray(arr: any[]) {
   var total = 0;
   for (var i in arr) {
@@ -517,6 +575,18 @@ sumColumn(items: any[], columnName: string) {
     }
   }
   return total;
+}
+
+convertColumn(items: any[], columnName: string) {
+  var total = 0;
+  for (var i = 0; i < items.length; i++) {
+    if (!isNaN(items[i][columnName] && parseFloat(items[i][columnName])) ) {
+      let a = Number(items[i][columnName]);
+      let b = items[i][columnName];
+      items[i][columnName] = Number(items[i][columnName]);
+    }
+  }
+  return items;
 }
 
 arrangeDate(mydata: any[], columnName: string) {
@@ -549,7 +619,7 @@ truncateArray(data: any[], columns: any[]) {
     arr.push(obj);
     obj = {};
   }
-  arr = arr.filter(x => !x.companyName.toLocaleLowerCase().startsWith('test'))
+  //arr = arr.filter(x => !x.companyName.toLocaleLowerCase().startsWith('test'))
   return arr;
 }
 
