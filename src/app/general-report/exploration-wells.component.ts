@@ -206,6 +206,8 @@ export class ExplorationWellsComponent implements OnInit {
       .subscribe(res => {
         this.data = res as any[];
         this.data = res.filter(x => x.contract_Type != null);
+        this.data = this.report.convertColumn(this.data, 'number_of_Days_to_Total_Depth');
+        this.data = this.report.convertColumn(this.data, 'well_cost');
           if(this.data.length>1) this.selectedPage=1;
         this.isData = this.data.length > 0;
         this.data = this.report.addSn(this.data);
@@ -276,8 +278,9 @@ export class ExplorationWellsComponent implements OnInit {
       this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
+        debugger;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.explorationWellsChart = await this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.explorationWellsChart = await this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
       this.isChart = true;
     }

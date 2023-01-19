@@ -37,10 +37,6 @@ export class AccidentStatisticsComponent implements OnInit {
 
     columns = [
       {
-          "columnDef": "companyName",
-          "header": "COMPANY NAME"
-      },
-      {
           "columnDef": "type_of_incidence",
           "header": "TYPE OF INCIDENT"
       },
