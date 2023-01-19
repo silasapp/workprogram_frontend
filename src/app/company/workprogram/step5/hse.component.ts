@@ -376,11 +376,23 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'safetyCurrentYearFilename',
+      columnDef: 'areThereTrainingPlansForHSE',
+      header: 'Are there Training Plans for HSE Personnel?',
+    },
+    {
+      columnDef: 'evidenceOfTrainingPlanPath',
+      header: 'Upload Evidence of Training Plan',
+    },
+    {
+      columnDef: 'remark',
+      header: 'Remark',
+    },
+    {
+      columnDef: 'safetyCurrentYearFilePath',
       header: 'Accident Statistics for the year',
     },
     {
-      columnDef: 'safetyLast2YearsFilename',
+      columnDef: 'safetyLast2YearsFilePath',
       header: 'Accident Statistics for the last 2 years',
     },
   ];
@@ -441,8 +453,8 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'safetyCurrentYearFilename',
-      header: 'Accident Statistics for the year',
+      columnDef: 'doYouHaveEvidenceOfReg',
+      header: 'Do you have Evidence of Registration of Trust Fund?',
     },
     {
       columnDef: 'safetyLast2YearsFilename',
@@ -460,8 +472,26 @@ export class SWPHseComponent implements OnInit {
       header: 'Accident Statistics for the year',
     },
     {
-      columnDef: 'safetyLast2YearsFilename',
-      header: 'Accident Statistics for the last 2 years',
+      columnDef: 'evidenceOfRegTrustFundPath',
+      header: 'Upload Evidence of Trust Fund Registration',
+    },
+    ,
+    {
+      columnDef: 'reasonForNoEvidenceOfRegTF',
+      header: 'Remark',
+    },
+    {
+      columnDef: 'doYouHaveEvidenceOfPay',
+      header:
+        'Do you have Evidence of 3% Payment to the Trust Fund by the Settlor?',
+    },
+    {
+      columnDef: 'evidenceOfPayTrustFundPath',
+      header: 'Upload Evidence of Payment',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfPayTF',
+      header: 'Remark',
     },
   ];
 
@@ -2631,7 +2661,7 @@ export class SWPHseComponent implements OnInit {
     }
 
     this.workprogram
-      .post_HSE_GHG(
+      .post_HSE_Host_Communities(
         formDataToSubmit,
         this.genk.wpYear,
         this.genk.OmlName,
@@ -4380,6 +4410,10 @@ export class SWPHseComponent implements OnInit {
 
         if (res.hseghGs) {
           this.GHGManagementPlans = res.hseghGs;
+        }
+
+        if (res.hseHostComms) {
+          this.HostCommunitiesDevelopments = res.hseHostComms;
         }
 
         this.cd.markForCheck();

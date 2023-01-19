@@ -24,7 +24,7 @@
       padding-bottom: 20px;
     "
   >
-    <span>LEGAL PROCEEDINGS IN RESPECT OF THE ASSET</span>
+    <span>LEGAL ISSUES IN RESPECT OF THE ASSET</span>
   </div>
   <br />
   <hr size="10" />
@@ -45,22 +45,19 @@
             formControlName="anyLitigation"
             [(ngModel)]="letigationBody.anyLitigation"
           >
-            <option selected disabled>
-              ---- Please Select an Option ----
-            </option>
+            <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
             <option value="NO">NO</option>
           </select>
         </div>
       </div>
     </div>
-    <br><br>
+    <br /><br />
 
     <div *ngIf="letigationBody.anyLitigation == 'YES'">
-      <div  style="display: flex; width: 100%; justify-content: space-between">
-
+      <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%; margin: auto 0 0">
-          <label class="labelwp">Case Number</label>
+          <label class="labelwp">Suit Number</label>
           <div style="display: flex">
             <div
               style="
@@ -127,9 +124,8 @@
       </div>
       <br />
 
-      <div style="display: flex; width: 100%; justify-content: space-between;">
-
-        <div style="width: 30%; margin: auto 0 0">
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <!-- <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Name of Court</label>
           <div style="display: flex">
             <div
@@ -148,7 +144,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Summary of the case</label>
@@ -162,7 +158,8 @@
               "
             >
               <textarea
-                type="text" rows="2"
+                type="text"
+                rows="2"
                 formControlName="summary_of_the_case"
                 [(ngModel)]="letigationBody.summary_of_the_case"
                 class="inpute"
@@ -183,7 +180,8 @@
               "
             >
               <textarea
-                type="text" rows="2"
+                type="text"
+                rows="2"
                 formControlName="any_orders_made_so_far_by_the_court"
                 [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
                 class="inpute"
@@ -195,8 +193,6 @@
       <br />
 
       <div style="display: flex; width: 100%; justify-content: space-between">
-
-
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Potential Outcome</label>
           <div style="display: flex">
@@ -220,16 +216,15 @@
       </div>
 
       <br /><br />
-    <div>
-      <div style="text-align: center">
-        <button class="submitbtn" (click)="saveLitigation()">
-          Submit Litigation
-        </button>
+      <div>
+        <div style="text-align: center">
+          <button class="submitbtn" (click)="saveLitigation()">
+            Submit Litigation
+          </button>
+        </div>
+        <br />
       </div>
-      <br />
     </div>
-    </div>
-
   </div>
   <br /><br />
 
@@ -274,7 +269,7 @@
     </table>
   </div>
   <hr size="10" />
-  <br><br>
+  <br /><br />
 
   <div style="width: 30%">
     <div style="font-weight: 500; margin-bottom: 5px">
@@ -294,20 +289,19 @@
             formControlName="anyLitigation"
             [(ngModel)]="arbitrationBody.anyArbitration"
           >
-            <option selected disabled>
-              ---- Please Select an Option ----
-            </option>
+            <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
             <option value="NO">NO</option>
           </select>
         </div>
       </div>
-    </div><br><br>
+    </div>
+    <br /><br />
 
     <div *ngIf="arbitrationBody.anyArbitration == 'YES'">
       <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%; margin: auto 0 0">
-          <label class="labelwp">Case Number</label>
+          <label class="labelwp">Suit Number</label>
           <div style="display: flex">
             <div
               style="
@@ -375,7 +369,7 @@
       <br />
 
       <div style="display: flex; width: 100%; justify-content: space-between">
-        <div style="width: 30%; margin: auto 0 0">
+        <!-- <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Name of Court</label>
           <div style="display: flex">
             <div
@@ -394,7 +388,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Summary of the case</label>
@@ -431,7 +425,9 @@
               <input
                 type="text"
                 formControlName="any_orders_made_so_far_by_the_court"
-                [(ngModel)]="arbitrationBody.any_orders_made_so_far_by_the_court"
+                [(ngModel)]="
+                  arbitrationBody.any_orders_made_so_far_by_the_court
+                "
                 class="inpute"
               />
             </div>
@@ -441,8 +437,6 @@
       <br />
 
       <div style="display: flex; width: 100%; justify-content: space-between">
-
-
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Potential Outcome</label>
           <div style="display: flex">
@@ -463,8 +457,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
 
       <br /><br />
@@ -526,10 +518,6 @@
     <br />
   </div>
 
-
-
-
-
   <!-- <div>
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="text-align: center">
@@ -571,7 +559,11 @@
   </div>
 </div>
 
-<div style="text-align: center;">
-  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']"
-    class="nextbtn">Next</button>
+<div style="text-align: center">
+  <button
+    [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>
