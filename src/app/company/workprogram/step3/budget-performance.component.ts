@@ -228,7 +228,7 @@ loadTable_Exploratory(data) {
   let info = this.exploratoryBody as exploratoryActivities;
 
   this.workprogram
-    .post_Exploratory(info, this.genk.wpYear, event.target.value, "DELETE")
+  .post_Exploratory(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
 
       if(res.statusCode == 300){
@@ -271,7 +271,7 @@ loadTable_Development(data) {
   let info = this.developmentDrillingBody as developmentDrillingActivities;
 
   this.workprogram
-    .post_Development(info, this.genk.wpYear, event.target.value, "DELETE")
+  .post_Development(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
 
       if(res.statusCode == 300){
@@ -313,7 +313,7 @@ loadTable_Facility(data) {
   let info = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
 
   this.workprogram
-    .post_Facility(info, this.genk.wpYear, event.target.value, "DELETE")
+  .post_Facility(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
 
       if(res.statusCode == 300){
@@ -356,7 +356,7 @@ loadTable_Production(data) {
   let info = this.productionCostBody as productionCost;
 
   this.workprogram
-    .post_Production(info, this.genk.wpYear, event.target.value, "DELETE")
+  .post_Production(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
     .subscribe(res => {
 
       if(res.statusCode == 300){
@@ -426,7 +426,8 @@ saveBudgetActualExpenditure(){
 
         }
       }
-      this.workprogram.post_Exploratory(budgetInfo, this.genk.wpYear, '','')
+      this.workprogram
+      .post_Exploratory(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
 
           if(res.statusCode == 300){
@@ -452,7 +453,7 @@ saveBudgetActualExpenditure(){
         }
       }
       this.workprogram
-        .post_Development(budgetInfo, this.genk.wpYear, '','')
+      .post_Development(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
 
           if(res.statusCode == 300){
@@ -478,7 +479,7 @@ saveBudgetActualExpenditure(){
       }
     }
     this.workprogram
-      .post_Facility(budgetInfo, this.genk.wpYear, '','')
+    .post_Facility(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
       .subscribe(res => {
 
         if(res.statusCode == 300){
@@ -503,7 +504,7 @@ saveBudgetActualExpenditure(){
         }
       }
       this.workprogram
-        .post_Production(budgetInfo, this.genk.wpYear, '','')
+      .post_Production(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
 
           if(res.statusCode == 300){

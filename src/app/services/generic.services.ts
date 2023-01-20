@@ -628,7 +628,7 @@ export class GenericService {
 
   restrictNoOfFoldValue(input) {
     this.val = parseInt(input);
-    
+
     debugger;
     if (this.val < 1 || this.val > 100) {
       alert("Please make sure entry is between 1-100.");
@@ -806,8 +806,7 @@ export class GenericService {
     });
     return resultArray;
   }
-  showStepTwo(){
-    debugger;
+  showStepTwo() {
     if(this.OmlName.toUpperCase().substring(0,3)=='OML' || this.OmlName.toUpperCase().substring(0,3)=='PML' || this.OmlName.toUpperCase().substring(0,3)=='') return true;
     return false;
   }

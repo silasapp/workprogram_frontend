@@ -102,7 +102,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     }
 
     getBudgetData() {
-      this.workprogram.getFormThreeBudget_3(this.genk.wpYear)
+      this.workprogram.getFormThreeBudget_3(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe(res => {
         let oilInfo = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
         let techInfo = this.newTechnologyBody as newTechnologyAndConformityAssessment;
@@ -159,7 +159,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
     debugger;
       this.workprogram
-        .post_OilGas(info, this.genk.wpYear, event.target.value, "DELETE")
+      .post_OilGas(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -202,11 +202,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
      Delete_Technology(event){
 
       let info = this.newTechnologyBody as newTechnologyAndConformityAssessment;
-    debugger;
       this.workprogram
-        .post_Technology(info, this.genk.wpYear, event.target.value, "DELETE")
+      .post_Technology(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
         .subscribe(res => {
-          debugger;
           if(res.statusCode == 300){
             this.modalService.logNotice("Error", res.message, 'error');
           }
@@ -247,9 +245,8 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
      Delete_Facility(event){
 
       let info = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
-    debugger;
       this.workprogram
-        .post_FacilityProject(info, this.genk.wpYear, event.target.value, "DELETE")
+      .post_FacilityProject(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -297,7 +294,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         }
       }
       this.workprogram
-        .post_OilGas(budgetInfo, this.genk.wpYear, '','')
+      .post_OilGas(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
         .subscribe(res => {
           debugger;
           if(res.statusCode == 300){
@@ -322,7 +319,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
             }
           }
           this.workprogram
-            .post_Technology(budgetInfo, this.genk.wpYear, '','')
+          .post_Technology(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
             .subscribe(res => {
               debugger;
               if(res.statusCode == 300){
@@ -348,9 +345,8 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
                 }
               }
               this.workprogram
-                .post_FacilityProject(budgetInfo, this.genk.wpYear, '','')
+              .post_FacilityProject(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
                 .subscribe(res => {
-                  debugger;
                   if(res.statusCode == 300){
                     this.modalService.logNotice("Error", res.message, 'error');
                   }

@@ -42,7 +42,8 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   getBudgetData() {
-    this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
+    this.workprogram.getFormThreeBudget_2(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
+    //this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
     .subscribe(res => {
       let budgetInfo = this.budgetProposalBody as budgetProposal;
       let capexInfo = this.capexOpexBody as capexOpex;
@@ -114,13 +115,10 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
    Delete_Budget(event){
-
     let info = this.budgetProposalBody as budgetProposal;
-  debugger;
     this.workprogram
-      .post_BudgetProposal(info, this.genk.wpYear, event.target.value, "DELETE")
+    .post_BudgetProposal(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
       .subscribe(res => {
-        debugger;
         if(res.statusCode == 300){
           this.modalService.logNotice("Error", res.message, 'error');
         }
@@ -212,7 +210,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     budgetInfo.companyNumber = 0;
 
     this.workprogram
-      .post_BudgetProposal(budgetInfo, this.genk.wpYear, '','')
+    .post_BudgetProposal(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
       .subscribe(res => {
         debugger;
         if(res.statusCode == 300){
