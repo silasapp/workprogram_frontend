@@ -40,6 +40,8 @@ export class SendBackFormComponent implements OnInit {
     this.apps = data.data.applications;
     this.appDetails = data.data.applicationDetails;
 
+    console.log('applications: ', this.apps, this.appDetails);
+
     this.form = this.formBuilder.group({
       comment: ['', Validators.required],
     });

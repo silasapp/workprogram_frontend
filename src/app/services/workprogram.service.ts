@@ -6040,6 +6040,15 @@ export class WorkProgramService {
     );
   }
 
+  viewApplication(appID) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/Application/ViewApplication`,
+      {
+        params: { appID },
+      }
+    );
+  }
+
   approveApplication(deskID: number, comment: string, selectedApps: string[]) {
     return this.http.post<any>(
       `${environment.apiUrl}/api/Application/ApproveApplication`,

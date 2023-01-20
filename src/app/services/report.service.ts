@@ -58,6 +58,12 @@ export class ReportService {
     );
   }
 
+  getRejectedApps() {
+    return this.http.get<any>(
+      `${environment.apiUrl}/application/CompanyRejectedApplications`
+    );
+  }
+
   addProcessFlow(model: any) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createProcess`,

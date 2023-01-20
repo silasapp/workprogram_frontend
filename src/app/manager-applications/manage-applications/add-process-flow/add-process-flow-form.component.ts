@@ -7,10 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
-import {
-  IRole,
-  ISBU,
-} from '../application-process-flow-configuration.component';
+import { IRole, ISBU } from '../manage-applications.component';
 
 @Component({
   selector: 'app-add-process-flow-form',

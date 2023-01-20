@@ -6,11 +6,11 @@ import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow
 import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-process-flow.component';
 
 @Component({
-  selector: 'app-application-process-flow-configuration',
-  templateUrl: './application-process-flow-configuration.component.html',
-  styleUrls: ['./application-process-flow-configuration.component.scss'],
+  selector: 'app-manage-applications',
+  templateUrl: './manage-applications.component.html',
+  styleUrls: ['./manage-applications.component.scss'],
 })
-export class ApplicationProcessFlowConfigurationComponent implements OnInit {
+export class ManageApplicationsComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
 
@@ -52,7 +52,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   ngOnInit() {
     this.data = [];
     this.genk.sizePerPage = this.genk.sizeten;
-    this.getProcessFlow();
+    this.getRejectedApps();
   }
 
   public get pageIndex(): number {
@@ -77,7 +77,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getProcessFlow();
+      this.getRejectedApps();
       this.cdr.markForCheck();
     });
   }
@@ -101,7 +101,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getProcessFlow();
+      this.getRejectedApps();
       this.cdr.markForCheck();
     });
   }
@@ -123,7 +123,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getProcessFlow();
+      this.getRejectedApps();
       this.cdr.markForCheck();
     });
   }
@@ -141,11 +141,11 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  getProcessFlow() {
+  getRejectedApps() {
     this.modalService.logCover('Loading data...', true);
-    this.report.getProcessFlow().subscribe({
+    this.report.getRejectedApps().subscribe({
       next: (res) => {
-        this.data = res.processes as any[];
+        this.data = res.data as any[];
         this.roles = res.roles as IRole[];
         this.sbus = res.sbUs as ISBU[];
 

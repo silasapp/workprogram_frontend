@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApplicationProcessFlowConfigurationComponent } from './application-process-flow-configuration/application-process-flow-configuration.component';
-import { ManageApplicationsRoutingModule } from './manage-applications-routing/process-flow-configuration-routing.module';
+import { ManageApplicationsRoutingModule } from './manage-applications-routing/manage-applications-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,18 +9,18 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AddProcessFlowFormComponent } from './application-process-flow-configuration/add-process-flow/add-process-flow-form.component';
-import { DeleteProcessFlowComponent } from './application-process-flow-configuration/delete-process-flow-form/delete-process-flow.component';
-
+import { ManageApplicationsComponent } from './manage-applications/manage-applications.component';
+import { AddProcessFlowFormComponent } from './manage-applications/add-process-flow/add-process-flow-form.component';
+import { DeleteProcessFlowComponent } from './manage-applications/delete-process-flow-form/delete-process-flow.component';
 @NgModule({
   declarations: [
-    ApplicationProcessFlowConfigurationComponent,
+    ManageApplicationsComponent,
     AddProcessFlowFormComponent,
     DeleteProcessFlowComponent,
   ],
   imports: [
     CommonModule,
-    ProcessFlowConfigManageApplications,
+    ManageApplicationsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
