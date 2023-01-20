@@ -466,14 +466,26 @@ export class ConcessionsfieldsComponent implements OnInit {
 
     });
 
-    for(var fieldConces in this.allConcessions){
-      this.resultconcessionList.push[fieldConces];
+debugger;
+this.resultconcessionList=[];
+    for(var counter in this.allConcessionsData){
+     var fieldConces= this.allConcessionsData[counter];
+      if(fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML')){
+        this.resultconcessionList.push(fieldConces);
+      }
     }
+debugger;
 
-
-     resultArray.filter(s => s.toUpperCase().includes('OML') || s.toUpperCase().includes('PML'))
+//resultArray.filter(s => s.includes('OML') || s.includes('PML'))
+//this.resultconcessionList= this.allConcessions.filter(this.isOMLorPML)
     return resultArray;
   }
+
+
+  isOMLorPML(element, index, array) {
+    if (element.toUpperCase() == "OML" || element.toUpperCase() == "PML") return element;
+  } 
+
 
   Alert(title: string, text: string, icon: any) {
     Swal.fire({
