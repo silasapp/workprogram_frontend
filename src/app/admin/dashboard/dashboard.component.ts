@@ -492,8 +492,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     numData
   ) {
     let totalString = '';
-    // plotDoubleBarChartHorizontal(selectedColumn: any[], chartBox: ElementRef<HTMLDivElement>, numData) {
-    // let totalString = "";
     chartBox.nativeElement.removeChild(chartBox.nativeElement.firstChild);
     const node = document.createElement('div');
     node.style.width = '100%';

@@ -63,75 +63,32 @@ export class DownloadReportComponent implements OnInit {
     //this.modalService.togCover();
   }
 
-  public openPDF(): void {
-    debugger;
+    public openPDF(): void {
+      debugger;
 
-    this.modalService.logReportDownload();
-    let seismicData = this.repor.truncateArray(
-      this.repor.seismicApprovedTable.data,
-      this.repor.seismicApprovedTable.header
-    );
-    //let seismicTable = this.repor.truncateArray2(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
-    //let seismicHeader = this.repor.truncateHeader(this.repor.seismicApprovedTable.header);
-    let seismicActivitiesData = this.repor.truncateArray(
-      this.repor.seismicActivitiesTable.data,
-      this.repor.seismicActivitiesTable.header
-    );
-    let rell = this.repor.seismicActivities2yrsTable.data;
-    let seismicActivities2yrsData = this.repor.truncateArray(
-      this.repor.seismicActivities2yrsTable.data,
-      this.repor.seismicActivities2yrsTable.header
-    );
-    let seismicProcessingData = this.repor.truncateArray(
-      this.repor.seismicProcessingTable.data,
-      this.repor.seismicProcessingTable.header
-    );
-    let seismicProcessingPreviousData = this.repor.truncateArray(
-      this.repor.seismicProcessingPreviousTable.data,
-      this.repor.seismicProcessingPreviousTable.header
-    );
-    let explorationWellsData = this.repor.truncateArray(
-      this.repor.explorationWellsTable.data,
-      this.repor.explorationWellsTable.header
-    );
-    let appraisalWellsData = this.repor.truncateArray(
-      this.repor.appraisalWellsTable.data,
-      this.repor.appraisalWellsTable.header
-    );
-    let developmentWellsData = this.repor.truncateArray(
-      this.repor.developmentWellsTable.data,
-      this.repor.developmentWellsTable.header
-    );
-    let oilProductionData = this.repor.truncateArray(
-      this.repor.oilProductionTable.data,
-      this.repor.oilProductionTable.header
-    );
-    let reservesUpdateData = this.repor.reservesUpdateTable.data;
+      this.modalService.logReportDownload();
+      let seismicData = this.repor.truncateArray(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
+      //let seismicTable = this.repor.truncateArray2(this.repor.seismicApprovedTable.data, this.repor.seismicApprovedTable.header);
+      //let seismicHeader = this.repor.truncateHeader(this.repor.seismicApprovedTable.header);
+      let seismicActivitiesData = this.repor.truncateArray(this.repor.seismicActivitiesTable.data, this.repor.seismicActivitiesTable.header);
+      let rell = this.repor.seismicActivities2yrsTable.data;
+      let seismicActivities2yrsData = this.repor.truncateArray(this.repor.seismicActivities2yrsTable.data, this.repor.seismicActivities2yrsTable.header);
+      let seismicProcessingData = this.repor.truncateArray(this.repor.seismicProcessingTable.data, this.repor.seismicProcessingTable.header);
+      let seismicProcessingPreviousData = this.repor.truncateArray(this.repor.seismicProcessingPreviousTable.data, this.repor.seismicProcessingPreviousTable.header);
+      let explorationWellsData = this.repor.truncateArray(this.repor.explorationWellsTable.data, this.repor.explorationWellsTable.header);
+      let appraisalWellsData = this.repor.truncateArray(this.repor.appraisalWellsTable.data, this.repor.appraisalWellsTable.header);
+      let developmentWellsData = this.repor.truncateArray(this.repor.developmentWellsTable.data, this.repor.developmentWellsTable.header);
+      let oilProductionData = this.repor.truncateArray(this.repor.oilProductionTable.data, this.repor.oilProductionTable.header);
+      let reservesUpdateData = this.repor.reservesUpdateTable.data;
 
-    let oilProductionHeader = this.repor.truncateHeader(
-      this.repor.oilProductionTable.header
-    );
-    let oilProductionContractData = this.repor.truncateArray(
-      this.repor.oilProductionContractTable.data,
-      this.repor.oilProductionContractTable.header
-    );
-    let oilProductionContractHeader = this.repor.truncateHeader(
-      this.repor.oilProductionContractTable.header
-    );
-    let oilProductionMonthlyData = this.repor.truncateArray(
-      this.repor.oilProductionMonthlyTable.data,
-      this.repor.oilProductionMonthlyTable.header
-    );
-    let oilProductionMonthlyHeader = this.repor.truncateHeader(
-      this.repor.oilProductionMonthlyTable.header
-    );
-    let oilProductionTerrainData = this.repor.truncateArray(
-      this.repor.oilProductionTerrainTable.data,
-      this.repor.oilProductionTerrainTable.header
-    );
-    let oilProductionTerrainHeader = this.repor.truncateHeader(
-      this.repor.oilProductionTerrainTable.header
-    );
+      let oilProductionHeader = this.repor.truncateHeader(this.repor.oilProductionTable.header);
+      let oilProductionContractData = this.repor.truncateArray(this.repor.oilProductionContractTable.data, this.repor.oilProductionContractTable.header);
+      let oilProductionContractHeader = this.repor.truncateHeader(this.repor.oilProductionContractTable.header);
+      let oilProductionMonthlyData = this.repor.truncateArray(this.repor.oilProductionMonthlyTable.data, this.repor.oilProductionMonthlyTable.header);
+      let oilProductionMonthlyHeader = this.repor.truncateHeader(this.repor.oilProductionMonthlyTable.header);
+      let oilProductionTerrainData = this.repor.truncateArray(this.repor.oilProductionTerrainTable.data, this.repor.oilProductionTerrainTable.header);
+      let oilProductionTerrainHeader = this.repor.truncateHeader(this.repor.oilProductionTerrainTable.header);
+
 
     // let DATA: any = document.getElementById('htmlData');
     // html2canvas(DATA).then((canvas) => {
@@ -317,6 +274,95 @@ export class DownloadReportComponent implements OnInit {
       290
     );
     //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
+
+      if (this.repor.seismicActivitiesIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.seismicActivitiesSelectedColumns[1].header + " BY " + this.repor.seismicActivitiesSelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.seismicActivitiesChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`SEISMIC DATA ACTIVITIES ${this.genk.reportYear}`, 8, 160);
+      }
+
+
+    /////// SEISMIC ACTIVITIES 2 YEARS AGO
+    PDF.addPage('a4', 'p');
+    PDF.setFontSize(14);
+    PDF.setTextColor('black');
+    PDF.setFont('Trebuchet MS', 'normal', '900');
+    PDF.text(
+      `1.2 Seismic Data Approved and 2 Years ago for ${this.genk.reportYear}`,
+      5,
+      5
+    );
+      /////// SEISMIC ACTIVITIES 2 YEARS AGO
+      PDF.addPage('a4', 'p');
+      PDF.setFontSize(14);
+      PDF.setTextColor("black");
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.text(`1.2 Seismic Data Approved and 2 Years ago for ${(Number(this.genk.reportYear) - 2).toString()}`, 5, 5);
+
+    if (this.repor.seismicActivities2yrsTable.data.length > 0) {
+      let seismicActivities2yrsFilt = seismicActivities2yrsData.map(function (
+        obj
+      ) {
+        return {
+          companyName: obj.companyName,
+          omL_Name: obj.omL_Name,
+          quantum_Approved: obj.quantum_Approved,
+          quantum: obj.quantum,
+        };
+      });
+
+      let seismicActivities2yrsFiltHeader = [
+        'COMPANY NAME',
+        'NO. OF BLOCKS',
+        'TOTAL QUANTUM APPROVED (SQ.KM)',
+        'TOTAL QUANTUM ACQUIRED (SQ.KM)',
+      ];
+
+      let compressedActivities2yrsData = this.repor.compressReportDataArray(
+        seismicActivities2yrsFilt,
+        'companyName'
+      );
+      autoTable(PDF, {
+        head: [seismicActivities2yrsFiltHeader],
+        body: compressedActivities2yrsData,
+        styles: {
+          fillColor: [220, 220, 220],
+          lineColor: [200, 200, 200],
+          lineWidth: 0.5,
+        },
+        margin: { top: 20, left: 10, right: 10 },
+        headStyles: { textColor: [255, 255, 255], fillColor: [0, 128, 128] },
+      });
+    }
+    PDF.setFontSize(12);
+    PDF.setFont('Trebuchet MS', 'normal', '900');
+    PDF.setTextColor('brown');
+    PDF.text(
+      `TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor
+        .totalFromArray(seismicActivities2yrsData, 'quantum_Approved')
+        .toFixed(2)}`,
+      100,
+      285
+    );
+    PDF.text(
+      `TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor
+        .totalFromArray(seismicActivities2yrsData, 'quantum')
+        .toFixed(2)}`,
+      100,
+      290
+    );
+    //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
 
     if (this.repor.seismicActivitiesIsChart) {
       PDF.addPage('a4', 'p');
@@ -1186,134 +1232,71 @@ export class DownloadReportComponent implements OnInit {
           lineColor: [200, 200, 200],
           lineWidth: 0.5,
         },
-        margin: { top: 20, left: 10, right: 10 },
-        headStyles: { textColor: [255, 255, 255], fillColor: [0, 128, 128] },
-      });
-    }
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
 
-    PDF.setFontSize(12);
-    PDF.setFont('Trebuchet MS', 'normal', '900');
-    PDF.setTextColor('brown');
-    PDF.text(
-      `ANNUAL PRODUCTION BY COMPANY = ${this.repor
-        .totalFromArray(
-          oilProductionMonthlyData,
-          'annual_Total_Production_by_company'
-        )
-        .toFixed(2)}`,
-      100,
-      285
-    );
-    PDF.text(
-      `ANNUAL AVG DAILY PRODUCTION = ${this.repor
-        .totalFromArray(oilProductionMonthlyData, 'annual_Avg_Daily_Production')
-        .toFixed(2)}`,
-      100,
-      290
-    );
-
-    if (this.repor.oilProductionMonthlyIsChart) {
-      PDF.addPage('a4', 'p');
       PDF.setFontSize(12);
-      PDF.setFont('Trebuchet MS', 'normal', '900');
-      PDF.setTextColor('navy');
-      let cap =
-        this.repor.oilProductionMonthlySelectedColumns[1].header +
-        ' BY ' +
-        this.repor.oilProductionMonthlySelectedColumns[0].header;
-      PDF.text(cap, 8, 10);
-      //debugger;
-      PDF.addImage(
-        this.report.oilProductionMonthlyChart,
-        'PNG',
-        5,
-        position,
-        200,
-        130
-      );
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.setTextColor("brown");
+      PDF.text(`ANNUAL PRODUCTION BY COMPANY = ${this.repor.totalFromArray(oilProductionMonthlyData, "annual_Total_Production_by_company").toFixed(2)}`, 100, 285);
+      PDF.text(`ANNUAL AVG DAILY PRODUCTION = ${this.repor.totalFromArray(oilProductionMonthlyData, "annual_Avg_Daily_Production").toFixed(2)}`, 100, 290);
 
+
+      if (this.repor.oilProductionMonthlyIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.oilProductionMonthlySelectedColumns[1].header + " BY " + this.repor.oilProductionMonthlySelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.oilProductionMonthlyChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`OIL PRODUCTION MONTHLY ${(Number(this.genk.reportYear)).toString()}`, 8, 160);
+      }
+
+
+      /////// OIL PRODUCTION MONTHLY TERRAIN
+      PDF.addPage('a4', 'p');
       PDF.setFontSize(14);
-      PDF.setTextColor('black');
-      PDF.text(
-        `OIL PRODUCTION MONTHLY ${Number(this.genk.reportYear).toString()}`,
-        8,
-        160
-      );
-    }
+      PDF.setTextColor("black");
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.text(`6.0 OIL PRODUCTION MONTHLY TERRAIN ${(Number(this.genk.reportYear)).toString()}`, 5, 5);
 
-    /////// OIL PRODUCTION MONTHLY TERRAIN
-    PDF.addPage('a4', 'p');
-    PDF.setFontSize(14);
-    PDF.setTextColor('black');
-    PDF.setFont('Trebuchet MS', 'normal', '900');
-    PDF.text(
-      `6.0 OIL PRODUCTION MONTHLY TERRAIN ${Number(
-        this.genk.reportYear
-      ).toString()}`,
-      5,
-      5
-    );
+      if (this.repor.oilProductionTerrainTable.data.length > 0) {
 
-    if (this.repor.oilProductionTerrainTable.data.length > 0) {
-      let compressedOilProductionTerrainData = this.repor.convertDataToArray(
-        oilProductionTerrainData
-      );
-      autoTable(PDF, {
-        head: [oilProductionTerrainHeader],
-        body: compressedOilProductionTerrainData,
-        styles: {
+        let compressedOilProductionTerrainData = this.repor.convertDataToArray(oilProductionTerrainData);
+        autoTable(PDF, {head: [oilProductionTerrainHeader], body: compressedOilProductionTerrainData, styles: {
           fillColor: [220, 220, 220],
           lineColor: [200, 200, 200],
           lineWidth: 0.5,
         },
-        margin: { top: 20, left: 10, right: 10 },
-        headStyles: { textColor: [255, 255, 255], fillColor: [0, 128, 128] },
-      });
-    }
+        margin: {top: 20, left: 10, right: 10}, headStyles: {textColor: [255, 255, 255], fillColor: [0, 128, 128]}});
+      }
 
-    PDF.setFontSize(12);
-    PDF.setFont('Trebuchet MS', 'normal', '900');
-    PDF.setTextColor('brown');
-    PDF.text(
-      `ANNUAL PRODUCTION BY COMPANY = ${this.repor
-        .totalFromArray(
-          oilProductionTerrainData,
-          'annual_Total_Production_by_company'
-        )
-        .toFixed(2)}`,
-      100,
-      285
-    );
-    //PDF.text(`ANNUAL AVG DAILY PRODUCTION = ${this.repor.totalFromArray(oilProductionTerrainData, "annual_Avg_Daily_Production").toFixed(2)}`, 100, 290);
-
-    if (this.repor.oilProductionTerrainIsChart) {
-      PDF.addPage('a4', 'p');
       PDF.setFontSize(12);
-      PDF.setFont('Trebuchet MS', 'normal', '900');
-      PDF.setTextColor('navy');
-      let cap =
-        this.repor.oilProductionTerrainSelectedColumns[1].header +
-        ' BY ' +
-        this.repor.oilProductionTerrainSelectedColumns[0].header;
-      PDF.text(cap, 8, 10);
-      //debugger;
-      PDF.addImage(
-        this.report.oilProductionTerrainChart,
-        'PNG',
-        5,
-        position,
-        200,
-        130
-      );
+      PDF.setFont("Trebuchet MS", "normal", "900");
+      PDF.setTextColor("brown");
+      PDF.text(`ANNUAL PRODUCTION BY COMPANY = ${this.repor.totalFromArray(oilProductionTerrainData, "annual_Total_Production_by_company").toFixed(2)}`, 100, 285);
+      //PDF.text(`ANNUAL AVG DAILY PRODUCTION = ${this.repor.totalFromArray(oilProductionTerrainData, "annual_Avg_Daily_Production").toFixed(2)}`, 100, 290);
 
-      PDF.setFontSize(14);
-      PDF.setTextColor('black');
-      PDF.text(
-        `OIL PRODUCTION TERRAIN ${Number(this.genk.reportYear).toString()}`,
-        8,
-        160
-      );
-    }
+
+      if (this.repor.oilProductionTerrainIsChart) {
+        PDF.addPage('a4', 'p');
+        PDF.setFontSize(12);
+        PDF.setFont("Trebuchet MS", "normal", "900");
+        PDF.setTextColor("navy");
+        let cap = this.repor.oilProductionTerrainSelectedColumns[1].header + " BY " + this.repor.oilProductionTerrainSelectedColumns[0].header;
+        PDF.text(cap, 8, 10);
+        //debugger;
+        PDF.addImage(this.report.oilProductionTerrainChart, 'PNG', 5, position, 200, 130);
+
+        PDF.setFontSize(14);
+        PDF.setTextColor("black");
+        PDF.text(`OIL PRODUCTION TERRAIN ${(Number(this.genk.reportYear)).toString()}`, 8, 160);
+      }
 
     PDF.save('angular-demo.pdf');
   }
