@@ -57,6 +57,10 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           this.initialBody.proposed_year_data,
           [Validators.required]
         ),
+        proposed_initial_name: new FormControl(
+          this.initialBody.proposed_initial_name,
+          [Validators.required]
+        ),
         budeget_Allocation_NGN: new FormControl(
           this.initialBody.budeget_Allocation_NGN,
           [Validators.required]
@@ -72,8 +76,8 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           this.initialBody.actual_Completion_Date,
           [Validators.required]
         ),
-        proposed_Completion_Date: new FormControl(
-          this.initialBody.proposed_Completion_Date,
+        proposed_completion_days: new FormControl(
+          this.initialBody.proposed_completion_days,
           [Validators.required]
         ),
         remarks: new FormControl(this.initialBody.remarks, [

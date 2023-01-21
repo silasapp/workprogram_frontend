@@ -12,7 +12,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-appraisal-wells',
   templateUrl: './seismic-activities.component.html',
   styleUrls: [
     '../reports/ndr-report.component.scss',
@@ -150,6 +150,9 @@ export class AppraisalWellsComponent implements OnInit {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
+    this.modalService.reportDownload.subscribe((res) => {
+      this.transferData();
+    });
     this.modalService.generalReport.subscribe((res) => {
       this.getAppraisalWells();
     });
@@ -219,6 +222,12 @@ export class AppraisalWellsComponent implements OnInit {
       .getAppraisalWells(this.genk.reportYear)
       .subscribe((res) => {
         this.data = res as any[];
+        this.data = res.filter((x) => x.contract_Type != null);
+        this.data = this.report.convertColumn(
+          this.data,
+          'number_of_Days_to_Total_Depth'
+        );
+        this.data = this.report.convertColumn(this.data, 'well_cost');
         if (this.data.length > 1) this.selectedPage = 1;
         this.isData = this.data.length > 0;
         let count = this.data.length;
@@ -280,15 +289,16 @@ export class AppraisalWellsComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  plotDoublePieChart() {
+  async plotDoublePieChart() {
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     } else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(
         this.myChartBox.nativeElement.firstChild
       );
       const node = document.createElement('div');
-      node.style.width = '100%';
+      node.style.width = '70%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
       let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
@@ -299,12 +309,18 @@ export class AppraisalWellsComponent implements OnInit {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
+        this.report.appraisalWellsChart = await this.report.plotDoublePieChart(
+          bechart,
+          sele1,
+          sele2,
+          chartdata
+        );
       }
+      this.isChart = true;
     }
   }
 
-  plotDoubleBarChart() {
+  async plotDoubleBarChart() {
     let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
@@ -331,21 +347,30 @@ export class AppraisalWellsComponent implements OnInit {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(
-            bechart,
-            this.selectedColumns[0].columnDef,
-            this.selectedColumns[1].columnDef,
-            chartdata
-          );
+          this.report.appraisalWellsChart =
+            await this.report.plotDoubleBarChartHorizontal(
+              bechart,
+              this.selectedColumns[0].columnDef,
+              this.selectedColumns[1].columnDef,
+              chartdata
+            );
         } else {
-          this.report.plotDoubleBarChart(
-            bechart,
-            this.selectedColumns[0].columnDef,
-            this.selectedColumns[1].columnDef,
-            chartdata
-          );
+          this.report.appraisalWellsChart =
+            await this.report.plotDoubleBarChart(
+              bechart,
+              this.selectedColumns[0].columnDef,
+              this.selectedColumns[1].columnDef,
+              chartdata
+            );
         }
       }
+      this.isChart = true;
     }
+  }
+
+  transferData() {
+    this.report.appraisalWellsTable = { data: this.data, header: this.columns };
+    this.report.appraisalWellsIsChart = this.isChart;
+    this.report.appraisalWellsSelectedColumns = this.selectedColumns;
   }
 }

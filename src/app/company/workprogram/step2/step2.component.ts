@@ -14,11 +14,15 @@ export class Step2Component implements OnInit {
     this.genk = gen;
    }
 
+  
+
   ngOnInit(): void {
   }
 
   onSubmit(){
     return null;
   }
+
+  
 
 }

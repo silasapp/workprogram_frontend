@@ -49,7 +49,7 @@
   <br />
   <br />
   <div style="display: flex; width: 100%; justify-content: space-between">
-    <div style="width: 30%; margin-top: auto">
+    <!-- <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Actual No. of Completion </label>
       <div style="display: flex">
         <div style="
@@ -63,10 +63,10 @@
             (keyup)="genk.formatCurrency($event)" [(ngModel)]="initialBody.current_year_Actual_Number" />
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div style="width: 30%; margin-top: auto">
-      <label class="labelwp">Proposed No. of Completion</label>
+      <label class="labelwp">Proposed Number of Wells For Completion</label>
       <div style="display: flex">
         <div style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -77,6 +77,107 @@
           <input (keypress)="genk.restrictData($event)" formControlName="proposed_year_data"
             [(ngModel)]="initialBody.proposed_year_data" class="inpute" (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)" [(ngModel)]="initialBody.proposed_year_data" />
+        </div>
+      </div>
+    </div>
+
+
+
+    <div style="width: 30%; margin-top: auto">
+      <label class="labelwp">Proposed Initial Well Completion Name </label>
+      <div style="display: flex">
+        <div style="
+            box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          ">
+          <input  formControlName="proposed_initial_name"
+            [(ngModel)]="initialBody.proposed_initial_name" class="inpute" />
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 30%; margin-top: auto">
+      <label class="labelwp">Proposed Number of Days For Completion  </label>
+      <div style="display: flex">
+        <div style="
+            box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          ">
+          <input  formControlName="proposed_completion_days"
+            [(ngModel)]="initialBody.proposed_completion_days" class="inpute" />
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div style="width: 30%">
+      <div style="font-weight: 500; margin-bottom: 5px">
+        <span>Budget Allocation (NGN & USD)</span>
+      </div>
+
+      <div style="width: 100%; display: flex">
+        <div style="width: 98%; margin-right: 2%">
+          <label class="labelwp">NGN</label>
+          <div style="display: flex">
+            <div class="inpdivcurrency">
+              <span class="currencywp">&#x20A6;</span>
+              <input type="text" formControlName="budeget_Allocation_NGN" (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)" (change)="
+                  initialBody.budeget_Allocation_NGN =
+                    genk.addCurrencyDecimal($event)
+                " [value]="initialBody.budeget_Allocation_NGN" class="inpute" />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 98%">
+          <label class="labelwp">USD</label>
+          <div style="display: flex">
+            <div class="inpdivcurrency">
+              <span class="currencywp">$</span>
+              <input type="text" formControlName="budeget_Allocation_USD" (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)" (change)="
+                  initialBody.budeget_Allocation_USD =
+                    genk.addCurrencyDecimal($event)
+                " [value]="initialBody.budeget_Allocation_USD" class="inpute" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <br />
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    <!-- <div style="width: 30%; margin: auto 2% 0 0">
+      <label class="labelwp">Actual Completion Date</label>
+      <div style="display: flex">
+        <div style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          ">
+          <input type="date" class="inpute" formControlName="actual_Completion_Date"
+            [(ngModel)]="initialBody.actual_Completion_Date" />
+        </div>
+      </div>
+    </div> -->
+
+    <div style="width: 30%; margin-top: auto">
+      <label class="labelwp">Proposed Completion Date</label>
+      <div style="display: flex">
+        <div style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          ">
+          <input type="date" class="inpute" formControlName="proposed_Completion_Date"
+            [(ngModel)]="initialBody.proposed_Completion_Date" />
         </div>
       </div>
     </div>
@@ -116,55 +217,25 @@
         </div>
       </div>
     </div>
-  </div>
-  <br />
-  <div style="display: flex; width: 100%; justify-content: space-between">
-    <div style="width: 30%; margin: auto 2% 0 0">
-      <label class="labelwp">Actual Completion Date</label>
-      <div style="display: flex">
-        <div style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            border-radius: 10px;
-            padding: 7px 10px;
-          ">
-          <input type="date" class="inpute" formControlName="actual_Completion_Date"
-            [(ngModel)]="initialBody.actual_Completion_Date" />
-        </div>
-      </div>
-    </div>
-
-    <div style="width: 30%; margin-top: auto">
-      <label class="labelwp">Proposed Completion Date</label>
-      <div style="display: flex">
-        <div style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            border-radius: 10px;
-            padding: 7px 10px;
-          ">
-          <input type="date" class="inpute" formControlName="proposed_Completion_Date"
-            [(ngModel)]="initialBody.proposed_Completion_Date" />
-        </div>
-      </div>
-    </div>
 
     <div style="width: 30%">
-      <label class="labelwp"> Initial well completion in Oil or Gas well</label>
+      <label class="labelwp"> Well purpose to have Oil, Gas or Condensate Well</label>
       <div style="display: flex">
         <div class="inputshadow">
           <select class="dropwp" formControlName="oil_or_gas_wells" [(ngModel)]="initialBody.oil_or_gas_wells">
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
             <option value="OIL WELL">Oil Well</option>
+            <option value="CONDENSATE WELL">Condensate Well</option>
           </select>
         </div>
       </div>
     </div>
   </div>
-  <br />
+  <br /> 
 
   <div style="display: flex; width: 100%; justify-content: space-between">
+   
     <div style="width: 30%">
       <label class="labelwp">Remarks</label>
       <div style="display: flex">

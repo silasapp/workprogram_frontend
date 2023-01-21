@@ -29,6 +29,8 @@ export class GenericService {
   performance = 'performance_evaluation';
   workprogram = 'workprogram';
   generalReport = 'generalreport';
+  empty = ' ';
+  wkProposedYear = new Date().getFullYear();
 
   reportYear: string;
   submitted = false;
@@ -39,11 +41,12 @@ export class GenericService {
   wpYear: string;
   terrain: string;
   geologicalLocation: string;
-  OmlName: string;
+  OmlName: string = '';
   OmlID: number;
   fieldName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
+  val: number;
   OMLList = [];
   Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -617,10 +620,40 @@ export class GenericService {
     return e.value;
   }
 
+  restrictNoOfFoldValue(input) {
+    this.val = parseInt(input);
+
+    debugger;
+    if (this.val < 1 || this.val > 100) {
+      alert('Please make sure entry is between 1-100.');
+      return '0';
+    }
+    input = this.val.toString();
+    return input;
+  }
+
+  restrictRecordLengthValue(input) {
+    this.val = parseInt(input);
+
+    if (this.val < 1 || this.val > 59) {
+      alert('Please make sure entry is between 1-59.');
+      return '0';
+    }
+    input = this.val.toString();
+    return input;
+  }
+
   restrictData(e) {
     //alert(e.key);
     var x = e.which || e.keycode;
     if (x >= 46 && x <= 57) return true;
+    else return false;
+  }
+
+  restrictAlphaData(e) {
+    //alert(e.key);
+    var x = e.which || e.keycode;
+    if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122)) return true;
     else return false;
   }
 
@@ -762,5 +795,15 @@ export class GenericService {
       delete element['year_of_WP'];
     });
     return resultArray;
+  }
+  showStepTwo() {
+    debugger;
+    if (
+      this.OmlName.toUpperCase().substring(0, 3) == 'OML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == 'PML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == ''
+    )
+      return true;
+    return false;
   }
 }

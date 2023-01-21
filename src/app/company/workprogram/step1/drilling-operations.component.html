@@ -31,7 +31,7 @@
   <br />
   <div>
     <span style="font-weight: 600; color: teal; font-size: 17px"
-      >Categories of Wells Drilled</span
+      >Categories of Proposed Well</span
     ><br />
     <small style="color: rgb(255, 157, 0); font-weight: 500"
       >Note*: &nbsp; Fill only for quarters for which you have data</small
@@ -45,7 +45,7 @@
           <div
             class="quarterspace"
             [ngClass]="quaterACClassOne"
-            (click)="changeACQuater(1, btn, btn2, btn3)"
+            (click)="changeACQuater(1, btn)"
           >
             <div style="margin-bottom: 20px">
               <span><span style="font-size: 25px">1</span> Quarter</span>
@@ -54,7 +54,7 @@
           <div
             class="quarterspace"
             [ngClass]="quaterACClassTwo"
-            (click)="changeACQuater(2, btn, btn2, btn3)"
+            (click)="changeACQuater(2, btn)"
           >
             <div style="margin-bottom: 20px">
               <span><span style="font-size: 25px">2</span> Quarter</span>
@@ -63,7 +63,7 @@
           <div
             class="quarterspace"
             [ngClass]="quaterACClassThree"
-            (click)="changeACQuater(3, btn, btn2, btn3)"
+            (click)="changeACQuater(3, btn)"
           >
             <div style="margin-bottom: 20px">
               <span><span style="font-size: 25px">3</span> Quarter</span>
@@ -72,7 +72,7 @@
           <div
             class="quarterspace"
             [ngClass]="quaterACClassFour"
-            (click)="changeACQuater(4, btn, btn2, btn3)"
+            (click)="changeACQuater(4, btn)"
           >
             <div style="margin-bottom: 20px">
               <span> <span style="font-size: 25px">4</span> Quarter</span>
@@ -110,11 +110,9 @@
                 </div>
               </div>
 
-              <div style="width: 30%">
-                <label id="ContentPlaceHolder2_Label13" class="labelwp"
-                  >Actual/Proposed</label
-                >
-                <div style="display: flex; width: 100%">
+              <!-- <div style="width: 30%">
+                <label id="ContentPlaceHolder2_Label13" class="labelwp">Actual/Proposed</label>
+                <div style="display: flex; width: 100%;">
                   <div class="inputshadow">
                     <select
                       class="dropwp"
@@ -127,11 +125,11 @@
                     </select>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div style="width: 30%">
                 <label id="ContentPlaceHolder2_Label13" class="labelwp"
-                  >Category</label
+                  >Well Class</label
                 >
                 <div style="display: flex; width: 100%">
                   <div class="inputshadow">
@@ -140,7 +138,7 @@
                       formControlName="category"
                       [(ngModel)]="categoryBody.category"
                     >
-                      <option selected disabled>-- Select Category --</option>
+                      <option selected disabled>-- Select Well Class --</option>
                       <option value="1st Appraisal">1st Appraisal</option>
                       <option value="2nd Appraisal">2nd Appraisal</option>
                       <option value="Development">Development</option>
@@ -245,7 +243,7 @@
             >
               <div style="width: 30%">
                 <label id="ContentPlaceHolder2_Label13" class="labelwp"
-                  >Cored</label
+                  >Planning Coring</label
                 >
                 <div style="display: flex; width: 100%">
                   <div class="inputshadow">
@@ -265,7 +263,7 @@
               </div>
 
               <div style="width: 30%; margin-top: auto">
-                <label class="labelwp">Cored Depth Interval (meters)</label>
+                <label class="labelwp">Coring Depth Interval (meters)</label>
                 <div style="display: flex">
                   <div
                     style="
@@ -289,6 +287,7 @@
                 <label class="labelwp">Core Cost (USD)</label>
                 <div style="display: flex">
                   <div
+                    class="inpdivcurrency"
                     style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
@@ -296,10 +295,16 @@
                       padding: 7px 10px;
                     "
                   >
+                    <span class="currencywp">$</span>
                     <input
                       formControlName="core_Cost_USD"
                       (keypress)="genk.restrictData($event)"
-                      [(ngModel)]="categoryBody.core_Cost_USD"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        categoryBody.core_Cost_USD =
+                          genk.addCurrencyDecimal($event)
+                      "
+                      [value]="categoryBody.core_Cost_USD"
                       class="inpute"
                     />
                   </div>
@@ -358,7 +363,7 @@
               </div>
 
               <div style="width: 30%">
-                <label class="labelwp">Hydrocarbon Interval(s)</label>
+                <label class="labelwp">Target Reservoirs</label>
                 <div style="display: flex">
                   <div
                     style="
@@ -380,8 +385,8 @@
             </div>
             <br />
 
-            <div style="display: flex; width: 100%; justify-content: end">
-              <div style="width: 30%; margin-right: 5%">
+            <!-- <div style="display: flex; width: 100%;  justify-content: end;">
+              <div style="width: 30%; margin-right: 5%;">
                 <label class="labelwp">Upload File and Discovery</label>
                 <div style="display: flex">
                   <div
@@ -446,15 +451,16 @@
                 </span>
               </div>
             </div>
-            <br />
+            <br>-->
 
             <div
               style="display: flex; width: 100%; justify-content: space-between"
             >
               <div style="width: 30%; margin-top: auto">
-                <label class="labelwp"> Total Actual Well Cost(USD) </label>
+                <label class="labelwp"> Estimated Well Cost(USD) </label>
                 <div style="display: flex">
                   <div
+                    class="inpdivcurrency"
                     style="
                       box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
@@ -462,10 +468,15 @@
                       padding: 7px 10px;
                     "
                   >
+                    <span class="currencywp">$</span>
                     <input
                       formControlName="well_cost"
                       (keypress)="genk.restrictData($event)"
-                      [(ngModel)]="categoryBody.well_cost"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        categoryBody.well_cost = genk.addCurrencyDecimal($event)
+                      "
+                      [value]="categoryBody.well_cost"
                       class="inpute"
                     />
                   </div>
@@ -503,6 +514,7 @@
                     <input
                       type="text"
                       formControlName="number_of_Days_to_Total_Depth"
+                      (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.number_of_Days_to_Total_Depth"
                       class="inpute"
                     />
@@ -529,9 +541,7 @@
                       <option selected disabled>
                         -- Select an Terrain -- &nbsp; &nbsp;
                       </option>
-                      <option value="Continrental Shelf">
-                        Continental Shelf
-                      </option>
+                      <option value="Continrental Shelf">Offshore</option>
                       <option value="Deep Offshore">Deep Offshore</option>
                       <option value="Onshore">Onshore</option>
                     </select>
@@ -739,6 +749,7 @@
                     <input
                       type="text"
                       formControlName="basin"
+                      (keypress)="genk.restrictAlphaData($event)"
                       [(ngModel)]="categoryBody.basin"
                       class="inpute"
                     />
@@ -792,6 +803,30 @@
 
             <div class="toprow">
               <div style="width: 30%">
+                <label class="labelwp"
+                  >Surface Cordinates for each Well in Degrees (x,y)</label
+                >
+                <div style="display: flex">
+                  <div
+                    style="
+                      box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                      width: 100%;
+                      border-radius: 20px;
+                      padding: 7px 10px;
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="surface_cordinates_for_each_well_in_degrees"
+                      [(ngModel)]="
+                        categoryBody.surface_cordinates_for_each_well_in_degrees
+                      "
+                      class="inpute"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div style="width: 30%">
                 <label class="labelwp">Comments</label>
                 <div style="display: flex">
                   <div
@@ -821,23 +856,16 @@
             <br />
           </div>
 
-          <div>
-            <span style="font-weight: 600; color: teal; font-size: 17px"
-              >Actual Well Name and Cost Per Well</span
-            ><br />
-            <small style="color: rgb(255, 157, 0); font-weight: 500"
-              >Note *: Enter a Well name and cost at a time. Enter N/A or
-              Zero(0) for cost, if none drillied</small
-            >
-          </div>
-          <br />
+          <!-- <div>
+            <span style="font-weight: 600; color: teal; font-size: 17px;">Actual Well Name and Cost Per Well</span><br>
+            <small style="color: rgb(255, 157, 0); font-weight: 500;">Note *: Enter a Well name and cost at a time.
+              Enter N/A or Zero(0) for cost, if none drillied</small>
+          </div><br>
 
-          <div
-            [formGroup]="CostForm"
-            (ngSubmit)="saveWellCost()"
-            style="display: flex; width: 100%; justify-content: space-between"
-          >
-            <div style="width: 30%; margin-top: auto">
+
+          <div [formGroup]="CostForm" (ngSubmit)="saveWellCost()"
+            style="display: flex; width: 100%;  justify-content: space-between;">
+            <div style="width: 30%; margin-top: auto;">
               <label class="labelwp">Actual Well Name</label>
               <div style="display: flex">
                 <div
@@ -996,11 +1024,9 @@
           </div>
           <br />
 
-          <div style="text-align: right; margin-bottom: 5px">
-            <button #btn3 class="submitbtn" (click)="saveCostProposed()">
-              Save Quarter 1
-            </button>
-          </div>
+          <div style="text-align: right; margin-bottom: 5px;">
+            <button #btn3 class="submitbtn" (click)="saveCostProposed()">Save Quarter 1</button>
+          </div> -->
           <div style="height: 50px"></div>
         </div>
       </div>

@@ -19,7 +19,7 @@
       color: teal;
     "
   >
-    <span>Geophysical Activities On Quarterly Basis</span>
+    <span>Proposed Geophysical Activities On Quarterly Basis</span>
   </div>
   <br />
 
@@ -122,7 +122,7 @@
           </div>
         </div>
 
-        <div style="width: 30%">
+        <!-- <div style="width: 30%">
           <div style="font-weight: 500; margin-bottom: 5px">
             <span>Budget Allocation (NGN & USD)</span>
           </div>
@@ -164,12 +164,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <br />
 
       <div class="toprow">
-        <div style="width: 30%">
+        <!-- <div style="width: 30%">
           <label class="labelwp">Any Acquired Geophysical Data?</label>
           <div class="wpwidth">
             <div class="inputshadow">
@@ -184,7 +184,7 @@
               </select>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="width: 30%">
           <label class="labelwp">Area of Coverage (sq km)</label>
@@ -196,6 +196,50 @@
                 [(ngModel)]="acquisitionBody.geo_area_of_coverage"
                 class="inpute"
               />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%">
+          <div style="font-weight: 500; margin-bottom: 5px">
+            <span>Budget Allocation (NGN & USD)</span>
+          </div>
+
+          <div style="width: 100%; display: flex">
+            <div style="width: 98%; margin-right: 2%">
+              <label class="labelwp">NGN</label>
+              <div style="display: flex">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">&#x20A6;</span>
+                  <input
+                    formControlName="budeget_Allocation_NGN"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    [(ngModel)]="acquisitionBody.budeget_Allocation_NGN"
+                    class="inpute"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 98%">
+              <label class="labelwp">USD</label>
+              <div style="display: flex">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">$</span>
+                  <input
+                    formControlName="budeget_Allocation_USD"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      acquisitionBody.budeget_Allocation_USD =
+                        genk.addCurrencyDecimal($event)
+                    "
+                    [value]="acquisitionBody.budeget_Allocation_USD"
+                    class="inpute"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -267,7 +311,7 @@
       <br />
 
       <div class="toprow">
-        <div class="rowbox">
+        <!-- <div class="rowbox">
           <label class="labelwp">Quantum Carry Forward (sq km) </label>
           <div class="wpwidth">
             <div class="inpdiv">
@@ -279,7 +323,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="rowbox">
           <label class="labelwp">Name of Contractor</label>
@@ -302,7 +346,7 @@
           </div>
         </div>
 
-        <div style="width: 30%">
+        <div class="rowbox">
           <label class="labelwp">Type of Seismic Data Acquired </label>
           <div class="wpwidth">
             <div class="inputshadow">
@@ -320,12 +364,30 @@
             </div>
           </div>
         </div>
+
+        <div class="rowbox">
+          <label class="labelwp">No of folds (1-100)</label>
+          <div style="display: flex">
+            <div class="inpdiv">
+              <input             
+                formControlName="no_of_Folds"
+                (keypress)="genk.restrictData($event)"
+                [value]="acquisitionBody.no_of_Folds"
+                (ngModelChange)="acquisitionBody.no_of_Folds= genk.restrictNoOfFoldValue($event)"
+               
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
+       
       </div>
 
       <br />
 
       <div class="toprow">
-        <div class="rowbox2">
+        <!-- <div class="rowbox2">
           <label class="labelwp">No of folds (1-100)</label>
           <div style="display: flex">
             <div class="inpdiv">
@@ -351,9 +413,9 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="rowbox2">
+        <!-- <div class="rowbox2">
           <label class="labelwp">Completion Status(%)</label>
           <div style="display: flex">
             <div class="inpdiv">
@@ -365,9 +427,9 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="rowbox2">
+        <!-- <div class="rowbox2">
           <label class="labelwp">Activity Timeline (Quarter)</label>
           <div style="display: flex">
             <div class="inpdiv">
@@ -379,11 +441,23 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <br />
+        </div> -->
 
-      <div>
+        <div class="rowbox">
+          <label class="labelwp">Record Length of Data (0-59 seconds)</label>
+          <div style="display: flex">
+            <div class="inpdiv">
+              <input
+                formControlName="geo_Record_Length_of_Data"
+                (keypress)="genk.restrictData($event)"
+                [value]="acquisitionBody.geo_Record_Length_of_Data"       
+                (ngModelChange)="acquisitionBody.geo_Record_Length_of_Data=genk.restrictRecordLengthValue($event)"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+
         <div class="rowbox">
           <label class="labelwp">Remarks</label>
           <div style="display: flex">
@@ -398,6 +472,24 @@
             </div>
           </div>
         </div>
+      </div>
+      <br />
+
+      <div>
+        <!-- <div class="rowbox">
+          <label class="labelwp">Remarks</label>
+          <div style="display: flex">
+            <div class="inpdiv">
+              <textarea
+                type="text"
+                rows="3"
+                formControlName="remarks"
+                [(ngModel)]="acquisitionBody.remarks"
+                class="inpute"
+              ></textarea>
+            </div>
+          </div>
+        </div> -->
       </div>
 
       <div style="text-align: center">
@@ -485,7 +577,7 @@
           border-bottom: solid 1px grey;
         "
       >
-        <span>Processed</span>
+        <span>Proposed Processing</span>
       </div>
 
       <div
@@ -496,7 +588,7 @@
           border-bottom: solid 1px grey;
         "
       >
-        <div style="width: 98%; margin-right: 2%">
+        <!-- <div style="width: 98%; margin-right: 2%">
           <label class="labelwp">Actual (Sq/Km)</label>
           <div style="display: flex">
             <div
@@ -515,7 +607,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="width: 98%">
           <label class="labelwp">Proposed(Sq/Km)</label>
@@ -549,7 +641,7 @@
           border-bottom: solid 1px grey;
         "
       >
-        <span>Reprocessed</span>
+        <span>Proposed Reprocessing</span>
       </div>
 
       <div
@@ -560,7 +652,7 @@
           border-bottom: solid 1px grey;
         "
       >
-        <div style="width: 98%; margin-right: 2%">
+        <!-- <div style="width: 98%; margin-right: 2%">
           <label class="labelwp">Actual (Sq/Km)</label>
           <div style="display: flex">
             <div
@@ -579,7 +671,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="width: 98%">
           <label class="labelwp">Proposed (Sq/Km)</label>
@@ -607,7 +699,7 @@
   <br />
 
   <div style="display: flex; width: 100%; justify-content: space-between">
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <br />
       <label class="labelwp">Any Ongoing Processing Project?</label>
       <div style="display: flex; width: 100%">
@@ -623,8 +715,8 @@
           </select>
         </div>
       </div>
-    </div>
-    <div style="width: 30%; margin-top: auto">
+    </div> -->
+    <!-- <div style="width: 30%; margin-top: auto">
       <br />
       <label class="labelwp">Quantum Planned (sq km)</label>
       <div style="display: flex">
@@ -644,9 +736,9 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <br />
       <label class="labelwp">Quantum Processed (sq km)</label>
       <div style="display: flex">
@@ -666,12 +758,12 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <br />
 
   <div style="display: flex; width: 100%; justify-content: space-between">
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <label class="labelwp">Quantum Approved (sq km)</label>
       <div style="display: flex; width: 100%">
         <div
@@ -690,9 +782,9 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <label class="labelwp">Quantum Carry Forward (sq km)</label>
       <div style="display: flex">
         <div
@@ -711,9 +803,9 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <label class="labelwp">Activity Timeline (Quarter)</label>
       <div style="display: flex">
         <div
@@ -732,7 +824,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <br />
 
@@ -759,7 +851,7 @@
       </div>
     </div>
 
-    <div style="width: 30%">
+    <!-- <div style="width: 30%">
       <br />
       <label class="labelwp">Completion Status(%)</label>
       <div
@@ -777,7 +869,7 @@
           class="inpute"
         />
       </div>
-    </div>
+    </div> -->
 
     <div style="width: 30%">
       <div style="font-weight: 500; font-size: 16px; margin-bottom: 5px">
@@ -826,11 +918,34 @@
         </div>
       </div>
     </div>
+
+    <div style="width: 30%; margin-right: 5%">
+      <label id="ContentPlaceHolder2_Label13" class="labelwp"
+        >Type of Data Being Processed</label
+      >
+      <div style="display: flex; width: 100%">
+        <div class="inputshadow">
+          <select
+            class="dropwp"
+            formControlName="geo_Type_of_Data_being_Processed"
+            [(ngModel)]="processingBody.geo_Type_of_Data_being_Processed"
+          >
+            <option selected disabled>
+              -- Select Data Type -- &nbsp; &nbsp;
+            </option>
+            <option value="2D">2D</option>
+            <option value="3D">3D</option>
+            <option value="4D">4D</option>
+            <option value="NIL">NIL</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </div>
   <br /><br />
   <div>
     <div style="display: flex; width: 100%">
-      <div style="width: 30%; margin-right: 5%">
+      <!-- <div style="width: 30%; margin-right: 5%">
         <label id="ContentPlaceHolder2_Label13" class="labelwp"
           >Type of Data Being Processed</label
         >
@@ -851,7 +966,7 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div style="width: 30%; margin-top: auto">
         <label class="labelwp">Remarks</label>

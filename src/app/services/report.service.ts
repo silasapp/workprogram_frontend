@@ -36,6 +36,56 @@ export class ReportService {
   seismicActivities2yrsIsChart = false;
   seismicActivities2yrsSelectedColumns = [];
 
+  seismicProcessingTable: any;
+  seismicProcessingChart: any;
+  seismicProcessingIsChart = false;
+  seismicProcessingSelectedColumns = [];
+
+  seismicProcessingPreviousTable: any;
+  seismicProcessingPreviousChart: any;
+  seismicProcessingPreviousIsChart = false;
+  seismicProcessingPreviousSelectedColumns = [];
+
+  explorationWellsTable: any;
+  explorationWellsChart: any;
+  explorationWellsIsChart = false;
+  explorationWellsSelectedColumns = [];
+
+  appraisalWellsTable: any;
+  appraisalWellsChart: any;
+  appraisalWellsIsChart = false;
+  appraisalWellsSelectedColumns = [];
+
+  developmentWellsTable: any;
+  developmentWellsChart: any;
+  developmentWellsIsChart = false;
+  developmentWellsSelectedColumns = [];
+
+  reservesUpdateTable: any;
+  reservesUpdateChart: any;
+  reservesUpdateIsChart = false;
+  reservesUpdateSelectedColumns = [];
+
+  oilProductionTable: any;
+  oilProductionChart: any;
+  oilProductionIsChart = false;
+  oilProductionSelectedColumns = [];
+  oilProductionText: string;
+
+  oilProductionContractTable: any;
+  oilProductionContractChart: any;
+  oilProductionContractIsChart = false;
+  oilProductionContractSelectedColumns = [];
+
+  oilProductionMonthlyTable: any;
+  oilProductionMonthlyChart: any;
+  oilProductionMonthlyIsChart = false;
+  oilProductionMonthlySelectedColumns = [];
+
+  oilProductionTerrainTable: any;
+  oilProductionTerrainChart: any;
+  oilProductionTerrainIsChart = false;
+  oilProductionTerrainSelectedColumns = [];
   constructor(private http: HttpClient, private gen: GenericService) {}
 
   fetch(url, year) {
@@ -543,16 +593,39 @@ export class ReportService {
       obj[0] = this.baselist[i];
       this.chartArray.push(obj);
 
-      //
-      valist = [];
-      obj = [];
-    }
-    this.baselist = [];
-    this.valuelist = [];
-    let arr = this.chartArray;
-    this.chartArray = [];
-    return arr;
+    //debugger;
+    valist = [];
+    obj = [];
   }
+  this.baselist = [];
+  this.valuelist = [];
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
+}
+
+convertDataToArray(data: any[]) {
+
+  let valist: any[] = [];
+  let keyArray = Object.keys(data[0]);
+  let obj = [];
+
+  for (var i = 0; i < data.length; i++) {
+
+    for (var c = 0; c < keyArray.length; c++) {
+        valist.push(data[i][keyArray[c]]);
+    }
+    //obj.push(valist);
+    this.chartArray.push(valist);
+    valist = [];
+    valist = [];
+    obj = [];
+  }
+  let arr = this.chartArray;
+  this.chartArray = [];
+  return arr;
+}
+
 
   sumArray(arr: any[]) {
     var total = 0;
@@ -574,6 +647,20 @@ export class ReportService {
     }
     return total;
   }
+  return total;
+}
+
+convertColumn(items: any[], columnName: string) {
+  var total = 0;
+  for (var i = 0; i < items.length; i++) {
+    if (!isNaN(items[i][columnName] && parseFloat(items[i][columnName])) ) {
+      let a = Number(items[i][columnName]);
+      let b = items[i][columnName];
+      items[i][columnName] = Number(items[i][columnName]);
+    }
+  }
+  return items;
+}
 
   arrangeDate(mydata: any[], columnName: string) {
     let i = 0;
@@ -595,24 +682,22 @@ export class ReportService {
     return data;
   }
 
-  truncateArray(data: any[], columns: any[]) {
-    let obj = new Object();
-    let arr = [];
-    for (var a = 0; a < data.length; a++) {
-      for (var i = 0; i < columns.length; i++) {
-        obj[columns[i].columnDef] = data[a][columns[i].columnDef];
-        //let two = data[i][columns[i].columnDef];
-        //obj[i][columns[i].columnDef] = data[i][columns[i].columnDef];
-        //let obj = { columns[i].columnDef: data[i][columns[i].columnDef]}
-      }
-      arr.push(obj);
-      obj = {};
+truncateArray(data: any[], columns: any[]) {
+  let obj = new Object();
+  let arr = [];
+  for (var a = 0; a < data.length; a++) {
+    for (var i = 0; i < columns.length; i++) {
+      obj[columns[i].columnDef] = data[a][columns[i].columnDef];
+      //let two = data[i][columns[i].columnDef];
+      //obj[i][columns[i].columnDef] = data[i][columns[i].columnDef];
+      //let obj = { columns[i].columnDef: data[i][columns[i].columnDef]}
     }
-    arr = arr.filter(
-      (x) => !x.companyName.toLocaleLowerCase().startsWith('test')
-    );
-    return arr;
+    arr.push(obj);
+    obj = {};
   }
+  //arr = arr.filter(x => !x.companyName.toLocaleLowerCase().startsWith('test'))
+  return arr;
+}
 
   truncateArray2(data: any[], columns: any[]) {
     data = data.filter(

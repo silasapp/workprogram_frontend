@@ -12,7 +12,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-reserves-update',
   templateUrl: './seismic-activities.component.html',
   styleUrls: [
     '../reports/ndr-report.component.scss',
@@ -115,6 +115,9 @@ export class ReserveUpdateComponent implements OnInit {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
+    this.modalService.reportDownload.subscribe((res) => {
+      this.transferData();
+    });
     this.modalService.generalReport.subscribe((res) => {
       this.getReservesUpdatestWells();
     });
@@ -317,5 +320,11 @@ export class ReserveUpdateComponent implements OnInit {
         }
       }
     }
+  }
+
+  transferData() {
+    this.report.reservesUpdateTable = { data: this.data, header: this.columns };
+    this.report.reservesUpdateIsChart = this.isChart;
+    this.report.reservesUpdateSelectedColumns = this.selectedColumns;
   }
 }
