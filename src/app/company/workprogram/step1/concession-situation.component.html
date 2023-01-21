@@ -2,7 +2,8 @@
     style=" background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
     <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
         Note:*All Fields are Mandatory</h1>
-    <span style="margin-left: 45%; font-size: 20px; font-weight: 500; text-align: center; padding-bottom: 20px; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">Royalty</span>
+    <span
+        style="margin-left: 45%; font-size: 20px; font-weight: 500; text-align: center; padding-bottom: 20px; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">Royalty</span>
     <br><br><br>
     <div [formGroup]="RoyaltyForm">
         <div class="toprow">
@@ -19,9 +20,9 @@
                     </div>
                 </div>
                 <div *ngIf="submitted" class="eroce">
-                  <span *ngIf="!f['crude_Oil_Royalty'].valid">
-                    Crude Oil Royalty status is required
-                  </span>
+                    <span *ngIf="!f['crude_Oil_Royalty'].valid">
+                        Crude Oil Royalty status is required
+                    </span>
                 </div>
             </div>
 
@@ -66,14 +67,24 @@
                 </div>
             </div>
         </div>
+        <div class="eroce">
+          <!-- <span *ngIf="f['miscellaneous'].errors['maxlength'] && submitted">
+            Too few characters
+          </span> -->
+          <span *ngIf="f['miscellaneous'].errors['required'] && submitted">
+            Please enter a name for your song!
+          </span>
+        </div>
         <br><br>
         <div style="text-align: center;">
             <button (click)="submitroyalty()" class="submitbtn">Save Royalty</button>
+            
         </div>
     </div>
 </div>
 
-<div style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px; margin: 20px 0;">
+<div
+    style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px; margin: 20px 0;">
     <div [formGroup]="ConcessionSituationForm">
         <div
             style="font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
@@ -95,8 +106,20 @@
                         </div>
                     </div>
 
+                    <div class="rowbox" [hidden]="this.boolValue">
+                        <label class="labelwp"> No. of Discovered Fields</label>
+                        <div style="display: flex;">
+                            <div class="inpdiv">
+                                <input (keypress)="genk.restrictData($event)" formControlName="no_of_discovered_field"
+                                    [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div style="width: 30%">
-                        <label class="labelwp">Area (sq km)</label>
+                        <label class="labelwp"> {{field}} Area (sq km)</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
                                 <input disabled="" formControlName="area" [(ngModel)]="concessionBody.area"
@@ -126,7 +149,7 @@
                         </div>
                     </div>
 
-                    <div style="width: 30%">
+                    <!-- <div style="width: 30%">
                         <label class="labelwp">Geological location / Terrain</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -134,7 +157,7 @@
                                     [(ngModel)]="concessionBody.geological_location" class="inpute">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div style="width: 30%;">
                         <label class="labelwp">Terrain</label>
@@ -142,17 +165,14 @@
                             <div class="inputshadow">
                                 <select class="dropwp" formControlName="terrain" [(ngModel)]="concessionBody.terrain">
                                     <option selected disabled>---- Please Select Terrain ----</option>
-                                    <option value="Continental Shelf">Continental Shelf</option>
+                                    <option value="Continental Shelf">Offshore</option>
                                     <option value="Deep Offshore">Deep Offshore</option>
                                     <option value="Onshore">Onshore</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
 
-                <div class="toprow">
                     <div style="width: 30%">
                         <label class="labelwp">Equity Distribution</label>
                         <div style="display: flex;">
@@ -162,8 +182,21 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <br>
 
-                    <div style="width: 30%">
+                <div class="toprow">
+                    <!-- <div style="width: 30%">
+                        <label class="labelwp">Equity Distribution</label>
+                        <div style="display: flex;">
+                            <div class="inpdiv">
+                                <input type="text" formControlName="equity_distribution"
+                                    [(ngModel)]="concessionBody.equity_distribution" class="inpute">
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div style="width: 30%">
                         <label class="labelwp">No. of field producing</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -171,9 +204,9 @@
                                     [(ngModel)]="concessionBody.no_of_field_producing" class="inpute">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div style="width: 30%; display: flex;">
+                    <!-- <div style="width: 30%; display: flex;">
                         <div style="width: 98%; margin-right: 2%;">
                             <label class="labelwp">Date of Grant</label>
                             <div style="display: flex;">
@@ -193,13 +226,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
 
                 <div class="toprow">
                     <div class="rowbox">
-                        <label class="labelwp">Has Signature Bonus been paid?</label>
+                        <label class="labelwp">Has the Block Signature Bonus been paid?</label>
                         <div class="wpwidth">
                             <div class="inputshadow">
                                 <select class="dropwp" formControlName="has_Signature_Bonus_been_paid"
@@ -213,7 +246,7 @@
                     </div>
 
                     <div class="rowbox">
-                        <label class="labelwp">Has the Concession Rentals been paid?</label>
+                        <label class="labelwp">Has the Block Concession Rentals been paid?</label>
                         <div class="wpwidth">
                             <div class="inputshadow">
                                 <select class="dropwp" formControlName="has_the_Concession_Rentals_been_paid"
@@ -227,7 +260,7 @@
                     </div>
 
                     <div style="width: 30%;">
-                        <label class="labelwp">Is there an application for renewal, and has the renewal bonus been
+                        <label class="labelwp">Has the Block renewal bonus been
                             paid?</label>
                         <div class="wpwidth">
                             <div class="inputshadow">
@@ -251,7 +284,7 @@
                                 <span class="currencywp">$</span>
                                 <input formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
                                     (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    (change)="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
+                                    (ngModelChange)="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
                                     [value]="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD" class="inpute">
                             </div>
                         </div>
@@ -325,19 +358,11 @@
 
 
                 <div class="toprow">
-                    <div class="rowbox">
-                        <label class="labelwp"> No. of Discovered Fields</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input (keypress)="genk.restrictData($event)" formControlName="no_of_discovered_field"
-                                    [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
-                            </div>
-                        </div>
-                    </div>
 
 
 
-                    <div class="rowbox">
+
+                    <!-- <div class="rowbox">
                         <label class="labelwp">Has Assignment Interest Been Paid?</label>
                         <div class="wpwidth">
                             <div class="inputshadow">
@@ -349,9 +374,9 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div style="width: 30%;">
+                    <!-- <div style="width: 30%;">
                         <label class="labelwp">Proposed Budget for License/Lease</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -359,7 +384,7 @@
                                     [(ngModel)]="concessionBody.proposed_budget_for_each_license_lease" class="inpute">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
 
@@ -379,7 +404,7 @@
 
 
 
-                    <div class="rowbox">
+                    <div class="rowbox" [hidden]="this.boolValue">
                         <label class="labelwp">Did you meet the minimum Work Programme Requirement on the
                             Concession?</label>
                         <div class="wpwidth">
@@ -395,6 +420,16 @@
                     </div>
 
                     <div class="rowbox">
+                        <label class="labelwp"> Comment </label>
+                        <div style="display: flex;">
+                            <div class="inpdiv">
+                                <textarea #wpcomment rows="3" formControlName="comment"
+                                    [(ngModel)]="concessionBody.comment" class="inpute"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="rowbox">
                         <label class="labelwp">Relinquishment/Retention of 50% contract area after 10 years if
                             any?</label>
                         <div style="display: flex;">
@@ -404,14 +439,16 @@
                                     [(ngModel)]="concessionBody.relinquishment_retention" class="inpute">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
 
 
                 <div class="toprow">
-                    <div style="width: 30%; margin: auto 5% 0 0">
-                        <label class="labelwp">Area (sq km)</label>
+                    <!-- <div style="width: 30%; margin: auto 5% 0 0">
+                      
+                      
+                        <label  class="labelwp">{{field}} Area (sq km)</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
                                 <input #areaSquare (keypress)="genk.restrictData($event)"
@@ -420,10 +457,10 @@
                                     class="inpute">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
-                    <div class="rowbox">
+                    <!-- <div class="rowbox">
                         <label class="labelwp"> Comment </label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -431,7 +468,7 @@
                                     [(ngModel)]="concessionBody.comment" class="inpute"></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <br>
@@ -467,5 +504,5 @@
 <br><br>
 <div style="text-align: center;">
     <button [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'geophysicalactivities']"
-      class="nextbtn">Next</button>
-  </div>
+        class="nextbtn">Next</button>
+</div>

@@ -12,7 +12,7 @@ import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
 
 @Component({
-  selector: 'app-ndr-report',
+  selector: 'app-seismic-processing-previous',
   templateUrl: './seismic-data-approved-previous.component.html',
   styleUrls: [
     '../reports/ndr-report.component.scss',
@@ -29,8 +29,7 @@ export class SeismicProcessingPreviousComponent implements OnInit {
   selectedColumns: any[] = [];
   genk: GenericService;
   cdr: ChangeDetectorRef;
-  title = 'Seismic Data Approved and 2 Years ago';
-  tableTitle = 'Table 5. 2019 3D Seismic Data Approved and Acquired';
+  title = 'Seismic Processing and Reprocessing Activities';
   pagenum = 1;
   selectedPage = 1;
   arrayRows = [];
@@ -108,6 +107,9 @@ export class SeismicProcessingPreviousComponent implements OnInit {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
+    this.modalService.reportDownload.subscribe((res) => {
+      this.transferData();
+    });
     this.modalService.generalReport.subscribe((res) => {
       this.getSeismic();
     });
@@ -121,6 +123,12 @@ export class SeismicProcessingPreviousComponent implements OnInit {
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
+
+  public get tableTitle(): string {
+    return `Table 5 Showing ${
+      Number(this.genk.reportYear) - 1
+    } Processing and Reprocessing Activities by Companies.`;
   }
 
   assignPageNum() {
@@ -230,15 +238,16 @@ export class SeismicProcessingPreviousComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  plotDoublePieChart() {
+  async plotDoublePieChart() {
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
     } else {
+      debugger;
       this.myChartBox.nativeElement.removeChild(
         this.myChartBox.nativeElement.firstChild
       );
       const node = document.createElement('div');
-      node.style.width = '100%';
+      node.style.width = '70%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
       let bechart = this.myChartBox.nativeElement.firstChild as HTMLDivElement;
@@ -249,12 +258,19 @@ export class SeismicProcessingPreviousComponent implements OnInit {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
+        this.report.seismicProcessingPreviousChart =
+          await this.report.plotDoublePieChart(
+            bechart,
+            sele1,
+            sele2,
+            chartdata
+          );
       }
     }
+    this.isChart = true;
   }
 
-  plotDoubleBarChart() {
+  async plotDoubleBarChart() {
     let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
@@ -281,21 +297,33 @@ export class SeismicProcessingPreviousComponent implements OnInit {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(
-            bechart,
-            this.selectedColumns[0].columnDef,
-            this.selectedColumns[1].columnDef,
-            chartdata
-          );
+          this.report.seismicProcessingPreviousChart =
+            await this.report.plotDoubleBarChartHorizontal(
+              bechart,
+              this.selectedColumns[0].columnDef,
+              this.selectedColumns[1].columnDef,
+              chartdata
+            );
         } else {
-          this.report.plotDoubleBarChart(
-            bechart,
-            this.selectedColumns[0].columnDef,
-            this.selectedColumns[1].columnDef,
-            chartdata
-          );
+          this.report.seismicProcessingPreviousChart =
+            await this.report.plotDoubleBarChart(
+              bechart,
+              this.selectedColumns[0].columnDef,
+              this.selectedColumns[1].columnDef,
+              chartdata
+            );
         }
       }
+      this.isChart = true;
     }
+  }
+
+  transferData() {
+    this.report.seismicProcessingPreviousTable = {
+      data: this.data,
+      header: this.columns,
+    };
+    this.report.seismicProcessingPreviousIsChart = this.isChart;
+    this.report.seismicProcessingPreviousSelectedColumns = this.selectedColumns;
   }
 }

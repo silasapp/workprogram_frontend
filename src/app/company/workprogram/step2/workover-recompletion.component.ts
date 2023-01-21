@@ -1,3 +1,4 @@
+import { ValueAxis } from '@amcharts/amcharts5/xy';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -74,6 +75,14 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
         ]),
         daysForCompletion: new FormControl(
           this.workoverBody.daysForCompletion,
+          [Validators.required]
+        ),
+        completionWellName: new FormControl(
+          this.workoverBody.completionWellName,
+          [Validators.required]
+        ),
+        proposed_workover_Date: new FormControl(
+          this.workoverBody.proposed_workover_Date,
           [Validators.required]
         ),
       },

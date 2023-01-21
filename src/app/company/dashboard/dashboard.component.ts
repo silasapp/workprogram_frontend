@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   f_ColumnValue = [];
   c_isTabVisible: boolean;
   f_isTabVisible: boolean;
-  previousYear = new Date().getFullYear() - 1;
+  previousYear = new Date().getFullYear() - 2;
   data: any;
   selectedColumns: any[] = [];
   isTableOpt = false;
@@ -419,7 +419,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       .getCompanyConcessionReserveGas(value)
       .subscribe((res) => {
         this.fourthChartData = res;
-
         this.plotDoubleBarChartHorizontal(
           ['omlname', 'reserve'],
           this.myChartBox4,
