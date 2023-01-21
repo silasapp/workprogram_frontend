@@ -149,6 +149,8 @@ export class ManageApplicationsComponent implements OnInit {
         this.roles = res.roles as IRole[];
         this.sbus = res.sbUs as ISBU[];
 
+        console.log('rejected apps: ', res.data);
+
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
         this.assignPageNum();

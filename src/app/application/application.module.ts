@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { AllApplicationsComponent } from './allapplications/allapplications.component';
 import { ApplicationRoutingModule } from './application-routing.module';
 import { ViewApplicationComponent } from './viewapplication/viewapplication.component';
@@ -37,7 +38,8 @@ import { ViewApplicationDataComponent } from './process-application/view-applica
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
     //NgMultiSelectDropDownModule,
   ],
   declarations: [

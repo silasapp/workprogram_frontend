@@ -6,12 +6,14 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { SBU } from 'src/app/constants/SBU';
 import {
   Application,
   ApplicationDetails,
+  Staff,
 } from 'src/app/models/application-details';
-import { ModalService } from 'src/app/services';
+import { AuthenticationService, ModalService } from 'src/app/services';
+import { AdminService } from 'src/app/services/admin.service';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -25,7 +27,13 @@ export class SendBackFormComponent implements OnInit {
   public apps: Application[] = [];
   public appDetails: ApplicationDetails;
   public selectedApps = [];
-  //public appsDropdownSettings: IDropdownSettings = {};
+  public sbuTableDetailsList: SBUSelectTableDetails[];
+  public sbuList: SBUTypes[] = [];
+  public selectedTables: SBUSelectTableDetails[] = null;
+  public selectedSBUs: SBUTypes[] = null;
+  public staffList: Staff[];
+  public checkItems: SBUTypes[] | SBUSelectTableDetails[] = null;
+  public isPlanning: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<SendBackFormComponent>,
@@ -39,17 +47,43 @@ export class SendBackFormComponent implements OnInit {
   ) {
     this.apps = data.data.applications;
     this.appDetails = data.data.applicationDetails;
+    this.sbuTableDetailsList = this.appDetails.sbU_TableDetails;
+    this.staffList = this.appDetails.staff as unknown as Staff[];
+    this.sbuList = this.appDetails.sbu;
 
-    console.log('applications: ', this.apps, this.appDetails);
+    this.isPlanning = this.isPlanninFunc();
 
-    this.form = this.formBuilder.group({
-      comment: ['', Validators.required],
-    });
+    this.checkItems = this.sbuTableDetailsList
+      ? this.sbuTableDetailsList
+      : this.sbuList;
+
+    console.log('checking: ', this.checkItems);
+
+    // console.log('details', this.sbuTableDetailsList);
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    if (this.isPlanning) {
+      this.form = this.formBuilder.group({
+        SBU_IDs: ['', Validators.required],
+        comment: ['', Validators.required],
+      });
+    } else {
+      this.form = this.formBuilder.group({
+        selectedTables: ['', Validators.required],
+        comment: ['', Validators.required],
+      });
+    }
+  }
 
   onClose() {
     this.dialogRef.close();
+  }
+
+  isPlanninFunc(): boolean {
+    const found = this.staffList.findIndex((s) => s.staff_SBU == SBU.PLANNING);
+
+    return found == -1 ? false : true;
   }
 
   rejectApplication() {
@@ -59,7 +93,9 @@ export class SendBackFormComponent implements OnInit {
       .rejectApplication(
         this.appDetails.staff[0].desk_ID,
         this.form.value.comment,
-        selectedapps
+        selectedapps,
+        this.form.value.selectedTables,
+        this.form.value.SBU_IDs
       )
       .subscribe({
         next: (res) => {
@@ -76,4 +112,70 @@ export class SendBackFormComponent implements OnInit {
         },
       });
   }
+
+  onSelect(item: SBUSelectTableDetails) {
+    console.log(
+      'items....',
+      item,
+      item instanceof SBUSelectTableDetails,
+      this.form
+    );
+    if (!this.isPlanning) this.setSelectedTables(item);
+    else this.setSelectedSBUs(item);
+  }
+
+  setSelectedTables(item) {
+    let selectItems: number[] = [];
+
+    this.selectedTables = this.selectedTables ? this.selectedTables : [];
+
+    const found = this.selectedTables.findIndex((t) => {
+      return t.tableId == item.tableId;
+    });
+
+    if (found != -1) {
+      this.selectedTables = this.selectedTables.filter(
+        (t) => t.tableId !== item.tableId
+      );
+      return;
+    }
+
+    this.selectedTables.push(item);
+
+    selectItems = this.selectedTables.map((t) => t.tableId);
+    this.form.get('selectedTables').setValue(selectItems);
+  }
+
+  setSelectedSBUs(item) {
+    let selectItems: number[] = [];
+
+    this.selectedSBUs = this.selectedSBUs ? this.selectedSBUs : [];
+
+    const found = this.selectedSBUs.findIndex((t) => {
+      return t.id == item.id;
+    });
+
+    if (found != -1) {
+      this.selectedSBUs = this.selectedSBUs.filter((t) => t.id !== item.id);
+      return;
+    }
+
+    this.selectedSBUs.push(item);
+
+    selectItems = this.selectedSBUs.map((t) => t.id);
+    this.form.get('SBU_IDs').setValue(selectItems);
+  }
+}
+
+export class SBUSelectTableDetails {
+  sbU_ID: any;
+  tableId: number;
+  tableName: string;
+  tableSchema: string;
+}
+
+export class SBUTypes {
+  id: number;
+  sbU_Code: string;
+  sbU_Name: string;
 }

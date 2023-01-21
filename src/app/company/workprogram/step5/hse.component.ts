@@ -1262,11 +1262,11 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'yeaR_',
+      columnDef: 'emsFilePath',
       header: 'Evidence of Submission of Environmental Management System (EMS)',
     },
     {
-      columnDef: 'type_of_Study_IA_or_EES',
+      columnDef: 'auditFilePath',
       header: 'Evidence of all audits done in the year',
     },
   ];
@@ -3702,11 +3702,11 @@ export class SWPHseComponent implements OnInit {
         null
       );
     }
-    this.EvidenceOfTrainingPlanNewName = this.gen.getExpDoc(
+    this.RemediationFundNewName = this.gen.getExpDoc(
       this.RemediationFundFile.name,
       this.RemediationFundFile.type
     );
-    this.EvidenceOfTrainingPlanNameDoc = this.gen.trimDocName(
+    this.RemediationFundNameDoc = this.gen.trimDocName(
       this.RemediationFundFile.name
     );
     let dockind = this.gen.getExt(this.RemediationFundFile.name);

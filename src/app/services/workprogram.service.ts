@@ -6030,12 +6030,24 @@ export class WorkProgramService {
     );
   }
 
-  rejectApplication(deskID: number, comment: string, selectedApps: string[]) {
+  rejectApplication(
+    deskID: number,
+    comment: string,
+    selectedApps: string[],
+    selectedTables: number[],
+    SBU_IDs: number[]
+  ) {
     return this.http.post<any>(
       `${environment.apiUrl}/Application/RejectApplication`,
       {},
       {
-        params: { deskID, comment, selectedApps: JSON.stringify(selectedApps) },
+        params: {
+          deskID,
+          comment,
+          selectedApps: JSON.stringify(selectedApps),
+          selectedTables: JSON.stringify(selectedTables),
+          SBU_IDs: JSON.stringify(SBU_IDs),
+        },
       }
     );
   }

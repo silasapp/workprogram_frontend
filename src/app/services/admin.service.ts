@@ -212,6 +212,16 @@ export class AdminService {
       );
   }
 
+  getUsers() {
+    return this.http.get<any>(`${environment.apiUrl}/admin/get_users`).pipe(
+      retry(this.num),
+      map((response) => {
+        //response.data = this.gen.lowerArray(response.data);
+        return response;
+      })
+    );
+  }
+
   getConcessions(year: any) {
     return this.http
       .get<any>(`${environment.apiUrl}/admin/get_concessions`, {
