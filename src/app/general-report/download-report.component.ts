@@ -134,8 +134,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicData, "quantum_Approved").toFixed(2)}`, 100, 285);
         PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicData, "quantum").toFixed(2)}`, 100, 290);
 
-        //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
-
 
       if (this.repor.seismicApprovedIsChart) {
         PDF.addPage('a4', 'p');
@@ -144,7 +142,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.seismicApprovedSelectedColumns[1].header + " BY " + this.repor.seismicApprovedSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.seismicApprovedChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -188,7 +185,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicActivitiesData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicActivitiesData, "quantum").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.seismicActivitiesIsChart) {
         PDF.addPage('a4', 'p');
@@ -197,7 +193,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.seismicActivitiesSelectedColumns[1].header + " BY " + this.repor.seismicActivitiesSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.seismicActivitiesChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -239,7 +234,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicActivities2yrsData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicActivities2yrsData, "quantum").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.seismicActivities2yrsIsChart) {
         PDF.addPage('a4', 'p');
@@ -248,7 +242,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.seismicActivities2yrsSelectedColumns[1].header + " BY " + this.repor.seismicActivities2yrsSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.seismicActivities2yrsChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -290,7 +283,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.seismicProcessingIsChart) {
         PDF.addPage('a4', 'p');
@@ -299,7 +291,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.seismicProcessingSelectedColumns[1].header + " BY " + this.repor.seismicProcessingSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.seismicProcessingChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -341,7 +332,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingPreviousData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(seismicProcessingPreviousData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.seismicProcessingPreviousIsChart) {
         PDF.addPage('a4', 'p');
@@ -350,7 +340,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.seismicProcessingPreviousSelectedColumns[1].header + " BY " + this.repor.seismicProcessingPreviousSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.seismicProcessingPreviousChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -396,7 +385,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(explorationWellsData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(explorationWellsData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.explorationWellsIsChart) {
         PDF.addPage('a4', 'p');
@@ -405,7 +393,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.explorationWellsSelectedColumns[1].header + " BY " + this.repor.explorationWellsSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.explorationWellsChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -451,7 +438,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(appraisalWellsData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(appraisalWellsData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.appraisalWellsIsChart) {
         PDF.addPage('a4', 'p');
@@ -460,7 +446,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.appraisalWellsSelectedColumns[1].header + " BY " + this.repor.appraisalWellsSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.appraisalWellsChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -505,7 +490,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`TOTAL QUANTUM APPROVED (SQ.KM) = ${this.repor.totalFromArray(developmentWellsData, "quantum_Approved").toFixed(2)}`, 100, 285);
       PDF.text(`TOTAL QUANTUM ACQUIRED (SQ.KM) = ${this.repor.totalFromArray(developmentWellsData, "geo_Quantum_of_Data").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.developmentWellsIsChart) {
         PDF.addPage('a4', 'p');
@@ -514,7 +498,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.developmentWellsSelectedColumns[1].header + " BY " + this.repor.developmentWellsSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.developmentWellsChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -548,7 +531,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("black");
       PDF.setFont("Trebuchet MS", "normal", "900");
       PDF.text(`6.0 OIL PRODUCTION ${(Number(this.genk.reportYear)).toString()}`, 5, 5);
-      //PDF.text(`1.1 Seismic Data Acquisition Activities for ${this.genk.reportYear}`, 5, 5);
       PDF.setFontSize(12);
       PDF.setFont("helvetica", "500");
 
@@ -586,7 +568,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.setTextColor("brown");
       PDF.text(`ANNUAL TOTAL PRODUCTION BY COMPANY = ${this.repor.totalFromArray(oilProductionData, "annual_Avg_Daily_Production").toFixed(2)}`, 100, 285);
       PDF.text(`ANNUAL TOTAL PRODUCTION BY COMPANY = ${this.repor.totalFromArray(oilProductionData, "annual_Total_Production_by_company").toFixed(2)}`, 100, 290);
-      //PDF.table(5, 5, seismicTable, seismicHeader, { autoSize: false, });
 
       if (this.repor.oilProductionIsChart) {
         PDF.addPage('a4', 'p');
@@ -595,7 +576,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.oilProductionSelectedColumns[1].header + " BY " + this.repor.oilProductionSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.oilProductionChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -612,7 +592,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.text(`6.0 OIL PRODUCTION CONTRACT ${(Number(this.genk.reportYear)).toString()}`, 5, 5);
 
       if (this.repor.oilProductionContractTable.data.length > 0) {
-
         let compressedOilProductionContractData = this.repor.convertDataToArray(oilProductionContractData);
         autoTable(PDF, {head: [oilProductionContractHeader], body: compressedOilProductionContractData, styles: {
           fillColor: [220, 220, 220],
@@ -634,7 +613,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.oilProductionContractSelectedColumns[1].header + " BY " + this.repor.oilProductionContractSelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.oilProductionContractChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -650,7 +628,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.text(`6.0 OIL PRODUCTION MONTHLY ${(Number(this.genk.reportYear)).toString()}`, 5, 5);
 
       if (this.repor.oilProductionMonthlyTable.data.length > 0) {
-
         let compressedOilProductionMonthlyData = this.repor.convertDataToArray(oilProductionMonthlyData);
         autoTable(PDF, {head: [oilProductionMonthlyHeader], body: compressedOilProductionMonthlyData, styles: {
           fillColor: [220, 220, 220],
@@ -674,7 +651,6 @@ export class DownloadReportComponent implements OnInit {
         PDF.setTextColor("navy");
         let cap = this.repor.oilProductionMonthlySelectedColumns[1].header + " BY " + this.repor.oilProductionMonthlySelectedColumns[0].header;
         PDF.text(cap, 8, 10);
-        //debugger;
         PDF.addImage(this.report.oilProductionMonthlyChart, 'PNG', 5, position, 200, 130);
 
         PDF.setFontSize(14);
@@ -691,7 +667,6 @@ export class DownloadReportComponent implements OnInit {
       PDF.text(`6.0 OIL PRODUCTION MONTHLY TERRAIN ${(Number(this.genk.reportYear)).toString()}`, 5, 5);
 
       if (this.repor.oilProductionTerrainTable.data.length > 0) {
-
         let compressedOilProductionTerrainData = this.repor.convertDataToArray(oilProductionTerrainData);
         autoTable(PDF, {head: [oilProductionTerrainHeader], body: compressedOilProductionTerrainData, styles: {
           fillColor: [220, 220, 220],
