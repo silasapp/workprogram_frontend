@@ -6039,14 +6039,16 @@ export class WorkProgramService {
   ) {
     return this.http.post<any>(
       `${environment.apiUrl}/Application/RejectApplication`,
-      {},
+
+      {
+        selectedApps: selectedApps,
+        sbU_IDs: SBU_IDs,
+        selectedTables: selectedTables,
+      },
       {
         params: {
           deskID,
           comment,
-          selectedApps: JSON.stringify(selectedApps),
-          selectedTables: JSON.stringify(selectedTables),
-          SBU_IDs: JSON.stringify(SBU_IDs),
         },
       }
     );
