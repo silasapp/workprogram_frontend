@@ -68,6 +68,27 @@
         <div class="dashtopsec" style="border-bottom: solid 1px silver">
           <div class="divcent">
             <div style="padding-left: 10px">
+              <span class="material-icons dashicon">token</span>
+            </div>
+
+            <div class="dashtext">
+              <span class="dashnum">{{
+                dashboardGasBudgetAndReserve.reserveOilCondensate
+              }}</span
+              ><span>BBL</span><br /><br />
+              <span class="dashnumtext">OIL & CONDENSATE</span>
+            </div>
+          </div>
+        </div>
+        <div class="dashbase" style="color: gainsboro">
+          <span>OIL RESERVES (ANNUAL)</span>
+        </div>
+      </div>
+
+      <div class="dashtop" style="background-color: rgb(19, 124, 105)">
+        <div class="dashtopsec" style="border-bottom: solid 1px silver">
+          <div class="divcent">
+            <div style="padding-left: 10px">
               <span class="material-icons dashicon">whatshot</span>
             </div>
 
@@ -84,16 +105,6 @@
           <span>GAS RESERVES (ANNUAL)</span>
         </div>
       </div>
-            <div class="dashtext">
-              <span class="dashnum">{{dashboardGasBudgetAndReserve.reserveAGNAG}}</span><span>BBL</span><br><br>
-              <span class="dashnumtext">AG & NAG</span>
-            </div>
-          </div>
-        </div>
-        <div class="dashbase" style="color: gainsboro;">
-          <span>GAS RESERVES (ANNUAL)</span>
-        </div>
-      </div>
 
       <div class="dashtop">
         <div class="dashtopsec">
@@ -106,16 +117,6 @@
               <span class="dashnum"
                 >&#36;{{ dashboardGasBudgetAndReserve.prodCost }}</span
               ><br /><br />
-              <span class="dashnumtext">PRODUCTION COST</span>
-            </div>
-          </div>
-        </div>
-        <div class="dashbase">
-          <span>BUDGET PERFORMANCE</span>
-        </div>
-      </div>
-            <div class="dashtext">
-              <span class="dashnum">&#36;{{dashboardGasBudgetAndReserve.prodCost}}</span><br><br>
               <span class="dashnumtext">PRODUCTION COST</span>
             </div>
           </div>
@@ -195,7 +196,7 @@
             </div>
           </div>
         </div>
-        <div class="dashbase" style="color: gainsboro;">
+        <div class="dashbase" style="color: gainsboro">
           <span>OIL PROSPECTING LICENSE (OPL)</span>
         </div>
       </div>
@@ -205,12 +206,6 @@
           class="dashtopsec"
           style="border-bottom: solid 1px silver; height: 88%"
         >
-          <div class="divcent">
-            <div style="padding-left: 10px">
-              <span class="material-icons dashicon">join_inner</span>
-            </div>
-      <div class="dashtop" style="background-color: rgb(145, 51, 62);">
-        <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
           <div class="divcent">
             <div style="padding-left: 10px">
               <span class="material-icons dashicon">join_inner</span>
@@ -227,28 +222,12 @@
           <span>OIL MINING LICENSE (OML)</span>
         </div>
       </div>
-            <div class="dashtext" style="padding: 0 40px;">
-              <span class="dashnum">{{dashboardBody.omL_Count}}</span><br><br>
-              <span class="dashnumtext">TOTAL OMLs</span>
-            </div>
-          </div>
-        </div>
-        <div class="dashbase" style="color: gainsboro;">
-          <span>OIL MINING LICENSE (OML)</span>
-        </div>
-      </div>
 
       <div class="dashtop" style="background-color: rgb(93, 47, 120)">
         <div
           class="dashtopsec"
           style="border-bottom: solid 1px silver; height: 88%"
         >
-          <div class="divcent">
-            <div style="padding-left: 10px">
-              <span class="material-icons dashicon">opacity</span>
-            </div>
-      <div class="dashtop" style="background-color: rgb(93, 47, 120);">
-        <div class="dashtopsec" style="border-bottom:  solid 1px silver; height: 88%;">
           <div class="divcent">
             <div style="padding-left: 10px">
               <span class="material-icons dashicon">opacity</span>
@@ -269,18 +248,6 @@
       </div>
     </div>
     <br /><br /><br />
-            <div class="dashtext" style="padding: 0 40px;">
-              <span class="dashnum">{{dashboardBody.no_Of_ProducingFields_Count}}</span><br><br>
-              <span class="dashnumtext">TOTAL FIELDS</span>
-            </div>
-          </div>
-        </div>
-        <div class="dashbase" style="color: gainsboro;">
-          <span>PRODUCING FIELDS</span>
-        </div>
-      </div>
-    </div>
-      <br><br><br>
 
     <!-- <div
         style="width: 30%; background-color: white; padding: 5px; box-shadow: 0.5px 0.5px 2px rgb(0, 0, 0, 0.4); margin:2% 2%; border-radius: 15px; text-align: center; height: 170px">
@@ -358,14 +325,6 @@
         >
         <span>Year: {{ previousYear }}/{{ previousYear + 1 }}</span>
       </div>
-    </div>
-    <div style="display: flex; margin-bottom: 30px">
-      <div
-      style="display: flex; align-items: center;  padding: 10px 20px; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: 600; border-radius: 0 0 10px 10px; color: rgb(50, 85, 99); background-color: white; box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.3);">
-      <span class="material-icons"
-        style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px;">schedule</span>
-      <span>Year: {{previousYear}}/{{previousYear + 1}}</span>
-    </div>
     </div>
 
     <div style="display: flex; width: 100%">
@@ -508,21 +467,6 @@
         <div #thirdchart style="width: 100%; height: 500px"></div>
       </div>
     </div>
-        <div style="width: 50%; background-color: white; padding: 10px 0 0 0; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
-          <span style="color: darkslategrey; font-weight: 900; font-size: 18px;">Total Production by Concessions</span>
-          <div #mychartbox2>
-            <div #secondchart style="width: 100%; height: 450px"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="display: flex; margin: 40px 0 20px 0;">
-  <div style="width: 50%; margin-right: 20px;  background-color: white; padding: 5px; box-shadow: 2px 2px 6px 2px rgb(0, 0, 0, 0.3); margin-right: 2%; border-radius: 5px; text-align: center;">
-    <h2>Oil & Condensate Reserve by Concession</h2>
-      <div #mychartbox3>
-        <div #thirdchart style="width: 100%; height: 500px"></div>
-      </div>
-  </div>
 
     <div
       style="
