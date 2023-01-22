@@ -1,243 +1,257 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ReportService } from 'src/app/services/report.service';
 import { GenericService } from '../services';
 
 @Component({
   selector: 'app-accident-incident-reporting',
   templateUrl: 'ndr-report.component.html',
-   styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
+  styleUrls: [
+    './ndr-report.component.scss',
+    '../general-report/general-report.component.scss',
+  ],
 
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccidentIncidentReportingComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
-  genk: GenericService; cdr: ChangeDetectorRef;
+  @ViewChild('mychartbox', { static: false })
+  myChartBox: ElementRef<HTMLDivElement>;
+  genk: GenericService;
+  cdr: ChangeDetectorRef;
   title = 'INCIDENT REPORTING';
   pagenum = 0;
   selectedPage = 1;
   arrayRows = [];
   data: any[];
   year = [];
-    selectedColumns: any[] = [];
-    isTableOpt = false;
-    isSpecifyColumns = false;
-  
-     columns = [
-        {
-          "columnDef": "companyName",
-          "header": "COMPANY NAME"
-      },
-      {
-          "columnDef": "companyemail",
-          "header": "COMPANY EMAIL"
-      },
-      {
-        "columnDef": "omL_Name",
-        "header": "CONCESSION HELD"
-    },
-      {
-          "columnDef": "year_of_WP",
-          "header": "YEAR"
-      },
-      {
-        "columnDef": "contract_Type",
-        "header": "CONTRACT TYPE"
+  selectedColumns: any[] = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
+
+  columns = [
+    {
+      columnDef: 'companyName',
+      header: 'COMPANY NAME',
     },
     {
-      "columnDef": "terrain",
-      "header": "TERRAIN"
-  },
-  {
-    "columnDef": "consession_Type",
-    "header": "CONSESSION TYPE"
-},
-      
-      {
-          "columnDef": "type_of_Accident_Incidence",
-          "header": "TYPE OF ACCIDENT/INCIDENCE"
-      },
-      {
-          "columnDef": "location",
-          "header": "LOCATION"
-      },
-      {
-          "columnDef": "investigation",
-          "header": "INVESTIGATION"
-      },
-      {
-          "columnDef": "date_",
-          "header": "DATE "
-      },
-      {
-          "columnDef": "cause",
-          "header": "CAUSE"
-      },
-      {
-          "columnDef": "consequence",
-          "header": "CONSEQUENCE"
-      },
-      {
-          "columnDef": "lesson_Learnt",
-          "header": "LESSON LEARNT"
-      },
-      {
-          "columnDef": "frequency",
-          "header": "FREQUENCY"
-      }  
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
+    },
+    {
+      columnDef: 'omL_Name',
+      header: 'CONCESSION HELD',
+    },
+    {
+      columnDef: 'year_of_WP',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_Type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'consession_Type',
+      header: 'CONSESSION TYPE',
+    },
+
+    {
+      columnDef: 'type_of_Accident_Incidence',
+      header: 'TYPE OF ACCIDENT/INCIDENCE',
+    },
+    {
+      columnDef: 'location',
+      header: 'LOCATION',
+    },
+    {
+      columnDef: 'investigation',
+      header: 'INVESTIGATION',
+    },
+    {
+      columnDef: 'date_',
+      header: 'DATE ',
+    },
+    {
+      columnDef: 'cause',
+      header: 'CAUSE',
+    },
+    {
+      columnDef: 'consequence',
+      header: 'CONSEQUENCE',
+    },
+    {
+      columnDef: 'lesson_Learnt',
+      header: 'LESSON LEARNT',
+    },
+    {
+      columnDef: 'frequency',
+      header: 'FREQUENCY',
+    },
   ];
 
   repcolumns = [
     {
-      "columnDef": "companyName",
-      "header": "COMPANY NAME"
-  },
-  {
-      "columnDef": "companyemail",
-      "header": "COMPANY EMAIL"
-  },
-  {
-    "columnDef": "omL_Name",
-    "header": "CONCESSION HELD"
-},
-  {
-      "columnDef": "year_of_WP",
-      "header": "YEAR"
-  },
-  {
-    "columnDef": "contract_Type",
-    "header": "CONTRACT TYPE"
-},
-{
-  "columnDef": "terrain",
-  "header": "TERRAIN"
-},
-{
-"columnDef": "consession_Type",
-"header": "CONSESSION TYPE"
-},
-  
-  {
-      "columnDef": "type_of_Accident_Incidence",
-      "header": "TYPE OF ACCIDENT/INCIDENCE"
-  },
-  {
-      "columnDef": "location",
-      "header": "LOCATION"
-  },
-  {
-      "columnDef": "investigation",
-      "header": "INVESTIGATION"
-  },
-  {
-      "columnDef": "date_",
-      "header": "DATE "
-  },
-  {
-      "columnDef": "cause",
-      "header": "CAUSE"
-  },
-  {
-      "columnDef": "consequence",
-      "header": "CONSEQUENCE"
-  },
-  {
-      "columnDef": "lesson_Learnt",
-      "header": "LESSON LEARNT"
-  },
-  {
-      "columnDef": "frequency",
-      "header": "FREQUENCY"
-  }  
-];
+      columnDef: 'companyName',
+      header: 'COMPANY NAME',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
+    },
+    {
+      columnDef: 'omL_Name',
+      header: 'CONCESSION HELD',
+    },
+    {
+      columnDef: 'year_of_WP',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_Type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'consession_Type',
+      header: 'CONSESSION TYPE',
+    },
 
-  constructor(private report: ReportService,
+    {
+      columnDef: 'type_of_Accident_Incidence',
+      header: 'TYPE OF ACCIDENT/INCIDENCE',
+    },
+    {
+      columnDef: 'location',
+      header: 'LOCATION',
+    },
+    {
+      columnDef: 'investigation',
+      header: 'INVESTIGATION',
+    },
+    {
+      columnDef: 'date_',
+      header: 'DATE ',
+    },
+    {
+      columnDef: 'cause',
+      header: 'CAUSE',
+    },
+    {
+      columnDef: 'consequence',
+      header: 'CONSEQUENCE',
+    },
+    {
+      columnDef: 'lesson_Learnt',
+      header: 'LESSON LEARNT',
+    },
+    {
+      columnDef: 'frequency',
+      header: 'FREQUENCY',
+    },
+  ];
+
+  constructor(
+    private report: ReportService,
     private cd: ChangeDetectorRef,
-    private gen: GenericService) {
+    private gen: GenericService
+  ) {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
-}
+  }
 
-ngOnInit() {
+  ngOnInit() {
     this.data = [];
     this.yearList();
     this.genk.sizePerPage = this.genk.sizeten;
-}
+  }
 
-public get pageIndex(): number {
+  public get pageIndex(): number {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
-}
+  }
 
-assignPageNum() {
+  assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-}
+  }
 
-assignDataRows() {
-    this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+  assignDataRows() {
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
     this.cd.markForCheck();
-}
+  }
 
-    
+  fetchdata(e) {
+    let value = e.target.value;
+    this.report.fetch('incident_reporting', value).subscribe((res) => {
+      this.data = res.data as any[];
+      if (this.data.length > 0) this.selectedPage = 1;
+      this.assignDataRows();
+      this.assignPageNum();
+      this.cd.markForCheck();
+    });
+  }
 
-    fetchdata(e){
-      let value = e.target.value;
-     this.report.fetch("incident_reporting", value).subscribe(
-        (res) => {
-           this.data = res.data as any[];
-            if(this.data.length>0) this.selectedPage=1;
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-          }
-      )
-    }
-
-    yearList() {
-      this.report.getYearList("incident_reporting_yearlist")
-          .subscribe((res: any[]) => {
-              this.year = res;
-              this.cd.markForCheck();
-          });
+  yearList() {
+    this.report
+      .getYearList('incident_reporting_yearlist')
+      .subscribe((res: any[]) => {
+        this.year = res;
+        this.cd.markForCheck();
+      });
   }
 
   goNext() {
     this.selectedPage++;
     this.assignDataRows();
-}
+  }
 
-goPrev() {
+  goPrev() {
     this.selectedPage--;
     this.assignDataRows();
-}
+  }
 
-firstPage() {
+  firstPage() {
     this.selectedPage = 1;
     this.assignDataRows();
-}
+  }
 
-lastPage() {
+  lastPage() {
     this.selectedPage = this.pagenum;
     this.assignDataRows();
-}
+  }
 
-changePage(value: string) {
+  changePage(value: string) {
     this.selectedPage = Number(value);
     this.assignDataRows();
-}
+  }
 
-resize(e) {
+  resize(e) {
     let value = e.target.value;
     if (value === 'all') {
-        value = this.pagenum * this.genk.sizePerPage
+      value = this.pagenum * this.genk.sizePerPage;
     }
     this.genk.sizePerPage = Number(value);
     this.assignDataRows();
     this.assignPageNum();
     this.cd.markForCheck();
-}
+  }
 
-togOptions() {
+  togOptions() {
     if (!this.isTableOpt) {
       this.isTableOpt = true;
     } else {
@@ -258,11 +272,12 @@ togOptions() {
 
   pickColumn(value: string, checked: boolean) {
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.repcolumns.filter((x) => x.columnDef == value)[0];
       this.selectedColumns.push(val);
-    }
-    else {
-      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+    } else {
+      let remainingArr = this.selectedColumns.filter(
+        (x) => x.columnDef != value
+      );
       this.selectedColumns = remainingArr;
     }
     this.cd.markForCheck;
@@ -275,14 +290,13 @@ togOptions() {
   }
 
   plotDoublePieChart() {
-    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-      debugger;
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -294,21 +308,20 @@ togOptions() {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
     }
   }
 
   plotDoubleBarChart() {
-    debugger;
-    let totalString = "";
+    let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -318,15 +331,28 @@ togOptions() {
 
       this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        let chartdata = this.report.formatChartData(
+          this.data,
+          this.selectedColumns[0].columnDef,
+          this.selectedColumns[1].columnDef
+        );
         for (var i = 0; i < chartdata.length; i++) {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-        else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.plotDoubleBarChartHorizontal(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
+        } else {
+          this.report.plotDoubleBarChart(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
         }
       }
     }

@@ -8,8 +8,8 @@ import { ModalService } from './modal.service';
 
 @Injectable({ providedIn: 'root' })
 export class GenericService {
-  sessionStaffID : number;
-  sessionStaffEmail : string;
+  sessionStaffID: number;
+  sessionStaffEmail: string;
   fileData: File = null;
   selectedPage = 1;
   sizeten = 10;
@@ -29,8 +29,8 @@ export class GenericService {
   performance = 'performance_evaluation';
   workprogram = 'workprogram';
   generalReport = 'generalreport';
-  empty=' ';
-  wkProposedYear= new Date().getFullYear();
+  empty = ' ';
+  wkProposedYear = new Date().getFullYear();
 
   reportYear: string;
   submitted = false;
@@ -41,12 +41,12 @@ export class GenericService {
   wpYear: string;
   terrain: string;
   geologicalLocation: string;
-  OmlName: string='';
+  OmlName: string = '';
   OmlID: number;
   fieldName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
-  val:number;
+  val: number;
   OMLList = [];
   Field_List = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -157,33 +157,30 @@ export class GenericService {
   }
 
   printImage() {
-  //   $(document).ready(function () {
-  //     let btn=$('#c-oreder-preview');
-  //     btn.text('download');
-  //     btn.on('click',()=> {
-
-  //         $('#c-invoice').modal('show');
-  //         setTimeout(function () {
-  //             html2canvas(document.querySelector("#c-print")).then(canvas => {
-  //                 //$("#previewBeforeDownload").html(canvas);
-  //                 var imgData = canvas.toDataURL("image/jpeg",1);
-  //                 var pdf = new jsPDF("p", "mm", "a4");
-  //                 var pageWidth = pdf.internal.pageSize.getWidth();
-  //                 var pageHeight = pdf.internal.pageSize.getHeight();
-  //                 var imageWidth = canvas.width;
-  //                 var imageHeight = canvas.height;
-
-  //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
-  //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
-  //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
-  //                 pdf.save("invoice.pdf");
-  //                 //$("#previewBeforeDownload").hide();
-  //                 $('#c-invoice').modal('hide');
-  //             });
-  //         },500);
-
-  //         });
-  // });
+    //   $(document).ready(function () {
+    //     let btn=$('#c-oreder-preview');
+    //     btn.text('download');
+    //     btn.on('click',()=> {
+    //         $('#c-invoice').modal('show');
+    //         setTimeout(function () {
+    //             html2canvas(document.querySelector("#c-print")).then(canvas => {
+    //                 //$("#previewBeforeDownload").html(canvas);
+    //                 var imgData = canvas.toDataURL("image/jpeg",1);
+    //                 var pdf = new jsPDF("p", "mm", "a4");
+    //                 var pageWidth = pdf.internal.pageSize.getWidth();
+    //                 var pageHeight = pdf.internal.pageSize.getHeight();
+    //                 var imageWidth = canvas.width;
+    //                 var imageHeight = canvas.height;
+    //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
+    //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
+    //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
+    //                 pdf.save("invoice.pdf");
+    //                 //$("#previewBeforeDownload").hide();
+    //                 $('#c-invoice').modal('hide');
+    //             });
+    //         },500);
+    //         });
+    // });
   }
 
   tableToCSV(table: HTMLTableElement) {
@@ -213,7 +210,6 @@ export class GenericService {
     // Variable to store the final csv data
     let csv_data = [];
     let lastChildList = [];
-    debugger;
 
     let row1 = table.getElementsByTagName('tr')[0];
 
@@ -598,7 +594,7 @@ export class GenericService {
   }
 
   checkBSCFMin(event, gasMin: HTMLElement) {
-    //debugger;
+    //
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 10000) {
@@ -612,7 +608,6 @@ export class GenericService {
   }
 
   checkMMBBLMin(event, oilMin: HTMLElement) {
-    debugger;
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 1000) {
@@ -625,32 +620,28 @@ export class GenericService {
     return e.value;
   }
 
-
   restrictNoOfFoldValue(input) {
     this.val = parseInt(input);
 
     debugger;
     if (this.val < 1 || this.val > 100) {
-      alert("Please make sure entry is between 1-100.");
-      return "0";
+      alert('Please make sure entry is between 1-100.');
+      return '0';
     }
     input = this.val.toString();
     return input;
   }
 
-
   restrictRecordLengthValue(input) {
-
     this.val = parseInt(input);
 
     if (this.val < 1 || this.val > 59) {
-      alert("Please make sure entry is between 1-59.");
-      return "0"
+      alert('Please make sure entry is between 1-59.');
+      return '0';
     }
     input = this.val.toString();
     return input;
   }
-
 
   restrictData(e) {
     //alert(e.key);
@@ -662,10 +653,9 @@ export class GenericService {
   restrictAlphaData(e) {
     //alert(e.key);
     var x = e.which || e.keycode;
-    if ((x >= 65 && x <= 90) || (x>=97 && x<=122)) return true;
+    if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122)) return true;
     else return false;
   }
-
 
   setTwoNumberDecimal(event) {
     if (isFinite(event.key)) {
@@ -771,12 +761,12 @@ export class GenericService {
   }
 
   filter(data) {
-    const resultArray = Object.keys(data).map(index => {
+    const resultArray = Object.keys(data).map((index) => {
       let person = data[index];
       return person;
     });
 
-    resultArray.forEach(element => {
+    resultArray.forEach((element) => {
       delete element['approvalref'];
       delete element['categoryid'];
       delete element['companyid'];
@@ -810,5 +800,4 @@ export class GenericService {
     if(this.OmlName.toUpperCase().substring(0,3)=='OML' || this.OmlName.toUpperCase().substring(0,3)=='PML' || this.OmlName.toUpperCase().substring(0,3)=='') return true;
     return false;
   }
-
 }

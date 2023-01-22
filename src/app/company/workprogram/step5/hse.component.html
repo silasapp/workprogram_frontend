@@ -27,19 +27,117 @@
     <span>HSE</span>
   </div>
   <br />
+
+  <hr size="10" />
+  <br /><br />
+
+  <div [formGroup]="ManagementPositionForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">HSE Management Position</label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 100%">
+        <label class="labelwp"
+          >Upload HSE Manager Appointment or Promotion letter</label
+        >
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="promotionLetterFilePath"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="savePromotionDoc($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 100%">
+        <label class="labelwp">Upload Current Organogram</label>
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="organogramrFilePath"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveOrganogramDoc($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <button (click)="Hse_Management_Position_Submit()" class="submitbtn">
+        Add Management Position
+      </button>
+    </div>
+  </div>
+  <br /><br />
+
+  <div *ngIf="hseManagementPositions.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hmpColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of hseManagementPositions">
+            <td *ngFor="let colDef of hmpColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Management(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <hr size="5" />
   <br />
 
   <div [formGroup]="TechnicalSafetyForm">
     <div style="display: flex; width: 100%">
-      <label class="labelwp"> Technical Safety Control Studies</label>
+      <label class="labelwp"> Technical Safety Studies</label>
     </div>
     <br />
     <hr size="5" />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%">
-          <label class="labelwp">Facility</label><br />
+          <label class="labelwp">Number of Facilities</label><br />
           <div style="display: flex">
             <div
               style="
@@ -50,28 +148,8 @@
               "
             >
               <input
-                formControlName="facility"
-                [(ngModel)]="technicalBody.facility"
-                type="text"
-                class="inpute"
-              />
-            </div>
-          </div>
-        </div>
-        <div style="width: 30%">
-          <label class="labelwp">Study Type</label>
-          <div style="display: flex; width: 100%">
-            <div
-              style="
-                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                width: 100%;
-                border-radius: 20px;
-                padding: 7px 10px;
-              "
-            >
-              <input
-                formControlName="study_type"
-                [(ngModel)]="technicalBody.study_type"
+                formControlName="number_of_facilities"
+                [(ngModel)]="technicalBody.number_of_facilities"
                 type="text"
                 class="inpute"
               />
@@ -80,7 +158,7 @@
         </div>
 
         <div style="width: 30%">
-          <label class="labelwp"> Facility location</label>
+          <label class="labelwp"> Location of Facility(s)</label>
           <div style="display: flex">
             <div
               style="
@@ -99,12 +177,54 @@
             </div>
           </div>
         </div>
+
+        <div style="width: 30%">
+          <label class="labelwp"> Type of Facility</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="type_of_facility"
+                [(ngModel)]="technicalBody.type_of_facility"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <br />
-    <div style="display: flex; width: 100%">
+    <div style="display: flex; justify-content: space-between; width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Type of Study</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              formControlName="study_type"
+              [(ngModel)]="technicalBody.study_type"
+              type="text"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+
       <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">Remarks</label>
+        <label class="labelwp">Remarks (If no type of study)</label>
         <div style="display: flex">
           <div
             style="
@@ -161,10 +281,10 @@
       </table>
     </div>
   </div>
-  <hr size="10" />
+  <!-- <hr size="10" /> -->
   <br /><br />
 
-  <div [formGroup]="SafetyStudyForm" class="row">
+  <!-- <div [formGroup]="SafetyStudyForm" class="row">
     <div style="display: flex; width: 100%">
       <label class="labelwp">Safety Study Information</label>
     </div>
@@ -363,103 +483,7 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <hr size="10" />
-  <br /><br />
-
-  <div [formGroup]="ManagementPositionForm">
-    <div style="width: 100%">
-      <div style="width: 30%">
-        <label class="labelwp">HSE Management Position</label>
-      </div>
-    </div>
-    <hr size="5" />
-    <br />
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 100%">
-        <label class="labelwp"
-          >Upload HSE Manager Appointment or Promotion letter</label
-        >
-
-        <div style="width: 50%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="file"
-              formControlName="promotionLetterFilePath"
-              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
-              (change)="savePromotionDoc($event)"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 100%">
-        <label class="labelwp">Upload Current Organogram</label>
-        <div style="width: 50%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="file"
-              formControlName="organogramrFilePath"
-              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
-              (change)="saveOrganogramDoc($event)"
-              class="inpute"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br /><br />
-    <div style="text-align: center">
-      <button (click)="Hse_Management_Position_Submit()" class="submitbtn">
-        Add Management Position
-      </button>
-    </div>
-  </div>
-  <br /><br />
-
-  <div *ngIf="hseManagementPositions.length > 0" class="wptablebox">
-    <div class="apptable">
-      <table class="wptable">
-        <thead>
-          <tr>
-            <th *ngFor="let h of hmpColDef">
-              {{ h.header }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of hseManagementPositions">
-            <td *ngFor="let colDef of hmpColDef">
-              {{ row[colDef.columnDef] }}
-            </td>
-            <td>
-              <button
-                class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_HSE_Management(row)"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </div> -->
 
   <hr size="10" />
   <br /><br />
@@ -472,6 +496,95 @@
     </div>
     <hr size="5" />
     <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Are there Training Plans for HSE Personnel?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="AreThereTrainingPlansForHSE"
+            [(ngModel)]="safetyCultureBody.AreThereTrainingPlansForHSE"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="safetyCultureBody.AreThereTrainingPlansForHSE == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of Training Plan</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="EvidenceOfTrainingPlanFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfTrainingPlan($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="safetyCultureBody.AreThereTrainingPlansForHSE !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark (If there are no Training Plan)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="remark"
+                [(ngModel)]="safetyCultureBody.remark"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 100%">
         <label class="labelwp">Upload accident statistics for the year</label>
@@ -568,36 +681,59 @@
       </div>
     </div>
     <hr size="5" />
-    <br />
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 100%">
-        <label class="labelwp">Upload evidence of submission of OHM plan</label>
 
-        <div style="width: 50%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Do you have an OHM in place?</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            formControlName="DoYouHaveAnOhm"
+            [(ngModel)]="occupationalBody.DoYouHaveAnOhm"
+            class="inpute"
           >
-            <input
-              type="file"
-              formControlName="OHMplanFilePath"
-              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
-              (change)="saveOHMDoc($event)"
-              class="inpute"
-            />
-          </div>
+            <option selected disabled>---- Please Select an Option ----</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </div>
       </div>
 
-      <div style="width: 100%">
+      <div style="width: 30%">
         <label class="labelwp"
-          >Upload evidence of communication of OHM plan/policies</label
+          >Upload evidence of submission of OHM plan (If you have OHM
+          plan)</label
         >
-        <div style="width: 50%">
+
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="file"
+            formControlName="OHMplanFilePath"
+            accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+            (change)="saveOHMDoc($event)"
+            class="inpute"
+          />
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">Remarks (If no OHM Plan in place)</label>
+        <div style="display: flex">
           <div
             style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -606,13 +742,85 @@
               padding: 7px 10px;
             "
           >
-            <input
-              type="file"
-              formControlName="OHMplanCommunicationFilePath"
-              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
-              (change)="saveOHMDoc_2($event)"
+            <textarea
+              formControlName="ReasonForNoOhm"
+              [(ngModel)]="occupationalBody.ReasonForNoOhm"
+              rows="3"
               class="inpute"
-            />
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Was OHM Policy Communicated to Staff?</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            formControlName="WasOhmPolicyCommunicatedToStaff"
+            [(ngModel)]="occupationalBody.WasOhmPolicyCommunicatedToStaff"
+            class="inpute"
+          >
+            <option selected disabled>---- Please Select an Option ----</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Upload evidence of communication of OHM plan/policies</label
+        >
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 20px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="file"
+            formControlName="OHMplanCommunicationFilePath"
+            accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+            (change)="saveOHMDoc_2($event)"
+            class="inpute"
+          />
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp"
+          >Remarks (If OHM policy was not communicated to staff)</label
+        >
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              formControlName="ReasonWhyOhmWasNotCommunicatedToStaffFileName"
+              [(ngModel)]="
+                occupationalBody.ReasonWhyOhmWasNotCommunicatedToStaffFileName
+              "
+              rows="3"
+              class="inpute"
+            ></textarea>
           </div>
         </div>
       </div>
@@ -843,10 +1051,10 @@
     </div>
   </div>
 
-  <hr size="10" />
+  <!-- <hr size="10" /> -->
   <br />
 
-  <div [formGroup]="InspectionMaintenanceForm">
+  <!-- <div [formGroup]="InspectionMaintenanceForm">
     <div style="width: 100%">
       <div style="width: 30%">
         <label class="labelwp">Inspection and Maintenance</label>
@@ -1036,7 +1244,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 
   <hr size="10" />
   <br />
@@ -1114,7 +1322,7 @@
     </div>
     <br />
 
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <br />
       <label class="labelwp">Equipment Serial Number</label>
       <div
@@ -1172,7 +1380,7 @@
           class="inpute"
         />
       </div>
-    </div>
+    </div> -->
     <div class="col-md-4">
       <br />
       <label class="labelwp">Equipment Installation Date</label>
@@ -1262,16 +1470,11 @@
           border-radius: 20px;
         "
       >
-        <select
+        <input
           formControlName="proposed_Inspection_Type"
           [(ngModel)]="asset_PRE_Body.proposed_Inspection_Type"
-          class="input"
-          type="inpute"
-        >
-          <option selected disabled>---- Please Select an Option ----</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
+          class="inpute"
+        />
       </div>
     </div>
     <div class="col-md-4">
@@ -1488,7 +1691,7 @@
     </div>
     <br />
 
-    <div style="display: flex; width: 100%; justify-content: space-between">
+    <!-- <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
         <br />
         <label class="labelwp">Equipment Serial Number</label>
@@ -1555,7 +1758,7 @@
         </div>
       </div>
     </div>
-    <br />
+    <br /> -->
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
@@ -1727,7 +1930,6 @@
             <input
               formControlName="proposed_Inspection_Type"
               [(ngModel)]="asset_RBI_Body.proposed_Inspection_Type"
-              type="date"
               class="inpute"
             />
           </div>
@@ -1935,7 +2137,7 @@
               "
             >
               <input
-                type
+                type="text"
                 (keypress)="genk.restrictData($event)"
                 class="inpute"
                 formControlName="incident_Oil_Spill_Ref_No"
@@ -2105,22 +2307,25 @@
         <div style="width: 30%">
           <label class="labelwp"> Volume of spill (bbls)</label>
           <div style="display: flex">
-            <div
-              style="
-                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                width: 100%;
-                border-radius: 20px;
-                padding: 7px 10px;
-              "
-            >
+            <div class="minsec">
               <input
+                type="text"
                 (keypress)="genk.restrictData($event)"
+                (change)="
+                  oilSpill_Body.volume_of_spill_bbls = genk.checkMMBBLMin(
+                    $event,
+                    oilSand
+                  )
+                "
+                style="border-radius: 5px"
                 class="inpute"
                 formControlName="volume_of_spill_bbls"
                 [(ngModel)]="oilSpill_Body.volume_of_spill_bbls"
               />
+              <span class="barspan">BBLS</span>
             </div>
           </div>
+          <small #oilSand></small>
         </div>
       </div>
     </div>
@@ -2128,22 +2333,25 @@
     <div style="width: 30%">
       <label class="labelwp"> Volume recovered (bbls)</label>
       <div style="display: flex">
-        <div
-          style="
-            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-            width: 100%;
-            border-radius: 20px;
-            padding: 7px 10px;
-          "
-        >
+        <div class="minsec">
           <input
+            type="text"
             (keypress)="genk.restrictData($event)"
+            (change)="
+              oilSpill_Body.volume_recovered_bbls = genk.checkMMBBLMin(
+                $event,
+                oilSand
+              )
+            "
+            style="border-radius: 5px"
             class="inpute"
             formControlName="volume_recovered_bbls"
             [(ngModel)]="oilSpill_Body.volume_recovered_bbls"
           />
+          <span class="barspan">BBLS</span>
         </div>
       </div>
+      <small #oilSand></small>
     </div>
     <br /><br />
     <div style="text-align: center">
@@ -2493,8 +2701,8 @@
       <div style="display: flex; width: 100%">
         <div style="width: 30%">
           <label class="labelwp"
-            >Was there any accident(s) / incidence(s) ?</label
-          >
+            >Were Accidents recorded during the period?
+          </label>
           <div
             style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -2504,8 +2712,7 @@
             "
           >
             <select
-              class="input"
-              type="inpute"
+              class="inpute"
               formControlName="was_there_any_accident_incidence"
               [(ngModel)]="accident_Body.was_there_any_accident_incidence"
             >
@@ -2517,105 +2724,13 @@
             </select>
           </div>
         </div>
-
-        <div style="width: 30%; margin-left: 5%">
-          <label class="labelwp">If YES, were they reported ?</label>
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
-          >
-            <select
-              class="input"
-              type="inpute"
-              formControlName="if_YES_were_they_reported"
-              [(ngModel)]="accident_Body.if_YES_were_they_reported"
-            >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-              <option value="Nil">Nil</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%">
-        <br />
-        <label class="labelwp">Type of Accident/Incidence</label>
-        <div style="width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="type_of_Accident_Incidence"
-              [(ngModel)]="accident_Body.type_of_Accident_Incidence"
-            />
-          </div>
-        </div>
-      </div>
-      <div style="width: 30%">
-        <br />
-        <label class="labelwp">Location</label>
-        <div style="width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="location"
-              [(ngModel)]="accident_Body.location"
-            />
-          </div>
-        </div>
-      </div>
-      <div style="width: 30%">
-        <br />
-        <label class="labelwp">Investigation</label>
-        <div style="width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="investigation"
-              [(ngModel)]="accident_Body.investigation"
-            />
-          </div>
-        </div>
       </div>
     </div>
     <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Date</label>
+        <label class="labelwp">Frequency (If accidents were recorded)</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -2625,16 +2740,17 @@
           "
         >
           <input
-            type="date"
+            type="text"
+            (keypress)="genk.restrictData($event)"
             class="inpute"
-            formControlName="date_"
-            [(ngModel)]="accident_Body.date_"
+            formControlName="frequency"
+            [(ngModel)]="accident_Body.frequency"
           />
         </div>
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">Cause(s)</label>
+        <label class="labelwp">Cause(s) (If accidents were recorded)</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -2661,7 +2777,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">Consequence</label>
+        <label class="labelwp">Consequence (If accidents were recorded)</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -2687,10 +2803,111 @@
         </div>
       </div>
     </div>
-    <br />
-    <div style="display: flex; width: 100%">
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Lesson Learnt</label>
+        <br />
+        <label class="labelwp"
+          >Type of Accident/Incidence (If accidents were recorded)</label
+        >
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="type_of_Accident_Incidence"
+              [(ngModel)]="accident_Body.type_of_Accident_Incidence"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Date (If accidents were recorded)</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <input
+            type="date"
+            class="inpute"
+            formControlName="date_"
+            [(ngModel)]="accident_Body.date_"
+          />
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Location (If accidents were recorded)</label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="location"
+              [(ngModel)]="accident_Body.location"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <div>
+        <label class="labelwp"
+          >Was Investigation conducted and closed out?
+        </label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <select
+              class="inpute"
+              formControlName="investigation"
+              [(ngModel)]="accident_Body.investigation"
+            >
+              <option selected disabled>
+                ---- Please Select an Option ----
+              </option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Lesson Learnt (If an investigation conducted and closed out)</label
+        >
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -2708,27 +2925,53 @@
         </div>
       </div>
 
-      <div style="width: 30%; margin-left: 5%">
-        <label class="labelwp">Frequency</label>
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Upload Incident Statistics (If an investigation conducted and closed
+          out)</label
+        >
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
-            padding: 5px;
             border-radius: 20px;
+            padding: 7px 10px;
           "
         >
           <input
-            type="text"
-            (keypress)="genk.restrictData($event)"
+            type="file"
+            formControlName="upload_incident_statistics"
+            accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+            (change)="saveUploadIncidentStatisticsDoc($event)"
             class="inpute"
-            formControlName="frequency"
-            [(ngModel)]="accident_Body.frequency"
           />
         </div>
       </div>
     </div>
+
     <br />
+
+    <div style="width: 30%">
+      <label class="labelwp"
+        >Remark (If no investigation conducted and closed out)</label
+      >
+      <div
+        style="
+          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+          width: 100%;
+          padding: 5px;
+          border-radius: 20px;
+        "
+      >
+        <input
+          type="text"
+          class="inpute"
+          formControlName="lesson_Learnt"
+          [(ngModel)]="accident_Body.lesson_Learnt"
+        />
+      </div>
+    </div>
+
     <br />
     <div style="text-align: center">
       <button (click)="HSE_Accident_Incidence_Submit()" class="submitbtn">
@@ -3079,7 +3322,7 @@
           </div>
         </div>
       </div>
-      <div style="width: 30%">
+      <!-- <div style="width: 30%">
         <label class="labelwp">Proposed Value</label>
         <div style="width: 100%">
           <div
@@ -3097,28 +3340,28 @@
             />
           </div>
         </div>
-      </div>
-    </div>
-    <div style="width: 30%">
-      <br />
-      <label class="labelwp">Type of Incidence</label>
-      <div
-        style="
-          box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-          width: 100%;
-          padding: 5px;
-          border-radius: 20px;
-        "
-      >
-        <select
-          class="inpute"
-          formControlName="type_of_incidence"
-          [(ngModel)]="fatality_Body.type_of_incidence"
+      </div> -->
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Type of Incidence</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
         >
-          <option selected disabled>---- Please Select an Option ----</option>
-          <option value="Non Work Related">Non Work Related</option>
-          <option value="Work Related">Work Related</option>
-        </select>
+          <select
+            class="inpute"
+            formControlName="type_of_incidence"
+            [(ngModel)]="fatality_Body.type_of_incidence"
+          >
+            <option selected disabled>---- Please Select an Option ----</option>
+            <option value="Non Work Related">Non Work Related</option>
+            <option value="Work Related">Work Related</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -3162,7 +3405,7 @@
   </div>
 
   <br />
-  <hr size="10" />
+  <!-- <hr size="10" />
   <br /><br />
 
   <div [formGroup]="DesignSafety_Form">
@@ -3274,7 +3517,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 
   <br />
   <hr size="10" />
@@ -4727,9 +4970,1621 @@
 
   <br />
   <hr size="10" />
-  <br /><br />
-</div>
-<div style="text-align: center;">
-    <button [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'scdp']"
-      class="nextbtn">Next</button>
+
+  <!--start-->
+
+  <div [formGroup]="OperationsSafetyCase_Form">
+    <div style="display: flex; width: 100%">
+      <label class="labelwp">Operations Safety Case</label>
+    </div>
+
+    <hr size="5" />
+
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <br />
+        <label class="labelwp">Number of Facilities</label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="number_of_facilities"
+              [(ngModel)]="operations_safety_case_body.number_of_facilities"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <label class="labelwp">Name of Facility</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <!-- (keypress)="genk.restrictData($event)" -->
+          <input
+            type="text"
+            class="inpute"
+            formControlName="name_of_facility"
+            [(ngModel)]="operations_safety_case_body.name_of_facility"
+          />
+        </div>
+      </div>
+
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <br />
+        <label class="labelwp">Location of Facility</label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="location_of_facility"
+              [(ngModel)]="operations_safety_case_body.location_of_facility"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <label class="labelwp">Type of Facility</label>
+        <div style="width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="type_of_facility"
+              [(ngModel)]="operations_safety_case_body.type_of_facility"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <label class="labelwp"
+          >Does the Facility have a valid Safety Case?</label
+        >
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="inpute"
+            formControlName="does_the_facility_have_a_valid_safety_case"
+            [(ngModel)]="
+              operations_safety_case_body.does_the_facility_have_a_valid_safety_case
+            "
+          >
+            <option selected disabled>---- Please Select ----</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        style="
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <label class="labelwp">Remark (If no valid safety case)</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <input
+            type="text"
+            class="inpute"
+            formControlName="reason_if_no_evidence"
+            [(ngModel)]="operations_safety_case_body.reason_if_no_evidence"
+          />
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div style="text-align: center">
+      <button (click)="HSE_Operations_Safety_Case_Submit()" class="submitbtn">
+        Add Operation Safety Case
+      </button>
+    </div>
   </div>
+
+  <br />
+
+  <div *ngIf="operationsSafetyCases.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hoscColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of operationsSafetyCases">
+            <td *ngFor="let colDef of hoscColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_OperationsSafetyCase(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--end-->
+
+  <br /><br />
+  <br />
+  <hr size="10" />
+
+  <div [formGroup]="environmentalManagementPlanForm">
+    <div
+      style="
+        text-align: start;
+        font-size: 15px;
+        font-weight: 30px;
+        padding-bottom: 20px;
+        color: rgb(5, 5, 5);
+      "
+    >
+      <span>Environmental Management Plan</span>
+    </div>
+    <hr size="5" />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin: auto, 0, 0">
+        <label class="labelwp"
+          >Do you have EMP (Environmental Management Plan)?</label
+        >
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <select
+              class="input"
+              type="inpute"
+              formControlName="areThereEMP"
+              [(ngModel)]="environmentalManagementPlanBody.areThereEMP"
+            >
+              <option selected disabled>
+                ---- Please Select an Option ----
+              </option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Type of Facility (If there are EMP)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="facilityType"
+              [(ngModel)]="environmentalManagementPlanBody.facilityType"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Facility Location (If there are EMP)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="facilityLocation"
+              [(ngModel)]="environmentalManagementPlanBody.facilityLocation"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 50%; margin-top: auto">
+        <label class="labelwp">Remark (If there are EMP)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              formControlName="remarkIfNoEMP"
+              [(ngModel)]="environmentalManagementPlanBody.remarkIfNoEMP"
+              rows="3"
+              class="inpute"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <br /><br />
+    <div>
+      <div style="text-align: center">
+        <button class="submitbtn" (click)="HSE_EMP_Submit()">Add EMP</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="environmentalManagementPlans.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hempColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of environmentalManagementPlans">
+            <td *ngFor="let colDef of hempColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_EMP(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="5" />
+
+  <div [formGroup]="remediationFundForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Remediation Fund</label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp">Are there Remediation Fund?</label>
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="areThereRemediationFund"
+            [(ngModel)]="remediationFundBody.areThereRemediationFund"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="remediationFundBody.areThereRemediationFund == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of Payment</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfPaymentFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfPayment($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="remediationFundBody.areThereRemediationFund !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoRemediation"
+                [(ngModel)]="remediationFundBody.reasonForNoRemediation"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <br /><br />
+    <div style="text-align: center">
+      <button (click)="HSE_Remediation_Fund_Submit()" class="submitbtn">
+        Add Remediation Fund
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="remediationFunds.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hrfColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of remediationFunds">
+            <td *ngFor="let colDef of hrfColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Remediation_Fund(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <div [formGroup]="effluentMonitoringComplianceForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Effluent Compliance Monitoring/Quarterly Chemical Inventory</label
+        >
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have Evidence of Sampling Certificate?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="areThereEvidentOfSampling"
+            [(ngModel)]="
+              effluentComplianceMonitoringBody.areThereEvidentOfSampling
+            "
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          effluentComplianceMonitoringBody.areThereEvidentOfSampling == 'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <label class="labelwp"
+          >Upload Evidence of Payment of Sampling Certificate</label
+        >
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfSamplingFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfSamplingPayment($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="
+          effluentComplianceMonitoringBody.areThereEvidentOfSampling !== 'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceSampling"
+                [(ngModel)]="
+                  effluentComplianceMonitoringBody.reasonForNoEvidenceSampling
+                "
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <br /><br />
+    <div style="text-align: center">
+      <button (click)="HSE_Effluent_Monitoring_Submit()" class="submitbtn">
+        Add Effluent Monitoring Complicance
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="effluentMonitoringCompliances.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hrfColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of effluentMonitoringCompliances">
+            <td *ngFor="let colDef of hrfColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Effluent_Monitoring(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <div [formGroup]="pointSourcePermitForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Point Source Registration </label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp">Do you have Point Source Permit?</label>
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="areTherePointSourcePermit"
+            [(ngModel)]="pointSourcePermitBody.areTherePointSourcePermit"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="pointSourcePermitBody.areTherePointSourcePermit == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of Registration</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfPSPFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfPSP($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="pointSourcePermitBody.areTherePointSourcePermit !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoPSP"
+                [(ngModel)]="pointSourcePermitBody.reasonForNoPSP"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <br /><br />
+    <div style="text-align: center">
+      <button (click)="HSE_PSP_Submit()" class="submitbtn">
+        Add Point Source Permit
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="pointSourcePermits.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hrfColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of pointSourcePermits">
+            <td *ngFor="let colDef of hrfColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Point_Source_Permit(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <div [formGroup]="GHGManagementPlanForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">GHG Management Plan</label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp">Do you have GHG Management Plan Approval?</label>
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHaveGHG"
+            [(ngModel)]="GHGManagementPlanBody.doYouHaveGHG"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="GHGManagementPlanBody.doYouHaveGHG == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload GHG Approval Certificate</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="GHGApprovalFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveGHGManagement($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="GHGManagementPlanBody.doYouHaveGHG !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoGHG"
+                [(ngModel)]="GHGManagementPlanBody.reasonForNoGHG"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have Leak Detection and Repairs Certificate?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHaveLDRCertificate"
+            [(ngModel)]="GHGManagementPlanBody.doYouHaveLDRCertificate"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="GHGManagementPlanBody.doYouHaveLDRCertificate == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence LDR Certificate</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="LDRCertificateFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveLDRCertificate($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="GHGManagementPlanBody.doYouHaveLDRCertificate !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoLDR"
+                [(ngModel)]="GHGManagementPlanBody.reasonForNoLDR"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <button (click)="HSE_GHG_Submit()" class="submitbtn">
+        Add GHG Management Plan
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="GHGManagementPlans.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hghgColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of GHGManagementPlans">
+            <td *ngFor="let colDef of hghgColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Point_Source_Permit(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <div [formGroup]="HostCommunitiesDevelopmentForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Host Communities Development </label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have Evidence of Registration of Trust Fund?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHaveEvidenceOfReg"
+            [(ngModel)]="HostCommunityDevelopmentBody.doYouHaveEvidenceOfReg"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="HostCommunityDevelopmentBody.doYouHaveEvidenceOfReg == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp"
+          >Upload Evidence of Trust Fund Registration</label
+        >
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfRegTrustFundFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfReg($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="HostCommunityDevelopmentBody.doYouHaveEvidenceOfReg !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfRegTF"
+                [(ngModel)]="
+                  HostCommunityDevelopmentBody.reasonForNoEvidenceOfRegTF
+                "
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have Evidence of 3% Payment to the Trust Fund by the
+          Settlor?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHaveEvidenceOfPay"
+            [(ngModel)]="HostCommunityDevelopmentBody.doYouHaveEvidenceOfPay"
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="HostCommunityDevelopmentBody.doYouHaveEvidenceOfPay == 'YES'"
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of Payment</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfPayTrustFundFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfPay($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="HostCommunityDevelopmentBody.doYouHaveEvidenceOfPay !== 'YES'"
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfPayTF"
+                [(ngModel)]="
+                  HostCommunityDevelopmentBody.reasonForNoEvidenceOfPayTF
+                "
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div style="padding-top: 20px">
+        <label class="labelwp"
+          >Upload Community Development Plan Approval</label
+        >
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="uploadCommDevPlanApprovalFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveCommunityDevPlan($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div style="text-align: center">
+        <button (click)="HSE_Host_Communities_Dev_Submit()" class="submitbtn">
+          Add Host Communities Development
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="HostCommunitiesDevelopments.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hhcdColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of HostCommunitiesDevelopments">
+            <td *ngFor="let colDef of hhcdColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Host_Communities_Dev(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div [formGroup]="wasteManagementDZForm">
+    <div style="width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp">Waste Management (Discharge Zone) </label>
+      </div>
+    </div>
+    <hr size="5" />
+    <br />
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+      "
+    >
+      <div style="width: 30%">
+        <label class="labelwp">Evidence of Payment of PDDC</label>
+
+        <div>
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfPayOfPDDCFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfPDDC($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Waste Contractor's Names</label>
+
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="wasterContractorNames"
+              [(ngModel)]="wasteManagementDZBody.wasterContractorNames"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Waste Contractor's Service Permit</label>
+
+        <div>
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="wasteServicePermitFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveWasteServicePermit($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >What type of Produced Water Management Plan do you have?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="produceWaterManagementPlan"
+            [(ngModel)]="wasteManagementDZBody.produceWaterManagementPlan"
+          >
+            <option value="DISCHARGE ZONE" selected>Discharge Zone</option>
+            <option value="ZERO DISCHARGE ZONE">Zero Discharge Zone</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.produceWaterManagementPlan ==
+          'ZERO DISCHARGE ZONE'
+        "
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of Re-injection Permit</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfReInjectionPermitFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfReInjection($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.produceWaterManagementPlan === 'DISCHARGE ZONE'
+        "
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfReInjection"
+                [(ngModel)]="
+                  wasteManagementDZBody.reasonForNoEvidenceOfReInjection
+                "
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <div
+      style="
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+        padding: 20px;
+      "
+    >
+      <div class="col-md-4">
+        <label class="labelwp"
+          >Do you have the previous year Waste Inventory Report?</label
+        >
+        <br /><br />
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="doYouHavePreviousYearWasteInventoryReport"
+            [(ngModel)]="
+              wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport
+            "
+          >
+            <option value="NO" selected>No</option>
+            <option value="YES">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport ===
+          'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <label class="labelwp">Upload Evidence of EWDP Permit</label>
+
+        <div style="width: 50%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="evidenceOfEWDPFilename"
+              accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              (change)="saveEvidenceOfEWDP($event)"
+              class="inpute"
+            />
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div
+        *ngIf="
+          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport !==
+          'YES'
+        "
+        style="padding-top: 20px"
+      >
+        <div class="col-md-4">
+          <label class="labelwp">Remark</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="reasonForNoEvidenceOfEWDP"
+                [(ngModel)]="wasteManagementDZBody.reasonForNoEvidenceOfEWDP"
+                class="inpute"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <br /><br />
+      <div style="text-align: center">
+        <button (click)="HSE_Waste_Management_DZ_Submit()" class="submitbtn">
+          Add Waste Management (Discharge Zone)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of hhcdColDef">
+              {{ h.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of wasteManagementDZs">
+            <td *ngFor="let colDef of hhcdColDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_HSE_Waste_Management_DZ(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr size="10" />
+
+  <br /><br />
+  <div style="text-align: center">
+    <button
+      [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'scdp']"
+      class="nextbtn"
+    >
+      Next
+    </button>
+  </div>
+</div>

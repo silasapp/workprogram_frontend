@@ -19,20 +19,17 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "paths": {
-      "@assets/*":["src/assets"],
-      "@components/*":["src/app/components/*"],
-      "@services/*":["src/app/core/service/*"],
-      "@models/*":["src/app/core/models/*"],
-      "@interceptors/*":["src/app/core/interceptors/*"],
-      "@consts/*":["src/app/core/guards/*"],
-      "@guards/*":["src/app/core/guards/*"],
-      "@shared/*":["src/app/shared/*"],
-      "@material/*":["src/app/material/*"]
+      "@assets/*": ["src/assets"],
+      "@components/*": ["src/app/components/*"],
+      "@services/*": ["src/app/core/service/*"],
+      "@models/*": ["src/app/core/models/*"],
+      "@interceptors/*": ["src/app/core/interceptors/*"],
+      "@consts/*": ["src/app/core/guards/*"],
+      "@guards/*": ["src/app/core/guards/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@material/*": ["src/app/material/*"]
     }
   },
   "angularCompilerOptions": {
@@ -42,4 +39,3 @@
     "strictTemplates": false
   }
 }
-

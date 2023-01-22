@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -46,14 +46,16 @@ export class BoardComponent implements OnInit {
   }
 
   checkCompletedSteps() {
-    this.workprogram.getCompletedSteps(this.genk.OmlName, this.genk.wpYear).subscribe((res) => {
-      this.genk.isStep1 = res.step1;
-      this.genk.isStep2 = res.step2;
-      this.genk.isStep3 = res.step3;
-      this.genk.isStep4 = res.step4;
-      this.genk.isStep5 = res.step5;
-      this.cd.markForCheck();
-    });
+    this.workprogram
+      .getCompletedSteps(this.genk.OmlName, this.genk.wpYear)
+      .subscribe((res) => {
+        this.genk.isStep1 = res.step1;
+        this.genk.isStep2 = res.step2;
+        this.genk.isStep3 = res.step3;
+        this.genk.isStep4 = res.step5; //todo: change not best practice
+        this.genk.isStep5 = res.step4;
+        this.cd.markForCheck();
+      });
   }
 
   consolelog() {

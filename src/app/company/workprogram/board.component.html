@@ -1,90 +1,154 @@
-<div style="width: 100%;background-color: rgb(217, 219, 220);">
-  <div style="width: 100%;background-color: rgb(217, 219, 220);top: 0;padding: 5px 0 5px 0;">
+<div style="width: 100%; background-color: rgb(217, 219, 220)">
+  <div
+    style="
+      width: 100%;
+      background-color: rgb(217, 219, 220);
+      top: 0;
+      padding: 5px 0 5px 0;
+    "
+  >
     <div style="display: flex">
-      <div style="display: flex;width: 80%; justify-content: center; background-color: white;margin: 0 0 10px 0;box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);border-radius: 5px;padding: 2px 0;">
-        <div [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'concessionsituation']">
+      <div
+        style="
+          display: flex;
+          width: 80%;
+          justify-content: center;
+          background-color: white;
+          margin: 0 0 10px 0;
+          box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+          border-radius: 5px;
+          padding: 2px 0;
+        "
+      >
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step1',
+            'concessionsituation'
+          ]"
+        >
           <div style="display: flex">
             <div class="divcent">
-              <span [class]="genk.activeStep === 'STEP1' ? 'me navactive' : 'me'" [ngStyle]="{'background-color': genk.isStep1 ? 'teal' : 'lightgrey', color: genk.isStep1 ? 'white' : 'darkgrey'}">1</span>
+              <span
+                [class]="genk.activeStep === 'STEP1' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep1 ? 'teal' : 'lightgrey',
+                  color: genk.isStep1 ? 'white' : 'darkgrey'
+                }"
+                >1</span
+              >
             </div>
             <div class="divcent">
-              <div style="height: 3px; width: 100px; background-color: teal"></div>
+              <div
+                style="height: 3px; width: 100px; background-color: teal"
+              ></div>
             </div>
           </div>
           <div class="smalljust">
             <span>STEP 1</span>
           </div>
         </div>
-        <div [routerLink]="[
+        <div
+          [routerLink]="[
             '/' + genk.company,
             genk.workprogram,
             'step2',
             'fielddevelopmentplan'
-          ]">
+          ]"
+        >
           <div style="display: flex">
             <div class="divcent">
-              <span [class]="genk.activeStep === 'STEP2' ? 'me navactive' : 'me'" [ngStyle]="{
+              <span
+                [class]="genk.activeStep === 'STEP2' ? 'me navactive' : 'me'"
+                [ngStyle]="{
                   'background-color': genk.isStep2 ? 'teal' : 'lightgrey',
                   color: genk.isStep2 ? 'white' : 'darkgrey'
-                }">2</span>
+                }"
+                >2</span
+              >
             </div>
             <div class="divcent">
-              <div style="height: 3px; width: 100px; background-color: teal"></div>
+              <div
+                style="height: 3px; width: 100px; background-color: teal"
+              ></div>
             </div>
           </div>
           <div class="smalljust">
             <span>STEP 2</span>
           </div>
         </div>
-        <div [routerLink]="[
+        <div
+          [routerLink]="[
             '/' + genk.company,
             genk.workprogram,
             'step3',
             'budgetperformance'
-          ]">
+          ]"
+        >
           <div style="display: flex">
             <div class="divcent">
-              <span [class]="genk.activeStep === 'STEP3' ? 'me navactive' : 'me'" [ngStyle]="{
+              <span
+                [class]="genk.activeStep === 'STEP3' ? 'me navactive' : 'me'"
+                [ngStyle]="{
                   'background-color': genk.isStep3 ? 'teal' : 'lightgrey',
                   color: genk.isStep3 ? 'white' : 'darkgrey'
-                }">3</span>
+                }"
+                >3</span
+              >
             </div>
             <div class="divcent">
-              <div style="height: 3px; width: 100px; background-color: teal"></div>
+              <div
+                style="height: 3px; width: 100px; background-color: teal"
+              ></div>
             </div>
           </div>
           <div class="smalljust">
             <span>STEP 3</span>
           </div>
         </div>
-        <div [routerLink]="[
-            '/' + genk.company,
-            genk.workprogram,
-            'step4',
-            'nigeriacontent'
-          ]">
+        <div
+          [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'hse']"
+        >
           <div style="display: flex">
             <div class="divcent">
-              <span [class]="genk.activeStep === 'STEP4' ? 'me navactive' : 'me'" [ngStyle]="{
-                  'background-color': genk.isStep4 ? 'teal' : 'lightgrey',
-                  color: genk.isStep4 ? 'white' : 'darkgrey'
-                }">4</span>
+              <span
+                [class]="genk.activeStep === 'STEP5' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep5 ? 'teal' : 'lightgrey',
+                  color: genk.isStep5 ? 'white' : 'darkgrey'
+                }"
+                >4</span
+              >
             </div>
             <div class="divcent">
-              <div style="height: 3px; width: 100px; background-color: teal"></div>
+              <div
+                style="height: 3px; width: 100px; background-color: teal"
+              ></div>
             </div>
           </div>
           <div class="smalljust">
             <span>STEP 4</span>
           </div>
         </div>
-        <div [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']">
+        <div
+          [routerLink]="[
+            '/' + genk.company,
+            genk.workprogram,
+            'step5',
+            'nigeriacontent'
+          ]"
+        >
           <div style="display: flex">
             <div class="divcent">
-              <span [class]="genk.activeStep === 'STEP5' ? 'me navactive' : 'me'" [ngStyle]="{
-                  'background-color': genk.isStep5 ? 'teal' : 'lightgrey',
-                  color: genk.isStep5 ? 'white' : 'darkgrey'
-                }">5</span>
+              <span
+                [class]="genk.activeStep === 'STEP4' ? 'me navactive' : 'me'"
+                [ngStyle]="{
+                  'background-color': genk.isStep4 ? 'teal' : 'lightgrey',
+                  color: genk.isStep4 ? 'white' : 'darkgrey'
+                }"
+                >5</span
+              >
             </div>
           </div>
           <div class="smalljust">
@@ -93,10 +157,24 @@
         </div>
       </div>
 
-      <div style="display: flex; width: 19%; margin: 0 0 10px 1%; align-items: center; justify-content: center; background-color: white;box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);border-radius: 5px; font-weight: 600; color: darkslategrey;">
-          <span>Work Year: </span> &nbsp; &nbsp;<span>{{genk.wpYear ?? 'None'}}</span>
+      <div
+        style="
+          display: flex;
+          width: 19%;
+          margin: 0 0 10px 1%;
+          align-items: center;
+          justify-content: center;
+          background-color: white;
+          box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
+          border-radius: 5px;
+          font-weight: 600;
+          color: darkslategrey;
+        "
+      >
+        <span>Work Year: </span> &nbsp; &nbsp;<span>{{
+          genk.wpYear ?? "None"
+        }}</span>
       </div>
-
     </div>
   </div>
 
