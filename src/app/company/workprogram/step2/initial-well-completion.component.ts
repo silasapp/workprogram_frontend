@@ -36,7 +36,9 @@ export class SWPInitialWellCompletionComponent implements OnInit {
 
   wellCount: number = 0;
   iwList: any[];
-  data: any[]; 
+  pagenum = 0;
+  selectedPage = 1;
+  arrayRows = [];
 
 
 
@@ -94,7 +96,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data = [];
+   
     
     this.genk.activeStep = 'STEP2';
     this.InitialForm = new FormGroup(
@@ -246,6 +248,25 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
+
+
+  assignPageNum() {
+    this.pagenum = Math.ceil(this._quaterIWOneData.length / this.genk.sizePerPage);
+  }
+
+  assignDataRows() {
+    this.arrayRows = this._quaterIWOneData.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
+    this.cd.markForCheck();
+  }
+
+
   getInitialCompletion() {
 
       this.workprogram.getInitialWellCompletion(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
@@ -271,6 +292,12 @@ export class SWPInitialWellCompletionComponent implements OnInit {
               qIWOneData.actual_Completion_Date = this.genk.formDate(qIWOneData.actual_Completion_Date);
               qIWOneData.proposed_Completion_Date = this.genk.formDate(qIWOneData.proposed_Completion_Date);
             }
+debugger;
+            this.selectedPage=1;
+            this.assignDataRows();
+            this.assignPageNum();
+            this.cd.markForCheck();
+
           }
 
      
