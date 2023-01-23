@@ -57,8 +57,6 @@ export class SendBackFormComponent implements OnInit {
       ? this.sbuTableDetailsList
       : this.sbuList;
 
-    console.log('checking: ', this.checkItems);
-
     // console.log('details', this.sbuTableDetailsList);
   }
 
@@ -114,12 +112,6 @@ export class SendBackFormComponent implements OnInit {
   }
 
   onSelect(item: SBUSelectTableDetails) {
-    console.log(
-      'items....',
-      item,
-      item instanceof SBUSelectTableDetails,
-      this.form
-    );
     if (!this.isPlanning) this.setSelectedTables(item);
     else this.setSelectedSBUs(item);
   }

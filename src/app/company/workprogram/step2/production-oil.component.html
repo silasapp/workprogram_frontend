@@ -1,132 +1,237 @@
 <div
-    style=" background-color: white; border-radius: 20px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); padding: 20px; font-weight: 600;">
-    
-    <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
-        <span>PRODUCTION (OIL/CONDENSATE/AG/NAG)</span>
-    </div>
-    <div [formGroup]="ProductionOilForm">
-        <div>
-
-            <div style="display: flex; width: 100%; justify-content: space-between;">
-                <div style="width: 30%;">
-                    <span class="labelwp"> Was Oil Royalty Payment made ?</span>
-                    <div style="display: flex; width: 100%;">
-                        <div class="inputshadow">
-                            <select class="dropwp" formControlName="oil_Royalty_Payment" [(ngModel)]="productionoilBody.oil_Royalty_Payment" >
-                                <option selected disabled>--Select an Option --</option>
-                                <option value="YES">Yes </option>
-                                <option value="NO">No</option>
-                            </select>
-                        </div>
-
-                    </div>
-                </div>
-                <div style="width: 30%; margin-top: auto;">
-                    <label id="ContentPlaceHolder2_Label13" class="labelwp">Actual Year/(Barrels)</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                            <input (keypress)="genk.restrictData($event)" formControlName="actual_year" [(ngModel)]="productionoilBody.actual_year" class="inpute">
-                        </div>
-                    </div>
-                </div>
-
-                <div style="width: 30%; margin: auto 0 0;">
-                    <label class="labelwp">Deferment/(Barrels)</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                            <input (keypress)="genk.restrictData($event)" formControlName="deferment" [(ngModel)]="productionoilBody.deferment" class="inpute">
-                        </div>
-                    </div>
-                </div>
+  style="
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+    font-weight: 600;
+  "
+>
+  <div
+    style="
+      font-size: 25px;
+      font-weight: 500;
+      text-align: center;
+      padding-bottom: 20px;
+    "
+  >
+    <span>PRODUCTION (OIL/CONDENSATE/AG/NAG)</span>
+  </div>
+  <div [formGroup]="ProductionOilForm">
+    <div>
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%">
+          <span class="labelwp"> Was Oil Royalty Payment made ?</span>
+          <div style="display: flex; width: 100%">
+            <div class="inputshadow">
+              <select
+                class="dropwp"
+                formControlName="oil_Royalty_Payment"
+                [(ngModel)]="productionoilBody.oil_Royalty_Payment"
+                [attr.disabled]="disableForm"
+              >
+                <option selected disabled>--Select an Option --</option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+              </select>
             </div>
-            <br>
+          </div>
+        </div>
+        <div style="width: 30%; margin-top: auto">
+          <label id="ContentPlaceHolder2_Label13" class="labelwp"
+            >Actual Year/(Barrels)</label
+          >
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                (keypress)="genk.restrictData($event)"
+                formControlName="actual_year"
+                [(ngModel)]="productionoilBody.actual_year"
+                class="inpute"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
 
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Deferment/(Barrels)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                (keypress)="genk.restrictData($event)"
+                formControlName="deferment"
+                [(ngModel)]="productionoilBody.deferment"
+                class="inpute"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
 
-            <div>
-                <div style="display: flex; width: 100%; justify-content: space-between;">
-                    <div style="width: 30%; margin: auto 0 0;">
-                        <label class="labelwp">Forecast/(Barrels)</label>
-                        <div style="display: flex;">
-                            <div
-                                style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 10px; padding: 7px 10px;">
-                                <input (keypress)="genk.restrictData($event)" formControlName="forecast" [(ngModel)]="productionoilBody.forecast" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 30%;">
-                        <label class="labelwp">Cost/Barrel (USD)</label>
-                        <div style="display: flex;">
-                          <div class="inpdivcurrency">
-                            <span class="currencywp">$</span>
-                            <input type="number" formControlName="cost_Barrel" (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)" (change)="productionoilBody.cost_Barrel = genk.addCurrencyDecimal($event)" [value]="productionoilBody.cost_Barrel" class="inpute">
-                          </div>
-                        </div>
-                        <!-- <div style="display: flex;">
+      <div>
+        <div style="display: flex; width: 100%; justify-content: space-between">
+          <div style="width: 30%; margin: auto 0 0">
+            <label class="labelwp">Forecast/(Barrels)</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  (keypress)="genk.restrictData($event)"
+                  formControlName="forecast"
+                  [(ngModel)]="productionoilBody.forecast"
+                  class="inpute"
+                  [attr.disabled]="disableForm"
+                />
+              </div>
+            </div>
+          </div>
+          <div style="width: 30%">
+            <label class="labelwp">Cost/Barrel (USD)</label>
+            <div style="display: flex">
+              <div class="inpdivcurrency">
+                <span class="currencywp">$</span>
+                <input
+                  type="number"
+                  formControlName="cost_Barrel"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
+                  (change)="
+                    productionoilBody.cost_Barrel =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="productionoilBody.cost_Barrel"
+                  class="inpute"
+                  [attr.disabled]="disableForm"
+                />
+              </div>
+            </div>
+            <!-- <div style="display: flex;">
                             <div
                                 style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
                                 <input (keypress)="genk.restrictData($event)" formControlName="cost_Barrel" [(ngModel)]="productionoilBody.cost_Barrel" class="inpute">
                             </div>
                         </div> -->
+          </div>
 
-                    </div>
-
-                    <div style="width: 30%;">
-                        <label id="ContentPlaceHolder2_Label8" class="labelwp">Total Reconciled Crude Oil Production</label>
-                        <div style="display: flex;">
-                            <div
-                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input type="text" formControlName="total_Reconciled_National_Crude_Oil_Production" [(ngModel)]="productionoilBody.total_Reconciled_National_Crude_Oil_Production" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <div style="display: flex; width: 100%;">
-                    <div style="width: 30%; margin: 0 5% 0 0;">
-                        <label class="labelwp"> Gas production (AG) (BSCF)</label>
-                        <div style="display: flex;">
-                            <div
-                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input type="text" formControlName="gas_AG" [(ngModel)]="productionoilBody.gas_AG" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="width: 30%;">
-                        <label class="labelwp">Gas production (NAG)(BSCF)</label>
-                        <div style="display: flex;">
-                            <div
-                                style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                                <input type="text" formControlName="gas_NAG" [(ngModel)]="productionoilBody.gas_NAG" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <br><br>
-                <div>
-                    <div style="text-align: center;">
-                        <button class="quarterbtn" (click)="saveProduction()">UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)</button>
-                    </div>
-                </div>
-
-                <br><br><br>
-
-                <hr size="10">
-
+          <div style="width: 30%">
+            <label id="ContentPlaceHolder2_Label8" class="labelwp"
+              >Total Reconciled Crude Oil Production</label
+            >
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 20px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="total_Reconciled_National_Crude_Oil_Production"
+                  [(ngModel)]="
+                    productionoilBody.total_Reconciled_National_Crude_Oil_Production
+                  "
+                  class="inpute"
+                  [attr.disabled]="disableForm"
+                />
+              </div>
             </div>
+          </div>
+        </div>
+        <br />
 
+        <div style="display: flex; width: 100%">
+          <div style="width: 30%; margin: 0 5% 0 0">
+            <label class="labelwp"> Gas production (AG) (BSCF)</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 20px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="gas_AG"
+                  [(ngModel)]="productionoilBody.gas_AG"
+                  class="inpute"
+                  [attr.disabled]="disableForm"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 30%">
+            <label class="labelwp">Gas production (NAG)(BSCF)</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 20px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="gas_NAG"
+                  [(ngModel)]="productionoilBody.gas_NAG"
+                  class="inpute"
+                  [attr.disabled]="disableForm"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
+        <br /><br />
+        <div>
+          <div style="text-align: center">
+            <button
+              class="quarterbtn"
+              (click)="saveProduction()"
+              [attr.disabled]="disableForm"
+            >
+              UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)
+            </button>
+          </div>
+        </div>
 
+        <br /><br /><br />
+
+        <hr size="10" />
+      </div>
     </div>
-    <br><br>
+  </div>
+  <br /><br />
 
-    <!-- <div
+  <!-- <div
         style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(67, 183, 67); text-shadow: 2px 4px 2px rgb(227, 255, 192);">
         <span>NPR</span>
     </div>
@@ -185,522 +290,935 @@
 
     <br>
     <hr size="10"> -->
-<div [formGroup]="monthlyActivityForm">
+  <div [formGroup]="monthlyActivityForm">
     <div
-        style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
-        <span>ACTUAL MONTHLY PRODUCTION</span>
+      style="
+        text-align: start;
+        font-size: 17px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        color: teal;
+      "
+    >
+      <span>ACTUAL MONTHLY PRODUCTION</span>
     </div>
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Month</label>
-            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <select class="dropwp" formControlName="production_month" [(ngModel)]="monthlyactivityBody.production_month" >
-                    <option selected disabled>---- Select a Month ----</option>
-                    <option value="January">January</option>
-                    <option value="Febuary">Febuary</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select>
-            </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Month</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="production_month"
+            [(ngModel)]="monthlyactivityBody.production_month"
+            [attr.disabled]="disableForm"
+          >
+            <option selected disabled>---- Select a Month ----</option>
+            <option value="January">January</option>
+            <option value="Febuary">Febuary</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
         </div>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Production (BBLS)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="production" [(ngModel)]="monthlyactivityBody.production" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%">
-            <label class="labelwp">Average Daily Production (BOPD)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text"  formControlName="avg_Daily_Production" [(ngModel)]="monthlyactivityBody.avg_Daily_Production"class="inpute">
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <br>
-    <div style="display: flex; width: 100%;">
-        <div style="margin-right: 5%; width:30%;">
-            <label class="labelwp">Gas Production (AG)(BSCF)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="gas_AG" [(ngModel)]="monthlyactivityBody.gas_AG" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%">
-            <label class="labelwp">Gas Average Daily Production (NAG)(BSCF)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="gas_NAG" [(ngModel)]="monthlyactivityBody.gas_NAG" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-
-    <div style="text-align: center;">
-        <button class="quarterbtn" (click)="saveMonthlyActivity()">Save Monthly Production</button>
-    </div>
-    </div>
-    <br>
-    <hr size="10">
-
-    <div [formGroup]="ProposedMonthlyForm">
-<div>
-    <div style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
-        <span>PROPOSED MONTHLY PRODUCTION</span>
-    </div>
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Month</label>
-            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <select class="dropwp" formControlName="production_month" [value]="proposedmonthlyBody.production_month" (change)="changeProposedMonth($event)">
-                    <option selected disabled>---- Select a Month ----</option>
-                    <option value="January">January</option>
-                    <option value="Febuary">Febuary</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select>
-            </div>
-        </div>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Production (BBLS)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="production" [(ngModel)]="proposedmonthlyBody.production" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%">
-            <label class="labelwp">Average Daily Production (BOPD)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="avg_Daily_Production" [(ngModel)]="proposedmonthlyBody.avg_Daily_Production" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div style="display: flex; width: 100%;">
-        <div style="margin-right: 5%; width:30%;">
-            <label class="labelwp">Gas Production (AG)(BSCF)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="gas_AG" [(ngModel)]="proposedmonthlyBody.gas_AG" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%">
-            <label class="labelwp">Gas Production (NAG)(BSCF)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="gas_NAG" [(ngModel)]="proposedmonthlyBody.gas_NAG" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-  <br>
-    <br><br>
-
-    <div style="text-align: center;">
-        <button class="quarterbtn" (click)="saveProposedActivity()">Save Proposed Monthly Production</button>
-    </div>
-    </div>
-    </div>
-    <br>
-    <hr size="10">
-
-    <div [formGroup]="fiveYearForecastForm">
-    <div
-        style="text-align: start; font-size: 17px; font-weight: 600; padding-bottom: 20px; color: teal;">
-        <span>Five Year Production Forecast: (Figures)</span>
-    </div>
-    <div  style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">PROJECTION YEAR</label>
-            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <select class="dropwp" formControlName="fiveyear_Timeline" [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline">
-                    <option selected disabled>---- Select a Month ----</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                </select>
-            </div>
-        </div>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Oil (MMBBL)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="fiveyear_Oil" [(ngModel)]="fiveYearForecastBody.fiveyear_Oil" class="inpute">
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 30%">
-            <label class="labelwp">Condensate (MMBBL)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="fiveyear_Condensate" [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate" class="inpute">
-                </div>
-            </div>
-        </div>
-</div><br>
-
-        <div style="display: flex; width: 100%;  justify-content: space-between;">
-          <div style="width:30%;">
-              <label class="labelwp">AG (BSCF)</label>
-              <div style="display: flex;">
-                  <div
-                      style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                      <input type="text" formControlName="fiveyear_AG" [(ngModel)]="fiveYearForecastBody.fiveyear_AG" class="inpute">
-                  </div>
-              </div>
-          </div>
-
-          <div style="width:30%;">
-              <label class="labelwp">NAG (BSCF)</label>
-              <div style="display: flex;">
-                  <div
-                      style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                      <input type="text" formControlName="fiveyear_NAG" [(ngModel)]="fiveYearForecastBody.fiveyear_NAG" class="inpute">
-                  </div>
-              </div>
-          </div>
-
-          <div style="width: 30%;">
-              <label class="labelwp">Upload Yearly Production Forcast</label>
-              <div style="display: flex;">
-                  <div
-                      style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                      <input type="file" formControlName="YPFFile" (change)="saveYPFDoc($event)" class="inpute">
-                  </div>
-              </div>
-          </div>
       </div>
-    <br>
 
-    <div style="text-align: center;">
-        <button class="quarterbtn">Save Five Year Production Forecast</button>
-    </div>
-    </div>
-    <br><br>
-    <hr size="10">
-
-    <br><br>
-
-    <div [formGroup]="UnitizationForm">
-    <div style="text-align: start; font-size: 17px; font-weight: 30px; padding-bottom: 20px; color: teal;">
-        <span>UNITIZATION</span>
-    </div>
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%;"><br>
-            <label class="labelwp">Is any of your fields straddling?</label>
-            <div style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                <select class="dropwp" formControlName="is_any_of_your_field_straddling" [(ngModel)]="unitizationBody.is_any_of_your_field_straddling">
-                    <option selected disabled>---- Select an Option ----</option>
-                    <option value="YES">Yes</option>
-                    <option value="NO">No</option>
-                </select>
-            </div>
-        </div>
-        <br>
-
-        <div style="width: 30%;"><br>
-            <label class="labelwp">Straddling Field (Other party)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px; ">
-                    <input type="text" formControlName="straddling_Field_OP" [(ngModel)]="unitizationBody.straddling_Field_OP" class="inpute">
-                </div>
-            </div>
-        </div>
-
-
-        <div style="width: 30%;">
-            <label class="labelwp">What Concession is the field straddling
-                (Seperate with a comma if more than one)?</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="what_concession_field_straddling" [(ngModel)]="unitizationBody.what_concession_field_straddling" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div style="display:flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Is the straddled field Producing?</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp"formControlName="straddle_field_producing" [(ngModel)]="unitizationBody.straddle_field_producing" >
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Straddling Fields (Operating Coy)</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp" formControlName="straddling_Fields_OC" [(ngModel)]="unitizationBody.straddling_Fields_OC">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div style="width: 30%">
-            <label class="labelwp">Prod Status (Operating Coy)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="prod_Status_OC" [(ngModel)]="unitizationBody.prod_Status_OC" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div style="display:flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%">
-            <label class="labelwp">Company Name (Other party)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="company_Name_OP" [(ngModel)]="unitizationBody.company_Name_OP" class="inpute">
-                </div>
-            </div>
-        </div><br>
-
-        <div style="width: 30%">
-            <label class="labelwp">Prod Status (Other party)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="prod_Status_OP" [(ngModel)]="unitizationBody.prod_Status_OP" class="inpute">
-                </div>
-            </div>
-        </div><br>
-
-        <div style="width: 30%">
-            <label class="labelwp">How many fields straddle?</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="text" formControlName="how_many_fields_straddle" [(ngModel)]="unitizationBody.how_many_fields_straddle" class="inpute">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div style="display:flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Has NUPRC been notified?</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp" formControlName="has_DPR_been_notified" [(ngModel)]="unitizationBody.has_DPR_been_notified">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Has the other party been notified?</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp" formControlName="has_the_other_party_been_notified" [(ngModel)]="unitizationBody.has_the_other_party_been_notified">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-            <div style="width: 30%;">
-                <label class="labelwp">Has the Confidentiality Agreement been signed</label>
-                <div style="display: flex; width: 100%;">
-                    <div class="inputshadow">
-                        <select class="dropwp" formControlName="has_the_CA_been_signed" [(ngModel)]="unitizationBody.has_the_CA_been_signed">
-                            <option selected disabled>--Select an Option --</option>
-                            <option value="NO">NO</option>
-                            <option value="YES">YES</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <br>
-
-    <div style="display:flex; width: 100%; justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Has Technical , Finance, Unitization and steering Committees been inaugurated</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp"formControlName="committees_been_inaugurated" [(ngModel)]="unitizationBody.committees_been_inaugurated">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <div style="width: 30%;"><br>
-            <label class="labelwp">Has the Tract Participation been determined</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp" formControlName="participation_been_determined" [(ngModel)]="unitizationBody.participation_been_determined">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-            <div style="width: 30%;"><br>
-                <label class="labelwp">Is there a Joint Development?</label>
-                <div style="display: flex; width: 100%;">
-                    <div class="inputshadow">
-                        <select class="dropwp"formControlName="is_there_a_Joint_Development" [(ngModel)]="unitizationBody.is_there_a_Joint_Development">
-                            <option selected disabled>--Select an Option --</option>
-                            <option value="NO">NO</option>
-                            <option value="YES">YES</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <br>
-
-    <div style="display: flex; width: 100%;  justify-content: start;">
-        <div style="margin-right: 5%; width:30%;">
-            <label class="labelwp">Has the PUA been signed</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp"formControlName="has_the_PUA_been_signed" [(ngModel)]="unitizationBody.has_the_PUA_been_signed">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <div style="width: 30%;">
-            <label class="labelwp">Has the UUOA been signed</label>
-            <div style="display: flex; width: 100%;">
-                <div class="inputshadow">
-                    <select class="dropwp"formControlName="has_the_UUOA_been_signed" [(ngModel)]="unitizationBody.has_the_UUOA_been_signed">
-                        <option selected disabled>--Select an Option --</option>
-                        <option value="NO">NO</option>
-                        <option value="YES">YES</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div style="display: flex; width: 100%;  justify-content: start;">
-        <div style="width: 30%; margin-right: 5%;">
-            <label class="labelwp">Upload PUA Document</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="file" formControlName="PUAFile" (change)="savePUADoc($event)" class="inpute">
-                </div>
-            </div>
-        </div>
-        <div *ngIf="f['PUAFormFile'].invalid">
-            <span *ngIf="f['PUAFormFile'].errors['incorrect']">
-              Error! File size should not exceed 50mb!
-            </span>
-            <span *ngIf="f['PUAFormFile'].errors['format']">
-              Error! This audio format is currently not supported. Try (.mp3/.m4a/.wav/.ogg).
-            </span>
+      <div style="width: 30%">
+        <label class="labelwp">Production (BBLS)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="production"
+              [(ngModel)]="monthlyactivityBody.production"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
           </div>
-
-        <br>
-        <div style="width: 30%;">
-            <label class="labelwp">Upload UUOA Document</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="file"formControlName="UUOAFile" (change)="saveUUAODoc($event)" class="inpute">
-                </div>
-            </div>
         </div>
-        <div *ngIf="f['UUOAFormFile'].invalid">
-            <span *ngIf="f['UUOAFormFile'].errors['incorrect']">
-              Error! File size should not exceed 50mb!
-            </span>
-            <span *ngIf="f['UUOAFormFile'].errors['format']">
-              Error! This audio format is currently not supported. Try (.mp3/.m4a/.wav/.ogg).
-            </span>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Average Daily Production (BOPD)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="avg_Daily_Production"
+              [(ngModel)]="monthlyactivityBody.avg_Daily_Production"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
           </div>
+        </div>
+      </div>
     </div>
-    <br>
-    <br>
-    <div style="text-align: center;">
-        <button class="quarterbtn">Save Unitization</button>
+    <br />
+    <div style="display: flex; width: 100%">
+      <div style="margin-right: 5%; width: 30%">
+        <label class="labelwp">Gas Production (AG)(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="gas_AG"
+              [(ngModel)]="monthlyactivityBody.gas_AG"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Gas Average Daily Production (NAG)(BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="gas_NAG"
+              [(ngModel)]="monthlyactivityBody.gas_NAG"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
     </div>
+    <br /><br />
+
+    <div style="text-align: center">
+      <button
+        class="quarterbtn"
+        (click)="saveMonthlyActivity()"
+        [attr.disabled]="disableForm"
+      >
+        Save Monthly Production
+      </button>
     </div>
+  </div>
+  <br />
+  <hr size="10" />
+
+  <div [formGroup]="ProposedMonthlyForm">
+    <div>
+      <div
+        style="
+          text-align: start;
+          font-size: 17px;
+          font-weight: 600;
+          padding-bottom: 20px;
+          color: teal;
+        "
+      >
+        <span>PROPOSED MONTHLY PRODUCTION</span>
+      </div>
+      <div style="display: flex; width: 100%; justify-content: space-between">
+        <div style="width: 30%">
+          <label class="labelwp">Month</label>
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <select
+              class="dropwp"
+              formControlName="production_month"
+              [value]="proposedmonthlyBody.production_month"
+              (change)="changeProposedMonth($event)"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>---- Select a Month ----</option>
+              <option value="January">January</option>
+              <option value="Febuary">Febuary</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="width: 30%">
+          <label class="labelwp">Production (BBLS)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="production"
+                [(ngModel)]="proposedmonthlyBody.production"
+                class="inpute"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%">
+          <label class="labelwp">Average Daily Production (BOPD)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="avg_Daily_Production"
+                [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
+                class="inpute"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%">
+        <div style="margin-right: 5%; width: 30%">
+          <label class="labelwp">Gas Production (AG)(BSCF)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="gas_AG"
+                [(ngModel)]="proposedmonthlyBody.gas_AG"
+                class="inpute"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 30%">
+          <label class="labelwp">Gas Production (NAG)(BSCF)</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 20px;
+                padding: 7px 10px;
+              "
+            >
+              <input
+                type="text"
+                formControlName="gas_NAG"
+                [(ngModel)]="proposedmonthlyBody.gas_NAG"
+                class="inpute"
+                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br /><br />
+
+      <div style="text-align: center">
+        <button
+          class="quarterbtn"
+          (click)="saveProposedActivity()"
+          [attr.disabled]="disableForm"
+        >
+          Save Proposed Monthly Production
+        </button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <hr size="10" />
+
+  <div [formGroup]="fiveYearForecastForm">
+    <div
+      style="
+        text-align: start;
+        font-size: 17px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        color: teal;
+      "
+    >
+      <span>Five Year Production Forecast: (Figures)</span>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">PROJECTION YEAR</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="fiveyear_Timeline"
+            [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
+            [attr.disabled]="disableForm"
+          >
+            <option selected disabled>---- Select a Month ----</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Oil (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="fiveyear_Oil"
+              [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Condensate (MMBBL)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="fiveyear_Condensate"
+              [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">AG (BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="fiveyear_AG"
+              [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">NAG (BSCF)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="fiveyear_NAG"
+              [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp">Upload Yearly Production Forcast</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="YPFFile"
+              (change)="saveYPFDoc($event)"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="text-align: center">
+      <button class="quarterbtn" [attr.disabled]="disableForm">
+        Save Five Year Production Forecast
+      </button>
+    </div>
+  </div>
+  <br /><br />
+  <hr size="10" />
+
+  <br /><br />
+
+  <div [formGroup]="UnitizationForm">
+    <div
+      style="
+        text-align: start;
+        font-size: 17px;
+        font-weight: 30px;
+        padding-bottom: 20px;
+        color: teal;
+      "
+    >
+      <span>UNITIZATION</span>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Is any of your fields straddling?</label>
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="dropwp"
+            formControlName="is_any_of_your_field_straddling"
+            [(ngModel)]="unitizationBody.is_any_of_your_field_straddling"
+            [attr.disabled]="disableForm"
+          >
+            <option selected disabled>---- Select an Option ----</option>
+            <option value="YES">Yes</option>
+            <option value="NO">No</option>
+          </select>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Straddling Field (Other party)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="straddling_Field_OP"
+              [(ngModel)]="unitizationBody.straddling_Field_OP"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"
+          >What Concession is the field straddling (Seperate with a comma if
+          more than one)?</label
+        >
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="what_concession_field_straddling"
+              [(ngModel)]="unitizationBody.what_concession_field_straddling"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Is the straddled field Producing?</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="straddle_field_producing"
+              [(ngModel)]="unitizationBody.straddle_field_producing"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp">Straddling Fields (Operating Coy)</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="straddling_Fields_OC"
+              [(ngModel)]="unitizationBody.straddling_Fields_OC"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div style="width: 30%">
+        <label class="labelwp">Prod Status (Operating Coy)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="prod_Status_OC"
+              [(ngModel)]="unitizationBody.prod_Status_OC"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Company Name (Other party)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="company_Name_OP"
+              [(ngModel)]="unitizationBody.company_Name_OP"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp">Prod Status (Other party)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="prod_Status_OP"
+              [(ngModel)]="unitizationBody.prod_Status_OP"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp">How many fields straddle?</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              formControlName="how_many_fields_straddle"
+              [(ngModel)]="unitizationBody.how_many_fields_straddle"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Has NUPRC been notified?</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="has_DPR_been_notified"
+              [(ngModel)]="unitizationBody.has_DPR_been_notified"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp">Has the other party been notified?</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="has_the_other_party_been_notified"
+              [(ngModel)]="unitizationBody.has_the_other_party_been_notified"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Has the Confidentiality Agreement been signed</label
+        >
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="has_the_CA_been_signed"
+              [(ngModel)]="unitizationBody.has_the_CA_been_signed"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp"
+          >Has Technical , Finance, Unitization and steering Committees been
+          inaugurated</label
+        >
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="committees_been_inaugurated"
+              [(ngModel)]="unitizationBody.committees_been_inaugurated"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp"
+          >Has the Tract Participation been determined</label
+        >
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="participation_been_determined"
+              [(ngModel)]="unitizationBody.participation_been_determined"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <br />
+        <label class="labelwp">Is there a Joint Development?</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="is_there_a_Joint_Development"
+              [(ngModel)]="unitizationBody.is_there_a_Joint_Development"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="margin-right: 5%; width: 30%">
+        <label class="labelwp">Has the PUA been signed</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="has_the_PUA_been_signed"
+              [(ngModel)]="unitizationBody.has_the_PUA_been_signed"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="width: 30%">
+        <label class="labelwp">Has the UUOA been signed</label>
+        <div style="display: flex; width: 100%">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="has_the_UUOA_been_signed"
+              [(ngModel)]="unitizationBody.has_the_UUOA_been_signed"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>--Select an Option --</option>
+              <option value="NO">NO</option>
+              <option value="YES">YES</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: start">
+      <div style="width: 30%; margin-right: 5%">
+        <label class="labelwp">Upload PUA Document</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="PUAFile"
+              (change)="savePUADoc($event)"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+      <div *ngIf="f['PUAFormFile'].invalid">
+        <span *ngIf="f['PUAFormFile'].errors['incorrect']">
+          Error! File size should not exceed 50mb!
+        </span>
+        <span *ngIf="f['PUAFormFile'].errors['format']">
+          Error! This audio format is currently not supported. Try
+          (.mp3/.m4a/.wav/.ogg).
+        </span>
+      </div>
+
+      <br />
+      <div style="width: 30%">
+        <label class="labelwp">Upload UUOA Document</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="file"
+              formControlName="UUOAFile"
+              (change)="saveUUAODoc($event)"
+              class="inpute"
+              [attr.disabled]="disableForm"
+            />
+          </div>
+        </div>
+      </div>
+      <div *ngIf="f['UUOAFormFile'].invalid">
+        <span *ngIf="f['UUOAFormFile'].errors['incorrect']">
+          Error! File size should not exceed 50mb!
+        </span>
+        <span *ngIf="f['UUOAFormFile'].errors['format']">
+          Error! This audio format is currently not supported. Try
+          (.mp3/.m4a/.wav/.ogg).
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div style="text-align: center">
+      <button class="quarterbtn">Save Unitization</button>
+    </div>
+  </div>
+</div>

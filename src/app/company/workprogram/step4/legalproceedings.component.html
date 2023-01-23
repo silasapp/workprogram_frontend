@@ -44,6 +44,7 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="letigationBody.anyLitigation"
+            [attr.disabled]="disableForm"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -71,6 +72,7 @@
                 formControlName="case_Number"
                 [(ngModel)]="letigationBody.case_Number"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -91,6 +93,7 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="letigationBody.names_of_Parties"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -111,6 +114,7 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="letigationBody.jurisdiction"
+                [attr.disabled]="disableForm"
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -163,6 +167,7 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="letigationBody.summary_of_the_case"
                 class="inpute"
+                [attr.disabled]="disableForm"
               ></textarea>
             </div>
           </div>
@@ -185,6 +190,7 @@
                 formControlName="any_orders_made_so_far_by_the_court"
                 [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
                 class="inpute"
+                [attr.disabled]="disableForm"
               ></textarea>
             </div>
           </div>
@@ -209,6 +215,7 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="letigationBody.potential_outcome"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -218,7 +225,11 @@
       <br /><br />
       <div>
         <div style="text-align: center">
-          <button class="submitbtn" (click)="saveLitigation()">
+          <button
+            class="submitbtn"
+            (click)="saveLitigation()"
+            [attr.disabled]="disableForm"
+          >
             Submit Litigation
           </button>
         </div>
@@ -259,6 +270,7 @@
               value="{{ row.id }}"
               style="background-color: white; color: red; border: 2px solid"
               class="submitbtn"
+              [attr.disabled]="disableForm"
             >
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
               <b>Delete</b>
@@ -288,6 +300,7 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="arbitrationBody.anyArbitration"
+            [attr.disabled]="disableForm"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -315,6 +328,7 @@
                 formControlName="case_Number"
                 [(ngModel)]="arbitrationBody.case_Number"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -335,6 +349,7 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="arbitrationBody.names_of_Parties"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -355,6 +370,7 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="arbitrationBody.jurisdiction"
+                [attr.disabled]="disableForm"
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -406,6 +422,7 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="arbitrationBody.summary_of_the_case"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -453,6 +470,7 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="arbitrationBody.potential_outcome"
                 class="inpute"
+                [attr.disabled]="disableForm"
               />
             </div>
           </div>
@@ -462,7 +480,11 @@
       <br /><br />
       <div>
         <div style="text-align: center">
-          <button class="submitbtn" (click)="saveArbitration()">
+          <button
+            class="submitbtn"
+            (click)="saveArbitration()"
+            [attr.disabled]="disableForm"
+          >
             Submit Arbitration
           </button>
         </div>
@@ -504,6 +526,7 @@
                 value="{{ row.id }}"
                 style="background-color: white; color: red; border: 2px solid"
                 class="submitbtn"
+                [attr.disabled]="disableForm"
               >
                 <mat-icon style="font-size: 20px"> border_color</mat-icon>
                 <b>Delete</b>
@@ -557,13 +580,22 @@
       </table>
     </div>
   </div>
-</div>
 
-<div style="text-align: center">
-  <button
-    [routerLink]="['/' + genk.company, genk.workprogram, 'step5', 'hse']"
-    class="nextbtn"
-  >
-    Next
-  </button>
+  <div style="display: flex; width: 100%; justify-content: space-around">
+    <div style="text-align: center">
+      <button class="submitbtn">Previous</button>
+    </div>
+    <div style="text-align: center">
+      <button class="submitbtn">Save & Continue Later</button>
+    </div>
+    <div style="text-align: center">
+      <button
+        class="submitbtn"
+        (click)="Submit_WorkProgram()"
+        [attr.disabled]="disableForm"
+      >
+        Click Here to Submit
+      </button>
+    </div>
+  </div>
 </div>

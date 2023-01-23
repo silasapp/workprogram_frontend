@@ -28,6 +28,7 @@ export class HSE_OPERATIONS_SAFETY_CASE {
   type_of_facility: string = '';
   does_the_facility_have_a_valid_safety_case: string = '';
   evidence_of_operations_safety_case_approval: string = '';
+  evidence_of_Operations_Safety_Case_Approval: string = '';
   reason_if_no_evidence: string = '';
 }
 
@@ -255,7 +256,7 @@ export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
   ReasonForNoOhm: string = '';
 
   WasOhmPolicyCommunicatedToStaff: string = '';
-  ReasonWhyOhmWasNotCommunicatedToStaffFileName: string = '';
+  ReasonWhyOhmWasNotCommunicatedToStaff: string = '';
 }
 export class HSE_QUALITY_CONTROL {
   id: number = 0;

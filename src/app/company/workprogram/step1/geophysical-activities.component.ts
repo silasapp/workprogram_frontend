@@ -22,6 +22,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPGeophysicalActivitiesComponent implements OnInit {
+  public disableForm: boolean = true;
   AcquisitionForm: FormGroup;
   ProcessingForm: FormGroup;
   quaterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;

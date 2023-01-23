@@ -1,277 +1,494 @@
 <div
-    style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
-    <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">Note:*All Fields are Mandatory</h1>
-    <div style="font-size: 25px; font-weight: 500; text-align: center; padding-bottom: 20px;">
-        <span style="font-size: 30px;  ">BUDGET PROPOSAL IN NAIRA AND DOLLAR COMPONENT</span>
-    </div><br><hr size="10">
-    <div [formGroup]="budgetProposalForm">
-    <div style="display:flex;width: 100%; justify-content: space-between; ">
-        <div style="width: 30%">
-            <div style="font-weight: 500; margin-bottom: 5px">
-                <span>Budget for Direct Exploration and Production Activities</span>
-            </div>
-
-            <div style="width: 100%; display: flex;">
-
-                <div style="width: 98%; margin-right: 2%;">
-                    <label class="labelwp">NGN</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="budget_for_Direct_Exploration_and_Production_Activities_Naira" [(ngModel)]="budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira">
-                        </div>
-                    </div>
-                </div>
-
-                <div style="width: 98%">
-                    <label class="labelwp">USD</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="budget_for_Direct_Exploration_and_Production_Activities_Dollars" [(ngModel)]="budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars">
-                        </div>
-                    </div>
-                </div>
-            </div>
+  style="
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+  "
+>
+  <h1
+    style="
+      text-shadow: 1px 1px rgb(130, 23, 23);
+      color: rgb(255, 157, 0);
+      margin-left: 75%;
+      font-size: 18px;
+    "
+  >
+    Note:*All Fields are Mandatory
+  </h1>
+  <div
+    style="
+      font-size: 25px;
+      font-weight: 500;
+      text-align: center;
+      padding-bottom: 20px;
+    "
+  >
+    <span style="font-size: 30px"
+      >BUDGET PROPOSAL IN NAIRA AND DOLLAR COMPONENT</span
+    >
+  </div>
+  <br />
+  <hr size="10" />
+  <div [formGroup]="budgetProposalForm">
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <div style="font-weight: 500; margin-bottom: 5px">
+          <span>Budget for Direct Exploration and Production Activities</span>
         </div>
 
-        <div style="width: 30%">
-            <div style="font-weight: 500; margin-bottom: 5px">
-                <span>Budget for other Activities</span>
+        <div style="width: 100%; display: flex">
+          <div style="width: 98%; margin-right: 2%">
+            <label class="labelwp">NGN</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 15px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="number"
+                  class="inpute"
+                  formControlName="budget_for_Direct_Exploration_and_Production_Activities_Naira"
+                  [(ngModel)]="
+                    budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira
+                  "
+                  [attr.disabled]="disableForm"
+                />
+              </div>
             </div>
+          </div>
 
-            <div style="width: 100%; display: flex;">
-
-                <div style="width: 98%; margin-right: 2%;"><br>
-                    <label class="labelwp">NGN</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="budget_for_other_Activities_Naira" [(ngModel)]="budgetProposalBody.budget_for_other_Activities_Naira">
-                        </div>
-                    </div>
-                </div>
-
-                <div style="width: 98%"><br>
-                    <label class="labelwp">USD</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="budget_for_other_Activities_Dollars" [(ngModel)]="budgetProposalBody.budget_for_other_Activities_Dollars">
-                        </div>
-                    </div>
-                </div>
+          <div style="width: 98%">
+            <label class="labelwp">USD</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 15px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="number"
+                  class="inpute"
+                  formControlName="budget_for_Direct_Exploration_and_Production_Activities_Dollars"
+                  [(ngModel)]="
+                    budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars
+                  "
+                  [attr.disabled]="disableForm"
+                />
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <div style="font-weight: 500; margin-bottom: 5px">
+          <span>Budget for other Activities</span>
         </div>
 
-        <div style="width: 30%">
-            <div style="font-weight: 500; margin-bottom: 5px">
-                <span>Total Company's Expenditure</span>
+        <div style="width: 100%; display: flex">
+          <div style="width: 98%; margin-right: 2%">
+            <br />
+            <label class="labelwp">NGN</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 15px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="number"
+                  class="inpute"
+                  formControlName="budget_for_other_Activities_Naira"
+                  [(ngModel)]="
+                    budgetProposalBody.budget_for_other_Activities_Naira
+                  "
+                  [attr.disabled]="disableForm"
+                />
+              </div>
             </div>
+          </div>
 
-            <div style="width: 100%; display: flex;">
-
-
-                <div style="width: 98%"><br>
-                    <label class="labelwp">USD</label>
-                    <div style="display: flex;">
-                        <div
-                            style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 15px; padding: 7px 10px;">
-                            <input type="number" class="inpute" formControlName="total_Company_Expenditure_Dollars" [(ngModel)]="budgetProposalBody.total_Company_Expenditure_Dollars">
-                        </div>
-                    </div>
-                </div>
+          <div style="width: 98%">
+            <br />
+            <label class="labelwp">USD</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 15px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="number"
+                  class="inpute"
+                  formControlName="budget_for_other_Activities_Dollars"
+                  [(ngModel)]="
+                    budgetProposalBody.budget_for_other_Activities_Dollars
+                  "
+                  [attr.disabled]="disableForm"
+                />
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <div style="font-weight: 500; margin-bottom: 5px">
+          <span>Total Company's Expenditure</span>
         </div>
 
+        <div style="width: 100%; display: flex">
+          <div style="width: 98%">
+            <br />
+            <label class="labelwp">USD</label>
+            <div style="display: flex">
+              <div
+                style="
+                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 15px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="number"
+                  class="inpute"
+                  formControlName="total_Company_Expenditure_Dollars"
+                  [(ngModel)]="
+                    budgetProposalBody.total_Company_Expenditure_Dollars
+                  "
+                  [attr.disabled]="disableForm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <br><br>
+    <br /><br />
     <div>
-        <div style="text-align: center;">
-            <button class="submitbtn" (click)="saveBudgetProposal()">Update Budget Component (USD & NGN)</button>
-        </div>
-        <br>
+      <div style="text-align: center">
+        <button class="submitbtn" (click)="saveBudgetProposal()">
+          Update Budget Component (USD & NGN)
+        </button>
+      </div>
+      <br />
     </div>
+  </div>
+  <div *ngIf="isTabVisible" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr *ngFor="let h of columnHeader">
+            <th *ngFor="let d of h | keyvalue">
+              {{ d.key | titlecase }}
+            </th>
+          </tr>
+        </thead>
+        <tbody #myTbody *ngFor="let item of columnValue">
+          <tr *ngFor="let y of item | keyvalue">
+            <td *ngFor="let x of y.value | keyvalue">
+              {{ x.value }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_Budget($event)"
+                value="{{ y.value.id }}"
+                [attr.disabled]="disableForm"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div *ngIf="isTabVisible" class="wptablebox">
-        <div class="apptable">
-            <table class="wptable" >
-                <thead >
-                    <tr *ngFor="let h of columnHeader">
-                        <th *ngFor="let d of h | keyvalue">
-                            {{d.key | titlecase}}
-                        </th>
+  </div>
 
-                    </tr>
-                </thead>
-                <tbody #myTbody *ngFor="let item of columnValue">
-                    <tr *ngFor="let y of item | keyvalue">
-                        <td *ngFor="let x of y.value | keyvalue">
-                        {{x.value}}
-                        </td>
-                        <td>
-                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Budget($event)" value={{y.value.id}}>Delete</button>
-                           
-                        </td>
-                    </tr>
+  <br />
 
-                
-                </tbody>
-
-            </table>
-        </div>
-    </div>
-
-    <br>
-
-    <hr size="10"><br><br>
-    <div [formGroup]="capexOpexForm">
+  <hr size="10" />
+  <br /><br />
+  <div [formGroup]="capexOpexForm">
     <div
-        style="text-align: start; font-size: 15px; font-weight: 30px; padding-bottom: 20px; color: rgb(6, 6, 6);">
-        <span>CAPEX & OPEX Items</span>
+      style="
+        text-align: start;
+        font-size: 15px;
+        font-weight: 30px;
+        padding-bottom: 20px;
+        color: rgb(6, 6, 6);
+      "
+    >
+      <span>CAPEX & OPEX Items</span>
     </div>
-    <hr size="5">
-    
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%;">
-            <label class="labelwp">Item Description</label>
-            <div style="display: flex; width: 100%;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; padding: 5px; border-radius: 20px;">
-                    <select class="input" type="inpute" formControlName="item_Description" [(ngModel)]="capexOpexBody.item_Description">
-                        <option selected disabled>---- Please Select Item ----</option>
-                        <option value="1st Appraisal Well">1st Appraisal Well</option>
-                        <option value="Abandonment & Decommissioning">Abandonment & Decommissioning</option>
-                        <option value="Bank Charges & Commission">Bank Charges & Commission</option>
-                        <option value="Capital Construction (Gas)">Capital Construction (Gas)</option>
-                        <option value="Capital Construction (Oil)">Capital Construction (Oil)</option>
-                        <option value="Community Development">Community Development</option>
-                        <option value="Concession Rental">Concession Rental</option>
-                        <option value="Development Drilling (Gas)">Development Drilling (Gas)</option>
-                        <option value="Development Drilling (Oil)">Capital Construction (Oil)</option>
-                        <option value="Direct Handling & Transportation ">Direct Handling & Transportation</option>
-                        <option value="Direct Lifting Costs ">Direct Lifting Costs</option>
-                        <option value="Direct Production Activities">Direct Production Activities</option>
-                        <option value="Environmental Pollution">Environmental Pollution</option>
-                        <option value="Environmental Remediation">Environmental Remediation</option>
-                        <option value="Exploration & Appraisal Drilling ">Exploration & Appraisal Drilling</option>
-                        <option value="Exploration Wells">Exploration Wells</option>
-                        <option value="Facility Management">Facility Management</option>
-                        <option value="Federal Governmemt Levies">Federal Governmemt Levies</option>
-                        <option value="General & Administration">General & Administration</option>
-                        <option value="Host Community Management">Host Community Management</option>
-                        <option value="HR Services">HR Services</option>
-                        <option value="HSE">HSE</option>
-                        <option value="ICT">ICT</option>
-                        <option value="Land & Building">Land & Building</option>
-                        <option value="Logistics">Logistics</option>
-                        <option value="Moveable Assets">Moveable Assets</option>
-                        <option value="NDDC">NDDC</option>
-                        <option value="NDR">NDR</option>
-                        <option value="NIPEX">NIPEX</option>
-                        <option value="Office Overhead">Office Overhead</option>
-                        <option value="Production Maintenance Cost">Production Maintenance Cost</option>
-                        <option value="Reservior Studies">Reservior Studies</option>
-                        <option value="Security">Security</option>
-                        <option value="Seismic Acquisation">Seismic Acquisation</option>
-                        <option value="Seismic Processing & Re-processing">Seismic Processing & Re-processing</option>
-                        <option value="State Government Levies">State Government Levies</option>
-                        <option value="Terminals">Terminals</option>
-                        <option value="Training">Training</option>
-                    </select>
-                </div>
-            </div>
+    <hr size="5" />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Item Description</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <select
+              class="input"
+              type="inpute"
+              formControlName="item_Description"
+              [(ngModel)]="capexOpexBody.item_Description"
+              [attr.disabled]="disableForm"
+            >
+              <option selected disabled>---- Please Select Item ----</option>
+              <option value="1st Appraisal Well">1st Appraisal Well</option>
+              <option value="Abandonment & Decommissioning">
+                Abandonment & Decommissioning
+              </option>
+              <option value="Bank Charges & Commission">
+                Bank Charges & Commission
+              </option>
+              <option value="Capital Construction (Gas)">
+                Capital Construction (Gas)
+              </option>
+              <option value="Capital Construction (Oil)">
+                Capital Construction (Oil)
+              </option>
+              <option value="Community Development">
+                Community Development
+              </option>
+              <option value="Concession Rental">Concession Rental</option>
+              <option value="Development Drilling (Gas)">
+                Development Drilling (Gas)
+              </option>
+              <option value="Development Drilling (Oil)">
+                Capital Construction (Oil)
+              </option>
+              <option value="Direct Handling & Transportation ">
+                Direct Handling & Transportation
+              </option>
+              <option value="Direct Lifting Costs ">
+                Direct Lifting Costs
+              </option>
+              <option value="Direct Production Activities">
+                Direct Production Activities
+              </option>
+              <option value="Environmental Pollution">
+                Environmental Pollution
+              </option>
+              <option value="Environmental Remediation">
+                Environmental Remediation
+              </option>
+              <option value="Exploration & Appraisal Drilling ">
+                Exploration & Appraisal Drilling
+              </option>
+              <option value="Exploration Wells">Exploration Wells</option>
+              <option value="Facility Management">Facility Management</option>
+              <option value="Federal Governmemt Levies">
+                Federal Governmemt Levies
+              </option>
+              <option value="General & Administration">
+                General & Administration
+              </option>
+              <option value="Host Community Management">
+                Host Community Management
+              </option>
+              <option value="HR Services">HR Services</option>
+              <option value="HSE">HSE</option>
+              <option value="ICT">ICT</option>
+              <option value="Land & Building">Land & Building</option>
+              <option value="Logistics">Logistics</option>
+              <option value="Moveable Assets">Moveable Assets</option>
+              <option value="NDDC">NDDC</option>
+              <option value="NDR">NDR</option>
+              <option value="NIPEX">NIPEX</option>
+              <option value="Office Overhead">Office Overhead</option>
+              <option value="Production Maintenance Cost">
+                Production Maintenance Cost
+              </option>
+              <option value="Reservior Studies">Reservior Studies</option>
+              <option value="Security">Security</option>
+              <option value="Seismic Acquisation">Seismic Acquisation</option>
+              <option value="Seismic Processing & Re-processing">
+                Seismic Processing & Re-processing
+              </option>
+              <option value="State Government Levies">
+                State Government Levies
+              </option>
+              <option value="Terminals">Terminals</option>
+              <option value="Training">Training</option>
+            </select>
+          </div>
         </div>
+      </div>
     </div>
-    <br>
+    <br />
 
-    <div style="display: flex; width: 100%;  justify-content: space-between;">
-        <div style="width: 30%; margin-top: auto;">
-            <label class="labelwp">(NGN)</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="number"  class="inpute" formControlName="naira" [(ngModel)]="capexOpexBody.naira">
-                </div>
-            </div>
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(NGN)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="naira"
+              [(ngModel)]="capexOpexBody.naira"
+              [attr.disabled]="disableForm"
+            />
+          </div>
         </div>
+      </div>
 
-
-
-        <div style="width: 30%; margin-top: auto;">
-            <label class="labelwp">(USD)</label>
-            <div style="display: flex; width: 100%;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="number"  class="inpute" formControlName="dollar" [(ngModel)]="capexOpexBody.dollar">
-                </div>
-                
-            </div>               
-         </div>
-
-        <div style="width: 30%; margin-top: auto;">
-            <label class="labelwp">(USD) EQUIVALENT</label>
-            <div style="display: flex;">
-                <div
-                    style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                    <input type="number" class="inpute" formControlName="dollar_equivalent" [(ngModel)]="capexOpexBody.dollar_equivalent">
-                </div>
-            </div>
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD)</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar"
+              [(ngModel)]="capexOpexBody.dollar"
+              [attr.disabled]="disableForm"
+            />
+          </div>
         </div>
-    </div>
-    <br>
+      </div>
 
-
-    <div style="display: flex; width: 100%; justify-content: space-between;">
-            <div style="width: 30%; margin-top: auto;">
-                <label class="labelwp">Remarks</label>
-                <div style="display: flex;">
-                    <div
-                        style="box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); width: 100%; border-radius: 20px; padding: 7px 10px;">
-                        <textarea type="number" rows="3" class="inpute" formControlName="remarks" [(ngModel)]="capexOpexBody.remarks"></textarea>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-    <br>
-    <div style="text-align: center;">
-        <button class="submitbtn" (click)="saveOpex()">Update Capex & Opex Items</button>
-    </div>
-    </div>
-    <div *ngIf="isTabVisible_2" class="wptablebox">
-        <div class="apptable">
-            <table class="wptable" >
-                <thead >
-                    <tr *ngFor="let h of columnHeader_2">
-                        <th *ngFor="let d of h | keyvalue">
-                            {{d.key | titlecase}}
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody #myTbody *ngFor="let item of columnValue_2">
-                    <tr *ngFor="let y of item | keyvalue">
-                        <td *ngFor="let x of y.value | keyvalue">
-                        {{x.value}}
-                        </td>
-                        <td>
-                            <button class="btn btn-danger btn-sm submitbtn" (click)="Delete_Opex($event)" value={{y.value.id}}>Delete</button>
-                           
-                        </td>
-                    </tr>
-
-                
-                </tbody>
-
-            </table>
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD) EQUIVALENT</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar_equivalent"
+              [(ngModel)]="capexOpexBody.dollar_equivalent"
+              [attr.disabled]="disableForm"
+            />
+          </div>
         </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">Remarks</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              type="number"
+              rows="3"
+              class="inpute"
+              formControlName="remarks"
+              [(ngModel)]="capexOpexBody.remarks"
+              [attr.disabled]="disableForm"
+            ></textarea>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <br />
+    <div style="text-align: center">
+      <button
+        class="submitbtn"
+        (click)="saveOpex()"
+        [attr.disabled]="disableForm"
+      >
+        Update Capex & Opex Items
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isTabVisible_2" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr *ngFor="let h of columnHeader_2">
+            <th *ngFor="let d of h | keyvalue">
+              {{ d.key | titlecase }}
+            </th>
+          </tr>
+        </thead>
+        <tbody #myTbody *ngFor="let item of columnValue_2">
+          <tr *ngFor="let y of item | keyvalue">
+            <td *ngFor="let x of y.value | keyvalue">
+              {{ x.value }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="Delete_Opex($event)"
+                value="{{ y.value.id }}"
+                [attr.disabled]="disableForm"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<br><br>
-<div style="text-align: center;">
-  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step3', 'oilandgasfacilitymaintenance']"
-    class="nextbtn">Next</button>
+<br /><br />
+<div style="text-align: center">
+  <button
+    [routerLink]="[
+      '/' + genk.company,
+      genk.workprogram,
+      'step3',
+      'oilandgasfacilitymaintenance'
+    ]"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>

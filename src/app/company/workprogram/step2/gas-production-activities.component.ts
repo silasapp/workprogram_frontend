@@ -22,6 +22,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPGasProductionComponent implements OnInit {
+  public disableForm: boolean = true;
   GasProductionForm: FormGroup;
   gasproductionBody: GAS_PRODUCTION_ACTIVITY = {} as GAS_PRODUCTION_ACTIVITY;
 

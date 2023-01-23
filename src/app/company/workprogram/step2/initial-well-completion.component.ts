@@ -15,6 +15,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPInitialWellCompletionComponent implements OnInit {
+  public disableForm: boolean = true;
   InitialForm: FormGroup;
   initialBody: INITIAL_WELL_COMPLETION_JOB1 =
     {} as INITIAL_WELL_COMPLETION_JOB1;

@@ -21,6 +21,8 @@ import { Royalty } from '../../../models/step1-royalty.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPConcessionSituationComponent implements OnInit {
+  public disableForm: boolean = true;
+
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   RoyaltyForm: FormGroup;

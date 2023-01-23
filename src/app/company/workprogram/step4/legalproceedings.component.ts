@@ -22,6 +22,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPLegalProceedingsComponent implements OnInit {
+  public disableForm: boolean = true;
   letigationForm: FormGroup;
   arbitrationForm: FormGroup;
   letigationBody: LEGAL_LITIGATION = {} as LEGAL_LITIGATION;
@@ -219,9 +220,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
   getLegalLegitation() {
     this.workprogram
-      .getlegalLitigation(
-        this.genk.wpYear
-      )
+      .getlegalLitigation(this.genk.wpYear)
       .subscribe((result) => {
         if (result.legalLitigation) {
           this.litigations = result.legalLitigation;
@@ -237,10 +236,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
   saveLitigation() {
     this.workprogram
-      .saveLegalLitigation(
-        this.letigationBody,
-        this.genk.wpYear
-      )
+      .saveLegalLitigation(this.letigationBody, this.genk.wpYear)
       .subscribe((result) => {
         this.modalService.logNotice(
           'Success',
@@ -255,10 +251,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
   saveArbitration() {
     //this.arbitrationBody.anyArbitration = "YES";
     this.workprogram
-      .saveArbitration(
-        this.arbitrationBody,
-        this.genk.wpYear
-      )
+      .saveArbitration(this.arbitrationBody, this.genk.wpYear)
       .subscribe((result) => {
         this.modalService.logNotice(
           'Success',
@@ -294,6 +287,29 @@ export class SWPLegalProceedingsComponent implements OnInit {
         );
 
         this.getLegalLegitation();
+      });
+  }
+
+  Submit_WorkProgram() {
+    let y = this.genk.wpYear;
+    let o = this.genk.OmlName;
+    let f = this.genk.fieldName;
+    this.workprogram
+      .post_WorkProgram(
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getLegalLegitation();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 }

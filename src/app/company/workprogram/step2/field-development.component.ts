@@ -20,6 +20,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPFieldDevelopmentComponent implements OnInit {
+  public disableForm: boolean = true;
   public FieldDevelopmentForm: FormGroup;
   public FieldDevelopmeentExcessiveReserveForm: FormGroup;
   public UnitizationForm: FormGroup;
@@ -327,7 +328,6 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         },
       });
   }
-  
 
   fdpSubmit() {
     const formDat: FormData = new FormData();

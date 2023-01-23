@@ -34,6 +34,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPScdpComponent implements OnInit {
+  public disableForm: boolean = true;
   //#region  documnent objects declaration
   mediatype = 'doc';
 
@@ -1355,28 +1356,5 @@ export class SWPScdpComponent implements OnInit {
       delete element['year_of_WP'];
     });
     return resultArray;
-  }
-
-  Submit_WorkProgram() {
-    let y = this.genk.wpYear;
-    let o = this.genk.OmlName;
-    let f = this.genk.fieldName;
-    this.workprogram
-      .post_WorkProgram(
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName
-      )
-      .subscribe({
-        next: (res) => {
-          this.modalService.logNotice('Success', res.message, 'success');
-
-          this.getSCDP();
-          this.cd.markForCheck();
-        },
-        error: (error) => {
-          this.modalService.logNotice('Error', error.message, 'error');
-        },
-      });
   }
 }
