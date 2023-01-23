@@ -1,6 +1,6 @@
 
 <div class="container mt-5">
-    <form [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
+    <div [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
     <div class="container">
         <h1>Company Details </h1>
     
@@ -86,9 +86,9 @@
     
     <div class="container text-align-center d-flex justify-content-center p-5">
         <div class="col-sm-4">
-        <input type="submit" value="Submit" class="form-control text-white alterbtn">
+        <input type="submit" value="Submit" (click)="onSubmit()" class="form-control text-white alterbtn" />
         </div>
     </div>
     </div>
-    </form>
+</div>
     </div>

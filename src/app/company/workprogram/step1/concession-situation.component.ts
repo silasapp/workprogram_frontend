@@ -55,6 +55,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
@@ -183,7 +184,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     );
 
 
-
+debugger;
     this.getConcessionHeld();
     //
     this.getRoyaltyHeld();
@@ -228,6 +229,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
+        debugger
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         conInfo.companyName = conInfo.companyName.toLowerCase();
         conInfo.companyName = conInfo.companyName.replace(
@@ -250,6 +252,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           conInfo.date_of_Expiration = this.genk.formDate(
             conInfo.date_of_Expiration
           );
+          debugger;
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
 
@@ -261,6 +264,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           conInfo.date_of_Expiration = this.genk.formDate(
             conInfo.date_of_Expiration
           );
+          debugger;
           this.concessionBody = {} as CONCESSION_SITUATION;
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;

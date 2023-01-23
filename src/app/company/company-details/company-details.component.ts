@@ -29,6 +29,7 @@ export class CompanyDetailsComponent implements OnInit {
   ngOnInit(): void {
     debugger;
     this.companyService.getCompanyDetails().subscribe((res) => {
+      debugger;
       this.d = res.data;
     });
     debugger;
@@ -90,6 +91,9 @@ export class CompanyDetailsComponent implements OnInit {
   //     }
   //   );
   //  }
+  
+
+  
   onSubmit() {
     this.companyService
       .editCompanyDetails(this.companyDetailsForm.getRawValue())
@@ -100,11 +104,11 @@ export class CompanyDetailsComponent implements OnInit {
             'Company Details successfully updated',
             'success'
           );
-        },
+        
         (error) => {
           this.Alert('Error', 'An error occurred', 'error');
         }
-      );
+  });
   }
 
   Alert(title: string, text: string, icon: any) {

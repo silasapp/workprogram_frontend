@@ -32,9 +32,10 @@ export class SWPInitialWellCompletionComponent implements OnInit {
 
   currentIWQuater = 1;
   genk: GenericService;
+    cdr: ChangeDetectorRef;
 
   wellCount: number = 0;
-  sdList: any[];
+  iwList: any[];
   data: any[]; 
 
 
@@ -86,8 +87,10 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentIWQuater;
       this.getInitialCompletion();
+      this.cdr=cd;
     });
     this.cd.markForCheck();
+     this.genk.sizePerPage = this.genk.sizeten;
   }
 
   ngOnInit(): void {

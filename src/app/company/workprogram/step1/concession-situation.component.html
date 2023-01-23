@@ -110,7 +110,7 @@
                         <div style="display: flex;">
                             <div class="inpdiv">
                                 <input disabled="" type="text" formControlName="companyName"
-                                    [(ngModel)]="concessionBody.companyName" class="inpute">
+                                    [value]="concessionBody.companyName" class="inpute">
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <label class="labelwp"> {{field}} Area (sq km)</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
-                                <input disabled="" formControlName="area" [(ngModel)]="concessionBody.area"
+                                <input disabled="" formControlName="area" [value]="concessionBody.area"
                                     class="inpute">
                             </div>
                         </div>
