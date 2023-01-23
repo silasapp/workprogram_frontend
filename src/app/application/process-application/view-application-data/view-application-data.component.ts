@@ -14,10 +14,53 @@ export class ViewApplicationDataComponent implements OnInit {
   public geoActivitiesProcessing;
   public geoActivitiesAcquisition;
   public drillOperationCategoriesWell;
-  public drillEachCostProposed;
+  public drillEachCostProposeds: IDrillEachCostProposed[] = [];
   public drillEachCosts: IDrillEachCost[] = [];
 
   hdecColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'companY_ID',
+      header: 'Company ID',
+    },
+    {
+      columnDef: 'companyName',
+      header: 'Company Name',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'Company Email',
+    },
+    {
+      columnDef: 'consession_Type',
+      header: 'Concession Type',
+    },
+    {
+      columnDef: 'omL_Name',
+      header: 'OML Name',
+    },
+    {
+      columnDef: 'quater',
+      header: 'Quarter',
+    },
+    {
+      columnDef: 'surface_cordinates_for_each_well_in_degrees',
+      header: 'Surface Coordinates For Each Well in degrees',
+    },
+    {
+      columnDef: 'well_cost',
+      header: 'Well Cost',
+    },
+    {
+      columnDef: 'well_name',
+      header: 'Well Name',
+    },
+  ];
+
+  hdecpColDef = [
     {
       columnDef: 'year_of_WP',
       header: 'Work Programme Year',
@@ -79,6 +122,7 @@ export class ViewApplicationDataComponent implements OnInit {
     this.adminService.getSBUReport(appId).subscribe({
       next: (res) => {
         this.drillEachCosts.push(res.drillEachCost);
+        this.drillEachCostProposeds.push(res.drillEachCostProposed);
 
         this.modalService.togCover();
         this.cd.markForCheck();
@@ -102,6 +146,27 @@ interface IDrillEachCost {
   date_Created: string;
   date_Updated: string;
   field_ID: number;
+  omL_ID: string;
+  omL_Name: string;
+  quater: string;
+  surface_cordinates_for_each_well_in_degrees: string;
+  updated_by: string;
+  well_cost: string;
+  well_name: string;
+  year_of_WP: string;
+}
+
+interface IDrillEachCostProposed {
+  id: number;
+  companY_ID: string;
+  companyName: string;
+  companyNumber: number;
+  companyemail: string;
+  consession_Type: string;
+  created_by: string;
+  date_Created: string;
+  date_Updated: string;
+  field_ID: string;
   omL_ID: string;
   omL_Name: string;
   quater: string;
