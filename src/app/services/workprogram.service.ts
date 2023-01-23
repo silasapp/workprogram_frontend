@@ -3534,7 +3534,7 @@ export class WorkProgramService {
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`,
         budget,
-        { params: { year: year, id, actionToDo } }
+        { params: { year: year, omlName, fieldName, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3619,12 +3619,19 @@ export class WorkProgramService {
       );
   }
 
-  post_BudgetProposal(budget: budgetProposal, year: string, id, actionToDo) {
+  post_BudgetProposal(
+    budget: budgetProposal,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    id,
+    actionToDo
+  ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
         budget,
-        { params: { year: year, id, actionToDo } }
+        { params: { year, omlName, fieldName, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3659,6 +3666,8 @@ export class WorkProgramService {
   post_OilGas(
     budget: oilAndGasFacilityMaintenanceProject,
     year: string,
+    omlName: string,
+    fieldName: string,
     id,
     actionToDo
   ) {
@@ -3666,7 +3675,7 @@ export class WorkProgramService {
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_oil_and_gas_facility_maintenance_project`,
         budget,
-        { params: { year: year, id, actionToDo } }
+        { params: { year: year, omlName, fieldName, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
