@@ -65,6 +65,7 @@
               class="dropwp"
               formControlName="gas_Sales_Royalty"
               [(ngModel)]="royaltyBody.gas_Sales_Royalty"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -89,6 +90,7 @@
               class="dropwp"
               formControlName="gas_Flare_Payment"
               [(ngModel)]="royaltyBody.gas_Flare_Payment"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -119,6 +121,7 @@
             formControlName="miscellaneous"
             [(ngModel)]="royaltyBody.miscellaneous"
             class="inpute"
+            [attr.disabled]="disableForm ? true : null"
           ></textarea>
         </div>
       </div>
@@ -133,7 +136,13 @@
     </div>
     <br /><br />
     <div style="text-align: center">
-      <button (click)="submitroyalty()" class="submitbtn">Save Royalty</button>
+      <button
+        (click)="submitroyalty()"
+        class="submitbtn"
+        [attr.disabled]="disableForm ? true : null"
+      >
+        Save Royalty
+      </button>
     </div>
   </div>
 </div>
@@ -177,6 +186,7 @@
                   [(ngModel)]="concessionBody.companyName"
                   class="inpute"
                   [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -191,6 +201,7 @@
                   formControlName="no_of_discovered_field"
                   [(ngModel)]="concessionBody.no_of_discovered_field"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -210,6 +221,7 @@
                   formControlName="area"
                   [(ngModel)]="concessionBody.area"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -230,6 +242,7 @@
                   class="dropwp"
                   formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>
                     ---- Please Select Categories ----
@@ -267,6 +280,7 @@
                   class="dropwp"
                   formControlName="terrain"
                   [(ngModel)]="concessionBody.terrain"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>
                     ---- Please Select Terrain ----
@@ -291,6 +305,7 @@
                   formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -359,6 +374,7 @@
                   class="dropwp"
                   formControlName="has_Signature_Bonus_been_paid"
                   [(ngModel)]="concessionBody.has_Signature_Bonus_been_paid"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -385,6 +401,7 @@
                   [(ngModel)]="
                     concessionBody.has_the_Concession_Rentals_been_paid
                   "
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -411,6 +428,7 @@
                   [(ngModel)]="
                     concessionBody.is_there_an_application_for_renewal
                   "
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -600,6 +618,7 @@
                   "
                   [value]="concessionBody.five_year_proposal"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -623,6 +642,7 @@
                   [(ngModel)]="
                     concessionBody.did_you_meet_the_minimum_work_programme
                   "
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -649,6 +669,7 @@
                   formControlName="comment"
                   [(ngModel)]="concessionBody.comment"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 ></textarea>
               </div>
             </div>
@@ -701,7 +722,11 @@
       </div>
     </div>
     <div style="text-align: center">
-      <button (click)="submit()" class="submitbtn">
+      <button
+        (click)="submit()"
+        class="submitbtn"
+        [attr.disabled]="disableForm ? true : null"
+      >
         Save Concession Situation
       </button>
     </div>
