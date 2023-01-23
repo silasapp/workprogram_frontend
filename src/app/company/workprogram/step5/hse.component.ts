@@ -62,6 +62,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPHseComponent implements OnInit {
+  public disableForm: boolean = false;
   //#region  form bodies declaration
   technicalBody: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
     {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
@@ -143,13 +144,17 @@ export class SWPHseComponent implements OnInit {
   //#region  documnent objects declaration
   mediatype = 'doc';
 
+  PromotionFile?: File = null;
+  PromotionNewName: string;
+  PromotionNameDoc: string;
+
   SMSFile?: File = null;
   SMSNewName: string;
   SMSNameDoc: string;
 
-  PromotionFile?: File = null;
-  PromotionNewName: string;
-  PromotionNameDoc: string;
+  OperationsSafetyApprovalFile?: File = null;
+  OperationsSafetyApprovalNewName: string;
+  OperationsSafetyApprovalNameDoc: string;
 
   OrganogramFile?: File = null;
   OrganogramNewName: string;
@@ -516,12 +521,28 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'OHMplanFilePath',
+      columnDef: 'doYouHaveAnOhm',
+      header: 'Do you have an OHM',
+    },
+    {
+      columnDef: 'wasOhmPolicyCommunicatedToStaff',
+      header: 'Was OHM Policy Communicated to Staffs?',
+    },
+    {
+      columnDef: 'ohMplanFilePath',
       header: 'Evidence of submission of OHM plan',
     },
     {
-      columnDef: 'OHMplanCommunicationFilePath',
+      columnDef: 'ohMplanCommunicationFilePath',
       header: 'Evidence of communication of OHM plan/policies',
+    },
+    {
+      columnDef: 'reasonForNoOhm',
+      header: 'Reason for no OHM',
+    },
+    {
+      columnDef: 'reasonWhyOhmWasNotCommunicatedToStaff',
+      header: 'Reason why OHM was not communicated to Staffs',
     },
   ];
 
@@ -891,36 +912,32 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'type_of_Accident_Incidence',
-      header: 'TYPE OF ACCIDENT / INCIDENT',
+      columnDef: 'name_Of_Facility',
+      header: 'NAME OF FACILITY',
     },
     {
-      columnDef: 'location',
-      header: 'LOCATION',
+      columnDef: 'number_of_Facilities',
+      header: 'NUMBER OF FACILITIES',
     },
     {
-      columnDef: 'investigation',
-      header: 'INVESTIGATION',
+      columnDef: 'location_of_Facility',
+      header: 'LOCATION OF FACILITY',
     },
     {
-      columnDef: 'date_',
-      header: 'DATE',
+      columnDef: 'type_of_Facility',
+      header: 'TYPE OF FACILITY',
     },
     {
-      columnDef: 'cause',
-      header: 'CAUSE',
+      columnDef: 'does_the_Facility_Have_a_Valid_Safety_Case',
+      header: 'DOES THE FACILITY HAVE A VALID SAFETY CASE',
     },
     {
-      columnDef: 'frequency',
-      header: 'FREQUENCY',
+      columnDef: 'evidence_of_Operations_Safety_Case_Approval',
+      header: 'EVIDENCE OF OPERATIONS SAFETY CASE APPROVAL',
     },
     {
-      columnDef: 'consequence',
-      header: 'CONSEQUENCE',
-    },
-    {
-      columnDef: 'lesson_Learnt',
-      header: 'LESSON LEARNT',
+      columnDef: 'reason_If_No_Evidence',
+      header: 'REASON IF NO EVIDENCE',
     },
   ];
 
@@ -1478,8 +1495,8 @@ export class SWPHseComponent implements OnInit {
           this.occupationalBody.WasOhmPolicyCommunicatedToStaff,
           [Validators.required]
         ),
-        ReasonWhyOhmWasNotCommunicatedToStaffFileName: new FormControl(
-          this.occupationalBody.ReasonWhyOhmWasNotCommunicatedToStaffFileName,
+        ReasonWhyOhmWasNotCommunicatedToStaff: new FormControl(
+          this.occupationalBody.ReasonWhyOhmWasNotCommunicatedToStaff,
           [Validators.required]
         ),
       },
@@ -1831,8 +1848,8 @@ export class SWPHseComponent implements OnInit {
           this.operations_safety_case_body.does_the_facility_have_a_valid_safety_case,
           [Validators.required]
         ),
-        evidence_of_operations_safety_case_approval: new FormControl(
-          this.operations_safety_case_body.evidence_of_operations_safety_case_approval,
+        evidence_of_Operations_Safety_Case_Approval: new FormControl(
+          this.operations_safety_case_body.evidence_of_Operations_Safety_Case_Approval,
           [Validators.required]
         ),
         reason_if_no_evidence: new FormControl(
@@ -3118,11 +3135,11 @@ export class SWPHseComponent implements OnInit {
         formDat.append(key.toString(), this.operations_safety_case_body[key]);
       }
     }
-    if (this.EvidenceOfTrainingPlanFile) {
+    if (this.OperationsSafetyApprovalFile) {
       formDat.append(
-        this.EvidenceOfTrainingPlanNameDoc,
-        this.EvidenceOfTrainingPlanFile,
-        this.EvidenceOfTrainingPlanNewName
+        this.OperationsSafetyApprovalNameDoc,
+        this.OperationsSafetyApprovalFile,
+        this.OperationsSafetyApprovalNewName
       );
     }
 
@@ -4140,6 +4157,37 @@ export class SWPHseComponent implements OnInit {
     let dockind = this.gen.getExt(this.OHMFile_2.name);
   }
 
+  saveOperationalSafetyApproval(DeFile: any) {
+    this.OperationsSafetyApprovalFile = <File>DeFile.target.files[0];
+    if (!this.OperationsSafetyApprovalFile) {
+      return;
+    }
+    if (
+      this.OperationsSafetyApprovalFile.size < 1 ||
+      this.OperationsSafetyApprovalFile.size > 1024 * 1024 * 50
+    ) {
+      this.OperationsSafetyCase_Form.controls[
+        'evidence_of_Operations_Safety_Case_Approval'
+      ].setErrors({
+        incorrect: true,
+      });
+      this.OperationsSafetyApprovalFile = null;
+      return;
+    } else {
+      this.OperationsSafetyCase_Form.controls[
+        'evidence_of_Operations_Safety_Case_Approval'
+      ].setErrors(null);
+    }
+    this.OperationsSafetyApprovalNewName = this.gen.getExpDoc(
+      this.OperationsSafetyApprovalFile.name,
+      this.OperationsSafetyApprovalFile.type
+    );
+    this.OperationsSafetyCasePlanNameDoc = this.gen.trimDocName(
+      this.OperationsSafetyApprovalFile.name
+    );
+    let dockind = this.gen.getExt(this.OperationsSafetyApprovalFile.name);
+  }
+
   saveCOSDoc(DeFile: any) {
     this.COSFile = <File>DeFile.target.files[0];
     if (!this.COSFile) {
@@ -4396,8 +4444,8 @@ export class SWPHseComponent implements OnInit {
             res.hseEnvironmentalManagementSystems;
         }
 
-        if (res.hseOperationsSafetyCase) {
-          this.operationsSafetyCases = res.hseOperationsSafetyCase;
+        if (res.hseOperationalCases) {
+          this.operationsSafetyCases = res.hseOperationalCases;
         }
 
         if (res.hseEnvironmentalMgtPlans) {

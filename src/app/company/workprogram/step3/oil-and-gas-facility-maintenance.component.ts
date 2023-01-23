@@ -23,6 +23,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
+  public disableForm: boolean = false;
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
@@ -299,7 +300,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
 
     this.workprogram
-      .post_OilGas(info, this.genk.wpYear, event.target.value, 'DELETE')
+      .post_OilGas(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -435,7 +443,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       }
     }
     this.workprogram
-      .post_OilGas(budgetInfo, this.genk.wpYear, '', '')
+      .post_OilGas(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');

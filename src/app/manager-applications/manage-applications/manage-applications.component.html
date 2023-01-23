@@ -1,6 +1,6 @@
 <div id="info-block">
   <div class="page-title">
-    <h1>APPLICATION PROCESS FLOW CONFIGURATION</h1>
+    <h1>MANAGE SUBMISSION</h1>
   </div>
   <section class="file-marker">
     <div class="controls">
@@ -22,18 +22,6 @@
       </div>
 
       <div style="display: flex">
-        <button
-          (click)="addProcessFlow()"
-          class="rebtn"
-          style="
-            background-color: rgb(26, 156, 58);
-            margin-left: 20px;
-            margin-right: 20px;
-          "
-        >
-          <mat-icon style="font-size: 20px">add</mat-icon> Add New Process Flow
-        </button>
-
         <button
           (click)="genk.printData(myTable)"
           class="rebtn"
@@ -76,14 +64,6 @@
             <td *ngFor="let h of columns">
               {{ row[h.columnDef] }}
             </td>
-            <button
-              (click)="deleteProcessFlow(row)"
-              mat-mini-fab
-              color="accent"
-              style="margin: 10px"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
 
             <button
               (click)="editProcessFlow(row)"

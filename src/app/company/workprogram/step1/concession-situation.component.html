@@ -1,109 +1,237 @@
 <div
-    style=" background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
-    <h1 style="text-shadow: 1px 1px rgb(130, 23, 23); color: rgb(255, 157, 0); margin-left: 75%; font-size: 18px;">
-        Note:*All Fields are Mandatory</h1>
-    <span
-        style="margin-left: 45%; font-size: 20px; font-weight: 500; text-align: center; padding-bottom: 20px; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">Royalty</span>
-    <br><br><br>
-    <div [formGroup]="RoyaltyForm">
-        <div class="toprow">
-            <div style="width: 30%;">
-                <label class="labelwp"> Has Crude Oil Royalty Payment Made?</label>
-                <div class="wpwidth">
-                    <div class="inputshadow">
-                        <select class="dropwp" formControlName="crude_Oil_Royalty"
-                            [(ngModel)]="royaltyBody.crude_Oil_Royalty">
-                            <option selected disabled>---- Please Select an Option ----</option>
-                            <option value="YES">YES</option>
-                            <option value="NO">NO</option>
-                        </select>
-                    </div>
-                </div>
-                <div *ngIf="submitted" class="eroce">
-                    <span *ngIf="!f['crude_Oil_Royalty'].valid">
-                        Crude Oil Royalty status is required
-                    </span>
-                </div>
-            </div>
-
-
-            <div style="width: 30%;">
-                <label class="labelwp"> Has Gas Sales Royalty Made?</label>
-                <div class="wpwidth">
-                    <div class="inputshadow">
-                        <select class="dropwp" formControlName="gas_Sales_Royalty"
-                            [(ngModel)]="royaltyBody.gas_Sales_Royalty">
-                            <option selected disabled>---- Please Select an Option ----</option>
-                            <option value="YES">YES</option>
-                            <option value="NO">NO</option>
-                        </select>
-                    </div>
-                </div>
-                <div *ngIf="submitted" class="eroce">
-                    <span *ngIf="!f['gas_Sales_Royalty'].valid">
-                        Gas Sales Royalty status is required
-                    </span>
-                </div>
-            </div>
-
-            <div style="width: 30%;">
-                <label class="labelwp"> Has Gas Flare Payment Made?</label>
-                <div class="wpwidth">
-                    <div class="inputshadow">
-                        <select class="dropwp" formControlName="gas_Flare_Payment"
-                            [(ngModel)]="royaltyBody.gas_Flare_Payment">
-                            <option selected disabled>---- Please Select an Option ----</option>
-                            <option value="YES">YES</option>
-                            <option value="NO">NO</option>
-                        </select>
-                    </div>
-                </div>
-                <div *ngIf="submitted" class="eroce">
-                    <span *ngIf="!f['gas_Flare_Payment'].valid">
-                        Gas Flare Payment status is required
-                    </span>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <div style="display:flex; width: 100%;">
-            <div style=" width: 30%; ">
-                <label class="labelwp"> Miscellaneous </label>
-
-                <div class="inpdiv">
-                    <textarea #wpcomment type="number" rows="3" formControlName="miscellaneous"
-                        [(ngModel)]="royaltyBody.miscellaneous" class="inpute"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="eroce">
-            <!-- <span *ngIf="f['miscellaneous'].errors['minLength'] && submitted">
-              
-            </span> -->
-            <span *ngIf="!f['miscellaneous'].valid && submitted">
-                Too few characters
-            </span>
+  style="
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+  "
+>
+  <h1
+    style="
+      text-shadow: 1px 1px rgb(130, 23, 23);
+      color: rgb(255, 157, 0);
+      margin-left: 75%;
+      font-size: 18px;
+    "
+  >
+    Note:*All Fields are Mandatory
+  </h1>
+  <span
+    style="
+      margin-left: 45%;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+      padding-bottom: 20px;
+      text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3);
+      color: teal;
+    "
+    >Royalty</span
+  >
+  <br /><br /><br />
+  <div [formGroup]="RoyaltyForm">
+    <div class="toprow">
+      <div style="width: 30%">
+        <label class="labelwp"> Has Crude Oil Royalty Payment Made?</label>
+        <div class="wpwidth">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="crude_Oil_Royalty"
+              [disabled]="disableForm"
+              [(ngModel)]="royaltyBody.crude_Oil_Royalty"
+              [attr.disabled]="disableForm == true"
+            >
+              <option selected disabled>
+                ---- Please Select an Option ----
+              </option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
           </div>
-        <br><br>
-        <div style="text-align: center;">
-            <button (click)="submitroyalty()" class="submitbtn">Save Royalty</button>
         </div>
+        <div *ngIf="submitted" class="eroce">
+          <span *ngIf="!f['crude_Oil_Royalty'].valid">
+            Crude Oil Royalty status is required
+          </span>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> Has Gas Sales Royalty Made?</label>
+        <div class="wpwidth">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="gas_Sales_Royalty"
+              [(ngModel)]="royaltyBody.gas_Sales_Royalty"
+              [attr.disabled]="disableForm ? true : null"
+            >
+              <option selected disabled>
+                ---- Please Select an Option ----
+              </option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="submitted" class="eroce">
+          <span *ngIf="!f['gas_Sales_Royalty'].valid">
+            Gas Sales Royalty status is required
+          </span>
+        </div>
+      </div>
+
+      <div style="width: 30%">
+        <label class="labelwp"> Has Gas Flare Payment Made?</label>
+        <div class="wpwidth">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="gas_Flare_Payment"
+              [(ngModel)]="royaltyBody.gas_Flare_Payment"
+              [attr.disabled]="disableForm ? true : null"
+            >
+              <option selected disabled>
+                ---- Please Select an Option ----
+              </option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="submitted" class="eroce">
+          <span *ngIf="!f['gas_Flare_Payment'].valid">
+            Gas Flare Payment status is required
+          </span>
+        </div>
+      </div>
     </div>
+    <br />
+
+    <div style="display: flex; width: 100%">
+      <div style="width: 30%">
+        <label class="labelwp"> Miscellaneous </label>
+
+        <div class="inpdiv">
+          <textarea
+            #wpcomment
+            type="number"
+            rows="3"
+            formControlName="miscellaneous"
+            [(ngModel)]="royaltyBody.miscellaneous"
+            class="inpute"
+            [attr.disabled]="disableForm ? true : null"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="eroce">
+      <!-- <span *ngIf="f['miscellaneous'].errors['minLength'] && submitted">
+
+            </span> -->
+      <span *ngIf="!f['miscellaneous'].valid && submitted">
+        Too few characters
+      </span>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <button
+        (click)="submitroyalty()"
+        class="submitbtn"
+        [attr.disabled]="disableForm ? true : null"
+      >
+        Save Royalty
+      </button>
+    </div>
+  </div>
 </div>
 
 <div
-    style="background-color: white; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px; margin: 20px 0;">
-    <div [formGroup]="ConcessionSituationForm">
-        <div
-            style="font-size: 20px; font-weight: 500; text-align: center; text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3); color: teal;">
+  style="
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 20px 0;
+  "
+>
+  <div [formGroup]="ConcessionSituationForm">
+    <div
+      style="
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.3);
+        color: teal;
+      "
+    >
+      <span>Concession Situation as at 1st January</span>
+    </div>
+    <div>
+      <div>
+        <br />
 
-            <span>Concession Situation as at 1st January</span>
+        <div class="toprow">
+          <div style="width: 30%">
+            <label id="ContentPlaceHolder2_Label13" class="labelwp"
+              >Name of Company</label
+            >
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  disabled=""
+                  type="text"
+                  formControlName="companyName"
+                  [(ngModel)]="concessionBody.companyName"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="rowbox" *ngIf="boolValue">
+            <label class="labelwp"> No. of Discovered Fields</label>
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  (keypress)="genk.restrictData($event)"
+                  formControlName="no_of_discovered_field"
+                  [(ngModel)]="concessionBody.no_of_discovered_field"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['no_of_discovered_field'].valid">
+                No. of Discovered is required
+              </span>
+            </div>
+          </div>
+
+          <div style="width: 30%">
+            <label class="labelwp"> {{ field }} Area (sq km)</label>
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  disabled=""
+                  formControlName="area"
+                  [(ngModel)]="concessionBody.area"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['area'].valid"> Area is required </span>
+            </div>
+          </div>
         </div>
-        <div>
-            <div>
-                <br>
 
+<<<<<<< HEAD
                 <div class="toprow">
                     <div style="width: 30%">
                         <label id="ContentPlaceHolder2_Label13" class="labelwp">Name of Company</label>
@@ -114,21 +242,38 @@
                             </div>
                         </div>
                     </div>
+=======
+        <br /><br />
+>>>>>>> cba9e54c0400a921fa6e52f3571ba625710bd765
 
-                    <div class="rowbox" *ngIf="boolValue">
-                        <label class="labelwp"> No. of Discovered Fields</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input (keypress)="genk.restrictData($event)" formControlName="no_of_discovered_field"
-                                    [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['no_of_discovered_field'].valid">
-                                No. of Discovered is required
-                            </span>
-                        </div>
-                    </div>
+        <div class="toprow">
+          <div style="width: 30%">
+            <label class="labelwp">Contract Type</label>
+            <div class="wpwidth">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="contract_Type"
+                  [(ngModel)]="concessionBody.contract_Type"
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>
+                    ---- Please Select Categories ----
+                  </option>
+                  <option value="JVC">JVC</option>
+                  <option value="MF">MF</option>
+                  <option value="PSC">PSC</option>
+                  <option value="SC">SC</option>
+                  <option value="SR">SR</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['contract_Type'].valid">
+                Contract Type is required
+              </span>
+            </div>
+          </div>
 
 
 
@@ -183,44 +328,54 @@
                         </div>
                     </div> -->
 
-                    <div style="width: 30%;">
-                        <label class="labelwp">Terrain</label>
-                        <div style="display: flex; width: 100%;">
-                            <div class="inputshadow">
-                                <select class="dropwp" formControlName="terrain" [(ngModel)]="concessionBody.terrain">
-                                    <option selected disabled>---- Please Select Terrain ----</option>
-                                    <option value="Offshore">Offshore</option>
-                                    <option value="Deep Offshore">Deep Offshore</option>
-                                    <option value="Onshore">Onshore</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['terrain'].valid">
-                                Terrain is required
-                            </span>
-                        </div>
-                    </div>
+          <div style="width: 30%">
+            <label class="labelwp">Terrain</label>
+            <div style="display: flex; width: 100%">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="terrain"
+                  [(ngModel)]="concessionBody.terrain"
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>
+                    ---- Please Select Terrain ----
+                  </option>
+                  <option value="Offshore">Offshore</option>
+                  <option value="Deep Offshore">Deep Offshore</option>
+                  <option value="Onshore">Onshore</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['terrain'].valid"> Terrain is required </span>
+            </div>
+          </div>
 
-                    <div style="width: 30%">
-                        <label class="labelwp">Equity Distribution</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input type="text" formControlName="equity_distribution"
-                                    [(ngModel)]="concessionBody.equity_distribution" class="inpute">
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['equity_distribution'].valid">
-                                Equity Distribution is required
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <br>
+          <div style="width: 30%">
+            <label class="labelwp">Equity Distribution</label>
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  type="text"
+                  formControlName="equity_distribution"
+                  [(ngModel)]="concessionBody.equity_distribution"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['equity_distribution'].valid">
+                Equity Distribution is required
+              </span>
+            </div>
+          </div>
+        </div>
+        <br />
 
-                <div class="toprow">
-                    <!-- <div style="width: 30%">
+        <div class="toprow">
+          <!-- <div style="width: 30%">
                         <label class="labelwp">Equity Distribution</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -230,7 +385,7 @@
                         </div>
                     </div> -->
 
-                    <!-- <div style="width: 30%">
+          <!-- <div style="width: 30%">
                         <label class="labelwp">No. of field producing</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -240,7 +395,7 @@
                         </div>
                     </div> -->
 
-                    <!-- <div style="width: 30%; display: flex;">
+          <!-- <div style="width: 30%; display: flex;">
                         <div style="width: 98%; margin-right: 2%;">
                             <label class="labelwp">Date of Grant</label>
                             <div style="display: flex;">
@@ -261,157 +416,223 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-                <br>
+        </div>
+        <br />
 
-                <div class="toprow">
-                    <div class="rowbox">
-                        <label class="labelwp">Has the Block Signature Bonus been paid?</label>
-                        <div class="wpwidth">
-                            <div class="inputshadow">
-                                <select class="dropwp" formControlName="has_Signature_Bonus_been_paid"
-                                    [(ngModel)]="concessionBody.has_Signature_Bonus_been_paid">
-                                    <option selected disabled>-- Select an Option --</option>
-                                    <option value="NO">NO</option>
-                                    <option value="YES">YES</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['has_Signature_Bonus_been_paid'].valid">
-                                Block Signature Bonus status is required
-                            </span>
-                        </div>
-                    </div>
+        <div class="toprow">
+          <div class="rowbox">
+            <label class="labelwp"
+              >Has the Block Signature Bonus been paid?</label
+            >
+            <div class="wpwidth">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="has_Signature_Bonus_been_paid"
+                  [(ngModel)]="concessionBody.has_Signature_Bonus_been_paid"
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>-- Select an Option --</option>
+                  <option value="NO">NO</option>
+                  <option value="YES">YES</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['has_Signature_Bonus_been_paid'].valid">
+                Block Signature Bonus status is required
+              </span>
+            </div>
+          </div>
 
-                    <div class="rowbox">
-                        <label class="labelwp">Has the Block Concession Rentals been paid?</label>
-                        <div class="wpwidth">
-                            <div class="inputshadow">
-                                <select class="dropwp" formControlName="has_the_Concession_Rentals_been_paid"
-                                    [(ngModel)]="concessionBody.has_the_Concession_Rentals_been_paid">
-                                    <option selected disabled>-- Select an Option --</option>
-                                    <option value="NO">NO</option>
-                                    <option value="YES">YES</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['has_the_Concession_Rentals_been_paid'].valid">
-                                Block Concession Rentals status is required
-                            </span>
-                        </div>
-                    </div>
+          <div class="rowbox">
+            <label class="labelwp"
+              >Has the Block Concession Rentals been paid?</label
+            >
+            <div class="wpwidth">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="has_the_Concession_Rentals_been_paid"
+                  [(ngModel)]="
+                    concessionBody.has_the_Concession_Rentals_been_paid
+                  "
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>-- Select an Option --</option>
+                  <option value="NO">NO</option>
+                  <option value="YES">YES</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['has_the_Concession_Rentals_been_paid'].valid">
+                Block Concession Rentals status is required
+              </span>
+            </div>
+          </div>
 
-                    <div style="width: 30%;">
-                        <label class="labelwp">Has the Block renewal bonus been
-                            paid?</label>
-                        <div class="wpwidth">
-                            <div class="inputshadow">
-                                <select class="dropwp" formControlName="is_there_an_application_for_renewal"
-                                    [(ngModel)]="concessionBody.is_there_an_application_for_renewal">
-                                    <option selected disabled>-- Select an Option --</option>
-                                    <option value="NO">NO</option>
-                                    <option value="YES">YES</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['is_there_an_application_for_renewal'].valid">
-                                Block renewal bonus status is required
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <br>
+          <div style="width: 30%">
+            <label class="labelwp"
+              >Has the Block renewal bonus been paid?</label
+            >
+            <div class="wpwidth">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="is_there_an_application_for_renewal"
+                  [(ngModel)]="
+                    concessionBody.is_there_an_application_for_renewal
+                  "
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>-- Select an Option --</option>
+                  <option value="NO">NO</option>
+                  <option value="YES">YES</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['is_there_an_application_for_renewal'].valid">
+                Block renewal bonus status is required
+              </span>
+            </div>
+          </div>
+        </div>
+        <br />
 
-                <div class="toprow">
-                    <div class="rowbox">
-                        <label class="labelwp">How Much Signature Bonus been paid (USD)?</label>
-                        <div style="display: flex;">
-                            <div class="inpdivcurrency">
-                                <span class="currencywp">$</span>
-                                <input formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
-                                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    (ngModelChange)="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
-                                    [value]="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD" class="inpute">
-                            </div>
-                        </div>
-                    </div>
+        <div class="toprow">
+          <div class="rowbox">
+            <label class="labelwp"
+              >How Much Signature Bonus been paid (USD)?</label
+            >
+            <div style="display: flex">
+              <div class="inpdivcurrency">
+                <span class="currencywp">$</span>
+                <input
+                  formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
+                  (ngModelChange)="
+                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="
+                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD
+                  "
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
 
+          <div class="rowbox">
+            <label class="labelwp"
+              >How Much Concession Rentals been paid (USD)?</label
+            >
+            <div style="display: flex">
+              <div class="inpdivcurrency">
+                <span class="currencywp">$</span>
+                <input
+                  formControlName="how_Much_Concession_Rental_have_been_paid_USD"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
+                  (change)="
+                    concessionBody.how_Much_Concession_Rental_have_been_paid_USD =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="
+                    concessionBody.how_Much_Concession_Rental_have_been_paid_USD
+                  "
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
 
+          <div style="width: 30%">
+            <label class="labelwp"
+              >How Much Renewal bonus been paid (USD)?</label
+            >
+            <div style="display: flex">
+              <div class="inpdivcurrency">
+                <span class="currencywp">$</span>
+                <input
+                  formControlName="how_Much_Renewal_Bonus_have_been_paid_USD"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
+                  (change)="
+                    concessionBody.how_Much_Renewal_Bonus_have_been_paid_USD =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="
+                    concessionBody.how_Much_Renewal_Bonus_have_been_paid_USD
+                  "
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
 
-                    <div class="rowbox">
-                        <label class="labelwp">How Much Concession Rentals been paid (USD)?</label>
-                        <div style="display: flex;">
-                            <div class="inpdivcurrency">
-                                <span class="currencywp">$</span>
-                                <input formControlName="how_Much_Concession_Rental_have_been_paid_USD"
-                                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    (change)="concessionBody.how_Much_Concession_Rental_have_been_paid_USD = genk.addCurrencyDecimal($event)"
-                                    [value]="concessionBody.how_Much_Concession_Rental_have_been_paid_USD"
-                                    class="inpute">
-                            </div>
-                        </div>
-                    </div>
+        <div class="toprow">
+          <div class="rowbox">
+            <label class="labelwp">If No, Give Reason (Signature Bonus)</label>
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  type="text"
+                  formControlName="if_No_why_sig"
+                  [(ngModel)]="concessionBody.if_No_why_sig"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
 
-                    <div style="width: 30%;">
-                        <label class="labelwp">How Much Renewal bonus been paid (USD)?</label>
-                        <div style="display: flex;">
-                            <div class="inpdivcurrency">
-                                <span class="currencywp">$</span>
-                                <input formControlName="how_Much_Renewal_Bonus_have_been_paid_USD"
-                                    (keypress)="genk.restrictData($event)" (keyup)="genk.formatCurrency($event)"
-                                    (change)="concessionBody.how_Much_Renewal_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
-                                    [value]="concessionBody.how_Much_Renewal_Bonus_have_been_paid_USD" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
+          <div class="rowbox">
+            <label class="labelwp"
+              >If No, Give Reason (Concession Rentals)</label
+            >
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  type="text"
+                  formControlName="if_No_why_concession"
+                  [(ngModel)]="concessionBody.if_No_why_concession"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
 
-                <div class="toprow">
-                    <div class="rowbox">
-                        <label class="labelwp">If No, Give Reason (Signature Bonus)</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input type="text" formControlName="if_No_why_sig"
-                                    [(ngModel)]="concessionBody.if_No_why_sig" class="inpute">
-                            </div>
-                        </div>
-                    </div>
+          <div style="width: 30%">
+            <label class="labelwp"
+              >If No, Give Reason (Application for Renewal)</label
+            >
+            <div style="display: flex">
+              <div class="inpdiv">
+                <input
+                  type="text"
+                  formControlName="if_No_why_renewal"
+                  [(ngModel)]="concessionBody.if_No_why_renewal"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
 
-
-
-                    <div class="rowbox">
-                        <label class="labelwp">If No, Give Reason (Concession Rentals)</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input type="text" formControlName="if_No_why_concession"
-                                    [(ngModel)]="concessionBody.if_No_why_concession" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="width: 30%;">
-                        <label class="labelwp">If No, Give Reason (Application for Renewal)</label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <input type="text" formControlName="if_No_why_renewal"
-                                    [(ngModel)]="concessionBody.if_No_why_renewal" class="inpute">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-
-                <div class="toprow">
-
-
-
-
-                    <!-- <div class="rowbox">
+        <div class="toprow">
+          <!-- <div class="rowbox">
                         <label class="labelwp">Has Assignment Interest Been Paid?</label>
                         <div class="wpwidth">
                             <div class="inputshadow">
@@ -425,7 +646,7 @@
                         </div>
                     </div> -->
 
-                    <!-- <div style="width: 30%;">
+          <!-- <div style="width: 30%;">
                         <label class="labelwp">Proposed Budget for License/Lease</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -434,66 +655,86 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-                <br>
+        </div>
+        <br />
 
-                <div class="toprow">
-                    <div class="rowbox">
-                        <label class="labelwp">5 Years Proposal (USD)</label>
-                        <div style="display: flex;">
-                            <div class="inpdivcurrency">
-                                <span class="currencywp">$</span>
-                                <input formControlName="five_year_proposal" (keypress)="genk.restrictData($event)"
-                                    (keyup)="genk.formatCurrency($event)"
-                                    (change)="concessionBody.five_year_proposal = genk.addCurrencyDecimal($event)"
-                                    [value]="concessionBody.five_year_proposal" class="inpute">
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['five_year_proposal'].valid">
-                                5 Years Proposal (USD) is required
-                            </span>
-                        </div>
-                    </div>
+        <div class="toprow">
+          <div class="rowbox">
+            <label class="labelwp">5 Years Proposal (USD)</label>
+            <div style="display: flex">
+              <div class="inpdivcurrency">
+                <span class="currencywp">$</span>
+                <input
+                  formControlName="five_year_proposal"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
+                  (change)="
+                    concessionBody.five_year_proposal =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="concessionBody.five_year_proposal"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                />
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['five_year_proposal'].valid">
+                5 Years Proposal (USD) is required
+              </span>
+            </div>
+          </div>
 
+          <div class="rowbox" *ngIf="boolValue">
+            <label class="labelwp"
+              >Did you meet the minimum Work Programme Requirement on the
+              Concession?</label
+            >
+            <div class="wpwidth">
+              <div class="inputshadow">
+                <select
+                  class="dropwp"
+                  formControlName="did_you_meet_the_minimum_work_programme"
+                  [(ngModel)]="
+                    concessionBody.did_you_meet_the_minimum_work_programme
+                  "
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <option selected disabled>-- Select an Option --</option>
+                  <option value="NO">NO</option>
+                  <option value="YES">YES</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span
+                *ngIf="!csf['did_you_meet_the_minimum_work_programme'].valid"
+              >
+                Minimum Work Programme Requirement status is required
+              </span>
+            </div>
+          </div>
 
+          <div class="rowbox">
+            <label class="labelwp"> Comment </label>
+            <div style="display: flex">
+              <div class="inpdiv">
+                <textarea
+                  #wpcomment
+                  rows="3"
+                  formControlName="comment"
+                  [(ngModel)]="concessionBody.comment"
+                  class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
+                ></textarea>
+              </div>
+            </div>
+            <div *ngIf="csSubmitted" class="eroce">
+              <span *ngIf="!csf['comment'].valid"> Comment is required </span>
+            </div>
+          </div>
 
-                    <div class="rowbox" *ngIf="boolValue">
-                        <label class="labelwp">Did you meet the minimum Work Programme Requirement on the
-                            Concession?</label>
-                        <div class="wpwidth">
-                            <div class="inputshadow">
-                                <select class="dropwp" formControlName="did_you_meet_the_minimum_work_programme"
-                                    [(ngModel)]="concessionBody.did_you_meet_the_minimum_work_programme">
-                                    <option selected disabled>-- Select an Option --</option>
-                                    <option value="NO">NO</option>
-                                    <option value="YES">YES</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['did_you_meet_the_minimum_work_programme'].valid">
-                                Minimum Work Programme Requirement status is required
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="rowbox">
-                        <label class="labelwp"> Comment </label>
-                        <div style="display: flex;">
-                            <div class="inpdiv">
-                                <textarea #wpcomment rows="3" formControlName="comment"
-                                    [(ngModel)]="concessionBody.comment" class="inpute"></textarea>
-                            </div>
-                        </div>
-                        <div *ngIf="csSubmitted" class="eroce">
-                            <span *ngIf="!csf['comment'].valid">
-                                Comment is required
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- <div class="rowbox">
+          <!-- <div class="rowbox">
                         <label class="labelwp">Relinquishment/Retention of 50% contract area after 10 years if
                             any?</label>
                         <div style="display: flex;">
@@ -504,14 +745,13 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-                <br>
+        </div>
+        <br />
+
+        <div class="toprow">
+          <!-- <div style="width: 30%; margin: auto 5% 0 0">
 
 
-                <div class="toprow">
-                    <!-- <div style="width: 30%; margin: auto 5% 0 0">
-                      
-                      
                         <label  class="labelwp">{{field}} Area (sq km)</label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -523,8 +763,7 @@
                         </div>
                     </div> -->
 
-
-                    <!-- <div class="rowbox">
+          <!-- <div class="rowbox">
                         <label class="labelwp"> Comment </label>
                         <div style="display: flex;">
                             <div class="inpdiv">
@@ -533,41 +772,54 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
+        </div>
 
-                <br>
-                
-            </div>
-        </div>
-        <div style="text-align: center;">
-            <button (click)="submit()" class="submitbtn">Save Concession Situation</button>
-        </div>
+        <br />
+      </div>
     </div>
-
-    <div *ngIf="isTabVisible" class="wptablebox">
-        <div class="apptable">
-            <table class="wptable">
-                <thead>
-                    <tr>
-                        <th *ngFor="let h of columnHeader">
-                            {{h}}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody #myTbody>
-                    <tr>
-                        <td *ngFor="let h of columnValue">
-                            {{h}}
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
+    <div style="text-align: center">
+      <button
+        (click)="submit()"
+        class="submitbtn"
+        [attr.disabled]="disableForm ? true : null"
+      >
+        Save Concession Situation
+      </button>
     </div>
+  </div>
+
+  <div *ngIf="isTabVisible" class="wptablebox">
+    <div class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of columnHeader">
+              {{ h }}
+            </th>
+          </tr>
+        </thead>
+        <tbody #myTbody>
+          <tr>
+            <td *ngFor="let h of columnValue">
+              {{ h }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<br><br>
-<div style="text-align: center;">
-    <button [routerLink]="['/' + genk.company, genk.workprogram, 'step1', 'geophysicalactivities']"
-        class="nextbtn">Next</button>
+<br /><br />
+<div style="text-align: center">
+  <button
+    [routerLink]="[
+      '/' + genk.company,
+      genk.workprogram,
+      'step1',
+      'geophysicalactivities'
+    ]"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>

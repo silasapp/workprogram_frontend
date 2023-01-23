@@ -24,6 +24,7 @@ import Swal from 'sweetalert2';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPNigeriaContentComponent implements OnInit {
+  public disableForm: boolean = false;
   activeMenu: string = 'Actual Year';
   completedActual: boolean = false;
   completedProposed: boolean = false;
@@ -261,7 +262,6 @@ export class SWPNigeriaContentComponent implements OnInit {
     //this.getUploadSuccessionplan();
   }
 
-
   getNigeriaContentTraining() {
     this.workprogram
       .getNigeriaContentTraining(this.genk.wpYear)
@@ -354,7 +354,11 @@ export class SWPNigeriaContentComponent implements OnInit {
   // }
 
   saveNigeriaContentTraining() {
-    this.workprogram.saveNigeriaContenttraining(this.nigeriacontenttrainingBody, this.genk.wpYear)
+    this.workprogram
+      .saveNigeriaContenttraining(
+        this.nigeriacontenttrainingBody,
+        this.genk.wpYear
+      )
       .subscribe((result) => {
         this.modalService.logNotice(
           'Success',

@@ -927,6 +927,7 @@
           </div>
 
           <div
+            *ngIf="genk.isAdmin"
             class="layout-div layout-pad layout-line"
             [routerLink]="['/', 'process-flow-configuration']"
             routerLinkActive="active"
@@ -943,7 +944,7 @@
           >
             <span class="layout-icon"><mat-icon>apps</mat-icon></span>
 
-            <span>Manage Applications</span>
+            <span>Manage Submission</span>
           </div>
         </div>
       </div>
