@@ -1,6 +1,48 @@
 <div class="background">
   <div class="title"><h1>Company Submission Details</h1></div>
+
   <div class="apptable">
+    <h2>Drill Each Cost</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hdecColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of drillEachCosts">
+          <td *ngFor="let colDef of hdecColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable">
+    <h2>Drill Each Cost(Proposed)</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hdecpColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of drillEachCostProposeds">
+          <td *ngFor="let colDef of hdecpColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable">
+    <h2>Drilling Operations Categories of Proposed Well</h2>
     <table class="wptable">
       <thead>
         <tr>

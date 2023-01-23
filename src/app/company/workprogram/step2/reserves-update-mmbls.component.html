@@ -1215,7 +1215,7 @@
     [formGroup]="reserveUpdateDepletionRateForm"
   >
     <div style="width: 30%">
-      <label class="labelwp">OIL (Barrels)</label>
+      <label class="labelwp">OIL (%)</label>
       <div style="display: flex">
         <div class="minsec">
           <input
@@ -1223,8 +1223,8 @@
             class="inpute"
             formControlName="oIL"
             style="border-radius: 5px"
-            (keyup)="genk.formatCurrency($event)"
             (keypress)="genk.restrictData($event)"
+            (keyup)="genk.restrictToPercentage($event)"
             (change)="
               reserveUpdateDepletionRateBody._oil = genk.checkBSCFMin(
                 $event,
@@ -1241,7 +1241,7 @@
     </div>
 
     <div style="width: 30%">
-      <label class="labelwp">CONDENSATE (Barrels)</label>
+      <label class="labelwp">CONDENSATE (%)</label>
       <div style="display: flex">
         <div class="minsec">
           <input
@@ -1268,7 +1268,7 @@
     </div>
 
     <div style="width: 30%">
-      <label class="labelwp">NAG (Standard Cubic Feet</label>
+      <label class="labelwp">NAG (%)</label>
       <div style="display: flex">
         <div class="minsec">
           <input
@@ -1288,7 +1288,7 @@
             [value]="reserveUpdateDepletionRateBody._nag"
             [attr.disabled]="disableForm ? true : null"
           />
-          <span class="barspan">SCF</span>
+          <span class="barspan">%</span>
         </div>
       </div>
       <small #gasFox></small>
@@ -1341,14 +1341,14 @@
               [value]="reserveUpdateLifeIndexBody._oil"
               [attr.disabled]="disableForm ? true : null"
             />
-            <span class="barspan">SFC</span>
+            <span class="barspan">Years</span>
           </div>
         </div>
         <small #oilHfx></small>
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">CONDENSATE (Barrels)</label>
+        <label class="labelwp">CONDENSATE (Years)</label>
         <div style="display: flex">
           <div class="minsec">
             <input
@@ -1368,14 +1368,14 @@
               [value]="reserveUpdateLifeIndexBody._condensate"
               [attr.disabled]="disableForm ? true : null"
             />
-            <span class="barspan">SFC</span>
+            <span class="barspan">Years</span>
           </div>
         </div>
         <small #oilTax></small>
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp">NAG (Standard Cubic Feet)</label>
+        <label class="labelwp">NAG (Years)</label>
         <div style="display: flex">
           <div class="minsec">
             <input
@@ -1395,7 +1395,7 @@
               [value]="reserveUpdateLifeIndexBody._nag"
               [attr.disabled]="disableForm ? true : null"
             />
-            <span class="barspan">SCF</span>
+            <span class="barspan">Years</span>
           </div>
         </div>
         <small #gasPax></small>
@@ -1403,7 +1403,7 @@
     </div>
     <br />
     <div style="width: 30%">
-      <label class="labelwp">AG (Standard Cubic Feet)</label>
+      <label class="labelwp">AG (Years)</label>
       <div style="display: flex">
         <div class="minsec">
           <input
@@ -1420,7 +1420,7 @@
             [value]="reserveUpdateLifeIndexBody._ag"
             [attr.disabled]="disableForm ? true : null"
           />
-          <span class="barspan">SCF</span>
+          <span class="barspan">Years</span>
         </div>
       </div>
       <small #gasHaw></small>

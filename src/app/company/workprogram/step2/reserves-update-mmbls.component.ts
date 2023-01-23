@@ -82,6 +82,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     private modalService: ModalService
   ) {
     this.genk = gen;
+
     this.modalService.concessionSitu.subscribe((res) => {
       // this.getConcessionHeld();
       this.getReserveUpdate();

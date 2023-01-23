@@ -57,8 +57,9 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
-        this.concessionHeldList = res;
-        this.genk.OMLList = res;
+        this.concessionHeldList = res.listObject.map((r) => r.con);
+        this.genk.OMLList = res.listObject.map((r) => r.con);
+
         this.cd.markForCheck();
       });
   }
