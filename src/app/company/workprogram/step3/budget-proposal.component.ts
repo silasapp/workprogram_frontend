@@ -152,7 +152,14 @@ export class SWPBudgetProposalComponent implements OnInit {
     let info = this.budgetProposalBody as budgetProposal;
 
     this.workprogram
-      .post_BudgetProposal(info, this.genk.wpYear, event.target.value, 'DELETE')
+      .post_BudgetProposal(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -253,7 +260,14 @@ export class SWPBudgetProposalComponent implements OnInit {
     budgetInfo.companyNumber = 0;
 
     this.workprogram
-      .post_BudgetProposal(budgetInfo, this.genk.wpYear, '', '')
+      .post_BudgetProposal(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');

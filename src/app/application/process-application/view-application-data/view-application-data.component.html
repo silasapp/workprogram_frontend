@@ -1,1 +1,21 @@
-<p>view-application-data works!</p>
+<div class="background">
+  <div class="title"><h1>Company Submission Details</h1></div>
+  <div class="apptable">
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hdecColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of drillEachCosts">
+          <td *ngFor="let colDef of hdecColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
