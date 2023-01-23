@@ -31,12 +31,13 @@ export class SWPConcessionSituationComponent implements OnInit {
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
+  csSubmitted = false;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  fieldValue: string;
-  field: string;
-  boolValue = 'true';
+  fieldValue:string;
+  field:string;
+  boolValue =true;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -49,6 +50,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       this.getConcessionHeld();
       this.getRoyaltyHeld();
+       this.getBoolValue();
     });
   }
 
@@ -154,10 +156,11 @@ export class SWPConcessionSituationComponent implements OnInit {
           [Validators.required]
         ),
         comment: new FormControl(this.concessionBody.comment, [
-          Validators.required,
+          Validators.required, Validators.minLength(2)
         ]),
       },
       {}
+
     );
 
     this.RoyaltyForm = new FormGroup(
@@ -173,22 +176,37 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-          Validators.required,
-          Validators.maxLength(2),
+          Validators.required, Validators.minLength(2)
         ]),
       },
       {}
     );
 
+
+
     this.getConcessionHeld();
     //
     this.getRoyaltyHeld();
+    this.getBoolValue();
     this.cd.markForCheck();
   }
 
   get f() {
     return this.RoyaltyForm.controls;
   }
+
+ get csf(){
+ return this.ConcessionSituationForm.controls;
+ }
+
+
+
+ getBoolValue()
+  {
+   this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+   if (this.fieldValue === "OML" || this.fieldValue === "PML") this.boolValue = false;
+   else this.boolValue = true;
+ }
 
   loadTable() {
     this.columnHeader = [];
@@ -204,15 +222,14 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
-    this.workprogram
-      .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+    this.workprogram.getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-        conInfo.companyName = conInfo.companyName.toLowerCase();
-        conInfo.companyName = conInfo.companyName.replace(
-          /(^\w{1})|(\s+\w{1})/g,
-          (letter) => letter.toUpperCase()
-        );
+        // conInfo.companyName = conInfo.companyName.toLowerCase();
+        // conInfo.companyName = conInfo.companyName.replace(
+        //   /(^\w{1})|(\s+\w{1})/g,
+        //   (letter) => letter.toUpperCase()
+        //);
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
@@ -256,16 +273,17 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.field = 'Field';
         }
 
-        this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
 
-        if (
-          this.fieldValue === 'OEL' ||
-          this.fieldValue === 'PPL' ||
-          this.fieldValue === 'OPL' ||
-          this.fieldValue === 'PEL'
-        ) {
-          this.boolValue = 'block';
-        }
+        // this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+
+        // if (
+        //   this.fieldValue === 'OEL' ||
+        //   this.fieldValue === 'PPL' ||
+        //   this.fieldValue === 'OPL' ||
+        //   this.fieldValue === 'PEL'
+        // ) {
+        //   this.boolValue = 'block';
+        // }
 
         debugger;
         this.getRoyaltyHeld();
@@ -292,7 +310,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
-    debugger;
     this.submitted = true;
     //let rell = this.f['miscellaneous'].errors['required'];
     if (this.RoyaltyForm.invalid) {
@@ -312,27 +329,30 @@ export class SWPConcessionSituationComponent implements OnInit {
       });
   }
 
+
+
   submit() {
-    if (this.concessionBody.date_of_Expiration) {
-      this.concessionBody.date_of_Expiration =
-        this.concessionBody.date_of_Expiration.includes('T00:00:00')
-          ? this.concessionBody.date_of_Expiration
-          : this.concessionBody.date_of_Expiration + 'T00:00:00';
-    }
-    if (this.concessionBody.date_of_Grant_Expiration) {
-      this.concessionBody.date_of_Grant_Expiration =
-        this.concessionBody.date_of_Grant_Expiration.includes('T00:00:00')
-          ? this.concessionBody.date_of_Grant_Expiration
-          : this.concessionBody.date_of_Grant_Expiration + 'T00:00:00';
-    }
+    debugger;
+    let me = this.concessionBody;
+    // if (this.concessionBody.date_of_Expiration) {
+    //   this.concessionBody.date_of_Expiration =
+    //     this.concessionBody.date_of_Expiration.includes('T00:00:00')
+    //       ? this.concessionBody.date_of_Expiration
+    //       : this.concessionBody.date_of_Expiration + 'T00:00:00';
+    // }
+    // if (this.concessionBody.date_of_Grant_Expiration) {
+    //   this.concessionBody.date_of_Grant_Expiration =
+    //     this.concessionBody.date_of_Grant_Expiration.includes('T00:00:00')
+    //       ? this.concessionBody.date_of_Grant_Expiration
+    //       : this.concessionBody.date_of_Grant_Expiration + 'T00:00:00';
+    // }
     this.concessionBody.companyNumber = 0;
-    this.concessionBody.no_of_discovered_field =
-      this.concessionBody.no_of_discovered_field.toString();
-    this.concessionBody.no_of_field_producing =
-      this.concessionBody.no_of_field_producing.toString();
-    this.concessionBody.area = this.concessionBody.area.toString();
+    this.concessionBody.no_of_discovered_field = this.concessionBody?.no_of_discovered_field?.toString();
+    //this.concessionBody.no_of_field_producing =
+      //this.concessionBody?.no_of_field_producing.toString();
+    this.concessionBody.area = this.concessionBody?.area?.toString();
     this.concessionBody.area_in_square_meter_based_on_company_records =
-      this.concessionBody.area_in_square_meter_based_on_company_records.toString();
+      this.concessionBody?.area_in_square_meter_based_on_company_records?.toString();
 
     this.concessionBody.year = this.wkpYear;
     this.concessionBody.concession_Held = this.concessionHeld;

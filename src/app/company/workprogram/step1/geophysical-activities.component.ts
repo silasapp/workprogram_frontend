@@ -228,6 +228,11 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+
+   get f() {
+    return this.AcquisitionForm.controls;
+  }
+
   get quaterACClassOne() {
     let list = '';
     if (this.quaterACOne) {
@@ -540,7 +545,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-    this.processingBody.qUATER = 'QUARTER ' + this.currentACQuater;
+    debugger;
+    this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.processingBody.budeget_Allocation_USD =

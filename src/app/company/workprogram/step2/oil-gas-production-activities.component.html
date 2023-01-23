@@ -1084,6 +1084,39 @@
         </div>
       </div>
       <br />
+
+      <div #divTable style="
+overflow: hidden;
+overflow-x: auto;
+box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+">
+<table #codeTable class="apptable" cellPadding="10px">
+<thead>
+  <tr>
+    <th *ngFor="let h of fyvccolumn">
+      {{ h.header }}
+    </th>
+  </tr>
+</thead>
+<!-- <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+  <tr *ngFor="let row of sdList">
+    <td *ngFor="let h of sdcolumn">
+      {{ row[h.columnDef] }}
+    </td>
+    <td>
+      <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
+        (click)="deleteNCT(row)" value="{{ row.id }}"
+        style="background-color: white; color: red; border: 2px solid" class="submitbtn">
+        <mat-icon style="font-size: 20px"> border_color</mat-icon>
+        <b>Delete</b>
+      </button>
+    </td>
+  </tr>
+</tbody> -->
+</table>
+</div>
+<br/>
+<br/>
     </div>
 
     <div
@@ -1230,7 +1263,7 @@
 
           <div style="width: 30%; margin: auto 0 0">
             <label class="labelwp"
-              >Estimated Flare Volume (Standard Cubic Feet)</label
+              >Proposed Flaring Volume (Standard Cubic Feet)</label
             >
             <div style="display: flex">
               <div class="minsec">
