@@ -228,6 +228,11 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+
+   get f() {
+    return this.AcquisitionForm.controls;
+  }
+
   get quaterACClassOne() {
     let list = '';
     if (this.quaterACOne) {
