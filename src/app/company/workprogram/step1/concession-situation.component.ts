@@ -31,6 +31,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
+  csSubmitted = false;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
@@ -323,7 +324,10 @@ export class SWPConcessionSituationComponent implements OnInit {
       });
   }
 
+
+  
   submit() {
+    debugger;
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration =
         this.concessionBody.date_of_Expiration.includes('T00:00:00')

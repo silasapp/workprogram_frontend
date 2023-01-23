@@ -123,7 +123,7 @@
                                     [(ngModel)]="concessionBody.no_of_discovered_field" class="inpute">
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['no_of_discovered_field'].valid">
                                 No. of Discovered is required
                             </span>
@@ -140,7 +140,7 @@
                                     class="inpute">
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['area'].valid">
                                 Area is required
                             </span>
@@ -166,7 +166,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['contract_Type'].valid">
                                 Contract Type is required
                             </span>
@@ -195,7 +195,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['terrain'].valid">
                                 Terrain is required
                             </span>
@@ -210,7 +210,7 @@
                                     [(ngModel)]="concessionBody.equity_distribution" class="inpute">
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['equity_distribution'].valid">
                                 Equity Distribution is required
                             </span>
@@ -277,7 +277,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['has_Signature_Bonus_been_paid'].valid">
                                 Block Signature Bonus status is required
                             </span>
@@ -296,7 +296,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['has_the_Concession_Rentals_been_paid'].valid">
                                 Block Concession Rentals status is required
                             </span>
@@ -316,7 +316,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['is_there_an_application_for_renewal'].valid">
                                 Block renewal bonus status is required
                             </span>
@@ -449,7 +449,7 @@
                                     [value]="concessionBody.five_year_proposal" class="inpute">
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['five_year_proposal'].valid">
                                 5 Years Proposal (USD) is required
                             </span>
@@ -471,7 +471,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['did_you_meet_the_minimum_work_programme'].valid">
                                 Minimum Work Programme Requirement status is required
                             </span>
@@ -486,7 +486,7 @@
                                     [(ngModel)]="concessionBody.comment" class="inpute"></textarea>
                             </div>
                         </div>
-                        <div *ngIf="submitted" class="eroce">
+                        <div *ngIf="csSubmitted" class="eroce">
                             <span *ngIf="!csf['comment'].valid">
                                 Comment is required
                             </span>
@@ -536,10 +536,11 @@
                 </div>
 
                 <br>
-                <div style="text-align: center;">
-                    <button (click)="submit()" class="submitbtn">Save Concession Situation</button>
-                </div>
+                
             </div>
+        </div>
+        <div style="text-align: center;">
+            <button (click)="submit()" class="submitbtn">Save Concession Situation</button>
         </div>
     </div>
 
