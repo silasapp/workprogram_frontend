@@ -18,7 +18,7 @@
           formControlName="oil_or_gas_wells"
           [value]="genk.fieldWell"
           (change)="getFieldWell($event)"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected value="GAS WELL">GAS WELL</option>
           <option value="OIL WELL">OIL WELL</option>
@@ -71,7 +71,7 @@
                     class="dropwp"
                     formControlName="oil_Royalty_Payment"
                     [value]="productionoilBody.oil_Royalty_Payment"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   >
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
@@ -150,7 +150,7 @@
                           genk.checkMMBBLMin($event, oilMic)
                       "
                       [value]="productionoilBody.annualForecastOil"
-                      [attr.disabled]="disableForm"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">BBLS</span>
                   </div>
@@ -175,7 +175,7 @@
                           genk.checkMMBBLMin($event, oilMic)
                       "
                       [value]="productionoilBody.annualForecastCondensate"
-                      [attr.disabled]="disableForm"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">BBLS</span>
                   </div>
@@ -311,7 +311,7 @@
                           genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasAg"
-                      [attr.disabled]="disableForm"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -336,7 +336,7 @@
                           genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasNag"
-                      [attr.disabled]="disableForm"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -351,7 +351,7 @@
                 <button
                   class="quarterbtn"
                   (click)="saveProduction()"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)
                 </button>
@@ -629,7 +629,7 @@
                   formControlName="production_month"
                   [value]="proposedmonthlyBody.production_month"
                   (change)="changeProposedMonth($event)"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <!-- <option disabled>---- Select a Month ----</option> -->
                   <option
@@ -744,7 +744,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.production"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -774,7 +774,7 @@
                         genk.addCurrencyDecimal($event)
                     "
                     [value]="proposedmonthlyBody.avg_Daily_Production"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -803,7 +803,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.gas_AG"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -831,7 +831,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.gas_NAG"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -857,7 +857,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.condensateProd"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -871,7 +871,7 @@
             <button
               class="quarterbtn"
               (click)="saveProposedActivity()"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               Save Proposed
               {{ proposedmonthlyBody.production_month }} Production
@@ -910,7 +910,7 @@
                 formControlName="fiveyear_Timeline"
                 [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected>---- Select a Year ----</option> -->
 
@@ -980,7 +980,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_Oil"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -1004,7 +1004,7 @@
                       genk.checkMMBBLMin($event, oilTax)
                   "
                   [value]="fiveYearForecastBody.fiveyear_Condensate"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -1034,7 +1034,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_AG"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1061,7 +1061,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_NAG"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1102,7 +1102,7 @@
           <button
             class="quarterbtn"
             (click)="saveFiveYearForecast()"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             Save Five Year Production Forecast
           </button>
@@ -1220,7 +1220,7 @@
                     )
                   "
                   [value]="gasproductionBody.proposed_production"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1247,7 +1247,7 @@
                     )
                   "
                   [value]="gasproductionBody.proposed_utilization"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1274,7 +1274,7 @@
                     )
                   "
                   [value]="gasproductionBody.proposed_flaring"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1307,7 +1307,7 @@
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_planned"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1334,7 +1334,7 @@
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_drilled"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1348,7 +1348,7 @@
                   class="dropwp"
                   formControlName="is_there_a_gas_plant"
                   [(ngModel)]="gasproductionBody.is_there_a_gas_plant"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1370,7 +1370,7 @@
                   class="dropwp"
                   formControlName="gas_flare_Royalty_payment"
                   [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1401,7 +1401,7 @@
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.number_of_gas_wells_completed"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1423,7 +1423,7 @@
                   [(ngModel)]="gasproductionBody.remarks_"
                   rows="2"
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 ></textarea>
               </div>
             </div>
@@ -1435,7 +1435,7 @@
             <button
               class="quarterbtn"
               (click)="saveGasProduction()"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               Update Gas Production Activities
             </button>

@@ -106,7 +106,7 @@
                 formControlName="proposed_year_data"
                 [(ngModel)]="workoverBody.proposed_year_data"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@
                 [(ngModel)]="workoverBody.daysForCompletion"
                 class="inpute"
                 [(ngModel)]="workoverBody.daysForCompletion"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@
                 formControlName="completionWellName"
                 [(ngModel)]="workoverBody.completionWellName"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -184,7 +184,7 @@
                     "
                     [value]="workoverBody.budeget_Allocation_NGN"
                     class="inpute"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -206,7 +206,7 @@
                     "
                     [value]="workoverBody.budeget_Allocation_USD"
                     class="inpute"
-                    [attr.disabled]="disableForm"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -226,7 +226,7 @@
                 [(ngModel)]="
                   workoverBody.do_you_have_approval_for_the_workover_recompletion
                 "
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>--Select a Option --</option>
                 <option value="YES">Yes</option>
@@ -244,7 +244,7 @@
                 formControlName="oil_or_gas_wells"
                 [(ngModel)]="workoverBody.oil_or_gas_wells"
                 (change)="getFieldWell($event)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected value="GAS WELL">GAS WELL</option>
                 <option value="OIL WELL">OIL WELL</option>
@@ -272,7 +272,7 @@
                 class="inpute"
                 formControlName="proposed_workover_Date"
                 [(ngModel)]="workoverBody.proposed_workover_Date"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -293,7 +293,7 @@
                 [(ngModel)]="workoverBody.remarks"
                 class="inpute"
                 rows="2"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               ></textarea>
             </div>
           </div>
@@ -306,7 +306,7 @@
             #btn
             class="quarterbtn"
             (click)="submit()"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             Save Quarter 1
           </button>

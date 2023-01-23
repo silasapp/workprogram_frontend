@@ -28,7 +28,7 @@
                 class="dropwp"
                 formControlName="oil_Royalty_Payment"
                 [(ngModel)]="productionoilBody.oil_Royalty_Payment"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>--Select an Option --</option>
                 <option value="YES">Yes</option>
@@ -55,7 +55,7 @@
                 formControlName="actual_year"
                 [(ngModel)]="productionoilBody.actual_year"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@
                 formControlName="deferment"
                 [(ngModel)]="productionoilBody.deferment"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -103,7 +103,7 @@
                   formControlName="forecast"
                   [(ngModel)]="productionoilBody.forecast"
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -124,7 +124,7 @@
                   "
                   [value]="productionoilBody.cost_Barrel"
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -156,7 +156,7 @@
                     productionoilBody.total_Reconciled_National_Crude_Oil_Production
                   "
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@
                   formControlName="gas_AG"
                   [(ngModel)]="productionoilBody.gas_AG"
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -203,7 +203,7 @@
                   formControlName="gas_NAG"
                   [(ngModel)]="productionoilBody.gas_NAG"
                   class="inpute"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -216,7 +216,7 @@
             <button
               class="quarterbtn"
               (click)="saveProduction()"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)
             </button>
@@ -317,7 +317,7 @@
             class="dropwp"
             formControlName="production_month"
             [(ngModel)]="monthlyactivityBody.production_month"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Select a Month ----</option>
             <option value="January">January</option>
@@ -352,7 +352,7 @@
               formControlName="production"
               [(ngModel)]="monthlyactivityBody.production"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -374,7 +374,7 @@
               formControlName="avg_Daily_Production"
               [(ngModel)]="monthlyactivityBody.avg_Daily_Production"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -398,7 +398,7 @@
               formControlName="gas_AG"
               [(ngModel)]="monthlyactivityBody.gas_AG"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -420,7 +420,7 @@
               formControlName="gas_NAG"
               [(ngModel)]="monthlyactivityBody.gas_NAG"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -432,7 +432,7 @@
       <button
         class="quarterbtn"
         (click)="saveMonthlyActivity()"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Monthly Production
       </button>
@@ -470,7 +470,7 @@
               formControlName="production_month"
               [value]="proposedmonthlyBody.production_month"
               (change)="changeProposedMonth($event)"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>---- Select a Month ----</option>
               <option value="January">January</option>
@@ -505,7 +505,7 @@
                 formControlName="production"
                 [(ngModel)]="proposedmonthlyBody.production"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -527,7 +527,7 @@
                 formControlName="avg_Daily_Production"
                 [(ngModel)]="proposedmonthlyBody.avg_Daily_Production"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -552,7 +552,7 @@
                 formControlName="gas_AG"
                 [(ngModel)]="proposedmonthlyBody.gas_AG"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -574,8 +574,8 @@
                 formControlName="gas_NAG"
                 [(ngModel)]="proposedmonthlyBody.gas_NAG"
                 class="inpute"
-                [attr.disabled]="disableForm"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -588,7 +588,7 @@
         <button
           class="quarterbtn"
           (click)="saveProposedActivity()"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Save Proposed Monthly Production
         </button>
@@ -625,7 +625,7 @@
             class="dropwp"
             formControlName="fiveyear_Timeline"
             [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Select a Month ----</option>
             <option value="2022">2022</option>
@@ -653,7 +653,7 @@
               formControlName="fiveyear_Oil"
               [(ngModel)]="fiveYearForecastBody.fiveyear_Oil"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -675,7 +675,7 @@
               formControlName="fiveyear_Condensate"
               [(ngModel)]="fiveYearForecastBody.fiveyear_Condensate"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -700,7 +700,7 @@
               formControlName="fiveyear_AG"
               [(ngModel)]="fiveYearForecastBody.fiveyear_AG"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -722,7 +722,7 @@
               formControlName="fiveyear_NAG"
               [(ngModel)]="fiveYearForecastBody.fiveyear_NAG"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -744,7 +744,7 @@
               formControlName="YPFFile"
               (change)="saveYPFDoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -753,7 +753,7 @@
     <br />
 
     <div style="text-align: center">
-      <button class="quarterbtn" [attr.disabled]="disableForm">
+      <button class="quarterbtn" [attr.disabled]="disableForm ? true : null">
         Save Five Year Production Forecast
       </button>
     </div>
@@ -791,7 +791,7 @@
             class="dropwp"
             formControlName="is_any_of_your_field_straddling"
             [(ngModel)]="unitizationBody.is_any_of_your_field_straddling"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Select an Option ----</option>
             <option value="YES">Yes</option>
@@ -818,7 +818,7 @@
               formControlName="straddling_Field_OP"
               [(ngModel)]="unitizationBody.straddling_Field_OP"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -843,7 +843,7 @@
               formControlName="what_concession_field_straddling"
               [(ngModel)]="unitizationBody.what_concession_field_straddling"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -860,7 +860,7 @@
               class="dropwp"
               formControlName="straddle_field_producing"
               [(ngModel)]="unitizationBody.straddle_field_producing"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -879,7 +879,7 @@
               class="dropwp"
               formControlName="straddling_Fields_OC"
               [(ngModel)]="unitizationBody.straddling_Fields_OC"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -905,7 +905,7 @@
               formControlName="prod_Status_OC"
               [(ngModel)]="unitizationBody.prod_Status_OC"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -930,7 +930,7 @@
               formControlName="company_Name_OP"
               [(ngModel)]="unitizationBody.company_Name_OP"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -953,7 +953,7 @@
               formControlName="prod_Status_OP"
               [(ngModel)]="unitizationBody.prod_Status_OP"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -976,7 +976,7 @@
               formControlName="how_many_fields_straddle"
               [(ngModel)]="unitizationBody.how_many_fields_straddle"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -993,7 +993,7 @@
               class="dropwp"
               formControlName="has_DPR_been_notified"
               [(ngModel)]="unitizationBody.has_DPR_been_notified"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1012,7 +1012,7 @@
               class="dropwp"
               formControlName="has_the_other_party_been_notified"
               [(ngModel)]="unitizationBody.has_the_other_party_been_notified"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1033,7 +1033,7 @@
               class="dropwp"
               formControlName="has_the_CA_been_signed"
               [(ngModel)]="unitizationBody.has_the_CA_been_signed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1057,7 +1057,7 @@
               class="dropwp"
               formControlName="committees_been_inaugurated"
               [(ngModel)]="unitizationBody.committees_been_inaugurated"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1079,7 +1079,7 @@
               class="dropwp"
               formControlName="participation_been_determined"
               [(ngModel)]="unitizationBody.participation_been_determined"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1099,7 +1099,7 @@
               class="dropwp"
               formControlName="is_there_a_Joint_Development"
               [(ngModel)]="unitizationBody.is_there_a_Joint_Development"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1120,7 +1120,7 @@
               class="dropwp"
               formControlName="has_the_PUA_been_signed"
               [(ngModel)]="unitizationBody.has_the_PUA_been_signed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1139,7 +1139,7 @@
               class="dropwp"
               formControlName="has_the_UUOA_been_signed"
               [(ngModel)]="unitizationBody.has_the_UUOA_been_signed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="NO">NO</option>
@@ -1168,7 +1168,7 @@
               formControlName="PUAFile"
               (change)="savePUADoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1200,7 +1200,7 @@
               formControlName="UUOAFile"
               (change)="saveUUAODoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>

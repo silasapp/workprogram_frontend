@@ -44,7 +44,7 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="letigationBody.anyLitigation"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -72,7 +72,7 @@
                 formControlName="case_Number"
                 [(ngModel)]="letigationBody.case_Number"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -93,7 +93,7 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="letigationBody.names_of_Parties"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -114,7 +114,7 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="letigationBody.jurisdiction"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -167,7 +167,7 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="letigationBody.summary_of_the_case"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               ></textarea>
             </div>
           </div>
@@ -190,7 +190,7 @@
                 formControlName="any_orders_made_so_far_by_the_court"
                 [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               ></textarea>
             </div>
           </div>
@@ -215,7 +215,7 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="letigationBody.potential_outcome"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -228,7 +228,7 @@
           <button
             class="submitbtn"
             (click)="saveLitigation()"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             Submit Litigation
           </button>
@@ -270,7 +270,7 @@
               value="{{ row.id }}"
               style="background-color: white; color: red; border: 2px solid"
               class="submitbtn"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
               <b>Delete</b>
@@ -300,7 +300,7 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="arbitrationBody.anyArbitration"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -328,7 +328,7 @@
                 formControlName="case_Number"
                 [(ngModel)]="arbitrationBody.case_Number"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -349,7 +349,7 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="arbitrationBody.names_of_Parties"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -370,7 +370,7 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="arbitrationBody.jurisdiction"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -422,7 +422,7 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="arbitrationBody.summary_of_the_case"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -470,7 +470,7 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="arbitrationBody.potential_outcome"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -483,7 +483,7 @@
           <button
             class="submitbtn"
             (click)="saveArbitration()"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             Submit Arbitration
           </button>
@@ -526,7 +526,7 @@
                 value="{{ row.id }}"
                 style="background-color: white; color: red; border: 2px solid"
                 class="submitbtn"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <mat-icon style="font-size: 20px"> border_color</mat-icon>
                 <b>Delete</b>
@@ -592,7 +592,7 @@
       <button
         class="submitbtn"
         (click)="Submit_WorkProgram()"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Click Here to Submit
       </button>

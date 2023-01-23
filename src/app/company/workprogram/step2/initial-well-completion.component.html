@@ -108,7 +108,7 @@
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             [(ngModel)]="initialBody.proposed_year_data"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -129,7 +129,7 @@
             formControlName="proposed_initial_name"
             [(ngModel)]="initialBody.proposed_initial_name"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -150,7 +150,7 @@
             formControlName="proposed_completion_days"
             [(ngModel)]="initialBody.proposed_completion_days"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -225,7 +225,7 @@
             class="inpute"
             formControlName="proposed_Completion_Date"
             [(ngModel)]="initialBody.proposed_Completion_Date"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -253,7 +253,7 @@
                 "
                 [value]="initialBody.budeget_Allocation_NGN"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -275,7 +275,7 @@
                 "
                 [value]="initialBody.budeget_Allocation_USD"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -293,7 +293,7 @@
             class="dropwp"
             formControlName="oil_or_gas_wells"
             [(ngModel)]="initialBody.oil_or_gas_wells"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
@@ -323,7 +323,7 @@
             rows="2"
             formControlName="remarks"
             [(ngModel)]="initialBody.remarks"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           ></textarea>
         </div>
       </div>
@@ -337,7 +337,7 @@
         #btn
         class="quarterbtn"
         (click)="submit()"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Quarter 1
       </button>

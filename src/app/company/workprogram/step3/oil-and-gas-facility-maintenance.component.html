@@ -62,7 +62,7 @@
               type="inpute"
               formControlName="actual_Proposed"
               [(ngModel)]="oilAndGasBody.actual_Proposed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -93,7 +93,7 @@
               type="inpute"
               formControlName="major_Projects"
               [(ngModel)]="oilAndGasBody.major_Projects"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -120,7 +120,7 @@
               class="inpute"
               formControlName="name"
               [(ngModel)]="oilAndGasBody.name"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -142,7 +142,7 @@
               class="inpute"
               formControlName="objective_Drivers_"
               [(ngModel)]="oilAndGasBody.objective_Drivers_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -167,7 +167,7 @@
               class="inpute"
               formControlName="completion_Status"
               [(ngModel)]="oilAndGasBody.completion_Status"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -189,7 +189,7 @@
               class="inpute"
               formControlName="conceptual"
               [(ngModel)]="oilAndGasBody.conceptual"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -211,7 +211,7 @@
               class="inpute"
               formControlName="feed"
               [(ngModel)]="oilAndGasBody.feed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -236,7 +236,7 @@
               class="inpute"
               formControlName="detailed_Engineering"
               [(ngModel)]="oilAndGasBody.detailed_Engineering"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -258,7 +258,7 @@
               class="inpute"
               formControlName="construction_Commissioning_"
               [(ngModel)]="oilAndGasBody.construction_Commissioning_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -280,7 +280,7 @@
               class="inpute"
               formControlName="production_Product_Offtakers"
               [(ngModel)]="oilAndGasBody.production_Product_Offtakers"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -305,7 +305,7 @@
               class="inpute"
               formControlName="challenges"
               [(ngModel)]="oilAndGasBody.challenges"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -327,7 +327,7 @@
               class="inpute"
               formControlName="project_Timeline"
               [(ngModel)]="oilAndGasBody.project_Timeline"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -349,7 +349,7 @@
               type="inpute"
               formControlName="approval_License_Permits"
               [(ngModel)]="oilAndGasBody.approval_License_Permits"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -380,7 +380,7 @@
               type="inpute"
               formControlName="new_Technology_"
               [(ngModel)]="oilAndGasBody.new_Technology_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -407,7 +407,7 @@
               type="inpute"
               formControlName="has_it_been_adopted_by_DPR_"
               [(ngModel)]="oilAndGasBody.has_it_been_adopted_by_DPR_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -434,7 +434,7 @@
               class="inpute"
               formControlName="comment_"
               [(ngModel)]="oilAndGasBody.comment_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -460,7 +460,7 @@
               [(ngModel)]="
                 oilAndGasBody.planned_ongoing_and_routine_maintenance
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -487,7 +487,7 @@
               class="inpute"
               formControlName="project_Stage"
               [(ngModel)]="oilAndGasBody.project_Stage"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -509,7 +509,7 @@
               class="inpute"
               formControlName="nigerian_Content_Value"
               [(ngModel)]="oilAndGasBody.nigerian_Content_Value"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -541,7 +541,7 @@
                   [(ngModel)]="
                     oilAndGasBody.actual_capital_expenditure_Current_year_NGN
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -565,7 +565,7 @@
                   [(ngModel)]="
                     oilAndGasBody.actual_capital_expenditure_Current_year_USD
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -595,7 +595,7 @@
                   class="inpute"
                   formControlName="proposed_Capital_Expenditure_NGN"
                   [(ngModel)]="oilAndGasBody.proposed_Capital_Expenditure_NGN"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -617,7 +617,7 @@
                   class="inpute"
                   formControlName="proposed_Capital_Expenditure_USD"
                   [(ngModel)]="oilAndGasBody.proposed_Capital_Expenditure_USD"
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -631,7 +631,7 @@
         <button
           class="submitbtn"
           (click)="saveOilGas()"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Add Major Projects & Updates
         </button>
@@ -659,7 +659,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_OilGas($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -704,7 +704,7 @@
               class="inpute"
               formControlName="name"
               [(ngModel)]="newTechnologyBody.name"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -726,7 +726,7 @@
               class="inpute"
               formControlName="objective"
               [(ngModel)]="newTechnologyBody.objective"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -748,7 +748,7 @@
               class="inpute"
               formControlName="existing_Alternatives"
               [(ngModel)]="newTechnologyBody.existing_Alternatives"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -773,7 +773,7 @@
               type="inpute"
               formControlName="dpR_Consent"
               [(ngModel)]="newTechnologyBody.dpR_Consent"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -800,7 +800,7 @@
               class="inpute"
               formControlName="cost"
               [(ngModel)]="newTechnologyBody.cost"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -822,7 +822,7 @@
               class="inpute"
               formControlName="benefits"
               [(ngModel)]="newTechnologyBody.benefits"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -847,7 +847,7 @@
               class="inpute"
               formControlName="challenges"
               [(ngModel)]="newTechnologyBody.challenges"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -869,7 +869,7 @@
               class="inpute"
               formControlName="timeline"
               [(ngModel)]="newTechnologyBody.timeline"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -883,7 +883,7 @@
         <button
           class="submitbtn"
           (click)="saveTechnology()"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Update New Technology
         </button>
@@ -911,7 +911,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Technology($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -956,7 +956,7 @@
               class="inpute"
               formControlName="list_of_Projects"
               [(ngModel)]="facilitiesProjectPerformanceBody.list_of_Projects"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -982,7 +982,7 @@
               [(ngModel)]="
                 facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -1017,7 +1017,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveEvidenceOfDesignSafetyCaseApproval($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -1040,7 +1040,7 @@
               [(ngModel)]="facilitiesProjectPerformanceBody.reasonForNoEvidence"
               rows="3"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -1065,7 +1065,7 @@
               class="inpute"
               formControlName="list_of_Projects"
               [(ngModel)]="facilitiesProjectPerformanceBody.list_of_Projects"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1087,7 +1087,7 @@
               class="inpute"
               formControlName="planned_completion"
               [(ngModel)]="facilitiesProjectPerformanceBody.planned_completion"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1109,7 +1109,7 @@
               class="inpute"
               formControlName="actual_completion"
               [(ngModel)]="facilitiesProjectPerformanceBody.actual_completion"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1123,7 +1123,7 @@
         <button
           class="submitbtn"
           (click)="saveFacility()"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Add Performance Projects
         </button>
@@ -1150,7 +1150,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Facility($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>

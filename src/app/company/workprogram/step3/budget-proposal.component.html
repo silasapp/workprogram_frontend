@@ -56,7 +56,7 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -80,7 +80,7 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Naira
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -138,7 +138,7 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Dollars
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -171,7 +171,7 @@
                   [(ngModel)]="
                     budgetProposalBody.total_Company_Expenditure_Dollars
                   "
-                  [attr.disabled]="disableForm"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -210,7 +210,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Budget($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -256,7 +256,7 @@
               type="inpute"
               formControlName="item_Description"
               [(ngModel)]="capexOpexBody.item_Description"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>---- Please Select Item ----</option>
               <option value="1st Appraisal Well">1st Appraisal Well</option>
@@ -359,7 +359,7 @@
               class="inpute"
               formControlName="naira"
               [(ngModel)]="capexOpexBody.naira"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -381,7 +381,7 @@
               class="inpute"
               formControlName="dollar"
               [(ngModel)]="capexOpexBody.dollar"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -403,7 +403,7 @@
               class="inpute"
               formControlName="dollar_equivalent"
               [(ngModel)]="capexOpexBody.dollar_equivalent"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -429,7 +429,7 @@
               class="inpute"
               formControlName="remarks"
               [(ngModel)]="capexOpexBody.remarks"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -441,7 +441,7 @@
       <button
         class="submitbtn"
         (click)="saveOpex()"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Update Capex & Opex Items
       </button>
@@ -467,7 +467,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Opex($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>

@@ -58,7 +58,7 @@
                 )
               "
               [value]="gasproductionBody.current_Actual_Year"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -74,7 +74,7 @@
               class="dropwp"
               formControlName="utilized"
               [(ngModel)]="gasproductionBody.utilized"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="Fuel Gas">Fuel Gas</option>
@@ -103,7 +103,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.flared"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.proposed_production"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -164,7 +164,7 @@
                 )
               "
               [value]="gasproductionBody.proposed_utilization"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -189,7 +189,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.proposed_flaring"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -216,7 +216,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -239,7 +239,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -253,7 +253,7 @@
               class="dropwp"
               formControlName="is_there_a_gas_plant"
               [(ngModel)]="gasproductionBody.is_there_a_gas_plant"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="YES">Yes</option>
@@ -283,7 +283,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.domestic_gas_obligation"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -308,7 +308,7 @@
               [(ngModel)]="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -326,7 +326,7 @@
               [(ngModel)]="
                 gasproductionBody.is_there_a_license_to_operate_a_gas_plant
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="YES">Yes</option>
@@ -346,7 +346,7 @@
               class="dropwp"
               formControlName="gas_flare_Royalty_payment"
               [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="YES">Yes</option>
@@ -364,7 +364,7 @@
               class="dropwp"
               formControlName="gas_Sales_Royalty_Payment"
               [(ngModel)]="gasproductionBody.gas_Sales_Royalty_Payment"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="YES">Yes</option>
@@ -391,7 +391,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -417,7 +417,7 @@
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             [(ngModel)]="gasproductionBody.number_of_gas_wells_tested"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -440,7 +440,7 @@
             [(ngModel)]="gasproductionBody.remarks_"
             rows="2"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           ></textarea>
         </div>
       </div>
@@ -478,7 +478,7 @@
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
               [(ngModel)]="gasproductionBody.domestic_Gas_Supply_DSO"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -504,7 +504,7 @@
               [(ngModel)]="
                 gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -519,7 +519,7 @@
               class="dropwp"
               formControlName="domestic_Gas_obligation_met"
               [(ngModel)]="gasproductionBody.domestic_Gas_obligation_met"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>--Select a Option --</option>
               <option value="YES">Yes</option>
@@ -535,7 +535,7 @@
         <button
           class="quarterbtn"
           (click)="saveGasProduction()"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Update Gas Production Activities
         </button>

@@ -60,7 +60,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="savePromotionDoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -83,7 +83,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveOrganogramDoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -94,7 +94,7 @@
       <button
         (click)="Hse_Management_Position_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Management Position
       </button>
@@ -121,7 +121,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Management(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -159,7 +159,7 @@
                 [(ngModel)]="technicalBody.number_of_facilities"
                 type="text"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -181,7 +181,7 @@
                 formControlName="facility_location"
                 [(ngModel)]="technicalBody.facility_location"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -203,7 +203,7 @@
                 formControlName="type_of_facility"
                 [(ngModel)]="technicalBody.type_of_facility"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -228,7 +228,7 @@
               [(ngModel)]="technicalBody.study_type"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -250,7 +250,7 @@
               [(ngModel)]="technicalBody.remarks"
               rows="3"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -262,7 +262,7 @@
       <button
         (click)="HSE_TechnicalSubmit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Facility Information
       </button>
@@ -288,7 +288,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Technical(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -540,7 +540,7 @@
             class="dropwp"
             formControlName="AreThereTrainingPlansForHSE"
             [(ngModel)]="safetyCultureBody.AreThereTrainingPlansForHSE"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -569,7 +569,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfTrainingPlan($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -596,7 +596,7 @@
                 formControlName="remark"
                 [(ngModel)]="safetyCultureBody.remark"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -624,7 +624,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveStatisticsDoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -649,7 +649,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveStatisticsDoc_2($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -660,7 +660,7 @@
       <button
         (click)="Hse_Safety_Culture_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Safety Culture and Training Upload
       </button>
@@ -686,7 +686,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SafetyCulture(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -726,7 +726,7 @@
             formControlName="DoYouHaveAnOhm"
             [(ngModel)]="occupationalBody.DoYouHaveAnOhm"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -755,7 +755,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveOHMDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -776,7 +776,7 @@
               [(ngModel)]="occupationalBody.ReasonForNoOhm"
               rows="3"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -800,7 +800,7 @@
             formControlName="WasOhmPolicyCommunicatedToStaff"
             [(ngModel)]="occupationalBody.WasOhmPolicyCommunicatedToStaff"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -827,7 +827,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveOHMDoc_2($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -852,7 +852,7 @@
               "
               rows="3"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -863,7 +863,7 @@
       <button
         (click)="Hse_Occupational_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Occupational Health Upload
       </button>
@@ -890,7 +890,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Occupational(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -926,7 +926,7 @@
           formControlName="doyouhaveQualityControl"
           [(ngModel)]="qualityControlBody.doyouhaveQualityControl"
           class="input"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="Yes">Yes</option>
@@ -953,7 +953,7 @@
           accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
           (change)="saveCOSDoc($event)"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -964,7 +964,7 @@
       <button
         (click)="HSE_QualityControl_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Quality Control Document
       </button>
@@ -991,7 +991,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Quality(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -1028,7 +1028,7 @@
             [(ngModel)]="climateChangeBody.doyouhaveGHG"
             class="input"
             type="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -1055,7 +1055,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveGHGDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -1065,7 +1065,7 @@
       <button
         (click)="HSE_Climate_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Green House Gas
       </button>
@@ -1092,7 +1092,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Climate(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -1328,7 +1328,7 @@
           [(ngModel)]="asset_PRE_Body.facility"
           type="text"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1349,7 +1349,7 @@
           [(ngModel)]="asset_PRE_Body.equipment_type"
           type="text"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1371,7 +1371,7 @@
           [(ngModel)]="asset_PRE_Body.equipment_description"
           type="text"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1452,7 +1452,7 @@
           [(ngModel)]="asset_PRE_Body.equipment_Installation_date"
           type="date"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1472,7 +1472,7 @@
           [(ngModel)]="asset_PRE_Body.last_inspection_date"
           type="date"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1492,7 +1492,7 @@
           [(ngModel)]="asset_PRE_Body.last_Inspection_Type_Performed"
           type="text"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1513,7 +1513,7 @@
           [(ngModel)]="asset_PRE_Body.next_Inspection_Date"
           type="date"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1533,7 +1533,7 @@
           formControlName="proposed_Inspection_Type"
           [(ngModel)]="asset_PRE_Body.proposed_Inspection_Type"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -1553,7 +1553,7 @@
           [(ngModel)]="asset_PRE_Body.state_reason"
           rows="3"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         ></textarea>
       </div>
     </div>
@@ -1572,7 +1572,7 @@
           formControlName="condition_of_Equipment"
           [(ngModel)]="asset_PRE_Body.condition_of_Equipment"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>---- Please Select Category ----</option>
           <option value="Corrosion">Corrosion</option>
@@ -1596,7 +1596,7 @@
           formControlName="function_Test_Result"
           [(ngModel)]="asset_PRE_Body.function_Test_Result"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="Pass">Pass</option>
@@ -1622,7 +1622,7 @@
           [(ngModel)]="asset_PRE_Body.inspection_Report_Review"
           class="input"
           type="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="Satisfactory">Satisfactory</option>
@@ -1638,7 +1638,7 @@
       <button
         (click)="HSE_AssetRegister_PRE_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Register Template (Prescriptive Equipment)
       </button>
@@ -1665,7 +1665,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_AssetRegister_PRE(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -1708,7 +1708,7 @@
               [(ngModel)]="asset_RBI_Body.facility"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1731,7 +1731,7 @@
               [(ngModel)]="asset_RBI_Body.equipment_type"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1755,7 +1755,7 @@
               [(ngModel)]="asset_RBI_Body.equipment_description"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1850,7 +1850,7 @@
               [(ngModel)]="asset_RBI_Body.equipment_Installation_date"
               type="date"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1872,7 +1872,7 @@
               [(ngModel)]="asset_RBI_Body.last_inspection_date"
               type="date"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1894,7 +1894,7 @@
               [(ngModel)]="asset_RBI_Body.last_Inspection_Type_Performed"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1920,7 +1920,7 @@
               [(ngModel)]="asset_RBI_Body.likelihood_of_Failure"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1942,7 +1942,7 @@
               [(ngModel)]="asset_RBI_Body.consequence_of_Failure"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1964,7 +1964,7 @@
               [(ngModel)]="asset_RBI_Body.maximum_Inspection_Interval"
               type="text"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -1989,7 +1989,7 @@
               [(ngModel)]="asset_RBI_Body.next_Inspection_Date"
               type="date"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2010,7 +2010,7 @@
               formControlName="proposed_Inspection_Type"
               [(ngModel)]="asset_RBI_Body.proposed_Inspection_Type"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2031,7 +2031,7 @@
             [(ngModel)]="asset_RBI_Body.rbI_Assessment_Date"
             type="date"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -2054,7 +2054,7 @@
             class="input"
             formControlName="equipment_Inspected_as_and_when_due"
             [(ngModel)]="asset_RBI_Body.equipment_Inspected_as_and_when_due"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select Category ----</option>
             <option value="Yes">Yes</option>
@@ -2080,7 +2080,7 @@
               class="inpute"
               formControlName="state_reason"
               [(ngModel)]="asset_RBI_Body.state_reason"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2101,7 +2101,7 @@
             class="input"
             formControlName="condition_of_equipment"
             [(ngModel)]="asset_RBI_Body.condition_of_Equipment"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Pass">Pass</option>
@@ -2128,7 +2128,7 @@
             class="input"
             formControlName="function_Test_Result"
             [(ngModel)]="asset_RBI_Body.function_Test_Result"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Pass">Pass</option>
@@ -2152,7 +2152,7 @@
             class="input"
             formControlName="inspection_Report_Review"
             [(ngModel)]="asset_RBI_Body.inspection_Report_Review"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Corrosion Severe">Corrosion Severe</option>
@@ -2166,7 +2166,7 @@
       <button
         (click)="HSE_AssetRegister_RBI_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Register Template (RBI Equipment)
       </button>
@@ -2193,7 +2193,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_AssetRegister_RBI(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -2233,7 +2233,7 @@
                 class="inpute"
                 formControlName="incident_Oil_Spill_Ref_No"
                 [(ngModel)]="oilSpill_Body.incident_Oil_Spill_Ref_No"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2255,7 +2255,7 @@
                 class="inpute"
                 formControlName="facility_Equipment"
                 [(ngModel)]="oilSpill_Body.facility_Equipment"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2277,7 +2277,7 @@
                 class="inpute"
                 formControlName="location"
                 [(ngModel)]="oilSpill_Body.location"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2304,7 +2304,7 @@
                 class="inpute"
                 formControlName="lga"
                 [(ngModel)]="oilSpill_Body.lga"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2326,7 +2326,7 @@
                 class="inpute"
                 formControlName="state_"
                 [(ngModel)]="oilSpill_Body.state_"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2348,7 +2348,7 @@
                 class="inpute"
                 formControlName="date_of_Spill"
                 [(ngModel)]="oilSpill_Body.date_of_Spill"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2375,7 +2375,7 @@
                 class="inpute"
                 formControlName="type_of_operation_at_spill_site"
                 [(ngModel)]="oilSpill_Body.type_of_operation_at_spill_site"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2397,7 +2397,7 @@
                 class="inpute"
                 formControlName="cause_of_spill"
                 [(ngModel)]="oilSpill_Body.cause_of_spill"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -2420,7 +2420,7 @@
                 class="inpute"
                 formControlName="volume_of_spill_bbls"
                 [(ngModel)]="oilSpill_Body.volume_of_spill_bbls"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
               <span class="barspan">BBLS</span>
             </div>
@@ -2447,7 +2447,7 @@
             class="inpute"
             formControlName="volume_recovered_bbls"
             [(ngModel)]="oilSpill_Body.volume_recovered_bbls"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
           <span class="barspan">BBLS</span>
         </div>
@@ -2459,7 +2459,7 @@
       <button
         (click)="HSE_OilSpill_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Oil Spill
       </button>
@@ -2486,7 +2486,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_OilSpill(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -2526,7 +2526,7 @@
               class="inpute"
               formControlName="no_of_spills_reported"
               [(ngModel)]="causesOfSpill_Body.no_of_spills_reported"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2549,7 +2549,7 @@
               class="inpute"
               formControlName="total_Quantity_Spilled"
               [(ngModel)]="causesOfSpill_Body.total_Quantity_Spilled"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2571,7 +2571,7 @@
               class="inpute"
               formControlName="total_Quantity_Spilled"
               [(ngModel)]="causesOfSpill_Body.total_Quantity_Recovered"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2597,7 +2597,7 @@
               class="inpute"
               formControlName="corrosion"
               [(ngModel)]="causesOfSpill_Body.corrosion"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2619,7 +2619,7 @@
               class="inpute"
               formControlName="equipment_Failure"
               [(ngModel)]="causesOfSpill_Body.equipment_Failure"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2641,7 +2641,7 @@
               class="inpute"
               formControlName="erossion_waves_sand"
               [(ngModel)]="causesOfSpill_Body.erossion_waves_sand"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2667,7 +2667,7 @@
               class="inpute"
               formControlName="human_Error"
               [(ngModel)]="causesOfSpill_Body.human_Error"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2689,7 +2689,7 @@
               class="inpute"
               formControlName="mystery"
               [(ngModel)]="causesOfSpill_Body.mystery"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2711,7 +2711,7 @@
               class="inpute"
               formControlName="operational_Maintenance_Error"
               [(ngModel)]="causesOfSpill_Body.operational_Maintenance_Error"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2737,7 +2737,7 @@
               class="inpute"
               formControlName="sabotage"
               [(ngModel)]="causesOfSpill_Body.sabotage"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2759,7 +2759,7 @@
               class="inpute"
               formControlName="ytbd"
               [(ngModel)]="causesOfSpill_Body.ytbd"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2771,7 +2771,7 @@
       <button
         (click)="HSE_CausesOfSpill_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Update Oil Spill
       </button>
@@ -2798,7 +2798,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_CausesOfSpill(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -2837,7 +2837,7 @@
               class="inpute"
               formControlName="was_there_any_accident_incidence"
               [(ngModel)]="accident_Body.was_there_any_accident_incidence"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -2868,7 +2868,7 @@
             class="inpute"
             formControlName="frequency"
             [(ngModel)]="accident_Body.frequency"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -2888,7 +2888,7 @@
             type="inpute"
             formControlName="cause"
             [(ngModel)]="accident_Body.cause"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>
               ---- Please Select Accident Cause ----
@@ -2916,7 +2916,7 @@
             type="inpute"
             formControlName="consequence"
             [(ngModel)]="accident_Body.consequence"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Damage">Damage</option>
@@ -2950,7 +2950,7 @@
               class="inpute"
               formControlName="type_of_Accident_Incidence"
               [(ngModel)]="accident_Body.type_of_Accident_Incidence"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -2972,7 +2972,7 @@
             class="inpute"
             formControlName="date_"
             [(ngModel)]="accident_Body.date_"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -2994,7 +2994,7 @@
               class="inpute"
               formControlName="location"
               [(ngModel)]="accident_Body.location"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3022,7 +3022,7 @@
               class="inpute"
               formControlName="investigation"
               [(ngModel)]="accident_Body.investigation"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -3051,7 +3051,7 @@
             class="inpute"
             formControlName="lesson_Learnt"
             [(ngModel)]="accident_Body.lesson_Learnt"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -3075,7 +3075,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveUploadIncidentStatisticsDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -3100,7 +3100,7 @@
           class="inpute"
           formControlName="lesson_Learnt"
           [(ngModel)]="accident_Body.lesson_Learnt"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -3110,7 +3110,7 @@
       <button
         (click)="HSE_Accident_Incidence_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Accident/Incidence Reporting
       </button>
@@ -3137,7 +3137,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_AccidentIncidence(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -3175,7 +3175,7 @@
               type="inpute"
               formControlName="vALUES_"
               [(ngModel)]="osp_Reg_Body.vALUES_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -3203,7 +3203,7 @@
               class="inpute"
               formControlName="dESCRIPTION_"
               [(ngModel)]="osp_Reg_Body.dESCRIPTION_"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3215,7 +3215,7 @@
       <button
         (click)="HSE_OSP_Registration_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add OSP Registration
       </button>
@@ -3243,7 +3243,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_OSP(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -3282,7 +3282,7 @@
             type="inpute"
             formControlName="oil_spill_reported"
             [(ngModel)]="community_Body.oil_spill_reported"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -3313,7 +3313,7 @@
             [(ngModel)]="
               community_Body.was_there_any_Community_Related_Disturbances_within_your_operational_area
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -3342,7 +3342,7 @@
             [(ngModel)]="
               community_Body.if_YES_Give_details_on_Community_Related_Disturbances_within_your_operational_area
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -3367,7 +3367,7 @@
             [(ngModel)]="
               community_Body.was_any_Oil_Spill_recorded_within_your_operational_area
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -3382,7 +3382,7 @@
       <button
         (click)="HSE_Community_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Community Disturbance & Oil Spill
       </button>
@@ -3409,7 +3409,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_CommunityDisturbance(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -3446,7 +3446,7 @@
             class="inpute"
             formControlName="fatalities_Type"
             [(ngModel)]="fatality_Body.fatalities_Type"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Casualities">Casualities</option>
@@ -3473,7 +3473,7 @@
               class="inpute"
               formControlName="current_year_DATA"
               [(ngModel)]="fatality_Body.current_year_DATA"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3512,7 +3512,7 @@
             class="inpute"
             formControlName="type_of_incidence"
             [(ngModel)]="fatality_Body.type_of_incidence"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Non Work Related">Non Work Related</option>
@@ -3528,7 +3528,7 @@
       <button
         (click)="HSE_Fatality_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Fatality
       </button>
@@ -3555,7 +3555,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Fatality(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -3707,7 +3707,7 @@
               class="inpute"
               formControlName="field_name"
               [(ngModel)]="environmental_studies_updated_Body.field_name"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3729,7 +3729,7 @@
               class="inpute"
               formControlName="type_of_study"
               [(ngModel)]="environmental_studies_updated_Body.type_of_study"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3750,7 +3750,7 @@
               class="inpute"
               formControlName="study_title"
               [(ngModel)]="environmental_studies_updated_Body.study_title"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3777,7 +3777,7 @@
               [(ngModel)]="
                 environmental_studies_updated_Body.current_study_status
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3801,7 +3801,7 @@
               [(ngModel)]="
                 environmental_studies_updated_Body.dPR_approval_Status
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -3813,7 +3813,7 @@
       <button
         (click)="HSE_Environmental_Studies_Updated_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Field/Study
       </button>
@@ -3840,7 +3840,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_ESU(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -3870,7 +3870,7 @@
             type="inpute"
             formControlName="any_Environmental_Studies"
             [(ngModel)]="environmental_studies_Body.any_Environmental_Studies"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -3893,7 +3893,7 @@
             type="inpute"
             formControlName="if_YES_state_Project_Name"
             [(ngModel)]="environmental_studies_Body.if_YES_state_Project_Name"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select Category ----</option>
             <option value="EES">EES</option>
@@ -3917,7 +3917,7 @@
             type="inpute"
             formControlName="status_"
             [(ngModel)]="environmental_studies_Body.status_"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select Category----</option>
             <option value="Approved">Approved</option>
@@ -3943,7 +3943,7 @@
           type="inpute"
           formControlName="if_Ongoing"
           [(ngModel)]="environmental_studies_Body.if_Ongoing"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>---- Please Select Category----</option>
           <option value="Draft Report">Draft Report</option>
@@ -3964,7 +3964,7 @@
       <button
         (click)="HSE_Environmental_Studies_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Environmental Studies
       </button>
@@ -3991,7 +3991,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_ES(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4031,7 +4031,7 @@
             [(ngModel)]="
               waste_Management_Body.do_you_have_Waste_Management_facilities
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -4056,7 +4056,7 @@
             [(ngModel)]="
               waste_Management_Body.if_YES_is_the_facility_registered
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -4083,7 +4083,7 @@
             [(ngModel)]="
               waste_Management_Body.if_NO_give_reasons_for_not_being_registered
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4094,7 +4094,7 @@
       <button
         (click)="HSE_Waste_Management_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Waste Management
       </button>
@@ -4121,7 +4121,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Waste_Management(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4153,7 +4153,7 @@
             type="inpute"
             formControlName="type_of_Facility"
             [(ngModel)]="waste_ManagementFacility_Body.type_of_Facility"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>
               ---- Please Select a Category ----
@@ -4180,7 +4180,7 @@
             class="inpute"
             formControlName="lOCATION"
             [(ngModel)]="waste_ManagementFacility_Body.lOCATION"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4198,7 +4198,7 @@
             class="inpute"
             formControlName="approved_or_Not_Approve"
             [(ngModel)]="waste_ManagementFacility_Body.approved_or_Not_Approve"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>
               ---- Please Select a Category ----
@@ -4214,7 +4214,7 @@
       <button
         (click)="HSE_Waste_Management_Facility_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Waste Facility
       </button>
@@ -4241,7 +4241,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Waste_Management_Facility(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4275,7 +4275,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveWM_Plan_Doc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4299,7 +4299,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveWM_Cert_Doc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4310,7 +4310,7 @@
       <button
         (click)="HSE_Waste_Management_Files_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Attachments
       </button>
@@ -4337,7 +4337,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Waste_Management_Files(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4374,7 +4374,7 @@
               class="inpute"
               formControlName="fIELD_NAME"
               [(ngModel)]="water_Management_Updated_New_Body.fIELD_NAME"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4395,7 +4395,7 @@
               class="inpute"
               formControlName="facilities"
               [(ngModel)]="water_Management_Updated_New_Body.facilities"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4421,7 +4421,7 @@
               [(ngModel)]="
                 water_Management_Updated_New_Body.dEPTH_AND_DISTANCE_FROM_SHORELINE
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4444,7 +4444,7 @@
               [(ngModel)]="
                 water_Management_Updated_New_Body.produced_water_volumes
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4467,7 +4467,7 @@
               [(ngModel)]="
                 water_Management_Updated_New_Body.disposal_philosophy
               "
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -4490,7 +4490,7 @@
             class="inpute"
             formControlName="dPR_APPROVAL_STATUS"
             [(ngModel)]="water_Management_Updated_New_Body.dPR_APPROVAL_STATUS"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4501,7 +4501,7 @@
       <button
         (click)="HSE_Water_Management_Updated_New_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Produced Water Management
       </button>
@@ -4528,7 +4528,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Water_Management_Updated(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4561,7 +4561,7 @@
             [(ngModel)]="
               water_Management_Body.within_which_zone_are_you_operating
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Category----</option>
             <option value="Discharged Zone">Discharged Zone</option>
@@ -4585,7 +4585,7 @@
             [(ngModel)]="
               water_Management_Body.how_do_you_handle_your_produced_water
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Category----</option>
             <option value="Export Terminal with Fluid (Wet Crude)">
@@ -4612,7 +4612,7 @@
             class="inpute"
             formControlName="export_to_Terminal_with_fluid"
             [(ngModel)]="water_Management_Body.export_to_Terminal_with_fluid"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Category----</option>
             <option value="ABO">ABO</option>
@@ -4631,7 +4631,7 @@
       <button
         (click)="HSE_Water_Management_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Produced Water (Zone)
       </button>
@@ -4658,7 +4658,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Water_Management(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4698,7 +4698,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.are_you_a_Producing_or_Non_Producing_Company
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Category----</option>
             <option value="Producing">Producing</option>
@@ -4725,7 +4725,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.if_YES_have_you_registered_your_Point_Sources
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Option----</option>
             <option value="Yes">Yes</option>
@@ -4752,7 +4752,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.if_NO_give_reasons_for_not_registering_your_Point_Sources
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4779,7 +4779,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.have_you_submitted_your_Environmental_Compliance_Report
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option----</option>
             <option value="Yes">Yes</option>
@@ -4805,7 +4805,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.if_NO_Give_reasons_for_non_SUBMISSION
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4832,7 +4832,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.have_you_submitted_your_Chemical_Usage_Inventorization_Report
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option----</option>
             <option value="Yes">Yes</option>
@@ -4858,7 +4858,7 @@
             [(ngModel)]="
               environmentalCompliance_Body.if_NO_Give_reasons_for_non_submission_2
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4869,7 +4869,7 @@
       <button
         (click)="HSE_Environmental_Compliance_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Save Environmental Compliance
       </button>
@@ -4896,7 +4896,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_EC(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -4928,7 +4928,7 @@
             class="inpute"
             formControlName="name_of_Chemical"
             [(ngModel)]="environmentalComplianceChemical_Body.name_of_Chemical"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -4947,7 +4947,7 @@
             class="inpute"
             formControlName="dPR_Approved"
             [(ngModel)]="environmentalComplianceChemical_Body.dPR_Approved"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select an Option----</option>
             <option value="Yes">Yes</option>
@@ -4962,7 +4962,7 @@
       <button
         (click)="HSE_Environmental_Compliance_Chemical_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Chemical Usage
       </button>
@@ -4989,7 +4989,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_EC_C(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5027,7 +5027,7 @@
             type="inpute"
             formControlName="yEAR_"
             [(ngModel)]="environmental_studies_fiveyrs_Body.yEAR_"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select a Year----</option>
             <option value="2022">2022</option>
@@ -5055,7 +5055,7 @@
             [(ngModel)]="
               environmental_studies_fiveyrs_Body.type_of_Study_IA_or_EES
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>
               ---- Please Select an Category----
@@ -5073,7 +5073,7 @@
       <button
         (click)="HSE_Environmental_Studies_Strategic_Plan_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Environmental Studies Strategic Plans
       </button>
@@ -5100,7 +5100,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_ESS_Plan(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5143,7 +5143,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEMSDoc($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5160,7 +5160,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveAuditsDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -5172,7 +5172,7 @@
     <button
       (click)="HSE_EMS_Files_Submit()"
       class="submitbtn"
-      [attr.disabled]="disableForm"
+      [attr.disabled]="disableForm ? true : null"
     >
       Add Environmental Management
     </button>
@@ -5198,7 +5198,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_EMS_Files(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5253,7 +5253,7 @@
               class="inpute"
               formControlName="number_of_facilities"
               [(ngModel)]="operations_safety_case_body.number_of_facilities"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5282,7 +5282,7 @@
             class="inpute"
             formControlName="name_of_facility"
             [(ngModel)]="operations_safety_case_body.name_of_facility"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -5311,7 +5311,7 @@
               class="inpute"
               formControlName="location_of_facility"
               [(ngModel)]="operations_safety_case_body.location_of_facility"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5343,7 +5343,7 @@
               class="inpute"
               formControlName="type_of_facility"
               [(ngModel)]="operations_safety_case_body.type_of_facility"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5374,7 +5374,7 @@
             [(ngModel)]="
               operations_safety_case_body.does_the_facility_have_a_valid_safety_case
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>---- Please Select ----</option>
             <option value="Yes">Yes</option>
@@ -5405,7 +5405,7 @@
             class="inpute"
             formControlName="reason_if_no_evidence"
             [(ngModel)]="operations_safety_case_body.reason_if_no_evidence"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           />
         </div>
       </div>
@@ -5432,7 +5432,7 @@
           accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
           (change)="saveOperationalSafetyApproval($event)"
           class="inpute"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -5443,7 +5443,7 @@
       <button
         (click)="HSE_Operations_Safety_Case_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Operation Safety Case
       </button>
@@ -5471,7 +5471,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_OperationsSafetyCase(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5521,7 +5521,7 @@
               type="inpute"
               formControlName="areThereEMP"
               [(ngModel)]="environmentalManagementPlanBody.areThereEMP"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -5549,7 +5549,7 @@
               class="inpute"
               formControlName="facilityType"
               [(ngModel)]="environmentalManagementPlanBody.facilityType"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5574,7 +5574,7 @@
               class="inpute"
               formControlName="facilityLocation"
               [(ngModel)]="environmentalManagementPlanBody.facilityLocation"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5596,7 +5596,7 @@
               [(ngModel)]="environmentalManagementPlanBody.remarkIfNoEMP"
               rows="3"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -5631,7 +5631,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_EMP(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5678,7 +5678,7 @@
             class="dropwp"
             formControlName="areThereRemediationFund"
             [(ngModel)]="remediationFundBody.areThereRemediationFund"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -5707,7 +5707,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfPayment($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5734,7 +5734,7 @@
                 formControlName="reasonForNoRemediation"
                 [(ngModel)]="remediationFundBody.reasonForNoRemediation"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -5748,7 +5748,7 @@
       <button
         (click)="HSE_Remediation_Fund_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Remediation Fund
       </button>
@@ -5774,7 +5774,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Remediation_Fund(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5827,7 +5827,7 @@
             [(ngModel)]="
               effluentComplianceMonitoringBody.areThereEvidentOfSampling
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -5860,7 +5860,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfSamplingPayment($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -5891,7 +5891,7 @@
                   effluentComplianceMonitoringBody.reasonForNoEvidenceSampling
                 "
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -5927,7 +5927,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Effluent_Monitoring(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -5974,7 +5974,7 @@
             class="dropwp"
             formControlName="areTherePointSourcePermit"
             [(ngModel)]="pointSourcePermitBody.areTherePointSourcePermit"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6003,7 +6003,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfPSP($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6030,7 +6030,7 @@
                 formControlName="reasonForNoPSP"
                 [(ngModel)]="pointSourcePermitBody.reasonForNoPSP"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6044,7 +6044,7 @@
       <button
         (click)="HSE_PSP_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add Point Source Permit
       </button>
@@ -6070,7 +6070,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Point_Source_Permit(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -6117,7 +6117,7 @@
             class="dropwp"
             formControlName="doYouHaveGHG"
             [(ngModel)]="GHGManagementPlanBody.doYouHaveGHG"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6146,7 +6146,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveGHGManagement($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6173,7 +6173,7 @@
                 formControlName="reasonForNoGHG"
                 [(ngModel)]="GHGManagementPlanBody.reasonForNoGHG"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6208,7 +6208,7 @@
             class="dropwp"
             formControlName="doYouHaveLDRCertificate"
             [(ngModel)]="GHGManagementPlanBody.doYouHaveLDRCertificate"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6237,7 +6237,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveLDRCertificate($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6264,7 +6264,7 @@
                 formControlName="reasonForNoLDR"
                 [(ngModel)]="GHGManagementPlanBody.reasonForNoLDR"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6277,7 +6277,7 @@
       <button
         (click)="HSE_GHG_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm"
+        [attr.disabled]="disableForm ? true : null"
       >
         Add GHG Management Plan
       </button>
@@ -6303,7 +6303,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Point_Source_Permit(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -6352,7 +6352,7 @@
             class="dropwp"
             formControlName="doYouHaveEvidenceOfReg"
             [(ngModel)]="HostCommunityDevelopmentBody.doYouHaveEvidenceOfReg"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6383,7 +6383,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfReg($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6412,7 +6412,7 @@
                   HostCommunityDevelopmentBody.reasonForNoEvidenceOfRegTF
                 "
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6448,7 +6448,7 @@
             class="dropwp"
             formControlName="doYouHaveEvidenceOfPay"
             [(ngModel)]="HostCommunityDevelopmentBody.doYouHaveEvidenceOfPay"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6477,7 +6477,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfPay($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6506,7 +6506,7 @@
                   HostCommunityDevelopmentBody.reasonForNoEvidenceOfPayTF
                 "
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6534,7 +6534,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveCommunityDevPlan($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6544,7 +6544,7 @@
         <button
           (click)="HSE_Host_Communities_Dev_Submit()"
           class="submitbtn"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Add Host Communities Development
         </button>
@@ -6571,7 +6571,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Host_Communities_Dev(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
@@ -6620,7 +6620,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfPDDC($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6643,7 +6643,7 @@
               formControlName="wasterContractorNames"
               [(ngModel)]="wasteManagementDZBody.wasterContractorNames"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6668,7 +6668,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveWasteServicePermit($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6702,7 +6702,7 @@
             class="dropwp"
             formControlName="produceWaterManagementPlan"
             [(ngModel)]="wasteManagementDZBody.produceWaterManagementPlan"
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="DISCHARGE ZONE" selected>Discharge Zone</option>
             <option value="ZERO DISCHARGE ZONE">Zero Discharge Zone</option>
@@ -6734,7 +6734,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfReInjection($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6765,7 +6765,7 @@
                   wasteManagementDZBody.reasonForNoEvidenceOfReInjection
                 "
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6802,7 +6802,7 @@
             [(ngModel)]="
               wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport
             "
-            [attr.disabled]="disableForm"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -6834,7 +6834,7 @@
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfEWDP($event)"
               class="inpute"
-              [attr.disabled]="disableForm"
+              [attr.disabled]="disableForm ? true : null"
             />
           </div>
         </div>
@@ -6864,7 +6864,7 @@
                 formControlName="reasonForNoEvidenceOfEWDP"
                 [(ngModel)]="wasteManagementDZBody.reasonForNoEvidenceOfEWDP"
                 class="inpute"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -6877,7 +6877,7 @@
         <button
           (click)="HSE_Waste_Management_DZ_Submit()"
           class="submitbtn"
-          [attr.disabled]="disableForm"
+          [attr.disabled]="disableForm ? true : null"
         >
           Add Waste Management (Discharge Zone)
         </button>
@@ -6904,7 +6904,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Waste_Management_DZ(row)"
-                [attr.disabled]="disableForm"
+                [attr.disabled]="disableForm ? true : null"
               >
                 Delete
               </button>
