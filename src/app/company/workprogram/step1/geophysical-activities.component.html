@@ -100,6 +100,11 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['actual_year_aquired_data'].valid">
+              Actual Year Aquired Data is required
+            </span>
+        </div>
         </div>
 
         <div style="width: 30%; margin-top: auto">
@@ -122,6 +127,12 @@
               />
             </div>
           </div>
+
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['proposed_year_data'].valid">
+              Actual Year Aquired Data is required
+            </span>
+        </div>
         </div>
 
         <!-- <div style="width: 30%">

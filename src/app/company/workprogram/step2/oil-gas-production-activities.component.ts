@@ -67,6 +67,30 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   YPFNewName: string;
   YPFNameDoc: string;
 
+  fyvccolumn = [
+    {
+      columnDef: 'proposed_Initial_Name',
+      header: 'PROJECTION YEAR',
+    },
+    {
+      columnDef: 'proposed_Completion_Days',
+      header: 'Oil (Barrels)',
+    },
+    {
+      columnDef: 'proposed_Completion_Date',
+      header: 'Condensate (Barrels)',
+    },
+
+    {
+      columnDef: 'budeget_Allocation_NGN',
+      header: 'AG (Standard Cubic Feet)',
+    },
+    {
+      columnDef: 'budeget_Allocation_USD',
+      header: 'NAG (Standard Cubic Feet)',
+    },
+  ];
+
   fiveYearsValues = [];
 
   constructor(
@@ -294,7 +318,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     var num: number = 5;
     var i: number;
     for (i = 0; i < num; i++) {
-      this.fiveYearsValues[i] = this.genk.wkProposedYear + i;
+      this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
     debugger;

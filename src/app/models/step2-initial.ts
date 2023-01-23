@@ -31,6 +31,7 @@ export class INITIAL_WELL_COMPLETION_JOB1
         companyNumber: string = '';
         proposed_initial_name:string='';
         proposed_completion_days:string='';
+        proposed_well_number:number=0;
     }
 
     export class WORKOVERS_RECOMPLETION_JOB1
