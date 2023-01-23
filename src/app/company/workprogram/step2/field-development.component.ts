@@ -20,7 +20,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPFieldDevelopmentComponent implements OnInit {
-  public disableForm: boolean = true;
+  public disableForm: boolean = false;
   public FieldDevelopmentForm: FormGroup;
   public FieldDevelopmeentExcessiveReserveForm: FormGroup;
   public UnitizationForm: FormGroup;

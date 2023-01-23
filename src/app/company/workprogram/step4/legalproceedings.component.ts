@@ -22,7 +22,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPLegalProceedingsComponent implements OnInit {
-  public disableForm: boolean = true;
+  public disableForm: boolean = false;
   letigationForm: FormGroup;
   arbitrationForm: FormGroup;
   letigationBody: LEGAL_LITIGATION = {} as LEGAL_LITIGATION;

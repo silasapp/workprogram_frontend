@@ -24,7 +24,7 @@ import Swal from 'sweetalert2';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPNigeriaContentComponent implements OnInit {
-  public disableForm: boolean = true;
+  public disableForm: boolean = false;
   activeMenu: string = 'Actual Year';
   completedActual: boolean = false;
   completedProposed: boolean = false;
