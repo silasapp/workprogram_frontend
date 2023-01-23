@@ -6,30 +6,82 @@
       <span style="font-size: 50px; font-weight: 900; color: rgb(227, 222, 222)">Submit Work Programme for {{this.genk.wkProposedYear}}</span>
     </div><br><br>
 
-    <div [formGroup]="boardForm" style="display: flex; justify-content: center; width: 100%; margin-bottom: 80px;">
-      <select formControlName="year" style="padding: 15px; font-size: 18px; width: 50%; border: solid 2px white; border-radius: 15px; background-color: rgb(0, 0, 0, 0.2); color: white;" (change)="changeWPYear($event)">
-        <option style="background-color: rgb(0, 0, 0, 0.7)" selected disabled hidden>Select a Year to submit workprogramme</option>
-        <option style="background-color: rgb(0, 0, 0, 0.7);" *ngFor="let list of wkpYearList">{{ list }}</option>
+    <div
+      [formGroup]="boardForm"
+      style="
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 80px;
+      "
+    >
+      <select
+        formControlName="year"
+        style="
+          padding: 15px;
+          font-size: 18px;
+          width: 50%;
+          border: solid 2px white;
+          border-radius: 15px;
+          background-color: rgb(0, 0, 0, 0.2);
+          color: white;
+        "
+        (change)="changeWPYear($event)"
+      >
+        <option
+          style="background-color: rgb(0, 0, 0, 0.7)"
+          selected
+          disabled
+          hidden
+        >
+          Select a Year to submit workprogramme
+        </option>
+        <option
+          style="background-color: rgb(0, 0, 0, 0.7)"
+          *ngFor="let list of wkpYearList"
+        >
+          {{ list }}
+        </option>
       </select>
     </div>
 
-    <div style="display: inline-flex; flex-wrap: wrap; justify-content: space-between; width: 100%;">
-      <div class="righttab" [routerLink]="['/' + genk.company, genk.workprogram, 'step1', ]">
+    <div
+      style="
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+      "
+    >
+      <div
+        class="righttab"
+        [routerLink]="['/' + genk.company, genk.workprogram, 'step1']"
+      >
         <div class="widthtab">
-
-          <div style="padding: 20px;">
-            <div style="margin-bottom: 15px;">
-              <span class="material-icons" style="font-size: 40px; color: rgb(99, 76, 47);">account_balance</span>
+          <div style="padding: 20px">
+            <div style="margin-bottom: 15px">
+              <span
+                class="material-icons"
+                style="font-size: 40px; color: rgb(99, 76, 47)"
+                >account_balance</span
+              >
             </div>
-            <div style="margin-bottom: 5px;">
-              <span style="font-weight: 900; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">STEP 1</span><br>
+            <div style="margin-bottom: 5px">
+              <span
+                style="
+                  font-weight: 900;
+                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                "
+                >STEP 1</span
+              ><br />
               <span class="topname">CONCESSION</span>
             </div>
-            <br>
+            <br />
             <div>
               <div class="tabsname">
-                <span>Concession Situation</span><br>
-                <span>Geophysical Activities</span><br>
+                <span>Concession Situation</span><br />
+                <span>Geophysical Activities</span><br />
                 <span>Drilling Operations</span>
               </div>
             </div>
@@ -39,32 +91,54 @@
               <span class="material-icons pending">priority_high</span>
             </div>
           </div> -->
-          <br>
-          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+          <br />
+          <div
+            style="
+              border-top: solid 1px grey;
+              padding: 5px;
+              font-weight: 500;
+              color: rgb(28, 92, 124);
+              display: flex;
+              align-items: center;
+            "
+          >
             <span class="material-icons" style="font-size: 16px">settings</span>
             <small>&nbsp; Format: &nbsp;&nbsp; OML/OPL basis</small>
           </div>
         </div>
       </div>
 
-      <div class="righttab" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', ]">
+      <div
+        class="righttab"
+        [routerLink]="['/' + genk.company, genk.workprogram, 'step2']"
+      >
         <div class="widthtab">
-
-          <div style="padding: 20px;">
-            <div style="margin-bottom: 15px;">
-              <span class="material-icons" style="font-size: 40px; color: rgb(55, 111, 112);">propane_tank</span>
+          <div style="padding: 20px">
+            <div style="margin-bottom: 15px">
+              <span
+                class="material-icons"
+                style="font-size: 40px; color: rgb(55, 111, 112)"
+                >propane_tank</span
+              >
             </div>
-            <div style="margin-bottom: 5px;">
-              <span style="font-weight: 900; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">STEP 2</span><br>
+            <div style="margin-bottom: 5px">
+              <span
+                style="
+                  font-weight: 900;
+                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                "
+                >STEP 2</span
+              ><br />
               <span class="topname">RESERVES</span>
             </div>
-            <br>
+            <br />
             <div class="tabsname">
-              <span>Field Development Plan</span><br>
-              <span>Initial Well Completion</span><br>
-              <span>Workover Recompletion</span><br>
-              <span>Oil & Gas Production Activities</span><br>
-              <span>Reserves Update</span><br>
+              <span>Field Development Plan</span><br />
+              <span>Initial Well Completion</span><br />
+              <span>Workover Recompletion</span><br />
+              <span>Oil & Gas Production Activities</span><br />
+              <span>Reserves Update</span><br />
             </div>
           </div>
           <!-- <div>
@@ -72,98 +146,172 @@
               <span class="material-icons good">done</span>
             </div>
           </div> -->
-          <br>
-          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+          <br />
+          <div
+            style="
+              border-top: solid 1px grey;
+              padding: 5px;
+              font-weight: 500;
+              color: rgb(28, 92, 124);
+              display: flex;
+              align-items: center;
+            "
+          >
             <span class="material-icons" style="font-size: 16px">settings</span>
             <small>&nbsp; Format: &nbsp;&nbsp; OML/OPL basis</small>
           </div>
         </div>
       </div>
 
-      <div class="righttab" [routerLink]="['/' + genk.company, genk.workprogram, 'step3', ]">
+      <div
+        class="righttab"
+        [routerLink]="['/' + genk.company, genk.workprogram, 'step3']"
+      >
         <div class="widthtab">
-
-          <div style="padding: 20px; height: 84%;">
-            <div style="margin-bottom: 15px;">
-              <span class="material-icons" style="font-size: 40px; color: rgb(32, 103, 161)">wallet</span>
+          <div style="padding: 20px; height: 84%">
+            <div style="margin-bottom: 15px">
+              <span
+                class="material-icons"
+                style="font-size: 40px; color: rgb(32, 103, 161)"
+                >wallet</span
+              >
             </div>
-            <div style="margin-bottom: 5px;">
-              <span style="font-weight: 900; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">STEP 3</span><br>
+            <div style="margin-bottom: 5px">
+              <span
+                style="
+                  font-weight: 900;
+                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                "
+                >STEP 3</span
+              ><br />
               <span class="topname">BUDGET</span>
             </div>
-            <br>
+            <br />
             <div>
               <div class="tabsname">
-                <span>Budget Performance</span><br>
-                <span>Budget Proposal</span><br>
+                <span>Budget Performance</span><br />
+                <span>Budget Proposal</span><br />
                 <span>Facility Maintenance</span>
               </div>
             </div>
           </div>
-          <br>
-          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+          <br />
+          <div
+            style="
+              border-top: solid 1px grey;
+              padding: 5px;
+              font-weight: 500;
+              color: rgb(28, 92, 124);
+              display: flex;
+              align-items: center;
+            "
+          >
             <span class="material-icons" style="font-size: 16px">settings</span>
             <small>&nbsp; Format: &nbsp;&nbsp; Company basis</small>
           </div>
         </div>
       </div>
 
-      <div class="righttab" [routerLink]="['/' + genk.company, genk.workprogram, 'step4', ]">
+      <div
+        class="righttab"
+        [routerLink]="['/' + genk.company, genk.workprogram, 'step4']"
+      >
         <div class="widthtab">
-
-          <div style="padding: 20px; height: 84%;">
-            <div style="margin-bottom: 15px;">
-              <span class="material-icons" style="font-size: 40px; color: rgb(161, 56, 32)">animation</span>
+          <div style="padding: 20px; height: 84%">
+            <div style="margin-bottom: 15px">
+              <span
+                class="material-icons"
+                style="font-size: 40px; color: rgb(161, 56, 32)"
+                >animation</span
+              >
             </div>
-            <div style="margin-bottom: 5px;">
-              <span style="font-weight: 900; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">STEP 4</span><br>
+            <div style="margin-bottom: 5px">
+              <span
+                style="
+                  font-weight: 900;
+                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                "
+                >STEP 4</span
+              ><br />
               <span class="topname">PLANNING</span>
             </div>
-            <br>
+            <br />
             <div>
               <div class="tabsname">
-                <span>Budget Performance</span><br>
-                <span>Budget Proposal</span><br>
+                <span>Budget Performance</span><br />
+                <span>Budget Proposal</span><br />
                 <span>Facility Maintenance</span>
               </div>
             </div>
           </div>
-          <br>
-          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+          <br />
+          <div
+            style="
+              border-top: solid 1px grey;
+              padding: 5px;
+              font-weight: 500;
+              color: rgb(28, 92, 124);
+              display: flex;
+              align-items: center;
+            "
+          >
             <span class="material-icons" style="font-size: 16px">settings</span>
             <small>&nbsp; Format: &nbsp;&nbsp; Company basis</small>
           </div>
         </div>
       </div>
 
-      <div class="righttab" [routerLink]="['/' + genk.company, genk.workprogram, 'step5', ]">
+      <div
+        class="righttab"
+        [routerLink]="['/' + genk.company, genk.workprogram, 'step5']"
+      >
         <div class="widthtab">
-
-          <div style="padding: 20px; height: 84%;">
-            <div style="margin-bottom: 15px;">
-              <span class="material-icons" style="font-size: 40px; color: rgb(234, 160, 32)">local_fire_department</span>
+          <div style="padding: 20px; height: 84%">
+            <div style="margin-bottom: 15px">
+              <span
+                class="material-icons"
+                style="font-size: 40px; color: rgb(234, 160, 32)"
+                >local_fire_department</span
+              >
             </div>
-            <div style="margin-bottom: 5px;">
-              <span style="font-weight: 900; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">STEP 5</span><br>
+            <div style="margin-bottom: 5px">
+              <span
+                style="
+                  font-weight: 900;
+                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                "
+                >STEP 5</span
+              ><br />
               <span class="topname">HSE</span>
             </div>
-            <br>
+            <br />
             <div>
               <div class="tabsname">
-                <span>Health, Safety and Environment</span><br>
-                <span>Strategic Capital Development Plan </span><br>
-                <span>Extra Requirement</span>
+                <span>Health, Safety and Environment</span><br />
+                <span>Strategic Capital Development Plan </span><br />
+                <!-- <span>Extra Requirement</span> -->
               </div>
             </div>
           </div>
-          <br>
-          <div style="border-top: solid 1px grey; padding: 5px; font-weight: 500; color: rgb(28, 92, 124); display: flex; align-items: center;">
+          <br />
+          <div
+            style="
+              border-top: solid 1px grey;
+              padding: 5px;
+              font-weight: 500;
+              color: rgb(28, 92, 124);
+              display: flex;
+              align-items: center;
+            "
+          >
             <span class="material-icons" style="font-size: 16px">settings</span>
             <small>&nbsp; Format: &nbsp;&nbsp; Company basis</small>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

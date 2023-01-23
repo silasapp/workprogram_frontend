@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,11 +20,8 @@ import { AllApplicationsComponent } from './application/allapplications/allappli
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 //import { ConcessionsFieldsComponent } from './company/concessions-fields/concessions-fields.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     FormsModule,
     BrowserModule,
@@ -36,13 +33,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatProgressSpinnerModule,
     CompanyModule,
-    NgChartsModule
+    NgChartsModule,
   ],
   exports: [RouterModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

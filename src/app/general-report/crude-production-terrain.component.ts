@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from '../services/report.service';
 import { WorkProgramService } from '../services/workprogram.service';
@@ -6,195 +13,213 @@ import { WorkProgramService } from '../services/workprogram.service';
 @Component({
   selector: 'app-ndr-report',
   templateUrl: './seismic-data-approved-previous.component.html',
-  styleUrls: ['../reports/ndr-report.component.scss', './general-report.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: [
+    '../reports/ndr-report.component.scss',
+    './general-report.component.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CrudeProductionTerrainComponent implements OnInit {
   @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
-  @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox', { static: false })
+  myChartBox: ElementRef<HTMLDivElement>;
   data: any[];
 
   selectedColumns: any[] = [];
-    genk: GenericService;
-    cdr: ChangeDetectorRef;
-    title = 'PRODUCTION ON TERRAIN BASIS';
-    reporttext: string;
-    pagenum = 1;
-    selectedPage = 1;
-    arrayRows = [];
-    listyear = [];
-    isTableOpt = false;
-    isSpecifyColumns = false;
-    isChart = false;
-    totalone = 0;
-    totaltwo = 0;
-    year: number;
-    columnsArray: any[];
+  genk: GenericService;
+  cdr: ChangeDetectorRef;
+  title = 'PRODUCTION ON TERRAIN BASIS';
+  reporttext: string;
+  pagenum = 1;
+  selectedPage = 1;
+  arrayRows = [];
+  listyear = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
+  isChart = false;
+  totalone = 0;
+  totaltwo = 0;
+  year: number;
+  columnsArray: any[];
 
-    constructor(private report: ReportService, private workprogram: WorkProgramService,
-      private cd: ChangeDetectorRef, private gen: GenericService, private modalService: ModalService){
-        this.genk = gen;
-        this.cdr = cd;
-        this.genk.sizePerPage = this.genk.sizeten;
-        this.modalService.generalReport
-        .subscribe(res => {
-          this.getCrudeOilProduction();
-        });
+  constructor(
+    private report: ReportService,
+    private workprogram: WorkProgramService,
+    private cd: ChangeDetectorRef,
+    private gen: GenericService,
+    private modalService: ModalService
+  ) {
+    this.genk = gen;
+    this.cdr = cd;
+    this.genk.sizePerPage = this.genk.sizeten;
+    this.modalService.generalReport.subscribe((res) => {
+      this.getCrudeOilProduction();
+    });
+  }
+
+  ngOnInit() {
+    //this.year = Number(this.genk.reportYear);
+    this.data = [];
+    this.genk.sizePerPage = this.genk.sizeten;
+    //this.getCrudeOilProduction();
+  }
+
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
+
+  public get tableTitle(): string {
+    return `Crude Oil Production in bbls from ${
+      Number(this.genk.reportYear) - 4
+    } to ${this.genk.reportYear} on Terrain Basis`;
+  }
+
+  public get barone(): string {
+    return `TOTAL ${this.genk.reportYear}`;
+  }
+
+  public get bartwo(): string {
+    return `TOTAL ${Number(this.genk.reportYear) - 1}`;
+  }
+
+  public get columns(): any[] {
+    this.columnsArray = [
+      {
+        columnDef: 'terrain',
+        header: 'TERRAIN',
+      },
+      {
+        columnDef: `_${this.genk.reportYear}`,
+        header: `${this.genk.reportYear}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 1}`,
+        header: `${Number(this.genk.reportYear) - 1}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 2}`,
+        header: `${Number(this.genk.reportYear) - 2}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 3}`,
+        header: `${Number(this.genk.reportYear) - 3}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 4}`,
+        header: `${Number(this.genk.reportYear) - 4}`,
+      },
+    ];
+    return this.columnsArray;
+  }
+
+  public get repcolumns(): any[] {
+    this.columnsArray = [
+      {
+        columnDef: 'terrain',
+        header: 'TERRAIN',
+      },
+      {
+        columnDef: `_${this.genk.reportYear}`,
+        header: `${this.genk.reportYear}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 1}`,
+        header: `${Number(this.genk.reportYear) - 1}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 2}`,
+        header: `${Number(this.genk.reportYear) - 2}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 3}`,
+        header: `${Number(this.genk.reportYear) - 3}`,
+      },
+      {
+        columnDef: `_${Number(this.genk.reportYear) - 4}`,
+        header: `${Number(this.genk.reportYear) - 4}`,
+      },
+    ];
+    return this.columnsArray;
+  }
+
+  public set columns(value) {
+    this.columnsArray = value;
+  }
+
+  public set repcolumns(value) {
+    this.columnsArray = value;
+  }
+
+  assignPageNum() {
+    this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+  }
+
+  assignDataRows() {
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
+    //if(this.arrayRows.length>1) this.selectedPage=1;
+    this.cd.markForCheck();
+  }
+
+  goNext() {
+    this.selectedPage++;
+    this.assignDataRows();
+  }
+
+  goPrev() {
+    this.selectedPage--;
+    this.assignDataRows();
+  }
+
+  firstPage() {
+    this.selectedPage = 1;
+    this.assignDataRows();
+  }
+
+  lastPage() {
+    this.selectedPage = this.pagenum;
+    this.assignDataRows();
+  }
+
+  changePage(value: string) {
+    this.selectedPage = Number(value);
+    this.assignDataRows();
+  }
+
+  resize(e) {
+    let value = e.target.value;
+    if (value === 'all') {
+      value = this.pagenum * this.genk.sizePerPage;
     }
-
-    ngOnInit() {
-      //this.year = Number(this.genk.reportYear);
-      this.data = [];
-      this.genk.sizePerPage = this.genk.sizeten;
-      //this.getCrudeOilProduction();
-    }
-
-    public get pageIndex(): number {
-        return (this.selectedPage - 1) * this.genk.sizePerPage;
-    }
-
-    public get tableTitle(): string {
-      return `Crude Oil Production in bbls from ${Number(this.genk.reportYear) - 4} to ${this.genk.reportYear} on Terrain Basis`;
-    }
-
-    public get barone(): string {
-      return `TOTAL ${this.genk.reportYear}`;
-    }
-
-    public get bartwo(): string {
-      return `TOTAL ${Number(this.genk.reportYear) - 1}`;
-    }
-
-    public get columns(): any[] {
-      this.columnsArray = [
-        {
-          "columnDef": "terrain",
-          "header": "TERRAIN"
-        },
-        {
-          "columnDef": `_${this.genk.reportYear}`,
-          "header": `${this.genk.reportYear}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
-          "header": `${Number(this.genk.reportYear) - 1}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
-          "header": `${Number(this.genk.reportYear) - 2}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
-          "header": `${Number(this.genk.reportYear) - 3}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
-          "header": `${Number(this.genk.reportYear) - 4}`
-        }
-      ];
-      return this.columnsArray;
-    }
-
-    public get repcolumns(): any[] {
-      this.columnsArray= [
-        {
-          "columnDef": "terrain",
-          "header": "TERRAIN"
-        },
-        {
-          "columnDef": `_${this.genk.reportYear}`,
-          "header": `${this.genk.reportYear}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 1}`,
-          "header": `${Number(this.genk.reportYear) - 1}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 2}`,
-          "header": `${Number(this.genk.reportYear) - 2}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 3}`,
-          "header": `${Number(this.genk.reportYear) - 3}`
-        },
-        {
-          "columnDef": `_${Number(this.genk.reportYear) - 4}`,
-          "header": `${Number(this.genk.reportYear) - 4}`
-        }
-      ];
-      return this.columnsArray;
-    }
-
-    public set columns(value) {
-      this.columnsArray = value;
-    }
-
-    public set repcolumns(value) {
-      this.columnsArray = value;
-    }
-
-      assignPageNum() {
-        this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-      }
-
-      assignDataRows() {
-          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        //if(this.arrayRows.length>1) this.selectedPage=1;
-        this.cd.markForCheck();
-      }
-
-
-      goNext() {
-        this.selectedPage++;
-        this.assignDataRows();
-      }
-
-      goPrev() {
-        this.selectedPage--;
-        this.assignDataRows();
-      }
-
-      firstPage() {
-        this.selectedPage = 1;
-        this.assignDataRows();
-      }
-
-      lastPage() {
-        this.selectedPage = this.pagenum;
-        this.assignDataRows();
-      }
-
-      changePage(value: string) {
-        this.selectedPage = Number(value);
-        this.assignDataRows();
-      }
-
-      resize(e) {
-        let value = e.target.value;
-        if (value === 'all') {
-          value = this.pagenum * this.genk.sizePerPage
-        }
-        this.genk.sizePerPage = Number(value);
-        this.assignDataRows();
-        this.assignPageNum();
-        this.cd.markForCheck();
-      }
+    this.genk.sizePerPage = Number(value);
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
+  }
 
   getCrudeOilProduction() {
-    this.workprogram.getCrudeOilProduction(this.genk.reportYear)
-      .subscribe(res => {
-        //debugger;
+    this.workprogram
+      .getCrudeOilProduction(this.genk.reportYear)
+      .subscribe((res) => {
+        //
         this.data = res.crude_Oil_Production_By_Terrain_Pivotted as any[];
-          if(this.data.length>1) this.selectedPage=1;
-        this.totalone = Math.round(this.report.sumColumn(this.data, `_${this.genk.reportYear}`));
-        this.totaltwo = Math.round(this.report.sumColumn(this.data, `_${Number(this.genk.reportYear) - 1}`));
+        if (this.data.length > 1) this.selectedPage = 1;
+        this.totalone = Math.round(
+          this.report.sumColumn(this.data, `_${this.genk.reportYear}`)
+        );
+        this.totaltwo = Math.round(
+          this.report.sumColumn(
+            this.data,
+            `_${Number(this.genk.reportYear) - 1}`
+          )
+        );
         this.assignDataRows();
         this.assignPageNum();
         this.cd.markForCheck();
       });
   }
-
-
 
   togOptions() {
     if (!this.isTableOpt) {
@@ -218,11 +243,12 @@ export class CrudeProductionTerrainComponent implements OnInit {
 
   pickColumn(value: string, checked: boolean) {
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.repcolumns.filter((x) => x.columnDef == value)[0];
       this.selectedColumns.push(val);
-    }
-    else {
-      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+    } else {
+      let remainingArr = this.selectedColumns.filter(
+        (x) => x.columnDef != value
+      );
       this.selectedColumns = remainingArr;
     }
     this.cd.markForCheck();
@@ -237,10 +263,11 @@ export class CrudeProductionTerrainComponent implements OnInit {
   plotDoublePieChart() {
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -252,20 +279,20 @@ export class CrudeProductionTerrainComponent implements OnInit {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
     }
   }
 
   plotDoubleBarChart() {
-    let totalString = "";
+    let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -275,19 +302,30 @@ export class CrudeProductionTerrainComponent implements OnInit {
 
       this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        let chartdata = this.report.formatChartData(
+          this.data,
+          this.selectedColumns[0].columnDef,
+          this.selectedColumns[1].columnDef
+        );
         for (var i = 0; i < chartdata.length; i++) {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-        else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.plotDoubleBarChartHorizontal(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
+        } else {
+          this.report.plotDoubleBarChart(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
         }
       }
     }
   }
-
-
 }

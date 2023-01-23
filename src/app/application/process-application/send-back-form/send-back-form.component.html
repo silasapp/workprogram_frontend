@@ -1,8 +1,26 @@
 <h1 mat-dialog-title>Send Back Application</h1>
 <div mat-dialog-content class="modal-width">
   <form [formGroup]="form">
+    <div>
+      <label style="font-weight: bolder" *ngIf="!isPlanning"
+        >Select Affected Tables Below:
+      </label>
+      <label style="font-weight: bolder" *ngIf="isPlanning">Select SBU: </label>
+
+      <div class="list-of-tables">
+        <mat-selection-list>
+          <mat-list-option
+            *ngFor="let item of checkItems"
+            (click)="onSelect(item)"
+          >
+            {{ item?.tableName ? item?.tableName : item.sbU_Name }}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+
     <div class="fomr-group" style="margin-bottom: 10px">
-      <label>Comment</label>
+      <label style="font-weight: bolder">Comment</label>
       <textarea
         name="comment"
         formControlName="comment"

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -11,12 +11,14 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-//import { IDropdownSettings } from 'ng-multiselect-dropdown';
-//import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 import {
   Application,
   ApplicationDetails,
 } from 'src/app/models/application-details';
+import { ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -35,7 +37,10 @@ export class PushApplicationFormComponent implements OnInit {
     private appService: WorkProgramService,
     public dialogRef: MatDialogRef<PushApplicationFormComponent>,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cd: ChangeDetectorRef,
+    private modalService: ModalService,
+    private route: Router
   ) {
     this.appDetails = data.data.applicationDetails;
 
@@ -60,11 +65,17 @@ export class PushApplicationFormComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          if (res.success) {
-            this.dialogRef.close();
-          }
+          this.dialogRef.close();
+          this.modalService.logNotice(res.message, 'Success', 'success');
+          this.route.navigate(['/application/mydesk']);
+          this.cd.markForCheck();
         },
-        error: (error) => {},
+        error: (error) => {
+          this.dialogRef.close();
+          this.modalService.logNotice(error.message, 'Error', 'error');
+          this.route.navigate(['/application/mydesk']);
+          this.cd.markForCheck();
+        },
       });
   }
 }

@@ -1,376 +1,394 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ReportService } from 'src/app/services/report.service';
 import { GenericService } from '../services';
 
 @Component({
   selector: 'app-drilling-operations',
   templateUrl: 'ndr-report.component.html',
-   styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
+  styleUrls: [
+    './ndr-report.component.scss',
+    '../general-report/general-report.component.scss',
+  ],
 
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DrillingOperationsComponent implements OnInit {
-  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>; 
-      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>; 
-      genk: GenericService;    cdr: ChangeDetectorRef;
-    title = 'DRILLING OPERATIONS';
-    pagenum = 0;
-    selectedPage = 0;
-    arrayRows = [];
-    data: any[];
-    year = [];
-    selectedColumns: any[] = [];
-    isTableOpt = false;
-    isSpecifyColumns = false;
-  
-     columns = [
-      {
-          "columnDef": "companyname",
-          "header": "COMPANY NAME"
-      },
-      {
-          "columnDef": "companyemail",
-          "header": "COMPANY EMAIL"
-      },
-      {
-        "columnDef": "oml_name",
-        "header": "CONCESSION HELD"
-      },
-      {
-          "columnDef": "year_of_wp",
-          "header": "YEAR"
-      },
-      {
-        "columnDef": "contract_type",
-        "header": "CONTRACT TYPE"
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox', { static: false })
+  myChartBox: ElementRef<HTMLDivElement>;
+  genk: GenericService;
+  cdr: ChangeDetectorRef;
+  title = 'DRILLING OPERATIONS';
+  pagenum = 0;
+  selectedPage = 0;
+  arrayRows = [];
+  data: any[];
+  year = [];
+  selectedColumns: any[] = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
+
+  columns = [
+    {
+      columnDef: 'companyname',
+      header: 'COMPANY NAME',
     },
     {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
     },
     {
-        "columnDef": "quater",
-        "header": "QUATER"
+      columnDef: 'oml_name',
+      header: 'CONCESSION HELD',
     },
     {
-        "columnDef": "category",
-        "header": "CATEGORY"
+      columnDef: 'year_of_wp',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'quater',
+      header: 'QUATER',
+    },
+    {
+      columnDef: 'category',
+      header: 'CATEGORY',
     },
 
     {
-        "columnDef": "wellname",
-        "header": "WELLNAME"
+      columnDef: 'wellname',
+      header: 'WELLNAME',
     },
     {
-        "columnDef": "actual_proposed",
-        "header": "ACTUAL/PROPOSED"
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL/PROPOSED',
     },
     {
-        "columnDef": "processing_fees_paid",
-        "header": "PROCESSING FEES PAID"
-    },
-  
-    {
-        "columnDef": "cored",
-        "header": "CORED"
-    },
-    {
-        "columnDef": "well_type",
-        "header": "WELL TYPE"
-    },
-    {
-        "columnDef": "well_trajectory",
-        "header": "WELL TRAJECTORY"
-    },
-    {
-        "columnDef": "spud_date",
-        "header": "SPUD DATE"
-    },
-    {
-        "columnDef": "well_cost",
-        "header": "TOTAL ACTUAL WELL COST (USD)"
-    },
-    {
-        "columnDef": "number_of_days_to_total_depth",
-        "header": "NUMBER OF DAYS TO TOTAL DEPTH"
-    },
-      {
-          "columnDef": "water_depth",
-          "header": "WATER DEPTH"
-      },
-      
-      {
-          "columnDef": "true_vertical_depth",
-          "header": "TRUE VERTICAL DEPTH"
-      },
-      {
-          "columnDef": "measured_depth",
-          "header": "MEASURED DEPTH"
-      },
-      {
-          "columnDef": "depth_refrence",
-          "header": "DEPTH REFRENCE"
-      },
-      {
-          "columnDef": "rig_type",
-          "header": "RIG TYPE"
-      },
-      {
-          "columnDef": "rig_name",
-          "header": "RIG NAME"
-      },
-      {
-        "columnDef": "target_reservoir",
-        "header": "TARGET RESERVOIR"
-    },
-    {
-        "columnDef": "location_name",
-        "header": "LOCATION NAME"
-    },
-    {
-        "columnDef": "basin",
-        "header": "BASIN"
-    },
-    {
-        "columnDef": "propose_well_names",
-        "header": "PROPOSE WELL NAMES"
-    },
-    {
-        "columnDef": "actual_wells_name",
-        "header": "ACTUAL WELLS NAME"
-    },
-    {
-        "columnDef": "fielddiscoveryuploadfilepath",
-        "header": "FIELD DISCOVERY FILE"
-    },
-    {
-        "columnDef": "hydrocarboncountuploadfilepath",
-        "header": "HYDROCARBON FILE"
-    },
-      {
-          "columnDef": "terrain_drill",
-          "header": "TERRAIN (DRILL)"
-      },
-      {
-        "columnDef": "comments",
-        "header": "COMMENTS"
-    }];
-
-    repcolumns = [
-      {
-          "columnDef": "companyname",
-          "header": "COMPANY NAME"
-      },
-      {
-          "columnDef": "companyemail",
-          "header": "COMPANY EMAIL"
-      },
-      {
-        "columnDef": "oml_name",
-        "header": "CONCESSION HELD"
-      },
-      {
-          "columnDef": "year_of_wp",
-          "header": "YEAR"
-      },
-      {
-        "columnDef": "contract_type",
-        "header": "CONTRACT TYPE"
-    },
-    {
-        "columnDef": "terrain",
-        "header": "TERRAIN"
-    },
-    {
-        "columnDef": "quater",
-        "header": "QUATER"
-    },
-    {
-        "columnDef": "category",
-        "header": "CATEGORY"
+      columnDef: 'processing_fees_paid',
+      header: 'PROCESSING FEES PAID',
     },
 
     {
-        "columnDef": "wellname",
-        "header": "WELLNAME"
+      columnDef: 'cored',
+      header: 'CORED',
     },
     {
-        "columnDef": "actual_proposed",
-        "header": "ACTUAL/PROPOSED"
+      columnDef: 'well_type',
+      header: 'WELL TYPE',
     },
     {
-        "columnDef": "processing_fees_paid",
-        "header": "PROCESSING FEES PAID"
-    },
-  
-    {
-        "columnDef": "cored",
-        "header": "CORED"
+      columnDef: 'well_trajectory',
+      header: 'WELL TRAJECTORY',
     },
     {
-        "columnDef": "well_type",
-        "header": "WELL TYPE"
+      columnDef: 'spud_date',
+      header: 'SPUD DATE',
     },
     {
-        "columnDef": "well_trajectory",
-        "header": "WELL TRAJECTORY"
+      columnDef: 'well_cost',
+      header: 'TOTAL ACTUAL WELL COST (USD)',
     },
     {
-        "columnDef": "spud_date",
-        "header": "SPUD DATE"
+      columnDef: 'number_of_days_to_total_depth',
+      header: 'NUMBER OF DAYS TO TOTAL DEPTH',
     },
     {
-        "columnDef": "well_cost",
-        "header": "TOTAL ACTUAL WELL COST (USD)"
+      columnDef: 'water_depth',
+      header: 'WATER DEPTH',
     },
-    {
-        "columnDef": "number_of_days_to_total_depth",
-        "header": "NUMBER OF DAYS TO TOTAL DEPTH"
-    },
-      {
-          "columnDef": "water_depth",
-          "header": "WATER DEPTH"
-      },
-      
-      {
-          "columnDef": "true_vertical_depth",
-          "header": "TRUE VERTICAL DEPTH"
-      },
-      {
-          "columnDef": "measured_depth",
-          "header": "MEASURED DEPTH"
-      },
-      {
-          "columnDef": "depth_refrence",
-          "header": "DEPTH REFRENCE"
-      },
-      {
-          "columnDef": "rig_type",
-          "header": "RIG TYPE"
-      },
-      {
-          "columnDef": "rig_name",
-          "header": "RIG NAME"
-      },
-      {
-        "columnDef": "target_reservoir",
-        "header": "TARGET RESERVOIR"
-    },
-    {
-        "columnDef": "location_name",
-        "header": "LOCATION NAME"
-    },
-    {
-        "columnDef": "basin",
-        "header": "BASIN"
-    },
-    {
-        "columnDef": "propose_well_names",
-        "header": "PROPOSE WELL NAMES"
-    },
-    {
-        "columnDef": "actual_wells_name",
-        "header": "ACTUAL WELLS NAME"
-    },
-    {
-        "columnDef": "fielddiscoveryuploadfilepath",
-        "header": "FIELD DISCOVERY FILE"
-    },
-    {
-        "columnDef": "hydrocarboncountuploadfilepath",
-        "header": "HYDROCARBON FILE"
-    },
-      {
-          "columnDef": "terrain_drill",
-          "header": "TERRAIN (DRILL)"
-      },
-      {
-        "columnDef": "comments",
-        "header": "COMMENTS"
-    }];
-  
-    constructor(private report: ReportService,
-        private cd: ChangeDetectorRef,
-        private gen: GenericService) {
-        this.genk = gen;
-        this.cdr = cd;
-        this.genk.sizePerPage = this.genk.sizeten;
-    }
 
-    ngOnInit() {
-        this.data = [];
-        this.yearList();
-        this.genk.sizePerPage = this.genk.sizeten;
-    }
+    {
+      columnDef: 'true_vertical_depth',
+      header: 'TRUE VERTICAL DEPTH',
+    },
+    {
+      columnDef: 'measured_depth',
+      header: 'MEASURED DEPTH',
+    },
+    {
+      columnDef: 'depth_refrence',
+      header: 'DEPTH REFRENCE',
+    },
+    {
+      columnDef: 'rig_type',
+      header: 'RIG TYPE',
+    },
+    {
+      columnDef: 'rig_name',
+      header: 'RIG NAME',
+    },
+    {
+      columnDef: 'target_reservoir',
+      header: 'TARGET RESERVOIR',
+    },
+    {
+      columnDef: 'location_name',
+      header: 'LOCATION NAME',
+    },
+    {
+      columnDef: 'basin',
+      header: 'BASIN',
+    },
+    {
+      columnDef: 'propose_well_names',
+      header: 'PROPOSE WELL NAMES',
+    },
+    {
+      columnDef: 'actual_wells_name',
+      header: 'ACTUAL WELLS NAME',
+    },
+    {
+      columnDef: 'fielddiscoveryuploadfilepath',
+      header: 'FIELD DISCOVERY FILE',
+    },
+    {
+      columnDef: 'hydrocarboncountuploadfilepath',
+      header: 'HYDROCARBON FILE',
+    },
+    {
+      columnDef: 'terrain_drill',
+      header: 'TERRAIN (DRILL)',
+    },
+    {
+      columnDef: 'comments',
+      header: 'COMMENTS',
+    },
+  ];
 
-    public get pageIndex(): number {
-        return (this.selectedPage - 1) * this.genk.sizePerPage;
-    }
+  repcolumns = [
+    {
+      columnDef: 'companyname',
+      header: 'COMPANY NAME',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
+    },
+    {
+      columnDef: 'oml_name',
+      header: 'CONCESSION HELD',
+    },
+    {
+      columnDef: 'year_of_wp',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'quater',
+      header: 'QUATER',
+    },
+    {
+      columnDef: 'category',
+      header: 'CATEGORY',
+    },
 
-    assignPageNum() {
-        this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    }
+    {
+      columnDef: 'wellname',
+      header: 'WELLNAME',
+    },
+    {
+      columnDef: 'actual_proposed',
+      header: 'ACTUAL/PROPOSED',
+    },
+    {
+      columnDef: 'processing_fees_paid',
+      header: 'PROCESSING FEES PAID',
+    },
 
-    assignDataRows() {
-          this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        //if(this.arrayRows.length>1) this.selectedPage=1;
-        this.cd.markForCheck();
-    }
-  
-    fetchdata(e){
-      let value = e.target.value;
-      this.report.fetch("drilling-operations", value).subscribe(
-        (res) => {
-           this.data = res.data as any[];
-            if(this.data.length>0) this.selectedPage=1;
-            this.assignDataRows();
-            this.assignPageNum();
-            this.cd.markForCheck();
-          }
-      )
-    }
+    {
+      columnDef: 'cored',
+      header: 'CORED',
+    },
+    {
+      columnDef: 'well_type',
+      header: 'WELL TYPE',
+    },
+    {
+      columnDef: 'well_trajectory',
+      header: 'WELL TRAJECTORY',
+    },
+    {
+      columnDef: 'spud_date',
+      header: 'SPUD DATE',
+    },
+    {
+      columnDef: 'well_cost',
+      header: 'TOTAL ACTUAL WELL COST (USD)',
+    },
+    {
+      columnDef: 'number_of_days_to_total_depth',
+      header: 'NUMBER OF DAYS TO TOTAL DEPTH',
+    },
+    {
+      columnDef: 'water_depth',
+      header: 'WATER DEPTH',
+    },
 
-    yearList() {
-        this.report.getYearList("drilling-operations-yearlist")
-            .subscribe((res: any[]) => {
-                this.year = res;
-                this.cd.markForCheck();
-            });
-    }
+    {
+      columnDef: 'true_vertical_depth',
+      header: 'TRUE VERTICAL DEPTH',
+    },
+    {
+      columnDef: 'measured_depth',
+      header: 'MEASURED DEPTH',
+    },
+    {
+      columnDef: 'depth_refrence',
+      header: 'DEPTH REFRENCE',
+    },
+    {
+      columnDef: 'rig_type',
+      header: 'RIG TYPE',
+    },
+    {
+      columnDef: 'rig_name',
+      header: 'RIG NAME',
+    },
+    {
+      columnDef: 'target_reservoir',
+      header: 'TARGET RESERVOIR',
+    },
+    {
+      columnDef: 'location_name',
+      header: 'LOCATION NAME',
+    },
+    {
+      columnDef: 'basin',
+      header: 'BASIN',
+    },
+    {
+      columnDef: 'propose_well_names',
+      header: 'PROPOSE WELL NAMES',
+    },
+    {
+      columnDef: 'actual_wells_name',
+      header: 'ACTUAL WELLS NAME',
+    },
+    {
+      columnDef: 'fielddiscoveryuploadfilepath',
+      header: 'FIELD DISCOVERY FILE',
+    },
+    {
+      columnDef: 'hydrocarboncountuploadfilepath',
+      header: 'HYDROCARBON FILE',
+    },
+    {
+      columnDef: 'terrain_drill',
+      header: 'TERRAIN (DRILL)',
+    },
+    {
+      columnDef: 'comments',
+      header: 'COMMENTS',
+    },
+  ];
 
-    goNext() {
-        this.selectedPage++;
-        this.assignDataRows();
-    }
+  constructor(
+    private report: ReportService,
+    private cd: ChangeDetectorRef,
+    private gen: GenericService
+  ) {
+    this.genk = gen;
+    this.cdr = cd;
+    this.genk.sizePerPage = this.genk.sizeten;
+  }
 
-    goPrev() {
-        this.selectedPage--;
-        this.assignDataRows();
-    }
+  ngOnInit() {
+    this.data = [];
+    this.yearList();
+    this.genk.sizePerPage = this.genk.sizeten;
+  }
 
-    firstPage() {
-        this.selectedPage = 1;
-        this.assignDataRows();
-    }
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
 
-    lastPage() {
-        this.selectedPage = this.pagenum;
-        this.assignDataRows();
-    }
+  assignPageNum() {
+    this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+  }
 
-    changePage(value: string) {
-        this.selectedPage = Number(value);
-        this.assignDataRows();
-    }
-resize(e) {
-      let value = e.target.value;
-      if (value === 'all') {
-          value = this.pagenum * this.genk.sizePerPage
-      }
-      this.genk.sizePerPage = Number(value);
+  assignDataRows() {
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
+    //if(this.arrayRows.length>1) this.selectedPage=1;
+    this.cd.markForCheck();
+  }
+
+  fetchdata(e) {
+    let value = e.target.value;
+    this.report.fetch('drilling-operations', value).subscribe((res) => {
+      this.data = res.data as any[];
+      if (this.data.length > 0) this.selectedPage = 1;
       this.assignDataRows();
       this.assignPageNum();
       this.cd.markForCheck();
+    });
+  }
+
+  yearList() {
+    this.report
+      .getYearList('drilling-operations-yearlist')
+      .subscribe((res: any[]) => {
+        this.year = res;
+        this.cd.markForCheck();
+      });
+  }
+
+  goNext() {
+    this.selectedPage++;
+    this.assignDataRows();
+  }
+
+  goPrev() {
+    this.selectedPage--;
+    this.assignDataRows();
+  }
+
+  firstPage() {
+    this.selectedPage = 1;
+    this.assignDataRows();
+  }
+
+  lastPage() {
+    this.selectedPage = this.pagenum;
+    this.assignDataRows();
+  }
+
+  changePage(value: string) {
+    this.selectedPage = Number(value);
+    this.assignDataRows();
+  }
+  resize(e) {
+    let value = e.target.value;
+    if (value === 'all') {
+      value = this.pagenum * this.genk.sizePerPage;
+    }
+    this.genk.sizePerPage = Number(value);
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
   }
 
   togOptions() {
@@ -394,11 +412,12 @@ resize(e) {
 
   pickColumn(value: string, checked: boolean) {
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.repcolumns.filter((x) => x.columnDef == value)[0];
       this.selectedColumns.push(val);
-    }
-    else {
-      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+    } else {
+      let remainingArr = this.selectedColumns.filter(
+        (x) => x.columnDef != value
+      );
       this.selectedColumns = remainingArr;
     }
     this.cd.markForCheck;
@@ -411,14 +430,13 @@ resize(e) {
   }
 
   plotDoublePieChart() {
-    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-      debugger;
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -430,21 +448,20 @@ resize(e) {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
     }
   }
 
   plotDoubleBarChart() {
-    debugger;
-    let totalString = "";
+    let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -454,20 +471,30 @@ resize(e) {
 
       this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        let chartdata = this.report.formatChartData(
+          this.data,
+          this.selectedColumns[0].columnDef,
+          this.selectedColumns[1].columnDef
+        );
         for (var i = 0; i < chartdata.length; i++) {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-        else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.plotDoubleBarChartHorizontal(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
+        } else {
+          this.report.plotDoubleBarChart(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
         }
       }
     }
   }
-
-
-  
 }

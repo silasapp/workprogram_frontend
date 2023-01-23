@@ -368,7 +368,8 @@ var i:number;
 
         if (res.oilCondensateProductionMonthlyProposed) {
           this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
-          this.proposedmonthlyBody = res.oilCondensateProductionMonthlyProposed[0];
+          this.proposedmonthlyBody =
+            res.oilCondensateProductionMonthlyProposed[0];
         }
 
         if (res.oilCondensateFiveYears) {
@@ -431,7 +432,7 @@ var i:number;
   }
 
   changeActualMonth(e) {
-    //debugger;
+    //
     let month = e.target.value;
     this.monthlyactivityBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity;
@@ -444,7 +445,7 @@ var i:number;
   }
 
   changeProposedMonth(e) {
-    //debugger;
+    //
     let month = e.target.value;
     this.proposedmonthlyBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED;
@@ -458,7 +459,7 @@ var i:number;
   }
 
   changeFiveYearProjection(e) {
-    //debugger;
+    //
     let year = e.target.value;
     this.fiveYearForecastBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION;
@@ -520,7 +521,6 @@ var i:number;
     this.genk.fieldWell = event.target.value;
     setTimeout(() => {
       this.ngOnInit();
-  }, 1000);
-
+    }, 1000);
   }
 }

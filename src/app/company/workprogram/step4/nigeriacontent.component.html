@@ -1,23 +1,22 @@
-<div style="
+<div
+  style="
     border-radius: 5px;
     box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
     padding: 20px;
     background-color: white;
-  ">
-  <h6 style="
+  "
+>
+  <h6
+    style="
       text-shadow: 1px 1px rgb(130, 23, 23);
       color: rgb(255, 157, 0);
       margin-left: 75%;
       font-size: 18px;
-    ">
+    "
+  >
     Note:*All Fields are Mandatory
   </h6>
-  <div style="
-      font-size: 25px;
-      font-weight: 500;
-      text-align: center;
-
-    ">
+  <div style="font-size: 25px; font-weight: 500; text-align: center">
     <span style="font-weight: 600">NIGERIA CONTENT</span>
   </div>
   <br />
@@ -26,116 +25,162 @@
     <div style="width: 100%">
       <div style="width: 100%">
         <div style="font-weight: 500; margin-bottom: 5px">
-          <span style="font-weight: 500; font-size: 18px; color: teal;">Staff Disposition - Training for Nigerians</span>
+          <span style="font-weight: 500; font-size: 18px; color: teal"
+            >Staff Disposition - Training for Nigerians</span
+          >
         </div>
-      </div><br>
+      </div>
+      <br />
 
       <div style="margin: 0 1% 0 1%">
         <div class="menu-container">
           <div class="menu-container-control">
-            <div class="menu-item" [ngClass]="{
+            <div
+              class="menu-item"
+              [ngClass]="{
                 'active-item': activeMenu === 'Actual Year',
                 completed: completedActual
-              }" (click)="setActiveMenu('Actual Year')">
+              }"
+              (click)="setActiveMenu('Actual Year')"
+            >
               <span>Actual Year</span>
             </div>
-            <div class="menu-item" [ngClass]="{
+            <div
+              class="menu-item"
+              [ngClass]="{
                 'active-item': activeMenu === 'Proposed Year',
                 completed: completedProposed
-              }" (click)="setActiveMenu('Proposed Year')">
+              }"
+              (click)="setActiveMenu('Proposed Year')"
+            >
               <span>Proposed Year</span>
             </div>
           </div>
         </div>
         <div class="menu-content">
           <div *ngIf="activeMenu === 'Actual Year'">
-            <div style="
+            <div
+              style="
                 display: flex;
                 width: 100%;
                 margin-bottom: 10px;
                 justify-content: space-between;
-              ">
+              "
+            >
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input class="inpute" formControlName="expatriate_quota_positions"
-                      (keypress)="genk.restrictData($event)" (keyup)="genk.formatNum_Efficient($event.target.value)"
+                    "
+                  >
+                    <input
+                      class="inpute"
+                      formControlName="expatriate_quota_positions"
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="
                         staffdispositionBody._expatriate_quota_positions
-                      " />
+                      "
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Utilized EQ</label>
+                <label class="labelwp"
+                  >Number of Utilized Expatriate Quota</label
+                >
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input class="inpute" formControlName="utilized_EQ" (keypress)="genk.restrictData($event)"
+                    "
+                  >
+                    <input
+                      class="inpute"
+                      formControlName="utilized_EQ"
+                      (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatNum_Efficient($event.target.value)"
-                      [(ngModel)]="staffdispositionBody._utilized_EQ" />
+                      [(ngModel)]="staffdispositionBody._utilized_EQ"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div style="
-                display: flex;
-                width: 100%;
-                justify-content: space-between;
-
-              ">
+            <div
+              style="display: flex; width: 100%; justify-content: space-between"
+            >
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Nigerian Understudies</label>
+                <label class="labelwp">Number of Nigerian Understudies</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="nigerian_Understudies" [(ngModel)]="staffdispositionBody.nigerian_Understudies" class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="nigerian_Understudies"
+                      [(ngModel)]="staffdispositionBody.nigerian_Understudies"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Foreign (Management)</label>
+                <label class="labelwp">Number of Foreign (Management)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="management_Foriegn"
+                      [(ngModel)]="staffdispositionBody.management_Foriegn"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Local (Management)</label>
+                <label class="labelwp">Number of Local (Management)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="management_Local"
+                      [(ngModel)]="staffdispositionBody.management_Local"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -144,30 +189,44 @@
 
             <div style="display: flex; width: 100%">
               <div style="width: 30%; margin: auto 5% 0 0">
-                <label class="labelwp">Local (Staff)</label>
+                <label class="labelwp">Number of Local (Staff)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="staff_Local" [(ngModel)]="staffdispositionBody.staff_Local"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="staff_Local"
+                      [(ngModel)]="staffdispositionBody.staff_Local"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Foreign (Staff)</label>
+                <label class="labelwp">Number of Foreign (Staff)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="staff_Foriegn" [(ngModel)]="staffdispositionBody.staff_Foriegn"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="staff_Foriegn"
+                      [(ngModel)]="staffdispositionBody.staff_Foriegn"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -184,83 +243,125 @@
           </div>
 
           <div *ngIf="activeMenu === 'Proposed Year'">
-            <div style="display: flex; width: 100%; justify-content: space-between">
+            <div
+              style="display: flex; width: 100%; justify-content: space-between"
+            >
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input class="inpute" formControlName="expatriate_quota_positions"
-                      (keypress)="genk.restrictData($event)" (keyup)="genk.formatNum_Efficient($event.target.value)"
+                    "
+                  >
+                    <input
+                      class="inpute"
+                      formControlName="expatriate_quota_positions"
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="
                         staffdispositionBody._expatriate_quota_positions
-                      " />
+                      "
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Utilized EQ</label>
+                <label class="labelwp"
+                  >Number of Utilized Expatriate Quota</label
+                >
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input class="inpute" formControlName="utilized_EQ" (keypress)="genk.restrictData($event)"
+                    "
+                  >
+                    <input
+                      class="inpute"
+                      formControlName="utilized_EQ"
+                      (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatNum_Efficient($event.target.value)"
-                      [(ngModel)]="staffdispositionBody._utilized_EQ" />
+                      [(ngModel)]="staffdispositionBody._utilized_EQ"
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <br />
 
-            <div style="display: flex; width: 100%; justify-content: space-between">
+            <div
+              style="display: flex; width: 100%; justify-content: space-between"
+            >
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Nigerian Understudies</label>
+                <label class="labelwp">Number of Nigerian Understudies</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="nigerian_Understudies"
-                      [(ngModel)]="staffdispositionBody.nigerian_Understudies" class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="nigerian_Understudies"
+                      [(ngModel)]="staffdispositionBody.nigerian_Understudies"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Foreign (Management)</label>
+                <label class="labelwp">Number of Foreign (Management)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="management_Foriegn" [(ngModel)]="staffdispositionBody.management_Foriegn" class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="management_Foriegn"
+                      [(ngModel)]="staffdispositionBody.management_Foriegn"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Local (Management)</label>
+                <label class="labelwp">Number of Local (Management)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="management_Local" [(ngModel)]="staffdispositionBody.management_Local" class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="management_Local"
+                      [(ngModel)]="staffdispositionBody.management_Local"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -269,30 +370,44 @@
 
             <div style="display: flex; width: 100%">
               <div style="width: 30%; margin: auto 5% 0 0">
-                <label class="labelwp">Local (Staff)</label>
+                <label class="labelwp">Number of Local (Staff)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="staff_Local" [(ngModel)]="staffdispositionBody.staff_Local"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="staff_Local"
+                      [(ngModel)]="staffdispositionBody.staff_Local"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Foreign (Staff)</label>
+                <label class="labelwp">Number of Foreign (Staff)</label>
                 <div style="display: flex">
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="staff_Foriegn" [(ngModel)]="staffdispositionBody.staff_Foriegn"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatNum_Efficient($event.target.value)"
+                      formControlName="staff_Foriegn"
+                      [(ngModel)]="staffdispositionBody.staff_Foriegn"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -313,11 +428,14 @@
     <br />
   </div>
 
-  <div #divTable style="
+  <div
+    #divTable
+    style="
       overflow: hidden;
       overflow-x: auto;
       box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-    ">
+    "
+  >
     <table #codeTable class="apptable" cellPadding="10px">
       <thead>
         <tr>
@@ -332,9 +450,16 @@
             {{ row[h.columnDef] }}
           </td>
           <td>
-            <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
-              (click)="deleteNCT(row)" value="{{ row.id }}"
-              style="background-color: white; color: red; border: 2px solid" class="submitbtn">
+            <button
+              mat-stroked-button
+              style="margin: 50px; padding: 10px"
+              type="button"
+              class="btn btn-primary"
+              (click)="deleteNCT(row)"
+              value="{{ row.id }}"
+              style="background-color: white; color: red; border: 2px solid"
+              class="submitbtn"
+            >
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
               <b>Delete</b>
             </button>
@@ -344,27 +469,42 @@
     </table>
   </div>
 </div>
-<br /><br>
+<br /><br />
 
-<div [formGroup]="seniormanagementstaffForm" style="background-color: white; padding: 0 20px; box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3); border-radius: 10px;">
-  <div style="font-size: 20px; font-weight: 500; padding: 20px 0; color: teal;">
+<div
+  [formGroup]="seniormanagementstaffForm"
+  style="
+    background-color: white;
+    padding: 0 20px;
+    box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+    border-radius: 10px;
+  "
+>
+  <div style="font-size: 20px; font-weight: 500; padding: 20px 0; color: teal">
     <span>Senior / Management Staff </span>
   </div>
-  <div style="width: 30%;">
+  <div style="width: 30%">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 100%">
-        <label class="labelwp">Do you have a valid Expatriate Quota for your foreign staff</label>
+        <label class="labelwp"
+          >Do you have a valid Expatriate Quota for your foreign staff</label
+        >
         <div style="display: flex; width: 100%">
-          <div style="
+          <div
+            style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               padding: 5px;
               border-radius: 20px;
-            ">
-            <select class="inpute" formControlName="do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff"
+            "
+          >
+            <select
+              class="inpute"
+              formControlName="do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff"
               [(ngModel)]="
                 seniormanagementstaffBody.do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff
-              ">
+              "
+            >
               <option selected disabled>
                 ---- Please Select an Option ----
               </option>
@@ -381,9 +521,20 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">If NO, Give Reason</label>
       <div style="display: flex">
-        <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);width: 100%;border-radius: 10px;padding: 7px 10px;">
-          <input type="text" formControlName="if_NO_why" [(ngModel)]="seniormanagementstaffBody.if_NO_why"
-            class="inpute" />
+        <div
+          style="
+            box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            type="text"
+            formControlName="if_NO_why"
+            [(ngModel)]="seniormanagementstaffBody.if_NO_why"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -391,10 +542,23 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">Number of staff released within the year</label>
       <div style="display: flex">
-        <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);width: 100%;border-radius: 10px;padding: 7px 10px;">
-          <input formControlName="number_of_staff_released_within_the_year_" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="
-              seniormanagementstaffBody.number_of_staff_released_within_the_year_" class="inpute" />
+        <div
+          style="
+            box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="number_of_staff_released_within_the_year_"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
+              seniormanagementstaffBody.number_of_staff_released_within_the_year_
+            "
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -402,10 +566,23 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">Total No. of Nigerian Senior Staff</label>
       <div style="display: flex">
-        <div style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);width: 100%;border-radius: 10px;padding: 7px 10px;">
-          <input formControlName="total_no_of_nigeria_senior_staff" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="
-              seniormanagementstaffBody.total_no_of_nigeria_senior_staff" class="inpute" />
+        <div
+          style="
+            box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;
+            padding: 7px 10px;
+          "
+        >
+          <input
+            formControlName="total_no_of_nigeria_senior_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
+              seniormanagementstaffBody.total_no_of_nigeria_senior_staff
+            "
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -416,15 +593,21 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">Total No. of Senior Staff</label>
       <div style="display: flex">
-        <div style="
+        <div
+          style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          ">
-          <input formControlName="total_no_of_senior_staff" (keypress)="genk.restrictData($event)"
+          "
+        >
+          <input
+            formControlName="total_no_of_senior_staff"
+            (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatNum_Efficient($event.target.value)"
-            [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff" class="inpute" />
+            [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff"
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -432,16 +615,23 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">Total No. of Nigerian Top Management Staff</label>
       <div style="display: flex">
-        <div style="
+        <div
+          style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          ">
-          <input formControlName="total_no_of_top_nigerian_management_staff" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="
+          "
+        >
+          <input
+            formControlName="total_no_of_top_nigerian_management_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_nigerian_management_staff
-            " class="inpute" />
+            "
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -449,16 +639,23 @@
     <div style="width: 30%; margin: auto 0 0">
       <label class="labelwp">Total No. of Top Management Staff</label>
       <div style="display: flex">
-        <div style="
+        <div
+          style="
             box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
             width: 100%;
             border-radius: 10px;
             padding: 7px 10px;
-          ">
-          <input formControlName="total_no_of_top_management_staff" (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)" [(ngModel)]="
+          "
+        >
+          <input
+            formControlName="total_no_of_top_management_staff"
+            (keypress)="genk.restrictData($event)"
+            (keyup)="genk.formatNum_Efficient($event.target.value)"
+            [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_management_staff
-            " class="inpute" />
+            "
+            class="inpute"
+          />
         </div>
       </div>
     </div>
@@ -475,13 +672,28 @@
     <br />
   </div>
 </div>
-<br><br><br>
+<br /><br /><br />
 
-<div [formGroup]="uploadsuccessionForm" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 2px 2px 4px 2px rgb(0, 0, 0, 0.3)">
+<div
+  [formGroup]="uploadsuccessionForm"
+  style="
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 2px rgb(0, 0, 0, 0.3);
+  "
+>
   <div style="width: 100%">
     <div style="width: 30%">
-      <div style="font-weight: 500; margin-bottom: 5px; font-size: 18px; color: teal;">
-        <span>Upload Succession Plan</span>
+      <div
+        style="
+          font-weight: 500;
+          margin-bottom: 5px;
+          font-size: 18px;
+          color: teal;
+        "
+      >
+        <span>Add Record for Succession Plan</span>
       </div>
     </div>
   </div>
@@ -490,13 +702,18 @@
   <div style="margin: 0 1% 0 1%">
     <div style="width: 30%">
       <label class="labelwp">Is there a succession plan in place?</label>
-      <div style="
+      <div
+        style="
           box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
           width: 100%;
           padding: 5px;
           border-radius: 20px;
-        ">
-        <select formControlName="isThereSuccessionPlan" (change)="setIsThereSuccessionPlan()">
+        "
+      >
+        <select
+          formControlName="isThereSuccessionPlan"
+          (change)="setIsThereSuccessionPlan()"
+        >
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="true">YES</option>
           <option value="false">NO</option>
@@ -507,23 +724,35 @@
     <ng-container *ngIf="isThereSuccessionPlan">
       <div class="menu-container" style="margin-top: 40px">
         <div class="menu-container-control">
-          <div class="menu-item" [ngClass]="{
+          <div
+            class="menu-item"
+            [ngClass]="{
               'active-item': activeMenu_SuccessionPlan === 'Actual Year',
               completed: completedActual_SuccessionPlan
-            }" (click)="setActiveMenu_SuccessionPlan('Actual Year')">
+            }"
+            (click)="setActiveMenu_SuccessionPlan('Actual Year')"
+          >
             <span>Actual Year</span>
           </div>
-          <div class="menu-item" [ngClass]="{
+          <div
+            class="menu-item"
+            [ngClass]="{
               'active-item': activeMenu_SuccessionPlan === 'Proposed Year',
               completed: completedProposed_SuccessionPlan
-            }" (click)="setActiveMenu_SuccessionPlan('Proposed Year')">
+            }"
+            (click)="setActiveMenu_SuccessionPlan('Proposed Year')"
+          >
             <span>Proposed Year</span>
           </div>
         </div>
       </div>
       <div class="menu-content">
-        <div *ngIf="activeMenu_SuccessionPlan === 'Actual Year'" style="background-color: white">
-          <div style="
+        <div
+          *ngIf="activeMenu_SuccessionPlan === 'Actual Year'"
+          style="background-color: white"
+        >
+          <div
+            style="
               display: flex;
               flex-direction: col;
               gap: 10px;
@@ -531,33 +760,46 @@
               margin-bottom: 10px;
               background-color: white;
               padding: 10px;
-            ">
+            "
+          >
             <div style="width: 50%">
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Name of Expatriate</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="name_" [(ngModel)]="uploadsuccessionplanBody.name_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="name_"
+                      [(ngModel)]="uploadsuccessionplanBody.name_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Nigerian Understudy</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="understudy_" [(ngModel)]="uploadsuccessionplanBody.understudy_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="understudy_"
+                      [(ngModel)]="uploadsuccessionplanBody.understudy_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -567,28 +809,39 @@
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Timeline (Years)</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="timeline_" [(ngModel)]="uploadsuccessionplanBody.timeline_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      formControlName="timeline_"
+                      [(ngModel)]="uploadsuccessionplanBody.timeline_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Position Occupied</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="position_Occupied_"
-                      [(ngModel)]="uploadsuccessionplanBody.position_Occupied_" class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="position_Occupied_"
+                      [(ngModel)]="uploadsuccessionplanBody.position_Occupied_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -600,15 +853,19 @@
           <div>
             <div style="text-align: center">
               <button class="submitbtn" (click)="saveUploadSuccessionPlan()">
-                Upload Succession Plan
+                Add Record for Succession Plan
               </button>
             </div>
             <br />
           </div>
         </div>
 
-        <div *ngIf="activeMenu_SuccessionPlan === 'Proposed Year'" style="background-color: white">
-          <div style="
+        <div
+          *ngIf="activeMenu_SuccessionPlan === 'Proposed Year'"
+          style="background-color: white"
+        >
+          <div
+            style="
               display: flex;
               flex-direction: col;
               gap: 10px;
@@ -616,33 +873,46 @@
               margin-bottom: 10px;
               background-color: white;
               padding: 10px;
-            ">
+            "
+          >
             <div style="width: 50%">
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Name of Expatriate</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="name_" [(ngModel)]="uploadsuccessionplanBody.name_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="name_"
+                      [(ngModel)]="uploadsuccessionplanBody.name_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Nigerian Understudy</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="understudy_" [(ngModel)]="uploadsuccessionplanBody.understudy_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="understudy_"
+                      [(ngModel)]="uploadsuccessionplanBody.understudy_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -652,28 +922,39 @@
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Timeline (Years)</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input formControlName="timeline_" [(ngModel)]="uploadsuccessionplanBody.timeline_"
-                      class="inpute" />
+                    "
+                  >
+                    <input
+                      formControlName="timeline_"
+                      [(ngModel)]="uploadsuccessionplanBody.timeline_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
               <div>
                 <div style="width: 100%">
                   <label class="labelwp">Position Occupied</label>
-                  <div style="
+                  <div
+                    style="
                       box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
                       width: 100%;
                       border-radius: 10px;
                       padding: 7px 10px;
-                    ">
-                    <input type="text" formControlName="position_Occupied_"
-                      [(ngModel)]="uploadsuccessionplanBody.position_Occupied_" class="inpute" />
+                    "
+                  >
+                    <input
+                      type="text"
+                      formControlName="position_Occupied_"
+                      [(ngModel)]="uploadsuccessionplanBody.position_Occupied_"
+                      class="inpute"
+                    />
                   </div>
                 </div>
               </div>
@@ -685,7 +966,7 @@
           <div>
             <div style="text-align: center">
               <button class="submitbtn" (click)="saveUploadSuccessionPlan()">
-                Upload Succession Plan
+                Add Record for Succession Plan
               </button>
             </div>
             <br />
@@ -693,11 +974,14 @@
         </div>
       </div>
 
-      <div #divTable style="
+      <div
+        #divTable
+        style="
           overflow: hidden;
           overflow-x: auto;
           box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-        ">
+        "
+      >
         <table #codeTable class="apptable" cellPadding="10px">
           <thead>
             <tr>
@@ -706,15 +990,25 @@
               </th>
             </tr>
           </thead>
-          <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+          <tbody
+            #codeTbody
+            style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)"
+          >
             <tr *ngFor="let row of uploadSuccessionPlans">
               <td *ngFor="let h of uspcolumn">
                 {{ row[h.columnDef] }}
               </td>
               <td>
-                <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
-                  (click)="deleteSuccessionPlan(row)" value="{{ row.id }}"
-                  style="background-color: white; color: red; border: 2px solid" class="submitbtn">
+                <button
+                  mat-stroked-button
+                  style="margin: 50px; padding: 10px"
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="deleteSuccessionPlan(row)"
+                  value="{{ row.id }}"
+                  style="background-color: white; color: red; border: 2px solid"
+                  class="submitbtn"
+                >
                   <mat-icon style="font-size: 20px"> border_color</mat-icon>
                   <b>Delete</b>
                 </button>
@@ -738,7 +1032,17 @@
 <hr size="10" />
 <br /><br />
 
-<br><br>
-<div style="text-align: center;">
-  <button [routerLink]="['/' + genk.company, genk.workprogram, 'step4', 'strategicplans']" class="nextbtn">Next</button>
+<br /><br />
+<div style="text-align: center">
+  <button
+    [routerLink]="[
+      '/' + genk.company,
+      genk.workprogram,
+      'step4',
+      'strategicplans'
+    ]"
+    class="nextbtn"
+  >
+    Next
+  </button>
 </div>

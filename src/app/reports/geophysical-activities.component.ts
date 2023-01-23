@@ -1,312 +1,326 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ReportService } from 'src/app/services/report.service';
 import { GenericService } from '../services';
 
 @Component({
-    selector: 'app-geophysical-activities',
-    templateUrl: 'ndr-report.component.html',
-     styleUrls: ['./ndr-report.component.scss', '../general-report/general-report.component.scss'],
+  selector: 'app-geophysical-activities',
+  templateUrl: 'ndr-report.component.html',
+  styleUrls: [
+    './ndr-report.component.scss',
+    '../general-report/general-report.component.scss',
+  ],
 
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GeophysicalActivitiesComponent implements OnInit {
-  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>; 
-      @ViewChild('mychartbox', { static: false }) myChartBox: ElementRef<HTMLDivElement>; 
-      genk: GenericService;    cdr: ChangeDetectorRef;
-    title = 'GEOPHYSICAL ACTIVITIES (ACQUISITION)';
-    pagenum = 0;
-    selectedPage = 0;
-    arrayRows = [];
-    data: any[];
-    year = [];
-    selectedColumns: any[] = [];
-    isTableOpt = false;
-    isSpecifyColumns = false;
-  
-     columns = [
+  @ViewChild('mychart', { static: false }) myChart: ElementRef<HTMLDivElement>;
+  @ViewChild('mychartbox', { static: false })
+  myChartBox: ElementRef<HTMLDivElement>;
+  genk: GenericService;
+  cdr: ChangeDetectorRef;
+  title = 'GEOPHYSICAL ACTIVITIES (ACQUISITION)';
+  pagenum = 0;
+  selectedPage = 0;
+  arrayRows = [];
+  data: any[];
+  year = [];
+  selectedColumns: any[] = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
 
-        {
-            "columnDef": "companyname",
-            "header": "COMPANY NAME"
-        },
-        {
-            "columnDef": "companyemail",
-            "header": "COMPANY EMAIL"
-        },
+  columns = [
+    {
+      columnDef: 'companyname',
+      header: 'COMPANY NAME',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
+    },
 
-        {
-            "columnDef": "oml_name",
-            "header": "CONCDESSION HELD"
-        },
-        {
-            "columnDef": "year_of_wp",
-            "header": "YEAR"
-        },
-        {
-            "columnDef": "contract_type",
-            "header": "CONTRACT TYPE"
-        },
-        {
-            "columnDef": "terrain",
-            "header": "TERRAIN"
-        },
-        {
-            "columnDef": "consession_type",
-            "header": "CONCESSION TYPE"
-        },
-        {
-            "columnDef": "quater",
-            "header": "QUATER"
-        },
-        {
-            "columnDef": "actual_year_aquired_data",
-            "header": "ACTUAL YEAR AQUIRED DATA"
-        },
-        {
-            "columnDef": "proposed_year_data",
-            "header": "PROPOSED YEAR DATA"
-        },
-        {
-            "columnDef": "budeget_allocation_ngn",
-            "header": "BUDGET ALLOCATION NGN"
-        },
+    {
+      columnDef: 'oml_name',
+      header: 'CONCDESSION HELD',
+    },
+    {
+      columnDef: 'year_of_wp',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'consession_type',
+      header: 'CONCESSION TYPE',
+    },
+    {
+      columnDef: 'quater',
+      header: 'QUATER',
+    },
+    {
+      columnDef: 'actual_year_aquired_data',
+      header: 'ACTUAL YEAR AQUIRED DATA',
+    },
+    {
+      columnDef: 'proposed_year_data',
+      header: 'PROPOSED YEAR DATA',
+    },
+    {
+      columnDef: 'budeget_allocation_ngn',
+      header: 'BUDGET ALLOCATION NGN',
+    },
 
-        {
-            "columnDef": "budeget_allocation_usd",
-            "header": "BUDGET ALLOCATION USD"
-        },
-        {
-            "columnDef": "remarks",
-            "header": "REMARKS"
-        },
-        {
-            "columnDef": "geo_acquired_geophysical_data",
-            "header": "ACQUIRED GEOPHYSICAL DATA"
-        },
-        
-        {
-            "columnDef": "geo_area_of_coverage",
-            "header": "AREA OF COVERAGE"
-        },
+    {
+      columnDef: 'budeget_allocation_usd',
+      header: 'BUDGET ALLOCATION USD',
+    },
+    {
+      columnDef: 'remarks',
+      header: 'REMARKS',
+    },
+    {
+      columnDef: 'geo_acquired_geophysical_data',
+      header: 'ACQUIRED GEOPHYSICAL DATA',
+    },
 
-        {
-            "columnDef": "geo_method_of_acquisition",
-            "header": "METHOD OF ACQUISITION"
-        },
-        {
-            "columnDef": "geo_type_of_data_acquired",
-            "header": "TYPE OF DATA ACQUIRED"
-        },
-        {
-            "columnDef": "geo_record_length_of_data",
-            "header": "RECORD LENGTH OF DATA"
-        },
-        {
-            "columnDef": "geo_completion_status",
-            "header": "COMPLETION STATUS"
-        },
-        {
-            "columnDef": "quantum",
-            "header": "QUANTUM"
-        },
-        {
-            "columnDef": "quantum_carry_forward",
-            "header": "QUANTUM CARRY FORWARD"
-        },
-        {
-            "columnDef": "geo_activity_timeline",
-            "header": "ACTIVITY TIMELINE"
-        },
-        {
-            "columnDef": "name_of_contractor",
-            "header": "NAME OF CONTRACTOR"
-        }
-    ];
+    {
+      columnDef: 'geo_area_of_coverage',
+      header: 'AREA OF COVERAGE',
+    },
 
-    repcolumns = [
-
-      {
-          "columnDef": "companyname",
-          "header": "COMPANY NAME"
-      },
-      {
-          "columnDef": "companyemail",
-          "header": "COMPANY EMAIL"
-      },
-
-      {
-          "columnDef": "oml_name",
-          "header": "CONCDESSION HELD"
-      },
-      {
-          "columnDef": "year_of_wp",
-          "header": "YEAR"
-      },
-      {
-          "columnDef": "contract_type",
-          "header": "CONTRACT TYPE"
-      },
-      {
-          "columnDef": "terrain",
-          "header": "TERRAIN"
-      },
-      {
-          "columnDef": "consession_type",
-          "header": "CONCESSION TYPE"
-      },
-      {
-          "columnDef": "quater",
-          "header": "QUATER"
-      },
-      {
-          "columnDef": "actual_year_aquired_data",
-          "header": "ACTUAL YEAR AQUIRED DATA"
-      },
-      {
-          "columnDef": "proposed_year_data",
-          "header": "PROPOSED YEAR DATA"
-      },
-      {
-          "columnDef": "budeget_allocation_ngn",
-          "header": "BUDGET ALLOCATION NGN"
-      },
-
-      {
-          "columnDef": "budeget_allocation_usd",
-          "header": "BUDGET ALLOCATION USD"
-      },
-      {
-          "columnDef": "remarks",
-          "header": "REMARKS"
-      },
-      {
-          "columnDef": "geo_acquired_geophysical_data",
-          "header": "ACQUIRED GEOPHYSICAL DATA"
-      },
-      
-      {
-          "columnDef": "geo_area_of_coverage",
-          "header": "AREA OF COVERAGE"
-      },
-
-      {
-          "columnDef": "geo_method_of_acquisition",
-          "header": "METHOD OF ACQUISITION"
-      },
-      {
-          "columnDef": "geo_type_of_data_acquired",
-          "header": "TYPE OF DATA ACQUIRED"
-      },
-      {
-          "columnDef": "geo_record_length_of_data",
-          "header": "RECORD LENGTH OF DATA"
-      },
-      {
-          "columnDef": "geo_completion_status",
-          "header": "COMPLETION STATUS"
-      },
-      {
-          "columnDef": "quantum",
-          "header": "QUANTUM"
-      },
-      {
-          "columnDef": "quantum_carry_forward",
-          "header": "QUANTUM CARRY FORWARD"
-      },
-      {
-          "columnDef": "geo_activity_timeline",
-          "header": "ACTIVITY TIMELINE"
-      },
-      {
-          "columnDef": "name_of_contractor",
-          "header": "NAME OF CONTRACTOR"
-      }
+    {
+      columnDef: 'geo_method_of_acquisition',
+      header: 'METHOD OF ACQUISITION',
+    },
+    {
+      columnDef: 'geo_type_of_data_acquired',
+      header: 'TYPE OF DATA ACQUIRED',
+    },
+    {
+      columnDef: 'geo_record_length_of_data',
+      header: 'RECORD LENGTH OF DATA',
+    },
+    {
+      columnDef: 'geo_completion_status',
+      header: 'COMPLETION STATUS',
+    },
+    {
+      columnDef: 'quantum',
+      header: 'QUANTUM',
+    },
+    {
+      columnDef: 'quantum_carry_forward',
+      header: 'QUANTUM CARRY FORWARD',
+    },
+    {
+      columnDef: 'geo_activity_timeline',
+      header: 'ACTIVITY TIMELINE',
+    },
+    {
+      columnDef: 'name_of_contractor',
+      header: 'NAME OF CONTRACTOR',
+    },
   ];
 
-    constructor(private report: ReportService,
-        private cd: ChangeDetectorRef,
-        private gen: GenericService) {
-        this.genk = gen;
-        this.cdr = cd;
-        this.genk.sizePerPage = this.genk.sizeten;
-    }
+  repcolumns = [
+    {
+      columnDef: 'companyname',
+      header: 'COMPANY NAME',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'COMPANY EMAIL',
+    },
 
-    ngOnInit() {
-        this.data = [];
-        this.yearList();
-        this.genk.sizePerPage = this.genk.sizeten;
-    }
+    {
+      columnDef: 'oml_name',
+      header: 'CONCDESSION HELD',
+    },
+    {
+      columnDef: 'year_of_wp',
+      header: 'YEAR',
+    },
+    {
+      columnDef: 'contract_type',
+      header: 'CONTRACT TYPE',
+    },
+    {
+      columnDef: 'terrain',
+      header: 'TERRAIN',
+    },
+    {
+      columnDef: 'consession_type',
+      header: 'CONCESSION TYPE',
+    },
+    {
+      columnDef: 'quater',
+      header: 'QUATER',
+    },
+    {
+      columnDef: 'actual_year_aquired_data',
+      header: 'ACTUAL YEAR AQUIRED DATA',
+    },
+    {
+      columnDef: 'proposed_year_data',
+      header: 'PROPOSED YEAR DATA',
+    },
+    {
+      columnDef: 'budeget_allocation_ngn',
+      header: 'BUDGET ALLOCATION NGN',
+    },
 
-    public get pageIndex(): number {
-        return (this.selectedPage - 1) * this.genk.sizePerPage;
-    }
+    {
+      columnDef: 'budeget_allocation_usd',
+      header: 'BUDGET ALLOCATION USD',
+    },
+    {
+      columnDef: 'remarks',
+      header: 'REMARKS',
+    },
+    {
+      columnDef: 'geo_acquired_geophysical_data',
+      header: 'ACQUIRED GEOPHYSICAL DATA',
+    },
 
-    assignPageNum() {
-        this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    }
+    {
+      columnDef: 'geo_area_of_coverage',
+      header: 'AREA OF COVERAGE',
+    },
 
-    assignDataRows() {
-        this.arrayRows = this.data.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
-        //let dell = {ME: "sam", joEL: "joEl"};
-        //this.genk.lowerJson(dell);
-        console.log(this.arrayRows);
-        this.cd.markForCheck();
-    }
+    {
+      columnDef: 'geo_method_of_acquisition',
+      header: 'METHOD OF ACQUISITION',
+    },
+    {
+      columnDef: 'geo_type_of_data_acquired',
+      header: 'TYPE OF DATA ACQUIRED',
+    },
+    {
+      columnDef: 'geo_record_length_of_data',
+      header: 'RECORD LENGTH OF DATA',
+    },
+    {
+      columnDef: 'geo_completion_status',
+      header: 'COMPLETION STATUS',
+    },
+    {
+      columnDef: 'quantum',
+      header: 'QUANTUM',
+    },
+    {
+      columnDef: 'quantum_carry_forward',
+      header: 'QUANTUM CARRY FORWARD',
+    },
+    {
+      columnDef: 'geo_activity_timeline',
+      header: 'ACTIVITY TIMELINE',
+    },
+    {
+      columnDef: 'name_of_contractor',
+      header: 'NAME OF CONTRACTOR',
+    },
+  ];
 
-    fetchdata(e) {
-        let value = e.target.value;
-        this.report.fetch("geophysicalactivities", value).subscribe(
-            (res) => {
-                 this.data = res.data as any[];
-            if(this.data.length>0) this.selectedPage=1;
-            this.assignDataRows();
-                this.assignPageNum();
-                this.cd.markForCheck();
-            }
-        )
-    }
+  constructor(
+    private report: ReportService,
+    private cd: ChangeDetectorRef,
+    private gen: GenericService
+  ) {
+    this.genk = gen;
+    this.cdr = cd;
+    this.genk.sizePerPage = this.genk.sizeten;
+  }
 
-    yearList() {
-        this.report.getYearList("geophysicalactivitiesyearlist")
-            .subscribe((res: any[]) => {
-                this.year = res;
-                this.cd.markForCheck();
-            });
-    }
+  ngOnInit() {
+    this.data = [];
+    this.yearList();
+    this.genk.sizePerPage = this.genk.sizeten;
+  }
 
-    goNext() {
-        this.selectedPage++;
-        this.assignDataRows();
-    }
+  public get pageIndex(): number {
+    return (this.selectedPage - 1) * this.genk.sizePerPage;
+  }
 
-    goPrev() {
-        this.selectedPage--;
-        this.assignDataRows();
-    }
+  assignPageNum() {
+    this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
+  }
 
-    firstPage() {
-        this.selectedPage = 1;
-        this.assignDataRows();
-    }
+  assignDataRows() {
+    this.arrayRows = this.data.slice(
+      this.pageIndex,
+      this.pageIndex + this.genk.sizePerPage
+    );
+    //let dell = {ME: "sam", joEL: "joEl"};
+    //this.genk.lowerJson(dell);
+    console.log(this.arrayRows);
+    this.cd.markForCheck();
+  }
 
-    lastPage() {
-        this.selectedPage = this.pagenum;
-        this.assignDataRows();
-    }
-
-    changePage(value: string) {
-        this.selectedPage = Number(value);
-        this.assignDataRows();
-    }
-resize(e) {
-      let value = e.target.value;
-      if (value === 'all') {
-          value = this.pagenum * this.genk.sizePerPage
-      }
-      this.genk.sizePerPage = Number(value);
+  fetchdata(e) {
+    let value = e.target.value;
+    this.report.fetch('geophysicalactivities', value).subscribe((res) => {
+      this.data = res.data as any[];
+      if (this.data.length > 0) this.selectedPage = 1;
       this.assignDataRows();
       this.assignPageNum();
       this.cd.markForCheck();
+    });
+  }
+
+  yearList() {
+    this.report
+      .getYearList('geophysicalactivitiesyearlist')
+      .subscribe((res: any[]) => {
+        this.year = res;
+        this.cd.markForCheck();
+      });
+  }
+
+  goNext() {
+    this.selectedPage++;
+    this.assignDataRows();
+  }
+
+  goPrev() {
+    this.selectedPage--;
+    this.assignDataRows();
+  }
+
+  firstPage() {
+    this.selectedPage = 1;
+    this.assignDataRows();
+  }
+
+  lastPage() {
+    this.selectedPage = this.pagenum;
+    this.assignDataRows();
+  }
+
+  changePage(value: string) {
+    this.selectedPage = Number(value);
+    this.assignDataRows();
+  }
+  resize(e) {
+    let value = e.target.value;
+    if (value === 'all') {
+      value = this.pagenum * this.genk.sizePerPage;
+    }
+    this.genk.sizePerPage = Number(value);
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
   }
 
   togOptions() {
@@ -330,11 +344,12 @@ resize(e) {
 
   pickColumn(value: string, checked: boolean) {
     if (checked) {
-      let val = this.repcolumns.filter(x => x.columnDef == value)[0];
+      let val = this.repcolumns.filter((x) => x.columnDef == value)[0];
       this.selectedColumns.push(val);
-    }
-    else {
-      let remainingArr = this.selectedColumns.filter(x => x.columnDef != value);
+    } else {
+      let remainingArr = this.selectedColumns.filter(
+        (x) => x.columnDef != value
+      );
       this.selectedColumns = remainingArr;
     }
     this.cd.markForCheck;
@@ -347,14 +362,13 @@ resize(e) {
   }
 
   plotDoublePieChart() {
-    debugger;
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-      debugger;
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -366,21 +380,20 @@ resize(e) {
       if (this.selectedColumns.length === 2) {
         let reportdata = this.data;
         let chartdata = this.report.formatChartData(reportdata, sele1, sele2);
-        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata)
+        this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
     }
   }
 
   plotDoubleBarChart() {
-    debugger;
-    let totalString = "";
+    let totalString = '';
     if (this.selectedColumns.length > 2) {
       alert('Can not plot this chart');
-    }
-    else {
-
-      this.myChartBox.nativeElement.removeChild(this.myChartBox.nativeElement.firstChild);
-      const node = document.createElement("div");
+    } else {
+      this.myChartBox.nativeElement.removeChild(
+        this.myChartBox.nativeElement.firstChild
+      );
+      const node = document.createElement('div');
       node.style.width = '100%';
       node.style.height = '500px';
       this.myChartBox.nativeElement.appendChild(node);
@@ -390,20 +403,30 @@ resize(e) {
 
       this.myChartBox.nativeElement.style.display = 'block';
       if (this.selectedColumns.length === 2) {
-        let chartdata = this.report.formatChartData(this.data, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef);
+        let chartdata = this.report.formatChartData(
+          this.data,
+          this.selectedColumns[0].columnDef,
+          this.selectedColumns[1].columnDef
+        );
         for (var i = 0; i < chartdata.length; i++) {
           totalString += chartdata[i].base;
         }
         if (totalString.length > 70) {
-          this.report.plotDoubleBarChartHorizontal(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
-        }
-        else {
-          this.report.plotDoubleBarChart(bechart, this.selectedColumns[0].columnDef, this.selectedColumns[1].columnDef, chartdata);
+          this.report.plotDoubleBarChartHorizontal(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
+        } else {
+          this.report.plotDoubleBarChart(
+            bechart,
+            this.selectedColumns[0].columnDef,
+            this.selectedColumns[1].columnDef,
+            chartdata
+          );
         }
       }
     }
   }
-
-
-  
 }

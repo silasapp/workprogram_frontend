@@ -161,7 +161,10 @@ export class GenericService {
     //     let btn=$('#c-oreder-preview');
     //     btn.text('download');
     //     btn.on('click',()=> {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //         $('#c-invoice').modal('show');
     //         setTimeout(function () {
     //             html2canvas(document.querySelector("#c-print")).then(canvas => {
@@ -172,7 +175,10 @@ export class GenericService {
     //                 var pageHeight = pdf.internal.pageSize.getHeight();
     //                 var imageWidth = canvas.width;
     //                 var imageHeight = canvas.height;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
     //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
     //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
@@ -181,7 +187,10 @@ export class GenericService {
     //                 $('#c-invoice').modal('hide');
     //             });
     //         },500);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //         });
     // });
   }
@@ -213,7 +222,6 @@ export class GenericService {
     // Variable to store the final csv data
     let csv_data = [];
     let lastChildList = [];
-    debugger;
 
     let row1 = table.getElementsByTagName('tr')[0];
 
@@ -598,7 +606,7 @@ export class GenericService {
   }
 
   checkBSCFMin(event, gasMin: HTMLElement) {
-    //debugger;
+    //
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 10000) {
@@ -612,7 +620,6 @@ export class GenericService {
   }
 
   checkMMBBLMin(event, oilMin: HTMLElement) {
-    debugger;
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
     if (Number(term) < 1000) {
@@ -625,32 +632,28 @@ export class GenericService {
     return e.value;
   }
 
-
   restrictNoOfFoldValue(input) {
     this.val = parseInt(input);
 
     debugger;
     if (this.val < 1 || this.val > 100) {
-      alert("Please make sure entry is between 1-100.");
-      return "0";
+      alert('Please make sure entry is between 1-100.');
+      return '0';
     }
     input = this.val.toString();
     return input;
   }
 
-
   restrictRecordLengthValue(input) {
-
     this.val = parseInt(input);
 
     if (this.val < 1 || this.val > 59) {
-      alert("Please make sure entry is between 1-59.");
-      return "0"
+      alert('Please make sure entry is between 1-59.');
+      return '0';
     }
     input = this.val.toString();
     return input;
   }
-
 
   restrictData(e) {
     //alert(e.key);
@@ -665,7 +668,6 @@ export class GenericService {
     if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122)) return true;
     else return false;
   }
-
 
   setTwoNumberDecimal(event) {
     if (isFinite(event.key)) {
@@ -771,12 +773,12 @@ export class GenericService {
   }
 
   filter(data) {
-    const resultArray = Object.keys(data).map(index => {
+    const resultArray = Object.keys(data).map((index) => {
       let person = data[index];
       return person;
     });
 
-    resultArray.forEach(element => {
+    resultArray.forEach((element) => {
       delete element['approvalref'];
       delete element['categoryid'];
       delete element['companyid'];
@@ -808,8 +810,16 @@ export class GenericService {
   }
   showStepTwo() {
     debugger;
+<<<<<<< HEAD
     if (this.OmlName.toUpperCase().substring(0, 3) == 'OML' || this.OmlName.toUpperCase().substring(0, 3) == 'PML' || this.OmlName.toUpperCase().substring(0, 3) == '') return true;
+=======
+    if (
+      this.OmlName.toUpperCase().substring(0, 3) == 'OML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == 'PML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == ''
+    )
+      return true;
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     return false;
   }
-
 }

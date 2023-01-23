@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -64,7 +64,6 @@ export class ConcessionBaseComponent implements OnInit {
   }
 
   changeConcessionHeld(e) {
-    debugger;
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
     this.cd.markForCheck();
@@ -72,7 +71,6 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
-        debugger;
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;

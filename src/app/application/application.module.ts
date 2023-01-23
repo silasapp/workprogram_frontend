@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { AllApplicationsComponent } from './allapplications/allapplications.component';
 import { ApplicationRoutingModule } from './application-routing.module';
 import { ViewApplicationComponent } from './viewapplication/viewapplication.component';
@@ -22,6 +23,7 @@ import { PushApplicationFormComponent } from './process-application/push-applica
 import { SendBackFormComponent } from './process-application/send-back-form/send-back-form.component';
 //import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ApproveFormComponent } from './process-application/approve-form/approve-form.component';
+import { ViewApplicationDataComponent } from './process-application/view-application-data/view-application-data.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,8 @@ import { ApproveFormComponent } from './process-application/approve-form/approve
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
     //NgMultiSelectDropDownModule,
   ],
   declarations: [
@@ -49,6 +52,7 @@ import { ApproveFormComponent } from './process-application/approve-form/approve
     PushApplicationFormComponent,
     SendBackFormComponent,
     ApproveFormComponent,
+    ViewApplicationDataComponent,
   ],
 })
 export class ApplicationModule {}

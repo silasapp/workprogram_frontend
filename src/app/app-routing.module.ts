@@ -52,9 +52,7 @@ const routes: Routes = [
     path: 'admin',
     component: CompanyComponent,
     loadChildren: () =>
-      import('./admin/admin.module').then(
-        (m) => m.AdminModule
-      ),
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
 
   {
@@ -71,6 +69,22 @@ const routes: Routes = [
     loadChildren: () =>
       import('./performance-evaluation/performance-evaluation.module').then(
         (m) => m.PerformanceEvaluationModule
+      ),
+  },
+  {
+    path: 'process-flow-configuration',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import(
+        './process-flow-configuration/process-flow-configuration.module'
+      ).then((m) => m.ProcessFlowConfigurationModule),
+  },
+  {
+    path: 'manage-applications',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import('./manager-applications/manage-applications.module').then(
+        (m) => m.ManageApplicationsModule
       ),
   },
 ];

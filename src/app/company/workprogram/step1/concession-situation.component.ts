@@ -35,9 +35,15 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
+<<<<<<< HEAD
   fieldValue:string;
   field:string;
   boolValue =true;
+=======
+  fieldValue: string;
+  field: string;
+  boolValue = 'true';
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -176,7 +182,12 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
+<<<<<<< HEAD
           Validators.required, Validators.minLength(2)
+=======
+          Validators.required,
+          Validators.maxLength(2),
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
         ]),
       },
       {}
@@ -193,7 +204,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   get f() {
     return this.RoyaltyForm.controls;
- }
+  }
 
  get csf(){
  return this.ConcessionSituationForm.controls;
@@ -229,8 +240,11 @@ export class SWPConcessionSituationComponent implements OnInit {
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
-        conInfo.companyName=conInfo.companyName.toLowerCase();
-        conInfo.companyName=conInfo.companyName.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+        conInfo.companyName = conInfo.companyName.toLowerCase();
+        conInfo.companyName = conInfo.companyName.replace(
+          /(^\w{1})|(\s+\w{1})/g,
+          (letter) => letter.toUpperCase()
+        );
         if (!conInfo) {
           conInfo = {} as any;
           conInfo.companyName = res.concessionInfo[0].companyName;
@@ -267,34 +281,44 @@ export class SWPConcessionSituationComponent implements OnInit {
 
           setTimeout(() => {
             this.loadTable();
-        }, 2000);
+          }, 2000);
         }
         debugger;
-        if(this.genk.fieldName){
-          this.field="Field";
+        if (this.genk.fieldName) {
+          this.field = 'Field';
         }
 
+<<<<<<< HEAD
         
+=======
+        this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+
+        if (
+          this.fieldValue === 'OEL' ||
+          this.fieldValue === 'PPL' ||
+          this.fieldValue === 'OPL' ||
+          this.fieldValue === 'PEL'
+        ) {
+          this.boolValue = 'block';
+        }
+>>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
 
         debugger;
-          this.getRoyaltyHeld();
+        this.getRoyaltyHeld();
       });
   }
 
- // this.genk.OmlName.
+  // this.genk.OmlName.
 
   getRoyaltyHeld() {
     //debugger;
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         if (res.royalty.length > 0) {
-
           this.royaltyBody = res.royalty[0] as Royalty;
           console.log(this.royaltyBody.royalty_ID);
-        }
-        else {
+        } else {
           this.royaltyBody = {} as Royalty;
         }
         this.cd.markForCheck();
@@ -307,9 +331,9 @@ export class SWPConcessionSituationComponent implements OnInit {
     debugger;
     this.submitted = true;
     //let rell = this.f['miscellaneous'].errors['required'];
-    if(this.RoyaltyForm.invalid) {
-        this.cd.markForCheck();
-        return;
+    if (this.RoyaltyForm.invalid) {
+      this.cd.markForCheck();
+      return;
     }
     this.workprogram
       .saveRoyalty(
