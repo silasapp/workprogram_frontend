@@ -161,10 +161,6 @@ export class GenericService {
     //     let btn=$('#c-oreder-preview');
     //     btn.text('download');
     //     btn.on('click',()=> {
-<<<<<<< HEAD
-
-=======
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //         $('#c-invoice').modal('show');
     //         setTimeout(function () {
     //             html2canvas(document.querySelector("#c-print")).then(canvas => {
@@ -175,10 +171,6 @@ export class GenericService {
     //                 var pageHeight = pdf.internal.pageSize.getHeight();
     //                 var imageWidth = canvas.width;
     //                 var imageHeight = canvas.height;
-<<<<<<< HEAD
-
-=======
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //                 var ratio = imageWidth/imageHeight >= pageWidth/pageHeight ? pageWidth/imageWidth : pageHeight/imageHeight;
     //                 //pdf = new jsPDF(this.state.orientation, undefined, format);
     //                 pdf.addImage(imgData, 'JPEG', 0, 0, imageWidth * ratio, imageHeight * ratio);
@@ -187,10 +179,6 @@ export class GenericService {
     //                 $('#c-invoice').modal('hide');
     //             });
     //         },500);
-<<<<<<< HEAD
-
-=======
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     //         });
     // });
   }
@@ -810,16 +798,7 @@ export class GenericService {
   }
   showStepTwo() {
     debugger;
-<<<<<<< HEAD
     if (this.OmlName.toUpperCase().substring(0, 3) == 'OML' || this.OmlName.toUpperCase().substring(0, 3) == 'PML' || this.OmlName.toUpperCase().substring(0, 3) == '') return true;
-=======
-    if (
-      this.OmlName.toUpperCase().substring(0, 3) == 'OML' ||
-      this.OmlName.toUpperCase().substring(0, 3) == 'PML' ||
-      this.OmlName.toUpperCase().substring(0, 3) == ''
-    )
-      return true;
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
     return false;
   }
 }

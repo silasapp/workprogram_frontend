@@ -35,15 +35,9 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-<<<<<<< HEAD
   fieldValue:string;
   field:string;
   boolValue =true;
-=======
-  fieldValue: string;
-  field: string;
-  boolValue = 'true';
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -182,12 +176,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-<<<<<<< HEAD
           Validators.required, Validators.minLength(2)
-=======
-          Validators.required,
-          Validators.maxLength(2),
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
         ]),
       },
       {}
@@ -288,20 +277,17 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.field = 'Field';
         }
 
-<<<<<<< HEAD
         
-=======
-        this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+        // this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
 
-        if (
-          this.fieldValue === 'OEL' ||
-          this.fieldValue === 'PPL' ||
-          this.fieldValue === 'OPL' ||
-          this.fieldValue === 'PEL'
-        ) {
-          this.boolValue = 'block';
-        }
->>>>>>> 1503b6c0e41b255cdbad68faffa4586e126d1798
+        // if (
+        //   this.fieldValue === 'OEL' ||
+        //   this.fieldValue === 'PPL' ||
+        //   this.fieldValue === 'OPL' ||
+        //   this.fieldValue === 'PEL'
+        // ) {
+        //   this.boolValue = 'block';
+        // }
 
         debugger;
         this.getRoyaltyHeld();
