@@ -488,8 +488,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
             this.modalService.logNotice("Success", res.message, 'success');
       }
     })
-  
+  }
 
+
+  saveEvidenceOfDesignSafetyCaseApproval(DeFile: any) {
+    this.EvidenceOfDesignSafetyCaseApprovalFile = <File>DeFile.target.files[0];
+    if (!this.EvidenceOfDesignSafetyCaseApprovalFile) {
+      return;
+    }
     if (
       this.EvidenceOfDesignSafetyCaseApprovalFile.size < 1 ||
       this.EvidenceOfDesignSafetyCaseApprovalFile.size > 1024 * 1024 * 50
