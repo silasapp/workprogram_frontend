@@ -23,6 +23,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPBudgetProposalComponent implements OnInit {
+  public disableForm: boolean = false;
   budgetProposalForm: FormGroup;
   capexOpexForm: FormGroup;
   budgetProposalBody: budgetProposal = {} as budgetProposal;

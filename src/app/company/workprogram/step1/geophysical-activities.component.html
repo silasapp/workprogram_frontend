@@ -32,7 +32,7 @@
       margin-bottom: 10px;
     "
   >
-    <span>Acquisition</span><br/>
+    <span>Acquisition</span><br />
   </div>
 
   <div>
@@ -96,6 +96,7 @@
                 type="text"
                 [(ngModel)]="acquisitionBody.actual_year_aquired_data"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -122,6 +123,7 @@
                 type="text"
                 [(ngModel)]="acquisitionBody.proposed_year_data"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -206,6 +208,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.geo_area_of_coverage"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -228,6 +231,7 @@
                     (keyup)="genk.formatCurrency($event)"
                     [(ngModel)]="acquisitionBody.budeget_Allocation_NGN"
                     class="inpute"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -248,6 +252,7 @@
                     "
                     [value]="acquisitionBody.budeget_Allocation_USD"
                     class="inpute"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -263,6 +268,7 @@
                 class="dropwp"
                 formControlName="geo_method_of_acquisition"
                 [(ngModel)]="acquisitionBody.geo_method_of_acquisition"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>--Please Select--</option>
                 <option value="Land">Land</option>
@@ -286,6 +292,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum_Planned"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -300,6 +307,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -314,6 +322,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum_Approved"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -352,6 +361,7 @@
                 formControlName="name_of_Contractor"
                 [(ngModel)]="acquisitionBody.name_of_Contractor"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -365,6 +375,7 @@
                 class="dropwp"
                 formControlName="geo_type_of_data_acquired"
                 [(ngModel)]="acquisitionBody.geo_type_of_data_acquired"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <option selected disabled>--Please Select Data-Type--</option>
                 <option value="2D">2D</option>
@@ -380,19 +391,20 @@
           <label class="labelwp">No of folds (1-100)</label>
           <div style="display: flex">
             <div class="inpdiv">
-              <input             
+              <input
                 formControlName="no_of_Folds"
                 (keypress)="genk.restrictData($event)"
                 [value]="acquisitionBody.no_of_Folds"
-                (ngModelChange)="acquisitionBody.no_of_Folds= genk.restrictNoOfFoldValue($event)"
-               
+                (ngModelChange)="
+                  acquisitionBody.no_of_Folds =
+                    genk.restrictNoOfFoldValue($event)
+                "
+                [attr.disabled]="disableForm ? true : null"
                 class="inpute"
               />
             </div>
           </div>
         </div>
-
-       
       </div>
 
       <br />
@@ -461,9 +473,13 @@
               <input
                 formControlName="geo_Record_Length_of_Data"
                 (keypress)="genk.restrictData($event)"
-                [value]="acquisitionBody.geo_Record_Length_of_Data"       
-                (ngModelChange)="acquisitionBody.geo_Record_Length_of_Data=genk.restrictRecordLengthValue($event)"
+                [value]="acquisitionBody.geo_Record_Length_of_Data"
+                (ngModelChange)="
+                  acquisitionBody.geo_Record_Length_of_Data =
+                    genk.restrictRecordLengthValue($event)
+                "
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -479,6 +495,7 @@
                 formControlName="remarks"
                 [(ngModel)]="acquisitionBody.remarks"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               ></textarea>
             </div>
           </div>
@@ -570,6 +587,7 @@
           class="dropwp"
           formControlName="type_of_Processing"
           [(ngModel)]="processingBody.type_of_Processing"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected disabled>--Please Select--</option>
           <option value="PSDM">PSDM</option>
@@ -636,6 +654,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.processed_Proposed"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -700,6 +719,7 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.reprocessed_Proposed"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -858,6 +878,7 @@
           formControlName="name_of_Contractor"
           [(ngModel)]="processingBody.name_of_Contractor"
           class="inpute"
+          [attr.disabled]="disableForm ? true : null"
         />
       </div>
     </div>
@@ -903,6 +924,7 @@
                 "
                 [value]="processingBody.budeget_Allocation_NGN"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -923,6 +945,7 @@
                 "
                 [value]="processingBody.budeget_Allocation_USD"
                 class="inpute"
+                [attr.disabled]="disableForm ? true : null"
               />
             </div>
           </div>
@@ -940,6 +963,7 @@
             class="dropwp"
             formControlName="geo_Type_of_Data_being_Processed"
             [(ngModel)]="processingBody.geo_Type_of_Data_being_Processed"
+            [attr.disabled]="disableForm ? true : null"
           >
             <option selected disabled>
               -- Select Data Type -- &nbsp; &nbsp;
@@ -996,6 +1020,7 @@
               formControlName="remarks"
               [(ngModel)]="processingBody.remarks"
               class="inpute"
+              [attr.disabled]="disableForm ? true : null"
             ></textarea>
           </div>
         </div>
@@ -1004,7 +1029,12 @@
     <br /><br />
   </div>
   <div style="text-align: center">
-    <button #btnprocess class="quarterbtn" (click)="saveQuarterProcessing()">
+    <button
+      #btnprocess
+      class="quarterbtn"
+      (click)="saveQuarterProcessing()"
+      [attr.disabled]="disableForm ? true : null"
+    >
       Save Quarter 1
     </button>
   </div>

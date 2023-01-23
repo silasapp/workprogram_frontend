@@ -1,33 +1,44 @@
-<div style="
+<div
+  style="
     background-color: white;
     border-radius: 5px;
     box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
     padding: 20px;
-  ">
-  <h1 style="
+  "
+>
+  <h1
+    style="
       text-shadow: 1px 1px rgb(130, 23, 23);
       color: rgb(255, 157, 0);
       margin-left: 75%;
       font-size: 18px;
-    ">
+    "
+  >
     Note:*All Fields are Mandatory
   </h1>
-  <div style="
+  <div
+    style="
       font-size: 25px;
       font-weight: 500;
       text-align: center;
-      padding-bottom: 20px;">
+      padding-bottom: 20px;
+    "
+  >
     <span>FIELD DEVELOPMENT PLAN</span><br /><br />
   </div>
 
   <div [formGroup]="FieldDevelopmentForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
-
       <div style="width: 30%; margin: auto 0 0 0">
         <label id="" class="labelwp">Field Development Plan Status</label>
         <div style="display: flex; width: 100%">
           <div class="inputshadow">
-            <select class="dropwp" formControlName="status" [(ngModel)]="fielddevelopmentBody.status">
+            <select
+              class="dropwp"
+              formControlName="status"
+              [(ngModel)]="fielddevelopmentBody.status"
+              [attr.disabled]="disableForm ? true : null"
+            >
               <option selected disabled>--Select an Option --</option>
               <option value="Application under Review">
                 Application under Review
@@ -110,12 +121,15 @@
     </div>
     <br />
 
-    <div *ngIf="fielddevelopmentBody.status=='Approved'" style="display: flex; width: 100%">
-<div style="width: 30%; margin: auto 5% 0 0">
-        <label class="labelwp">Proposed number of wells in FDP 
-        </label>
+    <div
+      *ngIf="fielddevelopmentBody.status == 'Approved'"
+      style="display: flex; width: 100%"
+    >
+      <div style="width: 30%; margin: auto 5% 0 0">
+        <label class="labelwp">Proposed number of wells in FDP </label>
         <div style="display: flex">
-          <div style="
+          <div
+            style="
               box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               border-radius: 10px;
@@ -130,37 +144,51 @@
               [(ngModel)]="
                 fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP
               "
+              [attr.disabled]="disableForm ? true : null"
             />
-          </div>
-        </div>
-      </div> 
-
-      <div style="width: 30%; margin: auto 5% 0 0">
-        <label class="labelwp">Upload FDP document</label>
-        <div style="display: flex">
-          <div style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            ">
-            <input (change)="onFileChange($event)" formControlName="uploaded_approved_FDP_Document" accept="image/*"
-              type="file" class="inpute" />
           </div>
         </div>
       </div>
 
       <div style="width: 30%; margin: auto 5% 0 0">
-        <label class="labelwp">Is it an "Oil", "Gas" or "Oil & Gas Field" </label>
+        <label class="labelwp">Upload FDP document</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              (change)="onFileChange($event)"
+              formControlName="uploaded_approved_FDP_Document"
+              accept="image/*"
+              type="file"
+              class="inpute"
+              [attr.disabled]="disableForm ? true : null"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin: auto 5% 0 0">
+        <label class="labelwp"
+          >Is it an "Oil", "Gas" or "Oil & Gas Field"
+        </label>
         <div style="display: flex; width: 100%">
           <div class="inputshadow">
-            <select class="dropwp" formControlName="are_they_oil_or_gas_wells"
-              [(ngModel)]="fielddevelopmentBody.are_they_oil_or_gas_wells">
+            <select
+              class="dropwp"
+              formControlName="are_they_oil_or_gas_wells"
+              [(ngModel)]="fielddevelopmentBody.are_they_oil_or_gas_wells"
+              [attr.disabled]="disableForm ? true : null"
+            >
               <option selected disabled>-- Select an Option --</option>
               <option value="GAS FIELD">Gas Field</option>
               <option value="OIL FIELD">Oil Field</option>
               <option value="GAS AND OIL FIELD">GAS AND OIL FIELD</option>
-             
             </select>
           </div>
         </div>
@@ -188,7 +216,11 @@
 
   <div>
     <div style="text-align: center">
-      <button class="quarterbtn" (click)="saveFieldDevelopmentPlan()">
+      <button
+        class="quarterbtn"
+        (click)="saveFieldDevelopmentPlan()"
+        [attr.disabled]="disableForm ? true : null"
+      >
         Save Field Development Plan
       </button>
     </div>
@@ -198,15 +230,24 @@
 <br />
 <br />
 
-<div style="background-color: white; margin-bottom: 30px; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;
-  ">
-  <div style="
+<div
+  style="
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+  "
+>
+  <div
+    style="
       text-align: start;
       font-size: 17px;
       font-weight: 600;
       padding-bottom: 20px;
       color: teal;
-    ">
+    "
+  >
     <span>EXPECTED RESERVES ( OIL/GAS/CONDENSATE)</span>
   </div>
   <div [formGroup]="FieldDevelopmeentExcessiveReserveForm">
@@ -214,21 +255,29 @@
       <div style="width: 30%; margin: auto 2% 0 0">
         <label class="labelwp">Proposed Development Well Names</label>
         <div style="display: flex">
-          <div style="
+          <div
+            style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               border-radius: 20px;
               padding: 7px 10px;
-            ">
-            <input type="text" formControlName="proposed_Development_well_name" [(ngModel)]="
+            "
+          >
+            <input
+              type="text"
+              formControlName="proposed_Development_well_name"
+              [(ngModel)]="
                 fielddevelopmentexcessivereserveBody.proposed_Development_well_name
-              " class="inpute" />
+              "
+              class="inpute"
+              [attr.disabled]="disableForm ? true : null"
+            />
           </div>
         </div>
       </div>
     </div>
 
-    <br>
+    <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
@@ -239,54 +288,72 @@
               type="text"
               formControlName="oil"
               placeholder="100,000"
-              style="border-radius:5px;"
+              style="border-radius: 5px"
               class="inpute"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (change)="fielddevelopmentexcessivereserveBody._oil = genk.checkMMBBLMin($event, oilSand)"
-              [value]="fielddevelopmentexcessivereserveBody._oil"/>
-              <span class="barspan">BBLS</span>
+              (change)="
+                fielddevelopmentexcessivereserveBody._oil = genk.checkMMBBLMin(
+                  $event,
+                  oilSand
+                )
+              "
+              [value]="fielddevelopmentexcessivereserveBody._oil"
+              [attr.disabled]="disableForm ? true : null"
+            />
+            <span class="barspan">BBLS</span>
           </div>
         </div>
         <small #oilSand></small>
       </div>
 
-
-      <div style="width: 30%; margin: auto 0 0;">
+      <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Gas (Standard Cubic Feet)</label>
         <div style="display: flex">
           <div class="minsec">
-
-          <input type="text"
+            <input
+              type="text"
               formControlName="gas"
               placeholder="1,000,000"
-              style="border-radius: 5px;"
+              style="border-radius: 5px"
               class="inpute"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (change)="fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin($event, gasMin)"
-              [value]="fielddevelopmentexcessivereserveBody._gas"/>
+              (change)="
+                fielddevelopmentexcessivereserveBody._gas = genk.checkBSCFMin(
+                  $event,
+                  gasMin
+                )
+              "
+              [value]="fielddevelopmentexcessivereserveBody._gas"
+              [attr.disabled]="disableForm ? true : null"
+            />
             <span class="barspan">SCF</span>
           </div>
         </div>
         <small #gasMin></small>
       </div>
 
-
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Condensate (Barrels)</label>
         <div style="display: flex">
           <div class="minsec">
-            <input type="text"
+            <input
+              type="text"
               formControlName="condensate"
               class="inpute"
-              style="border-radius: 5px;"
+              style="border-radius: 5px"
               placeholder="100,000"
               (keypress)="genk.restrictData($event)"
               (keyup)="genk.formatCurrency($event)"
-              (change)="fielddevelopmentexcessivereserveBody._condensate = genk.checkMMBBLMin($event, oilMox)"
-              [value]="fielddevelopmentexcessivereserveBody._condensate"/>
-              <span class="barspan">BBLS</span>
+              (change)="
+                fielddevelopmentexcessivereserveBody._condensate =
+                  genk.checkMMBBLMin($event, oilMox)
+              "
+              [value]="fielddevelopmentexcessivereserveBody._condensate"
+              [attr.disabled]="disableForm ? true : null"
+            />
+            <span class="barspan">BBLS</span>
           </div>
         </div>
         <small #oilMox></small>
@@ -296,56 +363,88 @@
 
     <div>
       <div style="text-align: center">
-        <button class="quarterbtn" (click)="saveFieldDevelopmentExpectedReserves()">
-       Add Multiple Well Name(s)
+        <button
+          class="quarterbtn"
+          (click)="saveFieldDevelopmentExpectedReserves()"
+          [attr.disabled]="disableForm ? true : null"
+        >
+          Add Multiple Well Name(s)
         </button>
       </div>
     </div>
   </div>
-
 </div>
-<div style="background-color: white; margin-bottom: 30px; border-radius: 5px; box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3); padding: 20px;">
+<div
+  style="
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0.5px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+  "
+>
   <div [formGroup]="UnitizationForm">
-    <div style="
+    <div
+      style="
         text-align: start;
         font-size: 17px;
         font-weight: 600;
         padding-bottom: 20px;
         color: teal;
-      ">
+      "
+    >
       <span>UNITIZATION</span>
     </div>
 
     <div class="col-md-4">
       <label class="labelwp">Is this field straddling?</label>
       <br /><br />
-      <div style="
+      <div
+        style="
           box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
           width: 100%;
           padding: 5px;
           border-radius: 5px;
-        ">
-        <select class="dropwp" formControlName="is_any_of_your_field_straddling" [(ngModel)]="unitizationBody.is_any_of_your_field_straddling">
+        "
+      >
+        <select
+          class="dropwp"
+          formControlName="is_any_of_your_field_straddling"
+          [(ngModel)]="unitizationBody.is_any_of_your_field_straddling"
+          [attr.disabled]="disableForm ? true : null"
+        >
           <option value="NO" selected>No</option>
           <option value="YES">Yes</option>
         </select>
       </div>
     </div>
 
-    <div *ngIf="unitizationBody.is_any_of_your_field_straddling == 'YES'" style="padding-top: 20px;">
+    <div
+      *ngIf="unitizationBody.is_any_of_your_field_straddling == 'YES'"
+      style="padding-top: 20px"
+    >
       <div class="row">
         <div class="col-md-4">
           <label class="labelwp">
-            What Concession and/or field is this field straddling (Separate with a comma if more than one e.g OML 21, OPL 24, tony) </label>
+            What Concession and/or field is this field straddling (Separate with
+            a comma if more than one e.g OML 21, OPL 24, tony)
+          </label>
           <div style="display: flex">
-            <div style="
+            <div
+              style="
                 box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
                 width: 100%;
                 border-radius: 20px;
                 padding: 7px 10px;
-              ">
-              <input type="text" formControlName="what_concession_field_straddling"
-                [(ngModel)]="unitizationBody.what_concession_field_straddling" class="inpute" />
+              "
+            >
+              <input
+                type="text"
+                formControlName="what_concession_field_straddling"
+                [(ngModel)]="unitizationBody.what_concession_field_straddling"
+                class="inpute"
+                [attr.disabled]="disableForm ? true : null"
+              />
             </div>
           </div>
         </div>
@@ -371,8 +470,12 @@
           <label class="labelwp">Has NUPRC been notified?</label>
           <div style="display: flex; width: 100%">
             <div class="inputshadow">
-              <select class="dropwp" formControlName="has_DPR_been_notified"
-                [(ngModel)]="unitizationBody.has_DPR_been_notified">
+              <select
+                class="dropwp"
+                formControlName="has_DPR_been_notified"
+                [(ngModel)]="unitizationBody.has_DPR_been_notified"
+                [attr.disabled]="disableForm ? true : null"
+              >
                 <option selected disabled>--Select an Option --</option>
                 <option value="NO">NO</option>
                 <option value="YES">YES</option>
@@ -387,8 +490,12 @@
           <label class="labelwp">Has the other party been notified?</label>
           <div style="display: flex; width: 100%">
             <div class="inputshadow">
-              <select class="dropwp" formControlName="has_the_other_party_been_notified"
-                [(ngModel)]="unitizationBody.has_the_other_party_been_notified">
+              <select
+                class="dropwp"
+                formControlName="has_the_other_party_been_notified"
+                [(ngModel)]="unitizationBody.has_the_other_party_been_notified"
+                [attr.disabled]="disableForm ? true : null"
+              >
                 <option selected disabled>--Select an Option --</option>
                 <option value="NO">NO</option>
                 <option value="YES">YES</option>
@@ -399,12 +506,16 @@
       </div>
       <br />
       <div style="text-align: center">
-        <button [routerLink]="[
+        <button
+          [routerLink]="[
             '/' + genk.company,
             genk.workprogram,
             'step2',
             'initialwellcompletion'
-          ]" class="nextbtn" (click)="saveUnitization()">
+          ]"
+          class="nextbtn"
+          (click)="saveUnitization()"
+        >
           Save Unitization
         </button>
       </div>

@@ -23,6 +23,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
+  public disableForm: boolean = false;
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
