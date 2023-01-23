@@ -19,7 +19,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-     authenticate: AuthenticationService,
+     private authenticate: AuthenticationService,
     private companyService: CompanyService,
     private cd: ChangeDetectorRef
   ) {

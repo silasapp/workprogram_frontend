@@ -13,9 +13,9 @@
                     <h2>Company Name</h2>
                 </div>
                 <div class="col-sm-6">
-                <input type="text" class="form-control" formControlName="companyId" [(ngModel)]="auth.currentUserValue.companyId" hidden>
+                <input type="text" class="form-control" formControlName="companyId" [value]="auth.currentUserValue.companyId" hidden>
                     
-                    <input type="text" class="form-control" formControlName="companyName" [(ngModel)]="auth.currentUserValue.companyName" ></div>
+                    <input type="text" class="form-control" formControlName="companyName" [value]="auth.currentUserValue.companyName" readonly ></div>
             </div>
         </div>
     
@@ -24,7 +24,7 @@
                 <div class="col-sm-3">
                     <h2>Company Email</h2>
                 </div>
-                <div class="col-sm-6"><input type="email" class="form-control" formControlName="companyEmail" [(ngModel)]="auth.currentUserValue.companyEmail  "  /></div>
+                <div class="col-sm-6"><input type="email" class="form-control" formControlName="companyEmail" [value]="auth.currentUserValue.companyEmail" readonly  /></div>
             </div>
         </div>
     
