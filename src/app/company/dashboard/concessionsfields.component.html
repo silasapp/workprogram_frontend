@@ -293,7 +293,7 @@
               <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession</span>
               <select class="form-select" formControlName="concession_Name" [(ngModel)]="fieldBody.concession_Name">
                 <option selected disabled>--Please Select concession--<option>
-                <option *ngFor="let val of allConcessionsData" value={{val}}>{{val}}</option>
+                <option *ngFor="let val of resultconcessionList" value={{val}}>{{val}}</option>
               </select>
             </div>
             <br>

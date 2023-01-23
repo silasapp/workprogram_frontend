@@ -31,12 +31,13 @@ export class SWPConcessionSituationComponent implements OnInit {
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
+  csSubmitted = false;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  fieldValue: string;
-  field: string;
-  boolValue = 'true';
+  fieldValue:string;
+  field:string;
+  boolValue =true;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -49,6 +50,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       this.getConcessionHeld();
       this.getRoyaltyHeld();
+       this.getBoolValue();
     });
   }
 
@@ -154,10 +156,11 @@ export class SWPConcessionSituationComponent implements OnInit {
           [Validators.required]
         ),
         comment: new FormControl(this.concessionBody.comment, [
-          Validators.required,
+          Validators.required, Validators.minLength(2)
         ]),
       },
       {}
+      
     );
 
     this.RoyaltyForm = new FormGroup(
@@ -173,22 +176,40 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-          Validators.required,
-          Validators.maxLength(2),
+          Validators.required, Validators.minLength(2)
         ]),
       },
       {}
     );
 
+
+
     this.getConcessionHeld();
     //
     this.getRoyaltyHeld();
+    this.getBoolValue();
     this.cd.markForCheck();
   }
 
   get f() {
     return this.RoyaltyForm.controls;
   }
+
+ get csf(){
+ return this.ConcessionSituationForm.controls;
+ }
+
+
+
+ getBoolValue()
+{
+   this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+   
+   debugger;
+   if (this.fieldValue === "OML" || this.fieldValue === "PML") this.boolValue = false;
+
+   else this.boolValue = true;
+ }
 
   loadTable() {
     this.columnHeader = [];
@@ -256,16 +277,17 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.field = 'Field';
         }
 
-        this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+        
+        // this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
 
-        if (
-          this.fieldValue === 'OEL' ||
-          this.fieldValue === 'PPL' ||
-          this.fieldValue === 'OPL' ||
-          this.fieldValue === 'PEL'
-        ) {
-          this.boolValue = 'block';
-        }
+        // if (
+        //   this.fieldValue === 'OEL' ||
+        //   this.fieldValue === 'PPL' ||
+        //   this.fieldValue === 'OPL' ||
+        //   this.fieldValue === 'PEL'
+        // ) {
+        //   this.boolValue = 'block';
+        // }
 
         debugger;
         this.getRoyaltyHeld();
@@ -312,7 +334,10 @@ export class SWPConcessionSituationComponent implements OnInit {
       });
   }
 
+
+  
   submit() {
+    debugger;
     if (this.concessionBody.date_of_Expiration) {
       this.concessionBody.date_of_Expiration =
         this.concessionBody.date_of_Expiration.includes('T00:00:00')

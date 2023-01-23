@@ -72,7 +72,7 @@ export class GenericService {
     { value: 'SC' },
     { value: 'SR' },
   ];
-  concessiontype = [{ value: 'OML' }, { value: 'OPL' }];
+  concessiontype = [{ value: 'OEL' }, { value: 'OML' }, { value: 'OPL' }, { value: 'PEL' }, { value: 'PML' }, { value: 'PPL' }];
 
   entries = [
     { text: '10 entries', value: '10' },
@@ -81,7 +81,7 @@ export class GenericService {
     { text: 'All entries', value: 'all' },
   ];
 
-  constructor(private modal: ModalService) {}
+  constructor(private modal: ModalService) { }
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.sizePerPage;
@@ -798,12 +798,7 @@ export class GenericService {
   }
   showStepTwo() {
     debugger;
-    if (
-      this.OmlName.toUpperCase().substring(0, 3) == 'OML' ||
-      this.OmlName.toUpperCase().substring(0, 3) == 'PML' ||
-      this.OmlName.toUpperCase().substring(0, 3) == ''
-    )
-      return true;
+    if (this.OmlName.toUpperCase().substring(0, 3) == 'OML' || this.OmlName.toUpperCase().substring(0, 3) == 'PML' || this.OmlName.toUpperCase().substring(0, 3) == '') return true;
     return false;
   }
 }

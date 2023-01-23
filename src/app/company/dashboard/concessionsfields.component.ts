@@ -52,6 +52,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   concessionAction = 'INSERT';
   fieldAction = 'INSERT';
   concessionList = [];
+  resultconcessionList = [];
 
   columns = [
     //   {
@@ -511,8 +512,27 @@ export class ConcessionsfieldsComponent implements OnInit {
         delete element['deleteD_STATUS'],
         delete element['emaiL_REMARK'];
     });
+
+debugger;
+this.resultconcessionList=[];
+    for(var counter in this.allConcessionsData){
+     var fieldConces= this.allConcessionsData[counter];
+      if(fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML')){
+        this.resultconcessionList.push(fieldConces);
+      }
+    }
+debugger;
+
+//resultArray.filter(s => s.includes('OML') || s.includes('PML'))
+//this.resultconcessionList= this.allConcessions.filter(this.isOMLorPML)
     return resultArray;
   }
+
+
+  isOMLorPML(element, index, array) {
+    if (element.toUpperCase() == "OML" || element.toUpperCase() == "PML") return element;
+  } 
+
 
   Alert(title: string, text: string, icon: any) {
     Swal.fire({
