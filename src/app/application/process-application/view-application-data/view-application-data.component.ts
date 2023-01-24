@@ -11,11 +11,19 @@ import { AdminService } from 'src/app/services/admin.service';
 export class ViewApplicationDataComponent implements OnInit {
   public sbuReport;
   public appId: number;
+
+  //workprogram
   public geoActivitiesProcessing: IGeoActivitiesProcessing[] = [];
   public geoActivitiesAcquisitions: IGeoActivitiesAcquisition[] = [];
   public drillOperationCategoriesWells: IDrillOperationCategoriesWell[] = [];
   public drillEachCostProposeds: IDrillEachCostProposed[] = [];
   public drillEachCosts: IDrillEachCost[] = [];
+
+  //hse
+  public hseAccidentIncidences: IHseAccidentIncidences[] = [];
+  public hseAccidentIncidenceTypes: IHseAccidentIncidenceType[] = [];
+  public hseAccidentModels: IHseAccidentModel[] = [];
+  public hseAssetRegisters: IHseAssetRegister[] = [];
 
   hdecColDef = [
     {
@@ -452,6 +460,99 @@ export class ViewApplicationDataComponent implements OnInit {
     },
   ];
 
+  hhaiColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'companY_ID',
+      header: 'Company ID',
+    },
+    {
+      columnDef: 'companyName',
+      header: 'Company Name',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'Company Email',
+    },
+    {
+      columnDef: 'consession_Type',
+      header: 'Concession Type',
+    },
+    {
+      columnDef: 'omL_Name',
+      header: 'OML Name',
+    },
+    {
+      columnDef: 'quater',
+      header: 'Quarter',
+    },
+    {
+      columnDef: 'was_there_any_accident_incidence',
+      header: 'Was There Any Accident Incidence',
+    },
+    {
+      columnDef: 'uploadIncidentStatisticsPath',
+      header: 'Uploaded Incident Statistics File',
+    },
+    {
+      columnDef: 'proposeD_year',
+      header: 'Proposed Year',
+    },
+    {
+      columnDef: 'actuaL_year',
+      header: 'Actual Year',
+    },
+  ];
+
+  hhaimColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'companY_ID',
+      header: 'Company ID',
+    },
+    {
+      columnDef: 'companyName',
+      header: 'Company Name',
+    },
+    {
+      columnDef: 'companyemail',
+      header: 'Company Email',
+    },
+    {
+      columnDef: 'consession_Type',
+      header: 'Concession Type',
+    },
+    {
+      columnDef: 'omL_Name',
+      header: 'OML Name',
+    },
+    {
+      columnDef: 'quater',
+      header: 'Quarter',
+    },
+    {
+      columnDef: 'was_there_any_accident_incidence',
+      header: 'Was There Any Accident Incidence',
+    },
+    {
+      columnDef: 'uploadIncidentStatisticsPath',
+      header: 'Uploaded Incident Statistics File',
+    },
+    {
+      columnDef: 'proposeD_year',
+      header: 'Proposed Year',
+    },
+    {
+      columnDef: 'actuaL_year',
+      header: 'Actual Year',
+    },
+  ];
   constructor(
     private adminService: AdminService,
     private cd: ChangeDetectorRef,
@@ -470,12 +571,30 @@ export class ViewApplicationDataComponent implements OnInit {
     this.modalService.logCover('loading...', true);
     this.adminService.getSBUReport(appId).subscribe({
       next: (res) => {
-        this.drillEachCosts.push(res.drillEachCost);
-        this.drillEachCostProposeds.push(res.drillEachCostProposed);
-        this.drillOperationCategoriesWells.push(
-          res.drillOperationCategoriesWell
-        );
-        this.geoActivitiesAcquisitions.push(res.geoActivitiesAcquisition);
+        if (res.drillEachCost) this.drillEachCosts.push(res.drillEachCost);
+
+        if (res.drillEachCostProposed)
+          this.drillEachCostProposeds.push(res.drillEachCostProposed);
+
+        if (res.drillOperationCategoriesWells)
+          this.drillOperationCategoriesWells.push(
+            res.drillOperationCategoriesWell
+          );
+
+        if (res.geoActivitiesAcquisition)
+          this.geoActivitiesAcquisitions.push(res.geoActivitiesAcquisition);
+
+        if (res.hseAccidentIncidence)
+          this.hseAccidentIncidences.push(res.hseAccidentIncidence);
+
+        if (res.hseAccidentIncidenceType)
+          this.hseAccidentIncidenceTypes.push(res.hseAccidentIncidenceType);
+
+        if (res.hseAccidentModel)
+          this.hseAccidentModels.push(res.hseAccidentModel);
+
+        if (res.hseAssetRegister)
+          this.hseAssetRegisters.push(res.hseAssetRegister);
 
         this.modalService.togCover();
         this.cd.markForCheck();
@@ -673,6 +792,109 @@ interface IGeoActivitiesProcessing {
   remarks: string;
   reprocessed_Actual: string;
   reprocessed_Proposed: string;
+  terrain: string;
+  updated_by: string;
+  year_of_WP: string;
+}
+
+interface IHseAccidentIncidences {
+  id: number;
+  actuaL_year: string;
+  companY_ID: string;
+  companyName: string;
+  companyNumber: number;
+  companyemail: string;
+  consession_Type: string;
+  contract_Type: string;
+  created_by: string;
+  date_Created: string;
+  date_Updated: string;
+  field_ID: string;
+  if_YES_were_they_reported: string;
+  omL_ID: string;
+  omL_Name: string;
+  proposeD_year: string;
+  terrain: string;
+  updated_by: string;
+  uploadIncidentStatisticsFilename: string;
+  uploadIncidentStatisticsPath: string;
+  was_there_any_accident_incidence: string;
+  year_of_WP: string;
+}
+
+interface IHseAccidentIncidenceType {
+  id: number;
+  actuaL_year: string;
+  cause: string;
+  companY_ID: string;
+  companyName: string;
+  companyNumber: string;
+  companyemail: string;
+  consequence: string;
+  consession_Type: string;
+  contract_Type: string;
+  created_by: string;
+  date_: string;
+  date_Created: string;
+  date_Updated: string;
+  field_ID: string;
+  frequency: string;
+  investigation: string;
+  lesson_Learnt: string;
+  location: string;
+  omL_ID: string;
+  omL_Name: string;
+  proposeD_year: string;
+  terrain: string;
+  type_of_Accident_Incidence: string;
+  updated_by: string;
+  year_of_WP: string;
+}
+
+interface IHseAccidentModel {
+  id: number;
+  cause: string;
+  consequence: string;
+  date_: string;
+  frequency: string;
+  if_YES_were_they_reported: string;
+  investigation: string;
+  lesson_Learnt: string;
+  location: string;
+  type_of_Accident_Incidence: string;
+  was_there_any_accident_incidence: string;
+}
+
+interface IHseAssetRegister {
+  companY_ID: string;
+  companyName: string;
+  companyNumber: number;
+  companyemail: string;
+  condition_of_Equipment: string;
+  consession_Type: string;
+  contract_Type: string;
+  created_by: string;
+  date_Created: string;
+  date_Updated: string;
+  equipment_Inspected_as_and_when_due: string;
+  equipment_Installation_date: string;
+  equipment_description: string;
+  equipment_manufacturer: string;
+  equipment_serial_number: string;
+  equipment_tag_number: string;
+  equipment_type: string;
+  facility: string;
+  field_ID: string;
+  function_Test_Result: string;
+  id: number;
+  inspection_Report_Review: string;
+  last_Inspection_Type_Performed: string;
+  last_inspection_date: string;
+  next_Inspection_Date: string;
+  omL_ID: string;
+  omL_Name: string;
+  proposed_Inspection_Type: string;
+  state_reason: string;
   terrain: string;
   updated_by: string;
   year_of_WP: string;
