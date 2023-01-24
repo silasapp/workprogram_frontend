@@ -286,6 +286,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveFieldDevelopmentExpectedReserves() {
+    debugger;
     this.workprogram
       .saveFieldDevelopmentExpectedReserves(
         this.fielddevelopmentexcessivereserveBody,
@@ -295,6 +296,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          debugger;
           this.modalService.logNotice('Success', res.popText, 'success');
         },
         error: (error) => {

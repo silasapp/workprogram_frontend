@@ -340,53 +340,45 @@
         (click)="submit()"
         [attr.disabled]="disableForm ? true : null"
       >
-        Save Quarter 1
+      Add Initial Well For Quarter 1
       </button>
     </div>
   </div>
 
-  <br />
-  <br />
-  <div
-    #divTable
-    style="
-      overflow: hidden;
-      overflow-x: auto;
-      box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-    "
-  >
-    <table #codeTable class="apptable" cellPadding="10px">
-      <thead>
-        <tr>
-          <th *ngFor="let h of iwccolumn">
-            {{ h.header }}
-          </th>
-        </tr>
-      </thead>
-      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-        <tr *ngFor="let row of sdList">
-          <td *ngFor="let h of sdcolumn">
-            {{ row[h.columnDef] }}
-          </td>
-          <td>
-            <button
-              mat-stroked-button
-              style="margin: 50px; padding: 10px"
-              type="button"
-              class="btn btn-primary"
-              (click)="deleteNCT(row)"
-              value="{{ row.id }}"
-              style="background-color: white; color: red; border: 2px solid"
-              class="submitbtn"
-            >
-              <mat-icon style="font-size: 20px"> border_color</mat-icon>
-              <b>Delete</b>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+<br/>
+<br/>
+<div #divTable style="
+overflow: hidden;
+overflow-x: auto;
+box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+">
+<table #codeTable class="apptable" cellPadding="10px">
+<thead>
+  <tr>
+    <th *ngFor="let h of iwccolumn">
+      {{ h.header }}
+    </th>
+  </tr>
+</thead>
+ <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+  <tr *ngFor="let row of _quaterIWOneData">
+    <td *ngFor="let h of iwccolumn">
+      {{ row[h.columnDef] }}
+    </td>
+    <td>
+      <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
+        (click)="deleteNCT(row)" value="{{ row.id }}"
+        style="background-color: white; color: red; border: 2px solid" class="submitbtn">
+        <mat-icon style="font-size: 20px"> border_color</mat-icon>
+        <b>Delete</b>
+      </button>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
 </div>
 <br />
 <br />

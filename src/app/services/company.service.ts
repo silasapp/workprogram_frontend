@@ -24,6 +24,7 @@ export class CompanyService {
   }
 
   editCompanyDetails(details: any) {
+    
     return this.http
       .post<any>(
         `${environment.apiUrl}/presentation/editcompanydetails`,
@@ -37,7 +38,11 @@ export class CompanyService {
       );
   }
 
+
+  
+
   getCompanyDetails() {
+    debugger;
     const d = this.auth.currentUserValue;
     return this.http
       .get<any>(`${environment.apiUrl}/presentation/getcompanydetails`, {

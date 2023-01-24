@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CompanyService } from '../../services/company.service';
 import Swal from 'sweetalert2';
+import { CdkAriaLive } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-company-details',
@@ -13,24 +14,34 @@ export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
   companyDetails: any;
   private d: any;
+  auth: AuthenticationService;
+  
 
   constructor(
     private fb: FormBuilder,
-    private auth: AuthenticationService,
-    private companyService: CompanyService
-  ) {}
+     private authenticate: AuthenticationService,
+    private companyService: CompanyService,
+    private cd: ChangeDetectorRef
+  ) {
+    this.auth=authenticate;
+  }
 
   ngOnInit(): void {
+    debugger;
     this.companyService.getCompanyDetails().subscribe((res) => {
+      debugger;
       this.d = res.data;
     });
+    debugger;
     this.d = this.companyService.currentCompanyValue;
     this.initForm();
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
+    this.cd.markForCheck();
   }
   initForm() {
+    debugger;
     const d = this.d;
     //console.log(d.address_of_Company);
     this.companyDetailsForm = this.fb.group({
@@ -80,6 +91,9 @@ export class CompanyDetailsComponent implements OnInit {
   //     }
   //   );
   //  }
+  
+
+  
   onSubmit() {
     this.companyService
       .editCompanyDetails(this.companyDetailsForm.getRawValue())
@@ -90,11 +104,11 @@ export class CompanyDetailsComponent implements OnInit {
             'Company Details successfully updated',
             'success'
           );
-        },
+        
         (error) => {
           this.Alert('Error', 'An error occurred', 'error');
         }
-      );
+  });
   }
 
   Alert(title: string, text: string, icon: any) {
