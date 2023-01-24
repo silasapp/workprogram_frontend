@@ -1,6 +1,6 @@
 
 <div class="container mt-5">
-    <form [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
+    <div [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
     <div class="container">
         <h1>Company Details </h1>
     
@@ -13,9 +13,9 @@
                     <h2>Company Name</h2>
                 </div>
                 <div class="col-sm-6">
-                <input type="text" class="form-control" formControlName="companyId" hidden>
+                <input type="text" class="form-control" formControlName="companyId" [value]="auth.currentUserValue.companyId" hidden>
                     
-                    <input type="text" class="form-control" formControlName="companyName"></div>
+                    <input type="text" class="form-control" formControlName="companyName" [value]="auth.currentUserValue.companyName" readonly ></div>
             </div>
         </div>
     
@@ -24,7 +24,7 @@
                 <div class="col-sm-3">
                     <h2>Company Email</h2>
                 </div>
-                <div class="col-sm-6"><input type="email" class="form-control" formControlName="companyEmail"></div>
+                <div class="col-sm-6"><input type="email" class="form-control" formControlName="companyEmail" [value]="auth.currentUserValue.companyEmail" readonly  /></div>
             </div>
         </div>
     
@@ -37,7 +37,6 @@
                 <div class="col-sm-3">
                     <h2>Address of Company</h2>
                 </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="address_of_Company"></div>
             </div>
         </div>
         <div class="container">
@@ -87,9 +86,9 @@
     
     <div class="container text-align-center d-flex justify-content-center p-5">
         <div class="col-sm-4">
-        <input type="submit" value="Submit" class="form-control text-white alterbtn">
+        <input type="submit" value="Submit" (click)="onSubmit()" class="form-control text-white alterbtn" />
         </div>
     </div>
     </div>
-    </form>
+</div>
     </div>
