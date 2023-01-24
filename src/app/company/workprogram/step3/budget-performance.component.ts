@@ -324,28 +324,275 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     this.columnHeader = [];
     this.columnValue = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
+  let info = this.budgetBody as budgetActualExpenditure;
 
-      this.columnHeader.push(data[0]);
-      this.columnValue.push(result);
-    } else {
-      for (let item1 in this.budgetActualExpenditureForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue.push(this.budgetBody[item1]);
-        }
+  this.workprogram
+    .post_Budget(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, data, "DELETE")
+    .subscribe(res => {
+
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
       }
+      else{
+      this.loadTable_Budget(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+}
+
+loadTable_Exploratory(data) {
+
+  this.columnHeader_2=[];
+  this.columnValue_2=[];
+
+ if(data != null){
+  data= this.filter(data);
+  var result = Object.entries(data).reduce((acc, [key, value]) => {
+    acc[key] = value == null ? '' : value;
+    return acc;
+  }, {});
+
+    this.columnHeader_2.push(data[0]);
+    this.columnValue_2.push(result);
+ }
+ else{
+  for (let item1 in this.exploratoryActivitiesForm.controls) {
+    if (item1 != 'comment') {
+      this.columnHeader_2.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+      this.columnValue_2.push(this.exploratoryBody[item1]);
     }
-    this.isTabVisible = true;
-    this.cd.markForCheck();
   }
+  }
+  this.isTabVisible_2 = true;
+  this.cd.markForCheck();
+}
+
+ Delete_Exploratory(event){
+
+  let info = this.exploratoryBody as exploratoryActivities;
+
+  this.workprogram
+  .post_Exploratory(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+    .subscribe(res => {
+
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
+      }
+      else{
+      this.loadTable_Budget(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+}
+
+loadTable_Development(data) {
+
+  this.columnHeader_3=[];
+  this.columnValue_3=[];
+
+ if(data != null){
+  data= this.filter(data);
+  var result = Object.entries(data).reduce((acc, [key, value]) => {
+    acc[key] = value == null ? '' : value;
+    return acc;
+  }, {});
+
+    this.columnHeader_3.push(data[0]);
+    this.columnValue_3.push(result);
+ }
+ else{
+  for (let item1 in this.developmentDrillingForm.controls) {
+    if (item1 != 'comment') {
+      this.columnHeader_3.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+      this.columnValue_3.push(this.developmentDrillingBody[item1]);
+    }
+  }
+  }
+  this.isTabVisible_3 = true;
+  this.cd.markForCheck();
+}
+ Delete_Development(event){
+  let info = this.developmentDrillingBody as developmentDrillingActivities;
+
+  this.workprogram
+  .post_Development(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+    .subscribe(res => {
+
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
+      }
+      else{
+      this.loadTable_Development(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+}
+loadTable_Facility(data) {
+
+  this.columnHeader_4=[];
+  this.columnValue_4=[];
+
+ if(data != null){
+  data= this.filter(data);
+  var result = Object.entries(data).reduce((acc, [key, value]) => {
+    acc[key] = value == null ? '' : value;
+    return acc;
+  }, {});
+
+    this.columnHeader_4.push(data[0]);
+    this.columnValue_4.push(result);
+ }
+ else{
+  for (let item1 in this.facilitiesDevelopmentForm.controls) {
+    if (item1 != 'comment') {
+      this.columnHeader_4.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+      this.columnValue_4.push(this.facilitiesDevelopmentBody[item1]);
+    }
+  }
+  }
+  this.isTabVisible_4 = true;
+  this.cd.markForCheck();
+}
+ Delete_Facility(event){
+  let info = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
+
+  this.workprogram.post_Facility(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+    .subscribe(res => {
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
+      }
+      else{
+      this.loadTable_Facility(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+}
+
+loadTable_Production(data) {
+
+  this.columnHeader_5=[];
+  this.columnValue_5=[];
+
+ if(data != null){
+  data= this.filter(data);
+  var result = Object.entries(data).reduce((acc, [key, value]) => {
+    acc[key] = value == null ? '' : value;
+    return acc;
+  }, {});
+
+    this.columnHeader_5.push(data[0]);
+    this.columnValue_5.push(result);
+ }
+ else{
+  for (let item1 in this.productionCostForm.controls) {
+    if (item1 != 'comment') {
+      this.columnHeader_5.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
+      this.columnValue_5.push(this.productionCostBody[item1]);
+    }
+  }
+  }
+  this.isTabVisible_5 = true;
+  this.cd.markForCheck();
+}
+
+ Delete_Production(event) {
+  let info = this.productionCostBody as productionCost;
+
+  this.workprogram.post_Production(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+    .subscribe(res => {
+
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
+      }
+      else{
+      this.loadTable_Production(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+}
+filter(data){
+  const resultArray = Object.keys(data).map(index => {
+    let person = data[index];
+    return person;
+});
+resultArray.forEach(element => {
+    delete element['companY_ID'];
+    delete element['companyNumber'];
+    delete element['companyName'];
+    delete element['companyemail'];
+    delete element['consession_Type'];
+    delete element['contract_Type'];
+    delete element['created_by'];
+    delete element['date_Updated'];
+    delete element['omL_ID'];
+    delete element['omL_Name'];
+    delete element['terrain'];
+    delete element['updated_by'];
+    delete element['year_of_WP'];
+   });
+return resultArray;
+}
+saveBudgetActualExpenditure(){
+  let budgetInfo = {} as budgetActualExpenditure;
+  this.budgetBody.id =  0;
+  this.budgetBody.year_of_WP = this.genk.wpYear;
+  this.budgetBody.oML_Name= this.genk.OmlName;
+  for (let item in this.budgetBody) {
+    if (item != 'id' && item != 'field_ID') {
+      budgetInfo[this.genk.upperText(item)] = this.budgetBody[item]?.toString() ?? '';
+
+    }
+  }
+  this.workprogram
+    .post_Budget(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+    .subscribe(res => {
+
+      if(res.statusCode == 300){
+        this.modalService.logNotice("Error", res.message, 'error');
+      }
+      else{
+      this.loadTable_Budget(res.data);
+      this.modalService.logNotice("Success", res.message, 'success');
+      }
+    })
+    }
+
+
+  // saveExploratory() {
+  //   let budgetInfo = {} as exploratoryActivities;
+  //   this.exploratoryBody.id = 0;
+  //   this.exploratoryBody.year_of_WP = this.genk.wpYear;
+  //   this.exploratoryBody.omL_Name = this.genk.OmlName;
+  //   for (let item in this.exploratoryBody) {
+  //     if (item != 'id' && item != 'field_ID') {
+  //       budgetInfo[this.genk.upperText(item)] = this.exploratoryBody[item]?.toString() ?? '';
+  //       if (data != null) {
+  //         data = this.filter(data);
+  //         var result = Object.entries(data).reduce((acc, [key, value]) => {
+  //           acc[key] = value == null ? '' : value;
+  //           return acc;
+  //         }, {});
+
+  //         this.columnHeader.push(data[0]);
+  //         this.columnValue.push(result);
+  //       } else {
+  //         for (let item1 in this.budgetActualExpenditureForm.controls) {
+  //           if (item1 != 'comment') {
+  //             this.columnHeader.push(
+  //               this.genk.upperText(item1.replace(/_+/g, ' '))
+  //             );
+  //             this.columnValue.push(this.budgetBody[item1]);
+  //           }
+  //         }
+
+  //         this.workprogram
+  //           .post_Exploratory(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '', '')
+  //           .subscribe(res => {
+  //           }
+  //   this.isTabVisible = true;
+  //         this.cd.markForCheck();
+  //       }
+
 
   Delete_Budget(event) {
     let info = this.budgetBody as budgetActualExpenditure;
@@ -369,220 +616,223 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       });
   }
 
-  loadTable_Exploratory(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
+  // loadTable_Exploratory(data) {
+  //   this.columnHeader_2 = [];
+  //   this.columnValue_2 = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
+  //   if (data != null) {
+  //     data = this.filter(data);
+  //     var result = Object.entries(data).reduce((acc, [key, value]) => {
+  //       acc[key] = value == null ? '' : value;
+  //       return acc;
+  //     }, {});
 
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.exploratoryActivitiesForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.exploratoryBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
-  }
+  //     this.columnHeader_2.push(data[0]);
+  //     this.columnValue_2.push(result);
+  //   } else {
+  //     for (let item1 in this.exploratoryActivitiesForm.controls) {
+  //       if (item1 != 'comment') {
+  //         this.columnHeader_2.push(
+  //           this.genk.upperText(item1.replace(/_+/g, ' '))
+  //         );
+  //         this.columnValue_2.push(this.exploratoryBody[item1]);
+  //       }
+  //     }
+  //     this.workprogram
+  //     .post_Development(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+  //       .subscribe(res => {
+  //   }
+  //   this.isTabVisible_2 = true;
+  //   this.cd.markForCheck();
+  // }
 
-  Delete_Exploratory(event) {
-    let info = this.exploratoryBody as exploratoryActivities;
+  // Delete_Exploratory(event) {
+  //   let info = this.exploratoryBody as exploratoryActivities;
 
-    this.workprogram
-      .post_Exploratory(info, this.genk.wpYear, event.target.value, 'DELETE')
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Budget(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
+  //   this.workprogram
+  //     .post_Exploratory(info, this.genk.wpYear, event.target.value, 'DELETE')
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.loadTable_Budget(res.data);
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
 
-  loadTable_Development(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
+  // loadTable_Development(data) {
+  //   this.columnHeader_3 = [];
+  //   this.columnValue_3 = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
+  //   if (data != null) {
+  //     data = this.filter(data);
+  //     var result = Object.entries(data).reduce((acc, [key, value]) => {
+  //       acc[key] = value == null ? '' : value;
+  //       return acc;
+  //     }, {});
 
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.developmentDrillingForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.developmentDrillingBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Development(event) {
-    let info = this.developmentDrillingBody as developmentDrillingActivities;
+  //     this.columnHeader_3.push(data[0]);
+  //     this.columnValue_3.push(result);
+  //   } else {
+  //     for (let item1 in this.developmentDrillingForm.controls) {
+  //       if (item1 != 'comment') {
+  //         this.columnHeader_3.push(
+  //           this.genk.upperText(item1.replace(/_+/g, ' '))
+  //         );
+  //         this.columnValue_3.push(this.developmentDrillingBody[item1]);
+  //       }
+  //     }
+  //   }
+  //   this.isTabVisible_3 = true;
+  //   this.cd.markForCheck();
+  // }
+  // Delete_Development(event) {
+  //   let info = this.developmentDrillingBody as developmentDrillingActivities;
 
-    this.workprogram
-      .post_Development(info, this.genk.wpYear, event.target.value, 'DELETE')
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Development(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
-  loadTable_Facility(data) {
-    this.columnHeader_4 = [];
-    this.columnValue_4 = [];
+  //   this.workprogram
+  //     .post_Development(info, this.genk.wpYear, event.target.value, 'DELETE')
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.loadTable_Development(res.data);
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
+  // loadTable_Facility(data) {
+  //   this.columnHeader_4 = [];
+  //   this.columnValue_4 = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
+  //   if (data != null) {
+  //     data = this.filter(data);
+  //     var result = Object.entries(data).reduce((acc, [key, value]) => {
+  //       acc[key] = value == null ? '' : value;
+  //       return acc;
+  //     }, {});
 
-      this.columnHeader_4.push(data[0]);
-      this.columnValue_4.push(result);
-    } else {
-      for (let item1 in this.facilitiesDevelopmentForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_4.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_4.push(this.facilitiesDevelopmentBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_4 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Facility(event) {
-    let info = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
+  //     this.columnHeader_4.push(data[0]);
+  //     this.columnValue_4.push(result);
+  //   } else {
+  //     for (let item1 in this.facilitiesDevelopmentForm.controls) {
+  //       if (item1 != 'comment') {
+  //         this.columnHeader_4.push(
+  //           this.genk.upperText(item1.replace(/_+/g, ' '))
+  //         );
+  //         this.columnValue_4.push(this.facilitiesDevelopmentBody[item1]);
+  //       }
+  //     }
+  //   }
+  //   this.isTabVisible_4 = true;
+  //   this.cd.markForCheck();
+  // }
+  // Delete_Facility(event) {
+  //   let info = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
 
-    this.workprogram
-      .post_Facility(info, this.genk.wpYear, event.target.value, 'DELETE')
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Facility(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
+  //   this.workprogram
+  //     .post_Facility(info, this.genk.wpYear, event.target.value, 'DELETE')
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.loadTable_Facility(res.data);
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
 
-  loadTable_Production(data) {
-    this.columnHeader_5 = [];
-    this.columnValue_5 = [];
+  // loadTable_Production(data) {
+  //   this.columnHeader_5 = [];
+  //   this.columnValue_5 = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
+  //   if (data != null) {
+  //     data = this.filter(data);
+  //     var result = Object.entries(data).reduce((acc, [key, value]) => {
+  //       acc[key] = value == null ? '' : value;
+  //       return acc;
+  //     }, {});
 
-      this.columnHeader_5.push(data[0]);
-      this.columnValue_5.push(result);
-    } else {
-      for (let item1 in this.productionCostForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_5.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_5.push(this.productionCostBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_5 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Production(event) {
-    let info = this.productionCostBody as productionCost;
+  //     this.columnHeader_5.push(data[0]);
+  //     this.columnValue_5.push(result);
+  //   } else {
+  //     for (let item1 in this.productionCostForm.controls) {
+  //       if (item1 != 'comment') {
+  //         this.columnHeader_5.push(
+  //           this.genk.upperText(item1.replace(/_+/g, ' '))
+  //         );
+  //         this.columnValue_5.push(this.productionCostBody[item1]);
+  //       }
+  //     }
+  //   }
+  //   this.isTabVisible_5 = true;
+  //   this.cd.markForCheck();
+  // }
+  // Delete_Production(event) {
+  //   let info = this.productionCostBody as productionCost;
 
-    this.workprogram
-      .post_Production(info, this.genk.wpYear, event.target.value, 'DELETE')
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Production(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
-  filter(data) {
-    const resultArray = Object.keys(data).map((index) => {
-      let person = data[index];
-      return person;
-    });
-    resultArray.forEach((element) => {
-      delete element['companY_ID'];
-      delete element['companyNumber'];
-      delete element['companyName'];
-      delete element['companyemail'];
-      delete element['consession_Type'];
-      delete element['contract_Type'];
-      delete element['created_by'];
-      delete element['date_Updated'];
-      delete element['omL_ID'];
-      delete element['omL_Name'];
-      delete element['terrain'];
-      delete element['updated_by'];
-      delete element['year_of_WP'];
-    });
-    return resultArray;
-  }
-  saveBudgetActualExpenditure() {
-    let budgetInfo = {} as budgetActualExpenditure;
-    this.budgetBody.id = 0;
-    this.budgetBody.year_of_WP = this.genk.wpYear;
-    this.budgetBody.oML_Name = this.genk.OmlName;
-    for (let item in this.budgetBody) {
-      if (item != 'id' && item != 'field_ID') {
-        budgetInfo[this.genk.upperText(item)] =
-          this.budgetBody[item]?.toString() ?? '';
-      }
-    }
-    this.workprogram
-      .post_Budget(
-        budgetInfo,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName,
-        '',
-        ''
-      )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Budget(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
+  //   this.workprogram
+  //     .post_Production(info, this.genk.wpYear, event.target.value, 'DELETE')
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.loadTable_Production(res.data);
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
+  // filter(data) {
+  //   const resultArray = Object.keys(data).map((index) => {
+  //     let person = data[index];
+  //     return person;
+  //   });
+  //   resultArray.forEach((element) => {
+  //     delete element['companY_ID'];
+  //     delete element['companyNumber'];
+  //     delete element['companyName'];
+  //     delete element['companyemail'];
+  //     delete element['consession_Type'];
+  //     delete element['contract_Type'];
+  //     delete element['created_by'];
+  //     delete element['date_Updated'];
+  //     delete element['omL_ID'];
+  //     delete element['omL_Name'];
+  //     delete element['terrain'];
+  //     delete element['updated_by'];
+  //     delete element['year_of_WP'];
+  //   });
+  //   return resultArray;
+  // }
+  // saveBudgetActualExpenditure() {
+  //   let budgetInfo = {} as budgetActualExpenditure;
+  //   this.budgetBody.id = 0;
+  //   this.budgetBody.year_of_WP = this.genk.wpYear;
+  //   this.budgetBody.oML_Name = this.genk.OmlName;
+  //   for (let item in this.budgetBody) {
+  //     if (item != 'id' && item != 'field_ID') {
+  //       budgetInfo[this.genk.upperText(item)] =
+  //         this.budgetBody[item]?.toString() ?? '';
+  //     }
+  //   }
+  //   this.workprogram
+  //     .post_Budget(
+  //       budgetInfo,
+  //       this.genk.wpYear,
+  //       this.genk.OmlName,
+  //       this.genk.fieldName,
+  //       '',
+  //       ''
+  //     )
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.loadTable_Budget(res.data);
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
 
   saveExploratory() {
     let budgetInfo = {} as exploratoryActivities;
@@ -596,7 +846,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       }
     }
     this.workprogram
-      .post_Exploratory(budgetInfo, this.genk.wpYear, '', '')
+      .post_Exploratory(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '', '')
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -619,7 +869,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       }
     }
     this.workprogram
-      .post_Development(budgetInfo, this.genk.wpYear, '', '')
+      .post_Development(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '', '')
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -641,8 +891,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           this.facilitiesDevelopmentBody[item]?.toString() ?? '';
       }
     }
-    this.workprogram
-      .post_Facility(budgetInfo, this.genk.wpYear, '', '')
+    this.workprogram.post_Facility(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName,  '', '')
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -663,20 +912,22 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         budgetInfo[this.genk.upperText(item)] =
           this.productionCostBody[item]?.toString() ?? '';
       }
-    }
-    this.workprogram
-      .post_Production(budgetInfo, this.genk.wpYear, '', '')
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      this.workprogram
+      .post_Production(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+        .subscribe(res => {
+
+          if(res.statusCode == 300){
+            this.modalService.logNotice("Error", res.message, 'error');
+          }
+          else{
           this.loadTable_Production(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
   }
-
-  onSubmit() {
-    return null;
   }
+
+  // onSubmit() {
+  //   return null;
+  // }
 }
