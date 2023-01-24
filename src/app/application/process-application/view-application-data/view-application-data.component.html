@@ -1,7 +1,7 @@
 <div class="background">
   <div class="title"><h1>Company Submission Details</h1></div>
 
-  <div class="apptable">
+  <div class="apptable wptablebox" *ngIf="drillEachCosts.length > 0">
     <h2>Drill Each Cost</h2>
     <table class="wptable">
       <thead>
@@ -21,7 +21,7 @@
     </table>
   </div>
 
-  <div class="apptable">
+  <div class="apptable wptablebox" *ngIf="drillEachCostProposeds.length > 0">
     <h2>Drill Each Cost(Proposed)</h2>
     <table class="wptable">
       <thead>
@@ -41,19 +41,42 @@
     </table>
   </div>
 
-  <div class="apptable">
+  <div
+    class="apptable wptablebox"
+    *ngIf="drillOperationCategoriesWells.length > 0"
+  >
     <h2>Drilling Operations Categories of Proposed Well</h2>
     <table class="wptable">
       <thead>
         <tr>
-          <th *ngFor="let h of hdecColDef">
+          <th *ngFor="let h of hdocpwColDef">
             {{ h.header }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of drillEachCosts">
-          <td *ngFor="let colDef of hdecColDef">
+        <tr *ngFor="let row of drillOperationCategoriesWells">
+          <td *ngFor="let colDef of hdocpwColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="geoActivitiesAcquisitions.length > 0">
+    <h2>Geophysical Activities Acquisition</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hgaaColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of geoActivitiesAcquisitions">
+          <td *ngFor="let colDef of hgaaColDef">
             {{ row[colDef.columnDef] }}
           </td>
         </tr>
