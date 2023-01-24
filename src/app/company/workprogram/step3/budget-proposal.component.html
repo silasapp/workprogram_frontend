@@ -145,39 +145,6 @@
           </div>
         </div>
       </div>
-
-      <div style="width: 30%">
-        <div style="font-weight: 500; margin-bottom: 5px">
-          <span>Total Company's Expenditure</span>
-        </div>
-
-        <div style="width: 100%; display: flex">
-          <div style="width: 98%">
-            <br />
-            <label class="labelwp">USD</label>
-            <div style="display: flex">
-              <div
-                style="
-                  box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-                  width: 100%;
-                  border-radius: 15px;
-                  padding: 7px 10px;
-                "
-              >
-                <input
-                  type="number"
-                  class="inpute"
-                  formControlName="total_Company_Expenditure_Dollars"
-                  [(ngModel)]="
-                    budgetProposalBody.total_Company_Expenditure_Dollars
-                  "
-                  [attr.disabled]="disableForm ? true : null"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <br /><br />

@@ -4644,6 +4644,26 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
+  Delete_HSE_GHG(row: HSE_GHG_MANAGEMENT_PLAN) {
+    this.workprogram
+      .post_HSE_GHG(
+        {} as HSE_GHG_MANAGEMENT_PLAN,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        'DELETE',
+        row.id
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+
+          this.getHSE();
+          this.cd.markForCheck();
+        },
+      });
+  }
+
   Delete_HSE_Host_Communities_Dev(row: HSE_HOST_COMMUNITIES_DEVELOPMENT) {
     this.workprogram
       .post_HSE_Host_Communities(
