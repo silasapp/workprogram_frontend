@@ -269,7 +269,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
 
 
   getInitialCompletion() {
-
+    debugger;
       this.workprogram.getInitialWellCompletion(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe(res => {
         debugger;
@@ -281,7 +281,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
 
-
+        debugger;
 
 
         this._quaterIWOneData = res.initialWellCompletion.filter(res => { return res.quater === "QUARTER 1"; }) ?? {} as INITIAL_WELL_COMPLETION_JOB1[];
@@ -361,20 +361,26 @@ debugger;
   }
 
   submit() {
+    debugger;
     this.cd.markForCheck();
     this.initialBody.id = 0;
     this.initialBody.qUATER = "QUARTER " + this.currentIWQuater;
     this.initialBody.budeget_Allocation_NGN = this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.initialBody.budeget_Allocation_USD = this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
- 
+    debugger;
     let sail: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
+    debugger;
+    sail.proposed_well_number=this.iwList.length;
     this.workprogram
       .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {
+        debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
+        this.getInitialCompletion();
+        this.cd.markForCheck();
       });
   }
 }
