@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
 import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
@@ -13,29 +14,36 @@ import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-pr
 export class ManageApplicationsComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
-
-  title = 'Concession Reserves for current year(as at 1st January)';
-  pagenum = 0;
-  selectedPage = 1;
-  arrayRows = [];
-  data: any[];
-  year = [];
-  selectedColumns: any[] = [];
-  isTableOpt = false;
-  isSpecifyColumns = false;
+  public rejectedApps: IRejectedApp[] = [];
+  public data: IRejectedApp[] = [];
+  public pagenum = 0;
+  public selectedPage = 1;
+  public arrayRows = [];
+  public year = [];
+  public selectedColumns: any[] = [];
+  public isTableOpt = false;
+  public isSpecifyColumns = false;
 
   columns = [
     {
-      columnDef: 'role',
-      header: 'Role',
+      columnDef: 'yearOfWKP',
+      header: 'Year',
     },
     {
-      columnDef: 'sbu',
-      header: 'Strategic Business Unit (SBU)',
+      columnDef: 'companyName',
+      header: 'Company Name',
     },
     {
-      columnDef: 'sort',
-      header: 'Sequence',
+      columnDef: 'referenceNo',
+      header: 'Reference No.',
+    },
+    {
+      columnDef: 'concessionName',
+      header: 'Concession Name',
+    },
+    {
+      columnDef: 'sbU_Comment',
+      header: "Processing Officer's Comment",
     },
   ];
 
@@ -44,7 +52,8 @@ export class ManageApplicationsComponent implements OnInit {
     public cdr: ChangeDetectorRef,
     public genk: GenericService,
     private modalService: ModalService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     this.genk.sizePerPage = this.genk.sizeten;
   }
@@ -59,73 +68,13 @@ export class ManageApplicationsComponent implements OnInit {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
   }
 
-  addProcessFlow() {
-    const operationsConfiguration = {
-      process: {
-        data: {
-          roles: this.roles,
-          sbus: this.sbus,
-        },
-        form: AddProcessFlowFormComponent,
-      },
-    };
-
-    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
-      data: {
-        data: operationsConfiguration['process'].data,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      this.getRejectedApps();
-      this.cdr.markForCheck();
-    });
-  }
-
   editProcessFlow(row) {
-    const operationsConfiguration = {
-      process: {
-        data: {
-          targetData: row,
-          roles: this.roles,
-          sbus: this.sbus,
-        },
-        form: AddProcessFlowFormComponent,
-      },
-    };
-
-    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
-      data: {
-        data: operationsConfiguration['process'].data,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      this.getRejectedApps();
-      this.cdr.markForCheck();
-    });
-  }
-
-  deleteProcessFlow(row) {
-    const operationsConfiguration = {
-      process: {
-        data: {
-          targetData: row,
-        },
-        form: DeleteProcessFlowComponent,
-      },
-    };
-
-    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
-      data: {
-        data: operationsConfiguration['process'].data,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      this.getRejectedApps();
-      this.cdr.markForCheck();
-    });
+    this.router.navigate([
+      '/',
+      this.genk.company,
+      this.genk.workprogram,
+      'step1',
+    ]);
   }
 
   assignPageNum() {
@@ -146,10 +95,6 @@ export class ManageApplicationsComponent implements OnInit {
     this.report.getRejectedApps().subscribe({
       next: (res) => {
         this.data = res.data as any[];
-        this.roles = res.roles as IRole[];
-        this.sbus = res.sbUs as ISBU[];
-
-        console.log('rejected apps: ', res.data);
 
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
@@ -220,4 +165,31 @@ export interface ISBU {
   sbU_Name: string;
   sbU_Code: string;
   id: number;
+}
+
+export interface IRejectedApp {
+  id: number;
+  categoryID: number;
+  companyID: number;
+  concessionID: number;
+  fieldID: string;
+  rejectId: string;
+  yearOfWKP: string;
+  companyName: string;
+  concessionName: string;
+  createdAt: string;
+  currentDesk: string;
+  deleteStatus: string;
+  deletedAt: string;
+  approvalRef: string;
+  deletedBy: string;
+  fieldName: string;
+  last_SBU: string;
+  paymentStatus: string;
+  referenceNo: string;
+  sbU_Comment: string;
+  status: string;
+  submitted: string;
+  submittedAt: string;
+  updatedAt: string;
 }

@@ -3535,7 +3535,7 @@ export class WorkProgramService {
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_actual_expenditure`,
         budget,
-        { params: { year: year, id, actionToDo } }
+        { params: { year: year, omlName, fieldName, actionToDo } }
       )
       .pipe(
         retry(this.num),
@@ -3631,12 +3631,14 @@ export class WorkProgramService {
       );
   }
 
-  post_BudgetProposal(budget: budgetProposal,
+  post_BudgetProposal(
+    budget: budgetProposal,
     year: string,
     omlName: string,
     fieldName: string,
     id,
-    actionToDo) {
+    actionToDo
+  ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
@@ -6063,15 +6065,14 @@ export class WorkProgramService {
     return this.http.post<any>(
       `${environment.apiUrl}/Application/RejectApplication`,
 
-      {
-        selectedApps: selectedApps,
-        sbU_IDs: SBU_IDs,
-        selectedTables: selectedTables,
-      },
+      {},
       {
         params: {
           deskID,
           comment,
+          selectedTables: selectedTables,
+          selectedApps: selectedApps,
+          sbU_IDs: SBU_IDs,
         },
       }
     );

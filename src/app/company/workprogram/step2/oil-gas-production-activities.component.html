@@ -18,10 +18,10 @@
           formControlName="oil_or_gas_wells"
           [value]="genk.fieldWell"
           (change)="getFieldWell($event)"
+          [attr.disabled]="disableForm ? true : null"
         >
           <option selected value="GAS WELL">GAS WELL</option>
           <option value="OIL WELL">OIL WELL</option>
-
         </select>
       </div>
     </div>
@@ -63,22 +63,23 @@
           <div
             style="display: flex; width: 100%; justify-content: space-between"
           >
-          <div style="width: 30%">
-            <span class="labelwp">Is There a Planned Deferment ?</span>
-            <div style="display: flex; width: 100%">
-              <div class="inputshadow">
-                <select
-                  class="dropwp"
-                  formControlName="oil_Royalty_Payment"
-                  [value]="productionoilBody.oil_Royalty_Payment"
-                >
-                  <option selected disabled>--Select an Option --</option>
-                  <option value="YES">Yes</option>
-                  <option value="NO">No</option>
-                </select>
+            <div style="width: 30%">
+              <span class="labelwp">Is There a Planned Deferment ?</span>
+              <div style="display: flex; width: 100%">
+                <div class="inputshadow">
+                  <select
+                    class="dropwp"
+                    formControlName="oil_Royalty_Payment"
+                    [value]="productionoilBody.oil_Royalty_Payment"
+                    [attr.disabled]="disableForm ? true : null"
+                  >
+                    <option selected disabled>--Select an Option --</option>
+                    <option value="YES">Yes</option>
+                    <option value="NO">No</option>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
 
             <!-- <div style="width: 30%; margin: auto 0 0">
               <label class="labelwp">Volume of Deferment (Barrels)</label>
@@ -134,55 +135,53 @@
             <div
               style="display: flex; width: 100%; justify-content: space-between"
             >
-
-            <div style="width: 30%; margin: auto 0 0">
-              <label class="labelwp">Annual Forecast Oil (Barrels)</label>
-              <div style="display: flex">
-                <div class="minsec">
-                  <input
-                    formControlName="annualForecastOil"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    placeholder="100,000"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
-                      productionoilBody.annualForecastOil = genk.checkMMBBLMin(
-                        $event,
-                        oilMic
-                      )
-                    "
-                    [value]="productionoilBody.annualForecastOil"
-                  />
-                  <span class="barspan">BBLS</span>
+              <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp">Annual Forecast Oil (Barrels)</label>
+                <div style="display: flex">
+                  <div class="minsec">
+                    <input
+                      formControlName="annualForecastOil"
+                      class="inpute"
+                      (keypress)="genk.restrictData($event)"
+                      placeholder="100,000"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        productionoilBody.annualForecastOil =
+                          genk.checkMMBBLMin($event, oilMic)
+                      "
+                      [value]="productionoilBody.annualForecastOil"
+                      [attr.disabled]="disableForm ? true : null"
+                    />
+                    <span class="barspan">BBLS</span>
+                  </div>
                 </div>
+                <small #oilMic></small>
               </div>
-              <small #oilMic></small>
-            </div> 
 
-
-            <div style="width: 30%; margin: auto 0 0">
-              <label class="labelwp">Annual Forecast Condensate (Barrels)</label>
-              <div style="display: flex">
-                <div class="minsec">
-                  <input
-                    formControlName="annualForecastCondensate"
-                    class="inpute"
-                    (keypress)="genk.restrictData($event)"
-                    placeholder="100,000"
-                    (keyup)="genk.formatCurrency($event)"
-                    (change)="
-                      productionoilBody.annualForecastCondensate = genk.checkMMBBLMin(
-                        $event,
-                        oilMic
-                      )
-                    "
-                    [value]="productionoilBody.annualForecastCondensate"
-                  />
-                  <span class="barspan">BBLS</span>
+              <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp"
+                  >Annual Forecast Condensate (Barrels)</label
+                >
+                <div style="display: flex">
+                  <div class="minsec">
+                    <input
+                      formControlName="annualForecastCondensate"
+                      class="inpute"
+                      (keypress)="genk.restrictData($event)"
+                      placeholder="100,000"
+                      (keyup)="genk.formatCurrency($event)"
+                      (change)="
+                        productionoilBody.annualForecastCondensate =
+                          genk.checkMMBBLMin($event, oilMic)
+                      "
+                      [value]="productionoilBody.annualForecastCondensate"
+                      [attr.disabled]="disableForm ? true : null"
+                    />
+                    <span class="barspan">BBLS</span>
+                  </div>
                 </div>
+                <small #oilMic></small>
               </div>
-              <small #oilMic></small>
-            </div>
 
               <!-- <div style="width: 30%">
                 <label id="ContentPlaceHolder2_Label8" class="labelwp"
@@ -266,7 +265,9 @@
             </div>
             <br />
 
-            <div  style="display: flex; width: 100%; justify-content: space-between">
+            <div
+              style="display: flex; width: 100%; justify-content: space-between"
+            >
               <!-- <div style="width: 30%">
                 <label class="labelwp"
                   >Gas production (NAG)(Standard Cubic Feet)</label
@@ -293,10 +294,9 @@
                 <small #gasMac></small>
               </div> -->
 
-
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp"
-                  > Annual Forecast Gas (AG)(Standard Cubic Feet)</label
+                <label class="labelwp">
+                  Annual Forecast Gas (AG)(Standard Cubic Feet)</label
                 >
                 <div style="display: flex">
                   <div class="minsec">
@@ -307,22 +307,21 @@
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastGasAg = genk.checkBSCFMin(
-                          $event,
-                          gasmaxx
-                        )
+                        productionoilBody.annualForecastGasAg =
+                          genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasAg"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">SCF</span>
                   </div>
                 </div>
                 <small #gasMac></small>
               </div>
-           
+
               <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp"
-                  > Annual Forecast Gas (NAG)(Standard Cubic Feet)</label
+                <label class="labelwp">
+                  Annual Forecast Gas (NAG)(Standard Cubic Feet)</label
                 >
                 <div style="display: flex">
                   <div class="minsec">
@@ -333,29 +332,27 @@
                       (keypress)="genk.restrictData($event)"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastGasNag = genk.checkBSCFMin(
-                          $event,
-                          gasmaxx
-                        )
+                        productionoilBody.annualForecastGasNag =
+                          genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasNag"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                     <span class="barspan">SCF</span>
                   </div>
                 </div>
                 <small #gasMac></small>
               </div>
-
-
-
-
-
             </div>
 
             <br /><br /><br />
             <div>
               <div style="text-align: center">
-                <button class="quarterbtn" (click)="saveProduction()">
+                <button
+                  class="quarterbtn"
+                  (click)="saveProduction()"
+                  [attr.disabled]="disableForm ? true : null"
+                >
                   UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)
                 </button>
               </div>
@@ -397,7 +394,7 @@
                 [value]="monthlyactivityBody.production_month"
                 (change)="changeActualMonth($event)"
               >
-              
+
                 <option
                   value="January"
                   [selected]="
@@ -632,6 +629,7 @@
                   formControlName="production_month"
                   [value]="proposedmonthlyBody.production_month"
                   (change)="changeProposedMonth($event)"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <!-- <option disabled>---- Select a Month ----</option> -->
                   <option
@@ -746,6 +744,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.production"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -775,6 +774,7 @@
                         genk.addCurrencyDecimal($event)
                     "
                     [value]="proposedmonthlyBody.avg_Daily_Production"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                 </div>
               </div>
@@ -803,6 +803,7 @@
                       )
                     "
                     [value]="proposedmonthlyBody.gas_AG"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -823,15 +824,20 @@
                     placeholder="1,000,000"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
-                    (change)="proposedmonthlyBody.gas_NAG = genk.checkBSCFMin($event, gasBox)"
+                    (change)="
+                      proposedmonthlyBody.gas_NAG = genk.checkBSCFMin(
+                        $event,
+                        gasBox
+                      )
+                    "
                     [value]="proposedmonthlyBody.gas_NAG"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">SCF</span>
                 </div>
               </div>
               <small #gasBox></small>
             </div>
-
 
             <div style="margin-left: 5%; width: 30%">
               <label class="labelwp">Condensate Production (Barrels)</label>
@@ -845,23 +851,28 @@
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
                     (change)="
-                    proposedmonthlyBody.condensateProd =
-                        genk.checkMMBBLMin($event, oilTax)
+                      proposedmonthlyBody.condensateProd = genk.checkMMBBLMin(
+                        $event,
+                        oilTax
+                      )
                     "
                     [value]="proposedmonthlyBody.condensateProd"
+                    [attr.disabled]="disableForm ? true : null"
                   />
                   <span class="barspan">BBLS</span>
                 </div>
               </div>
               <small #oilTax></small>
             </div>
-
-
           </div>
           <br />
           <br /><br />
           <div style="text-align: center">
-            <button class="quarterbtn" (click)="saveProposedActivity()">
+            <button
+              class="quarterbtn"
+              (click)="saveProposedActivity()"
+              [attr.disabled]="disableForm ? true : null"
+            >
               Save Proposed
               {{ proposedmonthlyBody.production_month }} Production
             </button>
@@ -899,11 +910,17 @@
                 formControlName="fiveyear_Timeline"
                 [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected>---- Select a Year ----</option> -->
-                
-                <option *ngFor="let year of fiveYearsValues" [value]="year" [selected]="fiveYearForecastBody.fiveyear_Timeline===year">{{year}}</option>
 
+                <option
+                  *ngFor="let year of fiveYearsValues"
+                  [value]="year"
+                  [selected]="fiveYearForecastBody.fiveyear_Timeline === year"
+                >
+                  {{ year }}
+                </option>
 
                 <!-- <option
                   value="year"
@@ -963,6 +980,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_Oil"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -986,6 +1004,7 @@
                       genk.checkMMBBLMin($event, oilTax)
                   "
                   [value]="fiveYearForecastBody.fiveyear_Condensate"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -1015,6 +1034,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_AG"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1041,6 +1061,7 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_NAG"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1078,7 +1099,11 @@
         <br />
 
         <div style="text-align: center">
-          <button class="quarterbtn" (click)="saveFiveYearForecast()">
+          <button
+            class="quarterbtn"
+            (click)="saveFiveYearForecast()"
+            [attr.disabled]="disableForm ? true : null"
+          >
             Save Five Year Production Forecast
           </button>
         </div>
@@ -1228,6 +1253,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_production"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1254,6 +1280,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_utilization"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1280,6 +1307,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_flaring"
+                  [attr.disabled]="disableForm ? true : null"
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1312,6 +1340,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_planned"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1338,6 +1367,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_drilled"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1351,6 +1381,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   class="dropwp"
                   formControlName="is_there_a_gas_plant"
                   [(ngModel)]="gasproductionBody.is_there_a_gas_plant"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1372,6 +1403,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   class="dropwp"
                   formControlName="gas_flare_Royalty_payment"
                   [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment"
+                  [attr.disabled]="disableForm ? true : null"
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1402,6 +1434,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.number_of_gas_wells_completed"
+                  [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -1423,6 +1456,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   [(ngModel)]="gasproductionBody.remarks_"
                   rows="2"
                   class="inpute"
+                  [attr.disabled]="disableForm ? true : null"
                 ></textarea>
               </div>
             </div>
@@ -1431,7 +1465,11 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
         <br />
         <div>
           <div style="text-align: center">
-            <button class="quarterbtn" (click)="saveGasProduction()">
+            <button
+              class="quarterbtn"
+              (click)="saveGasProduction()"
+              [attr.disabled]="disableForm ? true : null"
+            >
               Update Gas Production Activities
             </button>
           </div>

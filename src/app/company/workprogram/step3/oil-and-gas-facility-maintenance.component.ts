@@ -23,6 +23,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
+  public disableForm: boolean = false;
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
@@ -296,14 +297,20 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
 
   Delete_OilGas(event) {
     let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
-      this.workprogram
-      .post_OilGas(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
-        .subscribe(res => {
-          debugger;
-          if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-          }
-          else{
+
+    this.workprogram
+      .post_OilGas(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
           this.loadTable_OilGas(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
@@ -428,19 +435,25 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         budgetInfo[this.genk.upperText(item)] =
           this.oilAndGasBody[item]?.toString() ?? '';
       }
-      this.workprogram
-      .post_OilGas(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
-        .subscribe(res => {
-          debugger;
-          if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-          }
-          else{
+    }
+    this.workprogram
+      .post_OilGas(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
           this.loadTable_OilGas(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
-  }}
+  }
 
   saveTechnology() {
           let budgetInfo = {} as newTechnologyAndConformityAssessment;

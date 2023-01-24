@@ -23,6 +23,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPBudgetProposalComponent implements OnInit {
+  public disableForm: boolean = false;
   budgetProposalForm: FormGroup;
   capexOpexForm: FormGroup;
   budgetProposalBody: budgetProposal = {} as budgetProposal;
@@ -153,7 +154,14 @@ export class SWPBudgetProposalComponent implements OnInit {
     let info = this.budgetProposalBody as budgetProposal;
 
     this.workprogram
-    .post_BudgetProposal(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
+      .post_BudgetProposal(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -253,7 +261,15 @@ export class SWPBudgetProposalComponent implements OnInit {
     }
     budgetInfo.companyNumber = 0;
 
-    this.workprogram.post_BudgetProposal(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
+    this.workprogram
+      .post_BudgetProposal(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');

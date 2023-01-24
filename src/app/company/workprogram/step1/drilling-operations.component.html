@@ -105,6 +105,7 @@
                       formControlName="wellName"
                       [(ngModel)]="categoryBody.wellName"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -137,6 +138,7 @@
                       class="dropwp"
                       formControlName="category"
                       [(ngModel)]="categoryBody.category"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>-- Select Well Class --</option>
                       <option value="1st Appraisal">1st Appraisal</option>
@@ -174,6 +176,7 @@
                       class="dropwp"
                       formControlName="well_type"
                       [(ngModel)]="categoryBody.well_type"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>
                         ---- Please Select Well Type ----
@@ -200,6 +203,7 @@
                       class="dropwp"
                       formControlName="well_trajectory"
                       [(ngModel)]="categoryBody.well_trajectory"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>
                         ---- Please Select Trajectory ----
@@ -229,6 +233,7 @@
                       formControlName="spud_date"
                       [(ngModel)]="categoryBody.spud_date"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -251,6 +256,7 @@
                       class="dropwp"
                       formControlName="cored"
                       [(ngModel)]="categoryBody.cored"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>
                         -- Select an Option -- &nbsp; &nbsp;
@@ -278,6 +284,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.core_Depth_Interval"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -306,6 +313,7 @@
                       "
                       [value]="categoryBody.core_Cost_USD"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -326,6 +334,7 @@
                       class="dropwp"
                       formControlName="any_New_Discoveries"
                       [(ngModel)]="categoryBody.any_New_Discoveries"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>
                         -- Select an Option -- &nbsp; &nbsp;
@@ -357,6 +366,7 @@
                         categoryBody.state_the_field_where_Discovery_was_made
                       "
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -378,6 +388,7 @@
                       formControlName="hydrocarbon_Counts"
                       [(ngModel)]="categoryBody.hydrocarbon_Counts"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -478,6 +489,7 @@
                       "
                       [value]="categoryBody.well_cost"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -491,6 +503,7 @@
                       class="dropwp"
                       formControlName="processing_Fees_Paid"
                       [(ngModel)]="categoryBody.processing_Fees_Paid"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>--Select an Option --</option>
                       <option value="NO">NO</option>
@@ -517,6 +530,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.number_of_Days_to_Total_Depth"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -537,6 +551,7 @@
                       class="dropwp"
                       formControlName="terrain"
                       [(ngModel)]="categoryBody.terrain"
+                      [attr.disabled]="disableForm ? true : null"
                     >
                       <option selected disabled>
                         -- Select an Terrain -- &nbsp; &nbsp;
@@ -565,6 +580,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.water_depth"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -588,6 +604,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.true_vertical_depth"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -616,6 +633,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.measured_depth"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -639,6 +657,7 @@
                       (keypress)="genk.restrictData($event)"
                       [(ngModel)]="categoryBody.depth_refrence"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -660,6 +679,7 @@
                       formControlName="rig_type"
                       [(ngModel)]="categoryBody.rig_type"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -686,6 +706,7 @@
                       formControlName="rig_Name"
                       [(ngModel)]="categoryBody.rig_Name"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -707,6 +728,7 @@
                       formControlName="target_reservoir"
                       [(ngModel)]="categoryBody.target_reservoir"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -727,6 +749,7 @@
                       formControlName="location_name"
                       [(ngModel)]="categoryBody.location_name"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -752,6 +775,7 @@
                       (keypress)="genk.restrictAlphaData($event)"
                       [(ngModel)]="categoryBody.basin"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -773,6 +797,7 @@
                       formControlName="propose_well_names"
                       [(ngModel)]="categoryBody.propose_well_names"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -794,6 +819,7 @@
                       formControlName="actual_wells_name"
                       [(ngModel)]="categoryBody.actual_wells_name"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     />
                   </div>
                 </div>
@@ -821,6 +847,7 @@
                       [(ngModel)]="
                         categoryBody.surface_cordinates_for_each_well_in_degrees
                       "
+                      [attr.disabled]="disableForm ? true : null"
                       class="inpute"
                     />
                   </div>
@@ -843,13 +870,19 @@
                       [(ngModel)]="categoryBody.comments"
                       type="text"
                       class="inpute"
+                      [attr.disabled]="disableForm ? true : null"
                     ></textarea>
                   </div>
                 </div>
               </div>
             </div>
             <div style="text-align: right">
-              <button #btn class="submitbtn" (click)="saveCategoryQuarter()">
+              <button
+                #btn
+                class="submitbtn"
+                (click)="saveCategoryQuarter()"
+                [attr.disabled]="disableForm ? true : null"
+              >
                 Save Quarter 1
               </button>
             </div>

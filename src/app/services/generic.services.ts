@@ -72,7 +72,14 @@ export class GenericService {
     { value: 'SC' },
     { value: 'SR' },
   ];
-  concessiontype = [{ value: 'OEL' }, { value: 'OML' }, { value: 'OPL' }, { value: 'PEL' }, { value: 'PML' }, { value: 'PPL' }];
+  concessiontype = [
+    { value: 'OEL' },
+    { value: 'OML' },
+    { value: 'OPL' },
+    { value: 'PEL' },
+    { value: 'PML' },
+    { value: 'PPL' },
+  ];
 
   entries = [
     { text: '10 entries', value: '10' },
@@ -81,7 +88,7 @@ export class GenericService {
     { text: 'All entries', value: 'all' },
   ];
 
-  constructor(private modal: ModalService) { }
+  constructor(private modal: ModalService) {}
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.sizePerPage;
@@ -623,10 +630,20 @@ export class GenericService {
   restrictNoOfFoldValue(input) {
     this.val = parseInt(input);
 
-    debugger;
     if (this.val < 1 || this.val > 100) {
       alert('Please make sure entry is between 1-100.');
       return '0';
+    }
+    input = this.val.toString();
+    return input;
+  }
+
+  restrictToPercentage(input) {
+    this.val = parseInt(input);
+
+    if (this.val < 1 || this.val > 100) {
+      alert('Please make sure entry is between 1-100.');
+      return 0;
     }
     input = this.val.toString();
     return input;
@@ -797,7 +814,12 @@ export class GenericService {
     return resultArray;
   }
   showStepTwo() {
-    if (this.OmlName.toUpperCase().substring(0, 3) == 'OML' || this.OmlName.toUpperCase().substring(0, 3) == 'PML' || this.OmlName.toUpperCase().substring(0, 3) == '') return true;
+    if (
+      this.OmlName.toUpperCase().substring(0, 3) == 'OML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == 'PML' ||
+      this.OmlName.toUpperCase().substring(0, 3) == ''
+    )
+      return true;
     return false;
   }
 }
