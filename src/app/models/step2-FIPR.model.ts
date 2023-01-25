@@ -105,7 +105,7 @@ export class FIELD_DEVELOPMENT_PLAN {
   }
 }
 
-export class FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE {
+export class FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf {
   public id: number;
   public omL_ID: string = '';
   public omL_Name: string = '';
@@ -149,7 +149,7 @@ export class FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE {
     return formatNumFromStr(this.condensate);
   }
 
-  constructor(model?: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE) {
+  constructor(model?: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf) {
     if (!model) return;
     this.id = model.id;
     this.omL_ID = model.omL_ID;

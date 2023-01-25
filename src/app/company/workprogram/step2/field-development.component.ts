@@ -7,7 +7,7 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   FIELD_DEVELOPMENT_PLAN,
-  FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE,
+  FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf,
 } from 'src/app/models/step2-FIPR.model';
 import { OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION } from 'src/app/models/step2-FIPR.model';
 import { AuthenticationService, ModalService } from 'src/app/services';
@@ -27,8 +27,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   public unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION =
     new OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION();
 
-  public fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE =
-    new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE();
+  public fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf =
+    new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf();
 
   public fielddevelopmentBody = new FIELD_DEVELOPMENT_PLAN();
   public approved_FDP_Document: any;
@@ -164,7 +164,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         }
         if (res.fdpExcessiveReserves) {
           this.fielddevelopmentexcessivereserveBody =
-            new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE(
+            new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf(
               res.fdpExcessiveReserves
             );
         }

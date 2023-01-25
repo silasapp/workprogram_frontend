@@ -30,6 +30,7 @@ export class CompanyDetailsComponent implements OnInit {
     debugger;
     this.companyService.getCompanyDetails().subscribe((res) => {
       debugger;
+      debugger;
       this.d = res.data;
     });
     debugger;
@@ -95,6 +96,8 @@ export class CompanyDetailsComponent implements OnInit {
 
   
   onSubmit() {
+    debugger;
+    var ii= this.companyDetailsForm.getRawValue();
     this.companyService
       .editCompanyDetails(this.companyDetailsForm.getRawValue())
       .subscribe(

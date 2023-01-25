@@ -293,7 +293,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
               qIWOneData.actual_Completion_Date = this.genk.formDate(qIWOneData.actual_Completion_Date);
               qIWOneData.proposed_Completion_Date = this.genk.formDate(qIWOneData.proposed_Completion_Date);
             }
-debugger;
+              debugger;
             this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
