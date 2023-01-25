@@ -29,10 +29,10 @@ export class ManageApplicationsComponent implements OnInit {
       columnDef: 'yearOfWKP',
       header: 'Year',
     },
-    {
-      columnDef: 'companyName',
-      header: 'Company Name',
-    },
+    // {
+    //   columnDef: 'companyName',
+    //   header: 'Company Name',
+    // },
     {
       columnDef: 'referenceNo',
       header: 'Reference No.',
@@ -68,13 +68,11 @@ export class ManageApplicationsComponent implements OnInit {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
   }
 
-  editProcessFlow(row) {
-    this.router.navigate([
-      '/',
-      this.genk.company,
-      this.genk.workprogram,
-      'step1',
-    ]);
+  editProcessFlow(app: IRejectedApp) {
+    this.router.navigate(
+      ['/', this.genk.company, this.genk.workprogram, 'step1'],
+      { queryParams: { rejectId: app.rejectId, sbU_Tables: app.sbU_Tables } }
+    );
   }
 
   assignPageNum() {
@@ -192,4 +190,5 @@ export interface IRejectedApp {
   submitted: string;
   submittedAt: string;
   updatedAt: string;
+  sbU_Tables: string;
 }

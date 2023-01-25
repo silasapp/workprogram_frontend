@@ -14,7 +14,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory
+    Note:*All Fields are Mandatory {{ disableForm | json }}
   </h1>
   <span
     style="
@@ -38,10 +38,8 @@
             <select
               class="dropwp"
               formControlName="crude_Oil_Royalty"
-           
               [(ngModel)]="royaltyBody.crude_Oil_Royalty"
               [attr.disabled]="disableForm ? true : null"
-
             >
               <option selected disabled>
                 ---- Please Select an Option ----

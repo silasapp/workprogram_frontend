@@ -294,6 +294,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
     let y = this.genk.wpYear;
     let o = this.genk.OmlName;
     let f = this.genk.fieldName;
+
+    this.modalService.logCover('Submitting Form...', true);
     this.workprogram
       .post_WorkProgram(
         this.genk.wpYear,
@@ -302,6 +304,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          this.modalService.togCover();
           this.modalService.logNotice('Success', res.message, 'success');
 
           this.getLegalLegitation();
