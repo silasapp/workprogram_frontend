@@ -50,6 +50,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   quaterPRThree = false;
   quaterPRFour = false;
   submitted = false;
+  pSubmitted = false;
   currentACQuater = 1;
   currentPRQuater = 1;
 
@@ -233,6 +234,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
    get f() {
     return this.AcquisitionForm.controls;
   }
+
+
+  get pf() {
+    return this.ProcessingForm.controls;
+  }
+
+
+  
 
   get quaterACClassOne() {
     let list = '';
@@ -527,6 +536,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
+    debugger;
+    this.submitted=true;
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
     this.acquisitionBody.budeget_Allocation_NGN =
@@ -547,6 +558,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   saveQuarterProcessing() {
     debugger;
+    this.pSubmitted=true;
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
