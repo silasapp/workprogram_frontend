@@ -83,4 +83,86 @@
       </tbody>
     </table>
   </div>
+
+  <!--HSE-->
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentIncidences.length > 0">
+    <h2>Accident / Incidence Reporting</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hhaiColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentIncidences">
+          <td *ngFor="let colDef of hhaiColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentIncidenceTypes.length > 0">
+    <h2>Accident Incidence Type</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hdecpColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentIncidenceTypes">
+          <td *ngFor="let colDef of hdecpColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentModels.length > 0">
+    <h2>Accident Incidence Model</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hhaimColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentModels">
+          <td *ngFor="let colDef of hhaimColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="geoActivitiesAcquisitions.length > 0">
+    <h2>Geophysical Activities Acquisition</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hgaaColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of geoActivitiesAcquisitions">
+          <td *ngFor="let colDef of hgaaColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
