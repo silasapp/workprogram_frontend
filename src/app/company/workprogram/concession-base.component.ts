@@ -2,7 +2,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -19,6 +21,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConcessionBaseComponent implements OnInit {
+  @ViewChild('conselect', { static: false }) concessionSelect: ElementRef<HTMLSelectElement>;
   concessionForm: FormGroup;
   wkpYear: string;
   wkpYearList = [];
@@ -54,12 +57,20 @@ export class ConcessionBaseComponent implements OnInit {
   }
 
   getConcessions() {
+    debugger;
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
+        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
         this.genk.OMLList = res.listObject.map((r) => r.con);
-
+        let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
+        this.concessionHeldList.splice(ind, 1);
+        this.concessionHeldList.unshift(this.genk.OmlName);
+        this.concessionSelect.nativeElement.value = this.genk.OmlName;
+        if (this.genk.OmlName) {
+          this.selectConcession(localStorage.getItem('OmlName'));
+        }
         this.cd.markForCheck();
       });
   }
@@ -67,6 +78,7 @@ export class ConcessionBaseComponent implements OnInit {
   changeConcessionHeld(e) {
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
+    localStorage.setItem('OmlName', this.genk.OmlName);
     this.cd.markForCheck();
 
     this.workprogram
@@ -75,6 +87,8 @@ export class ConcessionBaseComponent implements OnInit {
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
+          this.genk.fieldName = res[0];
+          localStorage.setItem('fieldName', this.genk.fieldName);
           this.cd.markForCheck();
         } else {
           this.modal.logConcessionSituation(this.concessionHeld);
@@ -85,9 +99,36 @@ export class ConcessionBaseComponent implements OnInit {
       });
   }
 
+  selectConcession(value) {
+    this.concessionHeld = value;
+    this.genk.OmlName = this.concessionHeld;
+    localStorage.setItem('OmlName', this.genk.OmlName);
+    this.cd.markForCheck();
+
+    this.workprogram
+      .getConcessionField(this.concessionHeld, null)
+      .subscribe((res: any[]) => {
+        if (res.length > 0) {
+          this.Field_List = res;
+          this.genk.Field_List = res;
+          this.genk.fieldName = res[0];
+          localStorage.setItem('fieldName', this.genk.fieldName);
+          this.cd.markForCheck();
+        } else {
+          this.modal.logConcessionSituation(this.concessionHeld);
+          this.Field_List = res;
+          this.genk.Field_List = null;
+          this.genk.fieldName = null;
+          this.cd.markForCheck();
+        }
+      });
+  }
+
   changeConcessionField(e) {
     this.field = e.target.value;
     this.genk.fieldName = this.field;
+    this.genk.fieldFullName = this.genk.Field_List.filter(x => x.field_ID == this.genk.fieldName)[0].field_Name;
+    localStorage.setItem('fieldFullName', this.genk.fieldFullName);
     this.modal.logConcessionSituation(this.concessionHeld);
   }
 

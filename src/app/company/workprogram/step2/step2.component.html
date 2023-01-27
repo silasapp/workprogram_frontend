@@ -1,6 +1,8 @@
 <div>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color:  rgb(9, 79, 104); color: white; font-weight: 500;">
-    <span class="material-icons" style="font-size: 30px;" [routerLink]="['/' + genk.company, genk.workprogram, 'start', ]">account_balance</span>
+  <div
+    style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color:  rgb(9, 79, 104); color: white; font-weight: 500;">
+    <span class="material-icons" style="font-size: 30px;"
+      [routerLink]="['/' + genk.company, genk.workprogram, 'start', ]">account_balance</span>
     <span style="font-size: 18px;">STEP 2</span>
     <span class="material-icons" style="font-size: 30px;">arrow_forward_ios</span>
 
@@ -11,39 +13,46 @@
 </div>
 
 <div *ngIf="genk.showStepTwo()">
-    <div>
-        <app-concession></app-concession>
-      </div>
-      <div style="margin: 0 1% 0 1%">
-          <div style="border-radius: 5px; margin-bottom: 20px ;">
-              <div style="display: flex; text-align: center; justify-content: space-between; width: 100%; padding: 10px 0 0 0; font-size: 17px; font-weight: 500;">
-                  <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']" routerLinkActive="deputyactive">
-                      <span>Field Development Plan</span>
-                  </div>
-                  <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']" routerLinkActive="deputyactive">
-                      <span>Initial Well Completion</span>
-                  </div>
-                  <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'workoverrecompletion']" routerLinkActive="deputyactive">
-                      <span>Workover & Recompletion</span>
-                  </div>
-                  <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'oilgasproductionactivities']" routerLinkActive="deputyactive">
-                      <span>Oil and Gas Production Activities for the field</span>
-                  </div>
-                  <!-- <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'productionoil']" routerLinkActive="deputyactive">
+  <!-- <div>
+    <app-concession></app-concession>
+  </div> -->
+  <div style="margin: 0 1% 0 1%">
+    <div style="border-radius: 5px; margin-bottom: 20px ;">
+      <div
+        style="display: flex; text-align: center; justify-content: space-between; width: 100%; padding: 10px 0 0 0; font-size: 17px; font-weight: 500;">
+        <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'fielddevelopmentplan']"
+          routerLinkActive="deputyactive">
+          <span>Field Development Plan</span>
+        </div>
+        <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'initialwellcompletion']"
+          routerLinkActive="deputyactive">
+          <span>Initial Well Completion</span>
+        </div>
+        <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'workoverrecompletion']"
+          routerLinkActive="deputyactive">
+          <span>Workover & Recompletion</span>
+        </div>
+        <div class="topdeputy"
+          [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'oilgasproductionactivities']"
+          routerLinkActive="deputyactive">
+          <span>Oil and Gas Production Activities for the field</span>
+        </div>
+        <!-- <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'productionoil']" routerLinkActive="deputyactive">
                       <span>Oil Production Activities</span>
                   </div>
                   <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'gasproductionactivities']" routerLinkActive="deputyactive">
                       <span>Gas Production Activities</span>
                   </div> -->
-                  <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'reservesupdate']" routerLinkActive="deputyactive">
-                      <span>Reserves Update</span>
-                  </div>
-      
-      
-              </div>
-          </div>
-          <div style="width: 100%;">
-              <router-outlet></router-outlet>
-          </div>
+        <div class="topdeputy" [routerLink]="['/' + genk.company, genk.workprogram, 'step2', 'reservesupdate']"
+          routerLinkActive="deputyactive">
+          <span>Reserves Update</span>
+        </div>
+
+
       </div>
+    </div>
+    <div style="width: 100%;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

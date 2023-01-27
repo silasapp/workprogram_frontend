@@ -32,7 +32,7 @@
             <span>CONCESSION(S) HELD: </span>
           </div>
             <div style="width: 400px">
-              <select formControlName="concession_Held" (change)="changeConcessionHeld($event)" class="basesel">
+              <select #conselect formControlName="concession_Held" (change)="changeConcessionHeld($event)" class="basesel">
                 <option selected disabled>-Select Concession-</option>
                 <option *ngFor="let list of concessionHeldList">
                   {{ list }}
@@ -73,7 +73,7 @@
               </div>
           </div>
 
-          <div *ngIf="!genk.fieldName" style="display: flex; align-items: center;">
+          <!-- <div *ngIf="!genk.fieldName" style="display: flex; align-items: center;">
             <div class="omlstyle">
               <span>Field</span>
             </div>
@@ -88,7 +88,7 @@
                   </option>
                 </select>
               </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
