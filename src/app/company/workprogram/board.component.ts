@@ -61,4 +61,6 @@ export class BoardComponent implements OnInit {
   consolelog() {
     console.log('rerendering board component');
   }
+
+
 }
