@@ -1,6 +1,5 @@
 <div>
-  <div
-    style="
+  <div style="
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -8,73 +7,53 @@
       background-color: rgb(9, 79, 104);
       color: white;
       font-weight: 500;
-    "
-  >
-    <span
-      class="material-icons"
-      style="font-size: 30px"
-      [routerLink]="['/' + genk.company, genk.workprogram, 'start']"
-      >account_balance</span
-    >
-    <span style="font-size: 18px">STEP 3</span>
+    ">
     <span class="material-icons" style="font-size: 30px"
-      >arrow_forward_ios</span
-    >
+      [routerLink]="['/' + genk.company, genk.workprogram, 'start']">account_balance</span>
+    <span style="font-size: 18px">STEP 3</span>
+    <span class="material-icons" style="font-size: 30px">arrow_forward_ios</span>
   </div>
 </div>
 <div>
   <app-board></app-board>
 </div>
+<!-- <div>
+  <app-concession></app-concession>
+</div> -->
 <div>
-  <div
-    style="
+  <div style="
       background-color: white;
       box-shadow: 0.5px 0.5px 1px 0.5px rgb(0, 0, 0, 0.3);
       margin-bottom: 5px;
-    "
-  >
-    <div
-      style="
+    ">
+    <div style="
         display: flex;
         justify-content: space-around;
         font-size: 18px;
         font-weight: 500;
-      "
-    >
-      <div
-        style="padding: 10px 5%"
-        [routerLink]="[
+      ">
+      <div style="padding: 10px 5%" [routerLink]="[
           '/' + genk.company,
           genk.workprogram,
           'step3',
           'budgetperformance'
-        ]"
-        routerLinkActive="wkpactive"
-      >
+        ]" routerLinkActive="wkpactive">
         <span>Budget Performance</span>
       </div>
-      <div
-        style="padding: 10px 5%"
-        [routerLink]="[
+      <div style="padding: 10px 5%" [routerLink]="[
           '/' + genk.company,
           genk.workprogram,
           'step3',
           'budgetproposal'
-        ]"
-        routerLinkActive="wkpactive"
-      >
+        ]" routerLinkActive="wkpactive">
         <span>Budget Proposal</span>
       </div>
-      <div
-        style="padding: 10px 5%"
-        [routerLink]="[
+      <div style="padding: 10px 5%" [routerLink]="[
           '/' + genk.company,
           genk.workprogram,
           'step3',
           'oilandgasfacilitymaintenance'
-        ]"
-        routerLinkActive="wkpactive"
-      >
+        ]" routerLinkActive="wkpactive">
         <span>Facilities Development and Maintenance Programmes </span>
       </div>
     </div>

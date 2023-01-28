@@ -171,15 +171,20 @@
           color: darkslategrey;
         "
       >
-        <span>Work Year: </span> &nbsp; &nbsp;<span>{{
-          genk.wpYear ?? "None"
-        }}</span>
+      <div>
+        <span>Work Year: </span> &nbsp; &nbsp;<span>{{genk.wpYear ?? "None"}}</span><br>
+        <span>Concession: </span> &nbsp; &nbsp;<span>{{genk.OmlName ?? "None"}}</span><br>
+        <span *ngIf="genk.fieldName">Field Name: &nbsp; &nbsp;<span>{{genk.fieldFullName}}</span></span><br>
+      </div>
+
       </div>
     </div>
   </div>
 
   <div>{{ consolelog() }}</div>
 </div>
+
+
 <!-- <div>
   <router-outlet></router-outlet>
 </div> -->
