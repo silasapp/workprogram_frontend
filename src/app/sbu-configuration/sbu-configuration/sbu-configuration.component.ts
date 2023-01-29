@@ -1,59 +1,46 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { GenericService, ModalService } from 'src/app/services';
+import { AdminService } from 'src/app/services/admin.service';
 import { ReportService } from 'src/app/services/report.service';
-import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
-import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-process-flow.component';
+import { AddSBUFormComponent } from './add-sbu/add-sbu-form.component';
+import { DeleteSBUComponent } from './delete-sbu/delete-sbu.component';
 
 @Component({
-  selector: 'app-manage-applications',
-  templateUrl: './manage-applications.component.html',
-  styleUrls: ['./manage-applications.component.scss'],
+  selector: 'app-sbu-configuration',
+  templateUrl: './sbu-configuration.component.html',
+  styleUrls: ['./sbu-configuration.component.scss'],
 })
-export class ManageApplicationsComponent implements OnInit {
+export class SBUConfigurationComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
-  public rejectedApps: IRejectedApp[] = [];
-  public data: IRejectedApp[] = [];
-  public pagenum = 0;
-  public selectedPage = 1;
-  public arrayRows = [];
-  public year = [];
-  public selectedColumns: any[] = [];
-  public isTableOpt = false;
-  public isSpecifyColumns = false;
+
+  pagenum = 0;
+  selectedPage = 1;
+  arrayRows = [];
+  data: any[];
+  year = [];
+  selectedColumns: any[] = [];
+  isTableOpt = false;
+  isSpecifyColumns = false;
 
   columns = [
     {
-      columnDef: 'yearOfWKP',
-      header: 'Year',
-    },
-    // {
-    //   columnDef: 'companyName',
-    //   header: 'Company Name',
-    // },
-    {
-      columnDef: 'referenceNo',
-      header: 'Reference No.',
+      columnDef: 'sbU_Code',
+      header: 'SBU CODE',
     },
     {
-      columnDef: 'concessionName',
-      header: 'Concession Name',
-    },
-    {
-      columnDef: 'sbU_Comment',
-      header: "Processing Officer's Comment",
+      columnDef: 'sbU_Name',
+      header: 'SBU NAME',
     },
   ];
 
   constructor(
-    private report: ReportService,
+    private adminService: AdminService,
     public cdr: ChangeDetectorRef,
     public genk: GenericService,
     private modalService: ModalService,
-    public dialog: MatDialog,
-    private router: Router
+    public dialog: MatDialog
   ) {
     this.genk.sizePerPage = this.genk.sizeten;
   }
@@ -61,18 +48,75 @@ export class ManageApplicationsComponent implements OnInit {
   ngOnInit() {
     this.data = [];
     this.genk.sizePerPage = this.genk.sizeten;
-    this.getRejectedApps();
+    this.getSBU();
   }
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
   }
 
-  editProcessFlow(app: IRejectedApp) {
-    this.router.navigate(
-      ['/', this.genk.company, this.genk.workprogram, 'step1'],
-      { queryParams: { rejectId: app.rejectId, sbU_Tables: app.sbU_Tables } }
-    );
+  addSBU() {
+    const operationsConfiguration = {
+      process: {
+        data: {},
+        form: AddSBUFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
+      data: {
+        data: operationsConfiguration['process'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getSBU();
+      this.cdr.markForCheck();
+    });
+  }
+
+  editSBU(row) {
+    const operationsConfiguration = {
+      process: {
+        data: {
+          targetData: row,
+        },
+        form: AddSBUFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
+      data: {
+        data: operationsConfiguration['process'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getSBU();
+      this.cdr.markForCheck();
+    });
+  }
+
+  deleteSBU(row) {
+    const operationsConfiguration = {
+      process: {
+        data: {
+          targetData: row,
+        },
+        form: DeleteSBUComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['process'].form, {
+      data: {
+        data: operationsConfiguration['process'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getSBU();
+      this.cdr.markForCheck();
+    });
   }
 
   assignPageNum() {
@@ -88,11 +132,11 @@ export class ManageApplicationsComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  getRejectedApps() {
+  getSBU() {
     this.modalService.logCover('Loading data...', true);
-    this.report.getRejectedApps().subscribe({
+    this.adminService.getSBU().subscribe({
       next: (res) => {
-        this.data = res.data as any[];
+        this.data = res.sbUs as any[];
 
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
@@ -163,32 +207,4 @@ export interface ISBU {
   sbU_Name: string;
   sbU_Code: string;
   id: number;
-}
-
-export interface IRejectedApp {
-  id: number;
-  categoryID: number;
-  companyID: number;
-  concessionID: number;
-  fieldID: string;
-  rejectId: string;
-  yearOfWKP: string;
-  companyName: string;
-  concessionName: string;
-  createdAt: string;
-  currentDesk: string;
-  deleteStatus: string;
-  deletedAt: string;
-  approvalRef: string;
-  deletedBy: string;
-  fieldName: string;
-  last_SBU: string;
-  paymentStatus: string;
-  referenceNo: string;
-  sbU_Comment: string;
-  status: string;
-  submitted: string;
-  submittedAt: string;
-  updatedAt: string;
-  sbU_Tables: string;
 }

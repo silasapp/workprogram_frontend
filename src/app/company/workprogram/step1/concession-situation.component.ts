@@ -1,4 +1,3 @@
-import { NONE_TYPE } from '@angular/compiler';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,13 +5,19 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
-import { CONCESSION_SITUATION, EquityDistribution } from '../../../models/step1-concession.model';
+import {
+  CONCESSION_SITUATION,
+  EquityDistribution,
+} from '../../../models/step1-concession.model';
 import { Royalty } from '../../../models/step1-royalty.model';
 
 @Component({
@@ -21,7 +26,8 @@ import { Royalty } from '../../../models/step1-royalty.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPConcessionSituationComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
 
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -38,27 +44,27 @@ export class SWPConcessionSituationComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  fieldValue:string;
-  field:string;
-  boolValue =true;
+  fieldValue: string;
+  field: string;
+  boolValue = true;
   isAddEquity = false;
   equitySubmitted = false;
 
   EquityForm: FormGroup;
-
 
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
     private auth: AuthenticationService,
     private gen: GenericService,
+    private route: ActivatedRoute,
     private modalService: ModalService
   ) {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       this.getConcessionHeld();
       this.getRoyaltyHeld();
-       this.getBoolValue();
+      this.getBoolValue();
     });
   }
 
@@ -164,11 +170,11 @@ export class SWPConcessionSituationComponent implements OnInit {
           [Validators.required]
         ),
         comment: new FormControl(this.concessionBody.comment, [
-          Validators.required, Validators.minLength(2)
+          Validators.required,
+          Validators.minLength(2),
         ]),
       },
       {}
-
     );
 
     this.RoyaltyForm = new FormGroup(
@@ -184,22 +190,38 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-          Validators.required, Validators.minLength(2)
+          Validators.required,
+          Validators.minLength(2),
         ]),
       },
       {}
     );
 
-
     this.EquityForm = new FormGroup(
       {
-        companyOne: new FormControl(this.equityBody.companyOne, [Validators.required]),
-        equityOne: new FormControl(this.equityBody.equityOne, [Validators.required])
+        companyOne: new FormControl(this.equityBody.companyOne, [
+          Validators.required,
+        ]),
+        equityOne: new FormControl(this.equityBody.equityOne, [
+          Validators.required,
+        ]),
       },
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
 
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
 
     this.getConcessionHeld();
     //
@@ -212,22 +234,20 @@ export class SWPConcessionSituationComponent implements OnInit {
     return this.RoyaltyForm.controls;
   }
 
- get csf(){
- return this.ConcessionSituationForm.controls;
- }
+  get csf() {
+    return this.ConcessionSituationForm.controls;
+  }
 
- get eqt() {
-  return this.EquityForm.controls;
- }
+  get eqt() {
+    return this.EquityForm.controls;
+  }
 
-
-
- getBoolValue()
-  {
-   this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
-   if (this.fieldValue === "OML" || this.fieldValue === "PML") this.boolValue = false;
-   else this.boolValue = true;
- }
+  getBoolValue() {
+    this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
+    if (this.fieldValue === 'OML' || this.fieldValue === 'PML')
+      this.boolValue = false;
+    else this.boolValue = true;
+  }
 
   loadTable() {
     this.columnHeader = [];
@@ -243,7 +263,9 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
-    this.workprogram.getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+    this.modalService.logCover('loading', true);
+    this.workprogram
+      .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
@@ -289,11 +311,10 @@ export class SWPConcessionSituationComponent implements OnInit {
             this.loadTable();
           }, 2000);
         }
-        debugger;
+
         if (this.genk.fieldName) {
           this.field = 'Field';
         }
-
 
         // this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
 
@@ -306,19 +327,19 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.boolValue = 'block';
         // }
 
-        debugger;
         this.getRoyaltyHeld();
+        this.modalService.togCover();
       });
   }
 
   // this.genk.OmlName.
 
   getRoyaltyHeld() {
-    //debugger;
+    //
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
-        if (res.royalty.length > 0) {
+        if (res?.royalty.length > 0) {
           this.royaltyBody = res.royalty[0] as Royalty;
           console.log(this.royaltyBody.royalty_ID);
         } else {
@@ -350,10 +371,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       });
   }
 
-
-
   submit() {
-    debugger;
     let me = this.concessionBody;
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
@@ -368,9 +386,10 @@ export class SWPConcessionSituationComponent implements OnInit {
     //       : this.concessionBody.date_of_Grant_Expiration + 'T00:00:00';
     // }
     this.concessionBody.companyNumber = 0;
-    this.concessionBody.no_of_discovered_field = this.concessionBody?.no_of_discovered_field?.toString();
+    this.concessionBody.no_of_discovered_field =
+      this.concessionBody?.no_of_discovered_field?.toString();
     //this.concessionBody.no_of_field_producing =
-      //this.concessionBody?.no_of_field_producing.toString();
+    //this.concessionBody?.no_of_field_producing.toString();
     this.concessionBody.area = this.concessionBody?.area?.toString();
     this.concessionBody.area_in_square_meter_based_on_company_records =
       this.concessionBody?.area_in_square_meter_based_on_company_records?.toString();
@@ -390,21 +409,22 @@ export class SWPConcessionSituationComponent implements OnInit {
       });
   }
 
-
   addEquity(companyName: string, percentEquity) {
     if (companyName && percentEquity) {
       this.equitySubmitted = true;
-    if (this.EquityForm.invalid) {
+      if (this.EquityForm.invalid) {
+        this.cd.markForCheck();
+        return;
+      }
+      if (!this.concessionBody.equity_distribution) {
+        this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      } else {
+        this.concessionBody.equity_distribution =
+          this.concessionBody.equity_distribution +
+          `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      }
+      this.isAddEquity = false;
       this.cd.markForCheck();
-      return;
-    }
-    if (!this.concessionBody.equity_distribution) {
-      this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
-    } else {
-      this.concessionBody.equity_distribution = this.concessionBody.equity_distribution + `${companyName.toUpperCase()} - ${percentEquity}%. `;
-    }
-    this.isAddEquity = false;
-    this.cd.markForCheck();
     }
   }
 
@@ -421,5 +441,12 @@ export class SWPConcessionSituationComponent implements OnInit {
   clearEquity() {
     this.concessionBody.equity_distribution = '';
     this.cd.markForCheck();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 }

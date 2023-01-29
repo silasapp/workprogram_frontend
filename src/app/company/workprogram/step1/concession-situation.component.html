@@ -14,7 +14,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory
+    Note:*All Fields are Mandatory {{ disableForm | json }}
   </h1>
   <span
     style="
@@ -38,10 +38,8 @@
             <select
               class="dropwp"
               formControlName="crude_Oil_Royalty"
-
               [(ngModel)]="royaltyBody.crude_Oil_Royalty"
-              [attr.disabled]="disableForm ? true : null"
-
+              [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -66,7 +64,7 @@
               class="dropwp"
               formControlName="gas_Sales_Royalty"
               [(ngModel)]="royaltyBody.gas_Sales_Royalty"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -91,7 +89,7 @@
               class="dropwp"
               formControlName="gas_Flare_Payment"
               [(ngModel)]="royaltyBody.gas_Flare_Payment"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
@@ -122,7 +120,7 @@
             formControlName="miscellaneous"
             [(ngModel)]="royaltyBody.miscellaneous"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
           ></textarea>
         </div>
       </div>
@@ -140,7 +138,7 @@
       <button
         (click)="submitroyalty()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
       >
         Save Royalty
       </button>
@@ -186,8 +184,9 @@
                   formControlName="companyName"
                   [(ngModel)]="concessionBody.companyName"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -202,7 +201,9 @@
                   formControlName="no_of_discovered_field"
                   [(ngModel)]="concessionBody.no_of_discovered_field"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -222,7 +223,9 @@
                   formControlName="area"
                   [(ngModel)]="concessionBody.area"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -243,7 +246,9 @@
                   class="dropwp"
                   formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>
                     ---- Please Select Categories ----
@@ -281,7 +286,9 @@
                   class="dropwp"
                   formControlName="terrain"
                   [(ngModel)]="concessionBody.terrain"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>
                     ---- Please Select Terrain ----
@@ -301,16 +308,40 @@
             <label class="labelwp">Equity Distribution</label>
             <div style="display: flex">
               <div class="minsec">
-                <span class="material-icons" style=" padding: 10px 10px; border-radius: 5px 0 0 5px; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="clearEquity()">delete</span>
+                <span
+                  class="material-icons"
+                  style="
+                    padding: 10px 10px;
+                    border-radius: 5px 0 0 5px;
+                    font-size: 20px;
+                    color: dodgerblue;
+                    background-color: gainsboro;
+                  "
+                  (click)="clearEquity()"
+                  >delete</span
+                >
                 <input
                   type="text"
                   style="border-radius: 5px"
                   formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution"
-                  class="inpute" readonly
-                  [attr.disabled]="disableForm ? true : null"
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
-                <span class="material-icons" style="padding: 10px 10px; border-radius: 0 5px 5px 0; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="showEquity()">add</span>
+                <span
+                  class="material-icons"
+                  style="
+                    padding: 10px 10px;
+                    border-radius: 0 5px 5px 0;
+                    font-size: 20px;
+                    color: dodgerblue;
+                    background-color: gainsboro;
+                  "
+                  (click)="showEquity()"
+                  >add</span
+                >
               </div>
             </div>
             <div *ngIf="csSubmitted" class="eroce">
@@ -378,7 +409,9 @@
                   class="dropwp"
                   formControlName="has_Signature_Bonus_been_paid"
                   [(ngModel)]="concessionBody.has_Signature_Bonus_been_paid"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -405,7 +438,9 @@
                   [(ngModel)]="
                     concessionBody.has_the_Concession_Rentals_been_paid
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -432,7 +467,9 @@
                   [(ngModel)]="
                     concessionBody.is_there_an_application_for_renewal
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -461,9 +498,17 @@
                   formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (change)="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
-                  [value]="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD"
-                  class="inpute" [attr.disabled]="disableForm ? true : null"
+                  (ngModelChange)="
+                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
+                      genk.addCurrencyDecimal($event)
+                  "
+                  [value]="
+                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD
+                  "
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -488,7 +533,9 @@
                     concessionBody.how_Much_Concession_Rental_have_been_paid_USD
                   "
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -513,7 +560,9 @@
                     concessionBody.how_Much_Renewal_Bonus_have_been_paid_USD
                   "
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -531,7 +580,9 @@
                   formControlName="if_No_why_sig"
                   [(ngModel)]="concessionBody.if_No_why_sig"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -548,7 +599,9 @@
                   formControlName="if_No_why_concession"
                   [(ngModel)]="concessionBody.if_No_why_concession"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -565,7 +618,9 @@
                   formControlName="if_No_why_renewal"
                   [(ngModel)]="concessionBody.if_No_why_renewal"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -616,7 +671,9 @@
                   "
                   [value]="concessionBody.five_year_proposal"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 />
               </div>
             </div>
@@ -640,7 +697,9 @@
                   [(ngModel)]="
                     concessionBody.did_you_meet_the_minimum_work_programme
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="NO">NO</option>
@@ -667,7 +726,9 @@
                   formControlName="comment"
                   [(ngModel)]="concessionBody.comment"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                  "
                 ></textarea>
               </div>
             </div>
@@ -723,7 +784,9 @@
       <button
         (click)="submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+        "
       >
         Save Concession Situation
       </button>
@@ -766,40 +829,95 @@
   </button>
 </div>
 
-
-
 <div *ngIf="isAddEquity" class="modal">
   <div [formGroup]="EquityForm" class="modaltent">
     <div>
-      <div style="text-align: center;">
-        <label style="font-weight: 600; font-size: 16px;">Equity Distribution</label>
+      <div style="text-align: center">
+        <label style="font-weight: 600; font-size: 16px"
+          >Equity Distribution</label
+        >
       </div>
-      <br>
+      <br />
 
       <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30vw;
+          "
+        >
           <label>Company Name:</label>
-          <input #compName type="text" formControlName="companyOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.companyOne"/>
+          <input
+            #compName
+            type="text"
+            formControlName="companyOne"
+            style="width: 20vw"
+            class="authinput"
+            [(ngModel)]="equityBody.companyOne"
+          />
         </div>
-        <span *ngIf="eqt['companyOne']?.errors['required'] && equitySubmitted" class="eroce">
+        <span
+          *ngIf="eqt['companyOne']?.errors['required'] && equitySubmitted"
+          class="eroce"
+        >
           Company name is required.
         </span>
-        <br>
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+        <br />
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30vw;
+          "
+        >
           <label>Percentage: </label>
-          <input #percentEquity type="number" formControlName="equityOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.equityOne"/>
+          <input
+            #percentEquity
+            type="number"
+            formControlName="equityOne"
+            style="width: 20vw"
+            class="authinput"
+            [(ngModel)]="equityBody.equityOne"
+          />
         </div>
 
         <span *ngIf="!eqt['equityOne'].valid && equitySubmitted" class="eroce">
           Percentage Equity is required.
         </span>
-        </div>
-        <br>
-        <br>
-        <div style="text-align: end;">
-          <button (click)="addEquity(compName.value, percentEquity.value)" style="background-color: dodgerblue; color: white; outline: none; padding: 7px 30px; border: none; margin-right: 20px;">Add</button>
-          <button (click)="showEquity()" style="background-color: grey; color: white; outline: none; padding: 7px 30px; border: none; margin-left: 20px;">Cancel</button>
-        </div>
+      </div>
+      <br />
+      <br />
+      <div style="text-align: end">
+        <button
+          (click)="addEquity(compName.value, percentEquity.value)"
+          style="
+            background-color: dodgerblue;
+            color: white;
+            outline: none;
+            padding: 7px 30px;
+            border: none;
+            margin-right: 20px;
+          "
+        >
+          Add
+        </button>
+        <button
+          (click)="showEquity()"
+          style="
+            background-color: grey;
+            color: white;
+            outline: none;
+            padding: 7px 30px;
+            border: none;
+            margin-left: 20px;
+          "
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
 </div>

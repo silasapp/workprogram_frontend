@@ -940,6 +940,28 @@
           </div>
 
           <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'sbu-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>add</mat-icon></span>
+
+            <span>Configure SBU</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'role-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>group</mat-icon></span>
+
+            <span>Configure Roles</span>
+          </div>
+
+          <div
             class="layout-div layout-pad layout-line"
             [routerLink]="['/', 'manage-applications']"
             routerLinkActive="active"

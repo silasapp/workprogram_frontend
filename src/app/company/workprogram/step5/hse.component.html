@@ -662,7 +662,7 @@
         class="submitbtn"
         [attr.disabled]="disableForm ? true : null"
       >
-        Add Safety Culture and Training Upload
+        Add Safety Culture and Training
       </button>
     </div>
   </div>
@@ -713,7 +713,7 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Do you have an OHM in place?</label>
+        <label class="labelwp">Do you have an OHM plan in place?</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -865,7 +865,7 @@
         class="submitbtn"
         [attr.disabled]="disableForm ? true : null"
       >
-        Add Occupational Health Upload
+        Add Occupational Health Management Plan
       </button>
     </div>
   </div>
@@ -1067,7 +1067,7 @@
         class="submitbtn"
         [attr.disabled]="disableForm ? true : null"
       >
-        Add Green House Gas
+        Add GHG Document
       </button>
     </div>
   </div>
@@ -2500,7 +2500,7 @@
   <hr size="10" />
   <br />
 
-  <div [formGroup]="CausesOfSpill_Form">
+  <!-- <div [formGroup]="CausesOfSpill_Form">
     <div style="width: 100%">
       <div style="width: 50%">
         <label class="labelwp">Cause of Spill</label>
@@ -2810,9 +2810,9 @@
   </div>
 
   <br />
-  <hr size="10" />
+  <hr size="10" /> -->
 
-  <div [formGroup]="Accident_Incidence_Form">
+  <!-- <div [formGroup]="Accident_Incidence_Form">
     <div style="display: flex; width: 100%">
       <label class="labelwp">Accident / Incidence Reporting</label>
     </div>
@@ -3149,9 +3149,9 @@
   </div>
 
   <br />
-  <hr size="10" />
+  <hr size="10" /> -->
 
-  <div [formGroup]="OSP_Registration_Form">
+  <!-- <div [formGroup]="OSP_Registration_Form">
     <div style="display: flex; width: 100%">
       <label class="labelwp">OSP Registrations</label>
     </div>
@@ -3256,9 +3256,9 @@
 
   <br />
   <br />
-  <hr size="10" />
+  <hr size="10" /> -->
 
-  <div [formGroup]="Community_Disturbances_Form">
+  <!-- <div [formGroup]="Community_Disturbances_Form">
     <div style="display: flex; width: 100%">
       <label class="labelwp">Community Disturbances and Oil Spill Cost</label>
     </div>
@@ -3421,8 +3421,8 @@
   </div>
 
   <br />
-  <hr size="10" />
-  <br />
+  <hr size="10" /> -->
+  <!-- <br />
   <br />
   <div [formGroup]="Fatality_Form">
     <div style="display: flex; width: 100%">
@@ -3478,7 +3478,7 @@
           </div>
         </div>
       </div>
-      <!-- <div style="width: 30%">
+      <div style="width: 30%">
         <label class="labelwp">Proposed Value</label>
         <div style="width: 100%">
           <div
@@ -3496,7 +3496,7 @@
             />
           </div>
         </div>
-      </div> -->
+      </div>
       <div style="width: 30%">
         <br />
         <label class="labelwp">Type of Incidence</label>
@@ -3564,9 +3564,9 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 
-  <br />
+  <!-- <br /> -->
   <!-- <hr size="10" />
   <br /><br />
 
@@ -3783,27 +3783,27 @@
         </div>
       </div>
 
-      <div style="width: 30%; margin-left: 5%">
+      <div style="width: 30%">
         <label class="labelwp">NUPRC Approval status</label>
-        <div style="width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
+        <div
+          style="
+            box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+            width: 100%;
+            padding: 5px;
+            border-radius: 20px;
+          "
+        >
+          <select
+            class="input"
+            type="inpute"
+            formControlName="dPR_approval_Status"
+            [(ngModel)]="environmental_studies_updated_Body.dPR_approval_Status"
+            [attr.disabled]="disableForm ? true : null"
           >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="study_title"
-              [(ngModel)]="
-                environmental_studies_updated_Body.dPR_approval_Status
-              "
-              [attr.disabled]="disableForm ? true : null"
-            />
-          </div>
+            <option selected disabled>---- Please Select an Option ----</option>
+            <option value="Approved">Approved</option>
+            <option value="Not Approved">Not Approved</option>
+          </select>
         </div>
       </div>
     </div>
@@ -4185,7 +4185,7 @@
         </div>
       </div>
       <div style="width: 30%">
-        <label class="labelwp">Approved or Not Approved</label>
+        <label class="labelwp">Approval Status</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -4203,8 +4203,8 @@
             <option selected disabled>
               ---- Please Select a Category ----
             </option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="Approved">Approved</option>
+            <option value="Not Approved">Not Approved</option>
           </select>
         </div>
       </div>
@@ -4352,7 +4352,7 @@
   <hr size="10" />
   <br /><br />
 
-  <div [formGroup]="Water_Management_Updated_New_Form">
+  <!-- <div [formGroup]="Water_Management_Updated_New_Form">
     <div style="display: flex; width: 100%">
       <label class="labelwp">Produced Water Management</label>
     </div>
@@ -4540,7 +4540,7 @@
   </div>
 
   <br />
-  <hr size="5" />
+  <hr size="5" /> -->
   <br />
 
   <div [formGroup]="Water_Management_Form">
@@ -5116,7 +5116,7 @@
   <br />
 
   <br /><br />
-  <div [formGroup]="EMS_Files_Form">
+  <!-- <div [formGroup]="EMS_Files_Form">
     <div style="display: flex; width: 100%">
       <label class="labelwp">Environmental Management System</label>
     </div>
@@ -5210,7 +5210,7 @@
   </div>
 
   <br />
-  <hr size="10" />
+  <hr size="10" /> -->
 
   <!--start-->
 
@@ -5607,7 +5607,9 @@
     <br /><br />
     <div>
       <div style="text-align: center">
-        <button class="submitbtn" (click)="HSE_EMP_Submit()">Add EMP</button>
+        <button class="submitbtn" (click)="HSE_EMP_Submit()">
+          Add Environmental Management Plan
+        </button>
       </div>
     </div>
   </div>
@@ -5664,7 +5666,9 @@
       "
     >
       <div class="col-md-4">
-        <label class="labelwp">Are there Remediation Fund?</label>
+        <label class="labelwp"
+          >Is there any Evidence of Remediation Fund?</label
+        >
         <br /><br />
         <div
           style="
@@ -5690,7 +5694,7 @@
         *ngIf="remediationFundBody.areThereRemediationFund == 'YES'"
         style="padding-top: 20px"
       >
-        <label class="labelwp">Upload Evidence of Payment</label>
+        <label class="labelwp">Upload Evidence of Funding</label>
 
         <div style="width: 50%">
           <div
@@ -6602,7 +6606,7 @@
         justify-content: space-between;
       "
     >
-      <div style="width: 30%">
+      <!-- <div style="width: 30%">
         <label class="labelwp">Evidence of Payment of PDDC</label>
 
         <div>
@@ -6624,7 +6628,7 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div style="width: 30%">
         <label class="labelwp">Waste Contractor's Names</label>
@@ -6890,14 +6894,14 @@
       <table class="wptable">
         <thead>
           <tr>
-            <th *ngFor="let h of hhcdColDef">
+            <th *ngFor="let h of hwmdzColDef">
               {{ h.header }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of wasteManagementDZs">
-            <td *ngFor="let colDef of hhcdColDef">
+            <td *ngFor="let colDef of hwmdzColDef">
               {{ row[colDef.columnDef] }}
             </td>
             <td>

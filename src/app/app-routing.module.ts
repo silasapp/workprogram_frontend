@@ -80,6 +80,22 @@ const routes: Routes = [
       ).then((m) => m.ProcessFlowConfigurationModule),
   },
   {
+    path: 'sbu-configuration',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import('./sbu-configuration/sbu-configuration.module').then(
+        (m) => m.SBUConfigurationModule
+      ),
+  },
+  {
+    path: 'role-configuration',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import('./role-configuration/role-configuration.module').then(
+        (m) => m.RoleConfigurationModule
+      ),
+  },
+  {
     path: 'manage-applications',
     component: CompanyComponent,
     loadChildren: () =>

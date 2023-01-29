@@ -81,7 +81,7 @@
     <div>
       <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%; margin-top: auto">
-          <label class="labelwp">Actual</label>
+          <label class="labelwp">Actual </label>
           <div style="display: flex">
             <div
               style="
@@ -96,7 +96,9 @@
                 type="text"
                 [(ngModel)]="acquisitionBody.actual_year_aquired_data"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -104,7 +106,7 @@
             <span *ngIf="!f['actual_year_aquired_data'].valid">
               Actual Year Aquired Data is required
             </span>
-        </div>
+          </div>
         </div>
 
         <div style="width: 30%; margin-top: auto">
@@ -123,7 +125,9 @@
                 type="text"
                 [(ngModel)]="acquisitionBody.proposed_year_data"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -132,7 +136,7 @@
             <span *ngIf="!f['proposed_year_data'].valid">
               Actual Year Aquired Data is required
             </span>
-        </div>
+          </div>
         </div>
 
         <!-- <div style="width: 30%">
@@ -208,7 +212,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.geo_area_of_coverage"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -231,7 +237,9 @@
                     (keyup)="genk.formatCurrency($event)"
                     [(ngModel)]="acquisitionBody.budeget_Allocation_NGN"
                     class="inpute"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                    "
                   />
                 </div>
               </div>
@@ -252,7 +260,9 @@
                     "
                     [value]="acquisitionBody.budeget_Allocation_USD"
                     class="inpute"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                    "
                   />
                 </div>
               </div>
@@ -268,7 +278,9 @@
                 class="dropwp"
                 formControlName="geo_method_of_acquisition"
                 [(ngModel)]="acquisitionBody.geo_method_of_acquisition"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               >
                 <option selected disabled>--Please Select--</option>
                 <option value="Land">Land</option>
@@ -292,7 +304,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum_Planned"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -307,7 +321,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -322,7 +338,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.quantum_Approved"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -361,7 +379,9 @@
                 formControlName="name_of_Contractor"
                 [(ngModel)]="acquisitionBody.name_of_Contractor"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -375,7 +395,9 @@
                 class="dropwp"
                 formControlName="geo_type_of_data_acquired"
                 [(ngModel)]="acquisitionBody.geo_type_of_data_acquired"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               >
                 <option selected disabled>--Please Select Data-Type--</option>
                 <option value="2D">2D</option>
@@ -399,7 +421,9 @@
                   acquisitionBody.no_of_Folds =
                     genk.restrictNoOfFoldValue($event)
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
                 class="inpute"
               />
             </div>
@@ -479,7 +503,9 @@
                     genk.restrictRecordLengthValue($event)
                 "
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               />
             </div>
           </div>
@@ -495,7 +521,9 @@
                 formControlName="remarks"
                 [(ngModel)]="acquisitionBody.remarks"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
+                "
               ></textarea>
             </div>
           </div>
@@ -587,7 +615,9 @@
           class="dropwp"
           formControlName="type_of_Processing"
           [(ngModel)]="processingBody.type_of_Processing"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+          "
         >
           <option selected disabled>--Please Select--</option>
           <option value="PSDM">PSDM</option>
@@ -654,7 +684,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.processed_Proposed"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+                "
               />
             </div>
           </div>
@@ -719,7 +751,9 @@
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.reprocessed_Proposed"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+                "
               />
             </div>
           </div>
@@ -878,7 +912,9 @@
           formControlName="name_of_Contractor"
           [(ngModel)]="processingBody.name_of_Contractor"
           class="inpute"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+          "
         />
       </div>
     </div>
@@ -924,7 +960,9 @@
                 "
                 [value]="processingBody.budeget_Allocation_NGN"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+                "
               />
             </div>
           </div>
@@ -945,7 +983,9 @@
                 "
                 [value]="processingBody.budeget_Allocation_USD"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+                "
               />
             </div>
           </div>
@@ -963,7 +1003,9 @@
             class="dropwp"
             formControlName="geo_Type_of_Data_being_Processed"
             [(ngModel)]="processingBody.geo_Type_of_Data_being_Processed"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+            "
           >
             <option selected disabled>
               -- Select Data Type -- &nbsp; &nbsp;
@@ -1020,7 +1062,9 @@
               formControlName="remarks"
               [(ngModel)]="processingBody.remarks"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
+              "
             ></textarea>
           </div>
         </div>
@@ -1033,7 +1077,7 @@
       #btnprocess
       class="quarterbtn"
       (click)="saveQuarterProcessing()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)"
     >
       Save Quarter 1
     </button>
