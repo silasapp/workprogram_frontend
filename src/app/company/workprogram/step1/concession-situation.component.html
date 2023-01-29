@@ -38,7 +38,7 @@
             <select
               class="dropwp"
               formControlName="crude_Oil_Royalty"
-           
+
               [(ngModel)]="royaltyBody.crude_Oil_Royalty"
               [attr.disabled]="disableForm ? true : null"
 
@@ -300,14 +300,17 @@
           <div style="width: 30%">
             <label class="labelwp">Equity Distribution</label>
             <div style="display: flex">
-              <div class="inpdiv">
+              <div class="minsec">
+                <span class="material-icons" style=" padding: 10px 10px; border-radius: 5px 0 0 5px; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="clearEquity()">delete</span>
                 <input
                   type="text"
+                  style="border-radius: 5px"
                   formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution"
-                  class="inpute"
+                  class="inpute" readonly
                   [attr.disabled]="disableForm ? true : null"
                 />
+                <span class="material-icons" style="padding: 10px 10px; border-radius: 0 5px 5px 0; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="showEquity()">add</span>
               </div>
             </div>
             <div *ngIf="csSubmitted" class="eroce">
@@ -458,15 +461,9 @@
                   formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (ngModelChange)="
-                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="
-                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD
-                  "
-                  class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  (change)="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD = genk.addCurrencyDecimal($event)"
+                  [value]="concessionBody.how_Much_Signature_Bonus_have_been_paid_USD"
+                  class="inpute" [attr.disabled]="disableForm ? true : null"
                 />
               </div>
             </div>
@@ -767,4 +764,42 @@
   >
     Next
   </button>
+</div>
+
+
+
+<div *ngIf="isAddEquity" class="modal">
+  <div [formGroup]="EquityForm" class="modaltent">
+    <div>
+      <div style="text-align: center;">
+        <label style="font-weight: 600; font-size: 16px;">Equity Distribution</label>
+      </div>
+      <br>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+          <label>Company Name:</label>
+          <input #compName type="text" formControlName="companyOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.companyOne"/>
+        </div>
+        <span *ngIf="eqt['companyOne']?.errors['required'] && equitySubmitted" class="eroce">
+          Company name is required.
+        </span>
+        <br>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+          <label>Percentage: </label>
+          <input #percentEquity type="number" formControlName="equityOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.equityOne"/>
+        </div>
+
+        <span *ngIf="!eqt['equityOne'].valid && equitySubmitted" class="eroce">
+          Percentage Equity is required.
+        </span>
+        </div>
+        <br>
+        <br>
+        <div style="text-align: end;">
+          <button (click)="addEquity(compName.value, percentEquity.value)" style="background-color: dodgerblue; color: white; outline: none; padding: 7px 30px; border: none; margin-right: 20px;">Add</button>
+          <button (click)="showEquity()" style="background-color: grey; color: white; outline: none; padding: 7px 30px; border: none; margin-left: 20px;">Cancel</button>
+        </div>
+    </div>
+  </div>
 </div>
