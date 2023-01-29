@@ -32,6 +32,18 @@ export class GenericService {
   empty = ' ';
   wkProposedYear = new Date().getFullYear();
 
+  public Concession$ = new Subject<IConcession>();
+  public Concessions$ = new Subject<IConcession[]>();
+  public Concessions: IConcession[] = [];
+  public OMLList: IConcession[] = [];
+  public fieldName: string;
+  public Field: IField;
+  public Field$ = new Subject<IField>();
+  public Fields: IField[] = [];
+  public Fields$ = new Subject<IField[]>();
+  public rejectId: number = null;
+  public sbU_Tables: string[] = null;
+
   reportYear: string;
   submitted = false;
   progress: number;
@@ -43,12 +55,10 @@ export class GenericService {
   geologicalLocation: string;
   OmlName: string = '';
   OmlID: number;
-  fieldName: string;
   fieldFullName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
   val: number;
-  OMLList = [];
   Field_List: any[] = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   applicationDetails: ApplicationDetails;
@@ -823,4 +833,21 @@ export class GenericService {
       return true;
     return false;
   }
+}
+
+export interface IConcession {
+  con: string;
+  isEditable: boolean;
+}
+
+export interface IField {
+  companyNumber: number;
+  concession_ID: number;
+  date_Created: string;
+  date_Updated: string;
+  deletedStatus: string;
+  field_ID: number;
+  field_Location: string;
+  field_Name: string;
+  isEditable: boolean;
 }
