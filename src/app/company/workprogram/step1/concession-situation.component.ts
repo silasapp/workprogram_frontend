@@ -14,7 +14,10 @@ import {
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
-import { CONCESSION_SITUATION } from '../../../models/step1-concession.model';
+import {
+  CONCESSION_SITUATION,
+  EquityDistribution,
+} from '../../../models/step1-concession.model';
 import { Royalty } from '../../../models/step1-royalty.model';
 
 @Component({
@@ -28,6 +31,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
+  equityBody: EquityDistribution = {} as EquityDistribution;
   RoyaltyForm: FormGroup;
   royaltyBody: Royalty = {} as Royalty;
   wkpYear: string;
@@ -43,6 +47,10 @@ export class SWPConcessionSituationComponent implements OnInit {
   fieldValue: string;
   field: string;
   boolValue = true;
+  isAddEquity = false;
+  equitySubmitted = false;
+
+  EquityForm: FormGroup;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -189,6 +197,18 @@ export class SWPConcessionSituationComponent implements OnInit {
       {}
     );
 
+    this.EquityForm = new FormGroup(
+      {
+        companyOne: new FormControl(this.equityBody.companyOne, [
+          Validators.required,
+        ]),
+        equityOne: new FormControl(this.equityBody.equityOne, [
+          Validators.required,
+        ]),
+      },
+      {}
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.disableForm = true;
@@ -216,6 +236,10 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   get csf() {
     return this.ConcessionSituationForm.controls;
+  }
+
+  get eqt() {
+    return this.EquityForm.controls;
   }
 
   getBoolValue() {
@@ -383,6 +407,40 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         this.modalService.logNotice('Success', res.message, 'success');
       });
+  }
+
+  addEquity(companyName: string, percentEquity) {
+    if (companyName && percentEquity) {
+      this.equitySubmitted = true;
+      if (this.EquityForm.invalid) {
+        this.cd.markForCheck();
+        return;
+      }
+      if (!this.concessionBody.equity_distribution) {
+        this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      } else {
+        this.concessionBody.equity_distribution =
+          this.concessionBody.equity_distribution +
+          `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      }
+      this.isAddEquity = false;
+      this.cd.markForCheck();
+    }
+  }
+
+  showEquity() {
+    if (this.isAddEquity) {
+      this.isAddEquity = false;
+      this.cd.markForCheck();
+    } else {
+      this.isAddEquity = true;
+      this.cd.markForCheck();
+    }
+  }
+
+  clearEquity() {
+    this.concessionBody.equity_distribution = '';
+    this.cd.markForCheck();
   }
 
   isEditable(group: string): boolean | null {
