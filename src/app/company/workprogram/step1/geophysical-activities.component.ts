@@ -12,9 +12,13 @@ import {
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
+  IField,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './geophysical-activities.component.html',
@@ -22,7 +26,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPGeophysicalActivitiesComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   AcquisitionForm: FormGroup;
   ProcessingForm: FormGroup;
   quaterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
@@ -62,6 +68,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     private workprogram: WorkProgramService,
     private auth: AuthenticationService,
     private gen: GenericService,
+    private route: ActivatedRoute,
     private modalService: ModalService
   ) {
     this.genk = gen;
@@ -225,12 +232,42 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      console.log('deb', con, this.genk.Fields, this.genk.Field);
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm = con.isEditable ? false : true;
+      this.cd.markForCheck();
+    });
+
+    this.genk.Field$.subscribe((field: IField) => {
+      console.log('deb', field, this.genk.Fields);
+      if (!field) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm = field.isEditable ? false : true;
+      this.cd.markForCheck();
+    });
+
     //console.log(this.acquisitionBody);
     this.cd.markForCheck();
   }
 
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
+  }
 
-   get f() {
+  get f() {
     return this.AcquisitionForm.controls;
   }
 
@@ -546,7 +583,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-    debugger;
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');

@@ -37,37 +37,39 @@ export class ConcessionBaseComponent implements OnInit {
     private modal: ModalService,
     private auth: AuthenticationService,
     private cd: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: ModalService
   ) {
     this.genk = gen;
+  }
 
+  ngOnInit(): void {
     this.route.queryParamMap.subscribe((param) => {
       const rejectId = param.get('rejectId');
       const sbU_Tables = param.get('sbU_Tables');
 
-      this.genk.rejectId = +rejectId;
-      this.genk.sbU_Tables = sbU_Tables.split('|');
-
-      console.log('route params', this.genk.sbU_Tables);
+      this.genk.rejectId = +rejectId ? +rejectId : this.genk.rejectId;
+      this.genk.sbU_Tables = sbU_Tables?.split('|')
+        ? sbU_Tables?.split('|')
+        : this.genk.sbU_Tables;
     });
-  }
 
-  ngOnInit(): void {
-    // this.concessionForm = new FormGroup(
-    //   {
-    //     year: new FormControl(this.wkpYear, [Validators.required]),
-    //     concession_Held: new FormControl(this.concessionHeld, [
-    //       Validators.required,
-    //     ]),
-    //     Field: new FormControl(this.field, [Validators.required]),
-    //   },
-    //   {}
-    // );
+    this.concessionForm = new FormGroup(
+      {
+        year: new FormControl(this.wkpYear, [Validators.required]),
+        concession_Held: new FormControl(this.concessionHeld, [
+          Validators.required,
+        ]),
+        Field: new FormControl(this.field, [Validators.required]),
+      },
+      {}
+    );
 
     this.getConcessions();
   }
 
   getConcessions() {
+    this.modalService.logCover('loading...', true);
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
@@ -77,6 +79,7 @@ export class ConcessionBaseComponent implements OnInit {
         this.genk.Concessions = res.listObject;
 
         this.cd.markForCheck();
+        this.modalService.togCover();
       });
   }
 
@@ -92,6 +95,7 @@ export class ConcessionBaseComponent implements OnInit {
 
     this.cd.markForCheck();
 
+    this.modalService.logCover('loading...', true);
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
@@ -107,6 +111,8 @@ export class ConcessionBaseComponent implements OnInit {
           this.genk.Fields = null;
           this.cd.markForCheck();
         }
+
+        this.modalService.togCover();
       });
   }
 

@@ -408,15 +408,15 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'areThereEvidentOfSampling',
-      header: 'Do you have Evidence of Sampling Certificate?',
+      columnDef: 'areThereRemediationFund',
+      header: 'Is there any Evidence of Remediation Fund?',
     },
     {
-      columnDef: 'evidenceOfSamplingFilename',
-      header: 'Upload Evidence of Payment of Sampling Certificate',
+      columnDef: 'evidenceOfPaymentPath',
+      header: 'Upload Evidence of Payment',
     },
     {
-      columnDef: 'reasonForNoEvidenceSampling',
+      columnDef: 'reasonForNoRemediation',
       header: 'Remark',
     },
   ];
@@ -464,6 +464,46 @@ export class SWPHseComponent implements OnInit {
     {
       columnDef: 'safetyLast2YearsFilename',
       header: 'Accident Statistics for the last 2 years',
+    },
+  ];
+
+  hwmdzColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'wasterContractorNames',
+      header: "Waste Contractor's Names",
+    },
+    {
+      columnDef: 'wasteServicePermitPath',
+      header: "Waste Contractor's Service Permit",
+    },
+    {
+      columnDef: 'produceWaterManagementPlan',
+      header: 'What type of Produced Water Management Plan do you have?',
+    },
+    {
+      columnDef: 'evidenceOfReInjectionPermitFilename',
+      header: 'Upload Evidence of Re-injection Permit',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfReInjection',
+      header: 'Reaons For No Evidence of Re-Injection Permit',
+    },
+    {
+      columnDef: 'doYouHavePreviousYearWasteInventoryReport',
+      header: 'Do you have the previous year Waste Inventory Report?',
+    },
+
+    {
+      columnDef: 'evidenceOfEWDPPath',
+      header: 'Upload Evidence of EWDP Permit',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfEWDP',
+      header: 'Reason For No Evidence of EWDP',
     },
   ];
 
@@ -522,7 +562,7 @@ export class SWPHseComponent implements OnInit {
     },
     {
       columnDef: 'doYouHaveAnOhm',
-      header: 'Do you have an OHM',
+      header: 'Do you have an OHM plan?',
     },
     {
       columnDef: 'wasOhmPolicyCommunicatedToStaff',
@@ -1132,7 +1172,7 @@ export class SWPHseComponent implements OnInit {
     },
     {
       columnDef: 'approved_or_Not_Approve',
-      header: 'Approved / Not Approved',
+      header: 'Approval Status',
     },
   ];
 

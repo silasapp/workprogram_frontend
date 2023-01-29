@@ -5,6 +5,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   AuthenticationService,
   GenericService,
@@ -22,6 +24,7 @@ import { Royalty } from '../../../models/step1-royalty.model';
 })
 export class SWPConcessionSituationComponent implements OnInit {
   public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
 
   ConcessionSituationForm: FormGroup;
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
@@ -46,6 +49,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     private workprogram: WorkProgramService,
     private auth: AuthenticationService,
     private gen: GenericService,
+    private route: ActivatedRoute,
     private modalService: ModalService
   ) {
     this.genk = gen;
@@ -193,7 +197,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       }
 
       this.disableForm =
-        this.genk.Fields.length > 0
+        this.genk.Fields?.length > 0
           ? !this.genk.Field.isEditable
           : !con.isEditable;
       this.cd.markForCheck();
@@ -235,6 +239,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
+    this.modalService.logCover('loading', true);
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
@@ -299,6 +304,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         // }
 
         this.getRoyaltyHeld();
+        this.modalService.togCover();
       });
   }
 
@@ -377,5 +383,12 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         this.modalService.logNotice('Success', res.message, 'success');
       });
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 }
