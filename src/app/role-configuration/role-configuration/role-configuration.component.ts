@@ -24,12 +24,16 @@ export class RoleConfigurationComponent implements OnInit {
 
   columns = [
     {
-      columnDef: 'sbU_Code',
-      header: 'SBU CODE',
+      columnDef: 'roleId',
+      header: 'ROLE ID',
     },
     {
-      columnDef: 'sbU_Name',
-      header: 'SBU NAME',
+      columnDef: 'roleName',
+      header: 'ROLE NAME',
+    },
+    {
+      columnDef: 'description',
+      header: 'DESCRIPTION',
     },
   ];
 
@@ -134,7 +138,7 @@ export class RoleConfigurationComponent implements OnInit {
     this.modalService.logCover('Loading data...', true);
     this.adminService.getRoles().subscribe({
       next: (res) => {
-        this.data = res.sbUs as any[];
+        this.data = res.roles as any[];
 
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();

@@ -32,7 +32,7 @@ export class DeleteRoleComponent implements OnInit {
   }
 
   delete() {
-    this.adminService.deleteSBU(this.targetData.id).subscribe({
+    this.adminService.deleteRole(this.targetData.id).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
