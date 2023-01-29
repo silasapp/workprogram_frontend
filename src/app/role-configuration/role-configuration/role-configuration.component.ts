@@ -12,7 +12,6 @@ import { DeleteRoleComponent } from './delete-role/delete-role.component';
 })
 export class RoleConfigurationComponent implements OnInit {
   public roles: IRole[];
-  public sbus: ISBU[];
 
   pagenum = 0;
   selectedPage = 1;
@@ -47,7 +46,7 @@ export class RoleConfigurationComponent implements OnInit {
   ngOnInit() {
     this.data = [];
     this.genk.sizePerPage = this.genk.sizeten;
-    this.getSBU();
+    this.getRoles();
   }
 
   public get pageIndex(): number {
@@ -69,7 +68,7 @@ export class RoleConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getSBU();
+      this.getRoles();
       this.cdr.markForCheck();
     });
   }
@@ -91,7 +90,7 @@ export class RoleConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getSBU();
+      this.getRoles();
       this.cdr.markForCheck();
     });
   }
@@ -113,7 +112,7 @@ export class RoleConfigurationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getSBU();
+      this.getRoles();
       this.cdr.markForCheck();
     });
   }
@@ -131,9 +130,9 @@ export class RoleConfigurationComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  getSBU() {
+  getRoles() {
     this.modalService.logCover('Loading data...', true);
-    this.adminService.getSBU().subscribe({
+    this.adminService.getRoles().subscribe({
       next: (res) => {
         this.data = res.sbUs as any[];
 
