@@ -180,6 +180,8 @@ export class SWPConcessionSituationComponent implements OnInit {
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
           Validators.required, Validators.minLength(2)
         ]),
+        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty,  [
+          Validators.required]),
       },
       {}
     );

@@ -193,6 +193,9 @@ export class SWPNigeriaContentComponent implements OnInit {
         staff_Local: new FormControl(this.staffdispositionBody.staff_Local, [
           Validators.required,
         ]),
+        year: new FormControl(this.staffdispositionBody.year, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -251,6 +254,10 @@ export class SWPNigeriaContentComponent implements OnInit {
         ]),
         position_Occupied_: new FormControl(
           this.uploadsuccessionplanBody.position_Occupied_,
+          [Validators.required]
+        ),
+        year: new FormControl(
+          this.uploadsuccessionplanBody.year,
           [Validators.required]
         ),
       },

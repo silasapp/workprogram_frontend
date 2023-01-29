@@ -11,5 +11,6 @@ export class Royalty
         gas_Flare_Payment: string = '';
         concession_Rentals: string = '';
         miscellaneous: string = '';
+        last_Qntr_Royalty: string='';
 
 }

@@ -1444,7 +1444,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       this.columnValue_4.push(result);
     } else {
       for (let item1 in this.facilitiesDevelopmentForm.controls) {
-        if (item1 != 'comment') {
+        if (item1 != 'comment' ) {
           this.columnHeader_4.push(
             this.genk.upperText(item1.replace(/_+/g, ' '))
           );
