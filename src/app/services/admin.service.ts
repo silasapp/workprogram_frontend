@@ -406,6 +406,10 @@ export class AdminService {
     return this.http.get<any>(`${environment.apiUrl}/application/getSBUs`);
   }
 
+  getRoles() {
+    return this.http.get<any>(`${environment.apiUrl}/application/getroless`);
+  }
+
   addSBU(name: string, code: string) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createSBU`,
