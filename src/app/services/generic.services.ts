@@ -55,10 +55,13 @@ export class GenericService {
   geologicalLocation: string;
   OmlName: string = '';
   OmlID: number;
+  fieldName: string;
+  fieldFullName: string;
   fieldWell: string = 'GAS WELL';
   fieldID: number;
   val: number;
-  Field_List = null;
+  OMLList = [];
+  Field_List: any[] = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   applicationDetails: ApplicationDetails;
   hseTechnicalSafety: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =

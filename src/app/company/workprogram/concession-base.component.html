@@ -37,6 +37,7 @@
         *ngIf="concessionHeldList && concessionHeldList.length > 0"
       >
         <select
+          #conselect
           formControlName="concession_Held"
           (change)="changeConcessionHeld($event)"
           class="basesel"

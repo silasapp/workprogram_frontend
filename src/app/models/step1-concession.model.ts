@@ -42,12 +42,13 @@
         area_in_square_meter_based_on_company_records: string = '';
         cOMPANY_ID: string = '';
         companyNumber: number = 0;
+}
 
-        // getData() {
-        //   let a = [];
-        //   for (let d in this) {
-        //     a.push(d);
-        //   }
-        //   return a;
-        // }
+export class EquityDistribution {
+  companyOne: string = '';
+  companyTwo: string = '';
+  companyThree: string = '';
+  equityOne: number;
+  equityTwo: number;
+  equityThree: number;
 }
