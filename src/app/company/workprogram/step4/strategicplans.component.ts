@@ -9,9 +9,11 @@ import { STRATEGIC_PLANS_ON_COMPANY_BASES } from '../../../models/step4-NCQ.mode
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 
 @Component({
   templateUrl: './strategicplans.component.html',
@@ -19,7 +21,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPStrategicPlansComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   strategicplansBody: STRATEGIC_PLANS_ON_COMPANY_BASES =
     {} as STRATEGIC_PLANS_ON_COMPANY_BASES;
 
@@ -118,8 +122,30 @@ export class SWPStrategicPlansComponent implements OnInit {
       },
       {}
     );
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getStrategicPlansOnCompanyBases();
     this.cd.markForCheck();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   getStrategicPlansOnCompanyBases() {

@@ -47,7 +47,7 @@
               formControlName="activities"
               [value]="strategicplansBody.activities"
               (change)="changeActivities($event)"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             >
               <option value="Appraisal Drilling (#)">
                 Appraisal Drilling(#)
@@ -150,7 +150,7 @@
               formControlName="n_1_Q1"
               [(ngModel)]="strategicplansBody.n_1_Q1"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -171,7 +171,7 @@
               formControlName="n_1_Q2"
               [(ngModel)]="strategicplansBody.n_1_Q2"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -192,7 +192,7 @@
               formControlName="n_1_Q3"
               [(ngModel)]="strategicplansBody.n_1_Q3"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -213,7 +213,7 @@
               formControlName="n_1_Q4"
               [(ngModel)]="strategicplansBody.n_1_Q4"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -237,7 +237,7 @@
               formControlName="n_2_Q1"
               [(ngModel)]="strategicplansBody.n_2_Q1"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -258,7 +258,7 @@
               formControlName="n_2_Q2"
               [(ngModel)]="strategicplansBody.n_2_Q2"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -279,7 +279,7 @@
               formControlName="n_2_Q3"
               [(ngModel)]="strategicplansBody.n_2_Q3"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -300,7 +300,7 @@
               formControlName="n_2_Q4"
               [(ngModel)]="strategicplansBody.n_2_Q4"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -323,7 +323,7 @@
               formControlName="n_3_Q1"
               [(ngModel)]="strategicplansBody.n_3_Q1"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -344,7 +344,7 @@
               formControlName="n_3_Q2"
               [(ngModel)]="strategicplansBody.n_3_Q2"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -365,7 +365,7 @@
               formControlName="n_3_Q3"
               [(ngModel)]="strategicplansBody.n_3_Q3"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -386,7 +386,7 @@
               formControlName="n_3_Q4"
               [(ngModel)]="strategicplansBody.n_3_Q4"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -410,7 +410,7 @@
               formControlName="n_4_Q1"
               [(ngModel)]="strategicplansBody.n_4_Q1"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -431,7 +431,7 @@
               formControlName="n_4_Q2"
               [(ngModel)]="strategicplansBody.n_4_Q2"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -452,7 +452,7 @@
               formControlName="n_4_Q3"
               [(ngModel)]="strategicplansBody.n_4_Q3"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -473,7 +473,7 @@
               formControlName="n_4_Q4"
               [(ngModel)]="strategicplansBody.n_4_Q4"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -497,7 +497,7 @@
               formControlName="n_5_Q1"
               [(ngModel)]="strategicplansBody.n_5_Q1"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -518,7 +518,7 @@
               formControlName="n_5_Q2"
               [(ngModel)]="strategicplansBody.n_5_Q2"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -539,7 +539,7 @@
               formControlName="n_5_Q3"
               [(ngModel)]="strategicplansBody.n_5_Q3"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -560,7 +560,7 @@
               formControlName="n_5_Q4"
               [(ngModel)]="strategicplansBody.n_5_Q4"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             />
           </div>
         </div>
@@ -573,7 +573,7 @@
         <button
           class="submitbtn"
           (click)="saveStrategicPlansOnCompanyBases()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
         >
           Submit Stragetic Plans
         </button>
@@ -601,7 +601,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Technical($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
               >
                 Delete
               </button>

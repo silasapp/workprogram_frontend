@@ -56,7 +56,11 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -80,7 +84,11 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -113,7 +121,11 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Naira
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -138,7 +150,11 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Dollars
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -150,7 +166,13 @@
     <br /><br />
     <div>
       <div style="text-align: center">
-        <button class="submitbtn" (click)="saveBudgetProposal()">
+        <button
+          class="submitbtn"
+          (click)="saveBudgetProposal()"
+          [attr.disabled]="
+            isEditable(SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs)
+          "
+        >
           Update Budget Component (USD & NGN)
         </button>
       </div>
@@ -177,7 +199,11 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Budget($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                  )
+                "
               >
                 Delete
               </button>
@@ -223,7 +249,7 @@
               type="inpute"
               formControlName="item_Description"
               [(ngModel)]="capexOpexBody.item_Description"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             >
               <option selected disabled>---- Please Select Item ----</option>
               <option value="Acquisition">Acquisition</option>
@@ -293,7 +319,7 @@
               class="inpute"
               formControlName="naira"
               [(ngModel)]="capexOpexBody.naira"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
         </div>
@@ -315,7 +341,7 @@
               class="inpute"
               formControlName="dollar"
               [(ngModel)]="capexOpexBody.dollar"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
         </div>
@@ -337,7 +363,7 @@
               class="inpute"
               formControlName="dollar_equivalent"
               [(ngModel)]="capexOpexBody.dollar_equivalent"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
         </div>
@@ -363,7 +389,7 @@
               class="inpute"
               formControlName="remarks"
               [(ngModel)]="capexOpexBody.remarks"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             ></textarea>
           </div>
         </div>
@@ -375,7 +401,7 @@
       <button
         class="submitbtn"
         (click)="saveOpex()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
       >
         Update Capex Items
       </button>
@@ -563,7 +589,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Opex($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
               >
                 Delete
               </button>

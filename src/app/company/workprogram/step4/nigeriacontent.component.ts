@@ -14,9 +14,11 @@ import {
   GenericService,
   AuthenticationService,
   ModalService,
+  IConcession,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import Swal from 'sweetalert2';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 
 @Component({
   templateUrl: './nigeriacontent.component.html',
@@ -24,7 +26,9 @@ import Swal from 'sweetalert2';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPNigeriaContentComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   activeMenu: string = 'Actual Year';
   completedActual: boolean = false;
   completedProposed: boolean = false;
@@ -266,6 +270,20 @@ export class SWPNigeriaContentComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getNigeriaContentTraining();
     debugger;
     this.getFiveYearsAhead();
@@ -296,6 +314,16 @@ export class SWPNigeriaContentComponent implements OnInit {
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
     debugger;
+  }
+
+
+
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   getNigeriaContentTraining() {

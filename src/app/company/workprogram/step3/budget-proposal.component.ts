@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   budgetProposal,
   capexOpex,
@@ -13,6 +14,7 @@ import { BudgetCapexOpexComponent } from 'src/app/reports/budget-capex-opex.comp
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -23,7 +25,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPBudgetProposalComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   budgetProposalForm: FormGroup;
   capexForm: FormGroup;
   OpexForm: FormGroup;
@@ -55,30 +59,35 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   getBudgetData() {
-    this.workprogram.getFormThreeBudget_2(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
-    //this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
-    .subscribe(res => {
-      let budgetInfo = this.budgetProposalBody as budgetProposal;
-      let capexInfo = this.capexOpexBody as capexOpex;
+    this.workprogram
+      .getFormThreeBudget_2(
+        this.genk.OmlName,
+        this.genk.wpYear,
+        this.genk.fieldName
+      )
+      //this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
+      .subscribe((res) => {
+        let budgetInfo = this.budgetProposalBody as budgetProposal;
+        let capexInfo = this.capexOpexBody as capexOpex;
 
-      if (
-        res.budgetProposalComponents != null &&
-        res.budgetProposalComponents.length > 0
-      ) {
-        budgetInfo = res.budgetProposalComponents[0] as budgetProposal;
-        this.loadTable_Budget(res.budgetProposalComponents);
-        this.genk.isStep3 = true;
-      }
-      if (res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
-        capexInfo = res.budgetCapexOpex[0] as capexOpex;
-        this.loadTable_Opex(res.budgetCapexOpex);
-        this.genk.isStep3 = true;
-      }
+        if (
+          res.budgetProposalComponents != null &&
+          res.budgetProposalComponents.length > 0
+        ) {
+          budgetInfo = res.budgetProposalComponents[0] as budgetProposal;
+          this.loadTable_Budget(res.budgetProposalComponents);
+          this.genk.isStep3 = true;
+        }
+        if (res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
+          capexInfo = res.budgetCapexOpex[0] as capexOpex;
+          this.loadTable_Opex(res.budgetCapexOpex);
+          this.genk.isStep3 = true;
+        }
 
-      this.budgetProposalBody = budgetInfo;
-      this.capexOpexBody = capexInfo;
-      this.cd.markForCheck();
-    });
+        this.budgetProposalBody = budgetInfo;
+        this.capexOpexBody = capexInfo;
+        this.cd.markForCheck();
+      });
   }
 
   ngOnInit(): void {
@@ -136,7 +145,28 @@ export class SWPBudgetProposalComponent implements OnInit {
 
     
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getBudgetData();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   loadTable_Budget(data) {

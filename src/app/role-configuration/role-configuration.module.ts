@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoleConfigurationComponent } from './role-configuration/role-configuration.component';
-import { RoleConfigurationRoutingModule } from './role-configuration-routing/sbu-configuration-routing.module';
+import { RoleConfigurationRoutingModule } from './role-configuration-routing/role-configuration-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
