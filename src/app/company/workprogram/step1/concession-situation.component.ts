@@ -336,6 +336,13 @@ export class SWPConcessionSituationComponent implements OnInit {
   submit() {
     debugger;
     let me = this.concessionBody;
+    this.csSubmitted=true;
+
+    if (this.ConcessionSituationForm.invalid) {
+      this.cd.markForCheck();
+      return;
+    }
+
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
     //     this.concessionBody.date_of_Expiration.includes('T00:00:00')

@@ -538,6 +538,9 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   saveQuarterAcquisition() {
     debugger;
     this.submitted=true;
+
+    
+
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
     this.acquisitionBody.budeget_Allocation_NGN =
