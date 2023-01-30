@@ -26,7 +26,6 @@ import { Royalty } from '../../../models/step1-royalty.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPConcessionSituationComponent implements OnInit {
-  public disableForm: boolean = true;
   public SBUTABLE = SBUTABLE;
 
   ConcessionSituationForm: FormGroup;
@@ -211,12 +210,12 @@ export class SWPConcessionSituationComponent implements OnInit {
 
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
-        this.disableForm = true;
+        this.genk.disableForm = true;
         this.cd.markForCheck();
         return;
       }
 
-      this.disableForm =
+      this.genk.disableForm =
         this.genk.Fields?.length > 0
           ? !this.genk.Field.isEditable
           : !con.isEditable;
@@ -231,10 +230,17 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   isEditable(group: string): boolean | null {
+    console.log(
+      'degu',
+      this.genk.disableForm,
+      group,
+      group && this.genk.sbU_Tables?.find((t) => t == group),
+      this.genk.sbU_Tables
+    );
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
-    return this.disableForm ? true : null;
+    return this.genk.disableForm ? true : null;
   }
 
   get f() {

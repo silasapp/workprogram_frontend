@@ -27,7 +27,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPProductionOilComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm = true;
   ProductionOilForm: FormGroup;
   productionoilBody: OIL_CONDENSATE_PRODUCTION_ACTIVITy =
     {} as OIL_CONDENSATE_PRODUCTION_ACTIVITy;

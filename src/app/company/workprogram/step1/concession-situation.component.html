@@ -14,7 +14,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory {{ disableForm | json }}
+    Note:*All Fields are Mandatory
   </h1>
   <span
     style="
@@ -32,7 +32,10 @@
   <div [formGroup]="RoyaltyForm">
     <div class="toprow">
       <div style="width: 30%">
-        <label class="labelwp"> Has Crude Oil Royalty Payment Made?</label>
+        <label class="labelwp">
+          Has Crude Oil Royalty Payment Made?
+          {{ isEditable(SBUTABLE.ROYALTYs) | json }}</label
+        >
         <div class="wpwidth">
           <div class="inputshadow">
             <select
