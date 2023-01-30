@@ -31,8 +31,33 @@
   <br /><br /><br />
   <div [formGroup]="RoyaltyForm">
     <div class="toprow">
+
       <div style="width: 30%">
-        <label class="labelwp"> Has Crude Oil Royalty Payment Made?</label>
+        <label class="labelwp"> Has Royalty Payment Been Made For The Previous Quarter?</label>
+        <div class="wpwidth">
+          <div class="inputshadow">
+            <select
+              class="dropwp"
+              formControlName="crude_Oil_Royalty"
+           
+              [(ngModel)]="royaltyBody.last_Qntr_Royalty"
+              [attr.disabled]="disableForm ? true : null"
+
+            >
+              
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="submitted" class="eroce">
+          <span *ngIf="!f['last_Qntr_Royalty'].valid">
+            Last Quarter Royalty Payment status is required
+          </span>
+        </div>
+      </div>
+      <div style="width: 30%">
+        <label class="labelwp"> Has Crude Oil Royalty Payment Been Made?</label>
         <div class="wpwidth">
           <div class="inputshadow">
             <select
@@ -57,7 +82,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> Has Gas Sales Royalty Made?</label>
+        <label class="labelwp"> Has Gas Sales Royalty Been Made?</label>
         <div class="wpwidth">
           <div class="inputshadow">
             <select
@@ -80,6 +105,31 @@
           </span>
         </div>
       </div>
+
+      
+    </div>
+    <br />
+
+    <div class="toprow" >
+      <div style="width: 30%">
+        <label class="labelwp"> Miscellaneous </label>
+
+        <div class="inpdiv">
+          <textarea
+            #wpcomment
+            type="number"
+            rows="3"
+            formControlName="miscellaneous"
+            [(ngModel)]="royaltyBody.miscellaneous"
+            class="inpute"
+            [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
+          ></textarea>
+        </div>
+      </div>
+
+     
+
+
 
       <div style="width: 30%">
         <label class="labelwp"> Has Gas Flare Payment Made?</label>
@@ -105,52 +155,7 @@
           </span>
         </div>
       </div>
-    </div>
-    <br />
 
-    <div class="toprow" >
-      <div style="width: 30%">
-        <label class="labelwp"> Miscellaneous </label>
-
-        <div class="inpdiv">
-          <textarea
-            #wpcomment
-            type="number"
-            rows="3"
-            formControlName="miscellaneous"
-            [(ngModel)]="royaltyBody.miscellaneous"
-            class="inpute"
-            [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
-          ></textarea>
-        </div>
-      </div>
-
-      <div style="width: 30%">
-        <label class="labelwp"> Has Royalty Payment Been Made For The Previous Quarter?</label>
-        <div class="wpwidth">
-          <div class="inputshadow">
-            <select
-              class="dropwp"
-              formControlName="crude_Oil_Royalty"
-           
-              [(ngModel)]="royaltyBody.last_Qntr_Royalty"
-              [attr.disabled]="disableForm ? true : null"
-
-            >
-              <option selected disabled>
-                ---- Please Select an Option ----
-              </option>
-              <option value="YES">YES</option>
-              <option value="NO">NO</option>
-            </select>
-          </div>
-        </div>
-        <div *ngIf="submitted" class="eroce">
-          <span *ngIf="!f['last_Qntr_Royalty'].valid">
-            Last Quarter Royalty Payment status is required
-          </span>
-        </div>
-      </div>
     </div>
     <div class="eroce">
       <!-- <span *ngIf="f['miscellaneous'].errors['minLength'] && submitted">
