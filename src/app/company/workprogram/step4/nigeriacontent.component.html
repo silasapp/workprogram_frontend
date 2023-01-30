@@ -82,7 +82,6 @@
                       class="inpute"
                       formControlName="expatriate_quota_positions"
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="
                         staffdispositionBody._expatriate_quota_positions
                       "
@@ -109,7 +108,6 @@
                       class="inpute"
                       formControlName="utilized_EQ"
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="staffdispositionBody._utilized_EQ"
                       [attr.disabled]="disableForm ? true : null"
                     />
@@ -134,7 +132,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="nigerian_Understudies"
                       [(ngModel)]="staffdispositionBody.nigerian_Understudies"
                       class="inpute"
@@ -157,7 +154,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="management_Foriegn"
                       [(ngModel)]="staffdispositionBody.management_Foriegn"
                       class="inpute"
@@ -180,7 +176,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="management_Local"
                       [(ngModel)]="staffdispositionBody.management_Local"
                       class="inpute"
@@ -206,7 +201,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="staff_Local"
                       [(ngModel)]="staffdispositionBody.staff_Local"
                       class="inpute"
@@ -228,7 +222,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="staff_Foriegn"
                       [(ngModel)]="staffdispositionBody.staff_Foriegn"
                       class="inpute"
@@ -272,7 +265,6 @@
                       class="inpute"
                       formControlName="expatriate_quota_positions"
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="
                         staffdispositionBody._expatriate_quota_positions
                       "
@@ -299,7 +291,6 @@
                       class="inpute"
                       formControlName="utilized_EQ"
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       [(ngModel)]="staffdispositionBody._utilized_EQ"
                       [attr.disabled]="disableForm ? true : null"
                     />
@@ -326,7 +317,6 @@
                     <input
                       type="text"
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="nigerian_Understudies"
                       [(ngModel)]="staffdispositionBody.nigerian_Understudies"
                       class="inpute"
@@ -349,7 +339,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="management_Foriegn"
                       [(ngModel)]="staffdispositionBody.management_Foriegn"
                       class="inpute"
@@ -372,7 +361,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="management_Local"
                       [(ngModel)]="staffdispositionBody.management_Local"
                       class="inpute"
@@ -398,7 +386,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="staff_Local"
                       [(ngModel)]="staffdispositionBody.staff_Local"
                       class="inpute"
@@ -420,7 +407,6 @@
                   >
                     <input
                       (keypress)="genk.restrictData($event)"
-                      (keyup)="genk.formatNum_Efficient($event.target.value)"
                       formControlName="staff_Foriegn"
                       [(ngModel)]="staffdispositionBody.staff_Foriegn"
                       class="inpute"
@@ -578,7 +564,6 @@
           <input
             formControlName="number_of_staff_released_within_the_year_"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.number_of_staff_released_within_the_year_
             "
@@ -603,7 +588,6 @@
           <input
             formControlName="total_no_of_nigeria_senior_staff"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_nigeria_senior_staff
             "
@@ -631,7 +615,6 @@
           <input
             formControlName="total_no_of_senior_staff"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff"
             class="inpute"
             [attr.disabled]="disableForm ? true : null"
@@ -654,7 +637,6 @@
           <input
             formControlName="total_no_of_top_nigerian_management_staff"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_nigerian_management_staff
             "
@@ -679,7 +661,6 @@
           <input
             formControlName="total_no_of_top_management_staff"
             (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatNum_Efficient($event.target.value)"
             [(ngModel)]="
               seniormanagementstaffBody.total_no_of_top_management_staff
             "
