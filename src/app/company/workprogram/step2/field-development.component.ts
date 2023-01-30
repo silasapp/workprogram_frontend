@@ -5,13 +5,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE,
 } from 'src/app/models/step2-FIPR.model';
 import { OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION } from 'src/app/models/step2-FIPR.model';
 import { AuthenticationService, ModalService } from 'src/app/services';
-import { GenericService } from 'src/app/services/generic.services';
+import { GenericService, IConcession } from 'src/app/services/generic.services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -20,7 +21,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPFieldDevelopmentComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   public FieldDevelopmentForm: FormGroup;
   public FieldDevelopmeentExcessiveReserveForm: FormGroup;
   public UnitizationForm: FormGroup;
@@ -175,6 +178,27 @@ export class SWPFieldDevelopmentComponent implements OnInit {
 
         this.cd.markForCheck();
       });
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   getConcessionHeld() {}

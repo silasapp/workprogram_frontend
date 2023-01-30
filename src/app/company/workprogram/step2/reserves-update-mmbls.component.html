@@ -55,7 +55,9 @@
             class="dropwp"
             formControlName="year_of_WP"
             [(ngModel)]="statusOfReservesPreceeding.year_of_WP"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+            "
           >
             <option selected disabled>---- Select a Year ----</option>
             <option value="2021">2021</option>
@@ -82,7 +84,9 @@
                   genk.checkMMBBLMin($event, oilBox)
               "
               [value]="statusOfReservesPreceeding._company_Reserves_Oil"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+              "
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -107,7 +111,9 @@
                   genk.checkMMBBLMin($event, oilNox)
               "
               [value]="statusOfReservesPreceeding._company_Reserves_Condensate"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+              "
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -135,7 +141,9 @@
                   genk.checkBSCFMin($event, gasMox)
               "
               [value]="statusOfReservesPreceeding._company_Reserves_AG"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+              "
             />
             <span class="barspan">SCF</span>
           </div>
@@ -161,7 +169,9 @@
                   genk.checkBSCFMin($event, gasMoxx)
               "
               [value]="statusOfReservesPreceeding._company_Reserves_NAG"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+              "
             />
             <span class="barspan">SCF</span>
           </div>
@@ -285,7 +295,9 @@
         type="submit"
         class="quarterbtn"
         (click)="saveReserveUpdatePreceeding()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
+        "
       >
         Update Preceeding Status of Reserves
       </button>
@@ -323,7 +335,7 @@
             class="dropwp"
             formControlName="year_of_WP"
             [(ngModel)]="statusOfReservesCurrent.year_of_WP"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
           >
             <option selected disabled>---- Select a Year ----</option>
             <option value="2021">2021</option>
@@ -351,7 +363,7 @@
                   genk.checkBSCFMin($event, oilSax)
               "
               [value]="statusOfReservesCurrent._company_Reserves_Oil"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -378,7 +390,7 @@
                   genk.checkBSCFMin($event, gasDax)
               "
               [value]="statusOfReservesCurrent._company_Reserves_Condensate"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -406,7 +418,7 @@
                   genk.checkBSCFMin($event, gasSmt)
               "
               [value]="statusOfReservesCurrent._company_Reserves_AG"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -431,7 +443,7 @@
                   genk.checkBSCFMin($event, gasNia)
               "
               [value]="statusOfReservesCurrent._company_Reserves_NAG"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -445,7 +457,7 @@
         type="submit"
         class="quarterbtn"
         (click)="saveReserveUpdateCurrent()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
       >
         Update Current Status of Reserves
       </button>
@@ -486,7 +498,9 @@
             [(ngModel)]="
               reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+            "
           >
             <option selected disabled>---- Select a Year ----</option>
             <option value="2022">2022</option>
@@ -515,7 +529,9 @@
               [value]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+              "
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -542,7 +558,9 @@
               [value]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+              "
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -572,7 +590,9 @@
               [value]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+              "
             />
             <span class="barspan">SCF</span>
           </div>
@@ -599,7 +619,9 @@
               [value]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+              "
             />
             <span class="barspan">SCF</span>
           </div>
@@ -612,7 +634,7 @@
       <button
         class="quarterbtn"
         (click)="saveReserveUpdateFiveYearProjection()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)"
       >
         Save Five Years Reserve Projection
       </button>
@@ -788,7 +810,7 @@
             [(ngModel)]="
               reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Was_there_any_Reserve_Addition
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
           >
             <option selected disabled>---- Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -813,7 +835,7 @@
             [(ngModel)]="
               reserveUpdateOilCondensateReservesAdditionBody.reserves_Addition_Reason_for_Addition
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
           >
             <option selected disabled>
               ---- Select a Reason for Addition ----
@@ -846,7 +868,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -875,7 +897,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -902,7 +924,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -928,7 +950,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -961,7 +983,7 @@
             [(ngModel)]="
               reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Was_there_a_decline_in_reserve
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
           >
             <option selected disabled>---- Select an Option ----</option>
             <option value="Yes">Yes</option>
@@ -986,7 +1008,7 @@
             [(ngModel)]="
               reserveUpdateOilCondensateReservesDeclineBody.reserves_Decline_Reason_for_Decline
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
           >
             <option selected disabled>
               ---- Select a Reason for Decline ----
@@ -1019,7 +1041,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -1048,7 +1070,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -1075,7 +1097,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -1102,7 +1124,7 @@
               [value]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -1116,7 +1138,7 @@
     <button
       class="quarterbtn"
       (click)="saveReserveUpdateOilCondensateCompanyAnnualProduction()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
     >
       Update Company Annual Production
     </button>
@@ -1155,7 +1177,11 @@
           class="dropwp"
           formControlName="trend_Year"
           [(ngModel)]="reserveReplacementRatioBody.trend_Year"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(
+              SBUTABLE.FIVE_YEAR_TREND_FOR_CONCESSION_RESERVE_REPLACEMENT_RATIOs
+            )
+          "
         >
           <option selected disabled>---- Select a Year ----</option>
           <option value="2022">2022</option>
@@ -1180,7 +1206,11 @@
             [(ngModel)]="
               reserveReplacementRatioBody._reserveS_REPLACEMENT_RATIO_VALUE
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.FIVE_YEAR_TREND_FOR_CONCESSION_RESERVE_REPLACEMENT_RATIOs
+              )
+            "
           />
         </div>
       </div>
@@ -1191,7 +1221,11 @@
     <button
       class="quarterbtn"
       (click)="saveReserveReplacementRatio()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="
+        isEditable(
+          SBUTABLE.FIVE_YEAR_TREND_FOR_CONCESSION_RESERVE_REPLACEMENT_RATIOs
+        )
+      "
     >
       Save Reserve Replacement Ratio
     </button>
@@ -1232,7 +1266,7 @@
               )
             "
             [value]="reserveUpdateDepletionRateBody._oil"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
           <span class="barspan">%</span>
         </div>
@@ -1259,7 +1293,7 @@
               )
             "
             [value]="reserveUpdateDepletionRateBody._condensate"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
           <span class="barspan">%</span>
         </div>
@@ -1286,7 +1320,7 @@
               )
             "
             [value]="reserveUpdateDepletionRateBody._nag"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
           <span class="barspan">%</span>
         </div>
@@ -1299,7 +1333,7 @@
     <button
       class="quarterbtn"
       (click)="saveReserveUpdateDepletionRate()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
     >
       Update Depletion Rate
     </button>
@@ -1339,7 +1373,7 @@
                 )
               "
               [value]="reserveUpdateLifeIndexBody._oil"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
@@ -1366,7 +1400,7 @@
                 )
               "
               [value]="reserveUpdateLifeIndexBody._condensate"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
@@ -1393,7 +1427,7 @@
                 )
               "
               [value]="reserveUpdateLifeIndexBody._nag"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
@@ -1418,7 +1452,7 @@
               reserveUpdateLifeIndexBody._ag = genk.checkBSCFMin($event, gasHaw)
             "
             [value]="reserveUpdateLifeIndexBody._ag"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
           />
           <span class="barspan">Years</span>
         </div>
@@ -1431,7 +1465,7 @@
     <button
       class="quarterbtn"
       (click)="saveReserveUpdateLifeIndex()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
     >
       Update Life Index
     </button>
@@ -1522,7 +1556,9 @@
                 [(ngModel)]="
                   planningMinimumRequirementBody.reservesRevenue_GrossProduction
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.PLANNING_MINIMUM_REQUIREMENTs)
+                "
               />
             </div>
           </div>
@@ -1546,7 +1582,9 @@
                 [(ngModel)]="
                   planningMinimumRequirementBody.reservesRevenue_RemainingReserves
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.PLANNING_MINIMUM_REQUIREMENTs)
+                "
               />
             </div>
           </div>
@@ -1559,7 +1597,7 @@
     <button
       class="quarterbtn"
       (click)="Submit_planningMinimumRequirement()"
-      [attr.disabled]="disableForm ? true : null"
+      [attr.disabled]="isEditable(SBUTABLE.PLANNING_MINIMUM_REQUIREMENTs)"
     >
       Add Planning Minimum Requirement
     </button>

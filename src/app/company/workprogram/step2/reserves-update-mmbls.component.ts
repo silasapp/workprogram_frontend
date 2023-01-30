@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { forkJoin } from 'rxjs';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   POST_RESERVES_REPLACEMENT_RATIO,
   RESERVES_UPDATES_DEPLETION_RATE,
@@ -20,6 +21,7 @@ import { PLANNING_MINIMUM_REQUIREMENT } from 'src/app/models/step5_sdcp.model';
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -30,7 +32,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPReserveUpdateComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   ReserveUpdatePreceedingForm: FormGroup;
   ReserveUpdateCurrentForm: FormGroup;
   ReserveUpdateFiveYearProjectionForm: FormGroup;
@@ -305,9 +309,30 @@ export class SWPReserveUpdateComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getReserveUpdate();
     this.getSWPR();
     this.cd.markForCheck();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   getReserveUpdate() {

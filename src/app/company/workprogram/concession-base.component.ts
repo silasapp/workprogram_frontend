@@ -74,11 +74,10 @@ export class ConcessionBaseComponent implements OnInit {
 
   getConcessions() {
     this.modalService.logCover('loading...', true);
-    debugger;
+
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
         this.genk.OMLList = this.concessionHeldList;
         this.genk.Concessions$.next(res.listObject);
