@@ -594,11 +594,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-<<<<<<< HEAD
     debugger;
     this.pSubmitted=true;
-=======
->>>>>>> 58da82ae2655583fb276e340af679868b2d60614
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
