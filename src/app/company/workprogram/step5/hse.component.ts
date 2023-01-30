@@ -64,7 +64,6 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPHseComponent implements OnInit {
-  public disableForm: boolean = true;
   public SBUTABLE = SBUTABLE;
 
   //#region  form bodies declaration
@@ -2434,12 +2433,12 @@ export class SWPHseComponent implements OnInit {
 
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
-        this.disableForm = true;
+        this.genk.disableForm = true;
         this.cd.markForCheck();
         return;
       }
 
-      this.disableForm =
+      this.genk.disableForm =
         this.genk.Fields?.length > 0
           ? !this.genk.Field.isEditable
           : !con.isEditable;
@@ -2453,7 +2452,7 @@ export class SWPHseComponent implements OnInit {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
-    return this.disableForm ? true : null;
+    return this.genk.disableForm ? true : null;
   }
 
   HSE_TechnicalSubmit() {

@@ -32,6 +32,7 @@ export class GenericService {
   empty = ' ';
   wkProposedYear = new Date().getFullYear();
 
+  public disableForm: boolean = true;
   public Concession$ = new Subject<IConcession>();
   public Concessions$ = new Subject<IConcession[]>();
   public Concessions: IConcession[] = [];
