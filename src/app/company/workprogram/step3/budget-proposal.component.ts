@@ -28,7 +28,8 @@ export class SWPBudgetProposalComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
   budgetProposalForm: FormGroup;
-  capexOpexForm: FormGroup;
+  capexForm: FormGroup;
+  OpexForm: FormGroup;
   budgetProposalBody: budgetProposal = {} as budgetProposal;
   capexOpexBody: capexOpex = {} as capexOpex;
   wkpYear: string;
@@ -114,7 +115,7 @@ export class SWPBudgetProposalComponent implements OnInit {
         Validators.required
       ),
     });
-    this.capexOpexForm = new FormGroup({
+    this.OpexForm = new FormGroup({
       item_Description: new FormControl(
         this.capexOpexBody.item_Description,
         Validators.required
@@ -127,6 +128,21 @@ export class SWPBudgetProposalComponent implements OnInit {
       ),
       remarks: new FormControl(this.capexOpexBody.remarks, Validators.required),
     });
+    this.capexForm = new FormGroup({
+      item_Description: new FormControl(
+        this.capexOpexBody.item_Description,
+        Validators.required
+      ),
+      naira: new FormControl(this.capexOpexBody.naira, Validators.required),
+      dollar: new FormControl(this.capexOpexBody.dollar, Validators.required),
+      dollar_equivalent: new FormControl(
+        this.capexOpexBody.dollar_equivalent,
+        Validators.required
+      ),
+      remarks: new FormControl(this.capexOpexBody.remarks, Validators.required),
+    });
+
+    
 
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
@@ -215,7 +231,16 @@ export class SWPBudgetProposalComponent implements OnInit {
       this.columnHeader_2.push(data[0]);
       this.columnValue_2.push(result);
     } else {
-      for (let item1 in this.capexOpexForm.controls) {
+      for (let item1 in this.OpexForm.controls) {
+        if (item1 != 'comment') {
+          this.columnHeader_2.push(
+            this.genk.upperText(item1.replace(/_+/g, ' '))
+          );
+          this.columnValue_2.push(this.capexOpexBody[item1]);
+        }
+      }
+
+      for (let item1 in this.capexForm.controls) {
         if (item1 != 'comment') {
           this.columnHeader_2.push(
             this.genk.upperText(item1.replace(/_+/g, ' '))
@@ -225,6 +250,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       }
     }
     this.isTabVisible_2 = true;
+
     this.cd.markForCheck();
   }
 

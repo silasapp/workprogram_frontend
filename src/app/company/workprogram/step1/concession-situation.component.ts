@@ -192,6 +192,8 @@ export class SWPConcessionSituationComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
         ]),
+        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty,  [
+          Validators.required]),
       },
       {}
     );
@@ -386,6 +388,13 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   submit() {
     let me = this.concessionBody;
+    this.csSubmitted=true;
+
+    if (this.ConcessionSituationForm.invalid) {
+      this.cd.markForCheck();
+      return;
+    }
+
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
     //     this.concessionBody.date_of_Expiration.includes('T00:00:00')

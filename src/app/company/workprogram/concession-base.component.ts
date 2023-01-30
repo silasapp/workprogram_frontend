@@ -95,6 +95,7 @@ export class ConcessionBaseComponent implements OnInit {
   }
 
   changeConcessionHeld(e) {
+    debugger;
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
 

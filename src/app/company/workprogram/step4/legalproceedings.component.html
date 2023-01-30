@@ -57,6 +57,47 @@
 
     <div *ngIf="letigationBody.anyLitigation == 'YES'">
       <div style="display: flex; width: 100%; justify-content: space-between">
+
+
+
+
+
+
+
+
+
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Year</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+            <select
+            formControlName="year"
+
+          >
+            <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+            <option
+              *ngFor="let Leyear of fiveYearsBehind"
+              [value]="Leyear"
+              [selected]="staffdispositionBody.year === Leyear"
+            >
+              {{ Leyear }}
+            </option>
+          </select>
+            </div>
+          </div>
+        </div>
+
+
+
+
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Suit Number</label>
           <div style="display: flex">
@@ -103,6 +144,11 @@
           </div>
         </div>
 
+        
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Jurisdiction</label>
           <div style="display: flex; width: 100%">
@@ -131,10 +177,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <br />
-
-      <div style="display: flex; width: 100%; justify-content: space-between">
         <!-- <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Name of Court</label>
           <div style="display: flex">

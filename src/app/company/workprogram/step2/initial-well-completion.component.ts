@@ -321,8 +321,8 @@ export class SWPInitialWellCompletionComponent implements OnInit {
                 qIWOneData.proposed_Completion_Date
               );
             }
-
-            this.selectedPage = 1;
+              debugger;
+            this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();

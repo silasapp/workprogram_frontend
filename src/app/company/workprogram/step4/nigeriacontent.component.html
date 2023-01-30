@@ -67,6 +67,36 @@
                 justify-content: space-between;
               "
             >
+            <div style="width: 30%; margin: auto 0 0">
+              <label class="labelwp">Year</label>
+              <div style="display: flex">
+                <div
+                  style="
+                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 7px 10px;
+                  "
+                >
+                <select
+                formControlName="year"
+                [(ngModel)]="staffdispositionBody.year"
+                [attr.disabled]="disableForm ? true : null"
+              >
+                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                <option
+                  *ngFor="let Nayear of fiveYearsBehind"
+                  [value]="Nayear"
+                  [selected]="staffdispositionBody.year === Nayear"
+                >
+                  {{ Nayear }}
+                </option>
+              </select>
+                </div>
+              </div>
+            </div>
+
+
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
                 <div style="display: flex">
@@ -282,6 +312,38 @@
             <div
               style="display: flex; width: 100%; justify-content: space-between"
             >
+
+
+            <div style="width: 30%; margin: auto 0 0">
+              <label class="labelwp">Year</label>
+              <div style="display: flex">
+                <div
+                  style="
+                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 7px 10px;
+                  "
+                >
+                <select
+                formControlName="year"
+                [(ngModel)]="staffdispositionBody.year"
+                [attr.disabled]="disableForm ? true : null"
+              >
+                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                <option
+                  *ngFor="let Npyear of fiveYearsAhead"
+                  [value]="Npyear"
+                  [selected]="staffdispositionBody.year === Npyear"
+                >
+                  {{ Npyear }}
+                </option>
+              </select>
+                </div>
+              </div>
+            </div>
+
+
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
                 <div style="display: flex">
@@ -866,6 +928,42 @@
               padding: 10px;
             "
           >
+          <div style="width: 50%">
+            <div>
+              <div style="width: 100%">
+                <label class="labelwp">Year</label>
+                <div
+                  style="
+                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 7px 10px;
+                  "
+                >
+
+                <select
+                formControlName="year"
+                [(ngModel)]="uploadsuccessionplanBody.year"
+                [attr.disabled]="disableForm ? true : null"
+              >
+                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                <option
+                  *ngFor="let Ayear of fiveYearsBehind"
+                  [value]="Ayear"
+                  [selected]="uploadsuccessionplanBody.year === Ayear"
+                >
+                  {{ Ayear }}
+                </option>
+              </select>
+                 
+              
+
+                 
+
+                </div>
+              </div>
+            </div>
+</div>
             <div style="width: 50%">
               <div>
                 <div style="width: 100%">
@@ -1007,6 +1105,41 @@
               padding: 10px;
             "
           >
+
+          <div style="width: 50%">
+            <div>
+              <div style="width: 100%">
+                <label class="labelwp">Year</label>
+                <div
+                  style="
+                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 7px 10px;
+                  "
+                >
+                <select
+                formControlName="year"
+                [(ngModel)]="uploadsuccessionplanBody.year"
+                [attr.disabled]="disableForm ? true : null"
+              >
+                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                <option
+                  *ngFor="let Pyear of fiveYearsAhead"
+                  [value]="Pyear"
+                  [selected]="uploadsuccessionplanBody.year === Pyear"
+                >
+                  {{ Pyear }}
+                </option>
+              </select>
+
+                 
+
+                </div>
+              </div>
+            </div>
+</div>
+
             <div style="width: 50%">
               <div>
                 <div style="width: 100%">

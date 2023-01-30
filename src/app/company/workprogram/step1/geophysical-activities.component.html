@@ -134,7 +134,7 @@
 
           <div *ngIf="submitted" class="eroce">
             <span *ngIf="!f['proposed_year_data'].valid">
-              Actual Year Aquired Data is required
+              Proposed Year Aquired Data is required
             </span>
           </div>
         </div>
@@ -218,6 +218,11 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['geo_area_of_coverage'].valid">
+              Area of Coverage is required
+            </span>
+        </div>
         </div>
 
         <div style="width: 30%">
@@ -243,6 +248,11 @@
                   />
                 </div>
               </div>
+              <div *ngIf="submitted" class="eroce">
+                <span *ngIf="!f['budeget_Allocation_NGN'].valid">
+                  *
+                </span>
+            </div>
             </div>
 
             <div style="width: 98%">
@@ -266,6 +276,15 @@
                   />
                 </div>
               </div>
+
+              
+               <div *ngIf="submitted" class="eroce">
+                <span *ngIf="!f['budeget_Allocation_USD'].valid">
+                  *
+                </span>
+            </div>
+
+
             </div>
           </div>
         </div>
@@ -288,6 +307,12 @@
               </select>
             </div>
           </div>
+
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['geo_method_of_acquisition'].valid">
+              Acquisition Type is required
+            </span>
+        </div>
         </div>
       </div>
       <br />
@@ -310,6 +335,11 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['quantum_Planned'].valid">
+              Quantum Planned  is required
+            </span>
+        </div>
         </div>
 
         <div style="width: 30%; margin-top: auto">
@@ -327,6 +357,12 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['quantum'].valid">
+              Quantum Acquired  is required
+            </span>
+        </div>
+
         </div>
 
         <div class="rowbox">
@@ -344,6 +380,11 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['quantum_Approved'].valid">
+              Quantum Approved  is required
+            </span>
+        </div>
         </div>
       </div>
       <br />
@@ -385,6 +426,11 @@
               />
             </div>
           </div>
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['quantum_Approved'].valid">
+              Quantum Approved  is required
+            </span>
+        </div>
         </div>
 
         <div class="rowbox">
@@ -407,6 +453,14 @@
               </select>
             </div>
           </div>
+
+
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['geo_type_of_data_acquired'].valid">
+              Quantum Approved  is required
+            </span>
+        </div>
+          
         </div>
 
         <div class="rowbox">
@@ -428,6 +482,14 @@
               />
             </div>
           </div>
+
+
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['no_of_Folds'].valid">
+              No of Fold  is required
+            </span>
+        </div>
+
         </div>
       </div>
 
@@ -509,6 +571,15 @@
               />
             </div>
           </div>
+
+
+          <div *ngIf="submitted" class="eroce">
+            <span *ngIf="!f['no_of_Folds'].valid">
+              No of Fold  is required
+            </span>
+        </div>
+
+          
         </div>
 
         <div class="rowbox">
@@ -527,6 +598,7 @@
               ></textarea>
             </div>
           </div>
+          
         </div>
       </div>
       <br />
@@ -607,6 +679,7 @@
     </div>
   </div>
   <br /><br />
+  
   <div style="width: 30%">
     <label class="labelwp">Type of Processing</label>
     <div style="display: flex">
@@ -625,7 +698,16 @@
         </select>
       </div>
     </div>
+
+    <div *ngIf="pSubmitted" class="eroce">
+      <span *ngIf="!pf['type_of_Processing'].valid">
+        Processing Type is required
+      </span>
   </div>
+
+  </div>
+ 
+  <br /><br />
   <div style="display: flex; width: 100%; justify-content: space-between">
     <div style="width: 30%">
       <div
@@ -690,6 +772,14 @@
               />
             </div>
           </div>
+
+
+          <div *ngIf="pSubmitted" class="eroce">
+            <span *ngIf="!pf['processed_Proposed'].valid">
+              Proposed Processing is required
+            </span>
+        </div>
+
         </div>
       </div>
     </div>
@@ -757,6 +847,13 @@
               />
             </div>
           </div>
+
+          <div *ngIf="pSubmitted" class="eroce">
+            <span *ngIf="!pf['processed_Proposed'].valid">
+              Proposed Reprocessing is required
+            </span>
+        </div>
+
         </div>
       </div>
     </div>
@@ -917,6 +1014,12 @@
           "
         />
       </div>
+      <div *ngIf="pSubmitted" class="eroce">
+        <span *ngIf="!pf['name_of_Contractor'].valid">
+          Name of Contractor is required
+        </span>
+    </div>
+
     </div>
 
     <!-- <div style="width: 30%">
@@ -966,6 +1069,11 @@
               />
             </div>
           </div>
+          <div *ngIf="pSubmitted" class="eroce">
+            <span *ngIf="!pf['budeget_Allocation_NGN'].valid">
+              *
+            </span>
+        </div>
         </div>
 
         <div style="width: 98%">
@@ -989,6 +1097,14 @@
               />
             </div>
           </div>
+
+
+          <div *ngIf="pSubmitted" class="eroce">
+            <span *ngIf="!pf['budeget_Allocation_USD'].valid">
+              *
+            </span>
+        </div>
+
         </div>
       </div>
     </div>
@@ -1017,6 +1133,14 @@
           </select>
         </div>
       </div>
+
+
+      <div *ngIf="pSubmitted" class="eroce">
+        <span *ngIf="!pf['geo_Type_of_Data_being_Processed'].valid">
+          Data Being Processed Type is required
+        </span>
+    </div>
+
     </div>
   </div>
   <br /><br />
@@ -1068,6 +1192,7 @@
             ></textarea>
           </div>
         </div>
+        
       </div>
     </div>
     <br /><br />
