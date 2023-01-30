@@ -5,9 +5,11 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -22,7 +24,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPLegalProceedingsComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   letigationForm: FormGroup;
   arbitrationForm: FormGroup;
   letigationBody: LEGAL_LITIGATION = {} as LEGAL_LITIGATION;
@@ -201,10 +205,32 @@ export class SWPLegalProceedingsComponent implements OnInit {
       },
       {}
     );
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     //this.concessionBody = this.genk.concessionData;
     //this.concessionHeldList = this.genk.OMLList;
     this.getLegalLegitation();
     this.cd.markForCheck();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   loadTable() {
