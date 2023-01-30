@@ -49,7 +49,7 @@
   <div style="display: flex; width: 100%">
     <div class="sidebar-box">
       <div class="layout-box">
-        <div>
+        <div style="color: rgb(71, 71, 52)">
           <div
             *ngIf="genk.isAdmin"
             class="layout-div layout-pad layout-line"
@@ -108,6 +108,23 @@
           </div>
           <div
             *ngIf="!genk.isAdmin"
+            [routerLink]="['/' + genk.company, 'details']"
+            routerLinkActive="active"
+            class="layout-div layout-pad layout-line"
+          >
+            <span class="material-icons layout-icon">newspaper</span>
+            <span>Company Details</span>
+          </div>
+          <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, 'concessionsfields']"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">table_chart</span>
+            <span>Concessions & Fields</span>
+          </div>
+          <div
+            *ngIf="!genk.isAdmin"
             class="layout-div layout-pad layout-line"
             [routerLink]="[
               '/' + genk.company,
@@ -132,15 +149,7 @@
             <span class="material-icons layout-icon">upload</span>
             <span>Upload Presentation</span>
           </div>
-          <div
-            *ngIf="!genk.isAdmin"
-            [routerLink]="['/' + genk.company, 'details']"
-            routerLinkActive="active"
-            class="layout-div layout-pad layout-line"
-          >
-            <span class="material-icons layout-icon">newspaper</span>
-            <span>Company Details</span>
-          </div>
+
           <div
             class="layout-div layout-pad layout-line"
             [routerLink]="['/' + genk.company, genk.workprogram]"
@@ -150,14 +159,7 @@
             <span>Work Programme</span>
           </div>
 
-          <div
-            class="layout-div layout-pad layout-line"
-            [routerLink]="['/' + genk.company, 'concessionsfields']"
-            routerLinkActive="active"
-          >
-            <span class="material-icons layout-icon">table_chart</span>
-            <span>Concessions & Fields</span>
-          </div>
+
           <div
             class="layout-div layout-pad layout-line"
             [routerLink]="['/' + genk.company, 'resetpassword']"
@@ -935,6 +937,28 @@
             <span class="layout-icon"><mat-icon>build</mat-icon></span>
 
             <span>Configure Process Flow</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'sbu-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>add</mat-icon></span>
+
+            <span>Configure SBU</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'role-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>group</mat-icon></span>
+
+            <span>Configure Roles</span>
           </div>
 
           <div

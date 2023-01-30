@@ -205,7 +205,7 @@
             <div class="row mt-5">
               <div class="col-sm-4">
                 <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type </span>
-                <select class="form-select" formControlName='consession_Type'
+                <select class="form-select" style="border: solid 1px silver; padding: 8px;" formControlName='consession_Type'
                   [(ngModel)]="concessionBody.consession_Type">
                   <option selected disabled>--Please Select concession type--<option>
                   <option *ngFor="let val of genk.concessiontype" value={{val.value}}>{{val.value}}</option>
@@ -218,8 +218,12 @@
               </div>
               <div class="col-sm-4">
                 <span style="font-size: 15px; color: rgb(34, 56, 56);">Equity Distribution</span>
-                <input type="text" class="form-control" formControlName="equity_distribution"
+                <div style="display: flex; border: solid 1px grey;">
+                  <span class="material-icons" style=" padding: 10px 10px; border-radius: 5px 0 0 5px; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="clearEquity()">delete</span>
+                <input readonly type="text" style="border-radius: 5px; border: none; outline: none;" formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution">
+                <span class="material-icons" style="padding: 10px 10px; border-radius: 0 5px 5px 0; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="showEquity()">add</span>
+                </div>
               </div>
             </div>
 
@@ -230,7 +234,7 @@
               </div>
               <div class="col-sm-4">
                 <span style="font-size: 15px; color: rgb(34, 56, 56);">Contract Type</span>
-                <select id="time" class="form-select" formControlName="contract_Type"
+                <select id="time" class="form-select" style="border: solid 1px silver; padding: 8px;" formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type">
                   <option selected disabled>--Please Select Categories--
                   <option>
@@ -254,8 +258,19 @@
               <div class="col-sm-4">
                 <span style="font-size: 15px; color: rgb(34, 56, 56);">Geological
                   location/terrain</span>
-                <input type="text" class="form-control" formControlName="geological_location"
+                  <select
+                  class="form-control" style="border: solid 1px silver; padding: 8px;"
+                  formControlName="geological_location"
                   [(ngModel)]="concessionBody.geological_location">
+                  <option selected disabled>
+                    ---- Please Select Terrain ----
+                  </option>
+                  <option value="OFFSHORE">OFFSHORE</option>
+                  <option value="DEEP OFFSHORE">DEEP OFFSHORE</option>
+                  <option value="ONSHORE">ONSHORE</option>
+                </select>
+                <!-- <input type="text" class="form-control" formControlName="geological_location"
+                  [(ngModel)]="concessionBody.geological_location"> -->
               </div>
               <div class="col-sm-4">
                 <span style="font-size: 15px; color: rgb(34, 56, 56);">Comment</span>
@@ -312,5 +327,44 @@
     </div>
   </div>
 </div>
+
+
+
+<div *ngIf="isAddEquity" class="modal">
+  <div [formGroup]="EquityForm" class="modaltent">
+    <div>
+      <div style="text-align: center;">
+        <label style="font-weight: 600; font-size: 16px;">Equity Distribution</label>
+      </div>
+      <br>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+          <label>Company Name:</label>
+          <input #compName type="text" formControlName="companyOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.companyOne"/>
+        </div>
+        <span *ngIf="eqt['companyOne']?.errors['required'] && equitySubmitted" class="eroce">
+          Company name is required.
+        </span>
+        <br>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 30vw;">
+          <label>Percentage: </label>
+          <input #percentEquity type="number" formControlName="equityOne" style="width: 20vw;" class="authinput" [(ngModel)]="equityBody.equityOne"/>
+        </div>
+
+        <span *ngIf="!eqt['equityOne'].valid && equitySubmitted" class="eroce">
+          Percentage Equity is required.
+        </span>
+        </div>
+        <br>
+        <br>
+        <div style="text-align: end;">
+          <button (click)="addEquity(compName.value, percentEquity.value)" style="background-color: dodgerblue; color: white; outline: none; padding: 7px 30px; border: none; margin-right: 20px;">Add</button>
+          <button (click)="showEquity()" style="background-color: grey; color: white; outline: none; padding: 7px 30px; border: none; margin-left: 20px;">Cancel</button>
+        </div>
+    </div>
+  </div>
+</div>
+
 
 

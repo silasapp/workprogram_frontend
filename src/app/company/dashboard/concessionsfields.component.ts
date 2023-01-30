@@ -12,12 +12,14 @@ import {
   FieldDetails,
   ConcessionDetails,
 } from 'src/app/models/company-details';
+import { EquityDistribution } from 'src/app/models/step1-concession.model';
 
 @Component({
   templateUrl: 'concessionsfields.component.html',
   styleUrls: [
     './concessionsfields.component.scss',
     '../../reports/ndr-report.component.scss',
+    '../workprogram/board.component.scss'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -53,6 +55,11 @@ export class ConcessionsfieldsComponent implements OnInit {
   fieldAction = 'INSERT';
   concessionList = [];
   resultconcessionList = [];
+  isAddEquity = false;
+  equitySubmitted = false;
+  equityBody: EquityDistribution = {} as EquityDistribution;
+
+  EquityForm: FormGroup;
 
   columns = [
     //   {
@@ -177,8 +184,20 @@ export class ConcessionsfieldsComponent implements OnInit {
       },
       {}
     );
+
+    this.EquityForm = new FormGroup(
+      {
+        companyOne: new FormControl(this.equityBody.companyOne, [Validators.required]),
+        equityOne: new FormControl(this.equityBody.equityOne, [Validators.required])
+      },
+      {}
+    );
     this.getConcessionFields();
   }
+
+  get eqt() {
+    return this.EquityForm.controls;
+   }
 
   getConcessionFields() {
     this.adminservice.getCompanyConcessions().subscribe((res) => {
@@ -531,7 +550,7 @@ debugger;
 
   isOMLorPML(element, index, array) {
     if (element.toUpperCase() == "OML" || element.toUpperCase() == "PML") return element;
-  } 
+  }
 
 
   Alert(title: string, text: string, icon: any) {
@@ -561,6 +580,39 @@ debugger;
       this.isAddField = false;
     }
     this.fieldAction = 'INSERT';
+    this.cd.markForCheck();
+  }
+
+  addEquity(companyName: string, percentEquity) {
+    debugger;
+    if (companyName && percentEquity) {
+      this.equitySubmitted = true;
+    if (this.EquityForm.invalid) {
+      this.cd.markForCheck();
+      return;
+    }
+    if (!this.concessionBody.equity_distribution) {
+      this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
+    } else {
+      this.concessionBody.equity_distribution = this.concessionBody.equity_distribution + `${companyName.toUpperCase()} - ${percentEquity}%. `;
+    }
+    this.isAddEquity = false;
+    this.cd.markForCheck();
+    }
+  }
+
+  showEquity() {
+    if (this.isAddEquity) {
+      this.isAddEquity = false;
+      this.cd.markForCheck();
+    } else {
+      this.isAddEquity = true;
+      this.cd.markForCheck();
+    }
+  }
+
+  clearEquity() {
+    this.concessionBody.equity_distribution = '';
     this.cd.markForCheck();
   }
 }

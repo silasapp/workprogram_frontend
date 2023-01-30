@@ -36,6 +36,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
   submitted = false;
   columnHeader = [];
   columnValue = [];
+  fiveYearsBehind=[];
+  fiveYearsAhead =[];
   isTabVisible = false;
   legalarbitrationBody: LEGAL_ARBITRATION;
   litigations: LEGAL_LITIGATION[] = [];
@@ -203,8 +205,36 @@ export class SWPLegalProceedingsComponent implements OnInit {
     );
     //this.concessionBody = this.genk.concessionData;
     //this.concessionHeldList = this.genk.OMLList;
+    this.getFiveYearsAhead();
+    this.getFiveYearsBehind();
     this.getLegalLegitation();
     this.cd.markForCheck();
+  }
+
+
+
+  getFiveYearsAhead() {
+    debugger;
+    this.fiveYearsAhead = [];
+    var num: number = 5;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
+  }
+
+  getFiveYearsBehind() {
+    debugger;
+    this.fiveYearsBehind = [];
+    var num: number = 5;
+    var i: number;
+    for (i = num; i > 0; i--) {
+      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
   }
 
   loadTable() {
@@ -294,6 +324,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
     let y = this.genk.wpYear;
     let o = this.genk.OmlName;
     let f = this.genk.fieldName;
+
+    this.modalService.logCover('Submitting Form...', true);
     this.workprogram
       .post_WorkProgram(
         this.genk.wpYear,
@@ -302,6 +334,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          this.modalService.togCover();
           this.modalService.logNotice('Success', res.message, 'success');
 
           this.getLegalLegitation();
