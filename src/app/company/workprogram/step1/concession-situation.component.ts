@@ -230,6 +230,13 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
+  }
+
   get f() {
     return this.RoyaltyForm.controls;
   }
@@ -441,12 +448,5 @@ export class SWPConcessionSituationComponent implements OnInit {
   clearEquity() {
     this.concessionBody.equity_distribution = '';
     this.cd.markForCheck();
-  }
-
-  isEditable(group: string): boolean | null {
-    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
-      return null;
-    }
-    return this.disableForm ? true : null;
   }
 }

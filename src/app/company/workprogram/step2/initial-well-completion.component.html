@@ -109,7 +109,11 @@
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             [(ngModel)]="initialBody.proposed_year_data"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           />
         </div>
       </div>
@@ -130,7 +134,11 @@
             formControlName="proposed_initial_name"
             [(ngModel)]="initialBody.proposed_initial_name"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           />
         </div>
       </div>
@@ -151,7 +159,11 @@
             formControlName="proposed_completion_days"
             [(ngModel)]="initialBody.proposed_completion_days"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           />
         </div>
       </div>
@@ -226,7 +238,11 @@
             class="inpute"
             formControlName="proposed_Completion_Date"
             [(ngModel)]="initialBody.proposed_Completion_Date"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           />
         </div>
       </div>
@@ -254,7 +270,11 @@
                 "
                 [value]="initialBody.budeget_Allocation_NGN"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+                  )
+                "
               />
             </div>
           </div>
@@ -276,7 +296,11 @@
                 "
                 [value]="initialBody.budeget_Allocation_USD"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+                  )
+                "
               />
             </div>
           </div>
@@ -294,7 +318,11 @@
             class="dropwp"
             formControlName="oil_or_gas_wells"
             [(ngModel)]="initialBody.oil_or_gas_wells"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           >
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
@@ -324,7 +352,11 @@
             rows="2"
             formControlName="remarks"
             [(ngModel)]="initialBody.remarks"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(
+                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
+              )
+            "
           ></textarea>
         </div>
       </div>
@@ -338,47 +370,57 @@
         #btn
         class="quarterbtn"
         (click)="submit()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs)
+        "
       >
-      Add Initial Well For Quarter 1
+        Add Initial Well For Quarter 1
       </button>
     </div>
   </div>
 
-
-<br/>
-<br/>
-<div #divTable style="
-overflow: hidden;
-overflow-x: auto;
-box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-">
-<table #codeTable class="apptable" cellPadding="10px">
-<thead>
-  <tr>
-    <th *ngFor="let h of iwccolumn">
-      {{ h.header }}
-    </th>
-  </tr>
-</thead>
- <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-  <tr *ngFor="let row of _quaterIWOneData">
-    <td *ngFor="let h of iwccolumn">
-      {{ row[h.columnDef] }}
-    </td>
-    <td>
-      <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
-        (click)="deleteNCT(row)" value="{{ row.id }}"
-        style="background-color: white; color: red; border: 2px solid" class="submitbtn">
-        <mat-icon style="font-size: 20px"> border_color</mat-icon>
-        <b>Delete</b>
-      </button>
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-
+  <br />
+  <br />
+  <div
+    #divTable
+    style="
+      overflow: hidden;
+      overflow-x: auto;
+      box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+    "
+  >
+    <table #codeTable class="apptable" cellPadding="10px">
+      <thead>
+        <tr>
+          <th *ngFor="let h of iwccolumn">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+        <tr *ngFor="let row of _quaterIWOneData">
+          <td *ngFor="let h of iwccolumn">
+            {{ row[h.columnDef] }}
+          </td>
+          <td>
+            <button
+              mat-stroked-button
+              style="margin: 50px; padding: 10px"
+              type="button"
+              class="btn btn-primary"
+              (click)="deleteNCT(row)"
+              value="{{ row.id }}"
+              style="background-color: white; color: red; border: 2px solid"
+              class="submitbtn"
+            >
+              <mat-icon style="font-size: 20px"> border_color</mat-icon>
+              <b>Delete</b>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <br />
 <br />

@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   NDR,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION,
@@ -21,6 +22,7 @@ import {
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -31,7 +33,9 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OilGasProductionActivitiesComponent implements OnInit {
-  public disableForm: boolean = false;
+  public disableForm: boolean = true;
+  public SBUTABLE = SBUTABLE;
+
   Oil_ProductionForm: FormGroup;
   productionoilBody: OIL_CONDENSATE_PRODUCTION_ACTIVITy =
     {} as OIL_CONDENSATE_PRODUCTION_ACTIVITy;
@@ -302,10 +306,31 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getFiveYearsValues();
     this.getOilProduction();
     this.getGasProduction();
     this.cd.markForCheck();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.disableForm ? true : null;
   }
 
   get f() {
@@ -313,7 +338,6 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   getFiveYearsValues() {
-    debugger;
     this.fiveYearsValues = [];
     var num: number = 5;
     var i: number;
@@ -321,11 +345,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
   }
 
   getGasProduction() {
-    debugger;
     this.workprogram
       .getGasProduction(
         this.genk.wpYear,
@@ -354,7 +376,6 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   getOilProduction() {
-    debugger;
     this.workprogram
       .getOilProduction(
         this.genk.wpYear,
@@ -362,22 +383,34 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        if (res.oilCondensateProduction) {
+        if (
+          res.oilCondensateProduction &&
+          res.oilCondensateProduction.length > 0
+        ) {
           this.productionoilBody = res.oilCondensateProduction;
         }
 
-        if (res.oilCondensateProductionMonthly) {
+        if (
+          res.oilCondensateProductionMonthly &&
+          res.oilCondensateProductionMonthly.length > 0
+        ) {
           this.monthlyactivityData = res.oilCondensateProductionMonthly;
           this.monthlyactivityBody = res.oilCondensateProductionMonthly[0];
         }
 
-        if (res.oilCondensateProductionMonthlyProposed) {
+        if (
+          res.oilCondensateProductionMonthlyProposed &&
+          res.oilCondensateProductionMonthlyProposed.length > 0
+        ) {
           this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
           this.proposedmonthlyBody =
             res.oilCondensateProductionMonthlyProposed[0];
         }
 
-        if (res.oilCondensateFiveYears) {
+        if (
+          res.oilCondensateFiveYears &&
+          res.oilCondensateFiveYears.length > 0
+        ) {
           this.fiveYearData = res.oilCondensateFiveYears;
           this.fiveYearForecastBody = res.oilCondensateFiveYears[0];
         }

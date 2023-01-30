@@ -57,7 +57,7 @@
                 [(ngModel)]="
                   budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -82,7 +82,7 @@
                 [(ngModel)]="
                   budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -113,7 +113,7 @@
                 class="inpute"
                 formControlName="budget_for_other_Activities_NGN"
                 [(ngModel)]="budgetBody.budget_for_other_Activities_NGN"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -136,7 +136,7 @@
                 class="inpute"
                 formControlName="budget_for_other_Activities_USD"
                 [(ngModel)]="budgetBody.budget_for_other_Activities_USD"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -169,7 +169,7 @@
                 [(ngModel)]="
                   budgetBody.equivalent_Naira_and_Dollar_Component_NGN
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -194,7 +194,7 @@
                 [(ngModel)]="
                   budgetBody.equivalent_Naira_and_Dollar_Component_USD
                 "
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               />
             </div>
           </div>
@@ -208,7 +208,7 @@
       <button
         class="submitbtn"
         (click)="saveBudgetActualExpenditure()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
       >
         Save Production Cost
       </button>
@@ -235,7 +235,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Budget($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
               >
                 Delete
               </button>
@@ -299,7 +299,11 @@
                   class="inpute"
                   formControlName="aCQUISITION_planned"
                   [(ngModel)]="exploratoryBody.acquisitioN_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -321,7 +325,7 @@
                   class="inpute"
                   formControlName="aCQUISITION_Actual"
                   [(ngModel)]="exploratoryBody.acquisitioN_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -351,7 +355,11 @@
                   class="inpute"
                   formControlName="pROCESSING_planned"
                   [(ngModel)]="exploratoryBody.processinG_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -373,7 +381,7 @@
                   class="inpute"
                   formControlName="pROCESSING_Actual"
                   [(ngModel)]="exploratoryBody.processinG_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -403,7 +411,11 @@
                   class="inpute"
                   formControlName="rEPROCESSING_planned"
                   [(ngModel)]="exploratoryBody.reprocessinG_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -425,7 +437,7 @@
                   class="inpute"
                   formControlName="rEPROCESSING_Actual"
                   [(ngModel)]="exploratoryBody.reprocessinG_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -461,7 +473,11 @@
                   class="inpute"
                   formControlName="eXPLORATION_planned"
                   [(ngModel)]="exploratoryBody.exploratioN_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -483,7 +499,7 @@
                   class="inpute"
                   formControlName="eXPLORATION_Actual"
                   [(ngModel)]="exploratoryBody.exploratioN_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -513,7 +529,11 @@
                   class="inpute"
                   formControlName="aPPRAISAL_planned"
                   [(ngModel)]="exploratoryBody.appraisaL_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -535,7 +555,7 @@
                   class="inpute"
                   formControlName="aPPRAISAL_Actual"
                   [(ngModel)]="exploratoryBody.appraisaL_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -549,7 +569,9 @@
         <button
           class="submitbtn"
           (click)="saveExploratory()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)
+          "
         >
           Save Exploratory
         </button>
@@ -579,7 +601,9 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Exploratory($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)
+                "
               >
                 Delete
               </button>
@@ -633,7 +657,11 @@
                   class="inpute"
                   formControlName="dEVELOPMENT_planned"
                   [(ngModel)]="developmentDrillingBody.developmenT_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -655,7 +683,11 @@
                   class="inpute"
                   formControlName="dEVELOPMENT_Actual"
                   [(ngModel)]="developmentDrillingBody.developmenT_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -685,7 +717,11 @@
                   class="inpute"
                   formControlName="wORKOVER_planned"
                   [(ngModel)]="developmentDrillingBody.workoveR_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -707,7 +743,7 @@
                   class="inpute"
                   formControlName="wORKOVER_Actual"
                   [(ngModel)]="developmentDrillingBody.workoveR_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -737,7 +773,11 @@
                   class="inpute"
                   formControlName="cOMPLETION_planned"
                   [(ngModel)]="developmentDrillingBody.completioN_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -759,7 +799,7 @@
                   class="inpute"
                   formControlName="cOMPLETION_Actual"
                   [(ngModel)]="developmentDrillingBody.completioN_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs)"
                 />
               </div>
             </div>
@@ -773,7 +813,11 @@
         <button
           class="submitbtn"
           (click)="saveDevelopmentDrilling()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(
+              SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+            )
+          "
         >
           Save Development Drilling Activities
         </button>
@@ -801,7 +845,11 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Development($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
+                  )
+                "
               >
                 Delete
               </button>
@@ -858,7 +906,11 @@
                   class="inpute"
                   formControlName="concepT_planned"
                   [(ngModel)]="facilitiesDevelopmentBody.concepT_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -880,7 +932,7 @@
                   class="inpute"
                   formControlName="concepT_Actual"
                   [(ngModel)]="facilitiesDevelopmentBody.concepT_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -910,7 +962,11 @@
                   class="inpute"
                   formControlName="feeD_planned"
                   [(ngModel)]="facilitiesDevelopmentBody.feeD_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -932,7 +988,7 @@
                   class="inpute"
                   formControlName="feeD_COST_Actual"
                   [(ngModel)]="facilitiesDevelopmentBody.feeD_COST_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -964,7 +1020,11 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.detaileD_ENGINEERING_planned
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -988,7 +1048,7 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.detaileD_ENGINEERING_Actual
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -1021,7 +1081,11 @@
                   class="inpute"
                   formControlName="procuremenT_planned"
                   [(ngModel)]="facilitiesDevelopmentBody.procuremenT_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -1043,7 +1107,7 @@
                   class="inpute"
                   formControlName="procuremenT_Actual"
                   [(ngModel)]="facilitiesDevelopmentBody.procuremenT_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -1075,7 +1139,11 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.constructioN_FABRICATION_planned
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -1099,7 +1167,7 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.constructioN_FABRICATION_Actual
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -1129,7 +1197,11 @@
                   class="inpute"
                   formControlName="installatioN_planned"
                   [(ngModel)]="facilitiesDevelopmentBody.installatioN_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -1151,7 +1223,7 @@
                   class="inpute"
                   formControlName="installatioN_Actual"
                   [(ngModel)]="facilitiesDevelopmentBody.installatioN_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -1185,7 +1257,11 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.upgradE_MAINTENANCE_planned
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -1209,7 +1285,7 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.upgradE_MAINTENANCE_Actual
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs)"
                 />
               </div>
             </div>
@@ -1241,7 +1317,11 @@
                   [(ngModel)]="
                     facilitiesDevelopmentBody.decommissioninG_ABANDONMENT
                   "
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                    )
+                  "
                 />
               </div>
             </div>
@@ -1257,7 +1337,11 @@
         <button
           class="submitbtn"
           (click)="saveFacilitiesDevelopment()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(
+              SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+            )
+          "
         >
           Save Facilities Development
         </button>
@@ -1285,7 +1369,11 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Facility($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                  )
+                "
               >
                 Delete
               </button>
@@ -1338,7 +1426,9 @@
                   class="inpute"
                   formControlName="direcT_COST_planned"
                   [(ngModel)]="productionCostBody.direcT_COST_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
+                  "
                 />
               </div>
             </div>
@@ -1360,7 +1450,7 @@
                   class="inpute"
                   formControlName="direcT_COST_Actual"
                   [(ngModel)]="productionCostBody.direcT_COST_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)"
                 />
               </div>
             </div>
@@ -1390,7 +1480,9 @@
                   class="inpute"
                   formControlName="indirecT_COST_planned"
                   [(ngModel)]="productionCostBody.indirecT_COST_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
+                  "
                 />
               </div>
             </div>
@@ -1412,7 +1504,7 @@
                   class="inpute"
                   formControlName="indirecT_COST_Actual"
                   [(ngModel)]="productionCostBody.indirecT_COST_Actual"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)"
                 />
               </div>
             </div>
@@ -1426,7 +1518,9 @@
         <button
           class="submitbtn"
           (click)="saveProductionCost()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
+          "
         >
           Save Production Cost
         </button>
@@ -1454,7 +1548,9 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Production($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
+                "
               >
                 Delete
               </button>
