@@ -569,7 +569,7 @@ export class SWPHseComponent implements OnInit {
     },
     {
       columnDef: 'wasOhmPolicyCommunicatedToStaff',
-      header: 'Was OHM Policy Communicated to Staffs?',
+      header: 'Was OHM Policy Communicated to Staff?',
     },
     {
       columnDef: 'ohMplanFilePath',
