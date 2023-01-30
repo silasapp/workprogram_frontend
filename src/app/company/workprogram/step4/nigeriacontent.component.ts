@@ -64,6 +64,8 @@ export class SWPNigeriaContentComponent implements OnInit {
   actualValue: string;
   columnHeader = [];
   columnValue = [];
+  fiveYearsAhead=[];
+  fiveYearsBehind=[];
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
@@ -197,6 +199,9 @@ export class SWPNigeriaContentComponent implements OnInit {
         staff_Local: new FormControl(this.staffdispositionBody.staff_Local, [
           Validators.required,
         ]),
+        year: new FormControl(this.staffdispositionBody.year, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -257,6 +262,10 @@ export class SWPNigeriaContentComponent implements OnInit {
           this.uploadsuccessionplanBody.position_Occupied_,
           [Validators.required]
         ),
+        year: new FormControl(
+          this.uploadsuccessionplanBody.year,
+          [Validators.required]
+        ),
       },
       {}
     );
@@ -276,9 +285,39 @@ export class SWPNigeriaContentComponent implements OnInit {
     });
 
     this.getNigeriaContentTraining();
+    debugger;
+    this.getFiveYearsAhead();
+    this.getFiveYearsBehind();
     // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
+
+  getFiveYearsAhead() {
+    debugger;
+    this.fiveYearsAhead = [];
+    var num: number = 5;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
+  }
+
+  getFiveYearsBehind() {
+    debugger;
+    this.fiveYearsBehind = [];
+    var num: number = 5;
+    var i: number;
+    for (i = num; i > 0; i--) {
+      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
+  }
+
+
+
 
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
@@ -288,6 +327,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   getNigeriaContentTraining() {
+    debugger;
     this.workprogram
       .getNigeriaContentTraining(this.genk.wpYear)
       .subscribe((result) => {
@@ -352,6 +392,7 @@ export class SWPNigeriaContentComponent implements OnInit {
             {} as NIGERIA_CONTENT_Upload_Succession_Plan;
         }
 
+  
         console.log('succession', this.uploadSuccessionPlans);
         this.cd.markForCheck();
       });

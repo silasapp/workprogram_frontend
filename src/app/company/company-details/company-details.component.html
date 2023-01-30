@@ -1,6 +1,6 @@
 
 <div class="container mt-5">
-    <div [formGroup]="companyDetailsForm" (ngSubmit)="onSubmit()">
+    <div [formGroup]="companyDetailsForm">
     <div class="container">
         <h1>Company Details </h1>
     
@@ -13,7 +13,7 @@
                     <h2>Company Name</h2>
                 </div>
                 <div class="col-sm-6">
-                <input type="text" class="form-control" formControlName="companyId" [value]="auth.currentUserValue.companyId" hidden>
+                <input type="text" class="form-control" formControlName="companyId" [value]="auth.currentUserValue.companyId"  hidden>
                     
                     <input type="text" class="form-control" formControlName="companyName" [value]="auth.currentUserValue.companyName" readonly ></div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="col-sm-3">
                     <h2>CEO's Name</h2>
                 </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="name_of_MD_CEO"></div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="name_of_MD_CEO" [(ngModel)]="companyDetails.name_of_MD_CEO"></div>
             </div>
         </div>
         <div class="container">
@@ -52,7 +52,7 @@
                 <div class="col-sm-3">
                     <h2> CEO's Phone number</h2>
                 </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_NO_of_MD_CEO"></div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_NO_of_MD_CEO" [(ngModel)]="companyDetails.phone_NO_of_MD_CEO"></div>
             </div>
         </div>
         <div class="container">
@@ -60,14 +60,14 @@
                 <div class="col-sm-3">
                     <h2>Contact person</h2>
                 </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="contact_Person"></div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="contact_Person" [(ngModel)]="companyDetails.contact_Person"></div>
             </div>
         </div><div class="container">
             <div class="row">
                 <div class="col-sm-3">
                     <h2>Contact Person's Number</h2>
                 </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_No"></div>
+                <div class="col-sm-6"><input type="text" class="form-control" formControlName="phone_No" [(ngModel)]="companyDetails.phone_No"></div>
             </div>
         </div>
         <div class="container">
@@ -75,7 +75,7 @@
                 <div class="col-sm-3">
                     <h2>Contact Person's Email</h2>
                 </div>
-                <div class="col-sm-6"><input type="email" class="form-control" formControlName="email_Address"></div>
+                <div class="col-sm-6"><input type="email" class="form-control" formControlName="email_Address" [(ngModel)]="companyDetails.email_Address"></div>
             </div>
         </div>
     

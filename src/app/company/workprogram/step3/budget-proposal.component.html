@@ -218,7 +218,7 @@
 
   <hr size="10" />
   <br /><br />
-  <div [formGroup]="capexOpexForm">
+  <div [formGroup]="capexForm">
     <div
       style="
         text-align: start;
@@ -228,7 +228,7 @@
         color: rgb(6, 6, 6);
       "
     >
-      <span>CAPEX & OPEX Items</span>
+      <span>CAPEX Items</span>
     </div>
     <hr size="5" />
 
@@ -252,82 +252,49 @@
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             >
               <option selected disabled>---- Please Select Item ----</option>
-              <option value="1st Appraisal Well">1st Appraisal Well</option>
-              <option value="Abandonment & Decommissioning">
-                Abandonment & Decommissioning
+              <option value="Acquisition">Acquisition</option>
+              <option value="Processing">
+                Processing
               </option>
-              <option value="Bank Charges & Commission">
-                Bank Charges & Commission
+              <option value="Reprocessing">
+                Reprocessing
               </option>
-              <option value="Capital Construction (Gas)">
-                Capital Construction (Gas)
+              <option value="Exploratory Well Drilling">
+                Exploratory Well Drilling
               </option>
-              <option value="Capital Construction (Oil)">
-                Capital Construction (Oil)
+              <option value="Appraisal Well Drilling">
+                Appraisal Well Drilling
               </option>
-              <option value="Community Development">
-                Community Development
+              <option value="Development Well Drilling">
+                Development Well Drilling
               </option>
-              <option value="Concession Rental">Concession Rental</option>
-              <option value="Development Drilling (Gas)">
-                Development Drilling (Gas)
+              <option value="Workover Operations">Workover Operations</option>
+              <option value="Completions">
+                Completions
               </option>
-              <option value="Development Drilling (Oil)">
-                Capital Construction (Oil)
+              <option value="Flowlines">
+                Flowlines
               </option>
-              <option value="Direct Handling & Transportation ">
-                Direct Handling & Transportation
+              <option value="Pipelines">
+                Pipelines
               </option>
-              <option value="Direct Lifting Costs ">
-                Direct Lifting Costs
+              <option value="Generators">
+                Generators
               </option>
-              <option value="Direct Production Activities">
-                Direct Production Activities
+              <option value="Turbines Compressors">
+                Turbines Compressors
               </option>
-              <option value="Environmental Pollution">
-                Environmental Pollution
+              <option value="Buildings">
+                Buildings
               </option>
-              <option value="Environmental Remediation">
-                Environmental Remediation
+              <option value="Civil Works">
+                Civil Works
               </option>
-              <option value="Exploration & Appraisal Drilling ">
-                Exploration & Appraisal Drilling
+              <option value="Other Costs">
+                Other Costs
               </option>
-              <option value="Exploration Wells">Exploration Wells</option>
-              <option value="Facility Management">Facility Management</option>
-              <option value="Federal Governmemt Levies">
-                Federal Governmemt Levies
-              </option>
-              <option value="General & Administration">
-                General & Administration
-              </option>
-              <option value="Host Community Management">
-                Host Community Management
-              </option>
-              <option value="HR Services">HR Services</option>
-              <option value="HSE">HSE</option>
-              <option value="ICT">ICT</option>
-              <option value="Land & Building">Land & Building</option>
-              <option value="Logistics">Logistics</option>
-              <option value="Moveable Assets">Moveable Assets</option>
-              <option value="NDDC">NDDC</option>
-              <option value="NDR">NDR</option>
-              <option value="NIPEX">NIPEX</option>
-              <option value="Office Overhead">Office Overhead</option>
-              <option value="Production Maintenance Cost">
-                Production Maintenance Cost
-              </option>
-              <option value="Reservior Studies">Reservior Studies</option>
-              <option value="Security">Security</option>
-              <option value="Seismic Acquisation">Seismic Acquisation</option>
-              <option value="Seismic Processing & Re-processing">
-                Seismic Processing & Re-processing
-              </option>
-              <option value="State Government Levies">
-                State Government Levies
-              </option>
-              <option value="Terminals">Terminals</option>
-              <option value="Training">Training</option>
+              
+              
             </select>
           </div>
         </div>
@@ -436,7 +403,169 @@
         (click)="saveOpex()"
         [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
       >
-        Update Capex & Opex Items
+        Update Capex Items
+      </button>
+    </div>
+  </div>
+  <hr size="10" />
+  <br /><br />
+  <div [formGroup]="OpexForm">
+    <div
+      style="
+        text-align: start;
+        font-size: 15px;
+        font-weight: 30px;
+        padding-bottom: 20px;
+        color: rgb(6, 6, 6);
+      "
+    >
+      <span>OPEX Items</span>
+    </div>
+    <hr size="5" />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Item Description</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <select
+              class="input"
+              type="inpute"
+              formControlName="item_Description"
+              [(ngModel)]="capexOpexBody.item_Description"
+              [attr.disabled]="disableForm ? true : null"
+            >
+              <option selected disabled>---- Please Select Item ----</option>
+              <option value="Variable Cost">Variable Cost</option>
+              <option value="Fixed Cost">
+                Fixed Cost
+              </option>
+              <option value="Overheads">
+                Overheads
+              </option>
+              <option value="Repairs and Maintenance Cost">
+                Repairs and Maintenance Cost
+              </option>
+              <option value="General Expenses">
+                General Expenses
+              </option>
+              
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(NGN)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="naira"
+              [(ngModel)]="capexOpexBody.naira"
+              [attr.disabled]="disableForm ? true : null"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD)</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar"
+              [(ngModel)]="capexOpexBody.dollar"
+              [attr.disabled]="disableForm ? true : null"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD) EQUIVALENT</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar_equivalent"
+              [(ngModel)]="capexOpexBody.dollar_equivalent"
+              [attr.disabled]="disableForm ? true : null"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">Remarks</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              type="number"
+              rows="3"
+              class="inpute"
+              formControlName="remarks"
+              [(ngModel)]="capexOpexBody.remarks"
+              [attr.disabled]="disableForm ? true : null"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div style="text-align: center">
+      <button
+        class="submitbtn"
+        (click)="saveOpex()"
+        [attr.disabled]="disableForm ? true : null"
+      >
+        Update Opex Items
       </button>
     </div>
   </div>

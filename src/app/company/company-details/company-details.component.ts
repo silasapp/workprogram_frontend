@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CompanyService } from '../../services/company.service';
 import Swal from 'sweetalert2';
 import { CdkAriaLive } from '@angular/cdk/a11y';
+import { CompanyDetails } from 'src/app/models/company-details';
 
 @Component({
   selector: 'app-company-details',
@@ -12,69 +13,111 @@ import { CdkAriaLive } from '@angular/cdk/a11y';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: any;
+  companyDetails: CompanyDetails= {} as CompanyDetails;
   private d: any;
   auth: AuthenticationService;
-  
+
 
   constructor(
     private fb: FormBuilder,
-     private authenticate: AuthenticationService,
+    private authenticate: AuthenticationService,
     private companyService: CompanyService,
     private cd: ChangeDetectorRef
   ) {
-    this.auth=authenticate;
+    this.auth = authenticate;
   }
 
   ngOnInit(): void {
     debugger;
     this.companyService.getCompanyDetails().subscribe((res) => {
       debugger;
+      
       this.d = res.data;
     });
     debugger;
-    this.d = this.companyService.currentCompanyValue;
+    //  this.d = this.companyService.currentCompanyValue;
     this.initForm();
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
     this.cd.markForCheck();
   }
+
+
   initForm() {
     debugger;
-    const d = this.d;
+    //this.companyDetails = this.d as CompanyDetails;
     //console.log(d.address_of_Company);
-    this.companyDetailsForm = this.fb.group({
-      companyId: [
-        { value: this.auth.currentUserValue.companyId, disabled: true },
-        Validators.required,
-      ],
-      companyName: [
-        { value: this.auth.currentUserValue.companyName, disabled: true },
-        Validators.required,
-      ],
-      companyEmail: [
-        { value: this.auth.currentUserValue.companyEmail, disabled: true },
-        Validators.required,
-      ],
-      opeN_DATE: [''],
-      closE_DATE: [''],
-      my_open_date: [''],
-      my_close_date: [''],
-      address_of_Company: [d.address_of_Company, Validators.required],
-      contact_Person: [d.contact_Person || '', Validators.required],
-      phone_No: [d.phone_No, Validators.required],
-      email_Address: [d.email_Address, Validators.required],
-      name_of_MD_CEO: [d.name_of_MD_CEO, Validators.required],
-      phone_NO_of_MD_CEO: [d.phone_NO_of_MD_CEO, Validators.required],
-      alternate_Contact_Person: [''],
-      phone_No_alt: [''],
-      email_Address_alt: [''],
-      system_date_year: [''],
-      system_date: [''],
-      system_date_proposed_year: [''],
-    });
+    // this.companyDetailsForm = this.fb.group({
+    //   companyId: [
+    //     { value: this.auth.currentUserValue.companyId, disabled: true },
+    //     Validators.required,
+    //   ],
+    //   companyName: [
+    //     { value: this.auth.currentUserValue.companyName, disabled: true },
+    //     Validators.required,
+    //   ],
+    //   companyEmail: [
+    //     { value: this.auth.currentUserValue.companyEmail, disabled: true },
+    //     Validators.required,
+    //   ],
+    //   opeN_DATE: [''],
+    //   closE_DATE: [''],
+    //   my_open_date: [''],
+    //   my_close_date: [''],
+    //   address_of_Company: [d.address_of_Company, Validators.required],
+    //   contact_Person: [d.contact_Person || '', Validators.required],
+    //   phone_No: [d.phone_No, Validators.required],
+    //   email_Address: [d.email_Address, Validators.required],
+    //   name_of_MD_CEO: [d.name_of_MD_CEO, Validators.required],
+    //   phone_NO_of_MD_CEO: [d.phone_NO_of_MD_CEO, Validators.required],
+    //   alternate_Contact_Person: [''],
+    //   phone_No_alt: [''],
+    //   email_Address_alt: [''],
+    //   system_date_year: [''],
+    //   system_date: [''],
+    //   system_date_proposed_year: [''],
+    // });
+
+    this.companyDetailsForm = new FormGroup({
+      companyId: new FormControl(
+        this.companyDetails.companyId,
+        [Validators.required]
+      ),
+      companyName: new FormControl(
+        this.companyDetails.companyName,
+        [Validators.required]
+      ),
+      companyEmail: new FormControl(
+        this.companyDetails.companyEmail,
+        [Validators.required]
+      ),
+      name_of_MD_CEO: new FormControl(
+        this.companyDetails.name_of_MD_CEO, 
+        [Validators.required]
+        ),
+      phone_NO_of_MD_CEO: new FormControl(
+        this.companyDetails.phone_NO_of_MD_CEO, 
+        [Validators.required]
+        ),
+      alternate_Contact_Person: new FormControl(
+        this.companyDetails.alternate_Contact_Person, 
+        [Validators.required]
+        ),
+      phone_No: new FormControl(
+        this.companyDetails.phone_No, 
+        [Validators.required]
+        ),
+      email_Address: new FormControl(
+        this.companyDetails.email_Address,
+         [Validators.required]
+         ),
+
+    }, {});
+    this.cd.markForCheck();
   }
+
+ 
 
   get f() {
     return this.companyDetailsForm.controls;
@@ -91,24 +134,27 @@ export class CompanyDetailsComponent implements OnInit {
   //     }
   //   );
   //  }
-  
 
-  
+
+
   onSubmit() {
+    debugger;
+    //var ii = this.companyDetailsForm.getRawValue();
+    debugger;
+    this.companyDetails.companY_NAME=this.auth.currentUserValue.companyName;
+    this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
+    this.companyDetails.companyId=this.auth.currentUserValue.companyId;
     this.companyService
-      .editCompanyDetails(this.companyDetailsForm.getRawValue())
+      .editCompanyDetails(this.companyDetails)
       .subscribe(
         (res) => {
-          this.Alert(
-            'Success',
-            'Company Details successfully updated',
-            'success'
-          );
-        
-        (error) => {
-          this.Alert('Error', 'An error occurred', 'error');
-        }
-  });
+          if (res.statusCode == 200) {
+            this.Alert('Success', 'Company Details successfully updated', 'success');
+          } else {
+            this.Alert('Error', res.message, 'error');
+          }
+
+        });
   }
 
   Alert(title: string, text: string, icon: any) {

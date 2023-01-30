@@ -40,6 +40,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
   submitted = false;
   columnHeader = [];
   columnValue = [];
+  fiveYearsBehind=[];
+  fiveYearsAhead =[];
   isTabVisible = false;
   legalarbitrationBody: LEGAL_ARBITRATION;
   litigations: LEGAL_LITIGATION[] = [];
@@ -222,8 +224,24 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
     //this.concessionBody = this.genk.concessionData;
     //this.concessionHeldList = this.genk.OMLList;
+    this.getFiveYearsAhead();
+    this.getFiveYearsBehind();
     this.getLegalLegitation();
     this.cd.markForCheck();
+  }
+
+
+
+  getFiveYearsAhead() {
+    debugger;
+    this.fiveYearsAhead = [];
+    var num: number = 5;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
   }
 
   isEditable(group: string): boolean | null {
@@ -231,6 +249,18 @@ export class SWPLegalProceedingsComponent implements OnInit {
       return null;
     }
     return this.disableForm ? true : null;
+  }
+
+  getFiveYearsBehind() {
+    debugger;
+    this.fiveYearsBehind = [];
+    var num: number = 5;
+    var i: number;
+    for (i = num; i > 0; i--) {
+      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
   }
 
   loadTable() {
