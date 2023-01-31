@@ -124,6 +124,14 @@
             <span>Concessions & Fields</span>
           </div>
           <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, genk.workprogram]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">table_chart</span>
+            <span>Work Programme</span>
+          </div>
+          <div
             *ngIf="!genk.isAdmin"
             class="layout-div layout-pad layout-line"
             [routerLink]="[
@@ -150,14 +158,7 @@
             <span>Upload Presentation</span>
           </div>
 
-          <div
-            class="layout-div layout-pad layout-line"
-            [routerLink]="['/' + genk.company, genk.workprogram]"
-            routerLinkActive="active"
-          >
-            <span class="material-icons layout-icon">table_chart</span>
-            <span>Work Programme</span>
-          </div>
+          
 
 
           <div

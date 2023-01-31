@@ -31,7 +31,6 @@
   <br /><br /><br />
   <div [formGroup]="RoyaltyForm">
     <div class="toprow">
-
       <div style="width: 30%">
         <label class="labelwp">
           Has Crude Oil Royalty Payment Made?
@@ -61,7 +60,7 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> Has Gas Sales Royalty Been Made?</label>
+        <label class="labelwp"> Has Gas Sales Royalty Made?</label>
         <div class="wpwidth">
           <div class="inputshadow">
             <select
@@ -84,31 +83,6 @@
           </span>
         </div>
       </div>
-
-      
-    </div>
-    <br />
-
-    <div class="toprow" >
-      <div style="width: 30%">
-        <label class="labelwp"> Miscellaneous </label>
-
-        <div class="inpdiv">
-          <textarea
-            #wpcomment
-            type="number"
-            rows="3"
-            formControlName="miscellaneous"
-            [(ngModel)]="royaltyBody.miscellaneous"
-            class="inpute"
-            [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
-          ></textarea>
-        </div>
-      </div>
-
-     
-
-
 
       <div style="width: 30%">
         <label class="labelwp"> Has Gas Flare Payment Made?</label>
@@ -134,6 +108,8 @@
           </span>
         </div>
       </div>
+    </div>
+    <br />
 
     <div class="toprow">
       <div style="width: 30%">
@@ -543,7 +519,7 @@
         <div class="toprow">
           <div class="rowbox">
             <label class="labelwp"
-              >How Much Signature Bonus was paid (USD)?</label
+              >How Much Signature Bonus been paid (USD)?</label
             >
             <div style="display: flex">
               <div class="inpdivcurrency">
@@ -570,7 +546,7 @@
 
           <div class="rowbox">
             <label class="labelwp"
-              >How Much Concession Rentals was paid (USD)?</label
+              >How Much Concession Rentals been paid (USD)?</label
             >
             <div style="display: flex">
               <div class="inpdivcurrency">
@@ -597,7 +573,7 @@
 
           <div style="width: 30%">
             <label class="labelwp"
-              >How Much Renewal bonus was paid (USD)?</label
+              >How Much Renewal bonus been paid (USD)?</label
             >
             <div style="display: flex">
               <div class="inpdivcurrency">
