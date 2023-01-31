@@ -285,7 +285,7 @@
           style="font-size: 45px; color: rgb(227, 108, 64); margin-right: 12px"
           >schedule</span
         >
-        <span>Year: {{ previousYear - 1 }}/{{ previousYear }}</span>
+        <span>Year: {{ previousYear}}/{{ previousYear + 1}}</span>
       </div>
     </div>
 
@@ -323,7 +323,7 @@
                 <span class="dashnum">{{
                   dashboardGasBudgetAndReserve.reserveAGNAG
                 }}</span
-                ><span>BBL</span><br /><br />
+                ><span>SCF</span><br /><br />
                 <span class="dashnumtext">AG & NAG</span>
               </div>
             </div>
@@ -426,7 +426,7 @@
 
     <div>
       <div style="display: flex; margin-bottom: 30px">
-        <div
+        <!-- <div
           style="
             display: flex;
             align-items: center;
@@ -451,7 +451,7 @@
             >schedule</span
           >
           <span>Year: {{ previousYear - 1 }}/{{ previousYear }}</span>
-        </div>
+        </div> -->
       </div>
 
       <div style="display: flex; width: 100%">
