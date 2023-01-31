@@ -13,7 +13,7 @@ import { CompanyDetails } from 'src/app/models/company-details';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: any;
+  companyDetails: CompanyDetails= new CompanyDetails();
   private d: any;
   auth: AuthenticationService;
 
@@ -81,7 +81,7 @@ export class CompanyDetailsComponent implements OnInit {
 
 
 debugger;
-    this.companyDetails = this.d as CompanyDetails;
+ // this.companyDetails = this.d as CompanyDetails;
     debugger;
     this.companyDetailsForm = new FormGroup({
       companyId: new FormControl(
@@ -134,12 +134,12 @@ getCompanyDetails()
   this.companyService.getCompanyDetails().subscribe((res) => {
     debugger;
     
-    this.d = res.data;
-   return this.d;
-   
-   
+    this.companyDetails = res.data;
+
   });
 }
+
+
   onSubmit() {
     debugger;
     //var ii = this.companyDetailsForm.getRawValue();

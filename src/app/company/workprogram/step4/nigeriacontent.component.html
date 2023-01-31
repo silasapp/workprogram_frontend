@@ -81,7 +81,7 @@
                 <select
                 formControlName="year"
                 [(ngModel)]="staffdispositionBody.year"
-                
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected disabled>---- Please Select an Option ----</option> -->
                 <option
@@ -328,7 +328,7 @@
                 <select
                 formControlName="year"
                 [(ngModel)]="staffdispositionBody.year"
-                
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected disabled>---- Please Select an Option ----</option> -->
                 <option
@@ -755,7 +755,9 @@
             (keypress)="genk.restrictData($event)"
             [(ngModel)]="seniormanagementstaffBody.total_no_of_senior_staff"
             class="inpute"
-            
+            [attr.disabled]="
+              isEditable(SBUTABLE.NIGERIA_CONTENT_SENIOR_MANAGEMENT_STAFFs)
+            "
           />
         </div>
       </div>
@@ -779,7 +781,9 @@
               seniormanagementstaffBody.total_no_of_top_nigerian_management_staff
             "
             class="inpute"
-           
+            [attr.disabled]="
+              isEditable(SBUTABLE.NIGERIA_CONTENT_SENIOR_MANAGEMENT_STAFFs)
+            "
           />
         </div>
       </div>
@@ -803,7 +807,9 @@
               seniormanagementstaffBody.total_no_of_top_management_staff
             "
             class="inpute"
-            
+            [attr.disabled]="
+              isEditable(SBUTABLE.NIGERIA_CONTENT_SENIOR_MANAGEMENT_STAFFs)
+            "
           />
         </div>
       </div>
@@ -817,7 +823,9 @@
       <button
         class="submitbtn"
         (click)="saveSeniorManagementStaff()"
-        
+        [attr.disabled]="
+          isEditable(SBUTABLE.NIGERIA_CONTENT_SENIOR_MANAGEMENT_STAFFs)
+        "
       >
         Update Senior / Management Staff
       </button>
@@ -866,7 +874,11 @@
         <select
           formControlName="isThereSuccessionPlan"
           (change)="setIsThereSuccessionPlan()"
-          
+          [attr.disabled]="
+            isEditable(
+              SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+            )
+          "
         >
           <option selected disabled>---- Please Select an Option ----</option>
           <option value="true">YES</option>
@@ -932,7 +944,7 @@
                 <select
                 formControlName="year"
                 [(ngModel)]="uploadsuccessionplanBody.year"
-                
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected disabled>---- Please Select an Option ----</option> -->
                 <option
@@ -994,7 +1006,11 @@
                       formControlName="understudy_"
                       [(ngModel)]="uploadsuccessionplanBody.understudy_"
                       class="inpute"
-                      
+                      [attr.disabled]="
+                        isEditable(
+                          SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                        )
+                      "
                     />
                   </div>
                 </div>
@@ -1061,7 +1077,11 @@
               <button
                 class="submitbtn"
                 (click)="saveUploadSuccessionPlan()"
-               
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                  )
+                "
               >
                 Add Record for Succession Plan
               </button>
@@ -1101,7 +1121,7 @@
                 <select
                 formControlName="year"
                 [(ngModel)]="uploadsuccessionplanBody.year"
-                
+                [attr.disabled]="disableForm ? true : null"
               >
                 <!-- <option selected disabled>---- Please Select an Option ----</option> -->
                 <option
