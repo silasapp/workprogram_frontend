@@ -249,16 +249,12 @@
               type="inpute"
               formControlName="item_Description"
               [(ngModel)]="capexOpexBody.item_Description"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             >
               <option selected disabled>---- Please Select Item ----</option>
               <option value="Acquisition">Acquisition</option>
-              <option value="Processing">
-                Processing
-              </option>
-              <option value="Reprocessing">
-                Reprocessing
-              </option>
+              <option value="Processing">Processing</option>
+              <option value="Reprocessing">Reprocessing</option>
               <option value="Exploratory Well Drilling">
                 Exploratory Well Drilling
               </option>
@@ -269,32 +265,14 @@
                 Development Well Drilling
               </option>
               <option value="Workover Operations">Workover Operations</option>
-              <option value="Completions">
-                Completions
-              </option>
-              <option value="Flowlines">
-                Flowlines
-              </option>
-              <option value="Pipelines">
-                Pipelines
-              </option>
-              <option value="Generators">
-                Generators
-              </option>
-              <option value="Turbines Compressors">
-                Turbines Compressors
-              </option>
-              <option value="Buildings">
-                Buildings
-              </option>
-              <option value="Civil Works">
-                Civil Works
-              </option>
-              <option value="Other Costs">
-                Other Costs
-              </option>
-              
-              
+              <option value="Completions">Completions</option>
+              <option value="Flowlines">Flowlines</option>
+              <option value="Pipelines">Pipelines</option>
+              <option value="Generators">Generators</option>
+              <option value="Turbines Compressors">Turbines Compressors</option>
+              <option value="Buildings">Buildings</option>
+              <option value="Civil Works">Civil Works</option>
+              <option value="Other Costs">Other Costs</option>
             </select>
           </div>
         </div>
@@ -319,7 +297,7 @@
               class="inpute"
               formControlName="naira"
               [(ngModel)]="capexOpexBody.naira"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -341,7 +319,7 @@
               class="inpute"
               formControlName="dollar"
               [(ngModel)]="capexOpexBody.dollar"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -363,7 +341,7 @@
               class="inpute"
               formControlName="dollar_equivalent"
               [(ngModel)]="capexOpexBody.dollar_equivalent"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -389,7 +367,7 @@
               class="inpute"
               formControlName="remarks"
               [(ngModel)]="capexOpexBody.remarks"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             ></textarea>
           </div>
         </div>
@@ -401,7 +379,7 @@
       <button
         class="submitbtn"
         (click)="saveOpex()"
-        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
       >
         Update Capex Items
       </button>
@@ -440,23 +418,16 @@
               type="inpute"
               formControlName="item_Description"
               [(ngModel)]="capexOpexBody.item_Description"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             >
               <option selected disabled>---- Please Select Item ----</option>
               <option value="Variable Cost">Variable Cost</option>
-              <option value="Fixed Cost">
-                Fixed Cost
-              </option>
-              <option value="Overheads">
-                Overheads
-              </option>
+              <option value="Fixed Cost">Fixed Cost</option>
+              <option value="Overheads">Overheads</option>
               <option value="Repairs and Maintenance Cost">
                 Repairs and Maintenance Cost
               </option>
-              <option value="General Expenses">
-                General Expenses
-              </option>
-              
+              <option value="General Expenses">General Expenses</option>
             </select>
           </div>
         </div>
@@ -481,7 +452,7 @@
               class="inpute"
               formControlName="naira"
               [(ngModel)]="capexOpexBody.naira"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -503,7 +474,7 @@
               class="inpute"
               formControlName="dollar"
               [(ngModel)]="capexOpexBody.dollar"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -525,7 +496,7 @@
               class="inpute"
               formControlName="dollar_equivalent"
               [(ngModel)]="capexOpexBody.dollar_equivalent"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
         </div>
@@ -551,7 +522,7 @@
               class="inpute"
               formControlName="remarks"
               [(ngModel)]="capexOpexBody.remarks"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             ></textarea>
           </div>
         </div>
@@ -563,7 +534,7 @@
       <button
         class="submitbtn"
         (click)="saveOpex()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
       >
         Update Opex Items
       </button>
@@ -589,7 +560,7 @@
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Opex($event)"
                 value="{{ y.value.id }}"
-                [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
+                [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
               >
                 Delete
               </button>

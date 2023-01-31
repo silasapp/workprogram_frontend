@@ -754,17 +754,13 @@
           border-radius: 20px;
         "
       >
-        <select
-          class="input"
-          type="inpute"
+        <input
+          type="text"
+          class="inpute"
           formControlName="actual_proposed"
           [(ngModel)]="scdp_scholarship_csr_Body.actual_proposed"
           [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
-        >
-          <option selected disabled>---- Please Select value ----</option>
-          <option value="Actual">Actual</option>
-          <option value="Proposed">Proposed</option>
-        </select>
+        />
       </div>
     </div>
     <br />
@@ -1501,7 +1497,7 @@
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
       >
-        Add Trainings
+        Add Trainings Details
       </button>
     </div>
   </div>
