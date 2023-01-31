@@ -37,7 +37,7 @@
               class="dropwp"
               formControlName="status"
               [(ngModel)]="fielddevelopmentBody.status"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             >
               <option selected disabled>--Select an Option --</option>
               <option value="Application under Review">
@@ -144,7 +144,7 @@
               [(ngModel)]="
                 fielddevelopmentBody._proposed_number_of_wells_from_approved_FDP
               "
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             />
           </div>
         </div>
@@ -167,7 +167,7 @@
               accept="image/*"
               type="file"
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             />
           </div>
         </div>
@@ -183,7 +183,7 @@
               class="dropwp"
               formControlName="are_they_oil_or_gas_wells"
               [(ngModel)]="fielddevelopmentBody.are_they_oil_or_gas_wells"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             >
               <option selected disabled>-- Select an Option --</option>
               <option value="GAS FIELD">Gas Field</option>
@@ -219,7 +219,7 @@
       <button
         class="quarterbtn"
         (click)="saveFieldDevelopmentPlan()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
       >
         Save Field Development Plan
       </button>
@@ -270,7 +270,7 @@
                 fielddevelopmentexcessivereserveBody.proposed_Development_well_name
               "
               class="inpute"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
             />
           </div>
         </div>
@@ -299,7 +299,7 @@
                 )
               "
               [value]="fielddevelopmentexcessivereserveBody._oil"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -326,7 +326,7 @@
                 )
               "
               [value]="fielddevelopmentexcessivereserveBody._gas"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
@@ -351,7 +351,7 @@
                   genk.checkMMBBLMin($event, oilMox)
               "
               [value]="fielddevelopmentexcessivereserveBody._condensate"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
             />
             <span class="barspan">BBLS</span>
           </div>
@@ -366,7 +366,7 @@
         <button
           class="quarterbtn"
           (click)="saveFieldDevelopmentExpectedReserves()"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
         >
           Add Multiple Well Name(s)
         </button>
@@ -411,7 +411,7 @@
           class="dropwp"
           formControlName="is_any_of_your_field_straddling"
           [(ngModel)]="unitizationBody.is_any_of_your_field_straddling"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
         >
           <option value="NO" selected>No</option>
           <option value="YES">Yes</option>
@@ -443,7 +443,7 @@
                 formControlName="what_concession_field_straddling"
                 [(ngModel)]="unitizationBody.what_concession_field_straddling"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               />
             </div>
           </div>
@@ -474,7 +474,7 @@
                 class="dropwp"
                 formControlName="has_DPR_been_notified"
                 [(ngModel)]="unitizationBody.has_DPR_been_notified"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               >
                 <option selected disabled>--Select an Option --</option>
                 <option value="NO">NO</option>
@@ -494,7 +494,7 @@
                 class="dropwp"
                 formControlName="has_the_other_party_been_notified"
                 [(ngModel)]="unitizationBody.has_the_other_party_been_notified"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               >
                 <option selected disabled>--Select an Option --</option>
                 <option value="NO">NO</option>

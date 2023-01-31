@@ -6,8 +6,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import { WORKOVERS_RECOMPLETION_JOB1 } from 'src/app/models/step2-initial';
-import { GenericService, ModalService } from 'src/app/services';
+import { GenericService, IConcession, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -16,7 +17,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPWorkoverRecompletionComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   WorkoverForm: FormGroup;
   workoverBody: WORKOVERS_RECOMPLETION_JOB1 = {} as WORKOVERS_RECOMPLETION_JOB1;
   genk: GenericService;
@@ -89,7 +91,29 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
       },
       {}
     );
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getWorkover();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
   }
 
   get quaterIWClassOne() {

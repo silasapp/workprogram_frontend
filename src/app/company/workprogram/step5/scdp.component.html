@@ -50,13 +50,16 @@
               padding: 7px 10px;
             "
           >
-            {{ disableForm | json }}
             <input
               type="text"
               class="inpute"
               formControlName="description_of_Projects_Actual"
               [(ngModel)]="scdp_csr_Body.description_of_Projects_Actual"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(
+                  SBUTABLE.SCDP_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECTs
+                )
+              "
             />
           </div>
         </div>
@@ -78,7 +81,11 @@
               class="inpute"
               formControlName="description_of_Projects_Planned"
               [(ngModel)]="scdp_csr_Body.description_of_Projects_Planned"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(
+                  SBUTABLE.SCDP_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECTs
+                )
+              "
             />
           </div>
         </div>
@@ -89,7 +96,9 @@
       <button
         (click)="SDCP_CSR_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.SCDP_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECTs)
+        "
       >
         Add Existing & Planned Projects
       </button>
@@ -116,7 +125,11 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_SDCP_CSR(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.SCDP_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECTs
+                  )
+                "
               >
                 Delete
               </button>
@@ -153,7 +166,7 @@
             type="inpute"
             formControlName="have_you_submitted_all_MoUs_to_DPR"
             [(ngModel)]="scdp_question_Body.have_you_submitted_all_MoUs_to_DPR"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           >
             <option selected disabled>---- Please Select an Option----</option>
             <option value="Yes">Yes</option>
@@ -177,7 +190,7 @@
             class="inpute"
             formControlName="if_NO_why"
             [(ngModel)]="scdp_question_Body.if_NO_why"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
         </div>
       </div>
@@ -200,7 +213,7 @@
             [(ngModel)]="
               scdp_question_Body.do_you_have_an_MOU_with_the_communities_for_all_your_assets
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           >
             <option selected disabled>---- Please Select a Option----</option>
             <option value="Yes">Yes</option>
@@ -229,7 +242,7 @@
             type="inpute"
             formControlName="mOUResponderInPlace"
             [(ngModel)]="scdp_question_Body.mOUResponderInPlace"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           >
             <option selected disabled>---- Please Select an Option----</option>
             <option value="Yes">Yes</option>
@@ -253,7 +266,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveResponderDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
         </div>
       </div>
@@ -273,7 +286,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveOSCPDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
         </div>
       </div>
@@ -284,7 +297,7 @@
       <button
         (click)="SDCP_Question_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
       >
         Save MOU Information
       </button>
@@ -311,7 +324,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_SDCP_Question(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
               >
                 Delete
               </button>
@@ -347,7 +360,7 @@
             class="inpute"
             formControlName="type_of_project_excuted"
             [(ngModel)]="scdp_mou_Body.type_of_project_excuted"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -366,7 +379,7 @@
             class="inpute"
             formControlName="project_Location"
             [(ngModel)]="scdp_mou_Body.project_Location"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -385,7 +398,7 @@
             class="inpute"
             formControlName="year_GMou_was_signed"
             [(ngModel)]="scdp_mou_Body.year_GMou_was_signed"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -408,7 +421,7 @@
             class="inpute"
             formControlName="component_of_project"
             [(ngModel)]="scdp_mou_Body.component_of_project"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -428,7 +441,7 @@
             class="inpute"
             formControlName="actual_Budget_Total_Dollars"
             [(ngModel)]="scdp_mou_Body.actual_Budget_Total_Dollars"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -447,7 +460,7 @@
             type="inpute"
             formControlName="status_Of_Project"
             [(ngModel)]="scdp_mou_Body.status_Of_Project"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           >
             <option selected disabled>---- Please Select a Category----</option>
             <option value="Ongoing">Ongoing</option>
@@ -474,7 +487,7 @@
             class="inpute"
             formControlName="beneficiary_Community"
             [(ngModel)]="scdp_mou_Body.beneficiary_Community"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -494,7 +507,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveGMOUDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
       </div>
@@ -504,7 +517,7 @@
       <button
         (click)="SDCP_MOU_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
       >
         Save MOU Projects
       </button>
@@ -531,7 +544,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_SDCP_MOU(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
               >
                 Delete
               </button>
@@ -567,7 +580,7 @@
           type="inpute"
           formControlName="actual_proposed"
           [(ngModel)]="scdp_capitalprojects_Body.actual_proposed"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
         >
           <option selected disabled>---- Please Select value ----</option>
           <option value="Actual">Actual</option>
@@ -592,7 +605,7 @@
             class="inpute"
             formControlName="cSR_"
             [(ngModel)]="scdp_capitalprojects_Body.cSR_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
       </div>
@@ -612,7 +625,7 @@
             class="inpute"
             formControlName="budget_"
             [(ngModel)]="scdp_capitalprojects_Body.budget_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
       </div>
@@ -632,7 +645,7 @@
             class="inpute"
             formControlName="actual_Spent"
             [(ngModel)]="scdp_capitalprojects_Body.actual_Spent"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
       </div>
@@ -654,7 +667,7 @@
             class="inpute"
             formControlName="percentage_Completion_"
             [(ngModel)]="scdp_capitalprojects_Body.percentage_Completion_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
       </div>
@@ -673,7 +686,7 @@
             class="inpute"
             formControlName="beneficiary_Communities"
             [(ngModel)]="scdp_capitalprojects_Body.beneficiary_Communities"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
       </div>
@@ -683,7 +696,7 @@
       <button
         (click)="SDCP_Capital_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
       >
         Add Capital Projects
       </button>
@@ -710,7 +723,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_SDCP_Capital(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
               >
                 Delete
               </button>
@@ -741,17 +754,13 @@
           border-radius: 20px;
         "
       >
-        <select
-          class="input"
-          type="inpute"
+        <input
+          type="text"
+          class="inpute"
           formControlName="actual_proposed"
           [(ngModel)]="scdp_scholarship_csr_Body.actual_proposed"
-          [attr.disabled]="disableForm ? true : null"
-        >
-          <option selected disabled>---- Please Select value ----</option>
-          <option value="Actual">Actual</option>
-          <option value="Proposed">Proposed</option>
-        </select>
+          [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
+        />
       </div>
     </div>
     <br />
@@ -771,7 +780,7 @@
             class="inpute"
             formControlName="cSR_"
             [(ngModel)]="scdp_scholarship_csr_Body.cSR_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -791,7 +800,7 @@
             class="inpute"
             formControlName="budget_"
             [(ngModel)]="scdp_scholarship_csr_Body.budget_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -811,7 +820,7 @@
             class="inpute"
             formControlName="actual_Spent"
             [(ngModel)]="scdp_scholarship_csr_Body.actual_Spent"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -833,7 +842,7 @@
             class="inpute"
             formControlName="percentage_Completion_"
             [(ngModel)]="scdp_scholarship_csr_Body.percentage_Completion_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -852,7 +861,7 @@
             class="inpute"
             formControlName="beneficiary_Communities_host"
             [(ngModel)]="scdp_scholarship_csr_Body.beneficiary_Communities_host"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -873,7 +882,7 @@
             [(ngModel)]="
               scdp_scholarship_csr_Body.beneficiary_Communities_National
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
       </div>
@@ -883,7 +892,7 @@
       <button
         (click)="SDCP_Scholarship_CSR_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
       >
         Add Scholarship
       </button>
@@ -910,7 +919,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SDCP_ScholarshipCSR(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
               >
                 Delete
               </button>
@@ -947,7 +956,7 @@
             class="inpute"
             formControlName="nameOfCommunity"
             [(ngModel)]="scdp_scholarship_Body.nameOfCommunity"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -966,7 +975,7 @@
             class="inpute"
             formControlName="year_GMou_was_signed"
             [(ngModel)]="scdp_scholarship_Body.year_GMou_was_signed"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -985,7 +994,7 @@
             class="inpute"
             formControlName="scholarshipYear"
             [(ngModel)]="scdp_scholarship_Body.scholarshipYear"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -1007,7 +1016,7 @@
             class="inpute"
             formControlName="componentOfScholarship"
             [(ngModel)]="scdp_scholarship_Body.componentOfScholarship"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -1027,7 +1036,7 @@
             class="inpute"
             formControlName="actual_Budget_Total_Dollars"
             [(ngModel)]="scdp_scholarship_Body.actual_Budget_Total_Dollars"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -1047,7 +1056,7 @@
             accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
             (change)="saveBenefDoc($event)"
             class="inpute"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
       </div>
@@ -1057,7 +1066,7 @@
       <button
         (click)="SDCP_Scholarship_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
       >
         Add Scheme
       </button>
@@ -1084,7 +1093,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SDCP_Sch(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
               >
                 Delete
               </button>
@@ -1118,7 +1127,9 @@
           type="inpute"
           formControlName="actual_proposed"
           [(ngModel)]="scdp_trainingskills_csr_Body.actual_proposed"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+          "
         >
           <option selected disabled>---- Please Select Option ----</option>
           <option value="2020">2020</option>
@@ -1149,7 +1160,9 @@
             class="inpute"
             formControlName="cSR_"
             [(ngModel)]="scdp_trainingskills_csr_Body.cSR_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1169,7 +1182,9 @@
             class="inpute"
             formControlName="budget_"
             [(ngModel)]="scdp_trainingskills_csr_Body.budget_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1189,7 +1204,9 @@
             class="inpute"
             formControlName="actual_Spent"
             [(ngModel)]="scdp_trainingskills_csr_Body.actual_Spent"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1210,7 +1227,9 @@
             class="inpute"
             formControlName="percentage_Completion_"
             [(ngModel)]="scdp_trainingskills_csr_Body.percentage_Completion_"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1231,7 +1250,9 @@
             [(ngModel)]="
               scdp_trainingskills_csr_Body.beneficiary_Communities_host
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1253,7 +1274,9 @@
             [(ngModel)]="
               scdp_trainingskills_csr_Body.beneficiary_Communities_National
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+            "
           />
         </div>
       </div>
@@ -1265,7 +1288,9 @@
       <button
         (click)="SDCP_Training_Skills_CSR_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+        "
       >
         Add Trainings & Skill Acquisition
       </button>
@@ -1292,7 +1317,9 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SDCP_TrainingSkills(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
+                "
               >
                 Delete
               </button>
@@ -1329,7 +1356,7 @@
             class="inpute"
             formControlName="nameOfCommunity"
             [(ngModel)]="scdp_trainingdetails_csr_Body.nameOfCommunity"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
       </div>
@@ -1348,7 +1375,7 @@
             class="inpute"
             formControlName="year_GMou_was_signed"
             [(ngModel)]="scdp_trainingdetails_csr_Body.year_GMou_was_signed"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
       </div>
@@ -1367,7 +1394,7 @@
             class="inpute"
             formControlName="trainingYear"
             [(ngModel)]="scdp_trainingdetails_csr_Body.trainingYear"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
       </div>
@@ -1390,7 +1417,7 @@
             class="inpute"
             formControlName="componentOfTraining"
             [(ngModel)]="scdp_trainingdetails_csr_Body.componentOfTraining"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
       </div>
@@ -1412,7 +1439,7 @@
             [(ngModel)]="
               scdp_trainingdetails_csr_Body.actual_Budget_Total_Dollars
             "
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
       </div>
@@ -1431,7 +1458,7 @@
             type="inpute"
             formControlName="statusOfTraining"
             [(ngModel)]="scdp_trainingdetails_csr_Body.statusOfTraining"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           >
             <option selected disabled>---- Please Select Category ----</option>
             <option value="Ongoing">Ongoing</option>
@@ -1458,7 +1485,7 @@
           accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
           (change)="saveBenefDoc_2($event)"
           class="inpute"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
         />
       </div>
     </div>
@@ -1468,9 +1495,9 @@
       <button
         (click)="SDCP_Training_Details_CSR_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
       >
-        Add Trainings
+        Add Trainings Details
       </button>
     </div>
   </div>
@@ -1495,7 +1522,7 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SDCP_TrainingSCR(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
               >
                 Delete
               </button>
@@ -1532,7 +1559,11 @@
           accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
           (change)="savePictureDoc($event)"
           class="inpute"
-          [attr.disabled]="disableForm ? true : null"
+          [attr.disabled]="
+            isEditable(
+              SBUTABLE.SCDP_PICTURES_FOR_COMMUNITY_DEVELOPMENT_PROJECTSs
+            )
+          "
         />
       </div>
     </div>
@@ -1542,7 +1573,9 @@
       <button
         (click)="SDCP_Pictures_Submit()"
         class="submitbtn"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="
+          isEditable(SBUTABLE.SCDP_PICTURES_FOR_COMMUNITY_DEVELOPMENT_PROJECTSs)
+        "
       >
         Click Here To Upload Picture
       </button>
@@ -1569,7 +1602,11 @@
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_SDCP_Pictures(row)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(
+                    SBUTABLE.SCDP_PICTURES_FOR_COMMUNITY_DEVELOPMENT_PROJECTSs
+                  )
+                "
               >
                 Delete
               </button>

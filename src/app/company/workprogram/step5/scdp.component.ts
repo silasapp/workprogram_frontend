@@ -10,6 +10,7 @@ import {
   Validators,
   FormsModule,
 } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL,
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION,
@@ -24,6 +25,7 @@ import {
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -34,7 +36,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPScdpComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   //#region  documnent objects declaration
   mediatype = 'doc';
 
@@ -646,7 +649,28 @@ export class SWPScdpComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getSCDP();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
   }
 
   //#region Documents Upload Section

@@ -27,18 +27,17 @@ export class AddRoleFormComponent implements OnInit {
     private adminService: AdminService
   ) {
     this.targetData = data.data?.targetData;
-    console.log('test', this.targetData);
 
     if (this.targetData)
       this.form = this.formBuilder.group({
         id: [this.targetData?.id],
         name: [[this.targetData?.sbU_Name], Validators.required],
-        code: [[this.targetData?.sbU_Code], Validators.required],
+        description: [[this.targetData?.sbU_Code], Validators.required],
       });
     else
       this.form = this.formBuilder.group({
         name: ['', Validators.required],
-        code: ['', Validators.required],
+        description: ['', Validators.required],
       });
   }
   ngOnInit(): void {}
@@ -47,11 +46,11 @@ export class AddRoleFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addSBU() {
-    const code = this.form.get('code').value;
+  addRole() {
+    const description = this.form.get('description').value;
     const name = this.form.get('name').value;
 
-    this.adminService.addSBU(name, code).subscribe({
+    this.adminService.addRole(name, description).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
@@ -65,12 +64,12 @@ export class AddRoleFormComponent implements OnInit {
     });
   }
 
-  editSBU() {
+  editRole() {
     const id = this.form.get('id').value;
-    const code = this.form.get('code').value;
+    const description = this.form.get('description').value;
     const name = this.form.get('name').value;
 
-    this.adminService.editSBU(id, name, code).subscribe({
+    this.adminService.editRole(id, name, description).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');

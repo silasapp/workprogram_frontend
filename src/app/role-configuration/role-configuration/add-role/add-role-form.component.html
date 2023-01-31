@@ -1,17 +1,6 @@
-<h1 mat-dialog-title>Add / Edit SBU</h1>
+<h1 mat-dialog-title>Add / Edit Role</h1>
 <div mat-dialog-content class="modal-width">
   <form [formGroup]="form">
-    <div class="fomr-group" style="margin-bottom: 10px">
-      <label>Code</label>
-      <input name="code" formControlName="code" class="form-control" />
-      <div
-        *ngIf="form.get('code')?.touched && form.get('code')?.invalid"
-        class="alert alert-danger"
-      >
-        Code is required!
-      </div>
-    </div>
-
     <div class="fomr-group" style="margin-bottom: 10px">
       <label>Name</label>
       <input name="name" formControlName="name" class="form-control" />
@@ -20,6 +9,23 @@
         class="alert alert-danger"
       >
         Name is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Description</label>
+      <input
+        name="description"
+        formControlName="description"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          form.get('description')?.touched && form.get('description')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Description is required!
       </div>
     </div>
   </form>
@@ -31,7 +37,7 @@
     mat-raised-button
     color="primary"
     [disabled]="form.invalid"
-    (click)="addSBU()"
+    (click)="addRole()"
   >
     Add
   </button>
@@ -40,7 +46,7 @@
     *ngIf="targetData"
     mat-raised-button
     [disabled]="form.invalid"
-    (click)="editSBU()"
+    (click)="editRole()"
   >
     Edit
   </button>

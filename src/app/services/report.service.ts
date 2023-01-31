@@ -223,16 +223,16 @@ export class ReportService {
 
     series.data.setAll(data);
 
-    // var legend = chart.children.push(am5.Legend.new(root, {
-    //   centerX: am5.percent(50),
-    //   x: am5.percent(50),
-    //   marginTop: 15,
-    //   marginBottom: 15
-    // }));
+    var legend = chart.children.push(am5.Legend.new(root, {
+      centerX: am5.percent(50),
+      x: am5.percent(50),
+      marginTop: 15,
+      marginBottom: 15
+    }));
 
-    // if (data.length < 21) {
-    //   legend.data.setAll(series.dataItems);
-    // }
+    if (data.length < 21) {
+      legend.data.setAll(series.dataItems);
+    }
 
     series.appear(1000, 100);
 
@@ -324,8 +324,8 @@ export class ReportService {
     // series2.data.setAll(data);
 
     // Add legend
-    // let legend = chart.children.push(am5.Legend.new(root, {}));
-    // legend.data.setAll(chart.series.values);
+    let legend = chart.children.push(am5.Legend.new(root, {}));
+    legend.data.setAll(chart.series.values);
 
     // Add cursor
     chart.set('cursor', am5xy.XYCursor.new(root, {}));
