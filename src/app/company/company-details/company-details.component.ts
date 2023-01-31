@@ -13,7 +13,7 @@ import { CompanyDetails } from 'src/app/models/company-details';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: CompanyDetails= {} as CompanyDetails;
+  companyDetails: CompanyDetails;
   private d: any;
   auth: AuthenticationService;
 
@@ -33,6 +33,8 @@ export class CompanyDetailsComponent implements OnInit {
       debugger;
       
       this.d = res.data;
+      this.companyDetails = this.d;
+      debugger;
     });
     debugger;
     //  this.d = this.companyService.currentCompanyValue;
@@ -40,13 +42,15 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
+    debugger;
+   
     this.cd.markForCheck();
   }
 
 
   initForm() {
     debugger;
-    //this.companyDetails = this.d as CompanyDetails;
+   // this.companyDetails = this.d as CompanyDetails;
     //console.log(d.address_of_Company);
     // this.companyDetailsForm = this.fb.group({
     //   companyId: [
@@ -79,17 +83,21 @@ export class CompanyDetailsComponent implements OnInit {
     //   system_date_proposed_year: [''],
     // });
 
+
+
+
+
     this.companyDetailsForm = new FormGroup({
       companyId: new FormControl(
-        this.companyDetails.companyId,
+        this.auth.currentUserValue.companyId,
         [Validators.required]
       ),
       companyName: new FormControl(
-        this.companyDetails.companyName,
+        this.auth.currentUserValue.companyName, 
         [Validators.required]
       ),
       companyEmail: new FormControl(
-        this.companyDetails.companyEmail,
+        this.auth.currentUserValue.companyEmail,
         [Validators.required]
       ),
       name_of_MD_CEO: new FormControl(
@@ -100,10 +108,11 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyDetails.phone_NO_of_MD_CEO, 
         [Validators.required]
         ),
-      alternate_Contact_Person: new FormControl(
-        this.companyDetails.alternate_Contact_Person, 
+        contact_Person: new FormControl(
+          this.companyDetails.contact_Person, 
         [Validators.required]
-        ),
+        ), 
+
       phone_No: new FormControl(
         this.companyDetails.phone_No, 
         [Validators.required]
@@ -123,18 +132,6 @@ export class CompanyDetailsComponent implements OnInit {
     return this.companyDetailsForm.controls;
   }
 
-  //
-  // getCompanyDetails(){
-  //
-  //   //const details = this.auth.currentUserValue
-  //   this.companyService.getCompanyDetails().subscribe(
-  //     (res) => {
-  //
-  //       this.companyDetails = res.data;
-  //     }
-  //   );
-  //  }
-
 
 
   onSubmit() {
@@ -144,6 +141,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyDetails.companY_NAME=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
+    debugger;
     this.companyService
       .editCompanyDetails(this.companyDetails)
       .subscribe(
