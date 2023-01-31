@@ -13,7 +13,7 @@ import { CompanyDetails } from 'src/app/models/company-details';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: CompanyDetails= {} as CompanyDetails;
+  companyDetails: CompanyDetails= new CompanyDetails();
   private d: any;
   auth: AuthenticationService;
 
@@ -28,92 +28,71 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    this.companyService.getCompanyDetails().subscribe((res) => {
-      debugger;
-      
-      this.d = res.data;
-    });
-    debugger;
-    //  this.d = this.companyService.currentCompanyValue;
-    this.initForm();
+    
+    this.getCompanyDetails();
+  
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
+
+   this.initForm();
     this.cd.markForCheck();
   }
 
 
   initForm() {
+ 
+ // this.companyDetails = this.d as CompanyDetails;
     debugger;
-    //this.companyDetails = this.d as CompanyDetails;
-    //console.log(d.address_of_Company);
-    // this.companyDetailsForm = this.fb.group({
-    //   companyId: [
-    //     { value: this.auth.currentUserValue.companyId, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   companyName: [
-    //     { value: this.auth.currentUserValue.companyName, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   companyEmail: [
-    //     { value: this.auth.currentUserValue.companyEmail, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   opeN_DATE: [''],
-    //   closE_DATE: [''],
-    //   my_open_date: [''],
-    //   my_close_date: [''],
-    //   address_of_Company: [d.address_of_Company, Validators.required],
-    //   contact_Person: [d.contact_Person || '', Validators.required],
-    //   phone_No: [d.phone_No, Validators.required],
-    //   email_Address: [d.email_Address, Validators.required],
-    //   name_of_MD_CEO: [d.name_of_MD_CEO, Validators.required],
-    //   phone_NO_of_MD_CEO: [d.phone_NO_of_MD_CEO, Validators.required],
-    //   alternate_Contact_Person: [''],
-    //   phone_No_alt: [''],
-    //   email_Address_alt: [''],
-    //   system_date_year: [''],
-    //   system_date: [''],
-    //   system_date_proposed_year: [''],
-    // });
+    // this.companyDetailsForm = new FormGroup({
+    //   companyId: new FormControl(
+    //     this.auth.currentUserValue.companyId,
+    //     [Validators.required]
+    //   ),
+    //   companyName: new FormControl(
+    //     this.auth.currentUserValue.companyName, 
+    //     [Validators.required]
+    //   ),
+    //   companyEmail: new FormControl(
+    //     this.auth.currentUserValue.companyEmail,
+    //     [Validators.required]
+    //   ),
+    //   name_of_MD_CEO: new FormControl(
+    //     this.companyDetails.name_of_MD_CEO, 
+    //     [Validators.required]
+    //     ),
+    //   phone_NO_of_MD_CEO: new FormControl(
+    //     this.companyDetails.phone_NO_of_MD_CEO, 
+    //     [Validators.required]
+    //     ),
+    //     contact_Person: new FormControl(
+    //       this.companyDetails.contact_Person, 
+    //     [Validators.required]
+    //     ), 
 
-    this.companyDetailsForm = new FormGroup({
-      companyId: new FormControl(
-        this.companyDetails.companyId,
-        [Validators.required]
-      ),
-      companyName: new FormControl(
-        this.companyDetails.companyName,
-        [Validators.required]
-      ),
-      companyEmail: new FormControl(
-        this.companyDetails.companyEmail,
-        [Validators.required]
-      ),
-      name_of_MD_CEO: new FormControl(
-        this.companyDetails.name_of_MD_CEO, 
-        [Validators.required]
-        ),
-      phone_NO_of_MD_CEO: new FormControl(
-        this.companyDetails.phone_NO_of_MD_CEO, 
-        [Validators.required]
-        ),
-      alternate_Contact_Person: new FormControl(
-        this.companyDetails.alternate_Contact_Person, 
-        [Validators.required]
-        ),
-      phone_No: new FormControl(
-        this.companyDetails.phone_No, 
-        [Validators.required]
-        ),
-      email_Address: new FormControl(
-        this.companyDetails.email_Address,
-         [Validators.required]
-         ),
+    //   phone_No: new FormControl(
+    //     this.companyDetails.phone_No, 
+    //     [Validators.required]
+    //     ),
+    //   email_Address: new FormControl(
+    //     this.companyDetails.email_Address,
+    //      [Validators.required]
+    //      ),
 
-    }, {});
+    // }, {});
+
+
+    this.companyDetailsForm= this.fb.group({
+      companyId: [this.auth.currentUserValue.companyId, Validators.required],
+      companyName: [this.auth.currentUserValue.companyName, Validators.required],
+      companyEmail: [this.auth.currentUserValue, Validators.required],
+      name_of_MD_CEO: ['', Validators.required],
+      phone_NO_of_MD_CEO: ['', Validators.required],
+      contact_Person: ['', Validators.required],
+      phone_No: ['', Validators.required],
+      email_Address: ['', Validators.required],
+    });
+
     this.cd.markForCheck();
   }
 
@@ -123,18 +102,15 @@ export class CompanyDetailsComponent implements OnInit {
     return this.companyDetailsForm.controls;
   }
 
-  //
-  // getCompanyDetails(){
-  //
-  //   //const details = this.auth.currentUserValue
-  //   this.companyService.getCompanyDetails().subscribe(
-  //     (res) => {
-  //
-  //       this.companyDetails = res.data;
-  //     }
-  //   );
-  //  }
+getCompanyDetails()
+{
+  this.companyService.getCompanyDetails().subscribe((res) => {
+    debugger;
+    
+    this.companyDetails = res.data;
 
+  });
+}
 
 
   onSubmit() {
@@ -144,6 +120,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyDetails.companY_NAME=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
+    debugger;
     this.companyService
       .editCompanyDetails(this.companyDetails)
       .subscribe(
