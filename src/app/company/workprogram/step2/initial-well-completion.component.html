@@ -103,12 +103,12 @@
         >
           <input disabled
             (keypress)="genk.restrictData($event)"
-            formControlName="proposed_year_data"
+            formControlName="proposed_well_number"
             [(ngModel)]="this.proposed_well_number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            [(ngModel)]="this.proposed_well_number"
+           
             
           />
         </div>
