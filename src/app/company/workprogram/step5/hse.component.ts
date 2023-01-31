@@ -4905,14 +4905,15 @@ export class SWPHseComponent implements OnInit {
       });
   }
 
-  Delete_AssetRegister_RBI(event) {
+  Delete_AssetRegister_RBI(row) {
+    console.log('clicked me....', this.genk.fieldName);
     this.workprogram
       .post_HSE_AssetRegister_RBI(
         null,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
       .subscribe({
