@@ -44,48 +44,48 @@ export class CompanyDetailsComponent implements OnInit {
  
  // this.companyDetails = this.d as CompanyDetails;
     debugger;
-    this.companyDetailsForm = new FormGroup({
-      companyId: new FormControl(
-        this.auth.currentUserValue.companyId,
-        [Validators.required]
-      ),
-      companyName: new FormControl(
-        this.auth.currentUserValue.companyName, 
-        [Validators.required]
-      ),
-      companyEmail: new FormControl(
-        this.auth.currentUserValue.companyEmail,
-        [Validators.required]
-      ),
-      name_of_MD_CEO: new FormControl(
-        this.companyDetails.name_of_MD_CEO, 
-        [Validators.required]
-        ),
-      phone_NO_of_MD_CEO: new FormControl(
-        this.companyDetails.phone_NO_of_MD_CEO, 
-        [Validators.required]
-        ),
-        contact_Person: new FormControl(
-          this.companyDetails.contact_Person, 
-        [Validators.required]
-        ), 
+    // this.companyDetailsForm = new FormGroup({
+    //   companyId: new FormControl(
+    //     this.auth.currentUserValue.companyId,
+    //     [Validators.required]
+    //   ),
+    //   companyName: new FormControl(
+    //     this.auth.currentUserValue.companyName, 
+    //     [Validators.required]
+    //   ),
+    //   companyEmail: new FormControl(
+    //     this.auth.currentUserValue.companyEmail,
+    //     [Validators.required]
+    //   ),
+    //   name_of_MD_CEO: new FormControl(
+    //     this.companyDetails.name_of_MD_CEO, 
+    //     [Validators.required]
+    //     ),
+    //   phone_NO_of_MD_CEO: new FormControl(
+    //     this.companyDetails.phone_NO_of_MD_CEO, 
+    //     [Validators.required]
+    //     ),
+    //     contact_Person: new FormControl(
+    //       this.companyDetails.contact_Person, 
+    //     [Validators.required]
+    //     ), 
 
-      phone_No: new FormControl(
-        this.companyDetails.phone_No, 
-        [Validators.required]
-        ),
-      email_Address: new FormControl(
-        this.companyDetails.email_Address,
-         [Validators.required]
-         ),
+    //   phone_No: new FormControl(
+    //     this.companyDetails.phone_No, 
+    //     [Validators.required]
+    //     ),
+    //   email_Address: new FormControl(
+    //     this.companyDetails.email_Address,
+    //      [Validators.required]
+    //      ),
 
-    }, {});
+    // }, {});
 
 
     this.companyDetailsForm= this.fb.group({
-      companyId: ['', Validators.required],
-      companyName: ['', Validators.required],
-      companyEmail: ['', Validators.required],
+      companyId: [this.auth.currentUserValue.companyId, Validators.required],
+      companyName: [this.auth.currentUserValue.companyName, Validators.required],
+      companyEmail: [this.auth.currentUserValue, Validators.required],
       name_of_MD_CEO: ['', Validators.required],
       phone_NO_of_MD_CEO: ['', Validators.required],
       contact_Person: ['', Validators.required],
