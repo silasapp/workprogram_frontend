@@ -34,7 +34,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   quaterIWTwo = false;
   quaterIWThree = false;
   quaterIWFour = false;
-  proposed_well_number:number;
+
   currentIWQuater = 1;
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -97,8 +97,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.genk.activeStep = 'STEP2';
     this.InitialForm = new FormGroup(
       {
-        proposed_well_number:new FormControl(this.proposed_well_number,
-          [Validators.required]),
         current_year_Actual_Number: new FormControl(
           this.initialBody.current_year_Actual_Number,
           [Validators.required]
@@ -152,7 +150,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     });
 
     this.getInitialCompletion();
-    this.InitialForm.reset();
   }
 
   isEditable(group: string): boolean | null {
@@ -325,7 +322,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
               );
             }
               debugger;
-          this.proposed_well_number=this._quaterIWOneData.length;
             this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
@@ -389,7 +385,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   submit() {
-    debugger;
     this.cd.markForCheck();
     this.initialBody.id = 0;
     this.initialBody.qUATER = 'QUARTER ' + this.currentIWQuater;
@@ -402,14 +397,11 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
-debugger;
-    sail.proposed_well_number = this._quaterIWOneData.length;
 
-    debugger;
+    sail.proposed_well_number = this.iwList.length;
     this.workprogram
       .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {
-        debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
         this.getInitialCompletion();
         this.cd.markForCheck();

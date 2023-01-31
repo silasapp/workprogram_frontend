@@ -13,7 +13,7 @@ import { CompanyDetails } from 'src/app/models/company-details';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: CompanyDetails;
+  companyDetails: any;
   private d: any;
   auth: AuthenticationService;
 
@@ -29,21 +29,16 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     debugger;
-    this.companyService.getCompanyDetails().subscribe((res) => {
-      debugger;
-      
-      this.d = res.data;
-      this.companyDetails = this.d;
-      debugger;
-    });
+    this.getCompanyDetails();
     debugger;
     //  this.d = this.companyService.currentCompanyValue;
-    this.initForm();
+    
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
-    debugger;
-   
+    
+   debugger;
+   this.initForm();
     this.cd.markForCheck();
   }
 
@@ -85,8 +80,9 @@ export class CompanyDetailsComponent implements OnInit {
 
 
 
-
-
+debugger;
+    this.companyDetails = this.d as CompanyDetails;
+    debugger;
     this.companyDetailsForm = new FormGroup({
       companyId: new FormControl(
         this.auth.currentUserValue.companyId,
@@ -123,6 +119,7 @@ export class CompanyDetailsComponent implements OnInit {
          ),
 
     }, {});
+
     this.cd.markForCheck();
   }
 
@@ -132,8 +129,17 @@ export class CompanyDetailsComponent implements OnInit {
     return this.companyDetailsForm.controls;
   }
 
-
-
+getCompanyDetails()
+{
+  this.companyService.getCompanyDetails().subscribe((res) => {
+    debugger;
+    
+    this.d = res.data;
+   return this.d;
+   
+   
+  });
+}
   onSubmit() {
     debugger;
     //var ii = this.companyDetailsForm.getRawValue();
