@@ -14,9 +14,11 @@ import {
   GenericService,
   AuthenticationService,
   ModalService,
+  IConcession,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import Swal from 'sweetalert2';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 
 @Component({
   templateUrl: './nigeriacontent.component.html',
@@ -24,7 +26,8 @@ import Swal from 'sweetalert2';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPNigeriaContentComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   activeMenu: string = 'Actual Year';
   completedActual: boolean = false;
   completedProposed: boolean = false;
@@ -60,6 +63,8 @@ export class SWPNigeriaContentComponent implements OnInit {
   actualValue: string;
   columnHeader = [];
   columnValue = [];
+  fiveYearsAhead=[];
+  fiveYearsBehind=[];
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
@@ -193,6 +198,9 @@ export class SWPNigeriaContentComponent implements OnInit {
         staff_Local: new FormControl(this.staffdispositionBody.staff_Local, [
           Validators.required,
         ]),
+        year: new FormControl(this.staffdispositionBody.year, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -253,16 +261,72 @@ export class SWPNigeriaContentComponent implements OnInit {
           this.uploadsuccessionplanBody.position_Occupied_,
           [Validators.required]
         ),
+        year: new FormControl(
+          this.uploadsuccessionplanBody.year,
+          [Validators.required]
+        ),
       },
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getNigeriaContentTraining();
+    debugger;
+    this.getFiveYearsAhead();
+    this.getFiveYearsBehind();
     // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
 
+  getFiveYearsAhead() {
+    debugger;
+    this.fiveYearsAhead = [];
+    var num: number = 5;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
+  }
+
+  getFiveYearsBehind() {
+    debugger;
+    this.fiveYearsBehind = [];
+    var num: number = 5;
+    var i: number;
+    for (i = num; i > 0; i--) {
+      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
+  }
+
+
+
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
+  }
+
   getNigeriaContentTraining() {
+    debugger;
     this.workprogram
       .getNigeriaContentTraining(this.genk.wpYear)
       .subscribe((result) => {
@@ -327,6 +391,7 @@ export class SWPNigeriaContentComponent implements OnInit {
             {} as NIGERIA_CONTENT_Upload_Succession_Plan;
         }
 
+  
         console.log('succession', this.uploadSuccessionPlans);
         this.cd.markForCheck();
       });

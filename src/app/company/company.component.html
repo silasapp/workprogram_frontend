@@ -124,6 +124,14 @@
             <span>Concessions & Fields</span>
           </div>
           <div
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/' + genk.company, genk.workprogram]"
+            routerLinkActive="active"
+          >
+            <span class="material-icons layout-icon">table_chart</span>
+            <span>Work Programme</span>
+          </div>
+          <div
             *ngIf="!genk.isAdmin"
             class="layout-div layout-pad layout-line"
             [routerLink]="[
@@ -938,6 +946,28 @@
             <span class="layout-icon"><mat-icon>build</mat-icon></span>
 
             <span>Configure Process Flow</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'sbu-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>add</mat-icon></span>
+
+            <span>Configure SBU</span>
+          </div>
+
+          <div
+            *ngIf="genk.isAdmin"
+            class="layout-div layout-pad layout-line"
+            [routerLink]="['/', 'role-configuration']"
+            routerLinkActive="active"
+          >
+            <span class="layout-icon"><mat-icon>group</mat-icon></span>
+
+            <span>Configure Roles</span>
           </div>
 
           <div

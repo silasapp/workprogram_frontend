@@ -10,6 +10,7 @@ import {
   Validators,
   FormsModule,
 } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW,
   HSE_SAFETY_STUDIES_NEW,
@@ -52,6 +53,7 @@ import {
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -62,7 +64,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPHseComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   //#region  form bodies declaration
   technicalBody: HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW =
     {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
@@ -408,15 +411,15 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'areThereEvidentOfSampling',
-      header: 'Do you have Evidence of Sampling Certificate?',
+      columnDef: 'areThereRemediationFund',
+      header: 'Is there any Evidence of Remediation Fund?',
     },
     {
-      columnDef: 'evidenceOfSamplingFilename',
-      header: 'Upload Evidence of Payment of Sampling Certificate',
+      columnDef: 'evidenceOfPaymentPath',
+      header: 'Upload Evidence of Payment',
     },
     {
-      columnDef: 'reasonForNoEvidenceSampling',
+      columnDef: 'reasonForNoRemediation',
       header: 'Remark',
     },
   ];
@@ -464,6 +467,46 @@ export class SWPHseComponent implements OnInit {
     {
       columnDef: 'safetyLast2YearsFilename',
       header: 'Accident Statistics for the last 2 years',
+    },
+  ];
+
+  hwmdzColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'wasterContractorNames',
+      header: "Waste Contractor's Names",
+    },
+    {
+      columnDef: 'wasteServicePermitPath',
+      header: "Waste Contractor's Service Permit",
+    },
+    {
+      columnDef: 'produceWaterManagementPlan',
+      header: 'What type of Produced Water Management Plan do you have?',
+    },
+    {
+      columnDef: 'evidenceOfReInjectionPermitFilename',
+      header: 'Upload Evidence of Re-injection Permit',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfReInjection',
+      header: 'Reaons For No Evidence of Re-Injection Permit',
+    },
+    {
+      columnDef: 'doYouHavePreviousYearWasteInventoryReport',
+      header: 'Do you have the previous year Waste Inventory Report?',
+    },
+
+    {
+      columnDef: 'evidenceOfEWDPPath',
+      header: 'Upload Evidence of EWDP Permit',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfEWDP',
+      header: 'Reason For No Evidence of EWDP',
     },
   ];
 
@@ -522,11 +565,11 @@ export class SWPHseComponent implements OnInit {
     },
     {
       columnDef: 'doYouHaveAnOhm',
-      header: 'Do you have an OHM',
+      header: 'Do you have an OHM plan?',
     },
     {
       columnDef: 'wasOhmPolicyCommunicatedToStaff',
-      header: 'Was OHM Policy Communicated to Staffs?',
+      header: 'Was OHM Policy Communicated to Staff?',
     },
     {
       columnDef: 'ohMplanFilePath',
@@ -1132,7 +1175,7 @@ export class SWPHseComponent implements OnInit {
     },
     {
       columnDef: 'approved_or_Not_Approve',
-      header: 'Approved / Not Approved',
+      header: 'Approval Status',
     },
   ];
 
@@ -2388,7 +2431,28 @@ export class SWPHseComponent implements OnInit {
       {}
     );
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getHSE();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
   }
 
   HSE_TechnicalSubmit() {

@@ -37,7 +37,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Reference</td>
+                <td>Reference No.</td>
                 <td class="text-left text-dark">
                   <b
                     >{{
@@ -257,7 +257,11 @@
           <button
             (click)="pushApplication()"
             class="btn btn-success btn-block"
-            *ngIf="(applicationDetails$ | async)?.staff[0].staff_Role !== 'Executive'">
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role !==
+              'Executive Director'
+            "
+          >
             Push Application
           </button>
           <p></p>
@@ -267,7 +271,8 @@
             data-backdrop="static"
             data-keyboard="false"
             data-target="#AppModal"
-            (click)="sendBackApplication()">
+            (click)="sendBackApplication()"
+          >
             Send Back
           </button>
           <p></p>
@@ -279,7 +284,11 @@
             data-keyboard="false"
             data-target="#AppModal"
             (click)="approveApplication()"
-            *ngIf="(applicationDetails$ | async)?.staff[0].staff_Role === 'Executive'">
+            *ngIf="
+              (applicationDetails$ | async)?.staff[0].staff_Role ===
+              'Executive Director'
+            "
+          >
             Approve
           </button>
           <p></p>

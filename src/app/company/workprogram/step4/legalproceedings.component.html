@@ -44,7 +44,7 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="letigationBody.anyLitigation"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)"
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -57,6 +57,47 @@
 
     <div *ngIf="letigationBody.anyLitigation == 'YES'">
       <div style="display: flex; width: 100%; justify-content: space-between">
+
+
+
+
+
+
+
+
+
+
+        <div style="width: 30%; margin: auto 0 0">
+          <label class="labelwp">Year</label>
+          <div style="display: flex">
+            <div
+              style="
+                box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                width: 100%;
+                border-radius: 10px;
+                padding: 7px 10px;
+              "
+            >
+            <select
+            formControlName="year"
+
+          >
+            <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+            <option
+              *ngFor="let Leyear of fiveYearsBehind"
+              [value]="Leyear"
+              [selected]="staffdispositionBody.year === Leyear"
+            >
+              {{ Leyear }}
+            </option>
+          </select>
+            </div>
+          </div>
+        </div>
+
+
+
+
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Suit Number</label>
           <div style="display: flex">
@@ -72,7 +113,9 @@
                 formControlName="case_Number"
                 [(ngModel)]="letigationBody.case_Number"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               />
             </div>
           </div>
@@ -93,12 +136,19 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="letigationBody.names_of_Parties"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               />
             </div>
           </div>
         </div>
 
+        
+      </div>
+      <br />
+
+      <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Jurisdiction</label>
           <div style="display: flex; width: 100%">
@@ -114,7 +164,9 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="letigationBody.jurisdiction"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -125,10 +177,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <br />
-
-      <div style="display: flex; width: 100%; justify-content: space-between">
         <!-- <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Name of Court</label>
           <div style="display: flex">
@@ -167,7 +215,9 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="letigationBody.summary_of_the_case"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               ></textarea>
             </div>
           </div>
@@ -190,7 +240,9 @@
                 formControlName="any_orders_made_so_far_by_the_court"
                 [(ngModel)]="letigationBody.any_orders_made_so_far_by_the_court"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               ></textarea>
             </div>
           </div>
@@ -215,7 +267,9 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="letigationBody.potential_outcome"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+                "
               />
             </div>
           </div>
@@ -228,7 +282,7 @@
           <button
             class="submitbtn"
             (click)="saveLitigation()"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)"
           >
             Submit Litigation
           </button>
@@ -270,7 +324,9 @@
               value="{{ row.id }}"
               style="background-color: white; color: red; border: 2px solid"
               class="submitbtn"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)
+              "
             >
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
               <b>Delete</b>
@@ -300,7 +356,9 @@
             class="dropwp"
             formControlName="anyLitigation"
             [(ngModel)]="arbitrationBody.anyArbitration"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+            "
           >
             <option selected disabled>---- Please Select an Option ----</option>
             <option value="YES">YES</option>
@@ -328,7 +386,9 @@
                 formControlName="case_Number"
                 [(ngModel)]="arbitrationBody.case_Number"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               />
             </div>
           </div>
@@ -349,7 +409,9 @@
                 formControlName="names_of_Parties"
                 [(ngModel)]="arbitrationBody.names_of_Parties"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               />
             </div>
           </div>
@@ -370,7 +432,9 @@
                 class="inpute"
                 formControlName="jurisdiction"
                 [(ngModel)]="arbitrationBody.jurisdiction"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               >
                 <option selected disabled>
                   ---- Please Select an Option ----
@@ -422,7 +486,9 @@
                 formControlName="summary_of_the_case"
                 [(ngModel)]="arbitrationBody.summary_of_the_case"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               />
             </div>
           </div>
@@ -470,7 +536,9 @@
                 formControlName="potential_outcome"
                 [(ngModel)]="arbitrationBody.potential_outcome"
                 class="inpute"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               />
             </div>
           </div>
@@ -483,7 +551,9 @@
           <button
             class="submitbtn"
             (click)="saveArbitration()"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+            "
           >
             Submit Arbitration
           </button>
@@ -526,7 +596,9 @@
                 value="{{ row.id }}"
                 style="background-color: white; color: red; border: 2px solid"
                 class="submitbtn"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
+                "
               >
                 <mat-icon style="font-size: 20px"> border_color</mat-icon>
                 <b>Delete</b>
@@ -592,7 +664,7 @@
       <button
         class="submitbtn"
         (click)="Submit_WorkProgram()"
-        [attr.disabled]="disableForm ? true : null"
+        [attr.disabled]="isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)"
       >
         Click Here to Submit
       </button>

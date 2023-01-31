@@ -53,7 +53,7 @@ export class SendBackFormComponent implements OnInit {
 
     this.isPlanning = this.isPlanninFunc();
 
-    this.checkItems = this.sbuTableDetailsList
+    this.checkItems = !this.isPlanning
       ? this.sbuTableDetailsList
       : this.sbuList;
 

@@ -5,8 +5,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import { INITIAL_WELL_COMPLETION_JOB1 } from 'src/app/models/step2-initial';
-import { GenericService, ModalService } from 'src/app/services';
+import { GenericService, IConcession, ModalService } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
@@ -15,11 +16,14 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPInitialWellCompletionComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   InitialForm: FormGroup;
-  initialBody: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
-  _initialBody: INITIAL_WELL_COMPLETION_JOB1[] = {} as INITIAL_WELL_COMPLETION_JOB1[];
-  quaterIWOneData: INITIAL_WELL_COMPLETION_JOB1; 
+  initialBody: INITIAL_WELL_COMPLETION_JOB1 =
+    {} as INITIAL_WELL_COMPLETION_JOB1;
+  _initialBody: INITIAL_WELL_COMPLETION_JOB1[] =
+    {} as INITIAL_WELL_COMPLETION_JOB1[];
+  quaterIWOneData: INITIAL_WELL_COMPLETION_JOB1;
   _quaterIWOneData: INITIAL_WELL_COMPLETION_JOB1[] = [];
 
   quaterIWTwoData: INITIAL_WELL_COMPLETION_JOB1;
@@ -33,16 +37,13 @@ export class SWPInitialWellCompletionComponent implements OnInit {
 
   currentIWQuater = 1;
   genk: GenericService;
-    cdr: ChangeDetectorRef;
+  cdr: ChangeDetectorRef;
 
   wellCount: number = 0;
   iwList: any[];
   pagenum = 0;
   selectedPage = 1;
   arrayRows = [];
-
-
-
 
   iwccolumn = [
     {
@@ -74,14 +75,10 @@ export class SWPInitialWellCompletionComponent implements OnInit {
       columnDef: 'remarks',
       header: 'REMARKS',
     },
-   
   ];
 
-
-
-
-
-  constructor(private cd: ChangeDetectorRef,
+  constructor(
+    private cd: ChangeDetectorRef,
     private gen: GenericService,
     private modalService: ModalService,
     private workprogram: WorkProgramService
@@ -90,15 +87,13 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentIWQuater;
       this.getInitialCompletion();
-      this.cdr=cd;
+      this.cdr = cd;
     });
     this.cd.markForCheck();
-     this.genk.sizePerPage = this.genk.sizeten;
+    this.genk.sizePerPage = this.genk.sizeten;
   }
 
   ngOnInit(): void {
-   
-    
     this.genk.activeStep = 'STEP2';
     this.InitialForm = new FormGroup(
       {
@@ -139,7 +134,29 @@ export class SWPInitialWellCompletionComponent implements OnInit {
       },
       {}
     );
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getInitialCompletion();
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
   }
 
   get quaterIWClassOne() {
@@ -218,7 +235,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentIWQuater = 1;
-      btn.textContent = "Add Initial Well For Quarter 1";
+      btn.textContent = 'Add Initial Well For Quarter 1';
       this.initialBody = this.quaterIWOneData;
       this._initialBody = this._quaterIWOneData;
       this.cd.markForCheck();
@@ -226,7 +243,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     }
     if (quater === 2) {
       this.currentIWQuater = 2;
-      btn.textContent = "Add Initial Well For Quarter 2";
+      btn.textContent = 'Add Initial Well For Quarter 2';
       this.initialBody = this.quaterIWTwoData;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 2");
@@ -234,29 +251,29 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     if (quater === 3) {
       this.currentIWQuater = 3;
       this.initialBody = this.quaterIWThreeData;
-      btn.textContent = "Add Initial Well For Quarter 3";
+      btn.textContent = 'Add Initial Well For Quarter 3';
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
     if (quater === 4) {
       this.currentIWQuater = 4;
       this.initialBody = this.quaterIWFourData;
-      btn.textContent = "Add Initial Well For Quarter 4";
+      btn.textContent = 'Add Initial Well For Quarter 4';
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
-    this.wellCount= this._initialBody.length;
+    this.wellCount = this._initialBody.length;
     this.cd.markForCheck();
   }
-
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
   }
 
-
   assignPageNum() {
-    this.pagenum = Math.ceil(this._quaterIWOneData.length / this.genk.sizePerPage);
+    this.pagenum = Math.ceil(
+      this._quaterIWOneData.length / this.genk.sizePerPage
+    );
   }
 
   assignDataRows() {
@@ -267,52 +284,58 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-
   getInitialCompletion() {
-    debugger;
-      this.workprogram.getInitialWellCompletion(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
-      .subscribe(res => {
-        debugger;
-         this.quaterIWOneData = res.initialWellCompletion.filter(res => { return res.quater === "QUARTER 1";})[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
-          if (this.quaterIWOneData) {
-            this.quaterIWOneData.actual_Completion_Date = this.genk.formDate(this.quaterIWOneData.actual_Completion_Date);
-            this.quaterIWOneData.proposed_Completion_Date = this.genk.formDate(this.quaterIWOneData.proposed_Completion_Date);
-          }
+    this.workprogram
+      .getInitialWellCompletion(
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
+      .subscribe((res) => {
+        this.quaterIWOneData =
+          res.initialWellCompletion.filter((res) => {
+            return res.quater === 'QUARTER 1';
+          })[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
+        if (this.quaterIWOneData) {
+          this.quaterIWOneData.actual_Completion_Date = this.genk.formDate(
+            this.quaterIWOneData.actual_Completion_Date
+          );
+          this.quaterIWOneData.proposed_Completion_Date = this.genk.formDate(
+            this.quaterIWOneData.proposed_Completion_Date
+          );
+        }
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
+        this._quaterIWOneData =
+          res.initialWellCompletion.filter((res) => {
+            return res.quater === 'QUARTER 1';
+          }) ?? ({} as INITIAL_WELL_COMPLETION_JOB1[]);
 
-        debugger;
-
-
-        this._quaterIWOneData = res.initialWellCompletion.filter(res => { return res.quater === "QUARTER 1"; }) ?? {} as INITIAL_WELL_COMPLETION_JOB1[];
-         
-        if(this._quaterIWOneData.length>0){
-          for(let qIWOneData of this._quaterIWOneData){
-            
+        if (this._quaterIWOneData.length > 0) {
+          for (let qIWOneData of this._quaterIWOneData) {
             if (qIWOneData) {
-              qIWOneData.actual_Completion_Date = this.genk.formDate(qIWOneData.actual_Completion_Date);
-              qIWOneData.proposed_Completion_Date = this.genk.formDate(qIWOneData.proposed_Completion_Date);
+              qIWOneData.actual_Completion_Date = this.genk.formDate(
+                qIWOneData.actual_Completion_Date
+              );
+              qIWOneData.proposed_Completion_Date = this.genk.formDate(
+                qIWOneData.proposed_Completion_Date
+              );
             }
-debugger;
+              debugger;
             this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
-
           }
 
-     
           this.quaterIWOne = this._quaterIWOneData[0].omL_Name ? true : false;
-           }
-       
+        }
 
-
-        
-
-          this.quaterIWTwoData = res.initialWellCompletion.filter(res => {
-            this.quaterIWTwo = res.quater === "QUARTER 2" ? true : false;
-          return res.quater === "QUARTER 2";
-        })[0]  ?? new INITIAL_WELL_COMPLETION_JOB1();
+        this.quaterIWTwoData =
+          res.initialWellCompletion.filter((res) => {
+            this.quaterIWTwo = res.quater === 'QUARTER 2' ? true : false;
+            return res.quater === 'QUARTER 2';
+          })[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
         if (this.quaterIWTwoData) {
           this.quaterIWTwoData.actual_Completion_Date = this.genk.formDate(
             this.quaterIWTwoData.actual_Completion_Date
@@ -353,31 +376,32 @@ debugger;
         }
         this.quaterIWFour = this.quaterIWFourData.omL_Name ? true : false;
         this.initialBody = this.quaterIWOneData;
-        this._initialBody = this._quaterIWOneData as INITIAL_WELL_COMPLETION_JOB1[];
-        this.wellCount= this._initialBody.length;
-        
+        this._initialBody = this
+          ._quaterIWOneData as INITIAL_WELL_COMPLETION_JOB1[];
+        this.wellCount = this._initialBody.length;
+
         this.cd.markForCheck();
       });
   }
 
   submit() {
-    debugger;
     this.cd.markForCheck();
     this.initialBody.id = 0;
-    this.initialBody.qUATER = "QUARTER " + this.currentIWQuater;
-    this.initialBody.budeget_Allocation_NGN = this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
-    this.initialBody.budeget_Allocation_USD = this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
-    debugger;
+    this.initialBody.qUATER = 'QUARTER ' + this.currentIWQuater;
+    this.initialBody.budeget_Allocation_NGN =
+      this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
+    this.initialBody.budeget_Allocation_USD =
+      this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
+
     let sail: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
-    debugger;
-    sail.proposed_well_number=this.iwList.length;
+
+    sail.proposed_well_number = this.iwList.length;
     this.workprogram
       .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {
-        debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
         this.getInitialCompletion();
         this.cd.markForCheck();

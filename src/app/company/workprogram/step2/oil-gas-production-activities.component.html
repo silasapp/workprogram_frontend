@@ -13,12 +13,11 @@
     </label>
     <div style="display: flex; width: 100%">
       <div class="inputshadow" style="border-radius: 0">
+        <!-- formControlName="oil_or_gas_wells" -->
         <select
           class="dropwp"
-          formControlName="oil_or_gas_wells"
           [value]="genk.fieldWell"
           (change)="getFieldWell($event)"
-          [attr.disabled]="disableForm ? true : null"
         >
           <option selected value="GAS WELL">GAS WELL</option>
           <option value="OIL WELL">OIL WELL</option>
@@ -71,7 +70,7 @@
                     class="dropwp"
                     formControlName="oil_Royalty_Payment"
                     [value]="productionoilBody.oil_Royalty_Payment"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                   >
                     <option selected disabled>--Select an Option --</option>
                     <option value="YES">Yes</option>
@@ -150,7 +149,7 @@
                           genk.checkMMBBLMin($event, oilMic)
                       "
                       [value]="productionoilBody.annualForecastOil"
-                      [attr.disabled]="disableForm ? true : null"
+                      [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">BBLS</span>
                   </div>
@@ -175,7 +174,7 @@
                           genk.checkMMBBLMin($event, oilMic)
                       "
                       [value]="productionoilBody.annualForecastCondensate"
-                      [attr.disabled]="disableForm ? true : null"
+                      [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">BBLS</span>
                   </div>
@@ -311,7 +310,7 @@
                           genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasAg"
-                      [attr.disabled]="disableForm ? true : null"
+                      [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -336,7 +335,7 @@
                           genk.checkBSCFMin($event, gasmaxx)
                       "
                       [value]="productionoilBody.annualForecastGasNag"
-                      [attr.disabled]="disableForm ? true : null"
+                      [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">SCF</span>
                   </div>
@@ -351,7 +350,7 @@
                 <button
                   class="quarterbtn"
                   (click)="saveProduction()"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                 >
                   UPDATE PRODUCTION (OIL/CONDENSATE/AG/NAG)
                 </button>
@@ -626,12 +625,13 @@
               >
                 <select
                   class="dropwp"
-                  formControlName="production_month"
                   [value]="proposedmonthlyBody.production_month"
+                  formControlName="production_month"
                   (change)="changeProposedMonth($event)"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                  "
                 >
-                  <!-- <option disabled>---- Select a Month ----</option> -->
                   <option
                     value="January"
                     [selected]="
@@ -744,7 +744,9 @@
                       )
                     "
                     [value]="proposedmonthlyBody.production"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                    "
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -774,7 +776,9 @@
                         genk.addCurrencyDecimal($event)
                     "
                     [value]="proposedmonthlyBody.avg_Daily_Production"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                    "
                   />
                 </div>
               </div>
@@ -803,7 +807,9 @@
                       )
                     "
                     [value]="proposedmonthlyBody.gas_AG"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                    "
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -831,7 +837,9 @@
                       )
                     "
                     [value]="proposedmonthlyBody.gas_NAG"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                    "
                   />
                   <span class="barspan">SCF</span>
                 </div>
@@ -857,7 +865,9 @@
                       )
                     "
                     [value]="proposedmonthlyBody.condensateProd"
-                    [attr.disabled]="disableForm ? true : null"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+                    "
                   />
                   <span class="barspan">BBLS</span>
                 </div>
@@ -871,7 +881,9 @@
             <button
               class="quarterbtn"
               (click)="saveProposedActivity()"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="
+                isEditable(SBUTABLE.PROPOSED_MONTHLY_PRODUCTIONs)
+              "
             >
               Save Proposed
               {{ proposedmonthlyBody.production_month }} Production
@@ -910,7 +922,9 @@
                 formControlName="fiveyear_Timeline"
                 [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
-                [attr.disabled]="disableForm ? true : null"
+                [attr.disabled]="
+                  isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+                "
               >
                 <!-- <option selected>---- Select a Year ----</option> -->
 
@@ -980,7 +994,9 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_Oil"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+                  "
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -1004,7 +1020,9 @@
                       genk.checkMMBBLMin($event, oilTax)
                   "
                   [value]="fiveYearForecastBody.fiveyear_Condensate"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+                  "
                 />
                 <span class="barspan">BBLS</span>
               </div>
@@ -1034,7 +1052,9 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_AG"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+                  "
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1061,7 +1081,9 @@
                     )
                   "
                   [value]="fiveYearForecastBody.fiveyear_NAG"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+                  "
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1102,7 +1124,9 @@
           <button
             class="quarterbtn"
             (click)="saveFiveYearForecast()"
-            [attr.disabled]="disableForm ? true : null"
+            [attr.disabled]="
+              isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
+            "
           >
             Save Five Year Production Forecast
           </button>
@@ -1110,38 +1134,41 @@
       </div>
       <br />
 
-      <div #divTable style="
-overflow: hidden;
-overflow-x: auto;
-box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-">
-<table #codeTable class="apptable" cellPadding="10px">
-<thead>
-  <tr>
-    <th *ngFor="let h of fyvccolumn">
-      {{ h.header }}
-    </th>
-  </tr>
-</thead>
-<!-- <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-  <tr *ngFor="let row of sdList">
-    <td *ngFor="let h of sdcolumn">
-      {{ row[h.columnDef] }}
-    </td>
-    <td>
-      <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
-        (click)="deleteNCT(row)" value="{{ row.id }}"
-        style="background-color: white; color: red; border: 2px solid" class="submitbtn">
-        <mat-icon style="font-size: 20px"> border_color</mat-icon>
-        <b>Delete</b>
-      </button>
-    </td>
-  </tr>
-</tbody> -->
-</table>
-</div>
-<br/>
-<br/>
+      <div
+        #divTable
+        style="
+          overflow: hidden;
+          overflow-x: auto;
+          box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+        "
+      >
+        <table #codeTable class="apptable" cellPadding="10px">
+          <thead>
+            <tr>
+              <th *ngFor="let h of fyvccolumn">
+                {{ h.header }}
+              </th>
+            </tr>
+          </thead>
+          <!-- <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+              <tr *ngFor="let row of sdList">
+                <td *ngFor="let h of sdcolumn">
+                  {{ row[h.columnDef] }}
+                </td>
+                <td>
+                  <button mat-stroked-button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
+                    (click)="deleteNCT(row)" value="{{ row.id }}"
+                    style="background-color: white; color: red; border: 2px solid" class="submitbtn">
+                    <mat-icon style="font-size: 20px"> border_color</mat-icon>
+                    <b>Delete</b>
+                  </button>
+                </td>
+              </tr>
+            </tbody> -->
+        </table>
+      </div>
+      <br />
+      <br />
     </div>
 
     <div
@@ -1253,7 +1280,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_production"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1280,7 +1309,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_utilization"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1307,7 +1338,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                     )
                   "
                   [value]="gasproductionBody.proposed_flaring"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
                 <span class="barspan">SCF</span>
               </div>
@@ -1340,7 +1373,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_planned"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
               </div>
             </div>
@@ -1367,7 +1402,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.no_of_gas_well_drilled"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
               </div>
             </div>
@@ -1381,7 +1418,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   class="dropwp"
                   formControlName="is_there_a_gas_plant"
                   [(ngModel)]="gasproductionBody.is_there_a_gas_plant"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1403,7 +1442,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   class="dropwp"
                   formControlName="gas_flare_Royalty_payment"
                   [(ngModel)]="gasproductionBody.gas_flare_Royalty_payment"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 >
                   <option selected disabled>-- Select an Option --</option>
                   <option value="YES">Yes</option>
@@ -1434,7 +1475,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                       genk.addCurrencyDecimal($event)
                   "
                   [value]="gasproductionBody.number_of_gas_wells_completed"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 />
               </div>
             </div>
@@ -1456,7 +1499,9 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
                   [(ngModel)]="gasproductionBody.remarks_"
                   rows="2"
                   class="inpute"
-                  [attr.disabled]="disableForm ? true : null"
+                  [attr.disabled]="
+                    isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
+                  "
                 ></textarea>
               </div>
             </div>
@@ -1468,7 +1513,7 @@ box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
             <button
               class="quarterbtn"
               (click)="saveGasProduction()"
-              [attr.disabled]="disableForm ? true : null"
+              [attr.disabled]="isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)"
             >
               Update Gas Production Activities
             </button>

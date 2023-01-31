@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   facilitiesProjectPerformance,
   newTechnologyAndConformityAssessment,
@@ -13,6 +14,7 @@ import {
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -23,7 +25,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
-  public disableForm: boolean = false;
+  public SBUTABLE = SBUTABLE;
+
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
@@ -231,41 +234,69 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       ),
     });
 
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
     this.getBudgetData();
   }
 
-    getBudgetData() {
-      this.workprogram.getFormThreeBudget_3(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
-      .subscribe(res => {
-        let oilInfo = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
-        let techInfo = this.newTechnologyBody as newTechnologyAndConformityAssessment;
-        let facInfo = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
+  }
 
-      if (res.oilAndGasProjects != null && res.oilAndGasProjects.length > 0) {
-        oilInfo = res
-          .oilAndGasProjects[0] as oilAndGasFacilityMaintenanceProject;
-        this.loadTable_OilGas(res.oilAndGasProjects);
-      }
-      if (
-        res.oilCondensateTechnologyAssessment != null &&
-        res.oilCondensateTechnologyAssessment.length > 0
-      ) {
-        techInfo = res
-          .oilCondensateTechnologyAssessment[0] as newTechnologyAndConformityAssessment;
-        this.loadTable_Technology(res.oilCondensateTechnologyAssessment);
-      }
-      if (
-        res.facilitiesProjetPerformance != null &&
-        res.facilitiesProjetPerformance.length > 0
-      ) {
-        facInfo = res
-          .facilitiesProjetPerformance[0] as facilitiesProjectPerformance;
-        this.loadTable_Facility(res.facilitiesProjetPerformance);
-      }
-      this.oilAndGasBody = oilInfo;
-      this.newTechnologyBody = techInfo;
-      this.facilitiesProjectPerformanceBody = facInfo;
-    });
+  getBudgetData() {
+    this.workprogram
+      .getFormThreeBudget_3(
+        this.genk.OmlName,
+        this.genk.wpYear,
+        this.genk.fieldName
+      )
+      .subscribe((res) => {
+        let oilInfo = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
+        let techInfo = this
+          .newTechnologyBody as newTechnologyAndConformityAssessment;
+        let facInfo = this
+          .facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
+
+        if (res.oilAndGasProjects != null && res.oilAndGasProjects.length > 0) {
+          oilInfo = res
+            .oilAndGasProjects[0] as oilAndGasFacilityMaintenanceProject;
+          this.loadTable_OilGas(res.oilAndGasProjects);
+        }
+        if (
+          res.oilCondensateTechnologyAssessment != null &&
+          res.oilCondensateTechnologyAssessment.length > 0
+        ) {
+          techInfo = res
+            .oilCondensateTechnologyAssessment[0] as newTechnologyAndConformityAssessment;
+          this.loadTable_Technology(res.oilCondensateTechnologyAssessment);
+        }
+        if (
+          res.facilitiesProjetPerformance != null &&
+          res.facilitiesProjetPerformance.length > 0
+        ) {
+          facInfo = res
+            .facilitiesProjetPerformance[0] as facilitiesProjectPerformance;
+          this.loadTable_Facility(res.facilitiesProjetPerformance);
+        }
+        this.oilAndGasBody = oilInfo;
+        this.newTechnologyBody = techInfo;
+        this.facilitiesProjectPerformanceBody = facInfo;
+      });
   }
 
   loadTable_OilGas(data) {
@@ -346,13 +377,19 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
 
   Delete_Technology(event) {
     let info = this.newTechnologyBody as newTechnologyAndConformityAssessment;
-      this.workprogram
-      .post_Technology(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
-        .subscribe(res => {
-          if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-          }
-          else{
+    this.workprogram
+      .post_Technology(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
           this.loadTable_Technology(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
@@ -387,15 +424,22 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   }
 
   Delete_Facility(event) {
-    let info = this.facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
-      this.workprogram
-      .post_FacilityProject(info, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, event.target.value, "DELETE")
-        .subscribe(res => {
-          debugger;
-          if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-          }
-          else{
+    let info = this
+      .facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
+    this.workprogram
+      .post_FacilityProject(
+        info,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        event.target.value,
+        'DELETE'
+      )
+      .subscribe((res) => {
+        debugger;
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
           this.loadTable_Facility(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
@@ -456,28 +500,35 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   }
 
   saveTechnology() {
-          let budgetInfo = {} as newTechnologyAndConformityAssessment;
-          this.newTechnologyBody.companyNumber = 0;
-          this.newTechnologyBody.id =  0;
-          this.newTechnologyBody.year_of_WP = this.genk.wpYear;
-          this.newTechnologyBody.omL_Name= this.genk.OmlName;
-          for (let item in this.newTechnologyBody) {
-             if (item != 'id' && item != 'field_ID') {
-              budgetInfo[this.genk.upperText(item)] = this.newTechnologyBody[item]?.toString() ?? '';
-            }
-          }
-          this.workprogram
-          .post_Technology(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
-            .subscribe(res => {
-              if(res.statusCode == 300){
-                this.modalService.logNotice("Error", res.message, 'error');
-              }
-              else{
-              this.loadTable_Technology(res.data);
-              this.modalService.logNotice("Success", res.message, 'success');
-              }
-            })
-            }
+    let budgetInfo = {} as newTechnologyAndConformityAssessment;
+    this.newTechnologyBody.companyNumber = 0;
+    this.newTechnologyBody.id = 0;
+    this.newTechnologyBody.year_of_WP = this.genk.wpYear;
+    this.newTechnologyBody.omL_Name = this.genk.OmlName;
+    for (let item in this.newTechnologyBody) {
+      if (item != 'id' && item != 'field_ID') {
+        budgetInfo[this.genk.upperText(item)] =
+          this.newTechnologyBody[item]?.toString() ?? '';
+      }
+    }
+    this.workprogram
+      .post_Technology(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
+          this.loadTable_Technology(res.data);
+          this.modalService.logNotice('Success', res.message, 'success');
+        }
+      });
+  }
 
   saveFacility() {
     let budgetInfo = {} as facilitiesProjectPerformance;
@@ -491,18 +542,24 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           this.facilitiesProjectPerformanceBody[item]?.toString() ?? '';
       }
     }
-    this.workprogram.post_FacilityProject(budgetInfo, this.genk.wpYear, this.genk.OmlName, this.genk.fieldName, '','')
-    .subscribe(res => {
-      if(res.statusCode == 300){
-            this.modalService.logNotice("Error", res.message, 'error');
-      }
-      else{
-            this.loadTable_Facility(res.data);
-            this.modalService.logNotice("Success", res.message, 'success');
-      }
-    })
+    this.workprogram
+      .post_FacilityProject(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
+          this.loadTable_Facility(res.data);
+          this.modalService.logNotice('Success', res.message, 'success');
+        }
+      });
   }
-
 
   saveEvidenceOfDesignSafetyCaseApproval(DeFile: any) {
     this.EvidenceOfDesignSafetyCaseApprovalFile = <File>DeFile.target.files[0];

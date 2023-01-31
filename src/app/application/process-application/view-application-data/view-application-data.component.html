@@ -83,4 +83,149 @@
       </tbody>
     </table>
   </div>
+
+  <!--HSE-->
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentIncidences.length > 0">
+    <h2>Accident / Incidence Reporting</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hhaiColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentIncidences">
+          <td *ngFor="let colDef of hhaiColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentIncidenceTypes.length > 0">
+    <h2>Accident Incidence Type</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hdecpColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentIncidenceTypes">
+          <td *ngFor="let colDef of hdecpColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAccidentModels.length > 0">
+    <h2>Accident Incidence Model</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hhaimColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAccidentModels">
+          <td *ngFor="let colDef of hhaimColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAssetRegisters.length > 0">
+    <h2>
+      Asset Register Template (Prescriptive Equipment Inspection Strategy)
+    </h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hharColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAssetRegisters">
+          <td *ngFor="let colDef of hharColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseAssetRegisterRBIs.length > 0">
+    <h2>Asset Register Template (RBI Equipment Inspection Strategy)</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hharrbiColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseAssetRegisterRBIs">
+          <td *ngFor="let colDef of hharrbiColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--Legal-->
+
+  <div class="apptable wptablebox" *ngIf="legalArbitrations.length > 0">
+    <h2>Legal Arbitration</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hlaColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of legalArbitrations">
+          <td *ngFor="let colDef of hlaColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="legalLitigations.length > 0">
+    <h2>Legal Litigation</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hllColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of legalLitigations">
+          <td *ngFor="let colDef of hllColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -401,4 +401,60 @@ export class AdminService {
       { params: { appID } }
     );
   }
+
+  getSBU() {
+    return this.http.get<any>(`${environment.apiUrl}/application/getSBUs`);
+  }
+
+  getRoles() {
+    return this.http.get<any>(`${environment.apiUrl}/application/getroles`);
+  }
+
+  addSBU(name: string, code: string) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/createSBU`,
+      {},
+      { params: { name, code } }
+    );
+  }
+
+  addRole(name: string, description: string) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/createRole`,
+      {},
+      { params: { name, description } }
+    );
+  }
+
+  editSBU(id: number, name: string, code: string) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/editSBU`,
+      {},
+      { params: { id, name, code } }
+    );
+  }
+
+  editRole(id: number, name: string, description: string) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/editRole`,
+      {},
+      { params: { id, name, description } }
+    );
+  }
+
+  deleteSBU(id: number) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/deleteSBU`,
+      {},
+      { params: { id } }
+    );
+  }
+
+  deleteRole(id: number) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/deleteRole`,
+      {},
+      { params: { id } }
+    );
+  }
 }

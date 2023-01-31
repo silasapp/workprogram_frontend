@@ -7,9 +7,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
+  IField,
   ModalService,
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
@@ -21,7 +24,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConcessionBaseComponent implements OnInit {
-  @ViewChild('conselect', { static: false }) concessionSelect: ElementRef<HTMLSelectElement>;
+  @ViewChild('conselect', { static: false })
+  concessionSelect: ElementRef<HTMLSelectElement>;
   concessionForm: FormGroup;
   wkpYear: string;
   wkpYearList = [];
@@ -36,34 +40,54 @@ export class ConcessionBaseComponent implements OnInit {
     private gen: GenericService,
     private modal: ModalService,
     private auth: AuthenticationService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private modalService: ModalService
   ) {
     this.genk = gen;
+
+    console.log('omlname', localStorage.getItem('Concession'));
   }
 
   ngOnInit(): void {
-    // this.concessionForm = new FormGroup(
-    //   {
-    //     year: new FormControl(this.wkpYear, [Validators.required]),
-    //     concession_Held: new FormControl(this.concessionHeld, [
-    //       Validators.required,
-    //     ]),
-    //     Field: new FormControl(this.field, [Validators.required]),
-    //   },
-    //   {}
-    // );
+    this.route.queryParamMap.subscribe((param) => {
+      const rejectId = param.get('rejectId');
+      const sbU_Tables = param.get('sbU_Tables');
+
+      this.genk.rejectId = +rejectId ? +rejectId : this.genk.rejectId;
+      this.genk.sbU_Tables = sbU_Tables?.split('|')
+        ? sbU_Tables?.split('|')
+        : this.genk.sbU_Tables;
+    });
+
+    this.concessionForm = new FormGroup(
+      {
+        year: new FormControl(this.wkpYear, [Validators.required]),
+        concession_Held: new FormControl(this.concessionHeld, [
+          Validators.required,
+        ]),
+        Field: new FormControl(this.field, [Validators.required]),
+      },
+      {}
+    );
+
+    // this.genk.Concession$.next(JSON.parse(localStorage.getItem('Concession')));
+
+    // this.cd.markForCheck();
 
     this.getConcessions();
   }
 
   getConcessions() {
-    debugger;
+    this.modalService.logCover('loading...', true);
+
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
-        this.genk.OMLList = res.listObject.map((r) => r.con);
+        this.genk.OMLList = this.concessionHeldList;
+        this.genk.Concessions$.next(res.listObject);
+        this.genk.Concessions = res.listObject;
         let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
         this.concessionHeldList.splice(ind, 1);
         this.concessionHeldList.unshift(this.genk.OmlName);
@@ -72,15 +96,25 @@ export class ConcessionBaseComponent implements OnInit {
           this.selectConcession(localStorage.getItem('OmlName'));
         }
         this.cd.markForCheck();
+        this.modalService.togCover();
       });
   }
 
   changeConcessionHeld(e) {
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
+
+    const concession = this.genk.Concessions.find(
+      (o: IConcession) => o.con == this.genk.OmlName
+    );
+
+    this.genk.Concession$.next(concession);
+    localStorage.setItem('Concession', JSON.stringify(concession));
+
     localStorage.setItem('OmlName', this.genk.OmlName);
     this.cd.markForCheck();
 
+    this.modalService.logCover('loading...', true);
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
@@ -97,6 +131,8 @@ export class ConcessionBaseComponent implements OnInit {
           this.genk.Field_List = null;
           this.cd.markForCheck();
         }
+
+        this.modalService.togCover();
       });
   }
 
@@ -128,7 +164,17 @@ export class ConcessionBaseComponent implements OnInit {
   changeConcessionField(e) {
     this.field = e.target.value;
     this.genk.fieldName = this.field;
-    this.genk.fieldFullName = this.genk.Field_List.filter(x => x.field_ID == this.genk.fieldName)[0].field_Name;
+
+    const _field = this.genk.Fields?.find(
+      (f: IField) => f.field_Name == this.field
+    );
+
+    this.genk.Field = _field;
+    this.genk.Field$.next(_field);
+
+    this.genk.fieldFullName = this.genk.Field_List.filter(
+      (x) => x.field_ID == this.genk.fieldName
+    )[0].field_Name;
     localStorage.setItem('fieldFullName', this.genk.fieldFullName);
     this.modal.logConcessionSituation(this.concessionHeld);
   }

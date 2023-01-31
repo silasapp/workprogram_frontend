@@ -71,6 +71,7 @@ export class MydeskComponent implements OnInit {
   }
 
   getAppsOnMyDesk() {
+    this.modalService.logCover('loading...', true);
     this.workprogram.getAppsOnMyDesk().subscribe((res) => {
       if (res.statusCode == 300) {
         this.modalService.logNotice('Error', res.message, 'error');
@@ -78,6 +79,7 @@ export class MydeskComponent implements OnInit {
         this.getAppsOnMyDesk = res;
         this.loadTable_Applications(res.data);
       }
+      this.modalService.togCover();
     });
   }
 
