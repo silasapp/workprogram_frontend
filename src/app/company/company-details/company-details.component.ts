@@ -28,59 +28,20 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    this.getCompanyDetails();
-    debugger;
-    //  this.d = this.companyService.currentCompanyValue;
     
+    this.getCompanyDetails();
+  
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
-    
-   debugger;
+
    this.initForm();
     this.cd.markForCheck();
   }
 
 
   initForm() {
-    debugger;
-   // this.companyDetails = this.d as CompanyDetails;
-    //console.log(d.address_of_Company);
-    // this.companyDetailsForm = this.fb.group({
-    //   companyId: [
-    //     { value: this.auth.currentUserValue.companyId, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   companyName: [
-    //     { value: this.auth.currentUserValue.companyName, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   companyEmail: [
-    //     { value: this.auth.currentUserValue.companyEmail, disabled: true },
-    //     Validators.required,
-    //   ],
-    //   opeN_DATE: [''],
-    //   closE_DATE: [''],
-    //   my_open_date: [''],
-    //   my_close_date: [''],
-    //   address_of_Company: [d.address_of_Company, Validators.required],
-    //   contact_Person: [d.contact_Person || '', Validators.required],
-    //   phone_No: [d.phone_No, Validators.required],
-    //   email_Address: [d.email_Address, Validators.required],
-    //   name_of_MD_CEO: [d.name_of_MD_CEO, Validators.required],
-    //   phone_NO_of_MD_CEO: [d.phone_NO_of_MD_CEO, Validators.required],
-    //   alternate_Contact_Person: [''],
-    //   phone_No_alt: [''],
-    //   email_Address_alt: [''],
-    //   system_date_year: [''],
-    //   system_date: [''],
-    //   system_date_proposed_year: [''],
-    // });
-
-
-
-debugger;
+ 
  // this.companyDetails = this.d as CompanyDetails;
     debugger;
     this.companyDetailsForm = new FormGroup({
@@ -119,6 +80,18 @@ debugger;
          ),
 
     }, {});
+
+
+    this.companyDetailsForm= this.fb.group({
+      companyId: ['', Validators.required],
+      companyName: ['', Validators.required],
+      companyEmail: ['', Validators.required],
+      name_of_MD_CEO: ['', Validators.required],
+      phone_NO_of_MD_CEO: ['', Validators.required],
+      contact_Person: ['', Validators.required],
+      phone_No: ['', Validators.required],
+      email_Address: ['', Validators.required],
+    });
 
     this.cd.markForCheck();
   }

@@ -39,6 +39,9 @@ export class StartComponent implements OnInit{
 
   ngOnInit(): void {
     this.getWPYears();
+    localStorage.setItem('OmlName', '');
+    localStorage.setItem('fieldName', '');
+    localStorage.setItem('wkpYear', '');
   }
 
   changeWPYear(e) {
