@@ -14,7 +14,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory {{ disableForm | json }}
+    Note:*All Fields are Mandatory
   </h1>
   <span
     style="
@@ -32,7 +32,10 @@
   <div [formGroup]="RoyaltyForm">
     <div class="toprow">
       <div style="width: 30%">
-        <label class="labelwp"> Has Crude Oil Royalty Payment Made?</label>
+        <label class="labelwp">
+          Has Crude Oil Royalty Payment Made?
+          {{ isEditable(SBUTABLE.ROYALTYs) | json }}</label
+        >
         <div class="wpwidth">
           <div class="inputshadow">
             <select
@@ -108,7 +111,7 @@
     </div>
     <br />
 
-    <div class="toprow" >
+    <div class="toprow">
       <div style="width: 30%">
         <label class="labelwp"> Miscellaneous </label>
 
@@ -126,16 +129,16 @@
       </div>
 
       <div style="width: 30%">
-        <label class="labelwp"> Has Royalty Payment Been Made For The Previous Quarter?</label>
+        <label class="labelwp">
+          Has Royalty Payment Been Made For The Previous Quarter?</label
+        >
         <div class="wpwidth">
           <div class="inputshadow">
             <select
               class="dropwp"
               formControlName="crude_Oil_Royalty"
-           
               [(ngModel)]="royaltyBody.last_Qntr_Royalty"
-              [attr.disabled]="disableForm ? true : null"
-
+              [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
             >
               <option selected disabled>
                 ---- Please Select an Option ----
