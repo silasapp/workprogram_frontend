@@ -84,10 +84,11 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
+        debugger;
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
-          this.genk.fieldName = res[0];
+          this.genk.fieldName = res[0].field_ID;
           localStorage.setItem('fieldName', this.genk.fieldName);
           this.cd.markForCheck();
         } else {
