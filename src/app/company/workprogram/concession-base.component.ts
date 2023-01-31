@@ -45,6 +45,8 @@ export class ConcessionBaseComponent implements OnInit {
     private modalService: ModalService
   ) {
     this.genk = gen;
+
+    console.log('omlname', localStorage.getItem('Concession'));
   }
 
   ngOnInit(): void {
@@ -68,6 +70,10 @@ export class ConcessionBaseComponent implements OnInit {
       },
       {}
     );
+
+    // this.genk.Concession$.next(JSON.parse(localStorage.getItem('Concession')));
+
+    // this.cd.markForCheck();
 
     this.getConcessions();
   }
@@ -95,7 +101,6 @@ export class ConcessionBaseComponent implements OnInit {
   }
 
   changeConcessionHeld(e) {
-    debugger;
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
 
@@ -104,6 +109,7 @@ export class ConcessionBaseComponent implements OnInit {
     );
 
     this.genk.Concession$.next(concession);
+    localStorage.setItem('Concession', JSON.stringify(concession));
 
     localStorage.setItem('OmlName', this.genk.OmlName);
     this.cd.markForCheck();
