@@ -101,14 +101,14 @@
             padding: 7px 10px;
           "
         >
-          <input
+          <input disabled
             (keypress)="genk.restrictData($event)"
             formControlName="proposed_year_data"
-            [(ngModel)]="initialBody.proposed_year_data"
+            [(ngModel)]="this.proposed_well_number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            [(ngModel)]="initialBody.proposed_year_data"
+            [(ngModel)]="this.proposed_well_number"
             
           />
         </div>

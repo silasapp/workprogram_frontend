@@ -34,7 +34,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   quaterIWTwo = false;
   quaterIWThree = false;
   quaterIWFour = false;
-
+  proposed_well_number:number;
   currentIWQuater = 1;
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -322,6 +322,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
               );
             }
               debugger;
+          this.proposed_well_number=this._quaterIWOneData.length;
             this.selectedPage=1;
             this.assignDataRows();
             this.assignPageNum();
