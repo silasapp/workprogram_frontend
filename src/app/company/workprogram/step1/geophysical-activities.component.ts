@@ -26,7 +26,6 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPGeophysicalActivitiesComponent implements OnInit {
-  public disableForm: boolean = true;
   public SBUTABLE = SBUTABLE;
 
   AcquisitionForm: FormGroup;
@@ -236,24 +235,24 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.genk.Concession$.subscribe((con: IConcession) => {
       console.log('deb', con, this.genk.Fields, this.genk.Field);
       if (!con) {
-        this.disableForm = true;
+        this.genk.disableForm = true;
         this.cd.markForCheck();
         return;
       }
 
-      this.disableForm = con.isEditable ? false : true;
+      this.genk.disableForm = con.isEditable ? false : true;
       this.cd.markForCheck();
     });
 
     this.genk.Field$.subscribe((field: IField) => {
       console.log('deb', field, this.genk.Fields);
       if (!field) {
-        this.disableForm = true;
+        this.genk.disableForm = true;
         this.cd.markForCheck();
         return;
       }
 
-      this.disableForm = field.isEditable ? false : true;
+      this.genk.disableForm = field.isEditable ? false : true;
       this.cd.markForCheck();
     });
 
@@ -265,7 +264,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
-    return this.disableForm ? true : null;
+    return this.genk.disableForm ? true : null;
   }
 
   get f() {
