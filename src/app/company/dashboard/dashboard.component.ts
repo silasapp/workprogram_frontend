@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   f_ColumnValue = [];
   c_isTabVisible: boolean;
   f_isTabVisible: boolean;
-  previousYear = new Date().getFullYear() - 2;
+  previousYear = new Date().getFullYear();
   data: any;
   selectedColumns: any[] = [];
   isTableOpt = false;
