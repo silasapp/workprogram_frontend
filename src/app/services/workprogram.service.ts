@@ -3611,12 +3611,14 @@ export class WorkProgramService {
       );
   }
 
-  post_Production(budget: productionCost,
+  post_Production(
+    budget: productionCost,
     year: string,
     omlName: string,
     fieldName: string,
     id,
-    actionToDo) {
+    actionToDo
+  ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
@@ -4602,7 +4604,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_ENVIRONMENTAL_STUDIES_NEW`,
         conbody,
         {
           params: {
@@ -5971,7 +5973,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-
     debugger;
     return this.http
       .post<any>(

@@ -411,15 +411,15 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'areThereRemediationFund',
-      header: 'Is there any Evidence of Remediation Fund?',
+      columnDef: 'areThereEvidentOfSampling',
+      header: 'Do you have Evidence of Sampling Certificate?',
     },
     {
-      columnDef: 'evidenceOfPaymentPath',
-      header: 'Upload Evidence of Payment',
+      columnDef: 'evidenceOfSamplingPath',
+      header: 'Evidence of Payment of Sampling Certificate',
     },
     {
-      columnDef: 'reasonForNoRemediation',
+      columnDef: 'reasonForNoEvidenceSampling',
       header: 'Remark',
     },
   ];
@@ -465,8 +465,29 @@ export class SWPHseComponent implements OnInit {
       header: 'Do you have Evidence of Registration of Trust Fund?',
     },
     {
-      columnDef: 'safetyLast2YearsFilename',
-      header: 'Accident Statistics for the last 2 years',
+      columnDef: 'doYouHaveEvidenceOfPay',
+      header:
+        'Do you have Evidence of 3% Payment to the Trust Fund by the Settlor?',
+    },
+    {
+      columnDef: 'evidenceOfRegTrustFundPath',
+      header: 'Evidence of Trust Fund Registration',
+    },
+    {
+      columnDef: 'evidenceOfPayTrustFundPath',
+      header: 'Evidence of Trust Fund Payment',
+    },
+    {
+      columnDef: 'uploadCommDevPlanApprovalPath',
+      header: 'Evidence of Community Development Plan Approval',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfRegTF',
+      header: 'Reason for no Evidence of Trust Fund Registration',
+    },
+    {
+      columnDef: 'reasonForNoEvidenceOfPayTF',
+      header: 'Reason for no Evidence of Trust Fund Payment',
     },
   ];
 
@@ -4508,24 +4529,25 @@ export class SWPHseComponent implements OnInit {
             res.hseEnvironmentalManagementSystems;
         }
 
-        if (res.hseOperationalCases) {
-          this.operationsSafetyCases = res.hseOperationalCases;
+        if (res.hseOperationSafetyCases) {
+          this.operationsSafetyCases = res.hseOperationSafetyCases;
         }
 
-        if (res.hseEnvironmentalMgtPlans) {
-          this.environmentalManagementPlans = res.hseEnvironmentalMgtPlans;
+        if (res.hseEnvironmentalManagementPlans) {
+          this.environmentalManagementPlans =
+            res.hseEnvironmentalManagementPlans;
         }
 
-        if (res.hseeFluenceCompliences) {
-          this.effluentMonitoringCompliances = res.hseeFluenceCompliences;
+        if (res.hseEnfluenceConliences) {
+          this.effluentMonitoringCompliances = res.hseEnfluenceConliences;
         }
 
-        if (res.hseghGs) {
-          this.GHGManagementPlans = res.hseghGs;
+        if (res.hseghgPlans) {
+          this.GHGManagementPlans = res.hseghgPlans;
         }
 
-        if (res.hseHostComms) {
-          this.HostCommunitiesDevelopments = res.hseHostComms;
+        if (res.hseHostCommunities) {
+          this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
 
         this.cd.markForCheck();
