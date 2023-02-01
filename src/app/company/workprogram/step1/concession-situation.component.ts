@@ -192,8 +192,9 @@ export class SWPConcessionSituationComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
         ]),
-        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty,  [
-          Validators.required]),
+        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -211,6 +212,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     );
 
     this.genk.Concession$.subscribe((con: IConcession) => {
+      console.log('called....', con);
       if (!con) {
         this.genk.disableForm = true;
         this.cd.markForCheck();
@@ -221,6 +223,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         this.genk.Fields?.length > 0
           ? !this.genk.Field.isEditable
           : !con.isEditable;
+
       this.cd.markForCheck();
     });
 
@@ -232,13 +235,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   isEditable(group: string): boolean | null {
-    console.log(
-      'degu',
-      this.genk.disableForm,
-      group,
-      group && this.genk.sbU_Tables?.find((t) => t == group),
-      this.genk.sbU_Tables
-    );
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
@@ -388,7 +384,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   submit() {
     let me = this.concessionBody;
-    this.csSubmitted=true;
+    this.csSubmitted = true;
 
     if (this.ConcessionSituationForm.invalid) {
       this.cd.markForCheck();

@@ -45,6 +45,8 @@ export class ConcessionBaseComponent implements OnInit {
     private modalService: ModalService
   ) {
     this.genk = gen;
+
+    console.log('omlname', localStorage.getItem('Concession'));
   }
 
   ngOnInit(): void {
@@ -69,6 +71,10 @@ export class ConcessionBaseComponent implements OnInit {
       {}
     );
 
+    // this.genk.Concession$.next(JSON.parse(localStorage.getItem('Concession')));
+
+    // this.cd.markForCheck();
+
     this.getConcessions();
   }
 
@@ -78,24 +84,25 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
+        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
         this.genk.OMLList = this.concessionHeldList;
         this.genk.Concessions$.next(res.listObject);
         this.genk.Concessions = res.listObject;
-        let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
-        this.concessionHeldList.splice(ind, 1);
-        this.concessionHeldList.unshift(this.genk.OmlName);
-        this.concessionSelect.nativeElement.value = this.genk.OmlName;
         if (this.genk.OmlName) {
+          let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
+          this.concessionHeldList.splice(ind, 1);
+          this.concessionHeldList.unshift(this.genk.OmlName);
+          this.concessionSelect.nativeElement.value = this.genk.OmlName;
           this.selectConcession(localStorage.getItem('OmlName'));
         }
+
         this.cd.markForCheck();
         this.modalService.togCover();
       });
   }
 
   changeConcessionHeld(e) {
-    debugger;
     this.concessionHeld = e.target.value;
     this.genk.OmlName = this.concessionHeld;
 
@@ -104,6 +111,7 @@ export class ConcessionBaseComponent implements OnInit {
     );
 
     this.genk.Concession$.next(concession);
+    localStorage.setItem('Concession', JSON.stringify(concession));
 
     localStorage.setItem('OmlName', this.genk.OmlName);
     this.cd.markForCheck();
@@ -112,21 +120,21 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
+        debugger;
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
-          this.genk.Fields = res;
-          this.genk.fieldName = res[0];
+          this.genk.fieldName = res[0].field_ID;
           localStorage.setItem('fieldName', this.genk.fieldName);
-          this.cd.markForCheck();
         } else {
           this.modal.logConcessionSituation(this.concessionHeld);
           this.Field_List = res;
           this.genk.Field_List = null;
-          this.cd.markForCheck();
+
         }
 
         this.modalService.togCover();
+        this.cd.markForCheck();
       });
   }
 

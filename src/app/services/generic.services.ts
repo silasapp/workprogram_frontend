@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ApplicationDetails } from '../models/application-details';
 import { CONCESSION_SITUATION } from '../models/step1-concession.model';
 import { HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW } from '../models/step5_hse.model';
@@ -33,7 +33,9 @@ export class GenericService {
   wkProposedYear = new Date().getFullYear();
 
   public disableForm: boolean = true;
-  public Concession$ = new Subject<IConcession>();
+  public Concession$ = new BehaviorSubject<IConcession>(
+    JSON.parse(localStorage.getItem('Concession'))
+  );
   public Concessions$ = new Subject<IConcession[]>();
   public Concessions: IConcession[] = [];
   public OMLList: IConcession[] = [];
