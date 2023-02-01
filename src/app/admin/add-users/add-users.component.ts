@@ -2,7 +2,11 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { GenericService } from 'src/app/services';
+import {
+  IRole,
+  ISBU,
+} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
 import { UpdateUserComponent } from './update-user/update-user.component';
@@ -12,6 +16,9 @@ import { UpdateUserComponent } from './update-user/update-user.component';
   styleUrls: ['../admin.component.scss'],
 })
 export class AddUsersComponent implements OnInit {
+  public roles: IRole[] = [];
+  public sbus: ISBU[] = [];
+
   genk: GenericService;
   cdr: ChangeDetectorRef;
   title = 'Add Users';
@@ -51,6 +58,7 @@ export class AddUsersComponent implements OnInit {
 
   constructor(
     private adminservice: AdminService,
+    private modalService: ModalService,
     private cd: ChangeDetectorRef,
     private gen: GenericService,
     private dialog: MatDialog,
@@ -69,6 +77,9 @@ export class AddUsersComponent implements OnInit {
     this.userForm.reset();
     //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
     //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
+
+    this.getRoles();
+    this.getSBUs();
   }
 
   initForm() {
@@ -81,6 +92,39 @@ export class AddUsersComponent implements OnInit {
       phonE_NO: ['', Validators.required],
       designation: ['', Validators.required],
       companY_ID: ['', Validators.required],
+      rolE_ID: ['', Validators.required],
+      sbU_ID: [''],
+    });
+  }
+
+  getRoles() {
+    this.modalService.logCover('loading...', true);
+    this.adminservice.getRoles().subscribe({
+      next: (res) => {
+        this.roles = res.roles;
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
+      error: (error) => {
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
+    });
+  }
+
+  getSBUs() {
+    this.modalService.logCover('loading...', true);
+
+    this.adminservice.getSBU().subscribe({
+      next: (res) => {
+        this.sbus = res.sbUs;
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
+      error: (error) => {
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
     });
   }
 
