@@ -40,8 +40,11 @@
                 <div class="col-md-6">
                     <select formControlName="year" id="year" class="form-select">
                         <option selected disabled>--Select work Programme year -- </option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
+                   
+                         <option *ngFor="let year of YearsList" [value]="year" [selected]="currentYear === year">
+                            {{ year }}
+                        </option>
+
                     </select>
             </div>
         </div>

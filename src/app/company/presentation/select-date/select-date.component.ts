@@ -32,6 +32,7 @@ export class SelectDateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPresentation();
+    this.getWorkProgrammeStartAndEndDates();
     debugger;
     // this.start= "2022-12-12";
     // this.stop=new Date("12/17/2022");
@@ -68,6 +69,17 @@ export class SelectDateComponent implements OnInit {
     this.companyService.getPresentation().subscribe((res) => {
       this.date = res.wp_date;
       this.time = res.wp_time;
+      this.cd.markForCheck();
+    });
+  }
+
+  getWorkProgrammeStartAndEndDates(){
+    debugger;
+    this.companyService.getWorkProgrammeStartAndEndDates().subscribe((res) => {
+      debugger;
+      this.start = res.start_date;
+      this.stop = res.end_date;
+    
       this.cd.markForCheck();
     });
   }

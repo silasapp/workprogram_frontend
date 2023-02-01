@@ -24,7 +24,7 @@ export class CompanyService {
   }
 
   editCompanyDetails(details: any) {
-    
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/presentation/editcompanydetails`,
@@ -33,6 +33,7 @@ export class CompanyService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
@@ -79,6 +80,19 @@ export class CompanyService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
+          return response;
+        })
+      );
+  }
+
+  getWorkProgrammeStartAndEndDates(){
+    return this.http
+      .get<any>(`${environment.apiUrl}/presentation/Get_StartAndEndDates`)
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          debugger;
           return response;
         })
       );
@@ -104,7 +118,7 @@ export class CompanyService {
       .post<any>(
         `${environment.apiUrl}/presentation/uploadpresentation`,
         formData,
-        { params: { year: year } }
+        { params: { year: year }, }
       )
       .pipe(
         retry(this.num),

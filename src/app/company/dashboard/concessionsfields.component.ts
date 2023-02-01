@@ -538,7 +538,7 @@ debugger;
 this.resultconcessionList=[];
     for(var counter in this.allConcessionsData){
      var fieldConces= this.allConcessionsData[counter];
-      if(fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML')){
+      if((fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML'))&&(!this.resultconcessionList.includes(fieldConces))){
         this.resultconcessionList.push(fieldConces);
       }
     }
