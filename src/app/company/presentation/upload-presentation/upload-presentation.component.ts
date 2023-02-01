@@ -16,6 +16,8 @@ import { CompanyComponent } from '../../company.component';
 export class UploadPresentationComponent implements OnInit {
   uploadPresentationForm: FormGroup;
   private d;
+  YearsList=[];
+  currentYear = new Date().getFullYear();
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +28,9 @@ export class UploadPresentationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getThreeYearsBehindAndAfter();
+
+
     this.uploadPresentationForm = this.fb.group({
       companyId: [
         { value: this.auth.currentUserValue.companyId, disabled: true },
@@ -61,6 +66,23 @@ export class UploadPresentationComponent implements OnInit {
         }
         console.log(res);
       });
+  }
+
+  getThreeYearsBehindAndAfter() {
+    debugger;
+    this.YearsList = [];
+    var num: number = 2;
+    var i: number;
+    for (i = num; i > 0; i--) {
+      this.YearsList[num-i] = this.currentYear - i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+
+    for (i = 0; i <num; i++) {
+      this.YearsList[num+i] = this.currentYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+    debugger;
   }
 
   Alert(title: string, text: string, icon: any) {

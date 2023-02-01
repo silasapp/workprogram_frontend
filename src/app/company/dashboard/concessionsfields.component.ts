@@ -193,6 +193,7 @@ export class ConcessionsfieldsComponent implements OnInit {
       {}
     );
     this.getConcessionFields();
+    this.cd.markForCheck();
   }
 
   get eqt() {
@@ -201,6 +202,7 @@ export class ConcessionsfieldsComponent implements OnInit {
 
   getConcessionFields() {
     this.adminservice.getCompanyConcessions().subscribe((res) => {
+      debugger;
       this.concessionList = res.concessions;
       let concessionInfo = {} as ConcessionDetails;
       let fieldInfo = {} as FieldDetails;
@@ -536,11 +538,10 @@ debugger;
 this.resultconcessionList=[];
     for(var counter in this.allConcessionsData){
      var fieldConces= this.allConcessionsData[counter];
-      if(fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML')){
+      if((fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML'))&&(!this.resultconcessionList.includes(fieldConces))){
         this.resultconcessionList.push(fieldConces);
       }
     }
-debugger;
 
 //resultArray.filter(s => s.includes('OML') || s.includes('PML'))
 //this.resultconcessionList= this.allConcessions.filter(this.isOMLorPML)

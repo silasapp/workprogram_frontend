@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CompanyService } from '../../services/company.service';
@@ -10,10 +10,11 @@ import { CompanyDetails } from 'src/app/models/company-details';
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
   styleUrls: ['./company-details.component.scss', '../company.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: CompanyDetails= new CompanyDetails();
+  companyDetails: CompanyDetails;
   private d: any;
   auth: AuthenticationService;
 
@@ -28,9 +29,9 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.getCompanyDetails();
-  
+
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
@@ -41,7 +42,7 @@ export class CompanyDetailsComponent implements OnInit {
 
 
   initForm() {
- 
+
  // this.companyDetails = this.d as CompanyDetails;
     debugger;
     // this.companyDetailsForm = new FormGroup({
@@ -50,7 +51,7 @@ export class CompanyDetailsComponent implements OnInit {
     //     [Validators.required]
     //   ),
     //   companyName: new FormControl(
-    //     this.auth.currentUserValue.companyName, 
+    //     this.auth.currentUserValue.companyName,
     //     [Validators.required]
     //   ),
     //   companyEmail: new FormControl(
@@ -58,20 +59,20 @@ export class CompanyDetailsComponent implements OnInit {
     //     [Validators.required]
     //   ),
     //   name_of_MD_CEO: new FormControl(
-    //     this.companyDetails.name_of_MD_CEO, 
+    //     this.companyDetails.name_of_MD_CEO,
     //     [Validators.required]
     //     ),
     //   phone_NO_of_MD_CEO: new FormControl(
-    //     this.companyDetails.phone_NO_of_MD_CEO, 
+    //     this.companyDetails.phone_NO_of_MD_CEO,
     //     [Validators.required]
     //     ),
     //     contact_Person: new FormControl(
-    //       this.companyDetails.contact_Person, 
+    //       this.companyDetails.contact_Person,
     //     [Validators.required]
-    //     ), 
+    //     ),
 
     //   phone_No: new FormControl(
-    //     this.companyDetails.phone_No, 
+    //     this.companyDetails.phone_No,
     //     [Validators.required]
     //     ),
     //   email_Address: new FormControl(
@@ -85,7 +86,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyDetailsForm= this.fb.group({
       companyId: [this.auth.currentUserValue.companyId, Validators.required],
       companyName: [this.auth.currentUserValue.companyName, Validators.required],
-      companyEmail: [this.auth.currentUserValue, Validators.required],
+      companyEmail: [this.auth.currentUserValue.companyEmail, Validators.required],
       name_of_MD_CEO: ['', Validators.required],
       phone_NO_of_MD_CEO: ['', Validators.required],
       contact_Person: ['', Validators.required],
@@ -96,7 +97,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.cd.markForCheck();
   }
 
- 
+
 
   get f() {
     return this.companyDetailsForm.controls;
@@ -104,20 +105,16 @@ export class CompanyDetailsComponent implements OnInit {
 
 getCompanyDetails()
 {
-  this.companyService.getCompanyDetails().subscribe((res) => {
-    debugger;
-    
+  this.companyService.getCompanyDetails()
+  .subscribe((res) => {
     this.companyDetails = res.data;
-
+    this.cd.markForCheck();
   });
 }
 
 
   onSubmit() {
-    debugger;
-    //var ii = this.companyDetailsForm.getRawValue();
-    debugger;
-    this.companyDetails.companY_NAME=this.auth.currentUserValue.companyName;
+    this.companyDetails.companyName=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
     debugger;
@@ -125,6 +122,7 @@ getCompanyDetails()
       .editCompanyDetails(this.companyDetails)
       .subscribe(
         (res) => {
+          debugger;
           if (res.statusCode == 200) {
             this.Alert('Success', 'Company Details successfully updated', 'success');
           } else {
