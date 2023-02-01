@@ -45,8 +45,6 @@ export class ConcessionBaseComponent implements OnInit {
     private modalService: ModalService
   ) {
     this.genk = gen;
-
-    console.log('omlname', localStorage.getItem('Concession'));
   }
 
   ngOnInit(): void {
@@ -73,7 +71,7 @@ export class ConcessionBaseComponent implements OnInit {
 
     // this.genk.Concession$.next(JSON.parse(localStorage.getItem('Concession')));
 
-    // this.cd.markForCheck();
+    this.cd.markForCheck();
 
     this.getConcessions();
   }
