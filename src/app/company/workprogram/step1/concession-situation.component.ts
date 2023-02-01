@@ -168,10 +168,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.area_in_square_meter_based_on_company_records,
           [Validators.required]
         ),
-        comment: new FormControl(this.concessionBody.comment, [
-          Validators.required,
-          Validators.minLength(2),
-        ]),
+        comment: new FormControl(this.concessionBody.comment),
       },
       {}
     );
