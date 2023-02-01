@@ -308,7 +308,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.fiveYearsBehind = [];
     var num: number = 5;
     var i: number;
-    for (i = num; i > 0; i--) {
+    for (i = num; i >= 0; i--) {
       this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }

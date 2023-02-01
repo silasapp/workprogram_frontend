@@ -3,7 +3,7 @@ export class CompanyDetails{
     companyName: string;
     companyEmail: string;
     email: string;
-    companY_NAME : string;
+    CompanyName : string;
     address_of_Company: string;
     contact_Person: string;
     phone_No: string;

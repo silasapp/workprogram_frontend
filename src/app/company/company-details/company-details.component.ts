@@ -85,7 +85,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyDetailsForm= this.fb.group({
       companyId: [this.auth.currentUserValue.companyId, Validators.required],
       companyName: [this.auth.currentUserValue.companyName, Validators.required],
-      companyEmail: [this.auth.currentUserValue, Validators.required],
+      companyEmail: [this.auth.currentUserValue.companyEmail, Validators.required],
       name_of_MD_CEO: ['', Validators.required],
       phone_NO_of_MD_CEO: ['', Validators.required],
       contact_Person: ['', Validators.required],
@@ -117,7 +117,7 @@ getCompanyDetails()
     debugger;
     //var ii = this.companyDetailsForm.getRawValue();
     debugger;
-    this.companyDetails.companY_NAME=this.auth.currentUserValue.companyName;
+    this.companyDetails.CompanyName=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
     debugger;
@@ -125,6 +125,7 @@ getCompanyDetails()
       .editCompanyDetails(this.companyDetails)
       .subscribe(
         (res) => {
+          debugger;
           if (res.statusCode == 200) {
             this.Alert('Success', 'Company Details successfully updated', 'success');
           } else {

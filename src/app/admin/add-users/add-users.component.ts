@@ -155,6 +155,7 @@ export class AddUsersComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger;
     this.adminservice.addUser(this.userForm.getRawValue()).subscribe((res) => {
       if (res.statusCode == 200) {
         this.Alert('Success', res.message, 'success');

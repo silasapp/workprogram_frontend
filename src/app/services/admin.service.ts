@@ -251,6 +251,7 @@ export class AdminService {
   }
 
   addUser(e: any) {
+    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/admin/create_user`, {
         email: e.email,
@@ -264,6 +265,7 @@ export class AdminService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );

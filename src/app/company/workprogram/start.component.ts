@@ -20,6 +20,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
 export class StartComponent implements OnInit{
   boardForm: FormGroup;
   wkpYear: string;
+  currentYear = new Date().getFullYear();
   wkpYearList = [];
   concessionHeld: string;
   concessionHeldList = [];
