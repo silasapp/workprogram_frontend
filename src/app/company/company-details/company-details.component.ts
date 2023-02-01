@@ -14,7 +14,7 @@ import { CompanyDetails } from 'src/app/models/company-details';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  companyDetails: CompanyDetails= new CompanyDetails();
+  companyDetails: CompanyDetails;
   private d: any;
   auth: AuthenticationService;
 
@@ -114,7 +114,7 @@ getCompanyDetails()
 
 
   onSubmit() {
-    this.companyDetails.CompanyName=this.auth.currentUserValue.companyName;
+    this.companyDetails.companyName=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
     debugger;
