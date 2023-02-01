@@ -260,6 +260,8 @@ export class AdminService {
         designation: e.designation,
         phonE_NO: e.phonE_NO,
         companY_ID: e.companY_ID,
+        rolE_ID: e.rolE_ID,
+        sbU_ID: e.sbU_ID,
       })
       .pipe(
         retry(this.num),
