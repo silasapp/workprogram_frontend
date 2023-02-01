@@ -24,7 +24,7 @@ export class CompanyService {
   }
 
   editCompanyDetails(details: any) {
-    
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/presentation/editcompanydetails`,
@@ -33,6 +33,7 @@ export class CompanyService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
