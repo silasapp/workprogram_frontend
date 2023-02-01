@@ -271,7 +271,15 @@
       >EXPLORATORY ACTIVITIES
     </div>
     <hr size="5" />
-    <div style="display: flex; justify-content: center; color: black">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        color: black;
+        font-size: larger;
+        font-weight: 600;
+      "
+    >
       <span>SEISMIC ACTIVITIES </span>
     </div>
     <br />
@@ -448,7 +456,7 @@
     <br />
     <hr size="5" />
     <div style="display: flex; justify-content: center; color: black">
-      <span>DRILLING </span>
+      <span style="font-size: larger; font-weight: 600">DRILLING </span>
     </div>
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
@@ -581,33 +589,34 @@
 
     <br />
   </div>
-  <div *ngIf="isTabVisible_2" class="wptablebox">
+
+  <div *ngIf="budgetPerformanceExploratorys.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_2">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of eaColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_2">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+
+        <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+          <tr *ngFor="let row of budgetPerformanceExploratorys">
+            <td *ngFor="let h of eaColHeaderDef">
+              {{ row[h.columnDef] }}
             </td>
-            <td>
-              <button
-                class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Exploratory($event)"
-                value="{{ y.value.id }}"
-                [attr.disabled]="
-                  isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)
-                "
-              >
-                Delete
-              </button>
-            </td>
+            <button
+              class="btn btn-danger btn-sm submitbtn"
+              (click)="Delete_Exploratory(row)"
+              [attr.disabled]="
+                isEditable(
+                  SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                )
+              "
+            >
+              Delete
+            </button>
           </tr>
         </tbody>
       </table>
@@ -630,7 +639,9 @@
     <hr size="5" />
     <br />
     <div style="display: flex; justify-content: center; color: black">
-      <span>DRILLING, WORKOVER AND COMPLETION </span>
+      <span style="font-size: larger; font-weight: 600"
+        >DRILLING, WORKOVER AND COMPLETION
+      </span>
     </div>
     <br />
     <br />
@@ -825,26 +836,26 @@
       <br />
     </div>
   </div>
-  <div *ngIf="isTabVisible_3" class="wptablebox">
+
+  <div *ngIf="developmentDrillings.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_3">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of ddaColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_3">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of developmentDrillings">
+            <td *ngFor="let colDef of ddaColHeaderDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Development($event)"
-                value="{{ y.value.id }}"
+                (click)="Delete_Development(row)"
                 [attr.disabled]="
                   isEditable(
                     SBUTABLE.BUDGET_PERFORMANCE_DEVELOPMENT_DRILLING_ACTIVITIEs
@@ -879,7 +890,9 @@
     <hr size="5" />
     <br />
     <div style="display: flex; justify-content: center; color: black">
-      <span>BUDGET FOR THE STAGES IN FACILITIES DEVELOPMENT </span>
+      <span style="font-size: larger; font-weight: 600"
+        >BUDGET FOR THE STAGES IN FACILITIES DEVELOPMENT
+      </span>
     </div>
     <br />
     <br />
@@ -1349,35 +1362,33 @@
       <br />
     </div>
   </div>
-  <div *ngIf="isTabVisible_4" class="wptablebox">
+  <div *ngIf="facilitiesDevelopments.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_4">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of fdColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_4">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+
+        <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+          <tr *ngFor="let row of facilitiesDevelopments">
+            <td *ngFor="let h of fdColHeaderDef">
+              {{ row[h.columnDef] }}
             </td>
-            <td>
-              <button
-                class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Facility($event)"
-                value="{{ y.value.id }}"
-                [attr.disabled]="
-                  isEditable(
-                    SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
-                  )
-                "
-              >
-                Delete
-              </button>
-            </td>
+            <button
+              class="btn btn-danger btn-sm submitbtn"
+              (click)="Delete_Facility($event)"
+              [attr.disabled]="
+                isEditable(
+                  SBUTABLE.BUDGET_PERFORMANCE_FACILITIES_DEVELOPMENT_PROJECTs
+                )
+              "
+            >
+              Delete
+            </button>
           </tr>
         </tbody>
       </table>
@@ -1528,26 +1539,26 @@
       <br />
     </div>
   </div>
-  <div *ngIf="isTabVisible_5" class="wptablebox">
+
+  <div *ngIf="budgetPerformanceProductionCosts.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_5">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of pcColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_5">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of budgetPerformanceProductionCosts">
+            <td *ngFor="let colDef of pcColHeaderDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Production($event)"
-                value="{{ y.value.id }}"
+                (click)="Delete_Production(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
                 "

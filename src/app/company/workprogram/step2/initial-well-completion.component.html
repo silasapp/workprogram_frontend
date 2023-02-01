@@ -102,13 +102,11 @@
           "
         >
           <input
-            (keypress)="genk.restrictData($event)"
-            formControlName="proposed_year_data"
-            [(ngModel)]="initialBody.proposed_year_data"
+            formControlName="proposed_well_number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            [(ngModel)]="initialBody.proposed_year_data"
+            [(ngModel)]="initialBody.proposed_well_number"
             [attr.disabled]="
               isEditable(
                 SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs

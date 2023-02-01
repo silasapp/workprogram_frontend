@@ -27,6 +27,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
 export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
+  public oilAndGasProjects: oilAndGasFacilityMaintenanceProject[] = [];
+
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
@@ -58,6 +60,98 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   EvidenceOfDesignSafetyCaseApprovalFile?: File = null;
   EvidenceOfDesignSafetyCaseApprovalNewName: string;
   EvidenceOfDesignSafetyCaseApprovalNameDoc: string;
+  //#endregion
+
+  //#region table header definitions
+  oagpColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'actual_Proposed',
+      header: 'Please provide values for Actual and Proposed year',
+    },
+    {
+      columnDef: 'proposed_Capital_Expenditure_USD',
+      header: 'Budget for other Activities(Dollar)',
+    },
+    {
+      columnDef: 'proposed_Capital_Expenditure_NGN',
+      header: 'Budget for Direct Exploration and Production Activities(Naira)',
+    },
+    {
+      columnDef: 'project_Timeline',
+      header: 'Project Timeline',
+    },
+
+    {
+      columnDef: 'project_Stage',
+      header: 'Project Stage',
+    },
+    {
+      columnDef: 'production_Product_Offtakers',
+      header: 'Product Offtakers',
+    },
+    // {
+    //   columnDef: 'product_Off_takers',
+    //   header: 'Budget for Direct Exploration and Production Activities(Naira)',
+    // },
+    {
+      columnDef: 'planned_ongoing_and_routine_maintenance',
+      header: 'Planned, ongoing and routine maintenance?',
+    },
+
+    {
+      columnDef: 'objective_Drivers_',
+      header: 'Objective / Drivers',
+    },
+    {
+      columnDef: 'nigerian_Content_Value',
+      header: 'Nigerian Content Value',
+    },
+    {
+      columnDef: 'new_Technology_',
+      header: 'New Technology',
+    },
+    {
+      columnDef: 'name',
+      header: 'Name',
+    },
+    {
+      columnDef: 'major_Projects',
+      header: 'Major Projects',
+    },
+    {
+      columnDef: 'has_it_been_adopted_by_DPR_',
+      header: 'Has it been adopted by NUPRC?',
+    },
+    {
+      columnDef: 'feed',
+      header: 'Feed',
+    },
+    {
+      columnDef: 'detailed_Engineering',
+      header: 'Detailed Engineering',
+    },
+    {
+      columnDef: 'construction_Commissioning_',
+      header: 'Construction / Commissioning',
+    },
+
+    {
+      columnDef: 'conceptual',
+      header: 'Conceptual',
+    },
+    {
+      columnDef: 'comment_',
+      header: 'Comment',
+    },
+    {
+      columnDef: 'completion_Status',
+      header: 'Completion Status (%)',
+    },
+  ];
   //#endregion
 
   constructor(
@@ -273,17 +367,20 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           .facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
 
         if (res.oilAndGasProjects != null && res.oilAndGasProjects.length > 0) {
+          this.oilAndGasProjects = res.oilAndGasProjects;
           oilInfo = res
             .oilAndGasProjects[0] as oilAndGasFacilityMaintenanceProject;
-          this.loadTable_OilGas(res.oilAndGasProjects);
+        } else {
+          this.oilAndGasProjects = [];
+          oilInfo = new oilAndGasFacilityMaintenanceProject();
         }
+
         if (
           res.oilCondensateTechnologyAssessment != null &&
           res.oilCondensateTechnologyAssessment.length > 0
         ) {
           techInfo = res
             .oilCondensateTechnologyAssessment[0] as newTechnologyAndConformityAssessment;
-          this.loadTable_Technology(res.oilCondensateTechnologyAssessment);
         }
         if (
           res.facilitiesProjetPerformance != null &&
@@ -291,42 +388,16 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         ) {
           facInfo = res
             .facilitiesProjetPerformance[0] as facilitiesProjectPerformance;
-          this.loadTable_Facility(res.facilitiesProjetPerformance);
         }
         this.oilAndGasBody = oilInfo;
         this.newTechnologyBody = techInfo;
         this.facilitiesProjectPerformanceBody = facInfo;
+
+        this.cd.markForCheck();
       });
   }
 
-  loadTable_OilGas(data) {
-    this.columnHeader = [];
-    this.columnValue = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader.push(data[0]);
-      this.columnValue.push(result);
-    } else {
-      for (let item1 in this.oilAndGasForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue.push(this.oilAndGasBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_OilGas(event) {
+  Delete_OilGas(row) {
     let info = this.oilAndGasBody as oilAndGasFacilityMaintenanceProject;
 
     this.workprogram
@@ -335,44 +406,18 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_OilGas(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
-  }
-
-  loadTable_Technology(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.newTechnologyForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.newTechnologyBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
   }
 
   Delete_Technology(event) {
@@ -386,41 +431,15 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         event.target.value,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Technology(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
-  }
-
-  loadTable_Facility(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.facilitiesProjectPerformanceForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.facilitiesProjectPerformanceBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
   }
 
   Delete_Facility(event) {
@@ -440,7 +459,6 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Facility(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
@@ -489,13 +507,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_OilGas(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -520,13 +539,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Technology(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -551,13 +571,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Facility(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
