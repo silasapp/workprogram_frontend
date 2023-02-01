@@ -5215,6 +5215,7 @@ export class WorkProgramService {
     year: string,
     omlName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
@@ -5224,6 +5225,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
