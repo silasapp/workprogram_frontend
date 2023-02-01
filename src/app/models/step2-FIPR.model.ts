@@ -470,7 +470,8 @@ export class OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION {
   puaUploadFilename: string = '';
   uuoaUploadFilename: string = '';
   companY_ID: string = '';
-  companyNumber: number;
+  companyNumber: number=0;
+ field_ID:number=0;
   gas_AG: string;
 }
 

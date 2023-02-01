@@ -5710,6 +5710,7 @@ export class WorkProgramService {
   }
 
   saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string) {
+    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -5717,6 +5718,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
@@ -5730,6 +5732,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+       
           return response;
         })
       );
@@ -5990,11 +5993,12 @@ export class WorkProgramService {
   }
 
   saveUnitization(
-    conbody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION,
+    conbody: any,
     year: string,
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION`,
