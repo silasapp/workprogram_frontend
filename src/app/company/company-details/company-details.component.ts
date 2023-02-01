@@ -114,10 +114,11 @@ getCompanyDetails()
 
 
   onSubmit() {
-    this.companyDetails.CompanyName=this.auth.currentUserValue.companyName;
+    debugger;
+    let rese =this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;
-    debugger;
+
     this.companyService
       .editCompanyDetails(this.companyDetails)
       .subscribe(
