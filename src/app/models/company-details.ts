@@ -1,7 +1,7 @@
 export class CompanyDetails{
-    companyId: string;
-    companyName: string;
-    companyEmail: string;
+    companyId: string='';
+    companyName: string='';
+    companyEmail: string='';
     email: string;
     address_of_Company: string;
     contact_Person: string;

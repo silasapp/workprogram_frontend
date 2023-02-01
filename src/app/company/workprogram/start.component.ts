@@ -59,7 +59,9 @@ export class StartComponent implements OnInit{
   }
 
   getWPYears() {
+    debugger;
     this.workprogram.getWPYears().subscribe((res) => {
+      debugger;
       this.wkpYearList = res;
       this.cd.markForCheck();
     });
