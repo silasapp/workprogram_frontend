@@ -87,13 +87,13 @@ export class ConcessionBaseComponent implements OnInit {
         this.genk.OMLList = this.concessionHeldList;
         this.genk.Concessions$.next(res.listObject);
         this.genk.Concessions = res.listObject;
-        if (this.genk.OmlName) {
-          let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
-          this.concessionHeldList.splice(ind, 1);
-          this.concessionHeldList.unshift(this.genk.OmlName);
-          this.concessionSelect.nativeElement.value = this.genk.OmlName;
-          this.selectConcession(localStorage.getItem('OmlName'));
-        }
+        // if (this.genk.OmlName) {
+        //   let ind = this.concessionHeldList.indexOf(this.genk.OmlName);
+        //   this.concessionHeldList.splice(ind, 1);
+        //   this.concessionHeldList.unshift(this.genk.OmlName);
+        //   this.concessionSelect.nativeElement.value = this.genk.OmlName;
+        //   this.selectConcession(localStorage.getItem('OmlName'));
+        // }
 
         this.cd.markForCheck();
         this.modalService.togCover();
