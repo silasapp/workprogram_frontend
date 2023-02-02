@@ -1107,23 +1107,23 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     },
     {
       columnDef: 'reprocessinG_planned',
-      header: 'Concept',
+      header: 'Reprocessing(Planned)',
     },
     {
       columnDef: 'processinG_planned',
-      header: 'Contruction/Fabrication',
+      header: 'Processing(Planned)',
     },
     {
       columnDef: 'exploratioN_planned',
-      header: 'DECOMMISSIONING AND ABANDONMENT',
+      header: 'Exploration(Planned)',
     },
     {
       columnDef: 'appraisaL_planned',
-      header: 'DETAILED ENGINEERING',
+      header: 'Appraisal(Planned)',
     },
     {
       columnDef: 'acquisitioN_planned',
-      header: 'Feed',
+      header: 'Acquisition(Planned)',
     },
   ];
 
@@ -1157,7 +1157,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     },
     {
       columnDef: 'direcT_COST_planned',
-      header: 'COMPLETION(Planned)',
+      header: 'DIRECT COST(Planned)',
     },
     {
       columnDef: 'indirecT_COST_planned',
