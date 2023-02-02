@@ -208,7 +208,7 @@
           <div style="display: flex">
             <div class="inpdiv">
               <input
-                formControlName="quantum_Planned"
+                formControlName="geo_area_of_coverage"
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="acquisitionBody.geo_area_of_coverage"
                 class="inpute"
@@ -218,11 +218,11 @@
               />
             </div>
           </div>
-          <div *ngIf="submitted" class="eroce">
+          <div class="eroce">
             <span *ngIf="!f['geo_area_of_coverage'].valid">
               Area of Coverage is required
             </span>
-        </div>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -248,11 +248,11 @@
                   />
                 </div>
               </div>
-              <div *ngIf="submitted" class="eroce">
-                <span *ngIf="!f['budeget_Allocation_NGN'].valid">
-                  *
+              <div class="eroce">
+                <span *ngIf="!f['budeget_Allocation_NGN']?.valid">
+                  This field is required!
                 </span>
-            </div>
+              </div>
             </div>
 
             <div style="width: 98%">
@@ -268,7 +268,7 @@
                       acquisitionBody.budeget_Allocation_USD =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="acquisitionBody.budeget_Allocation_USD"
+                    [(ngModel)]="acquisitionBody.budeget_Allocation_USD"
                     class="inpute"
                     [attr.disabled]="
                       isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
@@ -277,14 +277,11 @@
                 </div>
               </div>
 
-              
-               <div *ngIf="submitted" class="eroce">
-                <span *ngIf="!f['budeget_Allocation_USD'].valid">
-                  *
+              <div class="eroce">
+                <span *ngIf="!f['budeget_Allocation_USD']?.valid">
+                  This field is required!
                 </span>
-            </div>
-
-
+              </div>
             </div>
           </div>
         </div>
@@ -308,11 +305,11 @@
             </div>
           </div>
 
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['geo_method_of_acquisition'].valid">
-              Acquisition Type is required
+          <div class="eroce">
+            <span *ngIf="!f['geo_method_of_acquisition']?.valid">
+              Acquisition Type is required!
             </span>
-        </div>
+          </div>
         </div>
       </div>
       <br />
@@ -335,11 +332,11 @@
               />
             </div>
           </div>
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['quantum_Planned'].valid">
-              Quantum Planned  is required
+          <div class="eroce">
+            <span *ngIf="!f['quantum_Planned']?.valid">
+              Quantum Planned is required!
             </span>
-        </div>
+          </div>
         </div>
 
         <div style="width: 30%; margin-top: auto">
@@ -357,12 +354,11 @@
               />
             </div>
           </div>
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['quantum'].valid">
-              Quantum Acquired  is required
+          <div class="eroce">
+            <span *ngIf="!f['quantum']?.valid">
+              Quantum Acquired is required!
             </span>
-        </div>
-
+          </div>
         </div>
 
         <div class="rowbox">
@@ -380,11 +376,11 @@
               />
             </div>
           </div>
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['quantum_Approved'].valid">
-              Quantum Approved  is required
+          <div class="eroce">
+            <span *ngIf="!f['quantum_Approved']?.valid">
+              Quantum Approved is required!
             </span>
-        </div>
+          </div>
         </div>
       </div>
       <br />
@@ -426,11 +422,11 @@
               />
             </div>
           </div>
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['quantum_Approved'].valid">
-              Quantum Approved  is required
+          <div class="eroce">
+            <span *ngIf="!f['name_of_Contractor']?.valid">
+              Quantum Approved is required!
             </span>
-        </div>
+          </div>
         </div>
 
         <div class="rowbox">
@@ -454,14 +450,14 @@
             </div>
           </div>
 
-
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['geo_type_of_data_acquired'].valid">
-              Quantum Approved  is required
+          <div class="eroce">
+            <span *ngIf="!f['geo_type_of_data_acquired']?.valid">
+              Quantum Approved is required!
             </span>
+          </div>
         </div>
-          
-        </div>
+
+        <!-- genk.restrictNoOfFoldValue($event) -->
 
         <div class="rowbox">
           <label class="labelwp">No of folds (1-100)</label>
@@ -470,11 +466,7 @@
               <input
                 formControlName="no_of_Folds"
                 (keypress)="genk.restrictData($event)"
-                [value]="acquisitionBody.no_of_Folds"
-                (ngModelChange)="
-                  acquisitionBody.no_of_Folds =
-                    genk.restrictNoOfFoldValue($event)
-                "
+                (ngModelChange)="(acquisitionBody.no_of_Folds)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
                 "
@@ -483,13 +475,11 @@
             </div>
           </div>
 
-
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['no_of_Folds'].valid">
-              No of Fold  is required
+          <div class="eroce">
+            <span *ngIf="!f['no_of_Folds']?.valid">
+              No of Fold is required!
             </span>
-        </div>
-
+          </div>
         </div>
       </div>
 
@@ -552,6 +542,7 @@
           </div>
         </div> -->
 
+        <!-- genk.restrictRecordLengthValue($event) -->
         <div class="rowbox">
           <label class="labelwp">Record Length of Data (0-59 seconds)</label>
           <div style="display: flex">
@@ -560,10 +551,7 @@
                 formControlName="geo_Record_Length_of_Data"
                 (keypress)="genk.restrictData($event)"
                 [value]="acquisitionBody.geo_Record_Length_of_Data"
-                (ngModelChange)="
-                  acquisitionBody.geo_Record_Length_of_Data =
-                    genk.restrictRecordLengthValue($event)
-                "
+                [(ngModel)]="acquisitionBody.geo_Record_Length_of_Data"
                 class="inpute"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
@@ -572,14 +560,11 @@
             </div>
           </div>
 
-
-          <div *ngIf="submitted" class="eroce">
-            <span *ngIf="!f['no_of_Folds'].valid">
-              No of Fold  is required
+          <div class="eroce">
+            <span *ngIf="!f['geo_Record_Length_of_Data']?.valid">
+              No of Fold is required!
             </span>
-        </div>
-
-          
+          </div>
         </div>
 
         <div class="rowbox">
@@ -598,7 +583,6 @@
               ></textarea>
             </div>
           </div>
-          
         </div>
       </div>
       <br />
@@ -621,13 +605,19 @@
       </div>
 
       <div style="text-align: center">
-        <button #btn class="quarterbtn" (click)="saveQuarterAcquisition()">
+        <button
+          #btn
+          class="quarterbtn"
+          (click)="saveQuarterAcquisition()"
+          [disabled]="AcquisitionForm.invalid"
+        >
           Save Quarter 1
         </button>
       </div>
     </div>
   </div>
 </div>
+
 <br /><br />
 
 <div class="wppage" [formGroup]="ProcessingForm">
@@ -679,7 +669,7 @@
     </div>
   </div>
   <br /><br />
-  
+
   <div style="width: 30%">
     <label class="labelwp">Type of Processing</label>
     <div style="display: flex">
@@ -699,14 +689,13 @@
       </div>
     </div>
 
-    <div *ngIf="pSubmitted" class="eroce">
-      <span *ngIf="!pf['type_of_Processing'].valid">
+    <div class="eroce">
+      <span *ngIf="!pf['type_of_Processing']?.valid">
         Processing Type is required
       </span>
+    </div>
   </div>
 
-  </div>
- 
   <br /><br />
   <div style="display: flex; width: 100%; justify-content: space-between">
     <div style="width: 30%">
@@ -773,13 +762,11 @@
             </div>
           </div>
 
-
-          <div *ngIf="pSubmitted" class="eroce">
-            <span *ngIf="!pf['processed_Proposed'].valid">
+          <div class="eroce">
+            <span *ngIf="!pf['processed_Proposed']?.valid">
               Proposed Processing is required
             </span>
-        </div>
-
+          </div>
         </div>
       </div>
     </div>
@@ -848,12 +835,11 @@
             </div>
           </div>
 
-          <div *ngIf="pSubmitted" class="eroce">
-            <span *ngIf="!pf['processed_Proposed'].valid">
+          <div class="eroce">
+            <span *ngIf="!pf['processed_Proposed']?.valid">
               Proposed Reprocessing is required
             </span>
-        </div>
-
+          </div>
         </div>
       </div>
     </div>
@@ -1014,12 +1000,11 @@
           "
         />
       </div>
-      <div *ngIf="pSubmitted" class="eroce">
-        <span *ngIf="!pf['name_of_Contractor'].valid">
+      <div class="eroce">
+        <span *ngIf="!pf['name_of_Contractor']?.valid">
           Name of Contractor is required
         </span>
-    </div>
-
+      </div>
     </div>
 
     <!-- <div style="width: 30%">
@@ -1069,11 +1054,11 @@
               />
             </div>
           </div>
-          <div *ngIf="pSubmitted" class="eroce">
-            <span *ngIf="!pf['budeget_Allocation_NGN'].valid">
-              *
+          <div class="eroce">
+            <span *ngIf="!pf['budeget_Allocation_NGN']?.valid">
+              This field is required!
             </span>
-        </div>
+          </div>
         </div>
 
         <div style="width: 98%">
@@ -1082,7 +1067,7 @@
             <div class="inpdivcurrency">
               <span class="currencywp">$</span>
               <input
-                formControlName="budeget_Allocation_NGN"
+                formControlName="budeget_Allocation_USD"
                 (keypress)="genk.restrictData($event)"
                 (keyup)="genk.formatCurrency($event)"
                 (change)="
@@ -1098,13 +1083,11 @@
             </div>
           </div>
 
-
-          <div *ngIf="pSubmitted" class="eroce">
-            <span *ngIf="!pf['budeget_Allocation_USD'].valid">
-              *
+          <div class="eroce">
+            <span *ngIf="!pf['budeget_Allocation_USD']?.valid">
+              This field is required!
             </span>
-        </div>
-
+          </div>
         </div>
       </div>
     </div>
@@ -1134,13 +1117,11 @@
         </div>
       </div>
 
-
       <div *ngIf="pSubmitted" class="eroce">
         <span *ngIf="!pf['geo_Type_of_Data_being_Processed'].valid">
           Data Being Processed Type is required
         </span>
-    </div>
-
+      </div>
     </div>
   </div>
   <br /><br />
@@ -1192,7 +1173,6 @@
             ></textarea>
           </div>
         </div>
-        
       </div>
     </div>
     <br /><br />
@@ -1202,6 +1182,7 @@
       #btnprocess
       class="quarterbtn"
       (click)="saveQuarterProcessing()"
+      [disabled]="ProcessingForm.invalid"
       [attr.disabled]="isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)"
     >
       Save Quarter 1

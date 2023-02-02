@@ -250,7 +250,9 @@ export class HSE_SAFETY_CULTURE_TRAINING {
 export class HSE_OCCUPATIONAL_HEALTH_MANAGEMENT {
   id: number = 0;
   OHMplanFilePath: File;
+  OHMplanFileName: File;
   OHMplanCommunicationFilePath: File;
+  OHMplanCommunicationFileName: File;
 
   DoYouHaveAnOhm: string = '';
   ReasonForNoOhm: string = '';
