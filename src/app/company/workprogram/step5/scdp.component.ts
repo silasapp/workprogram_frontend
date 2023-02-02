@@ -190,28 +190,28 @@ export class SWPScdpComponent implements OnInit {
       header: 'WORK PROGRAM YEAR',
     },
     {
-      columnDef: 'type_of_project_excuted',
-      header: 'ACTUAL / PROPOSED',
+      columnDef: 'actual_proposed',
+      header: 'Please provide values for the Proposed year',
     },
     {
-      columnDef: 'year_GMou_was_signed',
-      header: 'PROJECT TITLE',
+      columnDef: 'csR_',
+      header: 'Project Title',
     },
     {
-      columnDef: 'project_Location',
-      header: 'BUDGET PERFORMANCE(PLANNED)',
+      columnDef: 'budget_',
+      header: 'Planned Budget Total ($)',
     },
     {
-      columnDef: 'component_of_project',
-      header: 'BUDGET PERFORMANCE (ACTUAL)',
+      columnDef: 'actual_Spent',
+      header: 'BActual (Budget)',
     },
     {
-      columnDef: 'actual_Budget_Total_Dollars',
-      header: 'PERCENTAGE COMPLETION',
+      columnDef: 'percentage_Completion_',
+      header: 'Percentage Completion',
     },
     {
-      columnDef: 'beneficiary_Community',
-      header: 'BENEFICIARY COMMUNITIES',
+      columnDef: 'beneficiary_Communities',
+      header: 'Beneficiary Communities',
     },
   ];
 
@@ -1095,8 +1095,8 @@ export class SWPScdpComponent implements OnInit {
           this.mouProjects = res.hseSustainable_MOU;
         }
 
-        if (res.scdp_capitalprojects_Body) {
-          this.capitalProjects = res.scdp_capitalprojects_Body;
+        if (res.hseSustainableDevProjProgramCsr) {
+          this.capitalProjects = res.hseSustainableDevProjProgramCsr;
         }
 
         if (res.hseSustainable_Schorlarship) {

@@ -604,6 +604,7 @@ export class GenericService {
   }
 
   addCurrencyDecimal(event) {
+    debugger;
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, '')).toFixed(2);
 

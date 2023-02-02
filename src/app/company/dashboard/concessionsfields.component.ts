@@ -289,6 +289,7 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   ConcessionSubmit() {
+    debugger;
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
@@ -306,6 +307,7 @@ export class ConcessionsfieldsComponent implements OnInit {
     this.adminservice
       .Post_ConcessionDetails(concessionInfo, id, actionToDo)
       .subscribe((res) => {
+        this.getConcessionFields();
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
@@ -317,16 +319,14 @@ export class ConcessionsfieldsComponent implements OnInit {
   }
 
   FieldSubmit() {
-    //
+    debugger;
     let fieldInfo = {} as FieldDetails;
     let actionToDo = '';
     let id = '';
 
-    //
     for (let item in this.fieldBody) {
       if (item != 'field_ID') {
-        fieldInfo[this.genk.upperText(item)] =
-          this.fieldBody[item]?.toString() ?? '';
+        fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
       } else {
         id = this.fieldBody[item]?.toString();
       }
@@ -343,10 +343,10 @@ export class ConcessionsfieldsComponent implements OnInit {
     let dell = this.concessionList.filter((res) => {
       return res.concession_Held == this.fieldBody['concession_Name'];
     });
+
     fieldInfo['Concession_Id'] = dell[0].consession_Id;
 
-    this.adminservice
-      .Post_FieldDetails(fieldInfo, id, actionToDo)
+    this.adminservice.Post_FieldDetails(fieldInfo, id, actionToDo)
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');

@@ -158,7 +158,7 @@
       </div>
 
 
-      
+
     </div>
     <div class="eroce">
       <!-- <span *ngIf="f['miscellaneous'].errors['minLength'] && submitted">
@@ -533,7 +533,7 @@
                   formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (ngModelChange)="
+                  (change)="
                     concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
                       genk.addCurrencyDecimal($event)
                   "
