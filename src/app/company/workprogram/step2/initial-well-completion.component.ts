@@ -450,10 +450,10 @@ debugger;
       .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {
         debugger;
-        this.modalService.logNotice('Success', res.popText, 'success');
-        this.getInitialCompletion();
+        this.modalService.logNotice('Success', res.popText, 'success');       
         this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
         this.InitialForm.reset;
+        this.getInitialCompletion();
         this.cd.markForCheck();
       });
   }
