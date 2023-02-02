@@ -24,7 +24,6 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConcessionBaseComponent implements OnInit {
-  @ViewChild('conselect', { static: false })
   concessionSelect: ElementRef<HTMLSelectElement>;
   concessionForm: FormGroup;
   wkpYear: string;
@@ -128,7 +127,10 @@ export class ConcessionBaseComponent implements OnInit {
           this.modal.logConcessionSituation(this.concessionHeld);
           this.Field_List = res;
           this.genk.Field_List = null;
-
+          this.genk.fieldName = null;
+          localStorage.setItem('fieldName', '');
+          localStorage.setItem('fieldFullName', '');
+          this.genk.fieldFullName = '';
         }
 
         this.modalService.togCover();
@@ -148,7 +150,7 @@ export class ConcessionBaseComponent implements OnInit {
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
-          this.genk.fieldName = res[0];
+          this.genk.fieldName = res[0].field_ID;
           localStorage.setItem('fieldName', this.genk.fieldName);
           this.cd.markForCheck();
         } else {
@@ -156,6 +158,9 @@ export class ConcessionBaseComponent implements OnInit {
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
+          localStorage.setItem('fieldName', '');
+          localStorage.setItem('fieldFullName', '');
+          this.genk.fieldFullName = '';
           this.cd.markForCheck();
         }
       });
