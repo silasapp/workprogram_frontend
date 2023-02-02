@@ -387,6 +387,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     debugger;
     let me = this.concessionBody;
     this.csSubmitted = true;
+    
 
     if (this.ConcessionSituationForm.invalid) {
       this.cd.markForCheck();

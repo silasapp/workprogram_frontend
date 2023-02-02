@@ -34,7 +34,7 @@ show=false;
   quaterIWTwo = false;
   quaterIWThree = false;
   quaterIWFour = false;
-  proposed_well_number: number;
+  proposed_well_number: number=0;
   currentIWQuater = 1;
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -233,6 +233,7 @@ show=false;
   }
 
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
+    this.show=true;
     debugger;
     if (quater === 1) {
       this.currentIWQuater = 1;
