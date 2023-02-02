@@ -3616,24 +3616,19 @@ export class WorkProgramService {
       );
   }
 
-  post_Production(budget: productionCost,
+  post_Production(
+    budget: productionCost,
     year: string,
     omlName: string,
     fieldName: string,
     id,
-    actionToDo) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
-        budget,
-        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
+    actionToDo
+  ) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/post_budget_performance_production_cost`,
+      budget,
+      { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+    );
   }
 
   post_BudgetProposal(
@@ -3980,7 +3975,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_waste_management_discharge_zone`,
+        `${environment.apiUrl}/workprogramme/post_hse_waste_management_dz`,
         conbody,
         {
           params: {
@@ -4607,7 +4602,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_hse_environmental_studies_new_updated`,
+        `${environment.apiUrl}/workprogramme/POST_HSE_ENVIRONMENTAL_STUDIES_NEW`,
         conbody,
         {
           params: {
@@ -5218,35 +5213,39 @@ export class WorkProgramService {
     year: string,
     omlName: string
   ) {
-    debugger;
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
-        conbody,
-        { params: { year: year, omlName: omlName } }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          debugger;
-          return response;
-        })
-      );
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
+      conbody,
+      { params: { year: year, omlName: omlName } }
+    );
+  }
+
+  deleteInitialWellCompletion(
+    conbody: INITIAL_WELL_COMPLETION_JOB1,
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
+      {},
+      {
+        params: {
+          omlName: omlName,
+          fieldName: fieldName,
+          year: year,
+          actionTodo: 'DELETE',
+        },
+      }
+    );
   }
 
   saveNigeriaContentQuestion(conbody: NIGERIA_CONTENT_QUESTION, year: string) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_question`,
-        conbody,
-        { params: { year: year } }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/post_nigeria_content_question`,
+      conbody,
+      { params: { year: year } }
+    );
   }
 
   deleteNigeriaContentTraining(
@@ -5255,35 +5254,26 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
-        conbody,
-        {
-          params: {
-            omlName: omlName,
-            fieldName: fieldName,
-            year: year,
-            actionTodo: 'DELETE',
-          },
-        }
-      )
-      .pipe(retry(this.num));
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
+      conbody,
+      {
+        params: {
+          omlName: omlName,
+          fieldName: fieldName,
+          year: year,
+          actionTodo: 'DELETE',
+        },
+      }
+    );
   }
 
   saveNigeriaContenttraining(conbody: NIGERIA_CONTENT_Training, year: string) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
-        conbody,
-        { params: { year: year } }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
+    return this.http.post<any>(
+      `${environment.apiUrl}/workprogramme/post_nigeria_content_training`,
+      conbody,
+      { params: { year: year } }
+    );
   }
 
   saveNigeriaUploadSuccessionPlan(
@@ -5983,7 +5973,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-
     debugger;
     return this.http
       .post<any>(

@@ -27,6 +27,8 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
 export class SWPBudgetProposalComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
+  public budgetProposalComponents: budgetProposal[] = [];
+
   budgetProposalForm: FormGroup;
   capexForm: FormGroup;
   OpexForm: FormGroup;
@@ -44,6 +46,33 @@ export class SWPBudgetProposalComponent implements OnInit {
   columnHeader_2 = [];
   columnValue_2 = [];
   isTabVisible_2 = false;
+
+  //#region table header definitions
+  pcColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'budget_for_other_Activities_Naira',
+      header: 'Budget for other Activities(Naira)',
+    },
+    {
+      columnDef: 'budget_for_other_Activities_Dollars',
+      header: 'Budget for other Activities(Dollar)',
+    },
+    {
+      columnDef:
+        'budget_for_Direct_Exploration_and_Production_Activities_Naira',
+      header: 'Budget for Direct Exploration and Production Activities(Naira)',
+    },
+    {
+      columnDef:
+        'budget_for_Direct_Exploration_and_Production_Activities_Dollars',
+      header: 'Budget for Direct Exploration and Production Activities(Dollar)',
+    },
+  ];
+  //#endregion
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -73,13 +102,16 @@ export class SWPBudgetProposalComponent implements OnInit {
           res.budgetProposalComponents != null &&
           res.budgetProposalComponents.length > 0
         ) {
+          this.budgetProposalComponents = res.budgetProposalComponents;
           budgetInfo = res.budgetProposalComponents[0] as budgetProposal;
-          this.loadTable_Budget(res.budgetProposalComponents);
           this.genk.isStep3 = true;
+        } else {
+          this.budgetProposalComponents = [];
+          budgetInfo = new budgetProposal();
         }
+
         if (res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
           capexInfo = res.budgetCapexOpex[0] as capexOpex;
-          this.loadTable_Opex(res.budgetCapexOpex);
           this.genk.isStep3 = true;
         }
 
@@ -142,8 +174,6 @@ export class SWPBudgetProposalComponent implements OnInit {
       remarks: new FormControl(this.capexOpexBody.remarks, Validators.required),
     });
 
-    
-
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -168,34 +198,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     return this.genk.disableForm ? true : null;
   }
 
-  loadTable_Budget(data) {
-    this.columnHeader = [];
-    this.columnValue = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader.push(data[0]);
-      this.columnValue.push(result);
-    } else {
-      for (let item1 in this.budgetProposalForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue.push(this.budgetProposalBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_Budget(event) {
+  Delete_Budget(row) {
     let info = this.budgetProposalBody as budgetProposal;
 
     this.workprogram
@@ -204,54 +207,18 @@ export class SWPBudgetProposalComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Budget(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
-  }
-
-  loadTable_Opex(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.OpexForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.capexOpexBody[item1]);
-        }
-      }
-
-      for (let item1 in this.capexForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.capexOpexBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_2 = true;
-
-    this.cd.markForCheck();
   }
 
   Delete_Opex(event) {
@@ -270,7 +237,6 @@ export class SWPBudgetProposalComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Budget(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
@@ -329,7 +295,6 @@ export class SWPBudgetProposalComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Budget(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
@@ -361,7 +326,6 @@ export class SWPBudgetProposalComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Opex(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });

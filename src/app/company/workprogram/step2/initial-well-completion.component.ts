@@ -103,10 +103,7 @@ show=false;
           this.initialBody.current_year_Actual_Number,
           [Validators.required]
         ),
-        proposed_year_data: new FormControl(
-          this.initialBody.proposed_year_data,
-          [Validators.required]
-        ),
+       
         proposed_initial_name: new FormControl(
           this.initialBody.proposed_initial_name,
           [Validators.required]
@@ -122,20 +119,15 @@ show=false;
         oil_or_gas_wells: new FormControl(this.initialBody.oil_or_gas_wells, [
           Validators.required,
         ]),
-        actual_Completion_Date: new FormControl(
-          this.initialBody.actual_Completion_Date,
+        proposed_Completion_Date: new FormControl(
+          this.initialBody.proposed_Completion_Date,
           [Validators.required]
         ),
         proposed_completion_days: new FormControl(
           this.initialBody.proposed_completion_days,
           [Validators.required]
         ),
-        proposed_Completion_Date: new FormControl(
-          this.initialBody.proposed_Completion_Date,
-          [Validators.required]),
-        remarks: new FormControl(this.initialBody.remarks, [
-          Validators.required,
-        ]),
+       
       },
       {}
 
@@ -267,7 +259,7 @@ show=false;
       btn.textContent = 'Add Initial Well For Quarter 3';
       this.proposed_well_number = this._initialBody.length;
       this.quaterIWThree = this.quaterIWThreeData[0].omL_Name ? true : false;
-  
+
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 3");
     }
@@ -280,8 +272,8 @@ show=false;
       this.cd.markForCheck();
       //this.getGeophysical("QUARTER 4");
     }
-    
-    
+
+
     this.selectedPage = 1;
     this.assignDataRows();
     this.assignPageNum();
@@ -346,7 +338,6 @@ show=false;
                 qIWOneData.proposed_Completion_Date
               );
             }
-
           }
 
 
@@ -381,7 +372,7 @@ show=false;
           this.quaterIWTwo = this.quaterIWTwoData[0].omL_Name ? true : false;
           this.cd.markForCheck();
         }
-        // 
+        //
 
 
         this.quaterIWThreeData =
@@ -430,9 +421,9 @@ show=false;
         }
 
 
-       
+
         this.cd.markForCheck();
-        
+
       });
   }
 
@@ -445,8 +436,12 @@ show=false;
       this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.initialBody.budeget_Allocation_USD =
       this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
+    this.initialBody.proposed_well_number = +(
+      this.initialBody.proposed_well_number as unknown as string
+    ).replace(/,/g, '');
 
     let sail: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
+
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
@@ -462,6 +457,25 @@ show=false;
         this.getInitialCompletion();
         this.initialBody = {} as INITIAL_WELL_COMPLETION_JOB1;
         this.cd.markForCheck();
+      });
+  }
+
+  deleteNCT(row: INITIAL_WELL_COMPLETION_JOB1) {
+    this.workprogram
+      .deleteInitialWellCompletion(
+        row,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        'TEST'
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+          this.getInitialCompletion();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 }

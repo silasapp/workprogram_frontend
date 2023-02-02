@@ -436,7 +436,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     console.log('proceeding', this.statusOfReservesPreceeding);
     this.workprogram
       .saveReserveUpdatePreceeding(
-        this.statusOfReservesPreceeding,
+        this.ReserveUpdatePreceedingForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -458,7 +458,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateCurrent() {
     this.workprogram
       .saveReserveUpdateCurrent(
-        this.statusOfReservesCurrent,
+        this.ReserveUpdateCurrentForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -480,7 +480,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateFiveYearProjection() {
     this.workprogram
       .saveReserveUpdateFiveYearPorjection(
-        this.reserveupdatefiveyearprojectionBody,
+        this.ReserveUpdateFiveYearProjectionForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -502,19 +502,19 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateOilCondensateCompanyAnnualProduction() {
     forkJoin([
       this.workprogram.saveReserveUpdateOilCondensateCompanyAnnualProduction(
-        this.reserveUpdateOilCondensateCompanyAnnualProductionBody,
+        this.reserveUpdateOilCondensateCompanyAnnualProductionForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
       ),
       this.workprogram.saveUpdateOilCondensateReservesAddition(
-        this.reserveUpdateOilCondensateReservesAdditionBody,
+        this.reserveupdateOilCondensateReservesAdditionForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
       ),
       this.workprogram.saveUpdateOilCondensateReservesDecline(
-        this.reserveUpdateOilCondensateReservesDeclineBody,
+        this.reserveUpdateOilCondensateReservesDeclineForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -536,7 +536,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveReplacementRatio() {
     this.workprogram
       .saveReserveReplacementRatio(
-        this.reserveReplacementRatioBody,
+        this.reserveReplacementRatioForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -558,7 +558,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateDepletionRate() {
     this.workprogram
       .saveReserveUpdateDepletionRate(
-        this.reserveUpdateDepletionRateBody,
+        this.reserveUpdateDepletionRateForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -580,7 +580,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateLifeIndex() {
     this.workprogram
       .saveReserveUpdateLifeIndex(
-        this.reserveUpdateLifeIndexBody,
+        this.reserveUpdateLifeIndexForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName
@@ -623,7 +623,7 @@ debugger;
   Submit_planningMinimumRequirement() {
     this.workprogram
       .post_planningMinimumRequirement(
-        this.planningMinimumRequirementBody,
+        this.planningMinimumRequirementForm.value,
         this.genk.wpYear,
         this.genk.OmlName,
         ''
@@ -632,12 +632,22 @@ debugger;
         next: (res) => {
           this.modalService.logNotice('Success', res.messsage, 'success');
 
-          this.getSWPR();
+          this.getPlanningRequirement();
           this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
         },
+      });
+  }
+
+  getPlanningRequirement() {
+    this.workprogram
+      .getFormFiveSWPR(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
+      .subscribe((res) => {
+        this.planningMinimumRequirementBody = res.data;
+
+        this.cd.markForCheck();
       });
   }
 
