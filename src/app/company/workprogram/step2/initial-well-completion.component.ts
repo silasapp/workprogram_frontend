@@ -101,8 +101,8 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           this.initialBody.current_year_Actual_Number,
           [Validators.required]
         ),
-        proposed_year_data: new FormControl(
-          this.initialBody.proposed_year_data,
+        proposed_well_number: new FormControl(
+          this.initialBody.proposed_well_number,
           [Validators.required]
         ),
         proposed_initial_name: new FormControl(
@@ -120,8 +120,8 @@ export class SWPInitialWellCompletionComponent implements OnInit {
         oil_or_gas_wells: new FormControl(this.initialBody.oil_or_gas_wells, [
           Validators.required,
         ]),
-        actual_Completion_Date: new FormControl(
-          this.initialBody.actual_Completion_Date,
+        proposed_Completion_Date: new FormControl(
+          this.initialBody.proposed_Completion_Date,
           [Validators.required]
         ),
         proposed_completion_days: new FormControl(
@@ -321,8 +321,8 @@ export class SWPInitialWellCompletionComponent implements OnInit {
                 qIWOneData.proposed_Completion_Date
               );
             }
-              debugger;
-            this.selectedPage=1;
+            debugger;
+            this.selectedPage = 1;
             this.assignDataRows();
             this.assignPageNum();
             this.cd.markForCheck();
@@ -392,19 +392,43 @@ export class SWPInitialWellCompletionComponent implements OnInit {
       this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.initialBody.budeget_Allocation_USD =
       this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
+    this.initialBody.proposed_well_number = +(
+      this.initialBody.proposed_well_number as unknown as string
+    ).replace(/,/g, '');
 
     let sail: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
+
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
 
-    sail.proposed_well_number = this.iwList.length;
+    console.log('boday....', this.initialBody, sail);
+
     this.workprogram
       .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {
         this.modalService.logNotice('Success', res.popText, 'success');
         this.getInitialCompletion();
         this.cd.markForCheck();
+      });
+  }
+
+  deleteNCT(row: INITIAL_WELL_COMPLETION_JOB1) {
+    this.workprogram
+      .deleteInitialWellCompletion(
+        row,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        'TEST'
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+          this.getInitialCompletion();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 }

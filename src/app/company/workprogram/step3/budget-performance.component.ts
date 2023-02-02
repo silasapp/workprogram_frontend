@@ -1054,6 +1054,118 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   columnHeader_4 = [];
   columnValue_4 = [];
   isTabVisible_4 = false;
+
+  public facilitiesDevelopments: facilitiesDevelopmentProject[] = [];
+  public budgetPerformanceExploratorys: exploratoryActivities[] = [];
+  public developmentDrillings: developmentDrillingActivities[] = [];
+  public budgetPerformanceProductionCosts: productionCost[] = [];
+
+  //#region table headers definitions
+  fdColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'concepT_planned',
+      header: 'Concept',
+    },
+    {
+      columnDef: 'constructioN_FABRICATION_planned',
+      header: 'Contruction/Fabrication',
+    },
+    {
+      columnDef: 'decommissioninG_ABANDONMENT',
+      header: 'DECOMMISSIONING AND ABANDONMENT',
+    },
+    {
+      columnDef: 'detaileD_ENGINEERING_planned',
+      header: 'DETAILED ENGINEERING',
+    },
+    {
+      columnDef: 'feeD_planned',
+      header: 'Feed',
+    },
+    {
+      columnDef: 'installatioN_planned',
+      header: 'INSTALLATION',
+    },
+    {
+      columnDef: 'procuremenT_planned',
+      header: 'PROCUREMENT',
+    },
+    {
+      columnDef: 'upgradE_MAINTENANCE_planned',
+      header: 'UPGRADE/ MAINTENANCE',
+    },
+  ];
+
+  eaColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'reprocessinG_planned',
+      header: 'Concept',
+    },
+    {
+      columnDef: 'processinG_planned',
+      header: 'Contruction/Fabrication',
+    },
+    {
+      columnDef: 'exploratioN_planned',
+      header: 'DECOMMISSIONING AND ABANDONMENT',
+    },
+    {
+      columnDef: 'appraisaL_planned',
+      header: 'DETAILED ENGINEERING',
+    },
+    {
+      columnDef: 'acquisitioN_planned',
+      header: 'Feed',
+    },
+  ];
+
+  ddaColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'completioN_planned',
+      header: 'COMPLETION(Planned)',
+    },
+    {
+      columnDef: 'workoveR_planned',
+      header: 'WORKOVER(Planned)',
+    },
+    {
+      columnDef: 'developmenT_planned',
+      header: 'DEVELOPMENT(Planned)',
+    },
+    {
+      columnDef: 'developmenT_Actual',
+      header: 'DEVELOPMENT(Actual)',
+    },
+  ];
+
+  pcColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'direcT_COST_planned',
+      header: 'COMPLETION(Planned)',
+    },
+    {
+      columnDef: 'indirecT_COST_planned',
+      header: 'INDIRECT COST(Planned)',
+    },
+  ];
+  //#endregion
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -1088,37 +1200,57 @@ export class SWPBudgetPerformanceComponent implements OnInit {
             .budgetActualExpenditure[0] as budgetActualExpenditure;
           // this.loadTable_Budget(res.budgetActualExpenditure);
         }
+
         if (
           res.budgetPerformanceExploratory != null &&
           res.budgetPerformanceExploratory.length > 0
         ) {
+          this.budgetPerformanceExploratorys = res.budgetPerformanceExploratory;
+
           exploratoryInfo = res
             .budgetPerformanceExploratory[0] as exploratoryActivities;
-          this.loadTable_Exploratory(res.budgetPerformanceExploratory);
+        } else {
+          this.budgetPerformanceExploratorys = [];
+          exploratoryInfo = new exploratoryActivities();
         }
+
         if (
           res.budgetPerformanceDevelopment != null &&
           res.budgetPerformanceDevelopment.length > 0
         ) {
+          this.developmentDrillings = res.budgetPerformanceDevelopment;
           developmentDrillingInfo = res
             .budgetPerformanceDevelopment[0] as developmentDrillingActivities;
-          this.loadTable_Development(res.budgetPerformanceDevelopment);
+        } else {
+          this.developmentDrillings = [];
+          developmentDrillingInfo = new developmentDrillingActivities();
         }
+
         if (
           res.budgetPerformanceProductionCost != null &&
           res.budgetPerformanceProductionCost.length > 0
         ) {
+          this.budgetPerformanceProductionCosts =
+            res.budgetPerformanceProductionCost;
           productionCostInfo = res
             .budgetPerformanceProductionCost[0] as productionCost;
-          this.loadTable_Production(res.budgetPerformanceProductionCost);
+        } else {
+          this.budgetPerformanceProductionCosts = [];
+          productionCostInfo = new productionCost();
         }
+
         if (
           res.budgetPerformanceFacilityDevProjects != null &&
           res.budgetPerformanceFacilityDevProjects.length > 0
         ) {
+          this.facilitiesDevelopments =
+            res.budgetPerformanceFacilityDevProjects;
+
           facilitiesDevelopmentInfo = res
             .budgetPerformanceFacilityDevProjects[0] as facilitiesDevelopmentProject;
-          this.loadTable_Facility(res.budgetPerformanceFacilityDevProjects);
+        } else {
+          this.facilitiesDevelopments = [];
+          facilitiesDevelopmentInfo = new facilitiesDevelopmentProject();
         }
 
         this.budgetBody = budgetInfo;
@@ -1126,6 +1258,8 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         this.developmentDrillingBody = developmentDrillingInfo;
         this.facilitiesDevelopmentBody = facilitiesDevelopmentInfo;
         this.productionCostBody = productionCostInfo;
+
+        this.cd.markForCheck();
       });
   }
 
@@ -1332,59 +1466,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     return this.genk.disableForm ? true : null;
   }
 
-  loadTable_Budget(data) {
-    this.columnHeader = [];
-    this.columnValue = [];
-
-    let info = this.budgetBody as budgetActualExpenditure;
-
-    this.workprogram
-      .post_Budget(
-        info,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName,
-        data,
-        'DELETE'
-      )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Budget(res.data);
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
-
-  loadTable_Exploratory(data) {
-    this.columnHeader_2 = [];
-    this.columnValue_2 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_2.push(data[0]);
-      this.columnValue_2.push(result);
-    } else {
-      for (let item1 in this.exploratoryActivitiesForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_2.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_2.push(this.exploratoryBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_2 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_Exploratory(event) {
+  Delete_Exploratory(row) {
     let info = this.exploratoryBody as exploratoryActivities;
 
     this.workprogram
@@ -1393,46 +1475,22 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Budget(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+          this.getBudgetData();
+        },
       });
   }
 
-  loadTable_Development(data) {
-    this.columnHeader_3 = [];
-    this.columnValue_3 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_3.push(data[0]);
-      this.columnValue_3.push(result);
-    } else {
-      for (let item1 in this.developmentDrillingForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_3.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_3.push(this.developmentDrillingBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_3 = true;
-    this.cd.markForCheck();
-  }
-  Delete_Development(event) {
+  Delete_Development(row) {
     let info = this.developmentDrillingBody as developmentDrillingActivities;
 
     this.workprogram
@@ -1441,44 +1499,20 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Development(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
-  loadTable_Facility(data) {
-    this.columnHeader_4 = [];
-    this.columnValue_4 = [];
 
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_4.push(data[0]);
-      this.columnValue_4.push(result);
-    } else {
-      for (let item1 in this.facilitiesDevelopmentForm.controls) {
-        if (item1 != 'comment' ) {
-          this.columnHeader_4.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_4.push(this.facilitiesDevelopmentBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_4 = true;
-    this.cd.markForCheck();
-  }
   Delete_Facility(event) {
     let info = this.facilitiesDevelopmentBody as facilitiesDevelopmentProject;
 
@@ -1491,44 +1525,18 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         event.target.value,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Facility(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
-  loadTable_Production(data) {
-    this.columnHeader_5 = [];
-    this.columnValue_5 = [];
-
-    if (data != null) {
-      data = this.filter(data);
-      var result = Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key] = value == null ? '' : value;
-        return acc;
-      }, {});
-
-      this.columnHeader_5.push(data[0]);
-      this.columnValue_5.push(result);
-    } else {
-      for (let item1 in this.productionCostForm.controls) {
-        if (item1 != 'comment') {
-          this.columnHeader_5.push(
-            this.genk.upperText(item1.replace(/_+/g, ' '))
-          );
-          this.columnValue_5.push(this.productionCostBody[item1]);
-        }
-      }
-    }
-    this.isTabVisible_5 = true;
-    this.cd.markForCheck();
-  }
-
-  Delete_Production(event) {
+  Delete_Production(row) {
     let info = this.productionCostBody as productionCost;
 
     this.workprogram
@@ -1537,18 +1545,20 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Production(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
+
   filter(data) {
     const resultArray = Object.keys(data).map((index) => {
       let person = data[index];
@@ -1595,7 +1605,6 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Budget(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
@@ -1652,7 +1661,6 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Budget(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
       });
@@ -1896,13 +1904,14 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.loadTable_Exploratory(res.data);
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -1926,13 +1935,14 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.loadTable_Development(res.data);
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -1960,9 +1970,10 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
-          this.loadTable_Facility(res.data);
           this.modalService.logNotice('Success', res.message, 'success');
         }
+
+        this.getBudgetData();
       });
   }
 
@@ -1976,24 +1987,25 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         budgetInfo[this.genk.upperText(item)] =
           this.productionCostBody[item]?.toString() ?? '';
       }
-      this.workprogram
-        .post_Production(
-          budgetInfo,
-          this.genk.wpYear,
-          this.genk.OmlName,
-          this.genk.fieldName,
-          '',
-          ''
-        )
-        .subscribe((res) => {
-          if (res.statusCode == 300) {
-            this.modalService.logNotice('Error', res.message, 'error');
-          } else {
-            this.loadTable_Production(res.data);
-            this.modalService.logNotice('Success', res.message, 'success');
-          }
-        });
     }
+    this.workprogram
+      .post_Production(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
+      });
   }
 
   // onSubmit() {

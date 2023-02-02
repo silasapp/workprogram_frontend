@@ -179,26 +179,26 @@
       <br />
     </div>
   </div>
-  <div *ngIf="isTabVisible" class="wptablebox">
+
+  <div *ngIf="budgetProposalComponents.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of pcColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of budgetProposalComponents">
+            <td *ngFor="let colDef of pcColHeaderDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Budget($event)"
-                value="{{ y.value.id }}"
+                (click)="Delete_Budget(row)"
                 [attr.disabled]="
                   isEditable(
                     SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
