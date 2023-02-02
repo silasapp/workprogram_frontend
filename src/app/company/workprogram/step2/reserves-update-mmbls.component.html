@@ -53,17 +53,20 @@
         >
           <select
             class="dropwp"
-            formControlName="year_of_WP"
-            [(ngModel)]="statusOfReservesPreceeding.year_of_WP"
+            formControlName="year"
+            [(ngModel)]="statusOfReservesPreceeding.year"
             [attr.disabled]="
               isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
             "
           >
             <option selected disabled>---- Select a Year ----</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
+            <option
+            *ngFor="let year of preceedingYearsValues"
+            [value]="year"
+            [selected]="statusOfReservesPreceeding.year === year"
+          >
+            {{ year }}
+          </option>
           </select>
         </div>
       </div>
@@ -333,8 +336,8 @@
         >
           <select
             class="dropwp"
-            formControlName="year_of_WP"
-            [(ngModel)]="statusOfReservesCurrent.year_of_WP"
+            formControlName="year"
+            [(ngModel)]="statusOfReservesCurrent.year"
             [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
           >
             <option selected disabled>---- Select a Year ----</option>

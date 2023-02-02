@@ -29,6 +29,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   public unitizationBody: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION =
     new OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION();
 
+    public unitizationList:OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION[] =[];
+
   public fielddevelopmentexcessivereserveBody: FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf =
     new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf();
 
@@ -51,6 +53,31 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   public UUOANameDoc: string;
   public UUOANewName: string;
   public FDPNameDoc: string;
+
+
+
+  ucolumn = [
+    {
+      columnDef: 'proposed_Development_well_name',
+      header: 'DEVELOPMENT WELL NAME',
+    },
+    {
+      columnDef: 'oil',
+      header: 'OIL (Barrels)',
+    },
+    {
+      columnDef: 'gas',
+      header: 'GAS (Standard Cubic Feet)',
+    },
+
+    {
+      columnDef: 'condensate',
+      header: 'CONDENSATE (Barrels)',
+    },
+    
+  ];
+
+
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -167,7 +194,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         if (res.fdpExcessiveReserves) {
           this.fielddevelopmentexcessivereserveBody =
             new FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf(
-              res.fdpExcessiveReserves
+             this.unitizationList= res.fdpExcessiveReserves
             );
         }
         if (res.unitization) {
@@ -333,6 +360,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
+    debugger;
+    
     this.workprogram
       .saveUnitization(
         this.unitizationBody,
@@ -342,6 +371,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          debugger;
           this.modalService.logNotice('Success', res.popText, 'success');
         },
         error: (error) => {
