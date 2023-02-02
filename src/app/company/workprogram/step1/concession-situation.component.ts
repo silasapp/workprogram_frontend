@@ -189,7 +189,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
         ]),
-        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty, [
+        last_Qntr_Royalty :new FormControl(this.royaltyBody.last_Qntr_Royalty, [
           Validators.required,
         ]),
       },
@@ -360,6 +360,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
+    debugger;
     this.submitted = true;
     //let rell = this.f['miscellaneous'].errors['required'];
     if (this.RoyaltyForm.invalid) {

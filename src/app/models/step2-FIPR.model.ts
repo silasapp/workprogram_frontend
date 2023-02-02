@@ -470,7 +470,8 @@ export class OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION {
   puaUploadFilename: string = '';
   uuoaUploadFilename: string = '';
   companY_ID: string = '';
-  companyNumber: number;
+  companyNumber: number=0;
+ field_ID:number=0;
   gas_AG: string;
 }
 
@@ -480,7 +481,7 @@ export class RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE {
   public omL_Name: string = '';
   public companyName: string = '';
   public companyemail: string = '';
-  public year_of_WP: string = '';
+  public year: string = '';
   public company_Reserves_Year: string = '';
   public flaG1: string = '';
   public flaG2: string = '';
@@ -602,7 +603,7 @@ export class RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE {
     this.omL_Name = model.omL_Name;
     this.companyName = model.companyName;
     this.companyemail = model.companyemail;
-    this.year_of_WP = model.year_of_WP;
+    this.year = model.year;
     this.company_Reserves_Year = model.company_Reserves_AG;
     this.company_Reserves_Oil = model.company_Reserves_Oil;
     this.company_Reserves_Condensate = model.company_Reserves_Condensate;

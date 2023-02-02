@@ -19,6 +19,7 @@ import {
   FIELD_DEVELOPMENT_PLAN,
   GAS_PRODUCTION_ACTIVITY,
 } from 'src/app/models/step2-FIPR.model';
+import { OilCondensateMonthlyActivitiesProposedComponent } from 'src/app/reports/oil-condensate-monthly-activities-proposed.component';
 import {
   AuthenticationService,
   GenericService,
@@ -72,27 +73,29 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
   fyvccolumn = [
     {
-      columnDef: 'proposed_Initial_Name',
+      columnDef: 'fiveyear_Timeline',
       header: 'PROJECTION YEAR',
     },
     {
-      columnDef: 'proposed_Completion_Days',
+      columnDef: 'fiveyear_Oil',
       header: 'Oil (Barrels)',
     },
     {
-      columnDef: 'proposed_Completion_Date',
+      columnDef: 'fiveyear_Condensate',
       header: 'Condensate (Barrels)',
     },
 
     {
-      columnDef: 'budeget_Allocation_NGN',
+      columnDef: 'fiveyear_AG',
       header: 'AG (Standard Cubic Feet)',
     },
     {
-      columnDef: 'budeget_Allocation_USD',
+      columnDef: 'fiveyear_NAG',
       header: 'NAG (Standard Cubic Feet)',
     },
   ];
+
+
 
   fiveYearsValues = [];
 
@@ -125,23 +128,23 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       forecast: new FormControl(this.productionoilBody.forecast, [
         Validators.required,
       ]),
-      annualForecastGasAg: new FormControl(
-        this.productionoilBody.annualForecastGasAg,
+      company_AG: new FormControl(
+        this.productionoilBody.company_AG,
         [Validators.required]
       ),
-      annualForecastGasNag: new FormControl(
-        this.productionoilBody.annualForecastGasNag,
+      company_NAG: new FormControl(
+        this.productionoilBody.company_NAG,
         [Validators.required]
       ),
-      annualForecastCondensate: new FormControl(
-        this.productionoilBody.annualForecastCondensate,
+      company_Condensate: new FormControl(
+        this.productionoilBody.company_Condensate,
         [Validators.required]
       ),
       cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
         Validators.required,
       ]),
-      annualForecastOil: new FormControl(
-        this.productionoilBody.annualForecastOil,
+      company_Oil: new FormControl(
+        this.productionoilBody.company_Oil,
         [Validators.required]
       ),
       total_Reconciled_National_Crude_Oil_Production: new FormControl(
@@ -382,19 +385,26 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
+       debugger;
         if (
-          res.oilCondensateProduction &&
-          res.oilCondensateProduction.length > 0
+          res.oilCondensateProduction
+         
         ) {
+          debugger;
           this.productionoilBody = res.oilCondensateProduction;
+          debugger
+          ;
         }
-
+debugger;
         if (
           res.oilCondensateProductionMonthly &&
           res.oilCondensateProductionMonthly.length > 0
         ) {
           this.monthlyactivityData = res.oilCondensateProductionMonthly;
           this.monthlyactivityBody = res.oilCondensateProductionMonthly[0];
+        }
+        else{
+          this.monthlyactivityData=[]as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity[];
         }
 
         if (
@@ -404,7 +414,10 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
           this.proposedmonthlyBody =
             res.oilCondensateProductionMonthlyProposed[0];
+        } else{
+          this.proposedmonthlyData=[] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED[];
         }
+
 
         if (
           res.oilCondensateFiveYears &&
@@ -412,16 +425,17 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         ) {
           this.fiveYearData = res.oilCondensateFiveYears;
           this.fiveYearForecastBody = res.oilCondensateFiveYears[0];
-        }
+        }else{this.fiveYearData=[] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION[];}
 
         this.cd.markForCheck();
       });
   }
 
   saveProduction() {
+    debugger;
     this.productionoilBody.id = 0;
-    this.productionoilBody.cost_Barrel =
-      this.productionoilBody.cost_Barrel.replace(/,/g, '');
+    //this.productionoilBody.cost_Barrel =
+    //  this.productionoilBody.cost_Barrel.replace(/,/g, '');
     this.workprogram
       .saveOilProduction(
         this.productionoilBody,
@@ -430,6 +444,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
+        debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
       });
   }
@@ -455,6 +470,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveProposedActivity() {
+    debugger;
     this.proposedmonthlyBody.id = 0;
     this.workprogram
       .saveProposedActivity(
@@ -464,6 +480,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
+        debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
       });
   }
@@ -483,6 +500,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
   changeProposedMonth(e) {
     //
+    debugger;
     let month = e.target.value;
     this.proposedmonthlyBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED;
@@ -497,6 +515,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
   changeFiveYearProjection(e) {
     //
+    debugger;
     let year = e.target.value;
     this.fiveYearForecastBody =
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION;
@@ -505,6 +524,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         return res.fiveyear_Timeline === year;
       })[0] ??
       ({} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION);
+      debugger;
     this.fiveYearForecastBody.fiveyear_Timeline = year;
     this.cd.markForCheck();
   }
@@ -529,6 +549,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveFiveYearForecast() {
+    debugger;
     const formDat: FormData = new FormData();
     for (const key in this.fiveYearForecastBody) {
       if (this.fiveYearForecastBody[key]) {
@@ -541,7 +562,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     if (this.YPFFile) {
       formDat.append('YPFfile', this.YPFFile, this.YPFNewName);
     }
-
+debugger;
     this.workprogram
       .saveFiveYearForecast(
         formDat,

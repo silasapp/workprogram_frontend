@@ -16,7 +16,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory
+    Note:*All Fields are Mandatory 
   </h1>
   <div
     style="
@@ -26,7 +26,7 @@
       padding-bottom: 20px;
     "
   >
-    <span>INITIAL WELL COMPLETION JOBS (QUARTERLY BASIS)</span>
+    <span>INITIAL WELL COMPLETION JOBS (QUARTERLY BASIS) </span>
   </div>
 
   <div>
@@ -91,7 +91,7 @@
     </div> -->
 
     <div style="width: 30%; margin-top: auto">
-      <label class="labelwp">Proposed Number of Wells For Completion</label>
+      <label class="labelwp">Proposed Number of Wells For Completion  </label>
       <div style="display: flex">
         <div
           style="
@@ -102,16 +102,15 @@
           "
         >
           <input
-            formControlName="proposed_well_number"
+          disabled
+             style="text-align: center; font-weight: bold;"         (keypress)="genk.restrictData($event)"
+            formControlName="proposed_year_data"
+            [value]="proposed_well_number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-            [(ngModel)]="initialBody.proposed_well_number"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+           
+            
           />
         </div>
       </div>
@@ -132,11 +131,7 @@
             formControlName="proposed_initial_name"
             [(ngModel)]="initialBody.proposed_initial_name"
             class="inpute"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+            
           />
         </div>
       </div>
@@ -157,11 +152,7 @@
             formControlName="proposed_completion_days"
             [(ngModel)]="initialBody.proposed_completion_days"
             class="inpute"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+            
           />
         </div>
       </div>
@@ -236,11 +227,7 @@
             class="inpute"
             formControlName="proposed_Completion_Date"
             [(ngModel)]="initialBody.proposed_Completion_Date"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+            
           />
         </div>
       </div>
@@ -268,11 +255,7 @@
                 "
                 [value]="initialBody.budeget_Allocation_NGN"
                 class="inpute"
-                [attr.disabled]="
-                  isEditable(
-                    SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-                  )
-                "
+                
               />
             </div>
           </div>
@@ -294,11 +277,7 @@
                 "
                 [value]="initialBody.budeget_Allocation_USD"
                 class="inpute"
-                [attr.disabled]="
-                  isEditable(
-                    SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-                  )
-                "
+                
               />
             </div>
           </div>
@@ -316,11 +295,7 @@
             class="dropwp"
             formControlName="oil_or_gas_wells"
             [(ngModel)]="initialBody.oil_or_gas_wells"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+            
           >
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
@@ -350,11 +325,7 @@
             rows="2"
             formControlName="remarks"
             [(ngModel)]="initialBody.remarks"
-            [attr.disabled]="
-              isEditable(
-                SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs
-              )
-            "
+            
           ></textarea>
         </div>
       </div>
@@ -368,9 +339,7 @@
         #btn
         class="quarterbtn"
         (click)="submit()"
-        [attr.disabled]="
-          isEditable(SBUTABLE.INITIAL_WELL_COMPLETION_JOBS_ON_QUARTERLY_BASISs)
-        "
+        
       >
         Add Initial Well For Quarter 1
       </button>
@@ -396,7 +365,7 @@
         </tr>
       </thead>
       <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-        <tr *ngFor="let row of _quaterIWOneData">
+        <tr *ngFor="let row of _initialBody">
           <td *ngFor="let h of iwccolumn">
             {{ row[h.columnDef] }}
           </td>
@@ -422,6 +391,7 @@
 </div>
 <br />
 <br />
+
 
 <div style="text-align: center">
   <button
