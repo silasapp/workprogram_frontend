@@ -107,13 +107,16 @@ getCompanyDetails()
 {
   this.companyService.getCompanyDetails()
   .subscribe((res) => {
-    this.companyDetails = res.data;
+    if (res.data) {
+      this.companyDetails = res.data;
+    }
     this.cd.markForCheck();
   });
 }
 
 
   onSubmit() {
+    debugger;
     this.companyDetails.companyName=this.auth.currentUserValue.companyName;
     this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
     this.companyDetails.companyId=this.auth.currentUserValue.companyId;

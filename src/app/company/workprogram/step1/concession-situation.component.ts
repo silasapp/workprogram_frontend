@@ -23,7 +23,7 @@ import { Royalty } from '../../../models/step1-royalty.model';
 @Component({
   templateUrl: './concession-situation.component.html',
   styleUrls: ['../board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SWPConcessionSituationComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
@@ -384,10 +384,10 @@ export class SWPConcessionSituationComponent implements OnInit {
     let me = this.concessionBody;
     this.csSubmitted = true;
 
-    if (this.ConcessionSituationForm.invalid) {
-      this.cd.markForCheck();
-      return;
-    }
+    // if (this.ConcessionSituationForm.invalid) {
+    //   this.cd.markForCheck();
+    //   return;
+    // }
 
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
