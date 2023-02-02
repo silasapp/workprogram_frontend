@@ -68,8 +68,8 @@
                 <div class="inputshadow">
                   <select
                     class="dropwp"
-                    formControlName="oil_Royalty_Payment"
-                    [value]="productionoilBody.oil_Royalty_Payment"
+                    formControlName="deferment"
+                    [(ngModel)]="productionoilBody.deferment"
                     [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                   >
                     <option selected disabled>--Select an Option --</option>
@@ -139,16 +139,16 @@
                 <div style="display: flex">
                   <div class="minsec">
                     <input
-                      formControlName="annualForecastOil"
+                      formControlName="company_Oil"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       placeholder="100,000"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastOil =
+                        productionoilBody.company_Oil =
                           genk.checkMMBBLMin($event, oilMic)
                       "
-                      [value]="productionoilBody.annualForecastOil"
+                      [value]="productionoilBody.company_Oil"
                       [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">BBLS</span>
@@ -164,16 +164,16 @@
                 <div style="display: flex">
                   <div class="minsec">
                     <input
-                      formControlName="annualForecastCondensate"
+                      formControlName="company_Condensate"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
                       placeholder="100,000"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastCondensate =
+                        productionoilBody.company_Condensate =
                           genk.checkMMBBLMin($event, oilMic)
                       "
-                      [value]="productionoilBody.annualForecastCondensate"
+                      [value]="productionoilBody.company_Condensate"
                       [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">BBLS</span>
@@ -300,16 +300,17 @@
                 <div style="display: flex">
                   <div class="minsec">
                     <input
-                      type="text"
-                      formControlName="annualForecastGasAg"
+                    
+                      formControlName="company_AG"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
+                      placeholder="100,000"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastGasAg =
-                          genk.checkBSCFMin($event, gasmaxx)
+                        productionoilBody.company_AG =
+                          genk.checkBSCFMin($event, gasMac)
                       "
-                      [value]="productionoilBody.annualForecastGasAg"
+                      [value]="productionoilBody.company_AG"
                       [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">SCF</span>
@@ -325,16 +326,17 @@
                 <div style="display: flex">
                   <div class="minsec">
                     <input
-                      type="text"
-                      formControlName="annualForecastGasNag"
+                     
+                      formControlName="company_NAG"
                       class="inpute"
                       (keypress)="genk.restrictData($event)"
+                      placeholder="100,000"
                       (keyup)="genk.formatCurrency($event)"
                       (change)="
-                        productionoilBody.annualForecastGasNag =
-                          genk.checkBSCFMin($event, gasmaxx)
+                        productionoilBody.company_NAG =
+                          genk.checkBSCFMin($event, gasMac)
                       "
-                      [value]="productionoilBody.annualForecastGasNag"
+                      [value]="productionoilBody.company_NAG"
                       [attr.disabled]="isEditable(SBUTABLE.OIL_PRODUCTIONs)"
                     />
                     <span class="barspan">SCF</span>
@@ -920,7 +922,7 @@
               <select
                 class="dropwp"
                 formControlName="fiveyear_Timeline"
-                [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
+                [value]="fiveYearForecastBody.fiveyear_Timeline"
                 (change)="changeFiveYearProjection($event)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
@@ -1142,7 +1144,7 @@
           box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
         "
       >
-        <table #codeTable class="apptable" cellPadding="10px">
+        <!-- <table #codeTable class="apptable" cellPadding="10px">
           <thead>
             <tr>
               <th *ngFor="let h of fyvccolumn">
@@ -1150,9 +1152,9 @@
               </th>
             </tr>
           </thead>
-          <!-- <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-              <tr *ngFor="let row of sdList">
-                <td *ngFor="let h of sdcolumn">
+           <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+              <tr *ngFor="let row of fiveYearData">
+                <td *ngFor="let h of fyvccolumn">
                   {{ row[h.columnDef] }}
                 </td>
                 <td>
@@ -1164,8 +1166,8 @@
                   </button>
                 </td>
               </tr>
-            </tbody> -->
-        </table>
+            </tbody> 
+        </table> -->
       </div>
       <br />
       <br />

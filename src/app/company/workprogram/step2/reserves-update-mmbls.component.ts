@@ -43,6 +43,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   reserveReplacementRatioForm: FormGroup;
   reserveUpdateDepletionRateForm: FormGroup;
   reserveUpdateLifeIndexForm: FormGroup;
+  preceedingYearsValues:any[];
 
   public planningMinimumRequirementForm: FormGroup;
 
@@ -97,7 +98,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.genk.activeStep = 'STEP2';
     this.ReserveUpdatePreceedingForm = new FormGroup({
-      year_of_WP: new FormControl(this.statusOfReservesPreceeding.year_of_WP, [
+      year: new FormControl(this.statusOfReservesPreceeding.year, [
         Validators.required,
       ]),
       company_Reserves_Oil: new FormControl(
@@ -135,7 +136,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     });
 
     this.ReserveUpdateCurrentForm = new FormGroup({
-      year_of_WP: new FormControl(this.statusOfReservesCurrent.year_of_WP, [
+      year: new FormControl(this.statusOfReservesCurrent.year, [
         Validators.required,
       ]),
       company_Reserves_Oil: new FormControl(
@@ -324,6 +325,7 @@ export class SWPReserveUpdateComponent implements OnInit {
 
     this.getReserveUpdate();
     this.getSWPR();
+    this.getPreceedsdingYearsValues();
     this.cd.markForCheck();
   }
 
@@ -335,6 +337,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   getReserveUpdate() {
+    debugger;
     this.workprogram
       .getReservesUpdate(
         this.genk.wpYear,
@@ -342,6 +345,7 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
+        debugger;
         if (res.statusOfReservesPreceeding) {
           this.statusOfReservesPreceeding =
             new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE(
@@ -394,6 +398,17 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.cd.markForCheck();
       });
   }
+  
+  getPreceedsdingYearsValues() {
+    this.preceedingYearsValues = [];
+    let year = new Date().getFullYear()-2;
+    var num: number = 3;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.preceedingYearsValues[i] = year + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+  }
 
   getReserveUpdateDepletionRate() {
     this.workprogram
@@ -417,6 +432,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   saveReserveUpdatePreceeding() {
+    debugger;
     console.log('proceeding', this.statusOfReservesPreceeding);
     this.workprogram
       .saveReserveUpdatePreceeding(
@@ -584,18 +600,21 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   getSWPR() {
+    debugger
     if (
       this.genk.OmlName === undefined ||
       this.genk.wpYear === undefined
       // this.genk.fieldName === undefined
     )
       return;
-
+debugger;
     this.workprogram
       .getFormFiveSWPR(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         if (res[0]) {
+          debugger;
           this.planningMinimumRequirementBody = res[0].data;
+          debugger
         }
         this.cd.markForCheck();
       });
