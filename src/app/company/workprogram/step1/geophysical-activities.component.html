@@ -504,7 +504,7 @@
               <input
                 formControlName="no_of_Folds"
                 (keypress)="genk.restrictData($event)"
-                (ngModelChange)="(acquisitionBody.no_of_Folds)"
+                [(ngModel)]="acquisitionBody.no_of_Folds"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
                 "
