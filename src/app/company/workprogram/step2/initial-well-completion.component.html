@@ -27,8 +27,8 @@
     "
   >
     <span>INITIAL WELL COMPLETION JOBS (QUARTERLY BASIS) </span>
-  </div>
 
+  </div>
   <div>
     <div class="quarterbox">
       <div
@@ -72,8 +72,9 @@
   <br />
   <br />
   <br />
+ 
 
-  <div style="display: flex; width: 100%; justify-content: space-between">
+  <div  style="display: flex; width: 100%; justify-content: space-between">
     <!-- <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Actual No. of Completion </label>
       <div style="display: flex">
@@ -333,6 +334,9 @@
   </div>
   <br /><br />
 
+  
+
+
   <div>
     <div style="text-align: center">
       <button
@@ -346,9 +350,11 @@
     </div>
   </div>
 
+
   <br />
   <br />
-  <div
+  
+  <div *ngIf="show"
     #divTable
     style="
       overflow: hidden;
@@ -369,7 +375,7 @@
           <td *ngFor="let h of iwccolumn">
             {{ row[h.columnDef] }}
           </td>
-          <td>
+          <!-- <td>
             <button
               mat-stroked-button
               style="margin: 50px; padding: 10px"
@@ -383,7 +389,7 @@
               <mat-icon style="font-size: 20px"> border_color</mat-icon>
               <b>Delete</b>
             </button>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
