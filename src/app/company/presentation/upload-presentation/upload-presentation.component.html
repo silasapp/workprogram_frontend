@@ -110,28 +110,60 @@
     </div>
   </form>
 
-  <div *ngIf="uploadPresentations" class="wptablebox">
-    <div class="apptable">
+  <div class="wptablebox">
+    <h2 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem">
+      LIST OF UPLOADED PRESENTATIONS
+    </h2>
+    <form [formGroup]="wkYearForm">
+      <label id="ContentPlaceHolder2_Label13" class="labelwp"
+        >Select Work Programme Year</label
+      >
+      <div style="display: flex; width: 100%">
+        <div class="inputshadow">
+          <select
+            class="form-select"
+            formControlName="year"
+            [(ngModel)]="selectedYear"
+            (change)="getPresentations()"
+          >
+            <option selected disabled>-- Select Year -- &nbsp; &nbsp;</option>
+            <option *ngFor="let year of YearsList" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="presentations?.length > 0" class="apptable">
       <table class="wptable">
         <thead>
           <tr>
-            <th *ngFor="let h of hoscColDef">
+            <th *ngFor="let h of preColHeaderDef">
               {{ h.header }}
             </th>
+            <th>Date Created</th>
+            <th>Uploaded File</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of operationsSafetyCases">
-            <td *ngFor="let colDef of hoscColDef">
+          <tr *ngFor="let row of presentations">
+            <td *ngFor="let colDef of preColHeaderDef">
               {{ row[colDef.columnDef] }}
+            </td>
+            <td>{{ row["date_Created"] | formatDate }}</td>
+            <td>
+              <a [href]="row['uploaded_presentation']">
+                <img
+                  src="../../../../assets/images/file-icon.png"
+                  height="40px"
+                />
+              </a>
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_OperationsSafetyCase(row)"
-                [attr.disabled]="
-                  isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)
-                "
+                (click)="deletePresentation(row)"
               >
                 Delete
               </button>
@@ -140,5 +172,12 @@
         </tbody>
       </table>
     </div>
+
+    <p
+      *ngIf="presentations?.length == 0"
+      style="margin: 3rem; font-weight: bolder; text-align: center"
+    >
+      No Presentations to display that meet the above selected criteria.
+    </p>
   </div>
 </div>
