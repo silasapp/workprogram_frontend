@@ -85,14 +85,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     this.AcquisitionForm = new FormGroup(
       {
-        actual_year_aquired_data: new FormControl(
-          this.acquisitionBody.actual_year_aquired_data,
-          [Validators.required]
-        ),
-        proposed_year_data: new FormControl(
-          this.acquisitionBody.proposed_year_data,
-          [Validators.required]
-        ),
+        // actual_year_aquired_data: new FormControl(
+        //   this.acquisitionBody.actual_year_aquired_data,
+        //   [Validators.required]
+        // ),
+        // proposed_year_data: new FormControl(
+        //   this.acquisitionBody.proposed_year_data,
+        //   [Validators.required]
+        // ),
         budeget_Allocation_NGN: new FormControl(
           this.acquisitionBody.budeget_Allocation_NGN,
           [Validators.required]
@@ -101,10 +101,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.acquisitionBody.budeget_Allocation_USD,
           [Validators.required]
         ),
-        geo_acquired_geophysical_data: new FormControl(
-          this.acquisitionBody.geo_acquired_geophysical_data,
-          [Validators.required]
-        ),
+        // geo_acquired_geophysical_data: new FormControl(
+        //   this.acquisitionBody.geo_acquired_geophysical_data,
+        //   [Validators.required]
+        // ),
         geo_area_of_coverage: new FormControl(
           this.acquisitionBody.geo_area_of_coverage,
           [Validators.required]
@@ -123,10 +123,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.acquisitionBody.quantum_Approved,
           [Validators.required]
         ),
-        quantum_carry_forward: new FormControl(
-          this.acquisitionBody.quantum_carry_forward,
-          [Validators.required]
-        ),
+        // quantum_carry_forward: new FormControl(
+        //   this.acquisitionBody.quantum_carry_forward,
+        //   [Validators.required]
+        // ),
         no_of_Folds: new FormControl(this.acquisitionBody.no_of_Folds, [
           Validators.required,
         ]),
@@ -142,17 +142,15 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.acquisitionBody.geo_Record_Length_of_Data,
           [Validators.required]
         ),
-        geo_Completion_Status: new FormControl(
-          this.acquisitionBody.geo_Completion_Status,
-          [Validators.required]
-        ),
-        geo_Activity_Timeline: new FormControl(
-          this.acquisitionBody.geo_Activity_Timeline,
-          [Validators.required]
-        ),
-        remarks: new FormControl(this.acquisitionBody.remarks, [
-          Validators.required,
-        ]),
+        // geo_Completion_Status: new FormControl(
+        //   this.acquisitionBody.geo_Completion_Status,
+        //   [Validators.required]
+        // ),
+        // geo_Activity_Timeline: new FormControl(
+        //   this.acquisitionBody.geo_Activity_Timeline,
+        //   [Validators.required]
+        // ),
+        remarks: new FormControl(this.acquisitionBody.remarks, []),
       },
       {}
     );
@@ -213,10 +211,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.processingBody.budeget_Allocation_USD,
           [Validators.required]
         ),
-        geo_Completion_Status: new FormControl(
-          this.processingBody.geo_Completion_Status,
-          [Validators.required]
-        ),
+        // geo_Completion_Status: new FormControl(
+        //   this.processingBody.geo_Completion_Status,
+        //   [Validators.required]
+        // ),
         name_of_Contractor: new FormControl(
           this.processingBody.name_of_Contractor,
           [Validators.required]
@@ -225,9 +223,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.processingBody.geo_Type_of_Data_being_Processed,
           [Validators.required]
         ),
-        remarks: new FormControl(this.processingBody.remarks, [
-          Validators.required,
-        ]),
+        remarks: new FormControl(this.processingBody.remarks, []),
       },
       {}
     );
@@ -267,17 +263,17 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     return this.genk.disableForm ? true : null;
   }
 
+  test() {
+    console.log('form....', this.AcquisitionForm);
+  }
+
   get f() {
     return this.AcquisitionForm.controls;
   }
 
-
   get pf() {
     return this.ProcessingForm.controls;
   }
-
-
-  
 
   get quaterACClassOne() {
     let list = '';
@@ -572,10 +568,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
-    debugger;
-    this.submitted=true;
-
-    
+    this.submitted = true;
 
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
@@ -596,8 +589,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-    debugger;
-    this.pSubmitted=true;
+    this.pSubmitted = true;
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
@@ -613,11 +605,13 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     //     newobj[key] = val.toString();
     //   }
     // }
+
     let sail: GEOPHYSICAL_ACTIVITIES_PROCESSING =
       {} as GEOPHYSICAL_ACTIVITIES_PROCESSING;
     sail = this.genk.stringArray(
       this.processingBody
     ) as GEOPHYSICAL_ACTIVITIES_PROCESSING;
+
     this.workprogram
       .saveQuarterProcessing(sail, this.genk.wpYear, this.genk.OmlName)
       .subscribe((res) => {

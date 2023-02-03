@@ -34,7 +34,7 @@ show=false;
   quaterIWTwo = false;
   quaterIWThree = false;
   quaterIWFour = false;
-  proposed_well_number: number;
+  proposed_well_number: number=0;
   currentIWQuater = 1;
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -233,6 +233,7 @@ show=false;
   }
 
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
+    this.show=true;
     debugger;
     if (quater === 1) {
       this.currentIWQuater = 1;
@@ -436,17 +437,13 @@ show=false;
       this.initialBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.initialBody.budeget_Allocation_USD =
       this.initialBody.budeget_Allocation_USD.replace(/,/g, '');
-    this.initialBody.proposed_well_number = +(
-      this.initialBody.proposed_well_number as unknown as string
-    ).replace(/,/g, '');
 
     let sail: INITIAL_WELL_COMPLETION_JOB1 = {} as INITIAL_WELL_COMPLETION_JOB1;
-
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
-    debugger;
-    // sail.proposed_well_number = this._quaterIWOneData.length;
+debugger;
+   // sail.proposed_well_number = this._quaterIWOneData.length;
 
     debugger;
     this.workprogram
@@ -455,35 +452,9 @@ show=false;
         debugger;
         this.modalService.logNotice('Success', res.popText, 'success');
         this.getInitialCompletion();
-        this.initialBody = {} as INITIAL_WELL_COMPLETION_JOB1;
+        this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
+        this.InitialForm.reset;
         this.cd.markForCheck();
       });
   }
-
-  deleteNCT(row: INITIAL_WELL_COMPLETION_JOB1) {
-    this.workprogram
-      .deleteInitialWellCompletion(
-        row,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        'TEST'
-      )
-      .subscribe({
-        next: (res) => {
-          this.modalService.logNotice('Success', res.popText, 'success');
-          this.getInitialCompletion();
-        },
-        error: (error) => {
-          this.modalService.logNotice('Error', error.message, 'error');
-        },
-      });
-  }
 }
-
-
-
-
-
-
-
-

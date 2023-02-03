@@ -8,7 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import {
   budgetProposal,
+  CAPEX,
   capexOpex,
+  OPEX,
 } from 'src/app/models/step3-budget-proposal.model';
 import { BudgetCapexOpexComponent } from 'src/app/reports/budget-capex-opex.component';
 import {
@@ -28,6 +30,9 @@ export class SWPBudgetProposalComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
   public budgetProposalComponents: budgetProposal[] = [];
+
+  public capexBody = {} as CAPEX;
+  public opexBody = {} as OPEX;
 
   budgetProposalForm: FormGroup;
   capexForm: FormGroup;
@@ -302,19 +307,50 @@ export class SWPBudgetProposalComponent implements OnInit {
 
   saveOpex() {
     let budgetInfo = {} as capexOpex;
-    //this.capexOpexBody.companyNumber = 0;
-    this.capexOpexBody.id = 0;
-    this.capexOpexBody.year_of_WP = this.genk.wpYear;
-    //this.capexOpexBody.omL_Name= this.genk.OmlName;
-    for (let item in this.capexOpexBody) {
+    //this.opexBody.companyNumber = 0;
+    this.opexBody.id = 0;
+    this.opexBody.year_of_WP = this.genk.wpYear;
+    //this.opexBody.omL_Name= this.genk.OmlName;
+    for (let item in this.opexBody) {
       if (item != 'id' && item != 'field_ID') {
-        budgetInfo[item] = this.capexOpexBody[item]?.toString() ?? '';
+        budgetInfo[item] = this.opexBody[item]?.toString() ?? '';
       }
     }
     budgetInfo.companyNumber = 0;
 
     this.workprogram
       .post_Opex(
+        budgetInfo,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        '',
+        ''
+      )
+      .subscribe((res) => {
+        if (res.statusCode == 300) {
+          this.modalService.logNotice('Error', res.message, 'error');
+        } else {
+          this.modalService.logNotice('Success', res.message, 'success');
+        }
+      });
+  }
+
+  saveCapex() {
+    let budgetInfo = {} as capexOpex;
+    //this.capexOpexBody.companyNumber = 0;
+    this.capexBody.id = 0;
+    this.capexBody.year_of_WP = this.genk.wpYear;
+    //this.capexOpexBody.omL_Name= this.genk.OmlName;
+    for (let item in this.capexBody) {
+      if (item != 'id' && item != 'field_ID') {
+        budgetInfo[item] = this.capexBody[item]?.toString() ?? '';
+      }
+    }
+    budgetInfo.companyNumber = 0;
+
+    this.workprogram
+      .post_Capex(
         budgetInfo,
         this.genk.wpYear,
         this.genk.OmlName,
