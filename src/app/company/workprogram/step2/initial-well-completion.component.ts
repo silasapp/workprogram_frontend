@@ -451,8 +451,8 @@ debugger;
       .subscribe((res) => {
         debugger;
         this.modalService.logNotice('Success', res.popText, 'success');       
-        this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
-        this.InitialForm.reset;
+        // this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
+        // this.InitialForm.reset;
         this.getInitialCompletion();
         this.cd.markForCheck();
       });

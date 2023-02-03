@@ -3727,6 +3727,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_facilities_project_performance`,
@@ -3736,6 +3737,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
