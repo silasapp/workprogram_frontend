@@ -28,6 +28,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SWPGeophysicalActivitiesComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
+  public isAcquisitionSubmitted: boolean = false;
+  public isProcessingSubmitted: boolean = false;
+
   AcquisitionForm: FormGroup;
   ProcessingForm: FormGroup;
   quaterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
@@ -568,7 +571,9 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterAcquisition() {
-    this.submitted = true;
+    this.isAcquisitionSubmitted = true;
+
+    if (this.AcquisitionForm.invalid) return;
 
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
@@ -589,7 +594,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   saveQuarterProcessing() {
-    this.pSubmitted = true;
+    this.isProcessingSubmitted = true;
+
+    if (this.ProcessingForm.invalid) return;
+
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');

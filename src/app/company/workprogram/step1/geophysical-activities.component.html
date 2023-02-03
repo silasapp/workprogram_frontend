@@ -221,8 +221,9 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['geo_area_of_coverage']?.dirty &&
-                f['geo_area_of_coverage'].invalid
+                (isAcquisitionSubmitted && f['geo_area_of_coverage'].invalid) ||
+                (f['geo_area_of_coverage']?.dirty &&
+                  f['geo_area_of_coverage'].invalid)
               "
             >
               Area of Coverage is required
@@ -256,8 +257,10 @@
               <div class="eroce">
                 <span
                   *ngIf="
-                    f['budeget_Allocation_NGN']?.dirty &&
-                    f['budeget_Allocation_NGN']?.invalid
+                    (isAcquisitionSubmitted &&
+                      f['budeget_Allocation_NGN'].invalid) ||
+                    (f['budeget_Allocation_NGN']?.dirty &&
+                      f['budeget_Allocation_NGN']?.invalid)
                   "
                 >
                   This field is required!
@@ -290,8 +293,10 @@
               <div class="eroce">
                 <span
                   *ngIf="
-                    f['budeget_Allocation_USD']?.dirty &&
-                    f['budeget_Allocation_USD']?.invalid
+                    (isAcquisitionSubmitted &&
+                      f['budeget_Allocation_USD'].invalid) ||
+                    (f['budeget_Allocation_USD']?.dirty &&
+                      f['budeget_Allocation_USD']?.invalid)
                   "
                 >
                   This field is required!
@@ -323,8 +328,10 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['geo_method_of_acquisition']?.dirty &&
-                f['geo_method_of_acquisition']?.invalid
+                (isAcquisitionSubmitted &&
+                  f['geo_method_of_acquisition'].invalid) ||
+                (f['geo_method_of_acquisition']?.dirty &&
+                  f['geo_method_of_acquisition']?.invalid)
               "
             >
               Acquisition Type is required!
@@ -355,7 +362,8 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['quantum_Planned']?.dirty && f['quantum_Planned']?.invalid
+                (isAcquisitionSubmitted && f['quantum_Planned'].invalid) ||
+                (f['quantum_Planned']?.dirty && f['quantum_Planned']?.invalid)
               "
             >
               Quantum Planned is required!
@@ -379,7 +387,12 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="f['quantum']?.dirty && f['quantum']?.invalid">
+            <span
+              *ngIf="
+                (isAcquisitionSubmitted && f['quantum'].invalid) ||
+                (f['quantum']?.dirty && f['quantum']?.invalid)
+              "
+            >
               Quantum Acquired is required!
             </span>
           </div>
@@ -403,7 +416,8 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['quantum_Approved']?.dirty && f['quantum_Approved']?.invalid
+                (isAcquisitionSubmitted && f['quantum_Approved'].invalid) ||
+                (f['quantum_Approved']?.dirty && f['quantum_Approved'])?.invalid
               "
             >
               Quantum Approved is required!
@@ -453,8 +467,9 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['name_of_Contractor']?.dirty &&
-                f['name_of_Contractor']?.invalid
+                (isAcquisitionSubmitted && f['name_of_Contractor'].invalid) ||
+                (f['name_of_Contractor']?.dirty &&
+                  f['name_of_Contractor']?.invalid)
               "
             >
               Quantum Approved is required!
@@ -486,8 +501,10 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['geo_type_of_data_acquired']?.dirty &&
-                f['geo_type_of_data_acquired']?.invalid
+                (isAcquisitionSubmitted &&
+                  f['geo_type_of_data_acquired'].invalid) ||
+                (f['geo_type_of_data_acquired']?.dirty &&
+                  f['geo_type_of_data_acquired']?.invalid)
               "
             >
               Quantum Approved is required!
@@ -514,7 +531,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="f['no_of_Folds']?.dirty && f['no_of_Folds']?.invalid">
+            <span
+              *ngIf="
+                (isAcquisitionSubmitted && f['no_of_Folds'].invalid) ||
+                (f['no_of_Folds']?.dirty && f['no_of_Folds']?.invalid)
+              "
+            >
               No of Fold is required!
             </span>
           </div>
@@ -601,8 +623,10 @@
           <div class="eroce">
             <span
               *ngIf="
-                f['geo_Record_Length_of_Data']?.dirty &&
-                f['geo_Record_Length_of_Data']?.invalid
+                (isAcquisitionSubmitted &&
+                  f['geo_Record_Length_of_Data'].invalid) ||
+                (f['geo_Record_Length_of_Data']?.dirty &&
+                  f['geo_Record_Length_of_Data']?.invalid)
               "
             >
               No of Fold is required!
@@ -651,8 +675,8 @@
         <button
           #btn
           class="quarterbtn"
+          [style]="AcquisitionForm.invalid ? 'cursor: default' : ''"
           (click)="saveQuarterAcquisition()"
-          [disabled]="AcquisitionForm.invalid"
         >
           Save Quarter 1
         </button>
@@ -735,7 +759,8 @@
     <div class="eroce">
       <span
         *ngIf="
-          pf['type_of_Processing']?.dirty && pf['type_of_Processing']?.invalid
+          (isProcessingSubmitted && pf['type_of_Processing'].invalid) ||
+          (pf['type_of_Processing']?.dirty && pf['type_of_Processing']?.invalid)
         "
       >
         Processing Type is required
@@ -812,8 +837,9 @@
           <div class="eroce">
             <span
               *ngIf="
-                pf['processed_Proposed']?.dirty &&
-                pf['processed_Proposed']?.invalid
+                (isProcessingSubmitted && pf['processed_Proposed'].invalid) ||
+                (pf['processed_Proposed']?.dirty &&
+                  pf['processed_Proposed']?.invalid)
               "
             >
               Proposed Processing is required
@@ -890,8 +916,9 @@
           <div class="eroce">
             <span
               *ngIf="
-                pf['processed_Proposed']?.dirty &&
-                pf['processed_Proposed']?.invalid
+                (isProcessingSubmitted && pf['reprocessed_Proposed'].invalid) ||
+                (pf['reprocessed_Proposed']?.dirty &&
+                  pf['reprocessed_Proposed']?.invalid)
               "
             >
               Proposed Reprocessing is required
@@ -1060,7 +1087,9 @@
       <div class="eroce">
         <span
           *ngIf="
-            pf['name_of_Contractor']?.dirty && pf['name_of_Contractor']?.invalid
+            (isProcessingSubmitted && pf['name_of_Contractor'].invalid) ||
+            (pf['name_of_Contractor']?.dirty &&
+              pf['name_of_Contractor']?.invalid)
           "
         >
           Name of Contractor is required
@@ -1118,8 +1147,10 @@
           <div class="eroce">
             <span
               *ngIf="
-                pf['budeget_Allocation_NGN']?.dirty &&
-                pf['budeget_Allocation_NGN']?.invalid
+                (isProcessingSubmitted &&
+                  pf['budeget_Allocation_NGN'].invalid) ||
+                (pf['budeget_Allocation_NGN']?.dirty &&
+                  pf['budeget_Allocation_NGN']?.invalid)
               "
             >
               This field is required!
@@ -1152,8 +1183,10 @@
           <div class="eroce">
             <span
               *ngIf="
-                pf['budeget_Allocation_USD']?.dirty &&
-                pf['budeget_Allocation_USD']?.invalid
+                (isProcessingSubmitted &&
+                  pf['budeget_Allocation_USD'].invalid) ||
+                (pf['budeget_Allocation_USD']?.dirty &&
+                  pf['budeget_Allocation_USD']?.invalid)
               "
             >
               This field is required!
@@ -1191,8 +1224,10 @@
       <div *ngIf="pSubmitted" class="eroce">
         <span
           *ngIf="
-            pf['geo_Type_of_Data_being_Processed'].dirty &&
-            pf['geo_Type_of_Data_being_Processed'].invalid
+            (isProcessingSubmitted &&
+              pf['geo_Type_of_Data_being_Processed'].invalid) ||
+            (pf['geo_Type_of_Data_being_Processed']?.dirty &&
+              pf['geo_Type_of_Data_being_Processed']?.invalid)
           "
         >
           Data Being Processed Type is required
@@ -1258,7 +1293,7 @@
       #btnprocess
       class="quarterbtn"
       (click)="saveQuarterProcessing()"
-      [disabled]="ProcessingForm.invalid"
+      [style]="ProcessingForm.invalid ? 'cursor: default' : ''"
       [attr.disabled]="isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)"
     >
       Save Quarter 1
