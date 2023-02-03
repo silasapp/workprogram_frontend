@@ -223,9 +223,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.processingBody.geo_Type_of_Data_being_Processed,
           [Validators.required]
         ),
-        remarks: new FormControl(this.processingBody.remarks, [
-          Validators.required,
-        ]),
+        remarks: new FormControl(this.processingBody.remarks, []),
       },
       {}
     );
@@ -258,15 +256,15 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  test() {
-    console.log('valida...', this.AcquisitionForm);
-  }
-
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
     return this.genk.disableForm ? true : null;
+  }
+
+  test() {
+    console.log('form....', this.AcquisitionForm);
   }
 
   get f() {
