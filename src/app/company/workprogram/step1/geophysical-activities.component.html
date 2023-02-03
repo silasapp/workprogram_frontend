@@ -219,7 +219,12 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!f['geo_area_of_coverage'].valid">
+            <span
+              *ngIf="
+                f['geo_area_of_coverage']?.dirty &&
+                f['geo_area_of_coverage'].invalid
+              "
+            >
               Area of Coverage is required
             </span>
           </div>
@@ -249,7 +254,12 @@
                 </div>
               </div>
               <div class="eroce">
-                <span *ngIf="!f['budeget_Allocation_NGN']?.valid">
+                <span
+                  *ngIf="
+                    f['budeget_Allocation_NGN']?.dirty &&
+                    f['budeget_Allocation_NGN']?.invalid
+                  "
+                >
                   This field is required!
                 </span>
               </div>
@@ -278,7 +288,12 @@
               </div>
 
               <div class="eroce">
-                <span *ngIf="!f['budeget_Allocation_USD']?.valid">
+                <span
+                  *ngIf="
+                    f['budeget_Allocation_USD']?.dirty &&
+                    f['budeget_Allocation_USD']?.invalid
+                  "
+                >
                   This field is required!
                 </span>
               </div>
@@ -306,7 +321,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!f['geo_method_of_acquisition']?.valid">
+            <span
+              *ngIf="
+                f['geo_method_of_acquisition']?.dirty &&
+                f['geo_method_of_acquisition']?.invalid
+              "
+            >
               Acquisition Type is required!
             </span>
           </div>
@@ -333,7 +353,11 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!f['quantum_Planned']?.valid">
+            <span
+              *ngIf="
+                f['quantum_Planned']?.dirty && f['quantum_Planned']?.invalid
+              "
+            >
               Quantum Planned is required!
             </span>
           </div>
@@ -355,7 +379,7 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!f['quantum']?.valid">
+            <span *ngIf="f['quantum']?.dirty && f['quantum']?.invalid">
               Quantum Acquired is required!
             </span>
           </div>
@@ -377,7 +401,11 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!f['quantum_Approved']?.valid">
+            <span
+              *ngIf="
+                f['quantum_Approved']?.dirty && f['quantum_Approved']?.invalid
+              "
+            >
               Quantum Approved is required!
             </span>
           </div>
@@ -423,7 +451,12 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!f['name_of_Contractor']?.valid">
+            <span
+              *ngIf="
+                f['name_of_Contractor']?.dirty &&
+                f['name_of_Contractor']?.invalid
+              "
+            >
               Quantum Approved is required!
             </span>
           </div>
@@ -451,7 +484,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!f['geo_type_of_data_acquired']?.valid">
+            <span
+              *ngIf="
+                f['geo_type_of_data_acquired']?.dirty &&
+                f['geo_type_of_data_acquired']?.invalid
+              "
+            >
               Quantum Approved is required!
             </span>
           </div>
@@ -466,7 +504,7 @@
               <input
                 formControlName="no_of_Folds"
                 (keypress)="genk.restrictData($event)"
-                (ngModelChange)="(acquisitionBody.no_of_Folds)"
+                [(ngModel)]="acquisitionBody.no_of_Folds"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs)
                 "
@@ -476,7 +514,7 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!f['no_of_Folds']?.valid">
+            <span *ngIf="f['no_of_Folds']?.dirty && f['no_of_Folds']?.invalid">
               No of Fold is required!
             </span>
           </div>
@@ -561,7 +599,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!f['geo_Record_Length_of_Data']?.valid">
+            <span
+              *ngIf="
+                f['geo_Record_Length_of_Data']?.dirty &&
+                f['geo_Record_Length_of_Data']?.invalid
+              "
+            >
               No of Fold is required!
             </span>
           </div>
@@ -690,7 +733,11 @@
     </div>
 
     <div class="eroce">
-      <span *ngIf="!pf['type_of_Processing']?.valid">
+      <span
+        *ngIf="
+          pf['type_of_Processing']?.dirty && pf['type_of_Processing']?.invalid
+        "
+      >
         Processing Type is required
       </span>
     </div>
@@ -763,7 +810,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!pf['processed_Proposed']?.valid">
+            <span
+              *ngIf="
+                pf['processed_Proposed']?.dirty &&
+                pf['processed_Proposed']?.invalid
+              "
+            >
               Proposed Processing is required
             </span>
           </div>
@@ -836,7 +888,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!pf['processed_Proposed']?.valid">
+            <span
+              *ngIf="
+                pf['processed_Proposed']?.dirty &&
+                pf['processed_Proposed']?.invalid
+              "
+            >
               Proposed Reprocessing is required
             </span>
           </div>
@@ -1001,7 +1058,11 @@
         />
       </div>
       <div class="eroce">
-        <span *ngIf="!pf['name_of_Contractor']?.valid">
+        <span
+          *ngIf="
+            pf['name_of_Contractor']?.dirty && pf['name_of_Contractor']?.invalid
+          "
+        >
           Name of Contractor is required
         </span>
       </div>
@@ -1046,7 +1107,7 @@
                   processingBody.budeget_Allocation_NGN =
                     genk.addCurrencyDecimal($event)
                 "
-                [value]="processingBody.budeget_Allocation_NGN"
+                [(ngModel)]="processingBody.budeget_Allocation_NGN"
                 class="inpute"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
@@ -1055,7 +1116,12 @@
             </div>
           </div>
           <div class="eroce">
-            <span *ngIf="!pf['budeget_Allocation_NGN']?.valid">
+            <span
+              *ngIf="
+                pf['budeget_Allocation_NGN']?.dirty &&
+                pf['budeget_Allocation_NGN']?.invalid
+              "
+            >
               This field is required!
             </span>
           </div>
@@ -1074,7 +1140,7 @@
                   processingBody.budeget_Allocation_USD =
                     genk.addCurrencyDecimal($event)
                 "
-                [value]="processingBody.budeget_Allocation_USD"
+                [(ngModel)]="processingBody.budeget_Allocation_USD"
                 class="inpute"
                 [attr.disabled]="
                   isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)
@@ -1084,7 +1150,12 @@
           </div>
 
           <div class="eroce">
-            <span *ngIf="!pf['budeget_Allocation_USD']?.valid">
+            <span
+              *ngIf="
+                pf['budeget_Allocation_USD']?.dirty &&
+                pf['budeget_Allocation_USD']?.invalid
+              "
+            >
               This field is required!
             </span>
           </div>
@@ -1118,7 +1189,12 @@
       </div>
 
       <div *ngIf="pSubmitted" class="eroce">
-        <span *ngIf="!pf['geo_Type_of_Data_being_Processed'].valid">
+        <span
+          *ngIf="
+            pf['geo_Type_of_Data_being_Processed'].dirty &&
+            pf['geo_Type_of_Data_being_Processed'].invalid
+          "
+        >
           Data Being Processed Type is required
         </span>
       </div>

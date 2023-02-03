@@ -15,8 +15,10 @@ import { CompanyComponent } from '../../company.component';
 })
 export class UploadPresentationComponent implements OnInit {
   uploadPresentationForm: FormGroup;
+
+  uploadPresentations: any = [];
   private d;
-  YearsList=[];
+  YearsList = [];
   currentYear = new Date().getFullYear();
 
   constructor(
@@ -29,7 +31,6 @@ export class UploadPresentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getThreeYearsBehindAndAfter();
-
 
     this.uploadPresentationForm = this.fb.group({
       companyId: [
@@ -49,9 +50,11 @@ export class UploadPresentationComponent implements OnInit {
       source: ['', Validators.required],
     });
   }
+
   get f() {
     return this.uploadPresentationForm.controls;
   }
+
   onSubmit() {
     var file: File = this.f['source'].value;
     var formData: FormData = new FormData();
@@ -69,20 +72,18 @@ export class UploadPresentationComponent implements OnInit {
   }
 
   getThreeYearsBehindAndAfter() {
-    debugger;
     this.YearsList = [];
     var num: number = 2;
     var i: number;
     for (i = num; i > 0; i--) {
-      this.YearsList[num-i] = this.currentYear - i;
+      this.YearsList[num - i] = this.currentYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
 
-    for (i = 0; i <num; i++) {
-      this.YearsList[num+i] = this.currentYear + i;
+    for (i = 0; i < num; i++) {
+      this.YearsList[num + i] = this.currentYear + i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
   }
 
   Alert(title: string, text: string, icon: any) {
