@@ -93,18 +93,18 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.equity_distribution,
           [Validators.required]
         ),
-        no_of_field_producing: new FormControl(
-          this.concessionBody.no_of_field_producing,
-          [Validators.required]
-        ),
-        date_of_Grant_Expiration: new FormControl(
-          this.concessionBody.date_of_Grant_Expiration,
-          [Validators.required]
-        ),
-        date_of_Expiration: new FormControl(
-          this.concessionBody.date_of_Expiration,
-          [Validators.required]
-        ),
+        // no_of_field_producing: new FormControl(
+        //   this.concessionBody.no_of_field_producing,
+        //   [Validators.required]
+        // ),
+        // date_of_Grant_Expiration: new FormControl(
+        //   this.concessionBody.date_of_Grant_Expiration,
+        //   [Validators.required]
+        // ),
+        // date_of_Expiration: new FormControl(
+        //   this.concessionBody.date_of_Expiration,
+        //   [Validators.required]
+        // ),
         has_Signature_Bonus_been_paid: new FormControl(
           this.concessionBody.has_Signature_Bonus_been_paid,
           [Validators.required]
@@ -140,14 +140,14 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.if_No_why_renewal,
           [Validators.required]
         ),
-        no_of_discovered_field: new FormControl(
-          this.concessionBody.no_of_discovered_field,
-          [Validators.required]
-        ),
-        has_Assignment_of_Interest_Fee_been_paid: new FormControl(
-          this.concessionBody.has_Assignment_of_Interest_Fee_been_paid,
-          [Validators.required]
-        ),
+        // no_of_discovered_field: new FormControl(
+        //   this.concessionBody.no_of_discovered_field,
+        //   [Validators.required]
+        // ),
+        // has_Assignment_of_Interest_Fee_been_paid: new FormControl(
+        //   this.concessionBody.has_Assignment_of_Interest_Fee_been_paid,
+        //   [Validators.required]
+        // ),
         proposed_budget_for_each_license_lease: new FormControl(
           this.concessionBody.proposed_budget_for_each_license_lease,
           [Validators.required]
@@ -229,6 +229,8 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.getRoyaltyHeld();
     this.getBoolValue();
     this.cd.markForCheck();
+    debugger;
+    let po = this.ConcessionSituationForm.controls;
   }
 
   isEditable(group: string): boolean | null {
@@ -272,8 +274,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getConcessionHeld() {
     this.modalService.logCover('loading', true);
-    this.workprogram
-      .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+    this.workprogram.getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
@@ -360,7 +361,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
-    debugger;
     this.submitted = true;
     //let rell = this.f['miscellaneous'].errors['required'];
     if (this.RoyaltyForm.invalid) {
