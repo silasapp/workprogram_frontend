@@ -551,11 +551,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   }
 
   saveFacility() {
+    debugger;
     let budgetInfo = {} as facilitiesProjectPerformance;
     this.facilitiesProjectPerformanceBody.companyNumber = 0;
     this.facilitiesProjectPerformanceBody.id = 0;
+    debugger;
     this.facilitiesProjectPerformanceBody.year_of_WP = this.genk.wpYear;
     this.facilitiesProjectPerformanceBody.omL_Name = this.genk.OmlName;
+    debugger;
     for (let item in this.facilitiesProjectPerformanceBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
