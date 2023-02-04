@@ -269,7 +269,6 @@
             "
           >
             <input
-              type="number"
               class="inpute"
               formControlName="processing"
               [(ngModel)]="capexBody.processing"
@@ -313,14 +312,15 @@
           >
             <input
               class="inpute"
-              formControlName="exploratory_well_drilling"
-              [(ngModel)]="capexBody.exploratory_well_drilling"
+              formControlName="exploratory_Well_Drilling"
+              [(ngModel)]="capexBody.exploratory_Well_Drilling"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
         </div>
       </div>
     </div>
+    <br />
     <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
@@ -337,8 +337,8 @@
           >
             <input
               class="inpute"
-              formControlName="appraisal_well_drilling"
-              [(ngModel)]="capexBody.appraisal_well_drilling"
+              formControlName="appraisal_Well_Drilling"
+              [(ngModel)]="capexBody.appraisal_Well_Drilling"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -358,8 +358,8 @@
           >
             <input
               class="inpute"
-              formControlName="development_well_drilling"
-              [(ngModel)]="capexBody.development_well_drilling"
+              formControlName="development_Well_Drilling"
+              [(ngModel)]="capexBody.development_Well_Drilling"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -379,14 +379,17 @@
           >
             <input
               class="inpute"
-              formControlName="workover_operations"
-              [(ngModel)]="capexBody.workover_operations"
+              formControlName="workover_Operations"
+              [(ngModel)]="capexBody.workover_Operations"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
         </div>
       </div>
     </div>
+
+    <br />
+    <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
@@ -453,6 +456,9 @@
       </div>
     </div>
 
+    <br />
+    <br />
+
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
         <label class="labelwp">Generators</label>
@@ -488,8 +494,8 @@
           >
             <input
               class="inpute"
-              formControlName="turbines_compressors"
-              [(ngModel)]="capexBody.turbines_compressors"
+              formControlName="turbines_Compressors"
+              [(ngModel)]="capexBody.turbines_Compressors"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -518,6 +524,9 @@
       </div>
     </div>
 
+    <br />
+    <br />
+
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
         <label class="labelwp">Other Equipment</label>
@@ -532,8 +541,8 @@
           >
             <input
               class="inpute"
-              formControlName="other_equipment"
-              [(ngModel)]="capexBody.other_equipment"
+              formControlName="other_Equipment"
+              [(ngModel)]="capexBody.other_Equipment"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -553,8 +562,8 @@
           >
             <input
               class="inpute"
-              formControlName="civil_works"
-              [(ngModel)]="capexBody.civil_works"
+              formControlName="civil_Works"
+              [(ngModel)]="capexBody.civil_Works"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -574,8 +583,8 @@
           >
             <input
               class="inpute"
-              formControlName="other_costs"
-              [(ngModel)]="capexBody.other_costs"
+              formControlName="other_Costs"
+              [(ngModel)]="capexBody.other_Costs"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_CAPEXs)"
             />
           </div>
@@ -583,6 +592,7 @@
       </div>
     </div>
 
+    <br />
     <br />
     <div style="text-align: center">
       <button
@@ -612,7 +622,7 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Item Description</label>
+        <label class="labelwp">Variable Cost(NGN)</label>
         <div style="display: flex; width: 100%">
           <div
             style="
@@ -622,22 +632,13 @@
               border-radius: 20px;
             "
           >
-            <select
-              class="input"
-              type="inpute"
-              formControlName="item_Description"
-              [(ngModel)]="capexOpexBody.item_Description"
+            <input
+              type="number"
+              class="inpute"
+              formControlName="variable_cost"
+              [(ngModel)]="opexBody.variable_cost"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            >
-              <option selected disabled>---- Please Select Item ----</option>
-              <option value="Variable Cost">Variable Cost</option>
-              <option value="Fixed Cost">Fixed Cost</option>
-              <option value="Overheads">Overheads</option>
-              <option value="Repairs and Maintenance Cost">
-                Repairs and Maintenance Cost
-              </option>
-              <option value="General Expenses">General Expenses</option>
-            </select>
+            />
           </div>
         </div>
       </div>
@@ -646,7 +647,7 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(NGN)</label>
+        <label class="labelwp">Fixed Cost(NGN)</label>
         <div style="display: flex">
           <div
             style="
@@ -659,8 +660,8 @@
             <input
               type="number"
               class="inpute"
-              formControlName="naira"
-              [(ngModel)]="capexOpexBody.naira"
+              formControlName="fixed_cost"
+              [(ngModel)]="opexBody.fixed_cost"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
@@ -668,7 +669,7 @@
       </div>
 
       <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(USD)</label>
+        <label class="labelwp">Overheads</label>
         <div style="display: flex; width: 100%">
           <div
             style="
@@ -681,8 +682,8 @@
             <input
               type="number"
               class="inpute"
-              formControlName="dollar"
-              [(ngModel)]="capexOpexBody.dollar"
+              formControlName="overheads"
+              [(ngModel)]="opexBody.overheads"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
@@ -690,7 +691,7 @@
       </div>
 
       <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(USD) EQUIVALENT (OFF. EXG RATE)</label>
+        <label class="labelwp">Repairs and Maintenance Cost(NGN)</label>
         <div style="display: flex">
           <div
             style="
@@ -703,8 +704,8 @@
             <input
               type="number"
               class="inpute"
-              formControlName="dollar_equivalent"
-              [(ngModel)]="capexOpexBody.dollar_equivalent"
+              formControlName="repairs_and_maintenance_cost"
+              [(ngModel)]="opexBody.repairs_and_maintenance_cost"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
@@ -715,7 +716,7 @@
 
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">Remarks</label>
+        <label class="labelwp">General Expenses(NGN)</label>
         <div style="display: flex">
           <div
             style="
@@ -729,8 +730,8 @@
               type="number"
               rows="3"
               class="inpute"
-              formControlName="remarks"
-              [(ngModel)]="capexOpexBody.remarks"
+              formControlName="general_expenses"
+              [(ngModel)]="opexBody.general_expenses"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             ></textarea>
           </div>

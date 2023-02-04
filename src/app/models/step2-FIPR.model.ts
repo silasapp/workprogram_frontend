@@ -604,7 +604,7 @@ export class RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE {
     this.companyName = model.companyName;
     this.companyemail = model.companyemail;
     this.year = model.year;
-    this.company_Reserves_Year = model.company_Reserves_AG;
+    this.company_Reserves_Year = model.company_Reserves_Year;
     this.company_Reserves_Oil = model.company_Reserves_Oil;
     this.company_Reserves_Condensate = model.company_Reserves_Condensate;
     this.company_Reserves_AG = model.company_Reserves_AG;

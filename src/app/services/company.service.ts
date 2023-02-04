@@ -39,9 +39,6 @@ export class CompanyService {
       );
   }
 
-
-  
-
   getCompanyDetails() {
     debugger;
     const d = this.auth.currentUserValue;
@@ -86,7 +83,7 @@ export class CompanyService {
       );
   }
 
-  getWorkProgrammeStartAndEndDates(){
+  getWorkProgrammeStartAndEndDates() {
     return this.http
       .get<any>(`${environment.apiUrl}/presentation/Get_StartAndEndDates`)
       .pipe(
@@ -114,18 +111,26 @@ export class CompanyService {
   }
 
   uploadPresentation(year: string, formData: FormData) {
-    return this.http
-      .post<any>(
-        `${environment.apiUrl}/presentation/uploadpresentation`,
-        formData,
-        { params: { year: year }, }
-      )
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
+    return this.http.post<any>(
+      `${environment.apiUrl}/presentation/uploadpresentation`,
+      formData,
+      { params: { year: year } }
+    );
+  }
+
+  getPresentations(year: string) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/presentation/get_upload_presentation`,
+      {},
+      { params: { year } }
+    );
+  }
+
+  deletePresentation(year) {
+    return this.http.delete<any>(
+      `${environment.apiUrl}/presentation/delete_upload_presentation`,
+      { params: { year } }
+    );
   }
 
   getdashboardreport(year: string) {

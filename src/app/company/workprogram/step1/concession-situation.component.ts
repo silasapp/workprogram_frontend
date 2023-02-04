@@ -23,7 +23,7 @@ import { Royalty } from '../../../models/step1-royalty.model';
 @Component({
   templateUrl: './concession-situation.component.html',
   styleUrls: ['../board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPConcessionSituationComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
@@ -191,7 +191,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
         ]),
-        last_Qntr_Royalty :new FormControl(this.royaltyBody.last_Qntr_Royalty, [
+        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty, [
           Validators.required,
         ]),
       },
