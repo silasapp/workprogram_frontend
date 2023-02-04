@@ -28,6 +28,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SWPGeophysicalActivitiesComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
+  public isAcquisitionSubmitted: boolean = false;
+  public isProcessingSubmitted: boolean = false;
+
   AcquisitionForm: FormGroup;
   ProcessingForm: FormGroup;
   quaterACOneData: GEOPHYSICAL_ACTIVITIES_ACQUISITION;
@@ -158,49 +161,20 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     this.ProcessingForm = new FormGroup(
       {
-        processed_Actual: new FormControl(
-          this.processingBody.processed_Actual,
+        type_of_Processing: new FormControl(
+          this.processingBody.type_of_Processing,
           [Validators.required]
         ),
         processed_Proposed: new FormControl(
           this.processingBody.processed_Proposed,
           [Validators.required]
         ),
-        reprocessed_Actual: new FormControl(
-          this.processingBody.reprocessed_Actual,
-          [Validators.required]
-        ),
         reprocessed_Proposed: new FormControl(
           this.processingBody.reprocessed_Proposed,
           [Validators.required]
         ),
-        type_of_Processing: new FormControl(
-          this.processingBody.type_of_Processing,
-          [Validators.required]
-        ),
-        // interpreted_Actual: new FormControl(this.processingBody.interpreted_Actual, [Validators.required]),
-        // interpreted_Proposed: new FormControl(this.processingBody.interpreted_Proposed, [Validators.required]),
-        geo_Any_Ongoing_Processing_Project: new FormControl(
-          this.processingBody.geo_Any_Ongoing_Processing_Project,
-          [Validators.required]
-        ),
-        quantum_Planned: new FormControl(this.processingBody.quantum_Planned, [
-          Validators.required,
-        ]),
-        geo_Quantum_of_Data: new FormControl(
-          this.processingBody.geo_Quantum_of_Data,
-          [Validators.required]
-        ),
-        quantum_Approved: new FormControl(
-          this.processingBody.quantum_Approved,
-          [Validators.required]
-        ),
-        geo_Quantum_of_Data_carry_over: new FormControl(
-          this.processingBody.geo_Quantum_of_Data_carry_over,
-          [Validators.required]
-        ),
-        geo_Activity_Timeline: new FormControl(
-          this.processingBody.geo_Activity_Timeline,
+        name_of_Contractor: new FormControl(
+          this.processingBody.name_of_Contractor,
           [Validators.required]
         ),
         budeget_Allocation_NGN: new FormControl(
@@ -211,19 +185,49 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.processingBody.budeget_Allocation_USD,
           [Validators.required]
         ),
-        // geo_Completion_Status: new FormControl(
-        //   this.processingBody.geo_Completion_Status,
-        //   [Validators.required]
-        // ),
-        name_of_Contractor: new FormControl(
-          this.processingBody.name_of_Contractor,
-          [Validators.required]
-        ),
         geo_Type_of_Data_being_Processed: new FormControl(
           this.processingBody.geo_Type_of_Data_being_Processed,
           [Validators.required]
         ),
         remarks: new FormControl(this.processingBody.remarks, []),
+
+        // processed_Actual: new FormControl(
+        //   this.processingBody.processed_Actual,
+        //   [Validators.required]
+        // ),
+        // reprocessed_Actual: new FormControl(
+        //   this.processingBody.reprocessed_Actual,
+        //   [Validators.required]
+        // ),
+        // interpreted_Actual: new FormControl(this.processingBody.interpreted_Actual, [Validators.required]),
+        // interpreted_Proposed: new FormControl(this.processingBody.interpreted_Proposed, [Validators.required]),
+        // geo_Any_Ongoing_Processing_Project: new FormControl(
+        //   this.processingBody.geo_Any_Ongoing_Processing_Project,
+        //   [Validators.required]
+        // ),
+        // quantum_Planned: new FormControl(this.processingBody.quantum_Planned, [
+        //   Validators.required,
+        // ]),
+        // geo_Quantum_of_Data: new FormControl(
+        //   this.processingBody.geo_Quantum_of_Data,
+        //   [Validators.required]
+        // ),
+        // quantum_Approved: new FormControl(
+        //   this.processingBody.quantum_Approved,
+        //   [Validators.required]
+        // ),
+        // geo_Quantum_of_Data_carry_over: new FormControl(
+        //   this.processingBody.geo_Quantum_of_Data_carry_over,
+        //   [Validators.required]
+        // ),
+        // geo_Activity_Timeline: new FormControl(
+        //   this.processingBody.geo_Activity_Timeline,
+        //   [Validators.required]
+        // ),
+        // geo_Completion_Status: new FormControl(
+        //   this.processingBody.geo_Completion_Status,
+        //   [Validators.required]
+        // ),
       },
       {}
     );
@@ -261,10 +265,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       return null;
     }
     return this.genk.disableForm ? true : null;
-  }
-
-  test() {
-    console.log('form....', this.AcquisitionForm);
   }
 
   get f() {
@@ -567,8 +567,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  saveQuarterAcquisition() {
-    this.submitted = true;
+  saveQuarterAcquisition(btn) {
+    this.isAcquisitionSubmitted = true;
+
+    if (this.AcquisitionForm.invalid) return;
 
     let ree = this.currentACQuater;
     this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
@@ -581,15 +583,71 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     sail = this.genk.stringArray(
       this.acquisitionBody
     ) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
+
     this.workprogram
       .saveQuarterAcquisition(sail, this.genk.wpYear, this.genk.OmlName)
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+
+          this.moveToNextACQuater(btn);
+
+          this.isAcquisitionSubmitted = false;
+        },
       });
   }
 
-  saveQuarterProcessing() {
-    this.pSubmitted = true;
+  moveToNextACQuater(btn: HTMLButtonElement) {
+    const label = btn.innerText;
+
+    if (label === 'Save Quarter 1') {
+      this.currentACQuater = 2;
+      btn.textContent = 'Save Quarter 2';
+      this.acquisitionBody = this.quaterACTwoData;
+    }
+    if (label === 'Save Quarter 2') {
+      this.currentACQuater = 3;
+      btn.textContent = 'Save Quarter 3';
+      this.acquisitionBody = this.quaterACThreeData;
+    }
+    if (label === 'Save Quarter 3') {
+      this.currentACQuater = 4;
+      btn.textContent = 'Save Quarter 4';
+      this.acquisitionBody = this.quaterACThreeData;
+    }
+
+    this.cd.markForCheck();
+  }
+
+  moveToNextPRQuater(btn: HTMLButtonElement) {
+    const label = btn.innerText;
+
+    if (label === 'Save Quarter 1') {
+      this.currentPRQuater = 2;
+      btn.textContent = 'Save Quarter 2';
+      this.processingBody = this.quaterPRTwoData;
+    }
+    if (label === 'Save Quarter 2') {
+      this.currentPRQuater = 3;
+      btn.textContent = 'Save Quarter 3';
+      this.processingBody = this.quaterPRThreeData;
+    }
+    if (label === 'Save Quarter 3') {
+      this.currentPRQuater = 4;
+      btn.textContent = 'Save Quarter 4';
+      this.processingBody = this.quaterPRThreeData;
+    }
+
+    this.cd.markForCheck();
+  }
+
+  saveQuarterProcessing(btn) {
+    this.isProcessingSubmitted = true;
+
+    console.log('fromm...', this.ProcessingForm);
+
+    if (this.ProcessingForm.invalid) return;
+
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
@@ -614,8 +672,14 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     this.workprogram
       .saveQuarterProcessing(sail, this.genk.wpYear, this.genk.OmlName)
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.popText, 'success');
+
+          this.moveToNextPRQuater(btn);
+
+          this.isProcessingSubmitted = false;
+        },
       });
   }
 

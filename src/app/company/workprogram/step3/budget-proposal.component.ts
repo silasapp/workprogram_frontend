@@ -91,6 +91,131 @@ export class SWPBudgetProposalComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    this.genk.activeStep = 'STEP3';
+    this.budgetProposalForm = new FormGroup({
+      budget_for_Direct_Exploration_and_Production_Activities_Naira:
+        new FormControl(
+          this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira,
+          Validators.required
+        ),
+      budget_for_Direct_Exploration_and_Production_Activities_Dollars:
+        new FormControl(
+          this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars,
+          Validators.required
+        ),
+      budget_for_other_Activities_Naira: new FormControl(
+        this.budgetProposalBody.budget_for_other_Activities_Naira,
+        Validators.required
+      ),
+      budget_for_other_Activities_Dollars: new FormControl(
+        this.budgetProposalBody.budget_for_other_Activities_Dollars,
+        Validators.required
+      ),
+      total_Company_Expenditure_Dollars: new FormControl(
+        this.budgetProposalBody.total_Company_Expenditure_Dollars,
+        Validators.required
+      ),
+    });
+
+    this.OpexForm = new FormGroup({
+      variable_cost: new FormControl(
+        this.opexBody.variable_cost,
+        Validators.required
+      ),
+      fixed_cost: new FormControl(
+        this.opexBody.fixed_cost,
+        Validators.required
+      ),
+      overheads: new FormControl(this.opexBody.overheads, Validators.required),
+      repairs_and_maintenance_cost: new FormControl(
+        this.opexBody.repairs_and_maintenance_cost,
+        Validators.required
+      ),
+      general_expenses: new FormControl(
+        this.opexBody.general_expenses,
+        Validators.required
+      ),
+    });
+
+    this.capexForm = new FormGroup({
+      acquisition: new FormControl(
+        this.capexBody.acquisition,
+        Validators.required
+      ),
+      processing: new FormControl(
+        this.capexBody.processing,
+        Validators.required
+      ),
+      reprocessing: new FormControl(
+        this.capexBody.reprocessing,
+        Validators.required
+      ),
+      exploratory_Well_Drilling: new FormControl(
+        this.capexBody.exploratory_Well_Drilling,
+        Validators.required
+      ),
+      appraisal_Well_Drilling: new FormControl(
+        this.capexBody.appraisal_Well_Drilling,
+        Validators.required
+      ),
+      development_Well_Drilling: new FormControl(
+        this.capexBody.development_Well_Drilling,
+        Validators.required
+      ),
+      workover_Operations: new FormControl(
+        this.capexBody.workover_Operations,
+        Validators.required
+      ),
+      completions: new FormControl(
+        this.capexBody.completions,
+        Validators.required
+      ),
+
+      flowlines: new FormControl(this.capexBody.flowlines, Validators.required),
+      pipelines: new FormControl(this.capexBody.pipelines, Validators.required),
+      generators: new FormControl(
+        this.capexBody.generators,
+        Validators.required
+      ),
+      turbines_Compressors: new FormControl(
+        this.capexBody.turbines_Compressors,
+        Validators.required
+      ),
+
+      buildings: new FormControl(this.capexBody.buildings, Validators.required),
+      other_Equipment: new FormControl(
+        this.capexBody.other_Equipment,
+        Validators.required
+      ),
+      civil_Works: new FormControl(
+        this.capexBody.civil_Works,
+        Validators.required
+      ),
+      other_Costs: new FormControl(
+        this.capexBody.other_Costs,
+        Validators.required
+      ),
+    });
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
+    this.getBudgetData();
+    this.getCapexItems();
+  }
+
   getBudgetData() {
     this.workprogram
       .getFormThreeBudget_2(
@@ -126,74 +251,22 @@ export class SWPBudgetProposalComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.genk.activeStep = 'STEP3';
-    this.budgetProposalForm = new FormGroup({
-      budget_for_Direct_Exploration_and_Production_Activities_Naira:
-        new FormControl(
-          this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira,
-          Validators.required
-        ),
-      budget_for_Direct_Exploration_and_Production_Activities_Dollars:
-        new FormControl(
-          this.budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars,
-          Validators.required
-        ),
-      budget_for_other_Activities_Naira: new FormControl(
-        this.budgetProposalBody.budget_for_other_Activities_Naira,
-        Validators.required
-      ),
-      budget_for_other_Activities_Dollars: new FormControl(
-        this.budgetProposalBody.budget_for_other_Activities_Dollars,
-        Validators.required
-      ),
-      total_Company_Expenditure_Dollars: new FormControl(
-        this.budgetProposalBody.total_Company_Expenditure_Dollars,
-        Validators.required
-      ),
-    });
-    this.OpexForm = new FormGroup({
-      item_Description: new FormControl(
-        this.capexOpexBody.item_Description,
-        Validators.required
-      ),
-      naira: new FormControl(this.capexOpexBody.naira, Validators.required),
-      dollar: new FormControl(this.capexOpexBody.dollar, Validators.required),
-      dollar_equivalent: new FormControl(
-        this.capexOpexBody.dollar_equivalent,
-        Validators.required
-      ),
-      remarks: new FormControl(this.capexOpexBody.remarks, Validators.required),
-    });
-    this.capexForm = new FormGroup({
-      item_Description: new FormControl(
-        this.capexOpexBody.item_Description,
-        Validators.required
-      ),
-      naira: new FormControl(this.capexOpexBody.naira, Validators.required),
-      dollar: new FormControl(this.capexOpexBody.dollar, Validators.required),
-      dollar_equivalent: new FormControl(
-        this.capexOpexBody.dollar_equivalent,
-        Validators.required
-      ),
-      remarks: new FormControl(this.capexOpexBody.remarks, Validators.required),
-    });
-
-    this.genk.Concession$.subscribe((con: IConcession) => {
-      if (!con) {
-        this.genk.disableForm = true;
-        this.cd.markForCheck();
-        return;
-      }
-
-      this.genk.disableForm =
-        this.genk.Fields?.length > 0
-          ? !this.genk.Field.isEditable
-          : !con.isEditable;
-      this.cd.markForCheck();
-    });
-
-    this.getBudgetData();
+  getCapexItems() {
+    this.modalService.logCover('loading', true);
+    this.workprogram
+      .get_Capex(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+      .subscribe({
+        next: (res) => {
+          if (res.budgetCapex) {
+            this.capexBody = res.budgetCapex[0];
+          }
+          this.modalService.togCover();
+        },
+        error: (error) => {
+          this.modalService.togCover();
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
+      });
   }
 
   isEditable(group: string): boolean | null {
@@ -358,12 +431,14 @@ export class SWPBudgetProposalComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
+          this.getCapexItems();
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 }

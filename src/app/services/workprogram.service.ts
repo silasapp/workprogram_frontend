@@ -3675,6 +3675,21 @@ export class WorkProgramService {
       );
   }
 
+  get_Capex(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/get_form_three_capex`,
+        // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   post_Opex(
     budget: capexOpex,
     year: string,
