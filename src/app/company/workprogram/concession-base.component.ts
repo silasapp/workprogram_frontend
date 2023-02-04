@@ -128,8 +128,8 @@ export class ConcessionBaseComponent implements OnInit {
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
-          localStorage.setItem('fieldName', '');
-          localStorage.setItem('fieldFullName', '');
+          localStorage.removeItem('fieldName');
+          localStorage.removeItem('fieldFullName');
           this.genk.fieldFullName = '';
           this.modal.logConcessionSituation(this.concessionHeld);
         }
@@ -159,8 +159,8 @@ export class ConcessionBaseComponent implements OnInit {
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
-          localStorage.setItem('fieldName', '');
-          localStorage.setItem('fieldFullName', '');
+          localStorage.removeItem('fieldName');
+          localStorage.removeItem('fieldFullName');
           this.genk.fieldFullName = '';
           this.cd.markForCheck();
         }
