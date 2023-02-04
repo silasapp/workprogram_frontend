@@ -1541,12 +1541,12 @@ export class SWPHseComponent implements OnInit {
 
     this.OccupationalForm = new FormGroup(
       {
-        OHMplanFilePath: new FormControl(
-          this.occupationalBody.OHMplanFilePath,
+        OHMplanFileName: new FormControl(
+          this.occupationalBody.OHMplanFileName,
           [Validators.required]
         ),
-        OHMplanCommunicationFilePath: new FormControl(
-          this.occupationalBody.OHMplanCommunicationFilePath,
+        OHMplanCommunicationFileName: new FormControl(
+          this.occupationalBody.OHMplanCommunicationFileName,
           [Validators.required]
         ),
         DoYouHaveAnOhm: new FormControl(this.occupationalBody.DoYouHaveAnOhm, [

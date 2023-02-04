@@ -1,80 +1,183 @@
 <div class="container mt-5">
-    <form [formGroup]="uploadPresentationForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="uploadPresentationForm" (ngSubmit)="onSubmit()">
     <div class="container">
-        <h1>Upload Presention </h1>
-    
-    <div class="bg-success">
-        <hr size="5">
-    </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>Company Name</h2>
-                </div>
-                <div class="col-sm-6"><input type="text" class="form-control" formControlName="companyName"></div>
-            </div>
-        </div>
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>Company Email</h2>
-                </div>
-                <div class="col-sm-6"><input type="text" class="form-control" id="company_email" formControlName="companyEmail"></div>
-            </div>
-        </div>
-    
-        <div>
-        <p class="h6" style="color: rgb(98, 127, 16); font-weight: 600;">	Please Note : Power Point document is mandatory</p>
-    
-        </div>
-        <div class="bg-success">
-            <hr size="5">
-        </div>
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h2>Work Programme Year</h2>
-                </div>
-                <div class="col-md-6">
-                    <select formControlName="year" id="year" class="form-select">
-                        <option selected disabled>--Select work Programme year -- </option>
-                   
-                         <option *ngFor="let year of YearsList" [value]="year" [selected]="currentYear === year">
-                            {{ year }}
-                        </option>
+      <h1>Upload Presention</h1>
 
-                    </select>
-            </div>
-        </div>
-    </div>
-    
-    <div>
-        <p style="color:  rgb(98, 127, 16); font-weight: 600;">Please Note : Files size should not be more than 25MB. You may upload multiple 25MB files</p>
-    
-        </div>
-
-    <div class="container">
+      <div class="bg-success">
+        <hr size="5" />
+      </div>
+      <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <h2>Upload document</h2>
-            </div>
-            <div class="col-md-6">
-                <input accept=".ppt, .pptx" type="file" (change)="fileChange($event)" formControlName="document" id="document" class="form-control">
+          <div class="col-sm-3">
+            <h2>Company Name</h2>
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="companyName"
+            />
+          </div>
         </div>
-    </div>
-    </div>
-    
-    <div class="bg-success">
-        <hr size="5">
-    </div>
-    
-    <div class="container text-align-center d-flex justify-content-center p-5">
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <h2>Company Email</h2>
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              id="company_email"
+              formControlName="companyEmail"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="h6" style="color: rgb(98, 127, 16); font-weight: 600">
+          Please Note : Power Point document is mandatory
+        </p>
+      </div>
+      <div class="bg-success">
+        <hr size="5" />
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h2>Work Programme Year</h2>
+          </div>
+          <div class="col-md-6">
+            <select formControlName="year" id="year" class="form-select">
+              <option selected disabled>--Select work Programme year --</option>
+
+              <option
+                *ngFor="let year of YearsList"
+                [value]="year"
+                [selected]="currentYear === year"
+              >
+                {{ year }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="color: rgb(98, 127, 16); font-weight: 600">
+          Please Note : Files size should not be more than 25MB. You may upload
+          multiple 25MB files
+        </p>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <h2>Upload document</h2>
+          </div>
+          <div class="col-md-6">
+            <input
+              accept=".ppt, .pptx"
+              type="file"
+              (change)="fileChange($event)"
+              formControlName="document"
+              id="document"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-success">
+        <hr size="5" />
+      </div>
+
+      <div
+        class="container text-align-center d-flex justify-content-center p-5"
+      >
         <div class="col-sm-5">
-        <input type="submit" value="Click here to upload presentation" class="form-control text-white alterbtn"/>
+          <input
+            type="submit"
+            value="Click here to upload presentation"
+            class="form-control text-white alterbtn"
+          />
         </div>
+      </div>
     </div>
-    </div>
+  </form>
+
+  <div class="wptablebox">
+    <h2 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem">
+      LIST OF UPLOADED PRESENTATIONS
+    </h2>
+    <form [formGroup]="wkYearForm">
+      <label id="ContentPlaceHolder2_Label13" class="labelwp"
+        >Select Work Programme Year</label
+      >
+      <div style="display: flex; width: 100%">
+        <div class="inputshadow">
+          <select
+            class="form-select"
+            formControlName="year"
+            [(ngModel)]="selectedYear"
+            (change)="getPresentations()"
+          >
+            <option selected disabled>-- Select Year -- &nbsp; &nbsp;</option>
+            <option *ngFor="let year of YearsList" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
     </form>
+
+    <div *ngIf="presentations?.length > 0" class="apptable">
+      <table class="wptable">
+        <thead>
+          <tr>
+            <th *ngFor="let h of preColHeaderDef">
+              {{ h.header }}
+            </th>
+            <th>Date Created</th>
+            <th>Uploaded File</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of presentations">
+            <td *ngFor="let colDef of preColHeaderDef">
+              {{ row[colDef.columnDef] }}
+            </td>
+            <td>{{ row["date_Created"] | formatDate }}</td>
+            <td>
+              <a [href]="row['uploaded_presentation']">
+                <img
+                  src="../../../../assets/images/file-icon.png"
+                  height="40px"
+                />
+              </a>
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm submitbtn"
+                (click)="deletePresentation(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <p
+      *ngIf="presentations?.length == 0"
+      style="margin: 3rem; font-weight: bolder; text-align: center"
+    >
+      No Presentations to display that meet the above selected criteria.
+    </p>
+  </div>
+</div>

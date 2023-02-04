@@ -23,7 +23,7 @@ import { Royalty } from '../../../models/step1-royalty.model';
 @Component({
   templateUrl: './concession-situation.component.html',
   styleUrls: ['../board.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SWPConcessionSituationComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
@@ -189,7 +189,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
         ]),
-        last_Qntr_Royalty :new FormControl(this.royaltyBody.last_Qntr_Royalty, [
+        last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty, [
           Validators.required,
         ]),
       },
@@ -360,7 +360,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
-    debugger;
     this.submitted = true;
     //let rell = this.f['miscellaneous'].errors['required'];
     if (this.RoyaltyForm.invalid) {
@@ -384,7 +383,6 @@ export class SWPConcessionSituationComponent implements OnInit {
     debugger;
     let me = this.concessionBody;
     this.csSubmitted = true;
-    
 
     // if (this.ConcessionSituationForm.invalid) {
     //   this.cd.markForCheck();

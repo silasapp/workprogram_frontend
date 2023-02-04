@@ -1,0 +1,38 @@
+.apptable {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border: 2px solid rgba(128, 128, 128, 0.308);
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.apptable td {
+  padding: 10px 0;
+  border: 1px solid rgb(238, 235, 235);
+  text-shadow: 0.3px 0.3px 0.3px rgb(0, 0, 0, 0.3);
+}
+//.apptable tr th:nth-child(even) {background: rgb(13, 96, 126);}
+.apptable tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+.apptable th {
+  padding: 5px 15px;
+  background-color: teal;
+  color: whitesmoke;
+  font-weight: 600;
+  border: 1px solid white;
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
+}
+
+.wptable {
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}

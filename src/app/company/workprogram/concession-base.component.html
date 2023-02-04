@@ -35,11 +35,10 @@
       <!-- *ngIf="concessionHeldList && concessionHeldList.length > 0" -->
       <div style="width: 400px">
         <select
-          formControlName="concession_Held"
           (change)="changeConcessionHeld($event)"
           class="basesel"
         >
-          <option selected>--Select Concession--</option>
+        <option selected disabled hidden>--Select Concession-- </option>
           <option *ngFor="let list of concessionHeldList">
             {{ list }}
           </option>

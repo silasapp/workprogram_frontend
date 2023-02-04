@@ -3653,6 +3653,43 @@ export class WorkProgramService {
       );
   }
 
+  post_Capex(
+    budget: capexOpex,
+    year: string,
+    omlName: string,
+    fieldName: string,
+    id,
+    actionToDo
+  ) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}/workprogramme/post_budget_capex`,
+        budget,
+        { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  get_Capex(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/get_form_three_capex`,
+        // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   post_Opex(
     budget: capexOpex,
     year: string,
@@ -3663,7 +3700,7 @@ export class WorkProgramService {
   ) {
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_budget_capex_opex`,
+        `${environment.apiUrl}/workprogramme/post_budget_opex`,
         budget,
         { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
       )
@@ -5729,7 +5766,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-       
           return response;
         })
       );
