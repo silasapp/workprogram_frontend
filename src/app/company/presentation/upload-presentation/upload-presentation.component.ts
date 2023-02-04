@@ -97,6 +97,7 @@ export class UploadPresentationComponent implements OnInit {
       next: (res) => {
         this.getPresentations();
         this.modalService.togCover();
+        this.modalService.logNotice('Success', res.message, 'success');
         this.cd.markForCheck();
       },
       error: (error) => {
@@ -119,10 +120,12 @@ export class UploadPresentationComponent implements OnInit {
         next: (res) => {
           this.getPresentations();
           this.modalService.togCover();
+          this.modalService.logNotice('Success', res.message, 'success');
           this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.togCover();
+          this.modalService.logNotice('Error', error.message, 'error');
           this.cd.markForCheck();
         },
       });
