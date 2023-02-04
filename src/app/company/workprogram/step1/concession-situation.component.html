@@ -264,7 +264,7 @@
                 />
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['area'].valid"> Area is required </span>
             </div>
           </div>
@@ -296,7 +296,7 @@
                 </select>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['contract_Type'].valid">
                 Contract Type is required
               </span>
@@ -334,7 +334,7 @@
                 </select>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['terrain'].valid"> Terrain is required </span>
             </div>
           </div>
@@ -379,7 +379,7 @@
                 >
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['equity_distribution'].valid">
                 Equity Distribution is required
               </span>
@@ -454,7 +454,7 @@
                 </select>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['has_Signature_Bonus_been_paid'].valid">
                 Block Signature Bonus status is required
               </span>
@@ -483,7 +483,7 @@
                 </select>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['has_the_Concession_Rentals_been_paid'].valid">
                 Block Concession Rentals status is required
               </span>
@@ -512,7 +512,7 @@
                 </select>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['is_there_an_application_for_renewal'].valid">
                 Block renewal bonus status is required
               </span>
@@ -523,34 +523,44 @@
 
         <div class="toprow">
           <div class="rowbox">
-            <label class="labelwp"
-              >How Much Signature Bonus been paid (USD)?</label
-            >
-            <div style="display: flex">
-              <div class="inpdivcurrency">
-                <span class="currencywp">$</span>
-                <input
-                  formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="
-                    concessionBody.how_Much_Signature_Bonus_have_been_paid_USD
-                  "
-                  class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
-                />
+            <div>
+              <label class="labelwp"
+                >How Much Signature Bonus been paid (USD)?</label
+              >
+              <div style="display: flex">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">$</span>
+                  <input
+                    formControlName="how_Much_Signature_Bonus_have_been_paid_USD"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      concessionBody.how_Much_Signature_Bonus_have_been_paid_USD =
+                        genk.addCurrencyDecimal($event)
+                    "
+                    [value]="
+                      concessionBody.how_Much_Signature_Bonus_have_been_paid_USD
+                    "
+                    class="inpute"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                    "
+                  />
+                </div>
               </div>
+            </div>
+
+            <div *ngIf="csfSubmitted" class="eroce">
+              <span *ngIf="csf['how_Much_Signature_Bonus_have_been_paid_USD'].errors['required']">
+                Signature bonus is required
+              </span>
             </div>
           </div>
 
+
           <div class="rowbox">
-            <label class="labelwp"
+            <div>
+              <label class="labelwp"
               >How Much Concession Rentals been paid (USD)?</label
             >
             <div style="display: flex">
@@ -573,6 +583,12 @@
                   "
                 />
               </div>
+            </div>
+            </div>
+            <div *ngIf="csfSubmitted" class="eroce">
+              <span *ngIf="csf['how_Much_Concession_Rental_have_been_paid_USD'].errors['required']">
+                Signature bonus is required
+              </span>
             </div>
           </div>
 
@@ -712,7 +728,7 @@
                 />
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['five_year_proposal'].valid">
                 5 Years Proposal (USD) is required
               </span>
@@ -767,7 +783,7 @@
                 ></textarea>
               </div>
             </div>
-            <div *ngIf="csSubmitted" class="eroce">
+            <div *ngIf="csfSubmitted" class="eroce">
               <span *ngIf="!csf['comment'].valid"> Comment is required </span>
             </div>
           </div>
@@ -868,9 +884,7 @@
   <div [formGroup]="EquityForm" class="modaltent">
     <div>
       <div style="text-align: center">
-        <label style="font-weight: 600; font-size: 16px"
-          >Equity Distribution</label
-        >
+        <label style="font-weight: 600; font-size: 16px">Equity Distribution</label>
       </div>
       <br />
 

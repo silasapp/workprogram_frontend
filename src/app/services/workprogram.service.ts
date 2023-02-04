@@ -3137,13 +3137,14 @@ export class WorkProgramService {
   concessionSituation(
     conbody: CONCESSION_SITUATION,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldID
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_concession_situation`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year, omlName: omlName, fieldID: fieldID } }
       )
       .pipe(
         retry(this.num),
