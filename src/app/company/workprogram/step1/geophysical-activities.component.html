@@ -676,7 +676,7 @@
           #btn
           class="quarterbtn"
           [style]="AcquisitionForm.invalid ? 'cursor: default' : ''"
-          (click)="saveQuarterAcquisition()"
+          (click)="saveQuarterAcquisition(btn)"
         >
           Save Quarter 1
         </button>
@@ -1292,7 +1292,7 @@
     <button
       #btnprocess
       class="quarterbtn"
-      (click)="saveQuarterProcessing()"
+      (click)="saveQuarterProcessing(btnprocess)"
       [style]="ProcessingForm.invalid ? 'cursor: default' : ''"
       [attr.disabled]="isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_PROCESSINGs)"
     >
