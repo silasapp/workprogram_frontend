@@ -43,7 +43,9 @@ export class SWPReserveUpdateComponent implements OnInit {
   reserveReplacementRatioForm: FormGroup;
   reserveUpdateDepletionRateForm: FormGroup;
   reserveUpdateLifeIndexForm: FormGroup;
-  preceedingYearsValues:any[];
+  preceedingYearsValues: any[];
+  CurrentYearsValues: any[];
+  FiveYearReservesProjectionValues: any[];
 
   public planningMinimumRequirementForm: FormGroup;
 
@@ -69,6 +71,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   reserveupdatefiveyearprojectionBody =
     new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection();
   wkpYear: string;
+  _wkpYear: number;
   wkpYearList = [];
   concessionHeld: string;
   concessionHeldList = [];
@@ -98,7 +101,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.genk.activeStep = 'STEP2';
     this.ReserveUpdatePreceedingForm = new FormGroup({
-      year: new FormControl(this.statusOfReservesPreceeding.year, [
+      company_Reserves_Year: new FormControl(this.statusOfReservesPreceeding.company_Reserves_Year, [
         Validators.required,
       ]),
       company_Reserves_Oil: new FormControl(
@@ -136,7 +139,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     });
 
     this.ReserveUpdateCurrentForm = new FormGroup({
-      year: new FormControl(this.statusOfReservesCurrent.year, [
+      company_Reserves_Year: new FormControl(this.statusOfReservesCurrent.company_Reserves_Year, [
         Validators.required,
       ]),
       company_Reserves_Oil: new FormControl(
@@ -322,10 +325,12 @@ export class SWPReserveUpdateComponent implements OnInit {
           : !con.isEditable;
       this.cd.markForCheck();
     });
-
+    if (this.genk.wpYear !== undefined) this._wkpYear = parseInt(this.genk.wpYear);
     this.getReserveUpdate();
     this.getSWPR();
     this.getPreceedsdingYearsValues();
+    this.getCurrentYearsValues();
+    this.getFiveProjectionYearsValues();
     this.cd.markForCheck();
   }
 
@@ -398,14 +403,41 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.cd.markForCheck();
       });
   }
-  
+
   getPreceedsdingYearsValues() {
     this.preceedingYearsValues = [];
-    let year = new Date().getFullYear()-2;
+    let year = this._wkpYear - 2;
     var num: number = 3;
     var i: number;
     for (i = 0; i < num; i++) {
       this.preceedingYearsValues[i] = year + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+  }
+
+
+
+  getCurrentYearsValues() {
+    this.CurrentYearsValues = [];
+    let year = this._wkpYear
+    var num: number = 3;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.CurrentYearsValues[i] = this._wkpYear + i;
+      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    }
+  }
+
+
+
+  getFiveProjectionYearsValues() {
+    debugger;
+    let year = this._wkpYear;
+    this.FiveYearReservesProjectionValues = [];
+    var num: number = 5;
+    var i: number;
+    for (i = 0; i < num; i++) {
+      this.FiveYearReservesProjectionValues[i] = year + i + 1;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
   }
@@ -478,6 +510,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   saveReserveUpdateFiveYearProjection() {
+    debugger;
     this.workprogram
       .saveReserveUpdateFiveYearPorjection(
         this.ReserveUpdateFiveYearProjectionForm.value,
@@ -607,7 +640,7 @@ export class SWPReserveUpdateComponent implements OnInit {
       // this.genk.fieldName === undefined
     )
       return;
-debugger;
+    debugger;
     this.workprogram
       .getFormFiveSWPR(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
