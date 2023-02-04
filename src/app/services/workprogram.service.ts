@@ -3157,13 +3157,14 @@ export class WorkProgramService {
   saveQuarterAcquisition(
     conbody: GEOPHYSICAL_ACTIVITIES_ACQUISITION,
     year: string,
+    fieldName,
     omlName: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_geophysical_activities_acquisition`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year, fieldName, omlName } }
       )
       .pipe(
         retry(this.num),
@@ -3176,13 +3177,14 @@ export class WorkProgramService {
   saveQuarterProcessing(
     conbody: GEOPHYSICAL_ACTIVITIES_PROCESSING,
     year: string,
+    fieldName,
     omlName: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_geophysical_activities_processing`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year, fieldName, omlName: omlName } }
       )
       .pipe(
         retry(this.num),
@@ -5836,9 +5838,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
-      
       );
-      
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(

@@ -585,7 +585,12 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     ) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
 
     this.workprogram
-      .saveQuarterAcquisition(sail, this.genk.wpYear, this.genk.OmlName)
+      .saveQuarterAcquisition(
+        sail,
+        this.genk.wpYear,
+        this.genk.fieldName,
+        this.genk.OmlName
+      )
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.popText, 'success');
@@ -644,8 +649,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   saveQuarterProcessing(btn) {
     this.isProcessingSubmitted = true;
 
-    console.log('fromm...', this.ProcessingForm);
-
     if (this.ProcessingForm.invalid) return;
 
     this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
@@ -671,7 +674,12 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     ) as GEOPHYSICAL_ACTIVITIES_PROCESSING;
 
     this.workprogram
-      .saveQuarterProcessing(sail, this.genk.wpYear, this.genk.OmlName)
+      .saveQuarterProcessing(
+        sail,
+        this.genk.wpYear,
+        this.genk.fieldName,
+        this.genk.OmlName
+      )
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.popText, 'success');
