@@ -124,13 +124,14 @@ export class ConcessionBaseComponent implements OnInit {
           this.genk.fieldName = res[0].field_ID;
           localStorage.setItem('fieldName', this.genk.fieldName);
         } else {
-          this.modal.logConcessionSituation(this.concessionHeld);
+
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
           localStorage.setItem('fieldName', '');
           localStorage.setItem('fieldFullName', '');
           this.genk.fieldFullName = '';
+          this.modal.logConcessionSituation(this.concessionHeld);
         }
 
         this.modalService.togCover();

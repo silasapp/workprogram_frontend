@@ -39,7 +39,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   concessionHeldList = [];
   genk: GenericService;
   submitted = false;
-  csSubmitted = false;
+  csfSubmitted = false;
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
@@ -61,9 +61,11 @@ export class SWPConcessionSituationComponent implements OnInit {
   ) {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
+      debugger;
       this.getConcessionHeld();
       this.getRoyaltyHeld();
       this.getBoolValue();
+      cd.markForCheck();
     });
   }
 
@@ -71,10 +73,10 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
-        year: new FormControl(this.concessionBody.year, [Validators.required]),
-        concession_Held: new FormControl(this.concessionBody.concession_Held, [
-          Validators.required,
-        ]),
+        // year: new FormControl(this.concessionBody.year, [Validators.required]),
+        // concession_Held: new FormControl(this.concessionBody.concession_Held, [
+        //   Validators.required,
+        // ]),
         companyName: new FormControl(this.concessionBody.companyName, [
           Validators.required,
         ]),
@@ -82,10 +84,10 @@ export class SWPConcessionSituationComponent implements OnInit {
         contract_Type: new FormControl(this.concessionBody.contract_Type, [
           Validators.required,
         ]),
-        geological_location: new FormControl(
-          this.concessionBody.geological_location,
-          [Validators.required]
-        ),
+        // geological_location: new FormControl(
+        //   this.concessionBody.geological_location,
+        //   [Validators.required]
+        // ),
         terrain: new FormControl(this.concessionBody.terrain, [
           Validators.required,
         ]),
@@ -93,18 +95,18 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.equity_distribution,
           [Validators.required]
         ),
-        no_of_field_producing: new FormControl(
-          this.concessionBody.no_of_field_producing,
-          [Validators.required]
-        ),
-        date_of_Grant_Expiration: new FormControl(
-          this.concessionBody.date_of_Grant_Expiration,
-          [Validators.required]
-        ),
-        date_of_Expiration: new FormControl(
-          this.concessionBody.date_of_Expiration,
-          [Validators.required]
-        ),
+        // no_of_field_producing: new FormControl(
+        //   this.concessionBody.no_of_field_producing,
+        //   [Validators.required]
+        // ),
+        // date_of_Grant_Expiration: new FormControl(
+        //   this.concessionBody.date_of_Grant_Expiration,
+        //   [Validators.required]
+        // ),
+        // date_of_Expiration: new FormControl(
+        //   this.concessionBody.date_of_Expiration,
+        //   [Validators.required]
+        // ),
         has_Signature_Bonus_been_paid: new FormControl(
           this.concessionBody.has_Signature_Bonus_been_paid,
           [Validators.required]
@@ -140,34 +142,34 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.if_No_why_renewal,
           [Validators.required]
         ),
-        no_of_discovered_field: new FormControl(
-          this.concessionBody.no_of_discovered_field,
-          [Validators.required]
-        ),
-        has_Assignment_of_Interest_Fee_been_paid: new FormControl(
-          this.concessionBody.has_Assignment_of_Interest_Fee_been_paid,
-          [Validators.required]
-        ),
-        proposed_budget_for_each_license_lease: new FormControl(
-          this.concessionBody.proposed_budget_for_each_license_lease,
-          [Validators.required]
-        ),
+        // no_of_discovered_field: new FormControl(
+        //   this.concessionBody.no_of_discovered_field,
+        //   [Validators.required]
+        // ),
+        // has_Assignment_of_Interest_Fee_been_paid: new FormControl(
+        //   this.concessionBody.has_Assignment_of_Interest_Fee_been_paid,
+        //   [Validators.required]
+        // ),
+        // proposed_budget_for_each_license_lease: new FormControl(
+        //   this.concessionBody.proposed_budget_for_each_license_lease,
+        //   [Validators.required]
+        // ),
         five_year_proposal: new FormControl(
           this.concessionBody.five_year_proposal,
           [Validators.required]
         ),
-        did_you_meet_the_minimum_work_programme: new FormControl(
-          this.concessionBody.did_you_meet_the_minimum_work_programme,
-          [Validators.required]
-        ),
-        relinquishment_retention: new FormControl(
-          this.concessionBody.relinquishment_retention,
-          [Validators.required]
-        ),
-        area_in_square_meter_based_on_company_records: new FormControl(
-          this.concessionBody.area_in_square_meter_based_on_company_records,
-          [Validators.required]
-        ),
+        // did_you_meet_the_minimum_work_programme: new FormControl(
+        //   this.concessionBody.did_you_meet_the_minimum_work_programme,
+        //   [Validators.required]
+        // ),
+        // relinquishment_retention: new FormControl(
+        //   this.concessionBody.relinquishment_retention,
+        //   [Validators.required]
+        // ),
+        // area_in_square_meter_based_on_company_records: new FormControl(
+        //   this.concessionBody.area_in_square_meter_based_on_company_records,
+        //   [Validators.required]
+        // ),
         comment: new FormControl(this.concessionBody.comment),
       },
       {}
@@ -272,8 +274,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getConcessionHeld() {
     this.modalService.logCover('loading', true);
-    this.workprogram
-      .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+    this.workprogram.getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
@@ -381,13 +382,14 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   submit() {
     debugger;
-    let me = this.concessionBody;
-    this.csSubmitted = true;
+    //let me = this.concessionBody;
+    this.csfSubmitted = true;
+    this.cd.markForCheck();
 
-    // if (this.ConcessionSituationForm.invalid) {
-    //   this.cd.markForCheck();
-    //   return;
-    // }
+    if (this.ConcessionSituationForm.invalid) {
+      this.cd.markForCheck();
+      return;
+    }
 
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
@@ -418,7 +420,8 @@ export class SWPConcessionSituationComponent implements OnInit {
       .concessionSituation(
         this.concessionBody,
         this.genk.wpYear,
-        this.genk.OmlName
+        this.genk.OmlName,
+        this.genk.fieldName
       )
       .subscribe((res) => {
         this.modalService.logNotice('Success', res.message, 'success');
