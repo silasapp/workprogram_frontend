@@ -5789,6 +5789,7 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_FIVEYEARS_PROJECTION`,
@@ -5798,7 +5799,9 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
+      
       );
+      
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
