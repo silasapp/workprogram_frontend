@@ -54,19 +54,19 @@ export class CAPEX {
   acquisition: string = '';
   processing: string = '';
   reprocessing: string = '';
-  exploratory_well_drilling: string = '';
-  appraisal_well_drilling: string = '';
-  development_well_drilling: string = '';
-  workover_operations: string = '';
+  exploratory_Well_Drilling: string = '';
+  appraisal_Well_Drilling: string = '';
+  development_Well_Drilling: string = '';
+  workover_Operations: string = '';
   completions: string = '';
   flowlines: string = '';
   pipelines: string = '';
   generators: string = '';
-  turbines_compressors: string = '';
+  turbines_Compressors: string = '';
   buildings: string = '';
-  other_equipment: string = '';
-  civil_works: string = '';
-  other_costs: string = '';
+  other_Equipment: string = '';
+  civil_Works: string = '';
+  other_Costs: string = '';
 }
 
 export class OPEX {
