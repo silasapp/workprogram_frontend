@@ -585,6 +585,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       this.acquisitionBody
     ) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
 
+    this.isAcquisitionSubmitted = false;
+    this.AcquisitionForm.clearValidators();
+    this.cd.markForCheck();
+
     this.workprogram
       .saveQuarterAcquisition(
         sail,
@@ -598,7 +602,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
           this.moveToNextACQuater(btn);
 
-          this.isAcquisitionSubmitted = false;
+          this.cd.markForCheck();
         },
       });
   }

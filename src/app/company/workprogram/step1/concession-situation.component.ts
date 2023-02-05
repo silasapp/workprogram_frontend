@@ -348,7 +348,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     //
     this.modalService.logCover('loading....', true);
     this.workprogram
-      .getRoyalty(this.genk.OmlName, this.genk.wpYear)
+      .getRoyalty(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         if (res?.royalty.length > 0) {
           this.royaltyBody = res.royalty[0] as Royalty;
