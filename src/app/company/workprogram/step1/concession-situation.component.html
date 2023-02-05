@@ -209,14 +209,11 @@
             <div style="display: flex">
               <div class="inpdiv">
                 <input
-                  disabled=""
+                  disabled="true"
                   type="text"
                   formControlName="companyName"
                   [(ngModel)]="concessionBody.companyName"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 />
               </div>
             </div>
@@ -249,13 +246,10 @@
             <div style="display: flex">
               <div class="inpdiv">
                 <input
-                  disabled=""
+                  disabled="true"
                   formControlName="area"
                   [(ngModel)]="concessionBody.area"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 />
               </div>
             </div>
@@ -273,12 +267,10 @@
             <div class="wpwidth">
               <div class="inputshadow">
                 <select
+                  disabled="true"
                   class="dropwp"
                   formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 >
                   <option selected disabled>
                     ---- Please Select Categories ----
@@ -313,12 +305,11 @@
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
                 <select
+                  disabled="true"
                   class="dropwp"
                   formControlName="terrain"
                   [(ngModel)]="concessionBody.terrain"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
+                  disabled="true"
                 >
                   <option selected disabled>
                     ---- Please Select Terrain ----
@@ -338,7 +329,7 @@
             <label class="labelwp">Equity Distribution</label>
             <div style="display: flex">
               <div class="minsec">
-                <span
+                <!-- <span
                   class="material-icons"
                   style="
                     padding: 10px 10px;
@@ -349,18 +340,16 @@
                   "
                   (click)="clearEquity()"
                   >delete</span
-                >
+                > -->
                 <input
                   type="text"
                   style="border-radius: 5px"
                   formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
+                  disabled="true"
                 />
-                <span
+                <!-- <span
                   class="material-icons"
                   style="
                     padding: 10px 10px;
@@ -371,7 +360,7 @@
                   "
                   (click)="showEquity()"
                   >add</span
-                >
+                > -->
               </div>
             </div>
             <div *ngIf="csfSubmitted" class="eroce">

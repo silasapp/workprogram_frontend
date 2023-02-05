@@ -161,6 +161,15 @@
               </a>
             </td>
             <td>
+              <a
+                [href]="row['uploaded_presentation']"
+                class="btn btn-secondary btn-sm submitbtn"
+                download
+              >
+                Download
+              </a>
+            </td>
+            <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="deletePresentation(row)"

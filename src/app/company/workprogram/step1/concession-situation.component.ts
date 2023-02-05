@@ -272,14 +272,13 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
-    debugger;
     this.modalService.logCover('loading', true);
     let fred = null;
     let free = this.genk.fieldName;
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        if (!(res.concessionSituation && res.concessionSituation.length > 0))
+        if (!res.concessionSituation || res.concessionSituation.length === 0)
           return;
 
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
