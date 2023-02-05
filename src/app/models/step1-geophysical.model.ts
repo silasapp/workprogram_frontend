@@ -1,5 +1,4 @@
-export class GEOPHYSICAL_ACTIVITIES_ACQUISITION
-{
+export class GEOPHYSICAL_ACTIVITIES_ACQUISITION {
   constructor() {}
   geo_acquired_geophysical_data: string = '';
   geo_area_of_coverage: string = '';
@@ -31,11 +30,10 @@ export class GEOPHYSICAL_ACTIVITIES_ACQUISITION
   gas_Sales_Royalty_Payment: string = '';
   no_of_Folds: string = '';
   qUATER: string = '';
+  quater: string = '';
 }
 
-
-export class GEOPHYSICAL_ACTIVITIES_PROCESSING
-{
+export class GEOPHYSICAL_ACTIVITIES_PROCESSING {
   geo_Any_Ongoing_Processing_Project: string = '';
   geo_Type_of_Data_being_Processed: string = '';
   geo_Quantum_of_Data: string = '';
@@ -66,5 +64,5 @@ export class GEOPHYSICAL_ACTIVITIES_PROCESSING
   quantum_Planned: string = '';
   consession_Type: string = '';
   qUATER: string = '';
-  type_of_Processing : string = '';
+  type_of_Processing: string = '';
 }

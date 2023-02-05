@@ -102,10 +102,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       header: 'Planned, ongoing and routine maintenance?',
     },
 
-    {
-      columnDef: 'objective_Drivers_',
-      header: 'Objective / Drivers',
-    },
+    // {
+    //   columnDef: 'objective_Drivers_',
+    //   header: 'Objective / Drivers',
+    // },
     {
       columnDef: 'nigerian_Content_Value',
       header: 'Nigerian Content Value',
@@ -114,14 +114,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       columnDef: 'new_Technology_',
       header: 'New Technology',
     },
-    {
-      columnDef: 'name',
-      header: 'Name',
-    },
-    {
-      columnDef: 'major_Projects',
-      header: 'Major Projects',
-    },
+    // {
+    //   columnDef: 'name',
+    //   header: 'Name',
+    // },
+    // {
+    //   columnDef: 'major_Projects',
+    //   header: 'Major Projects',
+    // },
     {
       columnDef: 'has_it_been_adopted_by_DPR_',
       header: 'Has it been adopted by NUPRC?',

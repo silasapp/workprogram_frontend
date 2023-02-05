@@ -16,7 +16,7 @@
       font-size: 18px;
     "
   >
-    Note:*All Fields are Mandatory 
+    Note:*All Fields are Mandatory
   </h1>
   <div
     style="
@@ -27,7 +27,6 @@
     "
   >
     <span>INITIAL WELL COMPLETION JOBS (QUARTERLY BASIS) </span>
-
   </div>
   <div>
     <div class="quarterbox">
@@ -72,9 +71,8 @@
   <br />
   <br />
   <br />
- 
 
-  <div  style="display: flex; width: 100%; justify-content: space-between">
+  <div style="display: flex; width: 100%; justify-content: space-between">
     <!-- <div style="width: 30%; margin-top: auto">
       <label class="labelwp">Actual No. of Completion </label>
       <div style="display: flex">
@@ -92,7 +90,7 @@
     </div> -->
 
     <div style="width: 30%; margin-top: auto">
-      <label class="labelwp">Proposed Number of Wells For Completion  </label>
+      <label class="labelwp">Proposed Number of Wells For Completion </label>
       <div style="display: flex">
         <div
           style="
@@ -103,15 +101,14 @@
           "
         >
           <input
-          disabled
-             style="text-align: center; font-weight: bold;"         (keypress)="genk.restrictData($event)"
+            disabled
+            style="text-align: center; font-weight: bold"
+            (keypress)="genk.restrictData($event)"
             formControlName="proposed_year_data"
             [value]="proposed_well_number"
             class="inpute"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
-           
-            
           />
         </div>
       </div>
@@ -132,7 +129,6 @@
             formControlName="proposed_initial_name"
             [(ngModel)]="initialBody.proposed_initial_name"
             class="inpute"
-            
           />
         </div>
       </div>
@@ -150,10 +146,10 @@
           "
         >
           <input
+            type="number"
             formControlName="proposed_completion_days"
             [(ngModel)]="initialBody.proposed_completion_days"
             class="inpute"
-            
           />
         </div>
       </div>
@@ -228,7 +224,6 @@
             class="inpute"
             formControlName="proposed_Completion_Date"
             [(ngModel)]="initialBody.proposed_Completion_Date"
-            
           />
         </div>
       </div>
@@ -256,7 +251,6 @@
                 "
                 [value]="initialBody.budeget_Allocation_NGN"
                 class="inpute"
-                
               />
             </div>
           </div>
@@ -278,7 +272,6 @@
                 "
                 [value]="initialBody.budeget_Allocation_USD"
                 class="inpute"
-                
               />
             </div>
           </div>
@@ -296,7 +289,6 @@
             class="dropwp"
             formControlName="oil_or_gas_wells"
             [(ngModel)]="initialBody.oil_or_gas_wells"
-            
           >
             <option selected disabled>--Select a Option --</option>
             <option value="GAS WELL">Gas Well</option>
@@ -326,7 +318,6 @@
             rows="2"
             formControlName="remarks"
             [(ngModel)]="initialBody.remarks"
-            
           ></textarea>
         </div>
       </div>
@@ -334,27 +325,19 @@
   </div>
   <br /><br />
 
-  
-
-
   <div>
     <div style="text-align: center">
-      <button
-        #btn
-        class="quarterbtn"
-        (click)="submit()"
-        
-      >
+      <button #btn class="quarterbtn" (click)="submit()">
         Add Initial Well For Quarter 1
       </button>
     </div>
   </div>
 
+  <br />
+  <br />
 
-  <br />
-  <br />
-  
-  <div *ngIf="show"
+  <div
+    *ngIf="show"
     #divTable
     style="
       overflow: hidden;
@@ -397,7 +380,6 @@
 </div>
 <br />
 <br />
-
 
 <div style="text-align: center">
   <button

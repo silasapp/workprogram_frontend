@@ -81,7 +81,6 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
         this.genk.OMLList = this.concessionHeldList;
         this.genk.Concessions$.next(res.listObject);
@@ -117,14 +116,15 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
-        debugger;
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
+          this.genk.Fields = res;
           this.genk.fieldName = res[0].field_ID;
+          this.genk.Field$.next(res[0]);
+          console.log('resss...', res[0]);
           localStorage.setItem('fieldName', this.genk.fieldName);
         } else {
-
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
@@ -172,9 +172,10 @@ export class ConcessionBaseComponent implements OnInit {
     this.genk.fieldName = this.field;
 
     const _field = this.genk.Fields?.find(
-      (f: IField) => f.field_Name == this.field
+      (f: IField) => f.field_ID == +this.field
     );
 
+    console.log('filed...', this.genk.Fields, _field, this.field);
     this.genk.Field = _field;
     this.genk.Field$.next(_field);
 
@@ -182,6 +183,8 @@ export class ConcessionBaseComponent implements OnInit {
       (x) => x.field_ID == this.genk.fieldName
     )[0].field_Name;
     localStorage.setItem('fieldFullName', this.genk.fieldFullName);
+    localStorage.setItem('fieldName', this.genk.fieldName);
+
     this.modal.logConcessionSituation(this.concessionHeld);
   }
 
