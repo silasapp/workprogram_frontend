@@ -276,7 +276,8 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        if (res.statusCode !== 200) return;
+        if (!(res.concessionSituation && res.concessionSituation.length > 0))
+          return;
 
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
@@ -386,14 +387,12 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.csfSubmitted = true;
     this.cd.markForCheck();
 
-    if (this.boolValue) {
+    if (!this.boolValue) {
       this.ConcessionSituationForm.controls[
         'did_you_meet_the_minimum_work_programme'
-      ].setValue(' ');
+      ].disable();
 
-      this.ConcessionSituationForm.controls['no_of_discovered_field'].setValue(
-        ' '
-      );
+      this.ConcessionSituationForm.controls['no_of_discovered_field'].disable();
       this.ConcessionSituationForm.controls[
         'no_of_discovered_field'
       ].updateValueAndValidity();
