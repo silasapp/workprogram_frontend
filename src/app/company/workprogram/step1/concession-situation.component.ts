@@ -61,7 +61,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   ) {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
-      debugger;
       this.getConcessionHeld();
       this.getRoyaltyHeld();
       this.getBoolValue();
@@ -142,10 +141,10 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.if_No_why_renewal,
           [Validators.required]
         ),
-        // no_of_discovered_field: new FormControl(
-        //   this.concessionBody.no_of_discovered_field,
-        //   [Validators.required]
-        // ),
+        no_of_discovered_field: new FormControl(
+          this.concessionBody.no_of_discovered_field,
+          [Validators.required]
+        ),
         // has_Assignment_of_Interest_Fee_been_paid: new FormControl(
         //   this.concessionBody.has_Assignment_of_Interest_Fee_been_paid,
         //   [Validators.required]
@@ -158,10 +157,10 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody.five_year_proposal,
           [Validators.required]
         ),
-        // did_you_meet_the_minimum_work_programme: new FormControl(
-        //   this.concessionBody.did_you_meet_the_minimum_work_programme,
-        //   [Validators.required]
-        // ),
+        did_you_meet_the_minimum_work_programme: new FormControl(
+          this.concessionBody.did_you_meet_the_minimum_work_programme,
+          [Validators.required]
+        ),
         // relinquishment_retention: new FormControl(
         //   this.concessionBody.relinquishment_retention,
         //   [Validators.required]
@@ -274,8 +273,11 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getConcessionHeld() {
     this.modalService.logCover('loading', true);
-    this.workprogram.getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
+    this.workprogram
+      .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
+        if (res.statusCode !== 200) return;
+
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
         // conInfo.companyName = conInfo.companyName.replace(
@@ -284,13 +286,13 @@ export class SWPConcessionSituationComponent implements OnInit {
         //);
         if (!conInfo) {
           conInfo = {} as any;
-          conInfo.companyName = res.concessionInfo[0].companyName;
-          conInfo.area = res.concessionInfo[0].area;
+          conInfo.companyName = res.concessionInfo[0]?.companyName;
+          conInfo.area = res.concessionInfo[0]?.area;
           conInfo.equity_distribution =
-            res.concessionInfo[0].equity_distribution;
-          conInfo.contract_Type = res.concessionInfo[0].contract_Type;
+            res.concessionInfo[0]?.equity_distribution;
+          conInfo.contract_Type = res.concessionInfo[0]?.contract_Type;
           conInfo.geological_location =
-            res.concessionInfo[0].geological_location;
+            res.concessionInfo[0]?.geological_location;
           conInfo.date_of_Grant_Expiration = this.genk.formDate(
             conInfo.date_of_Grant_Expiration
           );
@@ -300,8 +302,6 @@ export class SWPConcessionSituationComponent implements OnInit {
           );
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
-
-          this.cd.markForCheck();
         } else {
           conInfo.date_of_Grant_Expiration = this.genk.formDate(
             conInfo.date_of_Grant_Expiration
@@ -313,7 +313,6 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
           this.genk.isStep1 = true;
-          this.cd.markForCheck();
           console.log(this.concessionBody.companyName);
 
           setTimeout(() => {
@@ -336,8 +335,9 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.boolValue = 'block';
         // }
 
-        this.getRoyaltyHeld();
         this.modalService.togCover();
+        this.getRoyaltyHeld();
+        this.cd.markForCheck();
       });
   }
 
@@ -345,6 +345,7 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getRoyaltyHeld() {
     //
+    this.modalService.logCover('loading....', true);
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.wpYear)
       .subscribe((res) => {
@@ -354,8 +355,8 @@ export class SWPConcessionSituationComponent implements OnInit {
         } else {
           this.royaltyBody = {} as Royalty;
         }
-        this.cd.markForCheck();
         this.genk.isStep1 = true;
+        this.modalService.togCover();
         this.cd.markForCheck();
       });
   }
@@ -381,11 +382,24 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submit() {
-    debugger;
     //let me = this.concessionBody;
     this.csfSubmitted = true;
     this.cd.markForCheck();
 
+    if (this.boolValue) {
+      this.ConcessionSituationForm.controls[
+        'did_you_meet_the_minimum_work_programme'
+      ].setValue(' ');
+
+      this.ConcessionSituationForm.controls['no_of_discovered_field'].setValue(
+        ' '
+      );
+      this.ConcessionSituationForm.controls[
+        'no_of_discovered_field'
+      ].updateValueAndValidity();
+    }
+
+    console.log('checking...', this.ConcessionSituationForm);
     if (this.ConcessionSituationForm.invalid) {
       this.cd.markForCheck();
       return;

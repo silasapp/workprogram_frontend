@@ -81,7 +81,6 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         this.concessionHeldList = res.listObject.map((r) => r.con);
         this.genk.OMLList = this.concessionHeldList;
         this.genk.Concessions$.next(res.listObject);
@@ -117,14 +116,12 @@ export class ConcessionBaseComponent implements OnInit {
     this.workprogram
       .getConcessionField(this.concessionHeld, null)
       .subscribe((res: any[]) => {
-        debugger;
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
           this.genk.fieldName = res[0].field_ID;
           localStorage.setItem('fieldName', this.genk.fieldName);
         } else {
-
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
