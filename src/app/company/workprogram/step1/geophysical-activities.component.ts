@@ -66,6 +66,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
+  public currentACQuaterFull: string;
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -77,6 +79,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentACQuater;
+      this.currentACQuaterFull = rel;
       this.getGeophysical(rel);
     });
     this.cd.markForCheck();
@@ -586,8 +589,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     ) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
 
     this.isAcquisitionSubmitted = false;
-    this.AcquisitionForm.clearValidators();
-    this.cd.markForCheck();
+    this.AcquisitionForm.reset();
 
     this.workprogram
       .saveQuarterAcquisition(
@@ -601,6 +603,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.modalService.logNotice('Success', res.popText, 'success');
 
           this.moveToNextACQuater(btn);
+
+          this.getGeophysical(this.currentACQuaterFull);
 
           this.cd.markForCheck();
         },
@@ -623,7 +627,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     if (label === 'Save Quarter 3') {
       this.currentACQuater = 4;
       btn.textContent = 'Save Quarter 4';
-      this.acquisitionBody = this.quaterACThreeData;
+      this.acquisitionBody = this.quaterACFourData;
     }
 
     this.cd.markForCheck();
@@ -645,7 +649,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     if (label === 'Save Quarter 3') {
       this.currentPRQuater = 4;
       btn.textContent = 'Save Quarter 4';
-      this.processingBody = this.quaterPRThreeData;
+      this.processingBody = this.quaterPRFourData;
     }
 
     this.cd.markForCheck();
@@ -690,6 +694,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
           this.modalService.logNotice('Success', res.popText, 'success');
 
           this.moveToNextPRQuater(btn);
+
+          this.getGeophysical(this.currentACQuaterFull);
 
           this.isProcessingSubmitted = false;
         },
