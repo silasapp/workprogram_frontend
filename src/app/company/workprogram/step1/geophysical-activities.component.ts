@@ -140,6 +140,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         // ),
         no_of_Folds: new FormControl(this.acquisitionBody.no_of_Folds, [
           Validators.required,
+          Validators.max(100),
+          Validators.min(0),
         ]),
         name_of_Contractor: new FormControl(
           this.acquisitionBody.name_of_Contractor,
@@ -151,7 +153,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         ),
         geo_Record_Length_of_Data: new FormControl(
           this.acquisitionBody.geo_Record_Length_of_Data,
-          [Validators.required]
+          [Validators.required, Validators.max(59), Validators.min(0)]
         ),
         // geo_Completion_Status: new FormControl(
         //   this.acquisitionBody.geo_Completion_Status,
