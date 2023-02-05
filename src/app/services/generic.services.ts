@@ -39,7 +39,7 @@ export class GenericService {
   public Concessions$ = new Subject<IConcession[]>();
   public Concessions: IConcession[] = [];
   public OMLList: IConcession[] = [];
-  public fieldName: string;
+  public fieldName: string | null;
   public Field: IField;
   public Field$ = new Subject<IField>();
   public Fields: IField[] = [];
@@ -60,7 +60,7 @@ export class GenericService {
   OmlID: number;
   fieldFullName: string;
   fieldWell: string = 'GAS WELL';
-  fieldID: number;
+  fieldID: number | null;
   val: number;
   Field_List: any[] = null;
   concessionData: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
