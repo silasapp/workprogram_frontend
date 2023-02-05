@@ -261,6 +261,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   isEditable(group: string): boolean | null {
+    console.log('isE...', group, this.genk.sbU_Tables, this.genk.disableForm);
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
