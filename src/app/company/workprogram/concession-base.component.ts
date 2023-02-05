@@ -119,14 +119,23 @@ export class ConcessionBaseComponent implements OnInit {
         if (res.length > 0) {
           this.Field_List = res;
           this.genk.Field_List = res;
+          this.genk.Fields = res;
           this.genk.fieldName = res[0].field_ID;
+          this.genk.Field$.next(res[0]);
+          console.log('resss...', res[0]);
           localStorage.setItem('fieldName', this.genk.fieldName);
         } else {
           this.Field_List = res;
           this.genk.Field_List = null;
           this.genk.fieldName = null;
+<<<<<<< HEAD
           localStorage.removeItem('fieldName');
           localStorage.removeItem('fieldFullName');
+=======
+          this.genk.Field$.next(res[0]);
+          localStorage.setItem('fieldName', '');
+          localStorage.setItem('fieldFullName', '');
+>>>>>>> a57c04cf5214e9b25e12b225d5447d2adfc21e8e
           this.genk.fieldFullName = '';
           this.modal.logConcessionSituation(this.concessionHeld);
         }
@@ -169,9 +178,10 @@ export class ConcessionBaseComponent implements OnInit {
     this.genk.fieldName = this.field;
 
     const _field = this.genk.Fields?.find(
-      (f: IField) => f.field_Name == this.field
+      (f: IField) => f.field_ID == +this.field
     );
 
+    console.log('filed...', this.genk.Fields, _field, this.field);
     this.genk.Field = _field;
     this.genk.Field$.next(_field);
 

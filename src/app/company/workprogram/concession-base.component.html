@@ -27,16 +27,13 @@
           </div>
         </div> -->
 
-  <form
-    [formGroup]="concessionForm"
-    style="display: flex; width: 100%; gap: 2rem"
-  >
+  <form [formGroup]="concessionForm" class="concessionContainer">
     <div style="display: flex; align-items: center">
       <div class="omlstyle">
         <span>CONCESSION(S) HELD: </span>
       </div>
       <!-- *ngIf="concessionHeldList && concessionHeldList.length > 0" -->
-      <div style="width: 400px">
+      <div class="input-container">
         <select (change)="changeConcessionHeld($event)" class="basesel">
           <option selected disabled hidden>--Select Concession--</option>
           <option *ngFor="let list of concessionHeldList">
@@ -50,7 +47,7 @@
           <div class="omlstyle">
             <span>CONCESSION(S) HELD: </span>
           </div>
-            <div style="width: 400px">
+            <div class="input-container">
               <select formControlName="concession_Held" (change)="changeConcessionHeld($event)" class="basesel">
                 <option selected disabled>-Select Concession-</option>
                 <option *ngFor="let list of concessionHeldList">
@@ -65,7 +62,7 @@
         <div class="omlstyle">
           <span>Field</span>
         </div>
-        <div style="width: 400px">
+        <div class="input-container">
           <select
             class="basesel"
             formControlName="Field"
@@ -84,7 +81,7 @@
         <div class="omlstyle">
           <span>Field</span>
         </div>
-        <div style="width: 400px">
+        <div class="input-container">
           <select
             class="basesel"
             formControlName="Field"
