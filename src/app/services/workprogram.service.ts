@@ -5762,6 +5762,7 @@ export class WorkProgramService {
   }
 
   getRoyalty(omlName: string, year: string) {
+    console.log('in rol...', omlName, year);
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {
         params: { myyear: year, omlName: omlName },

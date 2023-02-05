@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -17,7 +17,7 @@ import { WorkProgramService } from 'src/app/services/workprogram.service';
   styleUrls: ['start.component.scss', '../../account/login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StartComponent implements OnInit{
+export class StartComponent implements OnInit {
   boardForm: FormGroup;
   wkpYear: string;
   currentYear = new Date().getFullYear();
@@ -59,12 +59,9 @@ export class StartComponent implements OnInit{
   }
 
   getWPYears() {
-    debugger;
     this.workprogram.getWPYears().subscribe((res) => {
-      debugger;
       this.wkpYearList = res;
       this.cd.markForCheck();
     });
   }
-
 }
