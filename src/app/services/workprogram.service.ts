@@ -5246,12 +5246,13 @@ export class WorkProgramService {
   saveInitialWellCompletion(
     conbody: INITIAL_WELL_COMPLETION_JOB1,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http.post<any>(
       `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
       conbody,
-      { params: { year: year, omlName: omlName } }
+      { params: { year, omlName, fieldName } }
     );
   }
 

@@ -225,6 +225,8 @@ export class SWPBudgetProposalComponent implements OnInit {
       )
       //this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
       .subscribe((res) => {
+        console.log('ress....', res);
+
         let budgetInfo = this.budgetProposalBody as budgetProposal;
         let capexInfo = this.capexOpexBody as capexOpex;
 

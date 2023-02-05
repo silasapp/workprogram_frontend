@@ -187,7 +187,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         ]),
         //concession_Rentals: new FormControl(this.royaltyBody.concession_Rentals, [Validators.required]),
         miscellaneous: new FormControl(this.royaltyBody.miscellaneous, [
-          Validators.required,
+          // Validators.required,
           Validators.minLength(2),
         ]),
         last_Qntr_Royalty: new FormControl(this.royaltyBody.last_Qntr_Royalty, [
