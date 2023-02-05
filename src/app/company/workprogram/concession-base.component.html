@@ -27,18 +27,18 @@
           </div>
         </div> -->
 
-  <form [formGroup]="concessionForm">
+  <form
+    [formGroup]="concessionForm"
+    style="display: flex; width: 100%; gap: 2rem"
+  >
     <div style="display: flex; align-items: center">
       <div class="omlstyle">
         <span>CONCESSION(S) HELD: </span>
       </div>
       <!-- *ngIf="concessionHeldList && concessionHeldList.length > 0" -->
       <div style="width: 400px">
-        <select
-          (change)="changeConcessionHeld($event)"
-          class="basesel"
-        >
-        <option selected disabled hidden>--Select Concession-- </option>
+        <select (change)="changeConcessionHeld($event)" class="basesel">
+          <option selected disabled hidden>--Select Concession--</option>
           <option *ngFor="let list of concessionHeldList">
             {{ list }}
           </option>
