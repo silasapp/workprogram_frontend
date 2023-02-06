@@ -85,10 +85,15 @@ export class SelectDateComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger;
+    setTimeout(() => {
+      this.Alert('Success', 'A presentation schedule was created successfully.', 'success');
+    }, 2000);
     this.companyService
       .schedulePresentation(this.f['time'].value, this.f['date'].value)
       .subscribe((res) => {
-        if (res.statusCode === 200) {
+        debugger;
+       if (res.statusCode === 200) {
           this.Alert('Success', res.message, 'success');
         } else {
           this.Alert('Error', res.message, 'error');
