@@ -73,6 +73,16 @@ export class UploadPresentationComponent implements OnInit {
     return this.uploadPresentationForm.controls;
   }
 
+  downloadMyFile(src) {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', src);
+    link.setAttribute('download', `products.csv`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
   getPresentations() {
     this.modalService.logCover('loading', true);
     this.companyService.getPresentations(this.selectedYear).subscribe({
@@ -97,6 +107,7 @@ export class UploadPresentationComponent implements OnInit {
       next: (res) => {
         this.getPresentations();
         this.modalService.togCover();
+        this.modalService.logNotice('Success', res.message, 'success');
         this.cd.markForCheck();
       },
       error: (error) => {
@@ -119,10 +130,12 @@ export class UploadPresentationComponent implements OnInit {
         next: (res) => {
           this.getPresentations();
           this.modalService.togCover();
+          this.modalService.logNotice('Success', res.message, 'success');
           this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.togCover();
+          this.modalService.logNotice('Error', error.message, 'error');
           this.cd.markForCheck();
         },
       });

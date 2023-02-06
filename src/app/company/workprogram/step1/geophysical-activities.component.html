@@ -478,7 +478,12 @@
         </div>
 
         <div class="rowbox">
-          <label class="labelwp">Type of Seismic Data Acquired </label>
+          <label class="labelwp"
+            >Type of Seismic Data Acquired
+            {{
+              isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs) | json
+            }}</label
+          >
           <div class="wpwidth">
             <div class="inputshadow">
               <select

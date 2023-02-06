@@ -1071,9 +1071,15 @@
     <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%" *ngIf="facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval=='Yes'">
+      <div
+        style="width: 30%"
+        *ngIf="
+          facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval ==
+          'Yes'
+        "
+      >
         <label class="labelwp"
-          >Evidence of Design Safety Case Approval (If Yes, Upload Document)</label
+          >Upload Evidence of Design Safety Case Approval</label
         >
 
         <div
@@ -1097,7 +1103,13 @@
         </div>
       </div>
 
-      <div style="width: 50%; margin-top: auto" *ngIf="facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval=='No'">
+      <div
+        style="width: 50%; margin-top: auto"
+        *ngIf="
+          facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval ==
+          'No'
+        "
+      >
         <label class="labelwp"
           >Reason (If no Evidence of Design Safety Case Approval)</label
         >
@@ -1118,7 +1130,8 @@
               [attr.disabled]="
                 isEditable(SBUTABLE.FACILITIES_PROJECT_PERFORMANCEs)
               "
-            > </textarea>
+            >
+            </textarea>
           </div>
         </div>
       </div>

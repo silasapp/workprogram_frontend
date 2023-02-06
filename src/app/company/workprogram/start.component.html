@@ -1,10 +1,21 @@
-<div class="overlapbox" style="width: 100%;">
-  <img style="height: 40vh; width: 100%; filter: blur(1px);" src="assets/workprogramimage.jpg">
-  <div class="overlapdiv" style="padding-top: 5%; background-color: rgb(0, 0, 0, 0.5); height: 100%;;">
-    <div style="text-align: center;">
-      <span style="font-size: 80px; font-weight: 900; color: white">Welcome </span><br><br>
-      <span style="font-size: 50px; font-weight: 900; color: rgb(227, 222, 222)">Submit Work Programme</span>
-    </div><br><br>
+<div class="overlapbox" style="width: 100%">
+  <img
+    style="height: 40vh; width: 100%; filter: blur(1px)"
+    src="assets/workprogramimage.jpg"
+  />
+  <div
+    class="overlapdiv"
+    style="padding-top: 5%; background-color: rgb(0, 0, 0, 0.5); height: 100%"
+  >
+    <div style="text-align: center">
+      <span style="font-size: 80px; font-weight: 900; color: white"
+        >Welcome </span
+      ><br /><br />
+      <span style="font-size: 50px; font-weight: 900; color: rgb(227, 222, 222)"
+        >Submit Work Programme</span
+      >
+    </div>
+    <br /><br />
 
     <div
       [formGroup]="boardForm"
@@ -25,6 +36,7 @@
           border-radius: 15px;
           background-color: rgb(0, 0, 0, 0.2);
           color: white;
+          width: min(600px, 100%);
         "
         (change)="changeWPYear($event)"
       >
@@ -34,8 +46,9 @@
           disabled
           hidden
         >
-          Select Year to submit Work programme (Current Year is <b>{{currentYear}}</b>)
-
+          Select Year to submit Work programme (Current Year is
+          <b>{{ currentYear }}</b
+          >)
         </option>
         <option
           style="background-color: rgb(0, 0, 0, 0.7)"
@@ -52,6 +65,8 @@
         flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
+        gap: 2rem;
+        padding-bottom: 3rem;
       "
     >
       <div
@@ -103,8 +118,8 @@
               align-items: center;
             "
           >
-            <span class="material-icons" style="font-size: 16px">settings</span>
-            <small>&nbsp; Format: &nbsp;&nbsp; Concession Basis</small>
+            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+            <small>Submit on Concession basis</small>
           </div>
         </div>
       </div>
@@ -158,8 +173,8 @@
               align-items: center;
             "
           >
-            <span class="material-icons" style="font-size: 16px">settings</span>
-            <small>&nbsp; Format: &nbsp;&nbsp; Concession Basis</small>
+            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+            <small>Submit on Concession basis</small>
           </div>
         </div>
       </div>
@@ -208,8 +223,8 @@
               align-items: center;
             "
           >
-            <span class="material-icons" style="font-size: 16px">settings</span>
-            <small>&nbsp; Format: &nbsp;&nbsp; Concession Basis</small>
+            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+            <small>Submit on Concession basis</small>
           </div>
         </div>
       </div>
@@ -258,8 +273,10 @@
               align-items: center;
             "
           >
-            <span class="material-icons" style="font-size: 16px">settings</span>
-            <small>&nbsp; Format: &nbsp;&nbsp; Company basis</small>
+            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+            <small style="font-size: 11px"
+              >Submit on Concession & Company basis</small
+            >
           </div>
         </div>
       </div>
@@ -286,7 +303,7 @@
                 "
                 >STEP 5</span
               ><br />
-              <span class="topname">Legal</span>
+              <span class="topname">LEGAL & LOCAL CONTENT</span>
             </div>
             <br />
             <div>
@@ -308,8 +325,8 @@
               align-items: center;
             "
           >
-            <span class="material-icons" style="font-size: 16px">settings</span>
-            <small>&nbsp; Format: &nbsp;&nbsp; Company basis</small>
+            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+            <small>Submit on Company basis</small>
           </div>
         </div>
       </div>

@@ -3073,7 +3073,6 @@ export class WorkProgramService {
   }
 
   getFormFiveSWPR(omlName, year, fieldName) {
-    debugger;
     return this.http
       .get<any>(`${environment.apiUrl}/Application/Get_Planning_Requirement`, {
         params: {
@@ -3085,9 +3084,7 @@ export class WorkProgramService {
       })
       .pipe(
         map((response) => {
-          debugger;
           return response;
-          debugger;
         })
       );
   }
@@ -3157,13 +3154,14 @@ export class WorkProgramService {
   saveQuarterAcquisition(
     conbody: GEOPHYSICAL_ACTIVITIES_ACQUISITION,
     year: string,
+    fieldName,
     omlName: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_geophysical_activities_acquisition`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year, fieldName, omlName } }
       )
       .pipe(
         retry(this.num),
@@ -3176,13 +3174,14 @@ export class WorkProgramService {
   saveQuarterProcessing(
     conbody: GEOPHYSICAL_ACTIVITIES_PROCESSING,
     year: string,
+    fieldName,
     omlName: string
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_geophysical_activities_processing`,
         conbody,
-        { params: { year: year, omlName: omlName } }
+        { params: { year: year, fieldName, omlName: omlName } }
       )
       .pipe(
         retry(this.num),
@@ -3395,7 +3394,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_OIL_CONDENSATE_PRODUCTION_ACTIVITY`,
@@ -3405,7 +3403,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -3765,7 +3762,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_facilities_project_performance`,
@@ -3775,7 +3771,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -5251,12 +5246,13 @@ export class WorkProgramService {
   saveInitialWellCompletion(
     conbody: INITIAL_WELL_COMPLETION_JOB1,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http.post<any>(
       `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
       conbody,
-      { params: { year: year, omlName: omlName } }
+      { params: { year, omlName, fieldName } }
     );
   }
 
@@ -5745,7 +5741,6 @@ export class WorkProgramService {
   }
 
   saveRoyalty(conbody: any, year: string, omlName: string, fieldName: string) {
-    debugger;
     return this.http
       .post<any>(`${environment.apiUrl}/workprogramme/post_royalty`, conbody, {
         params: { year: year, omlName: omlName, fieldName: fieldName },
@@ -5753,7 +5748,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -5804,7 +5798,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE_PRECEEDING`,
@@ -5814,7 +5807,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -5826,7 +5818,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_RESERVES_UPDATES_OIL_CONDENSATE_FIVEYEARS_PROJECTION`,
@@ -5836,9 +5827,13 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
+<<<<<<< HEAD
 
       );
 
+=======
+      );
+>>>>>>> 82485b9aade34d2a1178fbbab6132c8889059ad4
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
@@ -6015,7 +6010,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERVE`,
@@ -6036,7 +6030,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION`,

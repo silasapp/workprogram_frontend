@@ -103,6 +103,14 @@ const routes: Routes = [
         (m) => m.ManageApplicationsModule
       ),
   },
+  {
+    path: 'company-profiling',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import('./company-profiling/company-profiling.module').then(
+        (m) => m.CompanyProfilingModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -1,16 +1,27 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CompanyService } from '../../services/company.service';
 import Swal from 'sweetalert2';
 import { CdkAriaLive } from '@angular/cdk/a11y';
 import { CompanyDetails } from 'src/app/models/company-details';
+import { GenericService } from 'src/app/services';
 
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
   styleUrls: ['./company-details.component.scss', '../company.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyDetailsComponent implements OnInit {
   companyDetailsForm: FormGroup;
@@ -18,32 +29,29 @@ export class CompanyDetailsComponent implements OnInit {
   private d: any;
   auth: AuthenticationService;
 
-
   constructor(
     private fb: FormBuilder,
     private authenticate: AuthenticationService,
     private companyService: CompanyService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    public genk: GenericService
   ) {
     this.auth = authenticate;
   }
 
   ngOnInit(): void {
-
     this.getCompanyDetails();
 
     this.companyService.opl().subscribe((res) => {
       console.log(res.data);
     });
 
-   this.initForm();
+    this.initForm();
     this.cd.markForCheck();
   }
 
-
   initForm() {
-
- // this.companyDetails = this.d as CompanyDetails;
+    // this.companyDetails = this.d as CompanyDetails;
     debugger;
     // this.companyDetailsForm = new FormGroup({
     //   companyId: new FormControl(
@@ -82,11 +90,16 @@ export class CompanyDetailsComponent implements OnInit {
 
     // }, {});
 
-
-    this.companyDetailsForm= this.fb.group({
+    this.companyDetailsForm = this.fb.group({
       companyId: [this.auth.currentUserValue.companyId, Validators.required],
-      companyName: [this.auth.currentUserValue.companyName, Validators.required],
-      companyEmail: [this.auth.currentUserValue.companyEmail, Validators.required],
+      companyName: [
+        this.auth.currentUserValue.companyName,
+        Validators.required,
+      ],
+      companyEmail: [
+        this.auth.currentUserValue.companyEmail,
+        Validators.required,
+      ],
       name_of_MD_CEO: ['', Validators.required],
       phone_NO_of_MD_CEO: ['', Validators.required],
       contact_Person: ['', Validators.required],
@@ -97,42 +110,39 @@ export class CompanyDetailsComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-
-
   get f() {
     return this.companyDetailsForm.controls;
   }
 
-getCompanyDetails()
-{
-  this.companyService.getCompanyDetails()
-  .subscribe((res) => {
-    if (res.data) {
-      this.companyDetails = res.data;
-    }
-    this.cd.markForCheck();
-  });
-}
-
+  getCompanyDetails() {
+    this.companyService.getCompanyDetails().subscribe((res) => {
+      if (res.data) {
+        this.companyDetails = res.data;
+      }
+      this.cd.markForCheck();
+    });
+  }
 
   onSubmit() {
     debugger;
-    this.companyDetails.companyName=this.auth.currentUserValue.companyName;
-    this.companyDetails.companyEmail=this.auth.currentUserValue.companyEmail;
-    this.companyDetails.companyId=this.auth.currentUserValue.companyId;
+    this.companyDetails.companyName = this.auth.currentUserValue.companyName;
+    this.companyDetails.companyEmail = this.auth.currentUserValue.companyEmail;
+    this.companyDetails.companyId = this.auth.currentUserValue.companyId;
 
     this.companyService
       .editCompanyDetails(this.companyDetails)
-      .subscribe(
-        (res) => {
-          debugger;
-          if (res.statusCode == 200) {
-            this.Alert('Success', 'Company Details successfully updated', 'success');
-          } else {
-            this.Alert('Error', res.message, 'error');
-          }
-
-        });
+      .subscribe((res) => {
+        debugger;
+        if (res.statusCode == 200) {
+          this.Alert(
+            'Success',
+            'Company Details successfully updated',
+            'success'
+          );
+        } else {
+          this.Alert('Error', res.message, 'error');
+        }
+      });
   }
 
   Alert(title: string, text: string, icon: any) {

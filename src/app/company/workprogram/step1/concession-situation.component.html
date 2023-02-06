@@ -127,12 +127,10 @@
         </div>
       </div>
 
-
-
       <div style="width: 30%">
         <label class="labelwp">
           Has Crude Oil Royalty Payment Been Made?
-          {{ isEditable(SBUTABLE.ROYALTYs)}}</label
+          {{ isEditable(SBUTABLE.ROYALTYs) }}</label
         >
         <div class="wpwidth">
           <div class="inputshadow">
@@ -156,9 +154,6 @@
           </span>
         </div>
       </div>
-
-
-
     </div>
     <div class="eroce">
       <!-- <span *ngIf="f['miscellaneous'].errors['minLength'] && submitted">
@@ -214,14 +209,11 @@
             <div style="display: flex">
               <div class="inpdiv">
                 <input
-                  disabled=""
+                  disabled="true"
                   type="text"
                   formControlName="companyName"
                   [(ngModel)]="concessionBody.companyName"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 />
               </div>
             </div>
@@ -254,13 +246,10 @@
             <div style="display: flex">
               <div class="inpdiv">
                 <input
-                  disabled=""
+                  disabled="true"
                   formControlName="area"
                   [(ngModel)]="concessionBody.area"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 />
               </div>
             </div>
@@ -278,12 +267,10 @@
             <div class="wpwidth">
               <div class="inputshadow">
                 <select
+                  disabled="true"
                   class="dropwp"
                   formControlName="contract_Type"
                   [(ngModel)]="concessionBody.contract_Type"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
                 >
                   <option selected disabled>
                     ---- Please Select Categories ----
@@ -318,12 +305,11 @@
             <div style="display: flex; width: 100%">
               <div class="inputshadow">
                 <select
+                  disabled="true"
                   class="dropwp"
                   formControlName="terrain"
                   [(ngModel)]="concessionBody.terrain"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
+                  disabled="true"
                 >
                   <option selected disabled>
                     ---- Please Select Terrain ----
@@ -343,7 +329,7 @@
             <label class="labelwp">Equity Distribution</label>
             <div style="display: flex">
               <div class="minsec">
-                <span
+                <!-- <span
                   class="material-icons"
                   style="
                     padding: 10px 10px;
@@ -354,18 +340,16 @@
                   "
                   (click)="clearEquity()"
                   >delete</span
-                >
+                > -->
                 <input
                   type="text"
                   style="border-radius: 5px"
                   formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution"
                   class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
+                  disabled="true"
                 />
-                <span
+                <!-- <span
                   class="material-icons"
                   style="
                     padding: 10px 10px;
@@ -376,7 +360,7 @@
                   "
                   (click)="showEquity()"
                   >add</span
-                >
+                > -->
               </div>
             </div>
             <div *ngIf="csfSubmitted" class="eroce">
@@ -525,7 +509,7 @@
           <div class="rowbox">
             <div>
               <label class="labelwp"
-                >How Much Signature Bonus been paid (USD)?</label
+                >How Much Signature Bonus Was paid (USD)?</label
               >
               <div style="display: flex">
                 <div class="inpdivcurrency">
@@ -543,7 +527,9 @@
                     "
                     class="inpute"
                     [attr.disabled]="
-                      isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
+                      isEditable(
+                        SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs
+                      )
                     "
                   />
                 </div>
@@ -551,42 +537,51 @@
             </div>
 
             <div *ngIf="csfSubmitted" class="eroce">
-              <span *ngIf="csf['how_Much_Signature_Bonus_have_been_paid_USD'].errors['required']">
+              <span
+                *ngIf="
+                  csf['how_Much_Signature_Bonus_have_been_paid_USD'].invalid
+                "
+              >
                 Signature bonus is required
               </span>
             </div>
           </div>
 
-
           <div class="rowbox">
             <div>
               <label class="labelwp"
-              >How Much Concession Rentals been paid (USD)?</label
-            >
-            <div style="display: flex">
-              <div class="inpdivcurrency">
-                <span class="currencywp">$</span>
-                <input
-                  formControlName="how_Much_Concession_Rental_have_been_paid_USD"
-                  (keypress)="genk.restrictData($event)"
-                  (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    concessionBody.how_Much_Concession_Rental_have_been_paid_USD =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="
-                    concessionBody.how_Much_Concession_Rental_have_been_paid_USD
-                  "
-                  class="inpute"
-                  [attr.disabled]="
-                    isEditable(SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs)
-                  "
-                />
+                >How Much Concession Rentals Has Been paid (USD)?</label
+              >
+              <div style="display: flex">
+                <div class="inpdivcurrency">
+                  <span class="currencywp">$</span>
+                  <input
+                    formControlName="how_Much_Concession_Rental_have_been_paid_USD"
+                    (keypress)="genk.restrictData($event)"
+                    (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      concessionBody.how_Much_Concession_Rental_have_been_paid_USD =
+                        genk.addCurrencyDecimal($event)
+                    "
+                    [value]="
+                      concessionBody.how_Much_Concession_Rental_have_been_paid_USD
+                    "
+                    class="inpute"
+                    [attr.disabled]="
+                      isEditable(
+                        SBUTABLE.CONCESSION_SITUATION_AS_AT_1ST_JANUARYs
+                      )
+                    "
+                  />
+                </div>
               </div>
             </div>
-            </div>
             <div *ngIf="csfSubmitted" class="eroce">
-              <span *ngIf="csf['how_Much_Concession_Rental_have_been_paid_USD'].errors['required']">
+              <span
+                *ngIf="
+                  csf['how_Much_Concession_Rental_have_been_paid_USD'].invalid
+                "
+              >
                 Signature bonus is required
               </span>
             </div>
@@ -594,7 +589,7 @@
 
           <div style="width: 30%">
             <label class="labelwp"
-              >How Much Renewal bonus been paid (USD)?</label
+              >How Much Renewal bonus Has Been paid (USD)?</label
             >
             <div style="display: flex">
               <div class="inpdivcurrency">
@@ -637,6 +632,12 @@
                 />
               </div>
             </div>
+
+            <div *ngIf="csfSubmitted" class="eroce">
+              <span *ngIf="!csf['if_No_why_sig'].valid">
+                This field is required
+              </span>
+            </div>
           </div>
 
           <div class="rowbox">
@@ -656,6 +657,11 @@
                 />
               </div>
             </div>
+            <div *ngIf="csfSubmitted" class="eroce">
+              <span *ngIf="!csf['if_No_why_concession'].valid">
+                This field is required
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%">
@@ -674,6 +680,11 @@
                   "
                 />
               </div>
+            </div>
+            <div *ngIf="csfSubmitted" class="eroce">
+              <span *ngIf="!csf['if_No_why_renewal'].valid">
+                This field is required
+              </span>
             </div>
           </div>
         </div>
@@ -884,7 +895,9 @@
   <div [formGroup]="EquityForm" class="modaltent">
     <div>
       <div style="text-align: center">
-        <label style="font-weight: 600; font-size: 16px">Equity Distribution</label>
+        <label style="font-weight: 600; font-size: 16px"
+          >Equity Distribution</label
+        >
       </div>
       <br />
 
@@ -908,7 +921,7 @@
           />
         </div>
         <span
-          *ngIf="eqt['companyOne']?.errors['required'] && equitySubmitted"
+          *ngIf="eqt['companyOne'].invalid && equitySubmitted"
           class="eroce"
         >
           Company name is required.

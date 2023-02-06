@@ -153,11 +153,20 @@
             </td>
             <td>{{ row["date_Created"] | formatDate }}</td>
             <td>
-              <a [href]="row['uploaded_presentation']">
+              <a [href]="row['uploaded_presentation']" target="_blank">
                 <img
                   src="../../../../assets/images/file-icon.png"
                   height="40px"
                 />
+              </a>
+            </td>
+            <td>
+              <a
+                [href]="row['uploaded_presentation']"
+                class="btn btn-secondary btn-sm submitbtn"
+                download
+              >
+                Download
               </a>
             </td>
             <td>
