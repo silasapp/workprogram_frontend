@@ -819,7 +819,7 @@ export class SWPScdpComponent implements OnInit {
         this.scdp_csr_Body,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -858,7 +858,7 @@ export class SWPScdpComponent implements OnInit {
         formDat,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -908,7 +908,8 @@ export class SWPScdpComponent implements OnInit {
         this.scdp_capitalprojects_Body,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
+
         '',
         ''
       )
@@ -941,7 +942,7 @@ export class SWPScdpComponent implements OnInit {
         formDat,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -964,7 +965,7 @@ export class SWPScdpComponent implements OnInit {
         this.scdp_scholarship_csr_Body,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -986,7 +987,7 @@ export class SWPScdpComponent implements OnInit {
         this.scdp_trainingskills_csr_Body,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -1023,7 +1024,7 @@ export class SWPScdpComponent implements OnInit {
         formDat,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -1061,7 +1062,7 @@ export class SWPScdpComponent implements OnInit {
         formDat,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         '',
         ''
       )
@@ -1131,7 +1132,8 @@ export class SWPScdpComponent implements OnInit {
         {} as FormData,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
+
         row.id,
         'DELETE'
       )
@@ -1156,7 +1158,7 @@ export class SWPScdpComponent implements OnInit {
         {} as FormData,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1179,7 +1181,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1202,7 +1204,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1225,7 +1227,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1248,7 +1250,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1271,7 +1273,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1294,7 +1296,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1317,7 +1319,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )
@@ -1342,7 +1344,7 @@ export class SWPScdpComponent implements OnInit {
         row,
         this.genk.wpYear,
         this.genk.OmlName,
-        '',
+        this.genk.fieldName,
         row.id,
         'DELETE'
       )

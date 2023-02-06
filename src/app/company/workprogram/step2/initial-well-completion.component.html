@@ -102,16 +102,25 @@
         >
           <input
             disabled
+            type="number"
             style="text-align: center; font-weight: bold"
-            (keypress)="genk.restrictData($event)"
             formControlName="proposed_year_data"
-            [value]="proposed_well_number"
+            [(ngModel)]="proposed_well_number"
             class="inpute"
-            (keypress)="genk.restrictData($event)"
-            (keyup)="genk.formatCurrency($event)"
           />
         </div>
       </div>
+
+      <!-- <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted && f['proposed_year_data']?.invalid) ||
+            (f['proposed_year_data']?.dirty && f['proposed_year_data']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div> -->
     </div>
 
     <div style="width: 30%; margin-top: auto">
@@ -131,6 +140,18 @@
             class="inpute"
           />
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted && f['proposed_initial_name']?.invalid) ||
+            (f['proposed_initial_name']?.dirty &&
+              f['proposed_initial_name']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
 
@@ -152,6 +173,19 @@
             class="inpute"
           />
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted &&
+              f['proposed_completion_days']?.invalid) ||
+            (f['proposed_completion_days']?.dirty &&
+              f['proposed_completion_days']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
 
@@ -227,6 +261,19 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted &&
+              f['proposed_Completion_Date']?.invalid) ||
+            (f['proposed_Completion_Date']?.dirty &&
+              f['proposed_Completion_Date']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%">
@@ -254,6 +301,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isInitialFormSubmitted &&
+                  f['budeget_Allocation_NGN']?.invalid) ||
+                (f['budeget_Allocation_NGN']?.dirty &&
+                  f['budeget_Allocation_NGN']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 98%">
@@ -274,6 +334,19 @@
                 class="inpute"
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isInitialFormSubmitted &&
+                  f['budeget_Allocation_USD']?.invalid) ||
+                (f['budeget_Allocation_USD']?.dirty &&
+                  f['budeget_Allocation_USD']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -296,6 +369,17 @@
             <option value="CONDENSATE WELL">Condensate Well</option>
           </select>
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted && f['oil_or_gas_wells']?.invalid) ||
+            (f['oil_or_gas_wells']?.dirty && f['oil_or_gas_wells']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
   </div>
@@ -321,13 +405,29 @@
           ></textarea>
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isInitialFormSubmitted && f['remarks']?.invalid) ||
+            (f['remarks']?.dirty && f['remarks']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
   </div>
   <br /><br />
 
   <div>
     <div style="text-align: center">
-      <button #btn class="quarterbtn" (click)="submit()">
+      <button
+        #btn
+        class="quarterbtn"
+        [style]="InitialForm.invalid ? 'cursor: default' : ''"
+        (click)="submit()"
+      >
         Add Initial Well For Quarter 1
       </button>
     </div>
@@ -337,7 +437,7 @@
   <br />
 
   <div
-    *ngIf="show"
+    *ngIf="_initialBody.length > 0"
     #divTable
     style="
       overflow: hidden;

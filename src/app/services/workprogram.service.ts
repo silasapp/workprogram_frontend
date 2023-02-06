@@ -3061,6 +3061,7 @@ export class WorkProgramService {
       );
   }
   getFormFiveSCDP(omlName, year, fieldName) {
+    console.log('oml...', omlName, year, fieldName);
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_form_five_sdcp`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
@@ -5827,9 +5828,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
-
       );
-
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
