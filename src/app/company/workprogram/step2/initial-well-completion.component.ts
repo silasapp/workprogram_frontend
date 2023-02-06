@@ -86,9 +86,13 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentIWQuater;
+      debugger;
       this.getInitialCompletion();
       this.cdr = cd;
     });
+    debugger;
+    this.ngOnInit();
+    this.getInitialCompletion();
     this.cd.markForCheck();
     this.genk.sizePerPage = this.genk.sizeten;
   }
@@ -151,6 +155,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     });
 
     this.getInitialCompletion();
+  
     // this.InitialForm.reset();
   }
 
@@ -301,6 +306,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   getInitialCompletion() {
+    debugger;
     this.workprogram
       .getInitialWellCompletion(
         this.genk.wpYear,
@@ -419,7 +425,9 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           this.quaterIWFour = this.quaterIWFourData[0].omL_Name ? true : false;
           this.cd.markForCheck();
         }
-
+        
+        debugger;
+        this.getList(this.currentIWQuater);
         this.cd.markForCheck();
       });
   }
@@ -448,11 +456,68 @@ export class SWPInitialWellCompletionComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
-        // this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
-        // this.InitialForm.reset;
+        debugger;
+        this.modalService.logNotice('Success', res.popText, 'success');       
+         this.initialBody ={} as INITIAL_WELL_COMPLETION_JOB1;
+         this.InitialForm.reset;
+         debugger;
         this.getInitialCompletion();
+
         this.cd.markForCheck();
       });
   }
+
+
+
+
+
+  getList(quater:number){
+    
+
+debugger;
+    if (quater === 1) {
+      this.currentIWQuater = 1;
+      this._initialBody = this._quaterIWOneData;
+      this.proposed_well_number = this._initialBody.length;
+      this.quaterIWOne = this._quaterIWOneData[0].omL_Name ? true : false;
+      this.cd.markForCheck();
+      //this.getGeophysical("QUARTER 1");
+    }
+    if (quater === 2) {
+      this.currentIWQuater = 2;    
+      this._initialBody = this.quaterIWTwoData;
+      this.proposed_well_number = this._initialBody.length;
+      this.quaterIWTwo = this.quaterIWTwoData[0].omL_Name ? true : false;
+      this.cd.markForCheck();
+      //this.getGeophysical("QUARTER 2");
+    }
+    if (quater === 3) {
+      this.currentIWQuater = 3;
+      this._initialBody = this.quaterIWThreeData; 
+      this.proposed_well_number = this._initialBody.length;
+      this.quaterIWThree = this.quaterIWThreeData[0].omL_Name ? true : false;
+
+      this.cd.markForCheck();
+      //this.getGeophysical("QUARTER 3");
+    }
+    if (quater === 4) {
+      this.currentIWQuater = 4;
+      this._initialBody = this.quaterIWFourData;
+      this.proposed_well_number = this._initialBody.length;
+      this.quaterIWFour = this.quaterIWFourData[0].omL_Name ? true : false;
+      this.cd.markForCheck();
+      //this.getGeophysical("QUARTER 4");
+    }
+
+
+    this.selectedPage = 1;
+    this.assignDataRows();
+    this.assignPageNum();
+    this.cd.markForCheck();
+
+  }
+
+
+
+
 }
