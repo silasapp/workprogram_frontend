@@ -29,12 +29,12 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   quaterIWTwoData: INITIAL_WELL_COMPLETION_JOB1[] = [];
   quaterIWThreeData: INITIAL_WELL_COMPLETION_JOB1[] = [];
   quaterIWFourData: INITIAL_WELL_COMPLETION_JOB1[] = [];
-show=false;
+  show = false;
   quaterIWOne = false;
   quaterIWTwo = false;
   quaterIWThree = false;
   quaterIWFour = false;
-  proposed_well_number: number=0;
+  proposed_well_number: number = 0;
   currentIWQuater = 1;
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -101,13 +101,14 @@ show=false;
     this.genk.activeStep = 'STEP2';
     this.InitialForm = new FormGroup(
       {
-        proposed_well_number: new FormControl(this.proposed_well_number,
-          [Validators.required]),
+        proposed_well_number: new FormControl(this.proposed_well_number, [
+          Validators.required,
+        ]),
         current_year_Actual_Number: new FormControl(
           this.initialBody.current_year_Actual_Number,
           [Validators.required]
         ),
-       
+
         proposed_initial_name: new FormControl(
           this.initialBody.proposed_initial_name,
           [Validators.required]
@@ -131,10 +132,11 @@ show=false;
           this.initialBody.proposed_completion_days,
           [Validators.required]
         ),
-       
+        remarks: new FormControl(this.initialBody.remarks, [
+          Validators.required,
+        ]),
       },
       {}
-
     );
 
     this.genk.Concession$.subscribe((con: IConcession) => {
@@ -238,8 +240,8 @@ show=false;
   }
 
   changeIWQuater(quater: number, btn: HTMLButtonElement) {
-    this.show=true;
-    debugger;
+    this.show = true;
+
     if (quater === 1) {
       this.currentIWQuater = 1;
       btn.textContent = 'Add Initial Well For Quarter 1';
@@ -279,7 +281,6 @@ show=false;
       //this.getGeophysical("QUARTER 4");
     }
 
-
     this.selectedPage = 1;
     this.assignDataRows();
     this.assignPageNum();
@@ -318,7 +319,7 @@ show=false;
         //     return res.quater === 'QUARTER 1';
         //   })[0] ?? new INITIAL_WELL_COMPLETION_JOB1();
         // if (this.quaterIWOneData) {
-        //   debugger;
+        //
         //   this.quaterIWOneData.actual_Completion_Date = this.genk.formDate(
         //     this.quaterIWOneData.actual_Completion_Date
         //   );
@@ -329,13 +330,11 @@ show=false;
         // this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
         this._quaterIWOneData =
-          res.initialWellCompletion.filter((res) => {
+          res.initialWellCompletion.find((res) => {
             return res.quater === 'QUARTER 1';
           }) ?? ({} as INITIAL_WELL_COMPLETION_JOB1[]);
 
-        debugger;
         if (this._quaterIWOneData) {
-          debugger;
           for (let qIWOneData of this._quaterIWOneData) {
             if (qIWOneData) {
               qIWOneData.actual_Completion_Date = this.genk.formDate(
@@ -347,6 +346,11 @@ show=false;
             }
           }
 
+          console.log(
+            'in skls',
+            this._quaterIWOneData,
+            res.initialWellCompletion
+          );
 
           this.quaterIWOne = this._quaterIWOneData[0].omL_Name ? true : false;
           // this._initialBody = this
@@ -370,9 +374,8 @@ show=false;
               Q2data.actual_Completion_Date = this.genk.formDate(
                 Q2data.actual_Completion_Date
               );
-              Q2data.proposed_Completion_Date == this.genk.formDate(
-                Q2data.actual_Completion_Date
-              );
+              Q2data.proposed_Completion_Date ==
+                this.genk.formDate(Q2data.actual_Completion_Date);
             }
           }
 
@@ -380,7 +383,6 @@ show=false;
           this.cd.markForCheck();
         }
         //
-
 
         this.quaterIWThreeData =
           res.initialWellCompletion.filter((res) => {
@@ -394,17 +396,15 @@ show=false;
               Q3data.actual_Completion_Date = this.genk.formDate(
                 Q3data.actual_Completion_Date
               );
-              Q3data.proposed_Completion_Date == this.genk.formDate(
-                Q3data.actual_Completion_Date
-              );
+              Q3data.proposed_Completion_Date ==
+                this.genk.formDate(Q3data.actual_Completion_Date);
             }
           }
-          this.quaterIWThree = this.quaterIWThreeData[0].omL_Name ? true : false;
+          this.quaterIWThree = this.quaterIWThreeData[0].omL_Name
+            ? true
+            : false;
           this.cd.markForCheck();
-
         }
-
-
 
         this.quaterIWFourData =
           res.initialWellCompletion.filter((res) => {
@@ -418,9 +418,8 @@ show=false;
               Q4data.actual_Completion_Date = this.genk.formDate(
                 Q4data.actual_Completion_Date
               );
-              Q4data.proposed_Completion_Date == this.genk.formDate(
-                Q4data.actual_Completion_Date
-              );
+              Q4data.proposed_Completion_Date ==
+                this.genk.formDate(Q4data.actual_Completion_Date);
             }
           }
           this.quaterIWFour = this.quaterIWFourData[0].omL_Name ? true : false;
@@ -430,12 +429,10 @@ show=false;
         debugger;
         this.getList(this.currentIWQuater);
         this.cd.markForCheck();
-
       });
   }
 
   submit() {
-    debugger;
     this.cd.markForCheck();
     this.initialBody.id = 0;
     this.initialBody.qUATER = 'QUARTER ' + this.currentIWQuater;
@@ -448,12 +445,16 @@ show=false;
     sail = this.genk.stringArray(
       this.initialBody
     ) as INITIAL_WELL_COMPLETION_JOB1;
-debugger;
-   // sail.proposed_well_number = this._quaterIWOneData.length;
 
-    debugger;
+    // sail.proposed_well_number = this._quaterIWOneData.length;
+
     this.workprogram
-      .saveInitialWellCompletion(sail, this.genk.wpYear, this.genk.OmlName)
+      .saveInitialWellCompletion(
+        sail,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
       .subscribe((res) => {
         debugger;
         this.modalService.logNotice('Success', res.popText, 'success');       

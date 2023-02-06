@@ -5246,12 +5246,13 @@ export class WorkProgramService {
   saveInitialWellCompletion(
     conbody: INITIAL_WELL_COMPLETION_JOB1,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http.post<any>(
       `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
       conbody,
-      { params: { year: year, omlName: omlName } }
+      { params: { year, omlName, fieldName } }
     );
   }
 
@@ -5752,10 +5753,10 @@ export class WorkProgramService {
       );
   }
 
-  getRoyalty(omlName: string, year: string, fieldName: string) {
+  getRoyalty(omlName: string, fieldID, year: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {
-        params: { myyear: year, omlName, fieldName },
+        params: { myyear: year, omlName: omlName, fieldID: fieldID },
       })
       .pipe(
         retry(this.num),
@@ -5826,7 +5827,9 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
+
       );
+
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
