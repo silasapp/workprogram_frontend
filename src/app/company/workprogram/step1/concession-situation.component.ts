@@ -69,6 +69,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
@@ -272,14 +273,15 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
+   // this.concessionBody = new CONCESSION_SITUATION();
+    this.ConcessionSituationForm.reset();
     this.modalService.logCover('loading', true);
-    let fred = null;
-    let free = this.genk.fieldName;
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        if (!res.concessionSituation || res.concessionSituation.length === 0)
-          return;
+        debugger;
+        // if (!res.concessionSituation || res.concessionSituation.length === 0)
+        //   return;
 
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
@@ -306,12 +308,21 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
         } else {
+          conInfo.companyName = res.concessionInfo[0]?.companyName;
+          conInfo.area = res.concessionInfo[0]?.area;
+          conInfo.equity_distribution =
+            res.concessionInfo[0]?.equity_distribution;
+          conInfo.contract_Type = res.concessionInfo[0]?.contract_Type;
+          conInfo.geological_location =
+            res.concessionInfo[0]?.geological_location;
           conInfo.date_of_Grant_Expiration = this.genk.formDate(
             conInfo.date_of_Grant_Expiration
           );
+
           conInfo.date_of_Expiration = this.genk.formDate(
             conInfo.date_of_Expiration
           );
+
           this.concessionBody = {} as CONCESSION_SITUATION;
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
@@ -349,6 +360,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   getRoyaltyHeld() {
     //
     debugger;
+    this.RoyaltyForm.reset();
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
@@ -390,22 +402,22 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.csfSubmitted = true;
     this.cd.markForCheck();
 
-    if (!this.boolValue) {
-      this.ConcessionSituationForm.controls[
-        'did_you_meet_the_minimum_work_programme'
-      ].disable();
+    // if (!this.boolValue) {
+    //   this.ConcessionSituationForm.controls[
+    //     'did_you_meet_the_minimum_work_programme'
+    //   ].disable();
 
-      this.ConcessionSituationForm.controls['no_of_discovered_field'].disable();
-      this.ConcessionSituationForm.controls[
-        'no_of_discovered_field'
-      ].updateValueAndValidity();
-    }
+    //   this.ConcessionSituationForm.controls['no_of_discovered_field'].disable();
+    //   this.ConcessionSituationForm.controls[
+    //     'no_of_discovered_field'
+    //   ].updateValueAndValidity();
+    // }
 
-    console.log('checking...', this.ConcessionSituationForm);
-    if (this.ConcessionSituationForm.invalid) {
-      this.cd.markForCheck();
-      return;
-    }
+    // console.log('checking...', this.ConcessionSituationForm);
+    // if (this.ConcessionSituationForm.invalid) {
+    //   this.cd.markForCheck();
+    //   return;
+    // }
 
     // if (this.concessionBody.date_of_Expiration) {
     //   this.concessionBody.date_of_Expiration =
