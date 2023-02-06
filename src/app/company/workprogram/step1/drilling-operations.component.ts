@@ -33,9 +33,9 @@ export class SWPDrillingOperationsComponent implements OnInit {
   CostProposedForm: FormGroup;
   categoryBody: DRILLING_OPERATIONS_CATEGORIES_OF_WELL =
     {} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL;
-  costBody: DRILLING_EACH_WELL_COST = {} as DRILLING_EACH_WELL_COST;
-  costProposedBody: DRILLING_EACH_WELL_COST_PROPOSED =
-    {} as DRILLING_EACH_WELL_COST_PROPOSED;
+  // costBody: DRILLING_EACH_WELL_COST = {} as DRILLING_EACH_WELL_COST;
+  // costProposedBody: DRILLING_EACH_WELL_COST_PROPOSED =
+  //   {} as DRILLING_EACH_WELL_COST_PROPOSED;
   genk: GenericService;
   submitted = false;
   columnHeader = [];
@@ -71,6 +71,8 @@ export class SWPDrillingOperationsComponent implements OnInit {
   discoveryNewName: string;
   discoveryNameDoc: string;
 
+  public isCategoryFormSubmitted = false;
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -87,16 +89,18 @@ export class SWPDrillingOperationsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.genk.activeStep = 'STEP1';
-    this.getDrilling('QUARTER 1');
+    this.getDrilling('QUARTER ' + this.currentACQuater);
     this.CategoryForm = new FormGroup(
       {
         wellName: new FormControl(this.categoryBody.wellName, [
           Validators.required,
         ]),
-        actual_Proposed: new FormControl(this.categoryBody.actual_Proposed, [
+        // actual_Proposed: new FormControl(this.categoryBody.actual_Proposed, [
+        //   Validators.required,
+        // ]),
+        category: new FormControl(this.categoryBody.category, [
           Validators.required,
         ]),
-        category: new FormControl(this.categoryBody.category),
         well_type: new FormControl(this.categoryBody.well_type, [
           Validators.required,
         ]),
@@ -126,14 +130,14 @@ export class SWPDrillingOperationsComponent implements OnInit {
           this.categoryBody.hydrocarbon_Counts,
           [Validators.required]
         ),
-        fieldDiscoveryUploadFilePath: new FormControl(
-          this.categoryBody.fieldDiscoveryUploadFilePath,
-          [Validators.required]
-        ),
-        hydrocarbonCountUploadFilePath: new FormControl(
-          this.categoryBody.hydrocarbonCountUploadFilePath,
-          [Validators.required]
-        ),
+        // fieldDiscoveryUploadFilePath: new FormControl(
+        //   this.categoryBody.fieldDiscoveryUploadFilePath,
+        //   [Validators.required]
+        // ),
+        // hydrocarbonCountUploadFilePath: new FormControl(
+        //   this.categoryBody.hydrocarbonCountUploadFilePath,
+        //   [Validators.required]
+        // ),
         well_cost: new FormControl(this.categoryBody.well_cost, [
           Validators.required,
         ]),
@@ -195,37 +199,37 @@ export class SWPDrillingOperationsComponent implements OnInit {
       {}
     );
 
-    this.CostForm = new FormGroup(
-      {
-        well_name: new FormControl(this.costBody.well_name, [
-          Validators.required,
-        ]),
-        well_cost: new FormControl(this.categoryBody.well_cost, [
-          Validators.required,
-        ]),
-        surface_cordinates_for_each_well_in_degrees: new FormControl(
-          this.categoryBody.surface_cordinates_for_each_well_in_degrees,
-          [Validators.required]
-        ),
-      },
-      {}
-    );
+    // this.CostForm = new FormGroup(
+    //   {
+    //     well_name: new FormControl(this.costBody.well_name, [
+    //       Validators.required,
+    //     ]),
+    //     well_cost: new FormControl(this.categoryBody.well_cost, [
+    //       Validators.required,
+    //     ]),
+    //     surface_cordinates_for_each_well_in_degrees: new FormControl(
+    //       this.categoryBody.surface_cordinates_for_each_well_in_degrees,
+    //       [Validators.required]
+    //     ),
+    //   },
+    //   {}
+    // );
 
-    this.CostProposedForm = new FormGroup(
-      {
-        well_name: new FormControl(this.costProposedBody.well_name, [
-          Validators.required,
-        ]),
-        well_cost: new FormControl(this.costProposedBody.well_cost, [
-          Validators.required,
-        ]),
-        surface_cordinates_for_each_well_in_degrees: new FormControl(
-          this.costProposedBody.surface_cordinates_for_each_well_in_degrees,
-          [Validators.required]
-        ),
-      },
-      {}
-    );
+    // this.CostProposedForm = new FormGroup(
+    //   {
+    //     well_name: new FormControl(this.costProposedBody.well_name, [
+    //       Validators.required,
+    //     ]),
+    //     well_cost: new FormControl(this.costProposedBody.well_cost, [
+    //       Validators.required,
+    //     ]),
+    //     surface_cordinates_for_each_well_in_degrees: new FormControl(
+    //       this.costProposedBody.surface_cordinates_for_each_well_in_degrees,
+    //       [Validators.required]
+    //     ),
+    //   },
+    //   {}
+    // );
 
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
@@ -326,20 +330,20 @@ export class SWPDrillingOperationsComponent implements OnInit {
   }
 
   changeACQuater(quater: number, btn: HTMLButtonElement) {
+    debugger;
     if (quater === 1) {
       this.currentACQuater = 1;
       btn.textContent = 'Save Quarter 1';
       // btn2.textContent = "Save Quarter 1";
       // btn2.textContent = "Save Quarter 1";
-      this.categoryBody = this.quaterACOneData
-        ? this.quaterACOneData
-        : ({} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL);
-      this.costBody = this.quaterCWOneData
-        ? this.quaterCWOneData
-        : new DRILLING_EACH_WELL_COST();
-      this.costProposedBody = this.quaterCPOneData
-        ? this.quaterCPOneData
-        : new DRILLING_EACH_WELL_COST_PROPOSED();
+      this.categoryBody = this.quaterACOneData ? this.quaterACOneData: new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+      //this.quaterACClassOne();
+      // this.costBody = this.quaterCWOneData
+      //   ? this.quaterCWOneData
+      //   : new DRILLING_EACH_WELL_COST();
+      // this.costProposedBody = this.quaterCPOneData
+      //   ? this.quaterCPOneData
+      //   : new DRILLING_EACH_WELL_COST_PROPOSED();
       this.cd.markForCheck();
     }
     if (quater === 2) {
@@ -349,13 +353,13 @@ export class SWPDrillingOperationsComponent implements OnInit {
       // btn2.textContent = "Save Quarter 2";
       this.categoryBody = this.quaterACTwoData
         ? this.quaterACTwoData
-        : ({} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL);
-      this.costBody = this.quaterCWTwoData
-        ? this.quaterCWTwoData
-        : ({} as DRILLING_EACH_WELL_COST);
-      this.costProposedBody = this.quaterCPTwoData
-        ? this.quaterCPTwoData
-        : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
+        : new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+      // this.costBody = this.quaterCWTwoData
+      //   ? this.quaterCWTwoData
+      //   : ({} as DRILLING_EACH_WELL_COST);
+      // this.costProposedBody = this.quaterCPTwoData
+      //   ? this.quaterCPTwoData
+      //   : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
       this.cd.markForCheck();
     }
     if (quater === 3) {
@@ -363,15 +367,13 @@ export class SWPDrillingOperationsComponent implements OnInit {
       btn.textContent = 'Save Quarter 3';
       // btn2.textContent = "Save Quarter 3";
       // btn2.textContent = "Save Quarter 3";
-      this.categoryBody = this.quaterACThreeData
-        ? this.quaterACThreeData
-        : ({} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL);
-      this.costBody = this.quaterCWThreeData
-        ? this.quaterCWThreeData
-        : ({} as DRILLING_EACH_WELL_COST);
-      this.costProposedBody = this.quaterCPThreeData
-        ? this.quaterCPThreeData
-        : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
+      this.categoryBody = this.quaterACThreeData ? this.quaterACThreeData : new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+      // this.costBody = this.quaterCWThreeData
+      //   ? this.quaterCWThreeData
+      //   : ({} as DRILLING_EACH_WELL_COST);
+      // this.costProposedBody = this.quaterCPThreeData
+      //   ? this.quaterCPThreeData
+      //   : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
       this.cd.markForCheck();
     }
 
@@ -380,63 +382,70 @@ export class SWPDrillingOperationsComponent implements OnInit {
       btn.textContent = 'Save Quarter 4';
       // btn2.textContent = "Save Quarter 4";
       // btn2.textContent = "Save Quarter 4";
-      this.categoryBody = this.quaterACFourData
-        ? this.quaterACFourData
-        : ({} as DRILLING_OPERATIONS_CATEGORIES_OF_WELL);
-      this.costBody = this.quaterCWFourData
-        ? this.quaterCWFourData
-        : ({} as DRILLING_EACH_WELL_COST);
-      this.costProposedBody = this.quaterCPFourData
-        ? this.quaterCPFourData
-        : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
+      this.categoryBody = this.quaterACFourData ? this.quaterACFourData : new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+      // this.costBody = this.quaterCWFourData
+      //   ? this.quaterCWFourData
+      //   : ({} as DRILLING_EACH_WELL_COST);
+      // this.costProposedBody = this.quaterCPFourData
+      //   ? this.quaterCPFourData
+      //   : ({} as DRILLING_EACH_WELL_COST_PROPOSED);
       this.cd.markForCheck();
     }
     this.cd.markForCheck();
   }
 
-  saveWellCost() {
-    this.costBody.id = 0;
-    this.costBody.qUATER = 'QUARTER ' + this.currentACQuater;
-    this.workprogram
-      .saveWellCostQuarter(this.costBody, this.genk.wpYear, this.genk.OmlName)
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-      });
-  }
-  saveCostProposed() {
-    this.costProposedBody.id = 0;
-    this.costProposedBody.qUATER = 'QUARTER ' + this.currentACQuater;
-    this.workprogram
-      .saveCostProposedQuarter(
-        this.costProposedBody,
-        this.genk.wpYear,
-        this.genk.OmlName
-      )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
-      });
-  }
+  // saveWellCost() {
+  //   this.costBody.id = 0;
+  //   this.costBody.qUATER = 'QUARTER ' + this.currentACQuater;
+  //   this.workprogram
+  //     .saveWellCostQuarter(this.costBody, this.genk.wpYear, this.genk.OmlName)
+  //     .subscribe((res) => {
+  //       this.modalService.logNotice('Success', res.message, 'success');
+  //     });
+  // }
+  // saveCostProposed() {
+  //   this.costProposedBody.id = 0;
+  //   this.costProposedBody.qUATER = 'QUARTER ' + this.currentACQuater;
+  //   this.workprogram
+  //     .saveCostProposedQuarter(
+  //       this.costProposedBody,
+  //       this.genk.wpYear,
+  //       this.genk.OmlName
+  //     )
+  //     .subscribe((res) => {
+  //       this.modalService.logNotice('Success', res.message, 'success');
+  //     });
+  // }
   getDrilling(quaterText: string) {
+    debugger;
     this.workprogram
       .getDrilling(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
+        debugger;
         if (res.drillOperationCategoriesWell) {
           this.quaterACOneData = res.drillOperationCategoriesWell.filter(
             (res) => {
-              return res.quater === quaterText;
+              return res.quater === 'QUARTER 1';
             }
           )[0];
-          if (this.quaterACOneData || this.quaterACOneData !== undefined) {
-            this.quaterACOneData.spud_date = this.genk.formDate(
-              this.quaterACOneData?.spud_date
-            );
-            this.quaterACOne = true;
-          } else {
-            this.quaterACOne = false;
-            this.quaterACOneData =
-              this.quaterACOneData ??
-              new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
-          }
+
+          this.quaterACOne = this.quaterACOneData ? true : false;
+          this.quaterACOneData =
+            this.quaterACOneData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+
+            this.quaterACOneData.spud_date = this.quaterACOne ? this.genk.formDate(this.quaterACOneData?.spud_date) : null;
+
+          // if (this.quaterACOneData || this.quaterACOneData !== undefined) {
+          //   this.quaterACOneData.spud_date = this.genk.formDate(
+          //     this.quaterACOneData?.spud_date
+          //   );
+          //   this.quaterACOne = true;
+          // } else {
+          //   this.quaterACOne = false;
+          //   this.quaterACOneData =
+          //     this.quaterACOneData ??
+          //     new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          // }
 
           this.quaterACTwoData = res.drillOperationCategoriesWell.filter(
             (res) => {
@@ -444,17 +453,21 @@ export class SWPDrillingOperationsComponent implements OnInit {
               return res.quater === 'QUARTER 2';
             }
           )[0];
-          if (this.quaterACTwoData || this.quaterACTwoData !== undefined) {
-            this.quaterACTwoData.spud_date = this.genk.formDate(
-              this.quaterACTwoData.spud_date
-            );
-            this.quaterACTwo = this.quaterACTwoData ? true : false;
-          } else {
-            this.quaterACTwo = false;
-            this.quaterACTwoData =
-              this.quaterACTwoData ??
-              new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
-          }
+          this.quaterACTwo = this.quaterACTwoData ? true : false;
+          this.quaterACTwoData = this.quaterACTwoData ?? new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+
+            this.quaterACTwoData.spud_date = this.quaterACTwo ? this.genk.formDate(this.quaterACTwoData?.spud_date) : null;
+          // if (this.quaterACTwoData || this.quaterACTwoData !== undefined) {
+          //   this.quaterACTwoData.spud_date = this.genk.formDate(
+          //     this.quaterACTwoData.spud_date
+          //   );
+          //   this.quaterACTwo = this.quaterACTwoData ? true : false;
+          // } else {
+          //   this.quaterACTwo = false;
+          //   this.quaterACTwoData =
+          //     this.quaterACTwoData ??
+          //     new DRILLING_OPERATIONS_CATEGORIES_OF_WELL();
+          // }
 
           this.quaterACThreeData = res.drillOperationCategoriesWell.filter(
             (res) => {
@@ -512,7 +525,7 @@ export class SWPDrillingOperationsComponent implements OnInit {
             res.drillEachCostProposed.filter((res) => {
               return res.quater === 'QUARTER 4';
             })[0] ?? new DRILLING_EACH_WELL_COST_PROPOSED();
-          this.costProposedBody = this.quaterCPOneData;
+          //this.costProposedBody = this.quaterCPOneData;
 
           this.quaterCWOneData =
             res.drillEachCost.filter((res) => {
@@ -534,7 +547,7 @@ export class SWPDrillingOperationsComponent implements OnInit {
               return res.quater === 'QUARTER 4';
             })[0] ?? new DRILLING_EACH_WELL_COST();
 
-          this.costBody = this.quaterCWOneData;
+          //this.costBody = this.quaterCWOneData;
           this.cd.markForCheck();
         }
       });
@@ -590,6 +603,10 @@ export class SWPDrillingOperationsComponent implements OnInit {
   }
 
   saveCategoryQuarter() {
+    console.log(this.CategoryForm);
+    this.isCategoryFormSubmitted = true;
+    if (this.CategoryForm.invalid) return;
+
     const formDat: FormData = new FormData();
     this.categoryBody.qUATER = 'QUARTER ' + this.currentACQuater;
     for (const key in this.categoryBody) {

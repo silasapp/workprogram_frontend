@@ -39,7 +39,7 @@
               [(ngModel)]="fielddevelopmentBody.status"
               [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             >
-              <option selected disabled>--Select an Option --</option>
+              <option disabled>--Select an Option --</option>
               <option value="Application under Review">
                 Application under Review
               </option>
@@ -48,6 +48,17 @@
               <option value="Studies Ongoing">Studies Ongoing</option>
             </select>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmentFormSubmitted && f['status'].invalid) ||
+              (f['status']?.dirty && f['status']?.invalid)
+            "
+          >
+            This is is required!
+          </span>
         </div>
       </div>
 
@@ -148,6 +159,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmentFormSubmitted &&
+                f['proposed_number_of_wells_from_approved_FDP'].invalid) ||
+              (f['proposed_number_of_wells_from_approved_FDP']?.dirty &&
+                f['proposed_number_of_wells_from_approved_FDP']?.invalid)
+            "
+          >
+            This is is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 5% 0 0">
@@ -171,6 +195,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmentFormSubmitted &&
+                f['uploaded_approved_FDP_Document'].invalid) ||
+              (f['uploaded_approved_FDP_Document']?.dirty &&
+                f['uploaded_approved_FDP_Document']?.invalid)
+            "
+          >
+            This is is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 5% 0 0">
@@ -191,6 +228,19 @@
               <option value="GAS AND OIL FIELD">GAS AND OIL FIELD</option>
             </select>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmentFormSubmitted &&
+                f['are_they_oil_or_gas_wells'].invalid) ||
+              (f['are_they_oil_or_gas_wells']?.dirty &&
+                f['are_they_oil_or_gas_wells']?.invalid)
+            "
+          >
+            This is is required!
+          </span>
         </div>
       </div>
       <!-- <div style="width: 30%; margin: auto 0 0 0">
@@ -217,6 +267,7 @@
   <div>
     <div style="text-align: center">
       <button
+        [style]="!isValidateFDP() ? 'cursor: default' : ''"
         class="quarterbtn"
         (click)="saveFieldDevelopmentPlan()"
         [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
@@ -274,6 +325,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['proposed_Development_well_name']?.invalid) ||
+              (fr['proposed_Development_well_name']?.dirty &&
+                fr['proposed_Development_well_name']?.invalid)
+            "
+          >
+            This is is required!
+          </span>
+        </div>
       </div>
     </div>
 
@@ -305,6 +369,18 @@
           </div>
         </div>
         <small #oilSand></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['oil']?.invalid) ||
+              (fr['oil']?.dirty && fr['oil']?.invalid)
+            "
+          >
+            Oil is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -332,6 +408,18 @@
           </div>
         </div>
         <small #gasMin></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['gas']?.invalid) ||
+              (fr['gas']?.dirty && fr['gas']?.invalid)
+            "
+          >
+            Gas is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -357,6 +445,17 @@
           </div>
         </div>
         <small #oilMox></small>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['condensate']?.invalid) ||
+              (fr['condensate']?.dirty && fr['condensate']?.invalid)
+            "
+          >
+            Condensate is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
@@ -365,6 +464,11 @@
       <div style="text-align: center">
         <button
           class="quarterbtn"
+          [style]="
+            FieldDevelopmeentExcessiveReserveForm.invalid
+              ? 'cursor: default'
+              : ''
+          "
           (click)="saveFieldDevelopmentExpectedReserves()"
           [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
         >
@@ -372,32 +476,31 @@
         </button>
       </div>
     </div>
-
   </div>
   <br />
-<br />
-<div
-  #divTable
-  style="
-    overflow: hidden;
-    overflow-x: auto;
-    box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
-  "
->
-  <table #codeTable class="apptable" cellPadding="10px">
-    <thead>
-      <tr>
-        <th *ngFor="let h of ucolumn">
-          {{ h.header }}
-        </th>
-      </tr>
-    </thead>
-    <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
-      <tr *ngFor="let row of unitizationList">
-        <td *ngFor="let h of ucolumn">
-          {{ row[h.columnDef] }}
-        </td>
-        <!-- <td>
+  <br />
+  <div
+    #divTable
+    style="
+      overflow: hidden;
+      overflow-x: auto;
+      box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
+    "
+  >
+    <table #codeTable class="apptable" cellPadding="10px">
+      <thead>
+        <tr>
+          <th *ngFor="let h of ucolumn">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody #codeTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+        <tr *ngFor="let row of unitizationList">
+          <td *ngFor="let h of ucolumn">
+            {{ row[h.columnDef] }}
+          </td>
+          <!-- <td>
           <button
             mat-stroked-button
             style="margin: 50px; padding: 10px"
@@ -412,13 +515,11 @@
             <b>Delete</b>
           </button>
         </td> -->
-      </tr>
-    </tbody>
-  </table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-</div>
-
-
 
 <div
   style="
@@ -463,6 +564,19 @@
           <option value="YES">Yes</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isUnitizationFormSubmitted &&
+              u['is_any_of_your_field_straddling']?.invalid) ||
+            (u['is_any_of_your_field_straddling']?.dirty &&
+              u['is_any_of_your_field_straddling']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div
@@ -492,6 +606,19 @@
                 [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['what_concession_field_straddling']?.invalid) ||
+                (u['what_concession_field_straddling']?.dirty &&
+                  u['what_concession_field_straddling']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -528,6 +655,19 @@
               </select>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['has_DPR_been_notified']?.invalid) ||
+                (u['has_DPR_been_notified']?.dirty &&
+                  u['has_DPR_been_notified']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
 
@@ -548,6 +688,19 @@
               </select>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['has_the_other_party_been_notified']?.invalid) ||
+                (u['has_the_other_party_been_notified']?.dirty &&
+                  u['has_the_other_party_been_notified']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
       <br />
@@ -556,10 +709,10 @@
         <div style="text-align: center">
           <button
             class="quarterbtn"
+            [style]="UnitizationForm.invalid ? 'cursor: default' : ''"
             (click)="saveUnitization()"
-            
           >
-          Save Unitization
+            Save Unitization
           </button>
         </div>
       </div>
