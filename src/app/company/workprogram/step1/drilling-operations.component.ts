@@ -71,6 +71,8 @@ export class SWPDrillingOperationsComponent implements OnInit {
   discoveryNewName: string;
   discoveryNameDoc: string;
 
+  public isCategoryFormSubmitted = false;
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -93,10 +95,12 @@ export class SWPDrillingOperationsComponent implements OnInit {
         wellName: new FormControl(this.categoryBody.wellName, [
           Validators.required,
         ]),
-        actual_Proposed: new FormControl(this.categoryBody.actual_Proposed, [
+        // actual_Proposed: new FormControl(this.categoryBody.actual_Proposed, [
+        //   Validators.required,
+        // ]),
+        category: new FormControl(this.categoryBody.category, [
           Validators.required,
         ]),
-        category: new FormControl(this.categoryBody.category),
         well_type: new FormControl(this.categoryBody.well_type, [
           Validators.required,
         ]),
@@ -126,14 +130,14 @@ export class SWPDrillingOperationsComponent implements OnInit {
           this.categoryBody.hydrocarbon_Counts,
           [Validators.required]
         ),
-        fieldDiscoveryUploadFilePath: new FormControl(
-          this.categoryBody.fieldDiscoveryUploadFilePath,
-          [Validators.required]
-        ),
-        hydrocarbonCountUploadFilePath: new FormControl(
-          this.categoryBody.hydrocarbonCountUploadFilePath,
-          [Validators.required]
-        ),
+        // fieldDiscoveryUploadFilePath: new FormControl(
+        //   this.categoryBody.fieldDiscoveryUploadFilePath,
+        //   [Validators.required]
+        // ),
+        // hydrocarbonCountUploadFilePath: new FormControl(
+        //   this.categoryBody.hydrocarbonCountUploadFilePath,
+        //   [Validators.required]
+        // ),
         well_cost: new FormControl(this.categoryBody.well_cost, [
           Validators.required,
         ]),
@@ -590,6 +594,10 @@ export class SWPDrillingOperationsComponent implements OnInit {
   }
 
   saveCategoryQuarter() {
+    console.log(this.CategoryForm);
+    this.isCategoryFormSubmitted = true;
+    if (this.CategoryForm.invalid) return;
+
     const formDat: FormData = new FormData();
     this.categoryBody.qUATER = 'QUARTER ' + this.currentACQuater;
     for (const key in this.categoryBody) {

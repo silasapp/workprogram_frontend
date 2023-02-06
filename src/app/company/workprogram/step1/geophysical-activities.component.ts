@@ -501,7 +501,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   getGeophysical(quaterText: string) {
     this.modalService.logCover('loading...', true);
-    console.log('gett....', this.currentACQuaterFull, this.currentACQuater);
     this.workprogram
       .getFormOneGeoPhysical(
         this.genk.OmlName,

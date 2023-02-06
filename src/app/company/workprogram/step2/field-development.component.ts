@@ -55,6 +55,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   public UUOANewName: string;
   public FDPNameDoc: string;
 
+  public isFieldDevelopmentFormSubmitted = false;
+
   ucolumn = [
     {
       columnDef: 'proposed_Development_well_name',
@@ -180,6 +182,10 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+  public get f() {
+    return this.FieldDevelopmentForm.controls;
+  }
+
   getFDP() {
     this.modalService.logCover('Loading...', true);
     this.workprogram
@@ -247,7 +253,25 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     //let dockind = this.gen.getExt(this.discoveryFile.name);
   }
 
+  isValidateFDP() {
+    if (this.fielddevelopmentBody.status === 'Approved') {
+      return (
+        this.FieldDevelopmentForm.controls[
+          'proposed_number_of_wells_from_approved_FDP'
+        ].valid &&
+        this.FieldDevelopmentForm.controls['uploaded_approved_FDP_Document']
+          .valid &&
+        this.FieldDevelopmentForm.controls['are_they_oil_or_gas_wells']
+      );
+    } else return this.FieldDevelopmentForm.valid;
+  }
+
   saveFieldDevelopmentPlan() {
+    console.log('fdp', this.FieldDevelopmentForm);
+
+    this.isFieldDevelopmentFormSubmitted = true;
+    if (!this.isValidateFDP()) return;
+
     const formData = new FormData();
 
     // formData.append(
@@ -368,8 +392,6 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
-    debugger;
-
     this.workprogram
       .saveUnitization(
         this.unitizationBody,
