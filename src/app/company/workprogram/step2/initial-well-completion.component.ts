@@ -442,8 +442,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
 
         console.log('curr', this.currentIWQuater, this._initialBody);
 
-        debugger;
-        this.getList(this.currentIWQuater);
+        // this.getList(this.currentIWQuater);
         this.cd.markForCheck();
       });
   }
