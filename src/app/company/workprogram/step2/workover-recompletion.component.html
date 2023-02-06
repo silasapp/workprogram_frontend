@@ -114,6 +114,18 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted && f['proposed_year_data']?.invalid) ||
+                (f['proposed_year_data']?.dirty &&
+                  f['proposed_year_data']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <div style="width: 30%">
           <label class="labelwp"
@@ -133,7 +145,6 @@
                 formControlName="daysForCompletion"
                 [(ngModel)]="workoverBody.daysForCompletion"
                 class="inpute"
-                [(ngModel)]="workoverBody.daysForCompletion"
                 [attr.disabled]="
                   isEditable(
                     SBUTABLE.WORKOVERS_AND_RECOMPLETION_JOBS_ON_QUARTERLY_BASISs
@@ -141,6 +152,18 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted && f['daysForCompletion']?.invalid) ||
+                (f['daysForCompletion']?.dirty &&
+                  f['daysForCompletion']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -169,6 +192,18 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted && f['completionWellName']?.invalid) ||
+                (f['completionWellName']?.dirty &&
+                  f['completionWellName']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
       <br />
@@ -194,7 +229,7 @@
                       workoverBody.budeget_Allocation_NGN =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="workoverBody.budeget_Allocation_NGN"
+                    [(ngModel)]="workoverBody.budeget_Allocation_NGN"
                     class="inpute"
                     [attr.disabled]="
                       isEditable(
@@ -203,6 +238,19 @@
                     "
                   />
                 </div>
+              </div>
+
+              <div class="eroce">
+                <span
+                  *ngIf="
+                    (isWorkoverFormSubmitted &&
+                      f['budeget_Allocation_NGN']?.invalid) ||
+                    (f['budeget_Allocation_NGN']?.dirty &&
+                      f['budeget_Allocation_NGN']?.invalid)
+                  "
+                >
+                  This field is required!
+                </span>
               </div>
             </div>
 
@@ -220,7 +268,7 @@
                       workoverBody.budeget_Allocation_USD =
                         genk.addCurrencyDecimal($event)
                     "
-                    [value]="workoverBody.budeget_Allocation_USD"
+                    [(ngModel)]="workoverBody.budeget_Allocation_USD"
                     class="inpute"
                     [attr.disabled]="
                       isEditable(
@@ -229,6 +277,19 @@
                     "
                   />
                 </div>
+              </div>
+
+              <div class="eroce">
+                <span
+                  *ngIf="
+                    (isWorkoverFormSubmitted &&
+                      f['budeget_Allocation_USD']?.invalid) ||
+                    (f['budeget_Allocation_USD']?.dirty &&
+                      f['budeget_Allocation_USD']?.invalid)
+                  "
+                >
+                  This field is required!
+                </span>
               </div>
             </div>
           </div>
@@ -258,6 +319,22 @@
               </select>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted &&
+                  f['do_you_have_approval_for_the_workover_recompletion']
+                    ?.invalid) ||
+                (f['do_you_have_approval_for_the_workover_recompletion']
+                  ?.dirty &&
+                  f['do_you_have_approval_for_the_workover_recompletion']
+                    ?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <div style="width: 30%; margin-top: auto">
           <label class="labelwp"> Well Purpose </label>
@@ -279,6 +356,17 @@
                 <option value="CONDENSATE WELL">CONDENSATE WELL</option>
               </select>
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted && f['oil_or_gas_wells']?.invalid) ||
+                (f['oil_or_gas_wells']?.dirty && f['oil_or_gas_wells']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -308,9 +396,22 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted &&
+                  f['proposed_workover_Date']?.invalid) ||
+                (f['proposed_workover_Date']?.dirty &&
+                  f['proposed_workover_Date']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <div style="width: 30; margin-top: auto">
-          <label class="labelwp">Remarks</label>
+          <label class="labelwp">Remark</label>
           <div style="display: flex">
             <div
               style="
@@ -333,6 +434,17 @@
               ></textarea>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isWorkoverFormSubmitted && f['remarks']?.invalid) ||
+                (f['remarks']?.dirty && f['remarks']?.invalid)
+              "
+            >
+              Remark is required!
+            </span>
+          </div>
         </div>
       </div>
       <br /><br />
@@ -341,6 +453,7 @@
           <button
             #btn
             class="quarterbtn"
+            [style]="WorkoverForm.invalid ? 'cursor: default' : ''"
             (click)="submit()"
             [attr.disabled]="
               isEditable(

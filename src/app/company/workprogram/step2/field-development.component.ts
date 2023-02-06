@@ -56,6 +56,8 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   public FDPNameDoc: string;
 
   public isFieldDevelopmentFormSubmitted = false;
+  public isFieldDevelopmeentExcessiveReserveFormSubmitted = false;
+  public isUnitizationFormSubmitted = false;
 
   ucolumn = [
     {
@@ -140,10 +142,10 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.fielddevelopmentexcessivereserveBody.proposed_Development_well_name,
         [Validators.required]
       ),
-      field_Name: new FormControl(
-        this.fielddevelopmentexcessivereserveBody.field_Name,
-        [Validators.required]
-      ),
+      // field_Name: new FormControl(
+      //   this.fielddevelopmentexcessivereserveBody.field_Name,
+      //   [Validators.required]
+      // ),
       oil: new FormControl(this.fielddevelopmentexcessivereserveBody._oil, [
         Validators.required,
       ]),
@@ -165,10 +167,10 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.unitizationBody.what_concession_field_straddling,
         [Validators.required]
       ),
-      straddle_field_producing: new FormControl(
-        this.unitizationBody.straddle_field_producing,
-        [Validators.required]
-      ),
+      // straddle_field_producing: new FormControl(
+      //   this.unitizationBody.straddle_field_producing,
+      //   [Validators.required]
+      // ),
       has_DPR_been_notified: new FormControl(
         this.unitizationBody.has_DPR_been_notified,
         [Validators.required]
@@ -184,6 +186,14 @@ export class SWPFieldDevelopmentComponent implements OnInit {
 
   public get f() {
     return this.FieldDevelopmentForm.controls;
+  }
+
+  public get fr() {
+    return this.FieldDevelopmeentExcessiveReserveForm.controls;
+  }
+
+  public get u() {
+    return this.UnitizationForm.controls;
   }
 
   getFDP() {
@@ -267,8 +277,6 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveFieldDevelopmentPlan() {
-    console.log('fdp', this.FieldDevelopmentForm);
-
     this.isFieldDevelopmentFormSubmitted = true;
     if (!this.isValidateFDP()) return;
 
@@ -364,7 +372,13 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveFieldDevelopmentExpectedReserves() {
+    console.log('fdp', this.FieldDevelopmeentExcessiveReserveForm);
+
+    this.isFieldDevelopmeentExcessiveReserveFormSubmitted = true;
+    if (this.FieldDevelopmeentExcessiveReserveForm.invalid) return;
+
     this.modalService.logCover('Loading...', true);
+
     this.workprogram
       .saveFieldDevelopmentExpectedReserves(
         this.fielddevelopmentexcessivereserveBody,
@@ -392,6 +406,10 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
+    console.log('unit...', this.UnitizationForm);
+    this.isUnitizationFormSubmitted = true;
+    if (this.UnitizationForm.invalid) return;
+
     this.workprogram
       .saveUnitization(
         this.unitizationBody,

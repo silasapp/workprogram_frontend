@@ -329,10 +329,10 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isFieldDevelopmentFormSubmitted &&
-                f['proposed_Development_well_name'].invalid) ||
-              (f['proposed_Development_well_name']?.dirty &&
-                f['proposed_Development_well_name']?.invalid)
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['proposed_Development_well_name']?.invalid) ||
+              (fr['proposed_Development_well_name']?.dirty &&
+                fr['proposed_Development_well_name']?.invalid)
             "
           >
             This is is required!
@@ -369,11 +369,13 @@
           </div>
         </div>
         <small #oilSand></small>
+
         <div class="eroce">
           <span
             *ngIf="
-              (isFieldDevelopmentFormSubmitted && f['oil'].invalid) ||
-              (f['oil']?.dirty && f['oil']?.invalid)
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['oil']?.invalid) ||
+              (fr['oil']?.dirty && fr['oil']?.invalid)
             "
           >
             Oil is required!
@@ -406,6 +408,18 @@
           </div>
         </div>
         <small #gasMin></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['gas']?.invalid) ||
+              (fr['gas']?.dirty && fr['gas']?.invalid)
+            "
+          >
+            Gas is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -434,8 +448,9 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isFieldDevelopmentFormSubmitted && f['condensate'].invalid) ||
-              (f['condensate']?.dirty && f['condensate']?.invalid)
+              (isFieldDevelopmeentExcessiveReserveFormSubmitted &&
+                fr['condensate']?.invalid) ||
+              (fr['condensate']?.dirty && fr['condensate']?.invalid)
             "
           >
             Condensate is required!
@@ -449,6 +464,11 @@
       <div style="text-align: center">
         <button
           class="quarterbtn"
+          [style]="
+            FieldDevelopmeentExcessiveReserveForm.invalid
+              ? 'cursor: default'
+              : ''
+          "
           (click)="saveFieldDevelopmentExpectedReserves()"
           [attr.disabled]="isEditable(SBUTABLE.EXPECTED_RESERVESs)"
         >
@@ -544,6 +564,19 @@
           <option value="YES">Yes</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isUnitizationFormSubmitted &&
+              u['is_any_of_your_field_straddling']?.invalid) ||
+            (u['is_any_of_your_field_straddling']?.dirty &&
+              u['is_any_of_your_field_straddling']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div
@@ -573,6 +606,19 @@
                 [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['what_concession_field_straddling']?.invalid) ||
+                (u['what_concession_field_straddling']?.dirty &&
+                  u['what_concession_field_straddling']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -609,6 +655,19 @@
               </select>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['has_DPR_been_notified']?.invalid) ||
+                (u['has_DPR_been_notified']?.dirty &&
+                  u['has_DPR_been_notified']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
 
@@ -629,13 +688,30 @@
               </select>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isUnitizationFormSubmitted &&
+                  u['has_the_other_party_been_notified']?.invalid) ||
+                (u['has_the_other_party_been_notified']?.dirty &&
+                  u['has_the_other_party_been_notified']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
       <br />
 
       <div>
         <div style="text-align: center">
-          <button class="quarterbtn" (click)="saveUnitization()">
+          <button
+            class="quarterbtn"
+            [style]="UnitizationForm.invalid ? 'cursor: default' : ''"
+            (click)="saveUnitization()"
+          >
             Save Unitization
           </button>
         </div>
