@@ -5827,13 +5827,9 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
-<<<<<<< HEAD
 
       );
 
-=======
-      );
->>>>>>> 82485b9aade34d2a1178fbbab6132c8889059ad4
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
