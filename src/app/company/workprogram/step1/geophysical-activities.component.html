@@ -478,12 +478,7 @@
         </div>
 
         <div class="rowbox">
-          <label class="labelwp"
-            >Type of Seismic Data Acquired
-            {{
-              isEditable(SBUTABLE.GEOPHYSICAL_ACTIVITIES_ACQUISITIONs) | json
-            }}</label
-          >
+          <label class="labelwp">Type of Seismic Data Acquired </label>
           <div class="wpwidth">
             <div class="inputshadow">
               <select
@@ -542,7 +537,17 @@
                 (f['no_of_Folds']?.dirty && f['no_of_Folds']?.invalid)
               "
             >
-              No of Fold is required!
+              <span *ngIf="f['no_of_Folds']?.errors?.['required']">
+                No. of Folds is required!
+              </span>
+
+              <span *ngIf="f['no_of_Folds']?.errors?.['max']">
+                No. of Folds must be between 0 - 100
+              </span>
+
+              <span *ngIf="f['no_of_Folds']?.errors?.['min']">
+                No. of Folds must be between 0 - 100
+              </span>
             </span>
           </div>
         </div>
@@ -634,7 +639,19 @@
                   f['geo_Record_Length_of_Data']?.invalid)
               "
             >
-              No of Fold is required!
+              <span
+                *ngIf="f['geo_Record_Length_of_Data']?.errors?.['required']"
+              >
+                'Record Length of Data' is required!
+              </span>
+
+              <span *ngIf="f['geo_Record_Length_of_Data']?.errors?.['max']">
+                'Record Length of Data' must be between 0 - 59
+              </span>
+
+              <span *ngIf="f['geo_Record_Length_of_Data']?.errors?.['min']">
+                'Record Length of Data' must be between 0 - 59
+              </span>
             </span>
           </div>
         </div>

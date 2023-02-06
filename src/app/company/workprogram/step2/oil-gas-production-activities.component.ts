@@ -55,6 +55,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   GasProductionForm: FormGroup;
   gasproductionBody: GAS_PRODUCTION_ACTIVITY = {} as GAS_PRODUCTION_ACTIVITY;
 
+  public isOil_ProductionFormSubmitted = false;
+  public isProposedMonthlyFormSubmitted = false;
+
   wkpYear: string;
   wkpYearList = [];
   concessionHeld: string;
@@ -116,16 +119,16 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.genk.activeStep = 'STEP2';
 
     this.Oil_ProductionForm = new FormGroup({
-      oil_Royalty_Payment: new FormControl(
-        this.productionoilBody.oil_Royalty_Payment,
-        [Validators.required]
-      ),
+      // oil_Royalty_Payment: new FormControl(
+      //   this.productionoilBody.oil_Royalty_Payment,
+      //   [Validators.required]
+      // ),
       deferment: new FormControl(this.productionoilBody.deferment, [
         Validators.required,
       ]),
-      forecast: new FormControl(this.productionoilBody.forecast, [
-        Validators.required,
-      ]),
+      // forecast: new FormControl(this.productionoilBody.forecast, [
+      //   Validators.required,
+      // ]),
       company_AG: new FormControl(this.productionoilBody.company_AG, [
         Validators.required,
       ]),
@@ -136,22 +139,22 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.productionoilBody.company_Condensate,
         [Validators.required]
       ),
-      cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
-        Validators.required,
-      ]),
+      // cost_Barrel: new FormControl(this.productionoilBody.cost_Barrel, [
+      //   Validators.required,
+      // ]),
       company_Oil: new FormControl(this.productionoilBody.company_Oil, [
         Validators.required,
       ]),
-      total_Reconciled_National_Crude_Oil_Production: new FormControl(
-        this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,
-        [Validators.required]
-      ),
-      gas_AG: new FormControl(this.productionoilBody.gas_AG, [
-        Validators.required,
-      ]),
-      gas_NAG: new FormControl(this.productionoilBody.gas_NAG, [
-        Validators.required,
-      ]),
+      // total_Reconciled_National_Crude_Oil_Production: new FormControl(
+      //   this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,
+      //   [Validators.required]
+      // ),
+      // gas_AG: new FormControl(this.productionoilBody.gas_AG, [
+      //   Validators.required,
+      // ]),
+      // gas_NAG: new FormControl(this.productionoilBody.gas_NAG, [
+      //   Validators.required,
+      // ]),
       //total_Reconciled_National_Crude_Oil_Production: new FormControl(this.productionoilBody.total_Reconciled_National_Crude_Oil_Production,[Validators.required]),
     });
 
@@ -331,7 +334,11 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   get f() {
-    return this.fiveYearForecastForm.controls;
+    return this.ProposedMonthlyForm.controls;
+  }
+
+  public get u() {
+    return this.Oil_ProductionForm.controls;
   }
 
   getFiveYearsValues() {
@@ -352,8 +359,8 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        if (res.gasProductionActivity) {
-          this.gasproductionBody = res.gasProductionActivity;
+        if (res?.gasProductionActivity) {
+          this.gasproductionBody = res?.gasProductionActivity;
         }
         this.cd.markForCheck();
       });
@@ -368,7 +375,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+        this.modalService.logNotice('Success', res?.popText, 'success');
       });
   }
 
@@ -380,39 +387,40 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        if (res.oilCondensateProduction) {
-          this.productionoilBody = res.oilCondensateProduction;
+        if (res?.oilCondensateProduction) {
+          this.productionoilBody = res?.oilCondensateProduction;
         }
 
         if (
-          res.oilCondensateProductionMonthly &&
-          res.oilCondensateProductionMonthly.length > 0
+          res?.oilCondensateProductionMonthly &&
+          res?.oilCondensateProductionMonthly.length > 0
         ) {
-          this.monthlyactivityData = res.oilCondensateProductionMonthly;
-          this.monthlyactivityBody = res.oilCondensateProductionMonthly[0];
+          this.monthlyactivityData = res?.oilCondensateProductionMonthly;
+          this.monthlyactivityBody = res?.oilCondensateProductionMonthly[0];
         } else {
           this.monthlyactivityData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity[];
         }
 
         if (
-          res.oilCondensateProductionMonthlyProposed &&
-          res.oilCondensateProductionMonthlyProposed.length > 0
+          res?.oilCondensateProductionMonthlyProposed &&
+          res?.oilCondensateProductionMonthlyProposed.length > 0
         ) {
-          this.proposedmonthlyData = res.oilCondensateProductionMonthlyProposed;
+          this.proposedmonthlyData =
+            res?.oilCondensateProductionMonthlyProposed;
           this.proposedmonthlyBody =
-            res.oilCondensateProductionMonthlyProposed[0];
+            res?.oilCondensateProductionMonthlyProposed[0];
         } else {
           this.proposedmonthlyData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED[];
         }
 
         if (
-          res.oilCondensateFiveYears &&
-          res.oilCondensateFiveYears.length > 0
+          res?.oilCondensateFiveYears &&
+          res?.oilCondensateFiveYears.length > 0
         ) {
-          this.fiveYearData = res.oilCondensateFiveYears;
-          this.fiveYearForecastBody = res.oilCondensateFiveYears[0];
+          this.fiveYearData = res?.oilCondensateFiveYears;
+          this.fiveYearForecastBody = res?.oilCondensateFiveYears[0];
         } else {
           this.fiveYearData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION[];
@@ -423,6 +431,11 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveProduction() {
+    console.log('oli...', this.Oil_ProductionForm);
+
+    this.isOil_ProductionFormSubmitted = true;
+    if (this.Oil_ProductionForm.invalid) return;
+
     this.productionoilBody.id = 0;
     //this.productionoilBody.cost_Barrel =
     //  this.productionoilBody.cost_Barrel.replace(/,/g, '');
@@ -434,7 +447,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+        this.modalService.logNotice('Success', res?.popText, 'success');
       });
   }
 
@@ -449,7 +462,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.message, 'success');
+          this.modalService.logNotice('Success', res?.message, 'success');
           this.getOilProduction();
         },
         error: (error) => {
@@ -459,6 +472,10 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveProposedActivity() {
+    console.log(this.ProposedMonthlyForm);
+    this.isProposedMonthlyFormSubmitted = true;
+    if (this.ProposedMonthlyForm.invalid) return;
+
     this.proposedmonthlyBody.id = 0;
     this.workprogram
       .saveProposedActivity(
@@ -468,7 +485,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+        this.modalService.logNotice('Success', res?.popText, 'success');
       });
   }
 
@@ -479,7 +496,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity;
     this.monthlyactivityBody =
       this.monthlyactivityData.filter((res) => {
-        return res.production_month === month;
+        return res?.production_month === month;
       })[0] ?? ({} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity);
     this.monthlyactivityBody.production_month = month;
     this.cd.markForCheck();
@@ -493,7 +510,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED;
     this.proposedmonthlyBody =
       this.proposedmonthlyData.filter((res) => {
-        return res.production_month === month;
+        return res?.production_month === month;
       })[0] ??
       ({} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED);
     this.proposedmonthlyBody.production_month = month;
@@ -508,7 +525,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       {} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION;
     this.fiveYearForecastBody =
       this.fiveYearData.filter((res) => {
-        return res.fiveyear_Timeline === year;
+        return res?.fiveyear_Timeline === year;
       })[0] ??
       ({} as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION);
 
@@ -557,7 +574,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        this.modalService.logNotice('Success', res.popText, 'success');
+        this.modalService.logNotice('Success', res?.popText, 'success');
       });
   }
 

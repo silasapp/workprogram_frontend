@@ -113,6 +113,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['wellName'].invalid) ||
+                      (f['wellName']?.dirty && f['wellName']?.invalid)
+                    "
+                  >
+                    Well Name is required!
+                  </span>
+                </div>
               </div>
 
               <!-- <div style="width: 30%">
@@ -148,7 +159,7 @@
                         )
                       "
                     >
-                      <option selected disabled>-- Select Well Class --</option>
+                      <option disabled>-- Select Well Class --</option>
                       <option value="1st Appraisal">1st Appraisal</option>
                       <option value="2nd Appraisal">2nd Appraisal</option>
                       <option value="Development">Development</option>
@@ -161,6 +172,16 @@
                       </option>
                     </select>
                   </div>
+                </div>
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['category'].invalid) ||
+                      (f['category']?.dirty && f['category']?.invalid)
+                    "
+                  >
+                    Category is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -205,6 +226,17 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['well_type'].invalid) ||
+                      (f['well_type']?.dirty && f['well_type']?.invalid)
+                    "
+                  >
+                    Well Type is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%">
@@ -225,11 +257,24 @@
                         ---- Please Select Trajectory ----
                       </option>
                       <option value="Deviated">Deviated</option>
-                      <option value="Horizontal">Horizontal/option></option>
+                      <option value="Horizontal">Horizontal</option>
                       <option value="NIL">NIL</option>
                       <option value="Vertical">Vertical</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['well_trajectory'].invalid) ||
+                      (f['well_trajectory']?.dirty &&
+                        f['well_trajectory']?.invalid)
+                    "
+                  >
+                    Well Trajectory is required!
+                  </span>
                 </div>
               </div>
 
@@ -256,6 +301,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['spud_date'].invalid) ||
+                      (f['spud_date']?.dirty && f['spud_date']?.invalid)
+                    "
+                  >
+                    Spud Date is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -290,6 +346,17 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['cored'].invalid) ||
+                      (f['cored']?.dirty && f['cored']?.invalid)
+                    "
+                  >
+                    Planning Coring is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -315,6 +382,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['core_Depth_Interval'].invalid) ||
+                      (f['core_Depth_Interval']?.dirty &&
+                        f['core_Depth_Interval']?.invalid)
+                    "
+                  >
+                    Coring Depth Interval is required!
+                  </span>
                 </div>
               </div>
 
@@ -349,6 +429,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['core_Cost_USD'].invalid) ||
+                      (f['core_Cost_USD']?.dirty && f['core_Cost_USD']?.invalid)
+                    "
+                  >
+                    Core Cost is required!
+                  </span>
+                </div>
               </div>
             </div>
             <br />
@@ -380,6 +471,19 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['any_New_Discoveries'].invalid) ||
+                      (f['any_New_Discoveries']?.dirty &&
+                        f['any_New_Discoveries']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -410,6 +514,20 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['state_the_field_where_Discovery_was_made']
+                          .invalid) ||
+                      (f['state_the_field_where_Discovery_was_made']?.dirty &&
+                        f['state_the_field_where_Discovery_was_made']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%">
@@ -435,6 +553,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['hydrocarbon_Counts'].invalid) ||
+                      (f['hydrocarbon_Counts']?.dirty &&
+                        f['hydrocarbon_Counts']?.invalid)
+                    "
+                  >
+                    Target Reservoirs is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -541,6 +672,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['well_cost'].invalid) ||
+                      (f['well_cost']?.dirty && f['well_cost']?.invalid)
+                    "
+                  >
+                    Estimated Well Cost is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -562,6 +704,19 @@
                       <option value="YES">YES</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['processing_Fees_Paid'].invalid) ||
+                      (f['processing_Fees_Paid']?.dirty &&
+                        f['processing_Fees_Paid']?.invalid)
+                    "
+                  >
+                    Processing Fee is required!
+                  </span>
                 </div>
               </div>
 
@@ -589,6 +744,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['number_of_Days_to_Total_Depth'].invalid) ||
+                      (f['number_of_Days_to_Total_Depth']?.dirty &&
+                        f['number_of_Days_to_Total_Depth']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -622,6 +790,17 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['terrain'].invalid) ||
+                      (f['terrain']?.dirty && f['terrain']?.invalid)
+                    "
+                  >
+                    Terrain is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -647,6 +826,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['water_depth'].invalid) ||
+                      (f['water_depth']?.dirty && f['water_depth']?.invalid)
+                    "
+                  >
+                    Water Depth is required!
+                  </span>
                 </div>
               </div>
 
@@ -675,6 +865,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['true_vertical_depth'].invalid) ||
+                      (f['true_vertical_depth']?.dirty &&
+                        f['true_vertical_depth']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -709,6 +912,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['measured_depth'].invalid) ||
+                      (f['measured_depth']?.dirty &&
+                        f['measured_depth']?.invalid)
+                    "
+                  >
+                    Measured Depth is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -737,6 +953,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['depth_refrence'].invalid) ||
+                      (f['depth_refrence']?.dirty &&
+                        f['depth_refrence']?.invalid)
+                    "
+                  >
+                    Depth Reference is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%">
@@ -762,6 +991,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['rig_type'].invalid) ||
+                      (f['rig_type']?.dirty && f['rig_type']?.invalid)
+                    "
+                  >
+                    Rig Type is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -794,6 +1034,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['rig_Name'].invalid) ||
+                      (f['rig_Name']?.dirty && f['rig_Name']?.invalid)
+                    "
+                  >
+                    Rig Name is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -820,6 +1071,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['target_reservoir'].invalid) ||
+                      (f['target_reservoir']?.dirty &&
+                        f['target_reservoir']?.invalid)
+                    "
+                  >
+                    Target Reservoir is required!
+                  </span>
+                </div>
               </div>
               <div style="width: 30%; margin-top: auto">
                 <label class="labelwp">Location Name</label>
@@ -844,6 +1108,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['location_name'].invalid) ||
+                      (f['location_name']?.dirty && f['location_name']?.invalid)
+                    "
+                  >
+                    Location Name is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -875,6 +1150,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['basin'].invalid) ||
+                      (f['basin']?.dirty && f['basin']?.invalid)
+                    "
+                  >
+                    Basin is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -901,6 +1187,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['propose_well_names'].invalid) ||
+                      (f['propose_well_names']?.dirty &&
+                        f['propose_well_names']?.invalid)
+                    "
+                  >
+                    Proposed Well Name(s) is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin-top: auto">
@@ -926,6 +1225,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['actual_wells_name'].invalid) ||
+                      (f['actual_wells_name']?.dirty &&
+                        f['actual_wells_name']?.invalid)
+                    "
+                  >
+                    Actual Name(s) is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -960,6 +1272,22 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted &&
+                        f['surface_cordinates_for_each_well_in_degrees']
+                          .invalid) ||
+                      (f['surface_cordinates_for_each_well_in_degrees']
+                        ?.dirty &&
+                        f['surface_cordinates_for_each_well_in_degrees']
+                          ?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div style="width: 30%">
                 <label class="labelwp">Comments</label>
@@ -986,6 +1314,17 @@
                     ></textarea>
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isCategoryFormSubmitted && f['comments'].invalid) ||
+                      (f['comments']?.dirty && f['comments']?.invalid)
+                    "
+                  >
+                    Comments is required!
+                  </span>
+                </div>
               </div>
             </div>
             <div style="text-align: right">
@@ -993,6 +1332,7 @@
                 #btn
                 class="submitbtn"
                 (click)="saveCategoryQuarter()"
+                [style]="CategoryForm.invalid ? 'cursor: default' : ''"
                 [attr.disabled]="
                   isEditable(SBUTABLE.DRILLING_OPERATIONS_CATEGORIES_OF_WELLs)
                 "
