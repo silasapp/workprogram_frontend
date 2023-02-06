@@ -351,7 +351,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       .getRoyalty(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         if (res?.royalty && res.royalty?.length > 0) {
-          this.royaltyBody = res.royalty[0] as Royalty;
+          this.royaltyBody = res.royalty[res.royalty.length] as Royalty;
           console.log(this.royaltyBody.royalty_ID);
         } else {
           this.royaltyBody = {} as Royalty;
