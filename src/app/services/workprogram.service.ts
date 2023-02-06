@@ -5753,10 +5753,10 @@ export class WorkProgramService {
       );
   }
 
-  getRoyalty(omlName: string, year: string, fieldName: string) {
+  getRoyalty(omlName: string, fieldID, year: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {
-        params: { myyear: year, omlName, fieldName },
+        params: { myyear: year, omlName: omlName, fieldID: fieldID },
       })
       .pipe(
         retry(this.num),
@@ -5827,7 +5827,13 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((res) => res)
+<<<<<<< HEAD
+
       );
+
+=======
+      );
+>>>>>>> 82485b9aade34d2a1178fbbab6132c8889059ad4
   }
 
   saveReserveUpdateOilCondensateCompanyAnnualProduction(
