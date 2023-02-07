@@ -64,6 +64,25 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                    ]?.invalid) ||
+                  (bp[
+                    'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                  ]?.dirty &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                    ]?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -91,6 +110,25 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                    ]?.invalid) ||
+                  (bp[
+                    'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                  ]?.dirty &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                    ]?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
         </div>
@@ -129,6 +167,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp['budget_for_other_Activities_Naira']?.invalid) ||
+                  (bp['budget_for_other_Activities_Naira']?.dirty &&
+                    bp['budget_for_other_Activities_Naira']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -158,6 +209,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp['budget_for_other_Activities_Dollars']?.invalid) ||
+                  (bp['budget_for_other_Activities_Dollars']?.dirty &&
+                    bp['budget_for_other_Activities_Dollars']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -168,6 +232,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="budgetProposalForm.invalid ? 'cursor: default' : ''"
           (click)="saveBudgetProposal()"
           [attr.disabled]="
             isEditable(SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs)

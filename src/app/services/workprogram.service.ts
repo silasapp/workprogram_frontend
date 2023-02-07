@@ -3756,7 +3756,7 @@ export class WorkProgramService {
   }
 
   post_FacilityProject(
-    budget: facilitiesProjectPerformance,
+    budget: facilitiesProjectPerformance | FormData,
     year: string,
     omlName: string,
     fieldName: string,

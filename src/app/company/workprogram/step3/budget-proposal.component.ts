@@ -39,6 +39,9 @@ export class SWPBudgetProposalComponent implements OnInit {
   OpexForm: FormGroup;
   budgetProposalBody: budgetProposal = {} as budgetProposal;
   capexOpexBody: capexOpex = {} as capexOpex;
+
+  public isbudgetProposalFormSubmitted = false;
+
   wkpYear: string;
   wkpYearList = [];
   concessionHeld: string;
@@ -112,10 +115,10 @@ export class SWPBudgetProposalComponent implements OnInit {
         this.budgetProposalBody.budget_for_other_Activities_Dollars,
         Validators.required
       ),
-      total_Company_Expenditure_Dollars: new FormControl(
-        this.budgetProposalBody.total_Company_Expenditure_Dollars,
-        Validators.required
-      ),
+      // total_Company_Expenditure_Dollars: new FormControl(
+      //   this.budgetProposalBody.total_Company_Expenditure_Dollars,
+      //   Validators.required
+      // ),
     });
 
     this.OpexForm = new FormGroup({
@@ -214,6 +217,10 @@ export class SWPBudgetProposalComponent implements OnInit {
 
     this.getBudgetData();
     this.getCapexItems();
+  }
+
+  public get bp() {
+    return this.budgetProposalForm.controls;
   }
 
   getBudgetData() {
@@ -345,6 +352,11 @@ export class SWPBudgetProposalComponent implements OnInit {
     return resultArray;
   }
   saveBudgetProposal() {
+    console.log(this.budgetProposalForm);
+
+    this.isbudgetProposalFormSubmitted = true;
+    if (this.budgetProposalForm.invalid) return;
+
     let budgetInfo = {} as budgetProposal;
     this.budgetProposalBody.id = 0;
     this.budgetProposalBody.year_of_WP = this.genk.wpYear;
