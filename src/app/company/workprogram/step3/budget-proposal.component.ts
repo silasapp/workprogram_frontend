@@ -345,6 +345,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     return resultArray;
   }
   saveBudgetProposal() {
+    debugger;
     let budgetInfo = {} as budgetProposal;
     this.budgetProposalBody.id = 0;
     this.budgetProposalBody.year_of_WP = this.genk.wpYear;
@@ -361,7 +362,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       }
     }
     budgetInfo.companyNumber = 0;
-
+debugger;
     this.workprogram
       .post_BudgetProposal(
         budgetInfo,

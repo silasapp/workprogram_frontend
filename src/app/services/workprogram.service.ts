@@ -3643,6 +3643,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
