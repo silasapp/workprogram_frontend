@@ -3475,6 +3475,7 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN`,
@@ -3484,6 +3485,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );

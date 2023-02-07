@@ -212,7 +212,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         }
         if (res.unitization) {
           this.unitizationBody = res.unitization;
-          this.unitizationBody.is_any_of_your_field_straddling = 'NO';
+         // this.unitizationBody.is_any_of_your_field_straddling = 'NO';
         }
 
         this.modalService.togCover();
@@ -264,6 +264,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   isValidateFDP() {
+    
     if (this.fielddevelopmentBody.status === 'Approved') {
       return (
         this.FieldDevelopmentForm.controls[
@@ -274,13 +275,21 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.FieldDevelopmentForm.controls['are_they_oil_or_gas_wells']
       );
     } else return this.FieldDevelopmentForm.valid;
+    
   }
 
-  saveFieldDevelopmentPlan() {
-    this.isFieldDevelopmentFormSubmitted = true;
-    if (!this.isValidateFDP()) return;
 
+  debugger;
+  saveFieldDevelopmentPlan() {
+
+    debugger;
+  
+   
+    this.isFieldDevelopmentFormSubmitted = true;
     const formData = new FormData();
+    if (this.fielddevelopmentBody.status === 'Approved' || this.fielddevelopmentBody.status === '' || (!this.isNotNullOrUndefined(this.fielddevelopmentBody.status))){
+    if (!this.isValidateFDP()) return;
+  
 
     // formData.append(
     //   'id',
@@ -338,6 +347,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       'are_they_oil_or_gas_wells',
       this.FieldDevelopmentForm.get('are_they_oil_or_gas_wells').value
     );
+    }
     formData.append('status', this.FieldDevelopmentForm.get('status').value);
 
     this.modalService.logCover('Loading....', true);
@@ -364,6 +374,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
           this.modalService.togCover();
           this.cd.markForCheck();
         },
+
       });
   }
 
@@ -406,6 +417,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
+    this.debugger;
     console.log('unit...', this.UnitizationForm);
     this.isUnitizationFormSubmitted = true;
     if (this.UnitizationForm.invalid) return;
@@ -458,4 +470,9 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.modalService.logNotice('Success', res.message, 'success');
       });
   }
+
+
+  isNotNullOrUndefined<T>(object: T | undefined | null): object is T {  
+    return <T>object !== undefined && <T>object !== null;  
+  } 
 }

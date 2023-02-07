@@ -88,6 +88,7 @@ export class SelectDateComponent implements OnInit {
     debugger;
     setTimeout(() => {
       this.Alert('Success', 'A presentation schedule was created successfully.', 'success');
+      this.ngOnInit();
     }, 2000);
     this.companyService
       .schedulePresentation(this.f['time'].value, this.f['date'].value)
