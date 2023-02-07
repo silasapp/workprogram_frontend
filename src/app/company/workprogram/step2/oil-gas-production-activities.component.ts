@@ -57,6 +57,8 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
   public isOil_ProductionFormSubmitted = false;
   public isProposedMonthlyFormSubmitted = false;
+  public isfiveYearForecastFormSubmitted = false;
+  public isGasProductionFormSubmitted = false;
 
   wkpYear: string;
   wkpYearList = [];
@@ -219,21 +221,21 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       fiveyear_NAG: new FormControl(this.fiveYearForecastBody.fiveyear_NAG, [
         Validators.required,
       ]),
-      YPFFile: new FormControl(this.YPFFile, [Validators.required]),
+      // YPFFile: new FormControl(this.YPFFile, [Validators.required]),
     });
 
     this.GasProductionForm = new FormGroup(
       {
-        current_Actual_Year: new FormControl(
-          this.gasproductionBody.current_Actual_Year,
-          [Validators.required]
-        ),
-        utilized: new FormControl(this.gasproductionBody.utilized, [
-          Validators.required,
-        ]),
-        flared: new FormControl(this.gasproductionBody.flared, [
-          Validators.required,
-        ]),
+        // current_Actual_Year: new FormControl(
+        //   this.gasproductionBody.current_Actual_Year,
+        //   [Validators.required]
+        // ),
+        // utilized: new FormControl(this.gasproductionBody.utilized, [
+        //   Validators.required,
+        // ]),
+        // flared: new FormControl(this.gasproductionBody.flared, [
+        //   Validators.required,
+        // ]),
         proposed_production: new FormControl(
           this.gasproductionBody.proposed_production,
           [Validators.required]
@@ -258,47 +260,47 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           this.gasproductionBody.is_there_a_gas_plant,
           [Validators.required]
         ),
-        domestic_gas_obligation: new FormControl(
-          this.gasproductionBody.domestic_gas_obligation,
-          [Validators.required]
-        ),
-        no_of_plannned_projects: new FormControl(
-          this.gasproductionBody.no_of_plannned_projects,
-          [Validators.required]
-        ),
-        is_there_a_license_to_operate_a_gas_plant: new FormControl(
-          this.gasproductionBody.is_there_a_license_to_operate_a_gas_plant,
-          [Validators.required]
-        ),
+        // domestic_gas_obligation: new FormControl(
+        //   this.gasproductionBody.domestic_gas_obligation,
+        //   [Validators.required]
+        // ),
+        // no_of_plannned_projects: new FormControl(
+        //   this.gasproductionBody.no_of_plannned_projects,
+        //   [Validators.required]
+        // ),
+        // is_there_a_license_to_operate_a_gas_plant: new FormControl(
+        //   this.gasproductionBody.is_there_a_license_to_operate_a_gas_plant,
+        //   [Validators.required]
+        // ),
         gas_flare_Royalty_payment: new FormControl(
           this.gasproductionBody.gas_flare_Royalty_payment,
           [Validators.required]
         ),
-        gas_Sales_Royalty_Payment: new FormControl(
-          this.gasproductionBody.gas_Sales_Royalty_Payment,
-          [Validators.required]
-        ),
+        // gas_Sales_Royalty_Payment: new FormControl(
+        //   this.gasproductionBody.gas_Sales_Royalty_Payment,
+        //   [Validators.required]
+        // ),
         number_of_gas_wells_completed: new FormControl(
           this.gasproductionBody.number_of_gas_wells_completed,
           [Validators.required]
         ),
-        number_of_gas_wells_tested: new FormControl(
-          this.gasproductionBody.number_of_gas_wells_tested,
-          [Validators.required]
-        ),
-        domestic_Gas_Supply_DSO: new FormControl(
-          this.gasproductionBody.domestic_Gas_Supply_DSO,
-          [Validators.required]
-        ),
-        projects_planned_for_Domestic_supply_Gas_to_power_industries_etc:
-          new FormControl(
-            this.gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc,
-            [Validators.required]
-          ),
-        domestic_Gas_obligation_met: new FormControl(
-          this.gasproductionBody.domestic_Gas_obligation_met,
-          [Validators.required]
-        ),
+        // number_of_gas_wells_tested: new FormControl(
+        //   this.gasproductionBody.number_of_gas_wells_tested,
+        //   [Validators.required]
+        // ),
+        // domestic_Gas_Supply_DSO: new FormControl(
+        //   this.gasproductionBody.domestic_Gas_Supply_DSO,
+        //   [Validators.required]
+        // ),
+        // projects_planned_for_Domestic_supply_Gas_to_power_industries_etc:
+        //   new FormControl(
+        //     this.gasproductionBody.projects_planned_for_Domestic_supply_Gas_to_power_industries_etc,
+        //     [Validators.required]
+        //   ),
+        // domestic_Gas_obligation_met: new FormControl(
+        //   this.gasproductionBody.domestic_Gas_obligation_met,
+        //   [Validators.required]
+        // ),
         remarks_: new FormControl(this.gasproductionBody.remarks_, [
           Validators.required,
         ]),
@@ -341,6 +343,14 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     return this.Oil_ProductionForm.controls;
   }
 
+  public get fy() {
+    return this.fiveYearForecastForm.controls;
+  }
+
+  public get gp() {
+    return this.GasProductionForm.controls;
+  }
+
   getFiveYearsValues() {
     this.fiveYearsValues = [];
     var num: number = 5;
@@ -367,6 +377,10 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveGasProduction() {
+    console.log(this.GasProductionForm);
+    this.isGasProductionFormSubmitted = true;
+    if (this.GasProductionForm.invalid) return;
+
     this.workprogram
       .saveGasProduction(
         this.gasproductionBody,
@@ -553,6 +567,10 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveFiveYearForecast() {
+    console.log(this.fiveYearForecastForm);
+    this.isfiveYearForecastFormSubmitted = true;
+    if (this.fiveYearForecastForm.invalid) return;
+
     const formDat: FormData = new FormData();
     for (const key in this.fiveYearForecastBody) {
       if (this.fiveYearForecastBody[key]) {
@@ -562,6 +580,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         formDat.delete(key);
       }
     }
+
     if (this.YPFFile) {
       formDat.append('YPFfile', this.YPFFile, this.YPFNewName);
     }
