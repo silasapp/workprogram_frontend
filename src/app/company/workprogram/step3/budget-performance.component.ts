@@ -1885,16 +1885,18 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   // }
 
   saveExploratory() {
+    debugger;
     let budgetInfo = {} as exploratoryActivities;
     this.exploratoryBody.id = 0;
-    this.exploratoryBody.year_of_WP = this.genk.wpYear;
-    this.exploratoryBody.omL_Name = this.genk.OmlName;
+    //this.exploratoryBody.year_of_WP = this.genk.wpYear;
+    //this.exploratoryBody.omL_Name = this.genk.OmlName;
     for (let item in this.exploratoryBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
           this.exploratoryBody[item]?.toString() ?? '';
       }
     }
+    debugger;
     this.workprogram
       .post_Exploratory(
         budgetInfo,
@@ -1916,16 +1918,18 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
 
   saveDevelopmentDrilling() {
+    debugger;
     let budgetInfo = {} as developmentDrillingActivities;
     this.developmentDrillingBody.id = 0;
-    this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
-    this.developmentDrillingBody.omL_Name = this.genk.OmlName;
+    //this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
+   // this.developmentDrillingBody.omL_Name = this.genk.OmlName;
     for (let item in this.developmentDrillingBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
           this.developmentDrillingBody[item]?.toString() ?? '';
       }
     }
+    debugger;
     this.workprogram
       .post_Development(
         budgetInfo,
@@ -1951,15 +1955,16 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     this.facilitiesDevelopmentBody.id = 0;
     this.facilitiesDevelopmentBody.year_of_WP = this.genk.wpYear;
     this.facilitiesDevelopmentBody.omL_Name = this.genk.OmlName;
-    for (let item in this.facilitiesDevelopmentBody) {
-      if (item != 'id' && item != 'field_ID') {
-        budgetInfo[this.genk.upperText(item)] =
-          this.facilitiesDevelopmentBody[item]?.toString() ?? '';
-      }
-    }
+    // for (let item in this.facilitiesDevelopmentBody) {
+    //   if (item != 'id' && item != 'field_ID') {
+    //     budgetInfo[this.genk.upperText(item)] =
+    //       this.facilitiesDevelopmentBody[item]?.toString() ?? '';
+    //   }
+    // }
+    debugger;
     this.workprogram
       .post_Facility(
-        budgetInfo,
+        this.facilitiesDevelopmentBody,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,

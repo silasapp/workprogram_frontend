@@ -3559,6 +3559,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
@@ -3581,6 +3582,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
@@ -3603,6 +3605,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
