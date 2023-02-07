@@ -103,7 +103,6 @@ export class CompanyService {
         { params: { time: time, date: date } }
       )
       .pipe(
-        retry(this.num),
         map((response) => {
           return response;
         })
