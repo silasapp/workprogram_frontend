@@ -1955,16 +1955,15 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     this.facilitiesDevelopmentBody.id = 0;
     this.facilitiesDevelopmentBody.year_of_WP = this.genk.wpYear;
     this.facilitiesDevelopmentBody.omL_Name = this.genk.OmlName;
-    // for (let item in this.facilitiesDevelopmentBody) {
-    //   if (item != 'id' && item != 'field_ID') {
-    //     budgetInfo[this.genk.upperText(item)] =
-    //       this.facilitiesDevelopmentBody[item]?.toString() ?? '';
-    //   }
-    // }
-    debugger;
+    for (let item in this.facilitiesDevelopmentBody) {
+      if (item != 'id' && item != 'field_ID') {
+        budgetInfo[this.genk.upperText(item)] =
+          this.facilitiesDevelopmentBody[item]?.toString() ?? '';
+      }
+    }
     this.workprogram
       .post_Facility(
-        this.facilitiesDevelopmentBody,
+        budgetInfo,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
