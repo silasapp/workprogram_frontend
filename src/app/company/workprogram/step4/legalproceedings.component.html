@@ -80,11 +80,10 @@
               "
             >
               <select formControlName="year">
-                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                <option disabled>---- Please Select an Option ----</option>
                 <option
-                  *ngFor="let Leyear of fiveYearsBehind"
+                  *ngFor="let Leyear of fiveYearsBehind$ | async"
                   [value]="Leyear"
-                  [selected]="staffdispositionBody.year === Leyear"
                 >
                   {{ Leyear }}
                 </option>
@@ -375,6 +374,7 @@
       overflow-x: auto;
       box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
     "
+    *ngIf="litigations.length > 0"
   >
     <table #codeTable class="apptable" cellPadding="10px">
       <thead>
@@ -716,6 +716,7 @@
         overflow-x: auto;
         box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
       "
+      *ngIf="arbitrations.length > 0"
     >
       <table #codeTable class="apptable" cellPadding="10px">
         <thead>

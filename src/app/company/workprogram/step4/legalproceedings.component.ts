@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
 import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
@@ -45,6 +46,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   fiveYearsBehind = [];
+  public fiveYearsBehind$ = new BehaviorSubject<number[]>([]);
+  public fiveYearsAhead$ = new BehaviorSubject<number[]>([]);
   fiveYearsAhead = [];
   isTabVisible = false;
   legalarbitrationBody: LEGAL_ARBITRATION;
@@ -140,6 +143,9 @@ export class SWPLegalProceedingsComponent implements OnInit {
     this.modalService.concessionSitu.subscribe((res) => {
       this.getLegalLegitation();
     });
+
+    this.getFiveYearsAhead();
+    this.getFiveYearsBehind();
   }
 
   ngOnInit(): void {
@@ -152,13 +158,14 @@ export class SWPLegalProceedingsComponent implements OnInit {
         case_Number: new FormControl(this.letigationBody.case_Number, [
           Validators.required,
         ]),
+        year: new FormControl(this.letigationBody.year, [Validators.required]),
         names_of_Parties: new FormControl(
           this.letigationBody.names_of_Parties,
           [Validators.required]
         ),
-        name_of_Court: new FormControl(this.letigationBody.name_of_Court, [
-          Validators.required,
-        ]),
+        // name_of_Court: new FormControl(this.letigationBody.name_of_Court, [
+        //   Validators.required,
+        // ]),
         summary_of_the_case: new FormControl(
           this.letigationBody.summary_of_the_case,
           [Validators.required]
@@ -187,17 +194,17 @@ export class SWPLegalProceedingsComponent implements OnInit {
           this.arbitrationBody.names_of_Parties,
           [Validators.required]
         ),
-        name_of_Court: new FormControl(this.arbitrationBody.name_of_Court, [
-          Validators.required,
-        ]),
+        // name_of_Court: new FormControl(this.arbitrationBody.name_of_Court, [
+        //   Validators.required,
+        // ]),
         summary_of_the_case: new FormControl(
           this.arbitrationBody.summary_of_the_case,
           [Validators.required]
         ),
-        any_orders_made_so_far_by_the_court: new FormControl(
-          this.arbitrationBody.any_orders_made_so_far_by_the_court,
-          [Validators.required]
-        ),
+        // any_orders_made_so_far_by_the_court: new FormControl(
+        //   this.arbitrationBody.any_orders_made_so_far_by_the_court,
+        //   [Validators.required]
+        // ),
         potential_outcome: new FormControl(
           this.arbitrationBody.potential_outcome,
           [Validators.required]
@@ -228,8 +235,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
     //this.concessionBody = this.genk.concessionData;
     //this.concessionHeldList = this.genk.OMLList;
-    this.getFiveYearsAhead();
-    this.getFiveYearsBehind();
+
     this.getLegalLegitation();
     this.cd.markForCheck();
   }
@@ -250,6 +256,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
       this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
+
+    this.fiveYearsBehind$.next(this.fiveYearsAhead);
   }
 
   isEditable(group: string): boolean | null {
@@ -267,6 +275,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
       this.fiveYearsBehind[num - i] = this.genk.wkProposedYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
+
+    this.fiveYearsBehind$.next(this.fiveYearsBehind);
   }
 
   loadTable() {

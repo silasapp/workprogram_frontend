@@ -19,6 +19,8 @@ import {
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import Swal from 'sweetalert2';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { BehaviorSubject } from 'rxjs';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 
 @Component({
   templateUrl: './nigeriacontent.component.html',
@@ -42,6 +44,10 @@ export class SWPNigeriaContentComponent implements OnInit {
   seniormanagementstaffForm: FormGroup;
   uploadsuccessionForm: FormGroup;
 
+  public isStaffdispositionForm = false;
+  public isSeniormanagementstaffForm = false;
+  public isUploadsuccessionForm = false;
+
   // public staffdispositionBody = {} as NIGERIA_CONTENT_Training;
   public staffdispositionBody = new NIGERIA_CONTENT_Training();
 
@@ -63,8 +69,12 @@ export class SWPNigeriaContentComponent implements OnInit {
   actualValue: string;
   columnHeader = [];
   columnValue = [];
-  fiveYearsAhead=[];
-  fiveYearsBehind=[];
+  fiveYearsAhead = [];
+  fiveYearsBehind = [];
+
+  public fiveYearsAhead$ = new BehaviorSubject<number[]>([]);
+  public fiveYearsBehind$ = new BehaviorSubject<number[]>([]);
+
   isTabVisible = false;
   seniormanagementstaffbody: NIGERIA_CONTENT_QUESTION;
   //uploadsuccessionplanbody: NIGERIA_CONTENT_Upload_Succession_Plan;
@@ -165,6 +175,9 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk.activeStep = 'STEP4';
     this.staffdispositionForm = new FormGroup(
       {
+        year: new FormControl(this.staffdispositionBody.year, [
+          Validators.required,
+        ]),
         actual_Proposed_Year: new FormControl(this.activeMenu, [
           Validators.required,
         ]),
@@ -196,9 +209,6 @@ export class SWPNigeriaContentComponent implements OnInit {
           [Validators.required]
         ),
         staff_Local: new FormControl(this.staffdispositionBody.staff_Local, [
-          Validators.required,
-        ]),
-        year: new FormControl(this.staffdispositionBody.year, [
           Validators.required,
         ]),
       },
@@ -261,10 +271,9 @@ export class SWPNigeriaContentComponent implements OnInit {
           this.uploadsuccessionplanBody.position_Occupied_,
           [Validators.required]
         ),
-        year: new FormControl(
-          this.uploadsuccessionplanBody.year,
-          [Validators.required]
-        ),
+        year: new FormControl(this.uploadsuccessionplanBody.year, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -284,15 +293,26 @@ export class SWPNigeriaContentComponent implements OnInit {
     });
 
     this.getNigeriaContentTraining();
-    debugger;
+
     this.getFiveYearsAhead();
     this.getFiveYearsBehind();
     // this.getNigeriaContentQuestion();
     //this.getUploadSuccessionplan();
   }
 
+  public get sd() {
+    return this.staffdispositionForm.controls;
+  }
+
+  public get sm() {
+    return this.seniormanagementstaffForm.controls;
+  }
+
+  public get us() {
+    return this.uploadsuccessionForm.controls;
+  }
+
   getFiveYearsAhead() {
-    debugger;
     this.fiveYearsAhead = [];
     var num: number = 5;
     var i: number;
@@ -300,23 +320,21 @@ export class SWPNigeriaContentComponent implements OnInit {
       this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
+
+    this.fiveYearsAhead$.next(this.fiveYearsAhead);
   }
 
   getFiveYearsBehind() {
-    debugger;
     this.fiveYearsBehind = [];
     var num: number = 5;
     var i: number;
     for (i = num; i >= 0; i--) {
-      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      this.fiveYearsBehind[num - i] = this.genk.wkProposedYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
+
+    this.fiveYearsBehind$.next(this.fiveYearsBehind);
   }
-
-
-
 
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
@@ -326,7 +344,6 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   getNigeriaContentTraining() {
-    debugger;
     this.workprogram
       .getNigeriaContentTraining(this.genk.wpYear)
       .subscribe((result) => {
@@ -391,7 +408,6 @@ export class SWPNigeriaContentComponent implements OnInit {
             {} as NIGERIA_CONTENT_Upload_Succession_Plan;
         }
 
-  
         console.log('succession', this.uploadSuccessionPlans);
         this.cd.markForCheck();
       });
@@ -419,21 +435,36 @@ export class SWPNigeriaContentComponent implements OnInit {
   // }
 
   saveNigeriaContentTraining() {
+    console.log(this.staffdispositionForm);
+    this.isStaffdispositionForm = true;
+    if (this.staffdispositionForm.invalid) return;
+
     this.workprogram
       .saveNigeriaContenttraining(
         this.nigeriacontenttrainingBody,
         this.genk.wpYear
       )
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isStaffdispositionForm = false;
+          this.staffdispositionBody = {} as NIGERIA_CONTENT_Training;
+          this.staffdispositionForm = updateFormValidity(
+            this.staffdispositionForm
+          );
+          this.getNigeriaContentTraining();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveSeniorManagementStaff() {
+    console.log(this.seniormanagementstaffForm);
+    this.isSeniormanagementstaffForm = true;
+    if (this.seniormanagementstaffForm.invalid) return;
+
     const model = {
       do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff:
         this.seniormanagementstaffBody
@@ -457,16 +488,29 @@ export class SWPNigeriaContentComponent implements OnInit {
         this.seniormanagementstaffBody,
         this.genk.wpYear
       )
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSeniormanagementstaffForm = false;
+          // this.uploadsuccessionplanBody =
+          //   {} as NIGERIA_CONTENT_Upload_Succession_Plan;
+          this.seniormanagementstaffForm = updateFormValidity(
+            this.seniormanagementstaffForm
+          );
+
+          this.getNigeriaContentTraining();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveUploadSuccessionPlan() {
+    console.log(this.uploadsuccessionForm);
+    this.isUploadsuccessionForm = true;
+    if (this.uploadsuccessionForm.invalid) return;
+
     const model_ = {
       actual_proposed: this.activeMenu_SuccessionPlan,
       understudy_: this.uploadsuccessionplanBody.understudy_,
@@ -481,22 +525,30 @@ export class SWPNigeriaContentComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName
       )
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isUploadsuccessionForm = false;
+          this.uploadsuccessionplanBody =
+            {} as NIGERIA_CONTENT_Upload_Succession_Plan;
+          this.uploadsuccessionForm = updateFormValidity(
+            this.uploadsuccessionForm
+          );
+          this.activeMenu = 'Proposed Year';
 
-        this.activeMenu_SuccessionPlan = 'Proposed Year';
-
-        this.getNigeriaContentTraining();
-
-        this.cd.markForCheck();
+          this.getNigeriaContentTraining();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveAddStaffDisposition() {
+    console.log(this.staffdispositionForm);
+    this.isStaffdispositionForm = true;
+    if (this.staffdispositionForm.invalid) return;
+
     const model_ = {
       actual_Proposed: this.activeMenu,
       management_Foriegn: this.staffdispositionBody.management_Foriegn,
@@ -514,18 +566,21 @@ export class SWPNigeriaContentComponent implements OnInit {
         model_ as NIGERIA_CONTENT_Training,
         this.genk.wpYear
       )
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isStaffdispositionForm = false;
+          this.staffdispositionBody = {} as NIGERIA_CONTENT_Training;
+          this.staffdispositionForm = updateFormValidity(
+            this.staffdispositionForm
+          );
+          this.activeMenu = 'Proposed Year';
 
-        this.activeMenu = 'Proposed Year';
-
-        this.getNigeriaContentTraining();
-
-        this.cd.markForCheck();
+          this.getNigeriaContentTraining();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
