@@ -5798,6 +5798,19 @@ export class WorkProgramService {
       );
   }
 
+  getReservesFiveYearProjection(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`, {
+        params: { omlName: omlName, fieldName: fieldName, year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   saveReserveUpdatePreceeding(
     conbody: any,
     year: string,

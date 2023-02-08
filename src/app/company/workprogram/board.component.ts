@@ -5,11 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  AuthenticationService,
-  GenericService,
-  ModalService,
-} from 'src/app/services';
+import {AuthenticationService, GenericService, ModalService} from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 
 @Component({
