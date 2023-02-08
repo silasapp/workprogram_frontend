@@ -6,7 +6,9 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   AuthenticationService,
   GenericService,
@@ -29,9 +31,15 @@ export class SWPConcessionSituationComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
   ConcessionSituationForm: FormGroup;
+  RoyaltyForm: FormGroup;
+  EquityForm: FormGroup;
+
+  public isConcessionSituationFormSubmitted = false;
+  public isRoyaltyFormSubmitted = false;
+  public isEquityFormSubmitted = false;
+
   concessionBody: CONCESSION_SITUATION = {} as CONCESSION_SITUATION;
   equityBody: EquityDistribution = {} as EquityDistribution;
-  RoyaltyForm: FormGroup;
   royaltyBody: Royalty = {} as Royalty;
   wkpYear: string;
   wkpYearList = [];
@@ -46,10 +54,9 @@ export class SWPConcessionSituationComponent implements OnInit {
   fieldValue: string;
   field: string;
   boolValue = true;
+  public boolValue$ = new BehaviorSubject<boolean>(true);
   isAddEquity = false;
   equitySubmitted = false;
-
-  EquityForm: FormGroup;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -209,6 +216,16 @@ export class SWPConcessionSituationComponent implements OnInit {
       {}
     );
 
+    this.boolValue$.subscribe((v: boolean) => {
+      if (v) {
+        this.getNo_of_discovered_field.enable();
+        this.getDid_you_meet_the_minimum_work_programme.enable();
+      } else {
+        this.getDid_you_meet_the_minimum_work_programme.disable();
+        this.getNo_of_discovered_field.disable();
+      }
+    });
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       console.log('called....', con);
       if (!con) {
@@ -232,6 +249,16 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+  public get getDid_you_meet_the_minimum_work_programme() {
+    return this.ConcessionSituationForm.controls[
+      'did_you_meet_the_minimum_work_programme'
+    ];
+  }
+
+  public get getNo_of_discovered_field() {
+    return this.ConcessionSituationForm.controls['no_of_discovered_field'];
+  }
+
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
@@ -253,9 +280,13 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getBoolValue() {
     this.fieldValue = this.genk.OmlName.trim().slice(0, 3).toUpperCase();
-    if (this.fieldValue === 'OML' || this.fieldValue === 'PML')
+    if (this.fieldValue === 'OML' || this.fieldValue === 'PML') {
       this.boolValue = false;
-    else this.boolValue = true;
+      this.boolValue$.next(false);
+    } else {
+      this.boolValue = true;
+      this.boolValue$.next(true);
+    }
   }
 
   loadTable() {
@@ -375,8 +406,10 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
-    this.submitted = true;
-    //let rell = this.f['miscellaneous'].errors['required'];
+    console.log(this.RoyaltyForm);
+    this.isRoyaltyFormSubmitted = true;
+    if (this.RoyaltyForm.invalid) return;
+
     if (this.RoyaltyForm.invalid) {
       this.cd.markForCheck();
       return;
@@ -388,16 +421,24 @@ export class SWPConcessionSituationComponent implements OnInit {
         this.genk.OmlName,
         this.genk.fieldName
       )
-      .subscribe((res) => {
-        //this.RoyaltyForm.reset();
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isRoyaltyFormSubmitted = false;
+          // this.royaltyBody = {} as Royalty;
+          this.RoyaltyForm = updateFormValidity(this.RoyaltyForm);
+          this.getRoyaltyHeld();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   submit() {
-    //let me = this.concessionBody;
-    this.csfSubmitted = true;
-    this.cd.markForCheck();
+    console.log(this.ConcessionSituationForm);
+    this.isConcessionSituationFormSubmitted = true;
+    if (this.ConcessionSituationForm.invalid) return;
 
     // if (!this.boolValue) {
     //   this.ConcessionSituationForm.controls[
@@ -440,7 +481,6 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.concessionBody.year = this.wkpYear;
     this.concessionBody.concession_Held = this.concessionHeld;
 
-    console.log(this.concessionBody);
     this.workprogram
       .concessionSituation(
         this.concessionBody,
@@ -448,8 +488,18 @@ export class SWPConcessionSituationComponent implements OnInit {
         this.genk.OmlName,
         this.genk.fieldName
       )
-      .subscribe((res) => {
-        this.modalService.logNotice('Success', res.message, 'success');
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isConcessionSituationFormSubmitted = false;
+          this.ConcessionSituationForm = updateFormValidity(
+            this.ConcessionSituationForm
+          );
+          this.getRoyaltyHeld();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 

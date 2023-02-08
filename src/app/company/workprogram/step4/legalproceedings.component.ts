@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   AuthenticationService,
   GenericService,
@@ -28,6 +29,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
 
   letigationForm: FormGroup;
   arbitrationForm: FormGroup;
+
+  public isLetigationFormSubmitted = false;
+  public isArbitrationFormSubmitted = false;
+
   letigationBody: LEGAL_LITIGATION = {} as LEGAL_LITIGATION;
   arbitrationBody: LEGAL_ARBITRATION = {} as LEGAL_ARBITRATION;
 
@@ -39,8 +44,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
   submitted = false;
   columnHeader = [];
   columnValue = [];
-  fiveYearsBehind=[];
-  fiveYearsAhead =[];
+  fiveYearsBehind = [];
+  fiveYearsAhead = [];
   isTabVisible = false;
   legalarbitrationBody: LEGAL_ARBITRATION;
   litigations: LEGAL_LITIGATION[] = [];
@@ -229,10 +234,15 @@ export class SWPLegalProceedingsComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+  public get l() {
+    return this.letigationForm.controls;
+  }
 
+  public get a() {
+    return this.arbitrationForm.controls;
+  }
 
   getFiveYearsAhead() {
-    debugger;
     this.fiveYearsAhead = [];
     var num: number = 5;
     var i: number;
@@ -240,7 +250,6 @@ export class SWPLegalProceedingsComponent implements OnInit {
       this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
   }
 
   isEditable(group: string): boolean | null {
@@ -251,15 +260,13 @@ export class SWPLegalProceedingsComponent implements OnInit {
   }
 
   getFiveYearsBehind() {
-    debugger;
     this.fiveYearsBehind = [];
     var num: number = 5;
     var i: number;
     for (i = num; i >= 0; i--) {
-      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+      this.fiveYearsBehind[num - i] = this.genk.wkProposedYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-    debugger;
   }
 
   loadTable() {
@@ -290,31 +297,45 @@ export class SWPLegalProceedingsComponent implements OnInit {
   }
 
   saveLitigation() {
+    console.log(this.letigationForm);
+    this.isLetigationFormSubmitted = true;
+    if (this.letigationForm.invalid) return;
+
     this.workprogram
       .saveLegalLitigation(this.letigationBody, this.genk.wpYear)
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
-
-        this.getLegalLegitation();
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isLetigationFormSubmitted = false;
+          this.letigationBody = {} as LEGAL_LITIGATION;
+          this.letigationForm = updateFormValidity(this.letigationForm);
+          this.getLegalLegitation();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveArbitration() {
+    console.log(this.arbitrationForm);
+    this.isArbitrationFormSubmitted = true;
+    if (this.arbitrationForm.invalid) return;
+
     //this.arbitrationBody.anyArbitration = "YES";
     this.workprogram
       .saveArbitration(this.arbitrationBody, this.genk.wpYear)
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
-
-        this.getLegalLegitation();
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isArbitrationFormSubmitted = false;
+          this.arbitrationBody = {} as LEGAL_ARBITRATION;
+          this.arbitrationForm = updateFormValidity(this.arbitrationForm);
+          this.getLegalLegitation();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
