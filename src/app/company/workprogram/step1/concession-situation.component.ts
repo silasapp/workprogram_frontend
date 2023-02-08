@@ -69,7 +69,6 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.genk.activeStep = 'STEP1';
     this.ConcessionSituationForm = new FormGroup(
       {
@@ -88,7 +87,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.concessionBody.geological_location,
         //   [Validators.required]
         // ),
-        terrain: new FormControl(this.concessionBody.terrain, [
+        geological_location: new FormControl(this.concessionBody.geological_location, [
           Validators.required,
         ]),
         equity_distribution: new FormControl(
@@ -262,6 +261,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   loadTable() {
     this.columnHeader = [];
     this.columnValue = [];
+    debugger;
     for (let item1 in this.ConcessionSituationForm.controls) {
       if (item1 != 'comment') {
         this.columnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
@@ -273,13 +273,12 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   getConcessionHeld() {
-   // this.concessionBody = new CONCESSION_SITUATION();
+    // this.concessionBody = new CONCESSION_SITUATION();
     this.ConcessionSituationForm.reset();
     this.modalService.logCover('loading', true);
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         // if (!res.concessionSituation || res.concessionSituation.length === 0)
         //   return;
 
@@ -359,12 +358,11 @@ export class SWPConcessionSituationComponent implements OnInit {
 
   getRoyaltyHeld() {
     //
-    debugger;
+
     this.RoyaltyForm.reset();
     this.workprogram
       .getRoyalty(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         if (res?.royalty) {
           this.royaltyBody = res.royalty as Royalty;
           console.log(this.royaltyBody.royalty_ID);

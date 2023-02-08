@@ -3475,6 +3475,7 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN`,
@@ -3484,6 +3485,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
@@ -3557,6 +3559,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
@@ -3579,6 +3582,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
@@ -3601,6 +3605,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
@@ -5783,6 +5788,19 @@ export class WorkProgramService {
   getReservesUpdate(year: string, omlName: string, fieldName: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_TWO_RESERVES`, {
+        params: { omlName: omlName, fieldName: fieldName, year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  getReservesFiveYearProjection(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
       })
       .pipe(

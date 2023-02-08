@@ -39,8 +39,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
   submitted = false;
   columnHeader = [];
   columnValue = [];
-  fiveYearsBehind=[];
-  fiveYearsAhead =[];
+  fiveYearsBehind = [];
+  fiveYearsAhead = [];
   isTabVisible = false;
   legalarbitrationBody: LEGAL_ARBITRATION;
   litigations: LEGAL_LITIGATION[] = [];
@@ -255,8 +255,8 @@ export class SWPLegalProceedingsComponent implements OnInit {
     this.fiveYearsBehind = [];
     var num: number = 5;
     var i: number;
-    for (i = num; i >= 0; i--) {
-      this.fiveYearsBehind[num-i] = this.genk.wkProposedYear - i;
+    for (i = num; i > 0; i--) {
+      this.fiveYearsBehind[num - i] = this.genk.wkProposedYear + 1 - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
     debugger;
