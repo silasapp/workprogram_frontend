@@ -1115,6 +1115,19 @@
                 </option> -->
               </select>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isfiveYearForecastFormSubmitted &&
+                    fy['fiveyear_Timeline']?.invalid) ||
+                  (fy['fiveyear_Timeline']?.dirty &&
+                    fy['fiveyear_Timeline']?.invalid)
+                "
+              >
+                Projection Year is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%">
@@ -1143,6 +1156,18 @@
               </div>
             </div>
             <small #oilNac></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isfiveYearForecastFormSubmitted &&
+                    fy['fiveyear_Oil']?.invalid) ||
+                  (fy['fiveyear_Oil']?.dirty && fy['fiveyear_Oil']?.invalid)
+                "
+              >
+                Oil is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%">
@@ -1169,6 +1194,19 @@
               </div>
             </div>
             <small #oilTax></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isfiveYearForecastFormSubmitted &&
+                    fy['fiveyear_Condensate']?.invalid) ||
+                  (fy['fiveyear_Condensate']?.dirty &&
+                    fy['fiveyear_Condensate']?.invalid)
+                "
+              >
+                Condensate is required!
+              </span>
+            </div>
           </div>
         </div>
         <br />
@@ -1201,6 +1239,18 @@
               </div>
             </div>
             <small #oilNaz></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isfiveYearForecastFormSubmitted &&
+                    fy['fiveyear_AG']?.invalid) ||
+                  (fy['fiveyear_AG']?.dirty && fy['fiveyear_AG']?.invalid)
+                "
+              >
+                AG is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%">
@@ -1230,6 +1280,18 @@
               </div>
             </div>
             <small #oilFus></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isfiveYearForecastFormSubmitted &&
+                    fy['fiveyear_NAG']?.invalid) ||
+                  (fy['fiveyear_NAG']?.dirty && fy['fiveyear_NAG']?.invalid)
+                "
+              >
+                NAG is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 30%">
@@ -1264,6 +1326,7 @@
         <div style="text-align: center">
           <button
             class="quarterbtn"
+            [style]="fiveYearForecastForm.invalid ? 'cursor: default' : ''"
             (click)="saveFiveYearForecast()"
             [attr.disabled]="
               isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
@@ -1429,6 +1492,19 @@
               </div>
             </div>
             <small #gasMinin></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['proposed_production']?.invalid) ||
+                  (gp['proposed_production']?.dirty &&
+                    gp['proposed_production']?.invalid)
+                "
+              >
+                Proposed Gas Production is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
@@ -1458,6 +1534,19 @@
               </div>
             </div>
             <small #gasMini></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['proposed_utilization']?.invalid) ||
+                  (gp['proposed_utilization']?.dirty &&
+                    gp['proposed_utilization']?.invalid)
+                "
+              >
+                Proposed Utilization is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
@@ -1487,6 +1576,19 @@
               </div>
             </div>
             <small #gasmin></small>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['proposed_flaring']?.invalid) ||
+                  (gp['proposed_flaring']?.dirty &&
+                    gp['proposed_flaring']?.invalid)
+                "
+              >
+                Proposed Flaring Volume is required!
+              </span>
+            </div>
           </div>
         </div>
         <br />
@@ -1520,6 +1622,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['no_of_gas_well_planned']?.invalid) ||
+                  (gp['no_of_gas_well_planned']?.dirty &&
+                    gp['no_of_gas_well_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
@@ -1549,6 +1664,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['no_of_gas_well_drilled']?.invalid) ||
+                  (gp['no_of_gas_well_drilled']?.dirty &&
+                    gp['no_of_gas_well_drilled']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%; margin: auto 0 0">
@@ -1568,6 +1696,19 @@
                   <option value="NO">No</option>
                 </select>
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['is_there_a_gas_plant']?.invalid) ||
+                  (gp['is_there_a_gas_plant']?.dirty &&
+                    gp['is_there_a_gas_plant']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
         </div>
@@ -1592,6 +1733,19 @@
                   <option value="NO">No</option>
                 </select>
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['gas_flare_Royalty_payment']?.invalid) ||
+                  (gp['gas_flare_Royalty_payment']?.dirty &&
+                    gp['gas_flare_Royalty_payment']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -1622,6 +1776,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted &&
+                    gp['number_of_gas_wells_completed']?.invalid) ||
+                  (gp['number_of_gas_wells_completed']?.dirty &&
+                    gp['number_of_gas_wells_completed']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 30%">
@@ -1646,6 +1813,17 @@
                 ></textarea>
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isGasProductionFormSubmitted && gp['remarks_']?.invalid) ||
+                  (gp['remarks_']?.dirty && gp['remarks_']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
         </div>
         <br />
@@ -1653,6 +1831,7 @@
           <div style="text-align: center">
             <button
               class="quarterbtn"
+              [style]="GasProductionForm.invalid ? 'cursor: default' : ''"
               (click)="saveGasProduction()"
               [attr.disabled]="isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)"
             >

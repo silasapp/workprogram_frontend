@@ -61,13 +61,28 @@
           >
             <option selected disabled>---- Select a Year ----</option>
             <option
-            *ngFor="let year of preceedingYearsValues"
-            [value]="year"
-            [selected]="statusOfReservesPreceeding.company_Reserves_Year=== year"
-          >
-            {{ year }}
-          </option>
+              *ngFor="let year of preceedingYearsValues"
+              [value]="year"
+              [selected]="
+                statusOfReservesPreceeding.company_Reserves_Year === year
+              "
+            >
+              {{ year }}
+            </option>
           </select>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                ru['company_Reserves_Year']?.invalid) ||
+              (ru['company_Reserves_Year']?.dirty &&
+                ru['company_Reserves_Year']?.invalid)
+            "
+          >
+            Year is required!
+          </span>
         </div>
       </div>
 
@@ -86,7 +101,7 @@
                 statusOfReservesPreceeding._company_Reserves_Oil =
                   genk.checkMMBBLMin($event, oilBox)
               "
-              [value]="statusOfReservesPreceeding._company_Reserves_Oil"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_Oil"
               [attr.disabled]="
                 isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
               "
@@ -95,6 +110,19 @@
           </div>
         </div>
         <small #oilBox></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                ru['company_Reserves_Oil']?.invalid) ||
+              (ru['company_Reserves_Oil']?.dirty &&
+                ru['company_Reserves_Oil']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -113,7 +141,9 @@
                 statusOfReservesPreceeding._company_Reserves_Condensate =
                   genk.checkMMBBLMin($event, oilNox)
               "
-              [value]="statusOfReservesPreceeding._company_Reserves_Condensate"
+              [(ngModel)]="
+                statusOfReservesPreceeding._company_Reserves_Condensate
+              "
               [attr.disabled]="
                 isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
               "
@@ -122,6 +152,19 @@
           </div>
         </div>
         <small #oilNox></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                ru['company_Reserves_Condensate']?.invalid) ||
+              (ru['company_Reserves_Condensate']?.dirty &&
+                ru['company_Reserves_Condensate']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -143,7 +186,7 @@
                 statusOfReservesPreceeding._company_Reserves_AG =
                   genk.checkBSCFMin($event, gasMox)
               "
-              [value]="statusOfReservesPreceeding._company_Reserves_AG"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_AG"
               [attr.disabled]="
                 isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
               "
@@ -152,6 +195,19 @@
           </div>
         </div>
         <small #gasMox></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                ru['company_Reserves_AG']?.invalid) ||
+              (ru['company_Reserves_AG']?.dirty &&
+                ru['company_Reserves_AG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -171,7 +227,7 @@
                 statusOfReservesPreceeding._company_Reserves_NAG =
                   genk.checkBSCFMin($event, gasMoxx)
               "
-              [value]="statusOfReservesPreceeding._company_Reserves_NAG"
+              [(ngModel)]="statusOfReservesPreceeding._company_Reserves_NAG"
               [attr.disabled]="
                 isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
               "
@@ -180,6 +236,19 @@
           </div>
         </div>
         <small #gasMoxx></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                ru['company_Reserves_NAG']?.invalid) ||
+              (ru['company_Reserves_NAG']?.dirty &&
+                ru['company_Reserves_NAG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -297,6 +366,7 @@
       <button
         type="submit"
         class="quarterbtn"
+        [style]="ReserveUpdatePreceedingForm.invalid ? 'cursor: default' : ''"
         (click)="saveReserveUpdatePreceeding()"
         [attr.disabled]="
           isEditable(SBUTABLE.CONCESSION_RESERVES_FOR_PRECEDING_YEARs)
@@ -343,17 +413,32 @@
             <option selected disabled>---- Select a Year ----</option>
 
             <option
-            *ngFor="let cyear of CurrentYearsValues"
-            [value]="cyear"
-            [selected]="statusOfReservesCurrent.company_Reserves_Year=== cyear"
-          >
-            {{ cyear }}
-          </option>
+              *ngFor="let cyear of CurrentYearsValues"
+              [value]="cyear"
+              [selected]="
+                statusOfReservesCurrent.company_Reserves_Year === cyear
+              "
+            >
+              {{ cyear }}
+            </option>
             <!-- <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
             <option value="2024">2024</option> -->
           </select>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                rc['company_Reserves_Year']?.invalid) ||
+              (rc['company_Reserves_Year']?.dirty &&
+                rc['company_Reserves_Year']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -373,13 +458,26 @@
                 statusOfReservesCurrent._company_Reserves_Oil =
                   genk.checkBSCFMin($event, oilSax)
               "
-              [value]="statusOfReservesCurrent._company_Reserves_Oil"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_Oil"
               [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">BBLS</span>
           </div>
         </div>
         <small #oilSax></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                rc['company_Reserves_Oil']?.invalid) ||
+              (rc['company_Reserves_Oil']?.dirty &&
+                rc['company_Reserves_Oil']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -400,13 +498,26 @@
                 statusOfReservesCurrent._company_Reserves_Condensate =
                   genk.checkBSCFMin($event, gasDax)
               "
-              [value]="statusOfReservesCurrent._company_Reserves_Condensate"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_Condensate"
               [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
         </div>
         <small #gasDax></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                rc['company_Reserves_Condensate']?.invalid) ||
+              (rc['company_Reserves_Condensate']?.dirty &&
+                rc['company_Reserves_Condensate']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -428,13 +539,26 @@
                 statusOfReservesCurrent._company_Reserves_AG =
                   genk.checkBSCFMin($event, gasSmt)
               "
-              [value]="statusOfReservesCurrent._company_Reserves_AG"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_AG"
               [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
         </div>
         <small #gasSmt></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                rc['company_Reserves_AG']?.invalid) ||
+              (rc['company_Reserves_AG']?.dirty &&
+                rc['company_Reserves_AG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -453,13 +577,26 @@
                 statusOfReservesCurrent._company_Reserves_NAG =
                   genk.checkBSCFMin($event, gasNia)
               "
-              [value]="statusOfReservesCurrent._company_Reserves_NAG"
+              [(ngModel)]="statusOfReservesCurrent._company_Reserves_NAG"
               [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
             />
             <span class="barspan">SCF</span>
           </div>
         </div>
         <small #gasNia></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdatePreceedingFormSubmitted &&
+                rc['company_Reserves_NAG']?.invalid) ||
+              (rc['company_Reserves_NAG']?.dirty &&
+                rc['company_Reserves_NAG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
@@ -467,6 +604,7 @@
       <button
         type="submit"
         class="quarterbtn"
+        [style]="ReserveUpdateCurrentForm.invalid ? 'cursor: default' : ''"
         (click)="saveReserveUpdateCurrent()"
         [attr.disabled]="isEditable(SBUTABLE.CONCESSION_RESERVESs)"
       >
@@ -506,25 +644,35 @@
           <select
             class="dropwp"
             formControlName="fiveyear_Projection_Year"
-            [(ngModel)]="
-              reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
-            "
-            [attr.disabled]="
-              isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
-            "
-          >
+            [value]="reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year"
+            (change)="changeFiveYearProjection($event)"
+            [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)">
+
             <option selected disabled>---- Select a Year ----</option>
-           
+
             <option
-            *ngFor="let fyear of FiveYearReservesProjectionValues"
-            [value]="fyear"
-            [selected]="reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year=== fyear"
-          >
-            {{ fyear }}
-          </option>
-
-
+              *ngFor="let fyear of FiveYearReservesProjectionValues"
+              [value]="fyear"
+              [selected]="
+                reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year ===
+                fyear
+              "
+            >
+              {{ fyear }}
+            </option>
           </select>
+        </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateFiveYearProjectionFormSubmitted &&
+                rf['fiveyear_Projection_Year']?.invalid) ||
+              (rf['fiveyear_Projection_Year']?.dirty &&
+                rf['fiveyear_Projection_Year']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -544,7 +692,7 @@
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil =
                   genk.checkMMBBLMin($event, oilFax)
               "
-              [value]="
+              [(ngModel)]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil
               "
               [attr.disabled]="
@@ -555,6 +703,19 @@
           </div>
         </div>
         <small #oilFax></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateFiveYearProjectionFormSubmitted &&
+                rf['fiveyear_Projection_Oil']?.invalid) ||
+              (rf['fiveyear_Projection_Oil']?.dirty &&
+                rf['fiveyear_Projection_Oil']?.invalid)
+            "
+          >
+            Oil is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -573,7 +734,7 @@
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate =
                   genk.checkMMBBLMin($event, oilNet)
               "
-              [value]="
+              [(ngModel)]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate
               "
               [attr.disabled]="
@@ -584,6 +745,19 @@
           </div>
         </div>
         <small #oilNet></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateFiveYearProjectionFormSubmitted &&
+                rf['fiveyear_Projection_Condensate']?.invalid) ||
+              (rf['fiveyear_Projection_Condensate']?.dirty &&
+                rf['fiveyear_Projection_Condensate']?.invalid)
+            "
+          >
+            Condensate is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -605,7 +779,7 @@
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG =
                   genk.checkBSCFMin($event, gasMass)
               "
-              [value]="
+              [(ngModel)]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG
               "
               [attr.disabled]="
@@ -616,6 +790,19 @@
           </div>
         </div>
         <small #gasMass></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateFiveYearProjectionFormSubmitted &&
+                rf['fiveyear_Projection_AG']?.invalid) ||
+              (rf['fiveyear_Projection_AG']?.dirty &&
+                rf['fiveyear_Projection_AG']?.invalid)
+            "
+          >
+            AG is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -634,7 +821,7 @@
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG =
                   genk.checkBSCFMin($event, gasTec)
               "
-              [value]="
+              [(ngModel)]="
                 reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG
               "
               [attr.disabled]="
@@ -645,12 +832,28 @@
           </div>
         </div>
         <small #gasTec></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateFiveYearProjectionFormSubmitted &&
+                rf['fiveyear_Projection_NAG']?.invalid) ||
+              (rf['fiveyear_Projection_NAG']?.dirty &&
+                rf['fiveyear_Projection_NAG']?.invalid)
+            "
+          >
+            NAG is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
         class="quarterbtn"
+        [style]="
+          ReserveUpdateFiveYearProjectionForm.invalid ? 'cursor: default' : ''
+        "
         (click)="saveReserveUpdateFiveYearProjection()"
         [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)"
       >
@@ -835,6 +1038,20 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_Was_there_any_Reserve_Addition']
+                  ?.invalid) ||
+              (ra['reserves_Addition_Was_there_any_Reserve_Addition']?.dirty &&
+                ra['reserves_Addition_Was_there_any_Reserve_Addition']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -865,6 +1082,19 @@
             <option value="NIL">NIL</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_Reason_for_Addition']?.invalid) ||
+              (ra['reserves_Addition_Reason_for_Addition']?.dirty &&
+                ra['reserves_Addition_Reason_for_Addition']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -883,7 +1113,7 @@
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil =
                   genk.checkMMBBLMin($event, oilDs)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Oil
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
@@ -892,6 +1122,19 @@
           </div>
         </div>
         <small #oilDs></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_Oil']?.invalid) ||
+              (ra['reserves_Addition_Oil']?.dirty &&
+                ra['reserves_Addition_Oil']?.invalid)
+            "
+          >
+            Oil is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -912,7 +1155,7 @@
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate =
                   genk.checkMMBBLMin($event, oildss)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_Condensate
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
@@ -921,6 +1164,19 @@
           </div>
         </div>
         <small #oildss></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_Condensate']?.invalid) ||
+              (ra['reserves_Addition_Condensate']?.dirty &&
+                ra['reserves_Addition_Condensate']?.invalid)
+            "
+          >
+            Condensate is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -939,7 +1195,7 @@
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG =
                   genk.checkBSCFMin($event, gasDs)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_AG
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
@@ -948,6 +1204,19 @@
           </div>
         </div>
         <small #gasDs></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_AG']?.invalid) ||
+              (ra['reserves_Addition_AG']?.dirty &&
+                ra['reserves_Addition_AG']?.invalid)
+            "
+          >
+            AG is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -965,7 +1234,7 @@
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG =
                   genk.checkBSCFMin($event, gasDx)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_ADDITIONs)"
@@ -974,6 +1243,18 @@
           </div>
         </div>
         <small #gasDx></small>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                ra['reserves_Addition_NAG']?.invalid) ||
+              (ra['reserves_Addition_NAG']?.dirty &&
+                ra['reserves_Addition_NAG']?.invalid)
+            "
+          >
+            NAG is required!
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -1008,6 +1289,20 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_Was_there_a_decline_in_reserve']
+                  ?.invalid) ||
+              (rd['reserves_Decline_Was_there_a_decline_in_reserve']?.dirty &&
+                rd['reserves_Decline_Was_there_a_decline_in_reserve']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1039,6 +1334,19 @@
             <option value="NIL">NIL</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_Reason_for_Decline']?.invalid) ||
+              (rd['reserves_Decline_Reason_for_Decline']?.dirty &&
+                rd['reserves_Decline_Reason_for_Decline']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1056,7 +1364,7 @@
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Oil =
                   genk.checkMMBBLMin($event, oilMan)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesAdditionBody._reserves_Addition_NAG
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
@@ -1065,6 +1373,19 @@
           </div>
         </div>
         <small #oilMan></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_Oil']?.invalid) ||
+              (rd['reserves_Decline_Oil']?.dirty &&
+                rd['reserves_Decline_Oil']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1085,7 +1406,7 @@
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate =
                   genk.checkBSCFMin($event, oilDsf)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_Condensate
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
@@ -1094,6 +1415,19 @@
           </div>
         </div>
         <small #oilDsf></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_Condensate']?.invalid) ||
+              (rd['reserves_Decline_Condensate']?.dirty &&
+                rd['reserves_Decline_Condensate']?.invalid)
+            "
+          >
+            Condensate is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1112,7 +1446,7 @@
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG =
                   genk.checkBSCFMin($event, gasReel)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_AG
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
@@ -1121,6 +1455,19 @@
           </div>
         </div>
         <small #gasReel></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_AG']?.invalid) ||
+              (rd['reserves_Decline_AG']?.dirty &&
+                rd['reserves_Decline_AG']?.invalid)
+            "
+          >
+            AG is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1139,7 +1486,7 @@
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG =
                   genk.checkBSCFMin($event, gasXD)
               "
-              [value]="
+              [(ngModel)]="
                 reserveUpdateOilCondensateReservesDeclineBody._reserves_Decline_NAG
               "
               [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
@@ -1148,6 +1495,19 @@
           </div>
         </div>
         <small #gasXD></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveupdateOilCondensateReservesAdditionForm &&
+                rd['reserves_Decline_NAG']?.invalid) ||
+              (rd['reserves_Decline_NAG']?.dirty &&
+                rd['reserves_Decline_NAG']?.invalid)
+            "
+          >
+            NAG is required!
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -1155,6 +1515,11 @@
   <div style="text-align: center">
     <button
       class="quarterbtn"
+      [style]="
+        reserveUpdateOilCondensateReservesDeclineForm.invalid
+          ? 'cursor: default'
+          : ''
+      "
       (click)="saveReserveUpdateOilCondensateCompanyAnnualProduction()"
       [attr.disabled]="isEditable(SBUTABLE.RESERVE_DECLINEs)"
     >
@@ -1209,6 +1574,18 @@
           <option value="2026">2026</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveReplacementRatioFormSubmitted &&
+              rr['trend_Year']?.invalid) ||
+            (rr['trend_Year']?.dirty && rr['trend_Year']?.invalid)
+          "
+        >
+          Trend Year is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%">
@@ -1232,12 +1609,26 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveReplacementRatioFormSubmitted &&
+              rr['reserveS_REPLACEMENT_RATIO_VALUE']?.invalid) ||
+            (rr['reserveS_REPLACEMENT_RATIO_VALUE']?.dirty &&
+              rr['reserveS_REPLACEMENT_RATIO_VALUE']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
   </div>
   <br /><br />
   <div style="text-align: center">
     <button
       class="quarterbtn"
+      [style]="reserveReplacementRatioForm.invalid ? 'cursor: default' : ''"
       (click)="saveReserveReplacementRatio()"
       [attr.disabled]="
         isEditable(
@@ -1283,13 +1674,24 @@
                 oilNaf
               )
             "
-            [value]="reserveUpdateDepletionRateBody._oil"
+            [(ngModel)]="reserveUpdateDepletionRateBody._oil"
             [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
           <span class="barspan">%</span>
         </div>
       </div>
       <small #oilNaf></small>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveUpdateDepletionRateFormSubmitted && rr['oIL']?.invalid) ||
+            (rr['oIL']?.dirty && rr['oIL']?.invalid)
+          "
+        >
+          Oil is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%">
@@ -1317,6 +1719,18 @@
         </div>
       </div>
       <small #oilVax></small>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveUpdateDepletionRateFormSubmitted &&
+              rdr['cONDENSATE']?.invalid) ||
+            (rdr['cONDENSATE']?.dirty && rdr['cONDENSATE']?.invalid)
+          "
+        >
+          CONDENSATE is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%">
@@ -1344,12 +1758,25 @@
         </div>
       </div>
       <small #gasFox></small>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveUpdateDepletionRateFormSubmitted &&
+              rdr['nAG']?.invalid) ||
+            (rdr['nAG']?.dirty && rdr['nAG']?.invalid)
+          "
+        >
+          NAG is required!
+        </span>
+      </div>
     </div>
   </div>
   <br /><br />
   <div style="text-align: center">
     <button
       class="quarterbtn"
+      [style]="reserveUpdateDepletionRateForm.invalid ? 'cursor: default' : ''"
       (click)="saveReserveUpdateDepletionRate()"
       [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
     >
@@ -1390,13 +1817,24 @@
                   oilHfx
                 )
               "
-              [value]="reserveUpdateLifeIndexBody._oil"
+              [(ngModel)]="reserveUpdateLifeIndexBody._oil"
               [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
         </div>
         <small #oilHfx></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateLifeIndexFormSubmitted && rli['oIL']?.invalid) ||
+              (rli['oIL']?.dirty && rli['oIL']?.invalid)
+            "
+          >
+            Oil is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1417,13 +1855,25 @@
                   oilTax
                 )
               "
-              [value]="reserveUpdateLifeIndexBody._condensate"
+              [(ngModel)]="reserveUpdateLifeIndexBody._condensate"
               [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
         </div>
         <small #oilTax></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateLifeIndexFormSubmitted &&
+                rli['cONDENSATE']?.invalid) ||
+              (rli['cONDENSATE']?.dirty && rli['cONDENSATE']?.invalid)
+            "
+          >
+            Condensate is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -1444,13 +1894,24 @@
                   gasPax
                 )
               "
-              [value]="reserveUpdateLifeIndexBody._nag"
+              [(ngModel)]="reserveUpdateLifeIndexBody._nag"
               [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
             />
             <span class="barspan">Years</span>
           </div>
         </div>
         <small #gasPax></small>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isReserveUpdateLifeIndexFormSubmitted && rli['nAG']?.invalid) ||
+              (rli['nAG']?.dirty && rli['nAG']?.invalid)
+            "
+          >
+            NAG is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1469,19 +1930,31 @@
             (change)="
               reserveUpdateLifeIndexBody._ag = genk.checkBSCFMin($event, gasHaw)
             "
-            [value]="reserveUpdateLifeIndexBody._ag"
+            [(ngModel)]="reserveUpdateLifeIndexBody._ag"
             [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
           />
           <span class="barspan">Years</span>
         </div>
       </div>
       <small #gasHaw></small>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isReserveUpdateLifeIndexFormSubmitted && rli['aG']?.invalid) ||
+            (rli['aG']?.dirty && rli['aG']?.invalid)
+          "
+        >
+          AG is required!
+        </span>
+      </div>
     </div>
   </div>
   <br />
   <div style="text-align: center">
     <button
       class="quarterbtn"
+      [style]="reserveUpdateLifeIndexForm.invalid ? 'cursor: default' : ''"
       (click)="saveReserveUpdateLifeIndex()"
       [attr.disabled]="isEditable(SBUTABLE.LIFE_INDEXs)"
     >
@@ -1580,6 +2053,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isPlanningMinimumRequirementFormSubmitted &&
+                  p['reservesRevenue_GrossProduction']?.invalid) ||
+                (p['reservesRevenue_GrossProduction']?.dirty &&
+                  p['reservesRevenue_GrossProduction']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <div style="width: 30%">
           <label class="labelwp">Reserves Revenue Remaining Reserves</label>
@@ -1606,6 +2092,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isPlanningMinimumRequirementFormSubmitted &&
+                  p['reservesRevenue_RemainingReserves']?.invalid) ||
+                (p['reservesRevenue_RemainingReserves']?.dirty &&
+                  p['reservesRevenue_RemainingReserves']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -1614,6 +2113,7 @@
   <div style="text-align: center">
     <button
       class="quarterbtn"
+      [style]="planningMinimumRequirementForm.invalid ? 'cursor: default' : ''"
       (click)="Submit_planningMinimumRequirement()"
       [attr.disabled]="isEditable(SBUTABLE.PLANNING_MINIMUM_REQUIREMENTs)"
     >

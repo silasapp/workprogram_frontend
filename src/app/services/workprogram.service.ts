@@ -4946,8 +4946,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5004,8 +5002,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5033,8 +5029,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5062,8 +5056,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5091,8 +5083,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5120,8 +5110,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5180,8 +5168,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5791,6 +5777,19 @@ export class WorkProgramService {
   getReservesUpdate(year: string, omlName: string, fieldName: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_TWO_RESERVES`, {
+        params: { omlName: omlName, fieldName: fieldName, year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  getReservesFiveYearProjection(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
       })
       .pipe(

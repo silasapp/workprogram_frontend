@@ -172,7 +172,7 @@ export class ConcessionBaseComponent implements OnInit {
     this.genk.fieldName = this.field;
 
     const _field = this.genk.Fields?.find(
-      (f: IField) => f.field_ID == +this.field
+      (f: IField) => f.field_ID == + this.field
     );
 
     console.log('filed...', this.genk.Fields, _field, this.field);
