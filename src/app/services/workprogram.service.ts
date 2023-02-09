@@ -4943,8 +4943,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5001,8 +4999,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5030,8 +5026,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5059,8 +5053,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5088,8 +5080,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5117,8 +5107,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5177,8 +5165,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
