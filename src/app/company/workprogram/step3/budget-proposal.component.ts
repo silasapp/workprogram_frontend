@@ -6,13 +6,12 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   budgetProposal,
   CAPEX,
-  capexOpex,
   OPEX,
 } from 'src/app/models/step3-budget-proposal.model';
-import { BudgetCapexOpexComponent } from 'src/app/reports/budget-capex-opex.component';
 import {
   AuthenticationService,
   GenericService,
@@ -38,9 +37,11 @@ export class SWPBudgetProposalComponent implements OnInit {
   capexForm: FormGroup;
   OpexForm: FormGroup;
   budgetProposalBody: budgetProposal = {} as budgetProposal;
-  capexOpexBody: capexOpex = {} as capexOpex;
+  capexOpexBody: CAPEX = {} as CAPEX;
 
   public isbudgetProposalFormSubmitted = false;
+  public isCapexFormSubmitted = false;
+  public isOpexFormSubmitted = false;
 
   wkpYear: string;
   wkpYearList = [];
@@ -121,84 +122,112 @@ export class SWPBudgetProposalComponent implements OnInit {
       // ),
     });
 
+    // this.OpexForm = new FormGroup({
+    //   variable_cost: new FormControl(
+    //     this.opexBody.variable_cost,
+    //     Validators.required
+    //   ),
+    //   fixed_cost: new FormControl(
+    //     this.opexBody.fixed_cost,
+    //     Validators.required
+    //   ),
+    //   overheads: new FormControl(this.opexBody.overheads, Validators.required),
+    //   repairs_and_maintenance_cost: new FormControl(
+    //     this.opexBody.repairs_and_maintenance_cost,
+    //     Validators.required
+    //   ),
+    //   general_expenses: new FormControl(
+    //     this.opexBody.general_expenses,
+    //     Validators.required
+    //   ),
+    // });
+
+    // this.capexForm = new FormGroup({
+    //   acquisition: new FormControl(
+    //     this.capexBody.acquisition,
+    //     Validators.required
+    //   ),
+    //   processing: new FormControl(
+    //     this.capexBody.processing,
+    //     Validators.required
+    //   ),
+    //   reprocessing: new FormControl(
+    //     this.capexBody.reprocessing,
+    //     Validators.required
+    //   ),
+    //   exploratory_Well_Drilling: new FormControl(
+    //     this.capexBody.exploratory_Well_Drilling,
+    //     Validators.required
+    //   ),
+    //   appraisal_Well_Drilling: new FormControl(
+    //     this.capexBody.appraisal_Well_Drilling,
+    //     Validators.required
+    //   ),
+    //   development_Well_Drilling: new FormControl(
+    //     this.capexBody.development_Well_Drilling,
+    //     Validators.required
+    //   ),
+    //   workover_Operations: new FormControl(
+    //     this.capexBody.workover_Operations,
+    //     Validators.required
+    //   ),
+    //   completions: new FormControl(
+    //     this.capexBody.completions,
+    //     Validators.required
+    //   ),
+
+    //   flowlines: new FormControl(this.capexBody.flowlines, Validators.required),
+    //   pipelines: new FormControl(this.capexBody.pipelines, Validators.required),
+    //   generators: new FormControl(
+    //     this.capexBody.generators,
+    //     Validators.required
+    //   ),
+    //   turbines_Compressors: new FormControl(
+    //     this.capexBody.turbines_Compressors,
+    //     Validators.required
+    //   ),
+
+    //   buildings: new FormControl(this.capexBody.buildings, Validators.required),
+    //   other_Equipment: new FormControl(
+    //     this.capexBody.other_Equipment,
+    //     Validators.required
+    //   ),
+    //   civil_Works: new FormControl(
+    //     this.capexBody.civil_Works,
+    //     Validators.required
+    //   ),
+    //   other_Costs: new FormControl(
+    //     this.capexBody.other_Costs,
+    //     Validators.required
+    //   ),
+    // });
+
     this.OpexForm = new FormGroup({
-      variable_cost: new FormControl(
-        this.opexBody.variable_cost,
+      item_Description: new FormControl(
+        this.opexBody.item_Description,
         Validators.required
       ),
-      fixed_cost: new FormControl(
-        this.opexBody.fixed_cost,
+      naira: new FormControl(this.opexBody.naira, Validators.required),
+      dollar: new FormControl(this.opexBody.dollar, Validators.required),
+      dollar_equivalent: new FormControl(
+        this.opexBody.dollar_equivalent,
         Validators.required
       ),
-      overheads: new FormControl(this.opexBody.overheads, Validators.required),
-      repairs_and_maintenance_cost: new FormControl(
-        this.opexBody.repairs_and_maintenance_cost,
-        Validators.required
-      ),
-      general_expenses: new FormControl(
-        this.opexBody.general_expenses,
-        Validators.required
-      ),
+      remarks: new FormControl(this.opexBody.remarks, Validators.required),
     });
 
     this.capexForm = new FormGroup({
-      acquisition: new FormControl(
-        this.capexBody.acquisition,
+      item_Description: new FormControl(
+        this.capexBody.item_Description,
         Validators.required
       ),
-      processing: new FormControl(
-        this.capexBody.processing,
+      naira: new FormControl(this.capexBody.naira, Validators.required),
+      dollar: new FormControl(this.capexBody.dollar, Validators.required),
+      dollar_equivalent: new FormControl(
+        this.capexBody.dollar_equivalent,
         Validators.required
       ),
-      reprocessing: new FormControl(
-        this.capexBody.reprocessing,
-        Validators.required
-      ),
-      exploratory_Well_Drilling: new FormControl(
-        this.capexBody.exploratory_Well_Drilling,
-        Validators.required
-      ),
-      appraisal_Well_Drilling: new FormControl(
-        this.capexBody.appraisal_Well_Drilling,
-        Validators.required
-      ),
-      development_Well_Drilling: new FormControl(
-        this.capexBody.development_Well_Drilling,
-        Validators.required
-      ),
-      workover_Operations: new FormControl(
-        this.capexBody.workover_Operations,
-        Validators.required
-      ),
-      completions: new FormControl(
-        this.capexBody.completions,
-        Validators.required
-      ),
-
-      flowlines: new FormControl(this.capexBody.flowlines, Validators.required),
-      pipelines: new FormControl(this.capexBody.pipelines, Validators.required),
-      generators: new FormControl(
-        this.capexBody.generators,
-        Validators.required
-      ),
-      turbines_Compressors: new FormControl(
-        this.capexBody.turbines_Compressors,
-        Validators.required
-      ),
-
-      buildings: new FormControl(this.capexBody.buildings, Validators.required),
-      other_Equipment: new FormControl(
-        this.capexBody.other_Equipment,
-        Validators.required
-      ),
-      civil_Works: new FormControl(
-        this.capexBody.civil_Works,
-        Validators.required
-      ),
-      other_Costs: new FormControl(
-        this.capexBody.other_Costs,
-        Validators.required
-      ),
+      remarks: new FormControl(this.capexBody.remarks, Validators.required),
     });
 
     this.genk.Concession$.subscribe((con: IConcession) => {
@@ -217,10 +246,19 @@ export class SWPBudgetProposalComponent implements OnInit {
 
     this.getBudgetData();
     this.getCapexItems();
+    this.getOpexItems();
   }
 
   public get bp() {
     return this.budgetProposalForm.controls;
+  }
+
+  public get c() {
+    return this.capexForm.controls;
+  }
+
+  public get o() {
+    return this.OpexForm.controls;
   }
 
   getBudgetData() {
@@ -235,7 +273,9 @@ export class SWPBudgetProposalComponent implements OnInit {
         console.log('ress....', res);
 
         let budgetInfo = this.budgetProposalBody as budgetProposal;
-        let capexInfo = this.capexOpexBody as capexOpex;
+        let capexInfo = this.capexOpexBody as CAPEX;
+        let capexBody = this.capexBody;
+        let opexBody = this.opexBody;
 
         if (
           res.budgetProposalComponents != null &&
@@ -250,12 +290,24 @@ export class SWPBudgetProposalComponent implements OnInit {
         }
 
         if (res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
-          capexInfo = res.budgetCapexOpex[0] as capexOpex;
+          capexInfo = res.budgetCapexOpex[0] as CAPEX;
+          this.genk.isStep3 = true;
+        }
+
+        if (res.budgetCapex != null && res.budgetCapex.length > 0) {
+          capexBody = res.budgetCapex[0] as CAPEX;
+          this.genk.isStep3 = true;
+        }
+
+        if (res.budgetOpex != null && res.budgetOpex.length > 0) {
+          opexBody = res.budgetOpex[0] as CAPEX;
           this.genk.isStep3 = true;
         }
 
         this.budgetProposalBody = budgetInfo;
         this.capexOpexBody = capexInfo;
+        this.capexBody = capexBody;
+        this.opexBody = opexBody;
         this.cd.markForCheck();
       });
   }
@@ -266,8 +318,26 @@ export class SWPBudgetProposalComponent implements OnInit {
       .get_Capex(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe({
         next: (res) => {
-          if (res.budgetCapex) {
+          if (res.budgetCapex && res.budgetCapex.length > 0) {
             this.capexBody = res.budgetCapex[0];
+          }
+          this.modalService.togCover();
+        },
+        error: (error) => {
+          this.modalService.togCover();
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
+      });
+  }
+
+  getOpexItems() {
+    this.modalService.logCover('loading', true);
+    this.workprogram
+      .get_Opex(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
+      .subscribe({
+        next: (res) => {
+          if (res.budgetOpex && res.budgetOpex.length > 0) {
+            this.opexBody = res.budgetOpex[0];
           }
           this.modalService.togCover();
         },
@@ -308,26 +378,26 @@ export class SWPBudgetProposalComponent implements OnInit {
       });
   }
 
-  Delete_Opex(event) {
-    let info = this.capexOpexBody as capexOpex;
+  // Delete_Opex(event) {
+  //   let info = this.capexOpexBody as capexOpex;
 
-    this.workprogram
-      .post_Opex(
-        info,
-        this.genk.wpYear,
-        this.genk.OmlName,
-        this.genk.fieldName,
-        event.target.value,
-        'DELETE'
-      )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
-          this.modalService.logNotice('Success', res.message, 'success');
-        }
-      });
-  }
+  //   this.workprogram
+  //     .post_Opex(
+  //       info,
+  //       this.genk.wpYear,
+  //       this.genk.OmlName,
+  //       this.genk.fieldName,
+  //       event.target.value,
+  //       'DELETE'
+  //     )
+  //     .subscribe((res) => {
+  //       if (res.statusCode == 300) {
+  //         this.modalService.logNotice('Error', res.message, 'error');
+  //       } else {
+  //         this.modalService.logNotice('Success', res.message, 'success');
+  //       }
+  //     });
+  // }
 
   filter(data) {
     const resultArray = Object.keys(data).map((index) => {
@@ -393,7 +463,11 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   saveOpex() {
-    let budgetInfo = {} as capexOpex;
+    console.log(this.OpexForm);
+    this.isOpexFormSubmitted = true;
+    if (this.OpexForm.invalid) return;
+
+    let budgetInfo = {} as OPEX;
     //this.opexBody.companyNumber = 0;
     this.opexBody.id = 0;
     this.opexBody.year_of_WP = this.genk.wpYear;
@@ -414,17 +488,26 @@ export class SWPBudgetProposalComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.isOpexFormSubmitted = false;
+          this.opexBody = {} as OPEX;
+          this.OpexForm = updateFormValidity(this.OpexForm);
+          this.getOpexItems();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveCapex() {
-    let budgetInfo = {} as capexOpex;
+    console.log(this.capexForm);
+    this.isCapexFormSubmitted = true;
+    if (this.capexForm.invalid) return;
+
+    let budgetInfo = {} as CAPEX;
     //this.capexOpexBody.companyNumber = 0;
     this.capexBody.id = 0;
     this.capexBody.year_of_WP = this.genk.wpYear;
@@ -447,8 +530,11 @@ export class SWPBudgetProposalComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.getCapexItems();
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isCapexFormSubmitted = false;
+          this.capexBody = {} as CAPEX;
+          this.capexForm = updateFormValidity(this.capexForm);
+          this.getCapexItems();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');

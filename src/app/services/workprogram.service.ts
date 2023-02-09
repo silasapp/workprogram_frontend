@@ -2728,7 +2728,8 @@ import {
 } from '../models/step3-budget-performance.model';
 import {
   budgetProposal,
-  capexOpex,
+  CAPEX,
+  OPEX,
 } from '../models/step3-budget-proposal.model';
 import {
   facilitiesProjectPerformance,
@@ -3653,7 +3654,7 @@ export class WorkProgramService {
   }
 
   post_Capex(
-    budget: capexOpex,
+    budget: CAPEX,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3689,8 +3690,23 @@ export class WorkProgramService {
       );
   }
 
+  get_Opex(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/get_form_three_opex`,
+        // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   post_Opex(
-    budget: capexOpex,
+    budget: OPEX,
     year: string,
     omlName: string,
     fieldName: string,
