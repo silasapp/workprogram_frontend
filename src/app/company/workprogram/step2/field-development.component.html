@@ -560,7 +560,7 @@
           [(ngModel)]="unitizationBody.is_any_of_your_field_straddling"
           [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
         >
-          <option value="NO" selected>No</option>
+          <option value="NO" >No</option>
           <option value="YES">Yes</option>
         </select>
       </div>
@@ -682,7 +682,7 @@
                 [(ngModel)]="unitizationBody.has_the_other_party_been_notified"
                 [attr.disabled]="isEditable(SBUTABLE.UNITIZATIONs)"
               >
-                <option selected disabled>--Select an Option --</option>
+                <option disabled>--Select an Option --</option>
                 <option value="NO">NO</option>
                 <option value="YES">YES</option>
               </select>

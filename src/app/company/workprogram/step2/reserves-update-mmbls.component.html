@@ -644,13 +644,10 @@
           <select
             class="dropwp"
             formControlName="fiveyear_Projection_Year"
-            [(ngModel)]="
-              reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
-            "
-            [attr.disabled]="
-              isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
-            "
-          >
+            [value]="reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year"
+            (change)="changeFiveYearProjection($event)"
+            [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)">
+
             <option selected disabled>---- Select a Year ----</option>
 
             <option

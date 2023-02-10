@@ -94,7 +94,7 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.concessionBody.geological_location,
         //   [Validators.required]
         // ),
-        terrain: new FormControl(this.concessionBody.terrain, [
+        geological_location: new FormControl(this.concessionBody.geological_location, [
           Validators.required,
         ]),
         equity_distribution: new FormControl(
@@ -292,6 +292,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   loadTable() {
     this.columnHeader = [];
     this.columnValue = [];
+    debugger;
     for (let item1 in this.ConcessionSituationForm.controls) {
       if (item1 != 'comment') {
         this.columnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));

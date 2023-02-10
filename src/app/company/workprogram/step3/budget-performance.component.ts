@@ -1919,8 +1919,8 @@ export class SWPBudgetPerformanceComponent implements OnInit {
 
     let budgetInfo = {} as exploratoryActivities;
     this.exploratoryBody.id = 0;
-    this.exploratoryBody.year_of_WP = this.genk.wpYear;
-    this.exploratoryBody.omL_Name = this.genk.OmlName;
+    //this.exploratoryBody.year_of_WP = this.genk.wpYear;
+    //this.exploratoryBody.omL_Name = this.genk.OmlName;
     for (let item in this.exploratoryBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
@@ -1960,14 +1960,15 @@ export class SWPBudgetPerformanceComponent implements OnInit {
 
     let budgetInfo = {} as developmentDrillingActivities;
     this.developmentDrillingBody.id = 0;
-    this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
-    this.developmentDrillingBody.omL_Name = this.genk.OmlName;
+    //this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
+    // this.developmentDrillingBody.omL_Name = this.genk.OmlName;
     for (let item in this.developmentDrillingBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
           this.developmentDrillingBody[item]?.toString() ?? '';
       }
     }
+    debugger;
     this.workprogram
       .post_Development(
         budgetInfo,
@@ -2007,6 +2008,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           this.facilitiesDevelopmentBody[item]?.toString() ?? '';
       }
     }
+    debugger;
     this.workprogram
       .post_Facility(
         budgetInfo,
