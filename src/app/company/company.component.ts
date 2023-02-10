@@ -5,6 +5,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserType } from '../account/login.component';
+import { IAuthData } from '../models/application-details';
 import { AuthenticationService, GenericService } from '../services';
 
 @Component({
@@ -36,6 +38,8 @@ export class CompanyComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {
     this.genk = gen;
+    const user = JSON.parse(localStorage.getItem('currentUser')) as IAuthData;
+    this.genk.setAdminSubject.next(user.companyName === UserType.Admin);
     this.auth = authenticationService;
   }
   ngOnInit(): void {}
