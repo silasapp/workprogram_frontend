@@ -7,9 +7,15 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
-import { AuthenticationService, GenericService } from '../services';
+import {
+  AuthenticationService,
+  GenericService,
+  ModalService,
+} from '../services';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { IAuthData, Staff } from '../models/application-details';
+import { User } from '../models/user';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -41,7 +47,8 @@ export class LoginComponent implements OnInit {
     private locate: Location,
     private cd: ChangeDetectorRef,
     private gen: GenericService,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private modalService: ModalService
   ) {
     this.elpsBase = environment.elpsBase;
     this.appid = environment.appid;
@@ -82,28 +89,31 @@ export class LoginComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       // this.email = params['email'];
       this.userId = params['id'];
-      // debugger;
+      console.log('id', this.userId);
       if (!this.auth.isLoggedIn_ && this.userId) {
         this.isLoading$.next(true);
+        this.modalService.logCover('loading...', true);
 
         this.auth
           .login(
             // this.email, ''
             this.userId
           )
-          .subscribe((user) => {
+          .subscribe((user: User) => {
+            console.log('users...', user);
             if (user) {
               let returnUrl =
                 this.route.snapshot.queryParamMap.get('returnUrl');
 
-              if (user.userType === UserType.Company) {
-                this.router.navigate([returnUrl || '/company/dashboard']);
+              if (user.companyName === UserType.Admin) {
+                this.router.navigate([returnUrl || '/admin/dashboard']);
               } else {
-                this.router.navigate([returnUrl || '/admin']);
+                this.router.navigate([returnUrl || '/company/dashboard']);
               }
             }
 
             this.isLoading$.next(false);
+            this.modalService.togCover();
           });
       }
     });
@@ -185,5 +195,6 @@ export class LoginComponent implements OnInit {
 
 export enum UserType {
   Company = 'Company',
+  Admin = 'Admin',
   Staff = 'Staff',
 }

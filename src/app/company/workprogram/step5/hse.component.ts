@@ -1392,6 +1392,7 @@ export class SWPHseComponent implements OnInit {
       header: 'Evidence of all audits done in the year',
     },
   ];
+
   //#endregion
 
   //#region lists declarations

@@ -8,11 +8,12 @@ import { User } from '../models/user';
 //import { UserLocation } from '../models/appUser.model';
 import { ModalService } from './modal.service';
 import { tokenNotExpired } from '../helpers/tokenNotExpired';
+import { IAuthData } from '../models/application-details';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  public currentUser: Observable<User | IAuthData>;
   private num = 2;
   public code = '6x0x5x1x';
   public isLoggedIn: boolean;
@@ -40,22 +41,25 @@ export class AuthenticationService {
     userId: string // email: string, code: string
   ) {
     return this.http
-      .get<any>(`${environment.apiUrl}/account/login?id=${userId}`)
+      .get<any>(`${environment.apiUrl}/account/AuthenticateById?id=${userId}`)
       .pipe(
         retry(this.num),
-        map((res) => {
+        map((authData: User) => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          if (res.statusCode !== 200) {
+          if (!authData) {
             return null;
           }
 
-          const user = res.data;
-          const token = user.token;
+          const user = authData;
+          const token = authData.token;
 
           if (!token) return null;
 
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('token', JSON.stringify(token));
+
+          this.currentUserSubject.next(user);
+          this.currentUser$.next(user);
 
           this._isLoggedIn = true;
           this._isLoggedIn$.next(true);
@@ -217,6 +221,20 @@ export class AuthenticationService {
         password: password,
       })
       .pipe(retry(this.num));
+  }
+
+  createStaff(body: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/account/createStaffNew`,
+      body
+    );
+  }
+
+  updateStaff(body: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/account/updateStaffNew`,
+      body
+    );
   }
 
   getCompanyResource(companyCode: string) {

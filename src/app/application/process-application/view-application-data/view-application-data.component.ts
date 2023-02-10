@@ -1667,6 +1667,7 @@ export class ViewApplicationDataComponent implements OnInit {
       header: 'Evidence of all audits done in the year',
     },
   ];
+
   //#endregion
 
   //#region legal

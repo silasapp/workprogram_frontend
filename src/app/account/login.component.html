@@ -7,50 +7,69 @@
       width: 85%;
       margin-top: 10px;
       height: 85vh;
-      border: solid 1px grey;
       margin: auto;
       border-radius: 50px;
       box-shadow: 6px 6px 8px rgb(0, 0, 0, 0.3);
     "
   >
-    <div class="overlapbox" style="width: 55%">
-      <img
+    <div
+      class="overlapbox"
+      style="
+        width: 55%;
+        background-image: url('assets/nuprcback.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 50px 0 0 50px;
+        padding: 2rem;
+      "
+    >
+      <div
         style="
           height: 100%;
           width: 100%;
           border-radius: 50px 0 0 50px;
-          filter: blur(4px);
+          background-color: rgba(255, 255, 255, 0.1);
+          -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
         "
-        src="assets/nuprcback.jpg"
-      />
-      <div class="overlapdiv" style="padding-top: 5%">
-        <div style="display: flex; align-items: center">
-          <img id="Image1" src="assets/NUPRC-logo.png" />
-          <span
-            style="
-              font-size: 30px;
-              font-weight: 600;
-              color: white;
-              line-height: 120%;
-              margin: auto;
-            "
+      >
+        <!-- <img
+          style="height: 100%; width: 100%; border-radius: 50px 0 0 50px"
+          src="assets/nuprcback.jpg"
+        /> -->
+        <!-- filter: blur(4px); -->
+        <div class="overlapdiv" style="padding-top: 5%">
+          <div
+            style="display: flex; flex-direction: column; align-items: center"
           >
-            Nigerian Upstream Petroleum Regulatory Commission</span
-          >
-        </div>
-        <div style="text-align: center; margin: 5% 0 10% 0">
-          <span
-            style="
-              font-size: 20px;
-              font-weight: 700;
-              color: rgb(255, 255, 255);
-              text-shadow: 2px;
-            "
-            >WORK PROGRAMME DATA UPLOAD</span
-          >
-        </div>
+            <img id="Image1" src="assets/NUPRC-logo.png" />
+            <p
+              style="
+                font-size: 30px;
+                font-weight: 600;
+                color: white;
+                line-height: 120%;
+                margin: auto;
+                text-align: center;
+                margin-top: 3rem;
+              "
+            >
+              Nigerian Upstream Petroleum Regulatory Commission
+            </p>
+          </div>
+          <div style="text-align: center; margin: 5% 4rem 10% 0">
+            <span
+              style="
+                font-size: 20px;
+                font-weight: 700;
+                color: rgb(255, 255, 255);
+                text-shadow: 2px;
+              "
+              >(WORK PROGRAMME DATA UPLOAD)</span
+            >
+          </div>
 
-        <div style="margin-left: 10%">
+          <!-- <div style="margin-left: 10%">
           <div style="margin-bottom: 2%">
             <span style="font-size: 15px; font-weight: 700; color: whitesmoke">
               NUPRC Admin: Active Directory Login</span
@@ -79,6 +98,7 @@
               Login with Organization Email
             </button>
           </div>
+        </div> -->
         </div>
       </div>
     </div>
@@ -150,8 +170,21 @@
         >
           Portal Login
         </a>
-        <a class="login-btn btn-blue">Portal Registration</a>
-        <a class="login-btn btn-red">Forgot Password</a>
+        <a
+          class="login-btn btn-blue"
+          href="{{ elpsBase }}/Account/register?appId={{ appid }}"
+          >Portal Registration</a
+        >
+        <a
+          class="login-btn btn-red"
+          href="{{ elpsBase }}/Account/forgotPassword?appId={{ appid }}"
+          >Forgot Password</a
+        >
+        <a
+          class="login-btn btn-purple"
+          href="{{ elpsBase }}/permit/verifyPermit?appId={{ appid }}"
+          >Verify Approval</a
+        >
       </div>
     </div>
   </div>

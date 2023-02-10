@@ -11,6 +11,14 @@ export class AdminService {
 
   constructor(private http: HttpClient, private gen: GenericService) {}
 
+  getStaffFromElps() {
+    return this.http.get<any>(`${environment.apiUrl}/admin/GET_ELPS_STAFF`);
+  }
+
+  getAllStaff() {
+    return this.http.get<any>(`${environment.apiUrl}/admin/GET_USERS`);
+  }
+
   getDashboardStuff() {
     return this.http.get<any>(
       `${environment.apiUrl}/application/getDashboardStuff`

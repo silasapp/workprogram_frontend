@@ -668,4 +668,49 @@
       </tbody>
     </table>
   </div>
+
+  <div class="apptable wptablebox" *ngIf="remediationFunds.length > 0">
+    <h2>Remediation Fund</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hrfColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of remediationFunds">
+          <td *ngFor="let colDef of hrfColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="effluentMonitoringCompliances.length > 0"
+  >
+    <h2>Effluent Compliance Monitoring/Quarterly Chemical Inventory</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hrfColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of effluentMonitoringCompliances">
+          <td *ngFor="let colDef of hrfColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
