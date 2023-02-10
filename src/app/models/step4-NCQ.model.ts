@@ -89,7 +89,7 @@ export class NIGERIA_CONTENT_Training {
   public companyNumber: number;
   public expatriate_quota_positions?: string = '';
   public utilized_EQ?: string = '';
-  public year: string='';
+  public year: string = '';
 
   public set _expatriate_quota_positions(expatriate_quota_positions: string) {
     this.expatriate_quota_positions = expatriate_quota_positions?.replace(
@@ -140,8 +140,7 @@ export class NIGERIA_CONTENT_Training {
     this.terrain = model.terrain;
     this.companY_ID = model.companY_ID;
     this.companyNumber = model.companyNumber;
-    this.year= model.year;
-
+    this.year = model.year;
   }
 }
 
@@ -169,6 +168,8 @@ export class LEGAL_LITIGATION {
   date_Updated: string = '';
   cOMPANY_ID: string = '';
   companyNumber: number;
+
+  year: string = '';
 }
 
 export class LEGAL_ARBITRATION {
@@ -195,6 +196,8 @@ export class LEGAL_ARBITRATION {
   date_Updated: string = '';
   cOMPANY_ID: string = '';
   companyNumber: number;
+
+  year: string = '';
 }
 
 export class NIGERIA_CONTENT_Upload_Succession_Plan {
@@ -219,7 +222,7 @@ export class NIGERIA_CONTENT_Upload_Succession_Plan {
   consession_Type: string = '';
   cOMPANY_ID: string = '';
   companyNumber: number;
-  year:string='';
+  year: string = '';
 
   constructor(model?: NIGERIA_CONTENT_Upload_Succession_Plan) {
     if (!model) return;

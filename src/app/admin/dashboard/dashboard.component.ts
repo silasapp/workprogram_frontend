@@ -90,7 +90,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   dashboardBody: CompanyDashboardBody = {} as CompanyDashboardBody;
   dashboardGasBudgetAndReserve: DashboardGasBudgetAndReserveBody =
     {} as DashboardGasBudgetAndReserveBody;
-  modalService: ModalService;
   companyService: CompanyService;
   reportService: ReportService;
   auth: AuthenticationService;
@@ -135,7 +134,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private report: ReportService,
     private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
-    private genReport: ReportService
+    private genReport: ReportService,
+    private modalService: ModalService
   ) {
     this.genk = gen;
     this.cdr = cd;

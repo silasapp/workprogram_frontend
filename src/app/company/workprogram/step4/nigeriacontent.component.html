@@ -67,35 +67,50 @@
                 justify-content: space-between;
               "
             >
-            <div style="width: 30%; margin: auto 0 0">
-              <label class="labelwp">Year</label>
-              <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 10px;
-                    padding: 7px 10px;
-                  "
-                >
-                <select
-                formControlName="year"
-                [(ngModel)]="staffdispositionBody.year"
-                [attr.disabled]="disableForm ? true : null"
-              >
-                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                <option
-                  *ngFor="let Nayear of fiveYearsBehind"
-                  [value]="Nayear"
-                  [selected]="staffdispositionBody.year === Nayear"
-                >
-                  {{ Nayear }}
-                </option>
-              </select>
+              <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp">Year</label>
+                <div style="display: flex">
+                  <div
+                    style="
+                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                      width: 100%;
+                      border-radius: 10px;
+                      padding: 7px 10px;
+                    "
+                  >
+                    <select
+                      formControlName="year"
+                      [(ngModel)]="staffdispositionBody.year"
+                      [attr.disabled]="
+                        isEditable(
+                          SBUTABLE.NIGERIA_CONTENT_STAFF_DISPOSITION_TRAINING_FOR_NIGERIANSs
+                        )
+                      "
+                    >
+                      <option disabled>
+                        ---- Please Select an Option ----
+                      </option>
+                      <option
+                        *ngFor="let Nayear of fiveYearsBehind$ | async"
+                        [value]="Nayear"
+                      >
+                        {{ Nayear }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['year']?.invalid) ||
+                      (sd['year']?.dirty && sd['year']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
-            </div>
-
 
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -122,6 +137,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['expatriate_quota_positions']?.invalid) ||
+                      (sd['expatriate_quota_positions']?.dirty &&
+                        sd['expatriate_quota_positions']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
 
@@ -150,6 +178,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['utilized_EQ']?.invalid) ||
+                      (sd['utilized_EQ']?.dirty && sd['utilized_EQ']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -181,6 +220,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['nigerian_Understudies']?.invalid) ||
+                      (sd['nigerian_Understudies']?.dirty &&
+                        sd['nigerian_Understudies']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
@@ -207,6 +259,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['management_Foriegn']?.invalid) ||
+                      (sd['management_Foriegn']?.dirty &&
+                        sd['management_Foriegn']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
@@ -232,6 +297,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['management_Local']?.invalid) ||
+                      (sd['management_Local']?.dirty &&
+                        sd['management_Local']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -262,6 +340,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['staff_Local']?.invalid) ||
+                      (sd['staff_Local']?.dirty && sd['staff_Local']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">Number of Foreign (Staff)</label>
@@ -287,6 +376,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['staff_Foriegn']?.invalid) ||
+                      (sd['staff_Foriegn']?.dirty &&
+                        sd['staff_Foriegn']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
             </div>
             <br /><br />
@@ -294,6 +396,9 @@
               <div style="text-align: center">
                 <button
                   class="submitbtn"
+                  [style]="
+                    staffdispositionForm.invalid ? 'cursor: default' : ''
+                  "
                   (click)="saveAddStaffDisposition()"
                   [attr.disabled]="
                     isEditable(
@@ -312,37 +417,45 @@
             <div
               style="display: flex; width: 100%; justify-content: space-between"
             >
+              <div style="width: 30%; margin: auto 0 0">
+                <label class="labelwp">Year</label>
+                <div style="display: flex">
+                  <div
+                    style="
+                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                      width: 100%;
+                      border-radius: 10px;
+                      padding: 7px 10px;
+                    "
+                  >
+                    <select
+                      formControlName="year"
+                      [(ngModel)]="staffdispositionBody.year"
+                      [attr.disabled]="disableForm ? true : null"
+                    >
+                      <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                      <option
+                        *ngFor="let Npyear of fiveYearsAhead"
+                        [value]="Npyear"
+                        [selected]="staffdispositionBody.year === Npyear"
+                      >
+                        {{ Npyear }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
 
-
-            <div style="width: 30%; margin: auto 0 0">
-              <label class="labelwp">Year</label>
-              <div style="display: flex">
-                <div
-                  style="
-                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 10px;
-                    padding: 7px 10px;
-                  "
-                >
-                <select
-                formControlName="year"
-                [(ngModel)]="staffdispositionBody.year"
-                [attr.disabled]="disableForm ? true : null"
-              >
-                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                <option
-                  *ngFor="let Npyear of fiveYearsAhead"
-                  [value]="Npyear"
-                  [selected]="staffdispositionBody.year === Npyear"
-                >
-                  {{ Npyear }}
-                </option>
-              </select>
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['year']?.invalid) ||
+                      (sd['year']?.dirty && sd['year']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
-            </div>
-
 
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -369,6 +482,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['expatriate_quota_positions']?.invalid) ||
+                      (sd['expatriate_quota_positions']?.dirty &&
+                        sd['expatriate_quota_positions']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
 
@@ -397,6 +523,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['utilized_EQ']?.invalid) ||
+                      (sd['utilized_EQ']?.dirty && sd['utilized_EQ']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -430,6 +567,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['nigerian_Understudies']?.invalid) ||
+                      (sd['nigerian_Understudies']?.dirty &&
+                        sd['nigerian_Understudies']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
@@ -456,6 +606,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['management_Foriegn']?.invalid) ||
+                      (sd['management_Foriegn']?.dirty &&
+                        sd['management_Foriegn']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
 
               <div style="width: 30%; margin: auto 0 0">
@@ -481,6 +644,19 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['management_Local']?.invalid) ||
+                      (sd['management_Local']?.dirty &&
+                        sd['management_Local']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -511,6 +687,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm && sd['staff_Local']?.invalid) ||
+                      (sd['staff_Local']?.dirty && sd['staff_Local']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">Number of Foreign (Staff)</label>
@@ -536,6 +723,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isStaffdispositionForm &&
+                        sd['staff_Foriegn']?.invalid) ||
+                      (sd['staff_Foriegn']?.dirty &&
+                        sd['staff_Foriegn']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
             </div>
             <br /><br />
@@ -543,6 +743,9 @@
               <div style="text-align: center">
                 <button
                   class="submitbtn"
+                  [style]="
+                    staffdispositionForm.invalid ? 'cursor: default' : ''
+                  "
                   (click)="saveAddStaffDisposition()"
                   [attr.disabled]="
                     isEditable(
@@ -655,6 +858,24 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSeniormanagementstaffForm &&
+                sm[
+                  'do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff'
+                ]?.invalid) ||
+              (sm['do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff']
+                ?.dirty &&
+                sm[
+                  'do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff'
+                ]?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -682,6 +903,17 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm && sm['if_NO_why']?.invalid) ||
+            (sm['if_NO_why']?.dirty && sm['if_NO_why']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%; margin: auto 0 0">
@@ -708,6 +940,19 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm &&
+              sm['number_of_staff_released_within_the_year_']?.invalid) ||
+            (sm['number_of_staff_released_within_the_year_']?.dirty &&
+              sm['number_of_staff_released_within_the_year_']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%; margin: auto 0 0">
@@ -733,6 +978,19 @@
             "
           />
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm &&
+              sm['total_no_of_nigeria_senior_staff']?.invalid) ||
+            (sm['total_no_of_nigeria_senior_staff']?.dirty &&
+              sm['total_no_of_nigeria_senior_staff']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
   </div>
@@ -761,6 +1019,19 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm &&
+              sm['total_no_of_senior_staff']?.invalid) ||
+            (sm['total_no_of_senior_staff']?.dirty &&
+              sm['total_no_of_senior_staff']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div style="width: 30%; margin: auto 0 0">
@@ -786,6 +1057,19 @@
             "
           />
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm &&
+              sm['total_no_of_top_nigerian_management_staff']?.invalid) ||
+            (sm['total_no_of_top_nigerian_management_staff']?.dirty &&
+              sm['total_no_of_top_nigerian_management_staff']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
 
@@ -813,6 +1097,19 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSeniormanagementstaffForm &&
+              sm['total_no_of_top_management_staff']?.invalid) ||
+            (sm['total_no_of_top_management_staff']?.dirty &&
+              sm['total_no_of_top_management_staff']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
   </div>
   <br />
@@ -822,6 +1119,7 @@
     <div style="text-align: center">
       <button
         class="submitbtn"
+        [style]="seniormanagementstaffForm.invalid ? 'cursor: default' : ''"
         (click)="saveSeniorManagementStaff()"
         [attr.disabled]="
           isEditable(SBUTABLE.NIGERIA_CONTENT_SENIOR_MANAGEMENT_STAFFs)
@@ -885,6 +1183,18 @@
           <option value="false">NO</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isUploadsuccessionForm && us['isThereSuccessionPlan']?.invalid) ||
+            (us['isThereSuccessionPlan']?.dirty &&
+              us['isThereSuccessionPlan']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <ng-container *ngIf="isThereSuccessionPlan">
@@ -928,42 +1238,47 @@
               padding: 10px;
             "
           >
-          <div style="width: 50%">
-            <div>
-              <div style="width: 100%">
-                <label class="labelwp">Year</label>
-                <div
-                  style="
-                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 10px;
-                    padding: 7px 10px;
-                  "
-                >
+            <div style="width: 50%">
+              <div>
+                <div style="width: 100%">
+                  <label class="labelwp">Year</label>
+                  <div
+                    style="
+                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                      width: 100%;
+                      border-radius: 10px;
+                      padding: 7px 10px;
+                    "
+                  >
+                    <select
+                      formControlName="year"
+                      [(ngModel)]="uploadsuccessionplanBody.year"
+                      [attr.disabled]="disableForm ? true : null"
+                    >
+                      <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                      <option
+                        *ngFor="let Ayear of fiveYearsBehind"
+                        [value]="Ayear"
+                        [selected]="uploadsuccessionplanBody.year === Ayear"
+                      >
+                        {{ Ayear }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
 
-                <select
-                formControlName="year"
-                [(ngModel)]="uploadsuccessionplanBody.year"
-                [attr.disabled]="disableForm ? true : null"
-              >
-                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                <option
-                  *ngFor="let Ayear of fiveYearsBehind"
-                  [value]="Ayear"
-                  [selected]="uploadsuccessionplanBody.year === Ayear"
-                >
-                  {{ Ayear }}
-                </option>
-              </select>
-                 
-              
-
-                 
-
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && us['year']?.invalid) ||
+                      (us['year']?.dirty && us['year']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
-</div>
             <div style="width: 50%">
               <div>
                 <div style="width: 100%">
@@ -989,6 +1304,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && us['name_']?.invalid) ||
+                      (us['name_']?.dirty && us['name_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div>
                 <div style="width: 100%">
@@ -1013,6 +1339,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && us['understudy_']?.invalid) ||
+                      (us['understudy_']?.dirty && us['understudy_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -1041,6 +1378,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && us['timeline_']?.invalid) ||
+                      (us['timeline_']?.dirty && us['timeline_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div>
                 <div style="width: 100%">
@@ -1066,6 +1414,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm &&
+                        us['position_Occupied_']?.invalid) ||
+                      (us['position_Occupied_']?.dirty &&
+                        us['position_Occupied_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -1076,6 +1437,7 @@
             <div style="text-align: center">
               <button
                 class="submitbtn"
+                [style]="uploadsuccessionForm.invalid ? 'cursor: default' : ''"
                 (click)="saveUploadSuccessionPlan()"
                 [attr.disabled]="
                   isEditable(
@@ -1105,40 +1467,47 @@
               padding: 10px;
             "
           >
+            <div style="width: 50%">
+              <div>
+                <div style="width: 100%">
+                  <label class="labelwp">Year</label>
+                  <div
+                    style="
+                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                      width: 100%;
+                      border-radius: 10px;
+                      padding: 7px 10px;
+                    "
+                  >
+                    <select
+                      formControlName="year"
+                      [(ngModel)]="uploadsuccessionplanBody.year"
+                      [attr.disabled]="disableForm ? true : null"
+                    >
+                      <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                      <option
+                        *ngFor="let Pyear of fiveYearsAhead"
+                        [value]="Pyear"
+                        [selected]="uploadsuccessionplanBody.year === Pyear"
+                      >
+                        {{ Pyear }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
 
-          <div style="width: 50%">
-            <div>
-              <div style="width: 100%">
-                <label class="labelwp">Year</label>
-                <div
-                  style="
-                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                    width: 100%;
-                    border-radius: 10px;
-                    padding: 7px 10px;
-                  "
-                >
-                <select
-                formControlName="year"
-                [(ngModel)]="uploadsuccessionplanBody.year"
-                [attr.disabled]="disableForm ? true : null"
-              >
-                <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                <option
-                  *ngFor="let Pyear of fiveYearsAhead"
-                  [value]="Pyear"
-                  [selected]="uploadsuccessionplanBody.year === Pyear"
-                >
-                  {{ Pyear }}
-                </option>
-              </select>
-
-                 
-
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && su['year']?.invalid) ||
+                      (su['year']?.dirty && su['year']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
-</div>
 
             <div style="width: 50%">
               <div>
@@ -1165,6 +1534,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && su['name_']?.invalid) ||
+                      (su['name_']?.dirty && su['name_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div>
                 <div style="width: 100%">
@@ -1189,6 +1569,17 @@
                       "
                     />
                   </div>
+                </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && su['understudy_']?.invalid) ||
+                      (su['understudy_']?.dirty && su['understudy_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -1217,6 +1608,17 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm && su['timeline_']?.invalid) ||
+                      (su['timeline_']?.dirty && su['timeline_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
               <div>
                 <div style="width: 100%">
@@ -1242,6 +1644,19 @@
                     />
                   </div>
                 </div>
+
+                <div class="eroce">
+                  <span
+                    *ngIf="
+                      (isUploadsuccessionForm &&
+                        su['position_Occupied_']?.invalid) ||
+                      (su['position_Occupied_']?.dirty &&
+                        su['position_Occupied_']?.invalid)
+                    "
+                  >
+                    This field is required!
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -1252,6 +1667,7 @@
             <div style="text-align: center">
               <button
                 class="submitbtn"
+                [style]="uploadsuccessionForm.invalid ? 'cursor: default' : ''"
                 (click)="saveUploadSuccessionPlan()"
                 [attr.disabled]="
                   isEditable(

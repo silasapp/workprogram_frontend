@@ -11,6 +11,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW,
   HSE_SAFETY_STUDIES_NEW,
@@ -298,6 +299,46 @@ export class SWPHseComponent implements OnInit {
   GHGManagementPlanForm: FormGroup;
   HostCommunitiesDevelopmentForm: FormGroup;
   wasteManagementDZForm: FormGroup;
+  //#endregion
+
+  //#region form groups declaration
+  public isManagementPositionFormSubmitted = false;
+  public isTechnicalSafetyFormSubmitted = false;
+  public isSafetyStudyFormSubmitted = false;
+  public isQualityControlFormSubmitted = false;
+  public isSafetyCultureTrainingFormSubmitted = false;
+  public isOccupationalFormSubmitted = false;
+  public isClimateChangeFormSubmitted = false;
+  public isInspectionMaintenanceFormSubmitted = false;
+  public isAssetRegister_Pre_FormSubmitted = false;
+  public isAssetRegister_RBI_FormSubmitted = false;
+  public isOilSpill_FormSubmitted = false;
+  public isCausesOfSpill_FormSubmitted = false;
+  public isAccident_Incidence_FormSubmitted = false;
+  public isOSP_Registration_FormSubmitted = false;
+  public isCommunity_Disturbances_FormSubmitted = false;
+  public isEnvironmental_Studies_FormSubmitted = false;
+  public isEnvironmental_Studies_Updated_FormSubmitted = false;
+  public isEnvironmental_Studies_FiveYrs_FormSubmitted = false;
+  public isWaste_Management_FormSubmitted = false;
+  public isWaste_Management_Facility_FormSubmitted = false;
+  public isWaste_Management_Files_FormSubmitted = false;
+  public isWater_Management_FormSubmitted = false;
+  public isWater_Management_Updated_FormSubmitted = false;
+  public isWater_Management_Updated_New_FormSubmitted = false;
+  public isEnvironmentalCompliance_FormSubmitted = false;
+  public isFatality_FormSubmitted = false;
+  public isDesignSafety_FormSubmitted = false;
+  public isEnvironmentalCompliance_Chemical_FormSubmitted = false;
+  public isEMS_Files_FormSubmitted = false;
+  public isOperationsSafetyCase_FormSubmitted = false;
+  public isenvironmentalManagementPlanFormSubmitted = false;
+  public isremediationFundFormSubmitted = false;
+  public iseffluentMonitoringComplianceFormSubmitted = false;
+  public ispointSourcePermitFormSubmitted = false;
+  public isGHGManagementPlanFormSubmitted = false;
+  public isHostCommunitiesDevelopmentFormSubmitted = false;
+  public iswasteManagementDZFormSubmitted = false;
   //#endregion
 
   //#region Column header definitions
@@ -1351,6 +1392,7 @@ export class SWPHseComponent implements OnInit {
       header: 'Evidence of all audits done in the year',
     },
   ];
+
   //#endregion
 
   //#region lists declarations
@@ -1488,14 +1530,14 @@ export class SWPHseComponent implements OnInit {
           this.safetyCultureBody.safetyLast2YearsFilename,
           [Validators.required]
         ),
-        safetyLast2YearsFilePath: new FormControl(
-          this.safetyCultureBody.safetyLast2YearsFilePath,
-          [Validators.required]
-        ),
-        safetyCurrentYearFilePath: new FormControl(
-          this.safetyCultureBody.safetyCurrentYearFilePath,
-          [Validators.required]
-        ),
+        // safetyLast2YearsFilePath: new FormControl(
+        //   this.safetyCultureBody.safetyLast2YearsFilePath,
+        //   [Validators.required]
+        // ),
+        // safetyCurrentYearFilePath: new FormControl(
+        //   this.safetyCultureBody.safetyCurrentYearFilePath,
+        //   [Validators.required]
+        // ),
         EvidenceOfTrainingPlanFilename: new FormControl(
           this.safetyCultureBody.EvidenceOfTrainingPlanFilename,
           [Validators.required]
@@ -1624,10 +1666,10 @@ export class SWPHseComponent implements OnInit {
           this.asset_PRE_Body.condition_of_Equipment,
           [Validators.required]
         ),
-        equipment_Inspected_as_and_when_due: new FormControl(
-          this.asset_PRE_Body.equipment_Inspected_as_and_when_due,
-          [Validators.required]
-        ),
+        // equipment_Inspected_as_and_when_due: new FormControl(
+        //   this.asset_PRE_Body.equipment_Inspected_as_and_when_due,
+        //   [Validators.required]
+        // ),
         equipment_Installation_date: new FormControl(
           this.asset_PRE_Body.equipment_Installation_date,
           [Validators.required]
@@ -1636,18 +1678,18 @@ export class SWPHseComponent implements OnInit {
           this.asset_PRE_Body.equipment_description,
           [Validators.required]
         ),
-        equipment_manufacturer: new FormControl(
-          this.asset_PRE_Body.equipment_manufacturer,
-          [Validators.required]
-        ),
-        equipment_serial_number: new FormControl(
-          this.asset_PRE_Body.equipment_serial_number,
-          [Validators.required]
-        ),
-        equipment_tag_number: new FormControl(
-          this.asset_PRE_Body.equipment_tag_number,
-          [Validators.required]
-        ),
+        // equipment_manufacturer: new FormControl(
+        //   this.asset_PRE_Body.equipment_manufacturer,
+        //   [Validators.required]
+        // ),
+        // equipment_serial_number: new FormControl(
+        //   this.asset_PRE_Body.equipment_serial_number,
+        //   [Validators.required]
+        // ),
+        // equipment_tag_number: new FormControl(
+        //   this.asset_PRE_Body.equipment_tag_number,
+        //   [Validators.required]
+        // ),
         equipment_type: new FormControl(this.asset_PRE_Body.equipment_type, [
           Validators.required,
         ]),
@@ -1702,18 +1744,18 @@ export class SWPHseComponent implements OnInit {
           this.asset_RBI_Body.equipment_description,
           [Validators.required]
         ),
-        equipment_manufacturer: new FormControl(
-          this.asset_RBI_Body.equipment_manufacturer,
-          [Validators.required]
-        ),
-        equipment_serial_number: new FormControl(
-          this.asset_RBI_Body.equipment_serial_number,
-          [Validators.required]
-        ),
-        equipment_tag_number: new FormControl(
-          this.asset_RBI_Body.equipment_tag_number,
-          [Validators.required]
-        ),
+        // equipment_manufacturer: new FormControl(
+        //   this.asset_RBI_Body.equipment_manufacturer,
+        //   [Validators.required]
+        // ),
+        // equipment_serial_number: new FormControl(
+        //   this.asset_RBI_Body.equipment_serial_number,
+        //   [Validators.required]
+        // ),
+        // equipment_tag_number: new FormControl(
+        //   this.asset_RBI_Body.equipment_tag_number,
+        //   [Validators.required]
+        // ),
         equipment_type: new FormControl(this.asset_RBI_Body.equipment_type, [
           Validators.required,
         ]),
@@ -1916,6 +1958,7 @@ export class SWPHseComponent implements OnInit {
           this.operations_safety_case_body.evidence_of_Operations_Safety_Case_Approval,
           [Validators.required]
         ),
+
         reason_if_no_evidence: new FormControl(
           this.operations_safety_case_body.reason_if_no_evidence,
           [Validators.required]
@@ -2411,10 +2454,10 @@ export class SWPHseComponent implements OnInit {
 
     this.wasteManagementDZForm = new FormGroup(
       {
-        evidenceOfPayOfPDDCFilename: new FormControl(
-          this.wasteManagementDZBody.evidenceOfPayOfPDDCFilename,
-          [Validators.required]
-        ),
+        // evidenceOfPayOfPDDCFilename: new FormControl(
+        //   this.wasteManagementDZBody.evidenceOfPayOfPDDCFilename,
+        //   [Validators.required]
+        // ),
         wasterContractorNames: new FormControl(
           this.wasteManagementDZBody.wasterContractorNames,
           [Validators.required]
@@ -2452,6 +2495,132 @@ export class SWPHseComponent implements OnInit {
       {}
     );
 
+    this.getAreThereRemediationFund.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getReasonForNoRemediation.disable();
+          this.getEvidenceOfPaymentFilename.enable();
+        } else {
+          this.getEvidenceOfPaymentFilename.disable();
+          this.getReasonForNoRemediation.enable();
+        }
+      }
+    );
+
+    this.getAreThereEvidentOfSampling.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getReasonForNoEvidenceSampling.disable();
+          this.getEvidenceOfSamplingFilename.enable();
+        } else {
+          this.getEvidenceOfSamplingFilename.disable();
+          this.getReasonForNoEvidenceSampling.enable();
+        }
+      }
+    );
+
+    this.getAreTherePointSourcePermit.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getReasonForNoPSP.disable();
+          this.getEvidenceOfPSPFilename.enable();
+        } else {
+          this.getEvidenceOfPSPFilename.disable();
+          this.getReasonForNoPSP.enable();
+        }
+      }
+    );
+
+    this.getDoYouHaveGHG.valueChanges.subscribe((c: 'YES' | 'NO') => {
+      if (c === 'YES') {
+        this.getReasonForNoGHG.disable();
+        this.getGHGApprovalFilename.enable();
+      } else {
+        this.getGHGApprovalFilename.disable();
+        this.getReasonForNoGHG.enable();
+      }
+    });
+
+    this.getDoYouHaveLDRCertificate.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getReasonForNoLDR.disable();
+          this.getLDRCertificateFilename.enable();
+        } else {
+          this.getLDRCertificateFilename.disable();
+          this.getReasonForNoLDR.enable();
+        }
+      }
+    );
+
+    this.getDoYouHaveLDRCertificate.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getReasonForNoLDR.disable();
+          this.getLDRCertificateFilename.enable();
+        } else {
+          this.getLDRCertificateFilename.disable();
+          this.getReasonForNoLDR.enable();
+        }
+      }
+    );
+
+    this.getDoYouHaveEvidenceOfReg.valueChanges.subscribe((c: 'YES' | 'NO') => {
+      if (c === 'YES') {
+        this.getReasonForNoEvidenceOfRegTF.disable();
+        this.getEvidenceOfRegTrustFundFilename.enable();
+      } else {
+        this.getEvidenceOfRegTrustFundFilename.disable();
+        this.getReasonForNoEvidenceOfRegTF.enable();
+      }
+    });
+
+    this.getDoYouHaveEvidenceOfPay.valueChanges.subscribe((c: 'YES' | 'NO') => {
+      if (c === 'YES') {
+        this.getReasonForNoEvidenceOfPayTF.disable();
+        this.getEvidenceOfPayTrustFundFilename.enable();
+      } else {
+        this.getEvidenceOfPayTrustFundFilename.disable();
+        this.getReasonForNoEvidenceOfPayTF.enable();
+      }
+    });
+
+    this.getProduceWaterManagementPlan.valueChanges.subscribe(
+      (c: 'ZERO DISCHARGE ZONE' | 'DISCHARGE ZONE') => {
+        if (c === 'ZERO DISCHARGE ZONE') {
+          this.getReasonForNoEvidenceOfReInjection.disable();
+          this.getEvidenceOfReInjectionPermitFilename.enable();
+        } else {
+          this.getEvidenceOfReInjectionPermitFilename.disable();
+          this.getReasonForNoEvidenceOfReInjection.enable();
+        }
+      }
+    );
+
+    this.getDoYouHavePreviousYearWasteInventoryReport.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getRemark.disable();
+          this.getEvidenceOfEWDPFilename.enable();
+        } else {
+          this.getEvidenceOfEWDPFilename.disable();
+          this.getRemark.enable();
+        }
+      }
+    );
+
+    this.getAreThereTrainingPlansForHSE.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getRemark.disable();
+          this.getEvidenceOfTrainingPlanFilename.enable();
+        } else {
+          this.getEvidenceOfTrainingPlanFilename.disable();
+          this.getRemark.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -2469,6 +2638,268 @@ export class SWPHseComponent implements OnInit {
     this.getHSE();
   }
 
+  public get getAreThereTrainingPlansForHSE() {
+    return this.SafetyCultureTrainingForm.controls[
+      'AreThereTrainingPlansForHSE'
+    ];
+  }
+
+  public get getEvidenceOfTrainingPlanFilename() {
+    return this.SafetyCultureTrainingForm.controls[
+      'evidenceOfTrainingPlanFilename'
+    ];
+  }
+
+  public get getRemark() {
+    return this.SafetyCultureTrainingForm.controls['remark'];
+  }
+
+  public get getDoYouHavePreviousYearWasteInventoryReport() {
+    return this.wasteManagementDZForm.controls[
+      'doYouHavePreviousYearWasteInventoryReport'
+    ];
+  }
+
+  public get getEvidenceOfEWDPFilename() {
+    return this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'];
+  }
+
+  public get getReasonForNoEvidenceOfEWDP() {
+    return this.wasteManagementDZForm.controls['reasonForNoEvidenceOfEWDP'];
+  }
+
+  public get getProduceWaterManagementPlan() {
+    return this.wasteManagementDZForm.controls['produceWaterManagementPlan'];
+  }
+
+  public get getEvidenceOfReInjectionPermitFilename() {
+    return this.wasteManagementDZForm.controls[
+      'evidenceOfReInjectionPermitFilename'
+    ];
+  }
+
+  public get getReasonForNoEvidenceOfReInjection() {
+    return this.wasteManagementDZForm.controls[
+      'reasonForNoEvidenceOfReInjection'
+    ];
+  }
+
+  public get getDoYouHaveEvidenceOfPay() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'doYouHaveEvidenceOfPay'
+    ];
+  }
+
+  public get getEvidenceOfPayTrustFundFilename() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'evidenceOfPayTrustFundFilename'
+    ];
+  }
+
+  public get getReasonForNoEvidenceOfPayTF() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'reasonForNoEvidenceOfPayTF'
+    ];
+  }
+
+  public get getDoYouHaveEvidenceOfReg() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'doYouHaveEvidenceOfReg'
+    ];
+  }
+
+  public get getEvidenceOfRegTrustFundFilename() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'evidenceOfRegTrustFundFilename'
+    ];
+  }
+
+  public get getReasonForNoEvidenceOfRegTF() {
+    return this.HostCommunitiesDevelopmentForm.controls[
+      'reasonForNoEvidenceOfRegTF'
+    ];
+  }
+
+  public get getDoYouHaveGHG() {
+    return this.GHGManagementPlanForm.controls['doYouHaveGHG'];
+  }
+
+  public get getGHGApprovalFilename() {
+    return this.GHGManagementPlanForm.controls['gHGApprovalFilename'];
+  }
+
+  public get getReasonForNoGHG() {
+    return this.GHGManagementPlanForm.controls['reasonForNoGHG'];
+  }
+
+  public get getDoYouHaveLDRCertificate() {
+    return this.GHGManagementPlanForm.controls['doYouHaveLDRCertificate'];
+  }
+
+  public get getLDRCertificateFilename() {
+    return this.GHGManagementPlanForm.controls['lDRCertificateFilename'];
+  }
+
+  public get getReasonForNoLDR() {
+    return this.GHGManagementPlanForm.controls['reasonForNoLDR'];
+  }
+
+  public get getAreTherePointSourcePermit() {
+    return this.pointSourcePermitForm.controls['areTherePointSourcePermit'];
+  }
+
+  public get getEvidenceOfPSPFilename() {
+    return this.pointSourcePermitForm.controls['evidenceOfPSPFilename'];
+  }
+
+  public get getReasonForNoPSP() {
+    return this.pointSourcePermitForm.controls['reasonForNoPSP'];
+  }
+
+  public get getAreThereEvidentOfSampling() {
+    return this.effluentMonitoringComplianceForm.controls[
+      'areThereEvidentOfSampling'
+    ];
+  }
+
+  public get getEvidenceOfSamplingFilename() {
+    return this.effluentMonitoringComplianceForm.controls[
+      'evidenceOfSamplingFilename'
+    ];
+  }
+
+  public get getReasonForNoEvidenceSampling() {
+    return this.effluentMonitoringComplianceForm.controls[
+      'reasonForNoEvidenceSampling'
+    ];
+  }
+
+  public get getAreThereRemediationFund() {
+    return this.remediationFundForm.controls['areThereRemediationFund'];
+  }
+
+  public get getEvidenceOfPaymentFilename() {
+    return this.remediationFundForm.controls['evidenceOfPaymentFilename'];
+  }
+
+  public get getReasonForNoRemediation() {
+    return this.remediationFundForm.controls['reasonForNoRemediation'];
+  }
+
+  //#region
+  public get mp() {
+    return this.ManagementPositionForm.controls;
+  }
+  public get ts() {
+    return this.TechnicalSafetyForm.controls;
+  }
+  public get sct() {
+    return this.SafetyCultureTrainingForm.controls;
+  }
+  public get ocu() {
+    return this.OccupationalForm.controls;
+  }
+  public get gc() {
+    return this.QualityControlForm.controls;
+  }
+  public get cc() {
+    return this.ClimateChangeForm.controls;
+  }
+  public get arp() {
+    return this.AssetRegister_Pre_Form.controls;
+  }
+  public get arr() {
+    return this.AssetRegister_RBI_Form.controls;
+  }
+  public get os() {
+    return this.OilSpill_Form.controls;
+  }
+  public get esu() {
+    return this.Environmental_Studies_Updated_Form.controls;
+  }
+  public get ens() {
+    return this.Environmental_Studies_Form.controls;
+  }
+  public get wam() {
+    return this.Waste_Management_Form.controls;
+  }
+  public get wmf() {
+    return this.Waste_Management_Facility_Form.controls;
+  }
+  public get wmfs() {
+    return this.Waste_Management_Files_Form.controls;
+  }
+  public get wtm() {
+    return this.Water_Management_Form.controls;
+  }
+  public get enco() {
+    return this.EnvironmentalCompliance_Form.controls;
+  }
+  public get encc() {
+    return this.EnvironmentalCompliance_Chemical_Form.controls;
+  }
+  public get esf() {
+    return this.Environmental_Studies_FiveYrs_Form.controls;
+  }
+  public get osc() {
+    return this.OperationsSafetyCase_Form.controls;
+  }
+  public get emp() {
+    return this.environmentalManagementPlanForm.controls;
+  }
+  public get refd() {
+    return this.remediationFundForm.controls;
+  }
+  public get emc() {
+    return this.effluentMonitoringComplianceForm.controls;
+  }
+  public get psp() {
+    return this.pointSourcePermitForm.controls;
+  }
+  public get gmp() {
+    return this.GHGManagementPlanForm.controls;
+  }
+  public get hcd() {
+    return this.HostCommunitiesDevelopmentForm.controls;
+  }
+  public get wmdz() {
+    return this.wasteManagementDZForm.controls;
+  }
+  public get wtmu() {
+    return this.Water_Management_Updated_Form.controls;
+  }
+  public get ss() {
+    return this.SafetyStudyForm.controls;
+  }
+  public get im() {
+    return this.InspectionMaintenanceForm.controls;
+  }
+  public get cos() {
+    return this.CausesOfSpill_Form.controls;
+  }
+  public get ai() {
+    return this.Accident_Incidence_Form.controls;
+  }
+  public get ospr() {
+    return this.OSP_Registration_Form.controls;
+  }
+  public get comd() {
+    return this.Community_Disturbances_Form.controls;
+  }
+  public get wtun() {
+    return this.Water_Management_Updated_New_Form.controls;
+  }
+  public get fat() {
+    return this.Fatality_Form.controls;
+  }
+  public get ds() {
+    return this.DesignSafety_Form.controls;
+  }
+  public get emsf() {
+    return this.EMS_Files_Form.controls;
+  }
+  //#endregion
+
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
@@ -2477,6 +2908,8 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_TechnicalSubmit() {
+    this.isTechnicalSafetyFormSubmitted = true;
+    if (this.TechnicalSafetyForm.invalid) return;
     // let technicalInfo = {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
     // this.technicalBody.companyNumber = 0;
     // this.technicalBody.id = 0;
@@ -2492,17 +2925,27 @@ export class SWPHseComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode === 200) {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isTechnicalSafetyFormSubmitted = false;
+          this.technicalBody = {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
+          this.TechnicalSafetyForm = updateFormValidity(
+            this.TechnicalSafetyForm
+          );
           this.getHSE();
-          this.cd.markForCheck();
-        }
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   HSE_SafetySubmit() {
+    console.log(this.TechnicalSafetyForm);
+    this.isTechnicalSafetyFormSubmitted = true;
+    if (this.TechnicalSafetyForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.safetyBody.id = 0;
     for (const key in this.safetyBody) {
@@ -2525,22 +2968,24 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isTechnicalSafetyFormSubmitted = false;
+          this.technicalBody = {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
+          this.TechnicalSafetyForm = updateFormValidity(
+            this.TechnicalSafetyForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_Remediation_Fund_Submit() {
+    this.isremediationFundFormSubmitted = true;
+    if (this.remediationFundForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.remediationFundBody.id = 0;
     for (const key in this.remediationFundBody) {
@@ -2567,22 +3012,24 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isremediationFundFormSubmitted = false;
+          this.remediationFundBody = {} as HSE_REMEDIATION_FUND;
+          this.remediationFundForm = updateFormValidity(
+            this.remediationFundForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_Effluent_Monitoring_Submit() {
+    this.iseffluentMonitoringComplianceFormSubmitted = true;
+    if (this.effluentMonitoringComplianceForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.effluentComplianceMonitoringBody.id = 0;
     for (const key in this.effluentComplianceMonitoringBody) {
@@ -2612,22 +3059,25 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.iseffluentMonitoringComplianceFormSubmitted = false;
+          this.effluentComplianceMonitoringBody =
+            {} as HSE_EFFLUENT_COMPLIANCE_MONITORING;
+          this.effluentMonitoringComplianceForm = updateFormValidity(
+            this.effluentMonitoringComplianceForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_PSP_Submit() {
+    this.ispointSourcePermitFormSubmitted = true;
+    if (this.pointSourcePermitForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.pointSourcePermitBody.id = 0;
     for (const key in this.pointSourcePermitBody) {
@@ -2657,22 +3107,24 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.ispointSourcePermitFormSubmitted = false;
+          this.pointSourcePermitBody = {} as HSE_POINT_SOURCE_REGISTRATION;
+          this.pointSourcePermitForm = updateFormValidity(
+            this.pointSourcePermitForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_GHG_Submit() {
+    this.isGHGManagementPlanFormSubmitted = true;
+    if (this.GHGManagementPlanForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.GHGManagementPlanBody.id = 0;
     for (const key in this.GHGManagementPlanBody) {
@@ -2711,22 +3163,24 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isGHGManagementPlanFormSubmitted = false;
+          this.GHGManagementPlanBody = {} as HSE_GHG_MANAGEMENT_PLAN;
+          this.GHGManagementPlanForm = updateFormValidity(
+            this.GHGManagementPlanForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_Host_Communities_Dev_Submit() {
+    this.isHostCommunitiesDevelopmentFormSubmitted = true;
+    if (this.HostCommunitiesDevelopmentForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.HostCommunityDevelopmentBody.id = 0;
     for (const key in this.HostCommunityDevelopmentBody) {
@@ -2773,22 +3227,25 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isHostCommunitiesDevelopmentFormSubmitted = false;
+          this.HostCommunityDevelopmentBody =
+            {} as HSE_HOST_COMMUNITIES_DEVELOPMENT;
+          this.HostCommunitiesDevelopmentForm = updateFormValidity(
+            this.HostCommunitiesDevelopmentForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   HSE_Waste_Management_DZ_Submit() {
+    this.iswasteManagementDZFormSubmitted = true;
+    if (this.wasteManagementDZForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     this.wasteManagementDZBody.id = 0;
     for (const key in this.wasteManagementDZBody) {
@@ -2835,22 +3292,25 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.iswasteManagementDZFormSubmitted = false;
+          this.wasteManagementDZBody =
+            {} as HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE;
+          this.wasteManagementDZForm = updateFormValidity(
+            this.wasteManagementDZForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   Hse_Management_Position_Submit() {
+    this.isManagementPositionFormSubmitted = true;
+    if (this.ManagementPositionForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
 
     if (this.PromotionFile)
@@ -2894,6 +3354,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   Hse_Safety_Culture_Submit() {
+    console.log(this.SafetyCultureTrainingForm);
+    this.isSafetyCultureTrainingFormSubmitted = true;
+    if (this.SafetyCultureTrainingForm.invalid) return;
+
     const formDat: FormData = new FormData();
     this.safetyCultureBody.id = 0;
     for (const key in this.safetyCultureBody) {
@@ -2936,22 +3400,24 @@ export class SWPHseComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice(
-            'Form was submitted successfully!',
-            res.message,
-            'success'
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSafetyCultureTrainingFormSubmitted = false;
+          this.safetyCultureBody = {} as HSE_SAFETY_CULTURE_TRAINING;
+          this.SafetyCultureTrainingForm = updateFormValidity(
+            this.SafetyCultureTrainingForm
           );
-
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
-          this.modalService.logNotice('Error', error, 'error');
+          this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
 
   Hse_Occupational_Submit() {
+    this.isOccupationalFormSubmitted = true;
+    if (this.OccupationalForm.invalid) return;
+
     const formDat: FormData = new FormData();
     this.occupationalBody.id = 0;
     for (const key in this.occupationalBody) {
@@ -2966,8 +3432,6 @@ export class SWPHseComponent implements OnInit {
       formDat.append(this.OHMNameDoc_2, this.OHMFile_2, this.OHMNewName_2);
     }
 
-    console.log('form data', formDat);
-
     this.workprogram
       .post_HSE_Occupational(
         formDat,
@@ -2980,9 +3444,10 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isOccupationalFormSubmitted = false;
+          this.occupationalBody = {} as HSE_OCCUPATIONAL_HEALTH_MANAGEMENT;
+          this.OccupationalForm = updateFormValidity(this.OccupationalForm);
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -2991,6 +3456,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_QualityControl_Submit() {
+    this.isQualityControlFormSubmitted = true;
+    if (this.QualityControlForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     // this.qualityControlBody.id = 0;
     for (const key in this.qualityControlBody) {
@@ -3016,9 +3484,10 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isQualityControlFormSubmitted = false;
+          this.qualityControlBody = {} as HSE_QUALITY_CONTROL;
+          this.QualityControlForm = updateFormValidity(this.QualityControlForm);
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3027,6 +3496,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Climate_Submit() {
+    this.isClimateChangeFormSubmitted = true;
+    if (this.ClimateChangeForm.invalid) return;
+
     const formDataToSubmit: FormData = new FormData();
     // this.climateChangeBody.id = 0;
     for (const key in this.climateChangeBody) {
@@ -3049,9 +3521,10 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isClimateChangeFormSubmitted = false;
+          this.climateChangeBody = {} as HSE_CLIMATE_CHANGE_AND_AIR_QUALITY;
+          this.ClimateChangeForm = updateFormValidity(this.ClimateChangeForm);
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3083,6 +3556,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_AssetRegister_PRE_Submit() {
+    this.isAssetRegister_Pre_FormSubmitted = true;
+    if (this.AssetRegister_Pre_Form.invalid) return;
+
     this.workprogram
       .post_HSE_AssetRegister_PRE(
         this.asset_PRE_Body,
@@ -3095,9 +3571,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isAssetRegister_Pre_FormSubmitted = false;
+          this.asset_PRE_Body =
+            {} as HSE_ASSET_REGISTER_TEMPLATE_PRESCRIPTIVE_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+          this.AssetRegister_Pre_Form = updateFormValidity(
+            this.AssetRegister_Pre_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3106,6 +3586,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_AssetRegister_RBI_Submit() {
+    this.isAssetRegister_RBI_FormSubmitted = true;
+    if (this.AssetRegister_RBI_Form.invalid) return;
+
     this.workprogram
       .post_HSE_AssetRegister_RBI(
         this.asset_RBI_Body,
@@ -3118,9 +3601,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isAssetRegister_RBI_FormSubmitted = false;
+          this.asset_RBI_Body =
+            {} as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+          this.AssetRegister_RBI_Form = updateFormValidity(
+            this.AssetRegister_RBI_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3129,6 +3616,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_OilSpill_Submit() {
+    console.log(this.OilSpill_Form);
+    this.isOilSpill_FormSubmitted = true;
+    if (this.OilSpill_Form.invalid) return;
+
     this.workprogram
       .post_HSE_OilSpill(
         this.oilSpill_Body,
@@ -3141,9 +3632,11 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isOilSpill_FormSubmitted = false;
+          this.asset_RBI_Body =
+            {} as HSE_ASSET_REGISTER_TEMPLATE_RBI_EQUIPMENT_INSPECTION_STRATEGY_NEW;
+          this.OilSpill_Form = updateFormValidity(this.OilSpill_Form);
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3213,6 +3706,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Operations_Safety_Case_Submit() {
+    console.log(this.OperationsSafetyCase_Form);
+    this.isOperationsSafetyCase_FormSubmitted = true;
+    if (this.OperationsSafetyCase_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.operations_safety_case_body.id = 0;
     for (const key in this.operations_safety_case_body) {
@@ -3240,9 +3737,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isOperationsSafetyCase_FormSubmitted = false;
+          this.operations_safety_case_body = {} as HSE_OPERATIONS_SAFETY_CASE;
+          this.OperationsSafetyCase_Form = updateFormValidity(
+            this.OperationsSafetyCase_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3297,6 +3797,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_EMP_Submit() {
+    console.log(this.environmentalManagementPlanForm);
+    this.isenvironmentalManagementPlanFormSubmitted = true;
+    if (this.environmentalManagementPlanForm.invalid) return;
+
     this.workprogram
       .post_HSE_EMP(
         this.environmentalManagementPlanBody,
@@ -3309,9 +3813,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isenvironmentalManagementPlanFormSubmitted = false;
+          this.environmentalManagementPlanBody = {} as environmentManagmentPlan;
+          this.environmentalManagementPlanForm = updateFormValidity(
+            this.environmentalManagementPlanForm
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3366,6 +3873,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Updated_Submit() {
+    this.isEnvironmental_Studies_Updated_FormSubmitted = true;
+    if (this.Environmental_Studies_Updated_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Environmental_Studies_New_Updated(
         this.environmental_studies_updated_Body,
@@ -3378,9 +3888,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isEnvironmental_Studies_Updated_FormSubmitted = false;
+          this.environmental_studies_updated_Body =
+            {} as HSE_ENVIRONMENTAL_STUDIES_NEW_UPDATED;
+          this.Environmental_Studies_Updated_Form = updateFormValidity(
+            this.Environmental_Studies_Updated_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3389,6 +3903,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Submit() {
+    console.log(this.Environmental_Studies_Form);
+    this.isEnvironmental_Studies_FormSubmitted = true;
+    if (this.Environmental_Studies_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Environmental_Studies_Updated(
         this.environmental_studies_Body,
@@ -3401,9 +3919,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isEnvironmental_Studies_FormSubmitted = false;
+          this.environmental_studies_Body = {} as HSE_ENVIRONMENTAL_STUDIES_NEW;
+          this.Environmental_Studies_Form = updateFormValidity(
+            this.Environmental_Studies_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3412,6 +3933,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_Submit() {
+    this.isWaste_Management_FormSubmitted = true;
+    if (this.Waste_Management_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Waste_Management(
         this.waste_Management_Body,
@@ -3424,9 +3948,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isWaste_Management_FormSubmitted = false;
+          this.waste_Management_Body = {} as HSE_WASTE_MANAGEMENT_NEW;
+          this.Waste_Management_Form = updateFormValidity(
+            this.Waste_Management_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3435,6 +3962,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_Facility_Submit() {
+    this.isWaste_Management_Facility_FormSubmitted = true;
+    if (this.Waste_Management_Facility_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Waste_ManagementFacility(
         this.waste_ManagementFacility_Body,
@@ -3447,9 +3977,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isWaste_Management_Facility_FormSubmitted = false;
+          this.waste_ManagementFacility_Body =
+            {} as HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEW;
+          this.Waste_Management_Facility_Form = updateFormValidity(
+            this.Waste_Management_Facility_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3458,6 +3992,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_Files_Submit() {
+    console.log(this.Waste_Management_Files_Form);
+    this.isWaste_Management_Files_FormSubmitted = true;
+    if (this.Waste_Management_Files_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.waste_ManagementFiles_Body.id = 0;
     for (const key in this.waste_ManagementFiles_Body) {
@@ -3491,9 +4029,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isWaste_Management_Files_FormSubmitted = false;
+          this.waste_ManagementFiles_Body = {} as HSE_WASTE_MANAGEMENT_SYSTEM;
+          this.Waste_Management_Files_Form = updateFormValidity(
+            this.Waste_Management_Files_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3525,6 +4066,9 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Water_Management_Submit() {
+    this.isWater_Management_FormSubmitted = true;
+    if (this.Water_Management_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Water_Management(
         this.water_Management_Body,
@@ -3537,9 +4081,12 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isWater_Management_FormSubmitted = false;
+          this.water_Management_Body = {} as HSE_PRODUCED_WATER_MANAGEMENT_NEW;
+          this.Water_Management_Form = updateFormValidity(
+            this.Water_Management_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3548,6 +4095,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Submit() {
+    console.log(this.EnvironmentalCompliance_Form);
+    this.isEnvironmentalCompliance_FormSubmitted = true;
+    if (this.EnvironmentalCompliance_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Environmental_Compliance(
         this.environmentalCompliance_Body,
@@ -3560,9 +4111,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isEnvironmentalCompliance_FormSubmitted = false;
+          this.environmentalCompliance_Body =
+            {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEW;
+          this.EnvironmentalCompliance_Form = updateFormValidity(
+            this.EnvironmentalCompliance_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3571,6 +4126,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Chemical_Submit() {
+    console.log(this.EnvironmentalCompliance_Chemical_Form);
+    this.isEnvironmentalCompliance_Chemical_FormSubmitted = true;
+    if (this.EnvironmentalCompliance_Chemical_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Environmental_Chemical_Compliance(
         this.environmentalComplianceChemical_Body,
@@ -3583,9 +4142,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isEnvironmentalCompliance_Chemical_FormSubmitted = false;
+          this.environmentalComplianceChemical_Body =
+            {} as HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_CHEMICAL_USAGE_NEW;
+          this.EnvironmentalCompliance_Chemical_Form = updateFormValidity(
+            this.EnvironmentalCompliance_Chemical_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -3594,6 +4157,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Strategic_Plan_Submit() {
+    console.log(this.Environmental_Studies_FiveYrs_Form);
+    this.isEnvironmental_Studies_FiveYrs_FormSubmitted = true;
+    if (this.Environmental_Studies_FiveYrs_Form.invalid) return;
+
     this.workprogram
       .post_HSE_Environmental_Studies_Strategic_Plan(
         this.environmental_studies_fiveyrs_Body,
@@ -3606,9 +4173,13 @@ export class SWPHseComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isEnvironmental_Studies_FiveYrs_FormSubmitted = false;
+          this.environmental_studies_fiveyrs_Body =
+            {} as HSE_ENVIRONMENTAL_STUDIES_FIVE_YEAR_STRATEGIC_PLAN_NEW;
+          this.Environmental_Studies_FiveYrs_Form = updateFormValidity(
+            this.Environmental_Studies_FiveYrs_Form
+          );
           this.getHSE();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -4200,37 +4771,39 @@ export class SWPHseComponent implements OnInit {
     this.Statistics_2NameDoc = this.gen.trimDocName(this.Statistics_2File.name);
     let dockind = this.gen.getExt(this.Statistics_2File.name);
   }
+
   saveOHMDoc(DeFile: any) {
     this.OHMFile = <File>DeFile.target.files[0];
     if (!this.OHMFile) {
       return;
     }
     if (this.OHMFile.size < 1 || this.OHMFile.size > 1024 * 1024 * 50) {
-      this.OccupationalForm.controls['OHMplanFilePath'].setErrors({
+      this.OccupationalForm.controls['OHMplanFileName'].setErrors({
         incorrect: true,
       });
       this.OHMFile = null;
       return;
     } else {
-      this.OccupationalForm.controls['OHMplanFilePath'].setErrors(null);
+      this.OccupationalForm.controls['OHMplanFileName'].setErrors(null);
     }
     this.OHMNewName = this.gen.getExpDoc(this.OHMFile.name, this.OHMFile.type);
     this.OHMNameDoc = this.gen.trimDocName(this.OHMFile.name);
     let dockind = this.gen.getExt(this.OHMFile.name);
   }
+
   saveOHMDoc_2(DeFile: any) {
     this.OHMFile_2 = <File>DeFile.target.files[0];
     if (!this.OHMFile_2) {
       return;
     }
     if (this.OHMFile_2.size < 1 || this.OHMFile_2.size > 1024 * 1024 * 50) {
-      this.OccupationalForm.controls['OHMplanCommunicationFilePath'].setErrors({
+      this.OccupationalForm.controls['OHMplanCommunicationFileName'].setErrors({
         incorrect: true,
       });
       this.OHMFile_2 = null;
       return;
     } else {
-      this.OccupationalForm.controls['OHMplanCommunicationFilePath'].setErrors(
+      this.OccupationalForm.controls['OHMplanCommunicationFileName'].setErrors(
         null
       );
     }
@@ -4409,144 +4982,145 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
+        console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
 
-        if (res.hseTechnicalSafety) {
+        if (res?.hseTechnicalSafety) {
           this.hseTechnicals = res.hseTechnicalSafety;
         }
 
-        if (res.hseSafetyStudies) {
+        if (res?.hseSafetyStudies) {
           this.hseSafetyStudies = res.hseSafetyStudies;
         }
 
-        if (res.hseManagementPosition) {
+        if (res?.hseManagementPosition) {
           this.hseManagementPositions = res.hseManagementPosition;
         }
 
-        if (res.hseSafetyCulture) {
+        if (res?.hseSafetyCulture) {
           this.hseSafetyCultureTrainings = res.hseSafetyCulture;
         }
 
-        if (res.hseOccupationalHealth) {
+        if (res?.hseOccupationalHealth) {
           this.occupationHealthManagements = res.hseOccupationalHealth;
         }
 
-        if (res.hseQualityControl) {
+        if (res?.hseQualityControl) {
           this.qualityControlDocuments = res.hseQualityControl;
         }
 
-        if (res.hseClimateChange) {
+        if (res?.hseClimateChange) {
           this.climateChanges = res.hseClimateChange;
         }
 
-        if (res.hseInspectionMaintenance) {
+        if (res?.hseInspectionMaintenance) {
           this.inspectionMaintenances = res.hseInspectionMaintenanceFacility;
         }
 
-        if (res.hseAssetRegister) {
+        if (res?.hseAssetRegister) {
           this.assetRegisterTemplates = res.hseAssetRegister;
         }
 
-        if (res.hseAssetRegisterRBI) {
+        if (res?.hseAssetRegisterRBI) {
           this.assetRegisterTemplateRBIs = res.hseAssetRegisterRBI;
         }
 
-        if (res.hseOilSpill) {
+        if (res?.hseOilSpill) {
           this.oilSpillReportings = res.hseOilSpill;
         }
 
-        if (res.hseCausesOfSpill) {
+        if (res?.hseCausesOfSpill) {
           this.causeOfSpills = res.hseCausesOfSpill;
         }
 
-        if (res.hseAccidentIncidenceType) {
+        if (res?.hseAccidentIncidenceType) {
           this.accidentIncidentReportings = res.hseAccidentIncidenceType;
         }
 
-        if (res.hseospRegistrations) {
+        if (res?.hseospRegistrations) {
           this.ospRegulations = res.hseospRegistrations;
         }
 
-        if (res.hseCommunityDisturbance) {
+        if (res?.hseCommunityDisturbance) {
           this.communityDisturbances = res.hseCommunityDisturbance;
         }
 
-        if (res.hseFatality) {
+        if (res?.hseFatality) {
           this.fatalitiesCasualties = res.hseFatality;
         }
 
-        if (res.hseDesignSafety) {
+        if (res?.hseDesignSafety) {
           this.lossPreventionStudies = res.hseDesignSafety;
         }
 
-        if (res.hseEnvironmentalStudiesUpdated) {
+        if (res?.hseEnvironmentalStudiesUpdated) {
           this.environmentalStudiesUpdatedList =
             res.hseEnvironmentalStudiesUpdated;
         }
 
-        if (res.hseEnvironmentalStudies) {
+        if (res?.hseEnvironmentalStudies) {
           this.environmentalStudies = res.hseEnvironmentalStudies;
         }
 
-        if (res.hseWasteManagement) {
+        if (res?.hseWasteManagement) {
           this.wasteManagements = res.hseWasteManagement;
         }
 
-        if (res.hseWasteManagementType) {
+        if (res?.hseWasteManagementType) {
           this.wasterManagementFacilities = res.hseWasteManagementType;
         }
 
-        if (res.hseWasteManagementSystems) {
+        if (res?.hseWasteManagementSystems) {
           this.wasterManagementFiles = res.hseWasteManagementSystems;
         }
 
-        if (res.hseProducedWaterMgtUpdated) {
+        if (res?.hseProducedWaterMgtUpdated) {
           this.producedWaterManagementUpdatedList =
             res.hseProducedWaterMgtUpdated;
         }
 
-        if (res.hseProducedWaterMgt) {
+        if (res?.hseProducedWaterMgt) {
           this.producedWaterManagements = res.hseProducedWaterMgt;
         }
 
-        if (res.hseEnvironmentalCompliance) {
+        if (res?.hseEnvironmentalCompliance) {
           this.environmentalComplianceMonitoring =
             res.hseEnvironmentalCompliance;
         }
 
-        if (res.hseEnvironmentalComplianceChemical) {
+        if (res?.hseEnvironmentalComplianceChemical) {
           this.environmentalComplianceChemicals =
             res.hseEnvironmentalComplianceChemical;
         }
 
-        if (res.hseEnvironmentalFiveYears) {
+        if (res?.hseEnvironmentalFiveYears) {
           this.environmentalStudiesFiveYearsSPs = res.hseEnvironmentalFiveYears;
         }
 
-        if (res.hseEnvironmentalManagementSystems) {
+        if (res?.hseEnvironmentalManagementSystems) {
           this.environmentalManagementSystems =
             res.hseEnvironmentalManagementSystems;
         }
 
-        if (res.hseOperationSafetyCases) {
+        if (res?.hseOperationSafetyCases) {
           this.operationsSafetyCases = res.hseOperationSafetyCases;
         }
 
-        if (res.hseEnvironmentalManagementPlans) {
+        if (res?.hseEnvironmentalManagementPlans) {
           this.environmentalManagementPlans =
             res.hseEnvironmentalManagementPlans;
         }
 
-        if (res.hseEnfluenceConliences) {
+        if (res?.hseEnfluenceConliences) {
           this.effluentMonitoringCompliances = res.hseEnfluenceConliences;
         }
 
-        if (res.hseghgPlans) {
+        if (res?.hseghgPlans) {
           this.GHGManagementPlans = res.hseghgPlans;
         }
 
-        if (res.hseHostCommunities) {
+        if (res?.hseHostCommunities) {
           this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
 

@@ -14,6 +14,7 @@ import {
 } from 'src/app/services';
 import { WorkProgramService } from 'src/app/services/workprogram.service';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 
 @Component({
   templateUrl: './strategicplans.component.html',
@@ -36,7 +37,9 @@ export class SWPStrategicPlansComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
+
   strategicplansForm: FormGroup;
+  public isStrategicplansFormSubmitted = false;
   activities = 'Appraisal Drilling (#)';
   //strategicplansoncompanybasesBody: STRATEGIC_PLANS_ON_COMPANY_BASES;
 
@@ -57,7 +60,9 @@ export class SWPStrategicPlansComponent implements OnInit {
     this.genk.activeStep = 'STEP4';
     this.strategicplansForm = new FormGroup(
       {
-        activities: new FormControl(this.strategicplansBody.activities),
+        activities: new FormControl(this.strategicplansBody.activities, [
+          Validators.required,
+        ]),
         n_1_Q1: new FormControl(this.strategicplansBody.n_1_Q1, [
           Validators.required,
         ]),
@@ -140,6 +145,10 @@ export class SWPStrategicPlansComponent implements OnInit {
     this.cd.markForCheck();
   }
 
+  public get a() {
+    return this.strategicplansForm.controls;
+  }
+
   isEditable(group: string): boolean | null {
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
@@ -151,7 +160,10 @@ export class SWPStrategicPlansComponent implements OnInit {
     this.workprogram.getStrategicPlans(this.genk.wpYear).subscribe((result) => {
       if (result.strategicPlans) {
         this.strategicData = result.strategicPlans;
-        this.strategicplansBody = result.strategicPlans[0];
+
+        if (this.strategicData.length > 0) {
+          this.strategicplansBody = { ...result.strategicPlans[0] };
+        }
         if (result.strategicPlans.length > 0) {
           this.genk.isStep4 = true;
         }
@@ -161,29 +173,43 @@ export class SWPStrategicPlansComponent implements OnInit {
   }
 
   saveStrategicPlansOnCompanyBases() {
+    console.log(this.strategicplansForm);
+    this.isStrategicplansFormSubmitted = true;
+    if (this.strategicplansForm.invalid) return;
+
     //console.log(this.strategicplansBody);
     this.strategicplansBody.activities = this.activities;
     this.strategicplansBody.id = 0;
     this.workprogram
       .saveStrategicPlans(this.strategicplansBody, this.genk.wpYear)
-      .subscribe((result) => {
-        this.modalService.logNotice(
-          'Success',
-          'Data saved successfully!',
-          'success'
-        );
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isStrategicplansFormSubmitted = false;
+          // this.arbitrationBody = {} as LEGAL_ARBITRATION;
+          this.strategicplansForm = updateFormValidity(this.strategicplansForm);
+          this.getStrategicPlansOnCompanyBases();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   changeActivities(e) {
+    // debugger;
     let activities = e.target.value;
     this.activities = activities;
     this.strategicplansBody = {} as STRATEGIC_PLANS_ON_COMPANY_BASES;
+
+    console.log(this.strategicplansBody, this.strategicData);
+
     this.strategicplansBody =
-      this.strategicData.filter((res) => {
-        return res.activities === activities;
-      })[0] ?? ({} as STRATEGIC_PLANS_ON_COMPANY_BASES);
+      this.strategicData?.find((res) => {
+        return res.activities == activities;
+      }) ?? ({} as STRATEGIC_PLANS_ON_COMPANY_BASES);
     this.strategicplansBody.activities = activities;
+
     this.cd.markForCheck();
   }
 

@@ -64,6 +64,25 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                    ]?.invalid) ||
+                  (bp[
+                    'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                  ]?.dirty &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Naira'
+                    ]?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -91,6 +110,25 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                    ]?.invalid) ||
+                  (bp[
+                    'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                  ]?.dirty &&
+                    bp[
+                      'budget_for_Direct_Exploration_and_Production_Activities_Dollars'
+                    ]?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
         </div>
@@ -129,6 +167,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp['budget_for_other_Activities_Naira']?.invalid) ||
+                  (bp['budget_for_other_Activities_Naira']?.dirty &&
+                    bp['budget_for_other_Activities_Naira']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -158,6 +209,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isbudgetProposalFormSubmitted &&
+                    bp['budget_for_other_Activities_Dollars']?.invalid) ||
+                  (bp['budget_for_other_Activities_Dollars']?.dirty &&
+                    bp['budget_for_other_Activities_Dollars']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -168,6 +232,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="budgetProposalForm.invalid ? 'cursor: default' : ''"
           (click)="saveBudgetProposal()"
           [attr.disabled]="
             isEditable(SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs)
@@ -198,7 +263,7 @@
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Budget(row.id)"
+                (click)="Delete_Budget(row)"
                 [attr.disabled]="
                   isEditable(
                     SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
@@ -216,9 +281,9 @@
 
   <br />
 
-  <hr size="10" />
+  <!-- <hr size="10" />
   <br /><br />
-  <!-- <div [formGroup]="capexForm">
+  <div [formGroup]="capexForm">
     <div
       style="
         text-align: start;
@@ -603,201 +668,10 @@
         Update Capex Items
       </button>
     </div>
-  </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div [formGroup]="capexForm">
-    <div
-      style="
-        text-align: start;
-        font-size: 15px;
-        font-weight: 30px;
-        padding-bottom: 20px;
-        color: rgb(6, 6, 6);
-        text-align: center;
-      "
-
-      
-    >
-    <span style="font-size: 30px">CAPEX ITEMS</span>
-    </div>
-    <hr size="5" />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%">
-        <label class="labelwp">Item Description</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              padding: 5px;
-              border-radius: 20px;
-            "
-          >
-            <select
-              class="input"
-              type="inpute"
-              formControlName="item_Description"
-              [(ngModel)]="capexBdy.item_Description"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            >
-              <option selected disabled>---- Please Select Item ----</option>
-              <option value="Acquisition">Acquisition</option>
-              <option value="Processing">Processing</option>
-              <option value="Reprocessing">Reprocessing</option>
-              <option value="Exploratory Well Drilling">
-                Exploratory Well Drilling
-              </option>
-              <option value="Appraisal Well Drilling">
-                Appraisal Well Drilling
-              </option>
-              <option value="Development Well Drilling">
-                Development Well Drilling
-              </option>
-              <option value="Workover Operations">Workover Operations</option>
-              <option value="Completions">Completions</option>
-              <option value="Flowlines">Flowlines</option>
-              <option value="Pipelines">Pipelines</option>
-              <option value="Generators">Generators</option>
-              <option value="Turbines Compressors">Turbines Compressors</option>
-              <option value="Buildings">Buildings</option>
-              <option value="Civil Works">Civil Works</option>
-              <option value="Other Costs">Other Costs</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(NGN)</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="number"
-              class="inpute"
-              formControlName="naira"
-              [(ngModel)]="capexBdy.naira"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(USD)</label>
-        <div style="display: flex; width: 100%">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="number"
-              class="inpute"
-              formControlName="dollar"
-              [(ngModel)]="capexBdy.dollar"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">(USD) EQUIVALENT (OFF. EXG RATE)</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="number"
-              class="inpute"
-              formControlName="dollar_equivalent"
-              [(ngModel)]="capexBdy.dollar_equivalent"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin-top: auto">
-        <label class="labelwp">Remarks</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 20px;
-              padding: 7px 10px;
-            "
-          >
-            <textarea
-              type="number"
-              rows="3"
-              class="inpute"
-              formControlName="remarks"
-              [(ngModel)]="capexBdy.remarks"
-              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <br />
-    <div style="text-align: center">
-      <button
-        class="submitbtn"
-        (click)="saveOpex()"
-        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
-      >
-        Add Capex Items
-      </button>
-    </div>
   </div>
-
-
-
-
-
-
-
   <hr size="10" />
   <br /><br />
-  <!-- <div [formGroup]="OpexForm">
+  <div [formGroup]="OpexForm">
     <div
       style="
         text-align: start;
@@ -941,12 +815,8 @@
       </button>
     </div>
   </div> -->
-  
-  
-  
 
-
-  <div [formGroup]="OpexForm">
+  <div [formGroup]="capexForm">
     <div
       style="
         text-align: start;
@@ -954,10 +824,9 @@
         font-weight: 30px;
         padding-bottom: 20px;
         color: rgb(6, 6, 6);
-        text-align: center;
       "
     >
-    <span style="font-size: 30px">OPEX ITEMS</span>
+      <span>CAPEX Items</span>
     </div>
     <hr size="5" />
 
@@ -975,21 +844,45 @@
           >
             <select
               class="input"
-              type="inpute"
               formControlName="item_Description"
-              [(ngModel)]="opexBdy.item_Description"
+              [(ngModel)]="capexBody.item_Description"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             >
               <option selected disabled>---- Please Select Item ----</option>
-              <option value="Variable Cost">Variable Cost</option>
-              <option value="Fixed Cost">Fixed Cost</option>
-              <option value="Overheads">Overheads</option>
-              <option value="Repairs and Maintenance Cost">
-                Repairs and Maintenance Cost
+              <option value="Acquisition">Acquisition</option>
+              <option value="Processing">Processing</option>
+              <option value="Reprocessing">Reprocessing</option>
+              <option value="Exploratory Well Drilling">
+                Exploratory Well Drilling
               </option>
-              <option value="General Expenses">General Expenses</option>
+              <option value="Appraisal Well Drilling">
+                Appraisal Well Drilling
+              </option>
+              <option value="Development Well Drilling">
+                Development Well Drilling
+              </option>
+              <option value="Workover Operations">Workover Operations</option>
+              <option value="Completions">Completions</option>
+              <option value="Flowlines">Flowlines</option>
+              <option value="Pipelines">Pipelines</option>
+              <option value="Generators">Generators</option>
+              <option value="Turbines Compressors">Turbines Compressors</option>
+              <option value="Buildings">Buildings</option>
+              <option value="Civil Works">Civil Works</option>
+              <option value="Other Costs">Other Costs</option>
             </select>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isCapexFormSubmitted && c['item_Description']?.invalid) ||
+              (c['item_Description']?.dirty && c['item_Description']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1011,10 +904,21 @@
               type="number"
               class="inpute"
               formControlName="naira"
-              [(ngModel)]="opexBdy.naira"
+              [(ngModel)]="capexBody.naira"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isCapexFormSubmitted && c['naira']?.invalid) ||
+              (c['naira']?.dirty && c['naira']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -1033,10 +937,21 @@
               type="number"
               class="inpute"
               formControlName="dollar"
-              [(ngModel)]="opexBdy.dollar"
+              [(ngModel)]="capexBody.dollar"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isCapexFormSubmitted && c['dollar']?.invalid) ||
+              (c['dollar']?.dirty && c['dollar']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -1055,10 +970,21 @@
               type="number"
               class="inpute"
               formControlName="dollar_equivalent"
-              [(ngModel)]="opexBdy.dollar_equivalent"
+              [(ngModel)]="capexBody.dollar_equivalent"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isCapexFormSubmitted && c['dollar_equivalent']?.invalid) ||
+              (c['dollar_equivalent']?.dirty && c['dollar_equivalent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1081,10 +1007,21 @@
               rows="3"
               class="inpute"
               formControlName="remarks"
-              [(ngModel)]="opexBdy.remarks"
+              [(ngModel)]="capexBody.remarks"
               [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
             ></textarea>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isCapexFormSubmitted && c['remarks']?.invalid) ||
+              (c['remarks']?.dirty && c['remarks']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1093,18 +1030,227 @@
     <div style="text-align: center">
       <button
         class="submitbtn"
-        (click)="saveOpex()"
+        [style]="capexForm.invalid ? 'cursor: default' : ''"
+        (click)="saveCapex()"
         [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
       >
-        Add Opex Items
+        Update Capex Items
       </button>
     </div>
   </div>
-  
-  
-  
-  
-  <!-- <div *ngIf="isTabVisible_2" class="wptablebox">
+  <hr size="10" />
+  <br /><br />
+  <div [formGroup]="OpexForm">
+    <div
+      style="
+        text-align: start;
+        font-size: 15px;
+        font-weight: 30px;
+        padding-bottom: 20px;
+        color: rgb(6, 6, 6);
+      "
+    >
+      <span>OPEX Items</span>
+    </div>
+    <hr size="5" />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%">
+        <label class="labelwp">Item Description</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              padding: 5px;
+              border-radius: 20px;
+            "
+          >
+            <select
+              class="input"
+              type="inpute"
+              formControlName="item_Description"
+              [(ngModel)]="opexBody.item_Description"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+            >
+              <option selected disabled>---- Please Select Item ----</option>
+              <option value="Variable Cost">Variable Cost</option>
+              <option value="Fixed Cost">Fixed Cost</option>
+              <option value="Overheads">Overheads</option>
+              <option value="Repairs and Maintenance Cost">
+                Repairs and Maintenance Cost
+              </option>
+              <option value="General Expenses">General Expenses</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOpexFormSubmitted && o['item_Description']?.invalid) ||
+              (o['item_Description']?.dirty && o['item_Description']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(NGN)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="naira"
+              [(ngModel)]="opexBody.naira"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOpexFormSubmitted && o['naira']?.invalid) ||
+              (o['naira']?.dirty && o['naira']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD)</label>
+        <div style="display: flex; width: 100%">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar"
+              [(ngModel)]="opexBody.dollar"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOpexFormSubmitted && o['dollar']?.invalid) ||
+              (o['dollar']?.dirty && o['dollar']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div>
+
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">(USD) EQUIVALENT (OFF. EXG RATE)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="dollar_equivalent"
+              [(ngModel)]="opexBody.dollar_equivalent"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOpexFormSubmitted && o['dollar_equivalent']?.invalid) ||
+              (o['dollar_equivalent']?.dirty && o['dollar_equivalent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <div style="width: 30%; margin-top: auto">
+        <label class="labelwp">Remarks</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 20px;
+              padding: 7px 10px;
+            "
+          >
+            <textarea
+              type="number"
+              rows="3"
+              class="inpute"
+              formControlName="remarks"
+              [(ngModel)]="opexBody.remarks"
+              [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOpexFormSubmitted && o['remarks']?.invalid) ||
+              (o['remarks']?.dirty && o['remarks']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div style="text-align: center">
+      <button
+        class="submitbtn"
+        [style]="OpexForm.invalid ? 'cursor: default' : ''"
+        (click)="saveOpex()"
+        [attr.disabled]="isEditable(SBUTABLE.BUDGET_PROPOSAL_OPEXs)"
+      >
+        Update Opex Items
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isTabVisible_2" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -1133,63 +1279,7 @@
         </tbody>
       </table>
     </div>
-  </div> -->
-
-
-
-
-
-
-
-
-<br/>
-<br/>
-
-
-<div *ngIf="budgetCapexOpexComponents.length > 0" class="wptablebox">
-  <div class="apptable">
-    <table class="wptable">
-      <thead>
-        <tr>
-          <th *ngFor="let h of coColHeaderDef">
-            {{ h.header }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of budgetCapexOpexComponents">
-          <td *ngFor="let colDef of coColHeaderDef">
-            {{ row[colDef.columnDef] }}
-          </td>
-          <td>
-            <button
-              class="btn btn-danger btn-sm submitbtn"
-              (click)="Delete_Opex(row.id)"
-              [attr.disabled]="
-                isEditable(
-                  SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
-                )
-              "
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <br /><br />
 <div style="text-align: center">
