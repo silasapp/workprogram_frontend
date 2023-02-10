@@ -106,6 +106,7 @@ export class LoginComponent implements OnInit {
             this.userId
           )
           .subscribe((user: User) => {
+            debugger;
             console.log('users...', user);
             if (user) {
               let returnUrl =
