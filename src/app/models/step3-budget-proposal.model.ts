@@ -17,7 +17,8 @@ export class budgetProposal {
   total_Company_Expenditure_Dollars: string = '';
 }
 
-export class capexOpex {
+
+export class  capexOpex {
   id: number = 0;
   omL_ID: string = '';
   omL_Name: string = '';
@@ -36,6 +37,56 @@ export class capexOpex {
   dollar_equivalent = '';
   remarks: string = '';
 }
+
+
+
+
+export class OpexBdy {
+  id: number = 0;
+  omL_ID: string = '';
+  omL_Name: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companyName: string = '';
+  companyNumber: number = 0;
+  contract_Type: string = '';
+  terrain: string = '';
+  consession_Type: string = '';
+  company_ID: string = '';
+  item_Type: string = '';
+  item_Description: string = '';
+  naira: string = '';
+  dollar: string = '';
+  dollar_equivalent = '';
+  remarks: string = '';
+}
+
+
+
+
+export class CapexBdy {
+  id: number = 0;
+  omL_ID: string = '';
+  omL_Name: string = '';
+  companyemail: string = '';
+  year_of_WP: string = '';
+  companyName: string = '';
+  companyNumber: number = 0;
+  contract_Type: string = '';
+  terrain: string = '';
+  consession_Type: string = '';
+  company_ID: string = '';
+  item_Type: string = '';
+  item_Description: string = '';
+  naira: string = '';
+  dollar: string = '';
+  dollar_equivalent = '';
+  remarks: string = '';
+}
+
+
+
+
 
 export class CAPEX {
   id: number = 0;
@@ -82,7 +133,6 @@ export class OPEX {
   consession_Type: string = '';
   company_ID: string = '';
   item_Type: string = '';
-
   variable_cost: string = '';
   fixed_cost: string = '';
   overheads: string = '';
