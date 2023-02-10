@@ -52,6 +52,7 @@ import { UserFormComponent } from './add-users/user-form/user-form.component';
     MatNativeDateModule,
     MatRadioModule,
     PresentationModule,
+    MatSnackBarModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
 

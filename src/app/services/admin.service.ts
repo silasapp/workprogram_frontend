@@ -12,7 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient, private gen: GenericService) {}
 
   getStaffFromElps() {
-    return this.http.get<any>(`${environment.apiUrl}/admin/GET_ELPS_STAFF`);
+    return this.http.get<any>(`${environment.apiUrl}/account/GETELPSSTAFF`);
   }
 
   getAllStaff() {
@@ -258,27 +258,11 @@ export class AdminService {
       );
   }
 
-  addUser(e: any) {
-    debugger;
-    return this.http
-      .post<any>(`${environment.apiUrl}/admin/create_user`, {
-        email: e.email,
-        companY_NAME: e.companY_NAME,
-        passwords: e.passwords,
-        name: e.name,
-        designation: e.designation,
-        phonE_NO: e.phonE_NO,
-        companY_ID: e.companY_ID,
-        rolE_ID: e.rolE_ID,
-        sbU_ID: e.sbU_ID,
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          debugger;
-          return response;
-        })
-      );
+  addUser(body: any) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin/create_user_new`,
+      body
+    );
   }
   addConcession(e: any) {
     return this.http

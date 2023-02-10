@@ -93,3 +93,12 @@ export interface IAuthData {
   pass: string;
   token?: string;
 }
+
+export interface IElpsUser {
+  elpsId: string;
+  email: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  phoneNo: string;
+}

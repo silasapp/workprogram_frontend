@@ -1,10 +1,10 @@
-import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin } from 'rxjs';
-import { Staff } from 'src/app/models/application-details';
+import { IElpsUser, Staff } from 'src/app/models/application-details';
+import { ISystemUser } from 'src/app/models/user';
 import {
   IRole,
   ISBU,
@@ -22,8 +22,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 export class AddUsersComponent implements OnInit {
   public roles: IRole[] = [];
   public sbus: ISBU[] = [];
-  public users: Staff[] = [];
-  public staffList: Staff[] = [];
+  public users: ISystemUser[] = [];
+  public elpsUsers: IElpsUser[] = [];
 
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -85,8 +85,9 @@ export class AddUsersComponent implements OnInit {
     //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
     //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
 
-    this.getRoles();
-    this.getSBUs();
+    // this.getRoles();
+    // this.getSBUs();
+    this.getAll();
   }
 
   initForm() {
@@ -107,18 +108,26 @@ export class AddUsersComponent implements OnInit {
   getAll() {
     this.modalService.logCover('Loading...', true);
     forkJoin([
+      this.adminservice.getAllStaff(),
       this.adminservice.getStaffFromElps(),
-      this.adminservice.getSBU(),
       this.adminservice.getRoles(),
+      this.adminservice.getSBU(),
       // this.adminHttpService.getOffices(),
       // this.adminHttpService.getBranches(),
     ]).subscribe({
       next: (res) => {
-        if (res[0].success) this.users = res[0].data.data;
+        if (res[0].responseCode == '00') {
+          this.users = res[0].data.staffList;
+          this.sbus = res[0].data.sbus;
+        }
 
-        if (res[1].success) this.staffList = res[1].data.data;
+        if (res[1].statusCode === 0) this.elpsUsers = res[1].data;
 
-        if (res[2].success) this.roles = res[2].data.data;
+        if (res[2]?.roles && res[2].roles.length > 0) this.roles = res[2].roles;
+
+        // if (res[2].success) this.sbus = res[2].data.data;
+
+        // if (res[3].success) this.roles = res[3].data.data;
 
         // if (res[3].success) this.offices = res[3].data.data;
 
@@ -147,8 +156,9 @@ export class AddUsersComponent implements OnInit {
       users: {
         data: {
           users: this.users,
-          staffList: this.staffList,
+          staffList: this.elpsUsers,
           roles: this.roles,
+          sbus: this.sbus,
           // offices: this.offices,
           // branches: this.branches,
         },

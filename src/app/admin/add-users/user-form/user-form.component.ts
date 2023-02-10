@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -17,6 +17,12 @@ import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 
 import { Staff } from 'src/app/models/application-details';
 import { AuthenticationService, ModalService } from 'src/app/services';
+import {
+  IRole,
+  ISBU,
+} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { AdminService } from 'src/app/services/admin.service';
+import { ISystemUser } from 'src/app/models/user';
 
 // import { Staff } from 'src/app/admin/settings/all-staff/all-staff.component';
 // import { FieldOffice } from 'src/app/admin/settings/field-zonal-office/field-zonal-office.component';
@@ -29,12 +35,13 @@ import { AuthenticationService, ModalService } from 'src/app/services';
 })
 export class UserFormComponent implements OnInit {
   public form: FormGroup;
-  public usersFromAus2: StaffWithName[];
+  public usersFromWKP: StaffWithName[];
   public userTypes = [''];
   // public offices: FieldOffice[];
   // public branches: IBranch[];
-  public roles: any;
-  public currentValue: Staff | null;
+  public roles: IRole[] = [];
+  public sbus: ISBU[] = [];
+  public currentValue: ISystemUser | null;
   public usersFromElps: StaffWithName[];
   public file: File | null = null;
   public selectedUserFromElps: StaffWithName;
@@ -48,14 +55,19 @@ export class UserFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private auth: AuthenticationService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private adminService: AdminService,
+    private cd: ChangeDetectorRef
   ) {
-    this.usersFromAus2 = data.data.users;
     // this.offices = data.data.offices;
     // this.branches = data.data.branches;
+    this.usersFromWKP = data.data.users;
     this.roles = data.data.roles;
+    this.sbus = data.data.sbus;
     this.usersFromElps = data.data.staffList;
     this.currentValue = data.data?.currentValue;
+
+    console.log(data.data);
 
     let currentUserId: string;
 
@@ -68,30 +80,48 @@ export class UserFormComponent implements OnInit {
       return user;
     });
 
-    console.log(this.currentValue, this.usersFromElps);
-
     this.selectedUserFromElps = this.usersFromElps[0];
 
+    // email: e.email,
+    //   companY_NAME: e.companY_NAME,
+    //   passwords: e.passwords,
+    //   name: e.name,
+    //   designation: e.designation,
+    //   phonE_NO: e.phonE_NO,
+    //   companY_ID: e.companY_ID,
+    //   rolE_ID: e.rolE_ID,
+    //   sbU_ID: e.sbU_ID,
+
     this.form = this.formBuilder.group({
-      elpsId: [this.currentValue ? currentUserId : '', Validators.required],
-      id: [this.currentValue ? this.currentValue.id : '', Validators.required],
-      firstName: [this.currentValue ? this.currentValue.firstName : ''],
-      lastName: [this.currentValue ? this.currentValue.lastName : ''],
+      // elpsId: [this.currentValue ? currentUserId : '', Validators.required],
+      id: [this.currentValue ? this.currentValue.id : ''],
+      // firstName: [this.currentValue ? this.currentValue.firstName : ''],
+      // lastName: [this.currentValue ? this.currentValue.lastName : ''],
+      companY_NAME: ['Admin'],
+      name: [this.currentValue ? this.currentValue.name : ''],
       email: [
         this.currentValue ? this.currentValue.email : '',
         Validators.required,
       ],
-      phoneNo: [this.currentValue ? this.currentValue.phoneNo : ''],
-      userType: [this.currentValue ? this.currentValue.userType : ''],
-      role: [
-        this.currentValue ? this.currentValue.role : '',
-        Validators.required,
-      ],
+      phonE_NO: [this.currentValue ? this.currentValue.phonE_NO : ''],
+      password: ['password'],
+      designation: [this.currentValue ? this.currentValue.phonE_NO : ''],
+      // userType: [this.currentValue ? this.currentValue.userType : ''],
+      // role: [
+      //   this.currentValue ? this.currentValue.role : '',
+      //   Validators.required,
+      // ],
+      rolE_ID: ['', Validators.required],
+      // sbu: [
+      //   this.currentValue ? this.currentValue.role : '',
+      //   Validators.required,
+      // ],
+      sbU_ID: ['', Validators.required],
       // officeId: [this.currentValue ? this.currentValue.officeId : ''],
       // branchId: [this.currentValue ? this.currentValue.branchId : ''],
       status: [
-        this.currentValue ? this.currentValue.status : '',
-        Validators.required,
+        this.currentValue ? this.currentValue.statuS_ : '',
+        // Validators.required,
       ],
       // signatureImage: [
       //   this.currentValue ? this.currentValue.signatureImage : '',
@@ -115,23 +145,26 @@ export class UserFormComponent implements OnInit {
   createUser() {
     this.modalService.logCover('Loading...', true);
 
-    this.form.controls['elpsId'].setValue(this.selectedUserFromElps.id);
+    // this.form.controls['elpsId'].setValue(this.selectedUserFromElps.id);
+    // this.form.controls['elpsId'].setValue(0);
+    this.form.controls['id'].setValue(null);
 
-    const formDataToSubmit = new FormData();
+    // const formDataToSubmit = new FormData();
 
-    formDataToSubmit.append('elpsId', this.form.get('elpsId').value);
-    formDataToSubmit.append('firstName', this.form.get('firstName').value);
-    formDataToSubmit.append('lastName', this.form.get('lastName').value);
-    formDataToSubmit.append('email', this.form.get('email').value);
-    formDataToSubmit.append('phoneNo', this.form.get('phoneNo').value);
-    formDataToSubmit.append('userType', this.form.get('userType').value);
-    formDataToSubmit.append('userRole', this.form.get('role').value);
-    // formDataToSubmit.append('officeId', this.form.get('officeId').value);
-    // formDataToSubmit.append('branchId', this.form.get('branchId').value);
-    formDataToSubmit.append('status', this.form.get('status').value);
-    // formDataToSubmit.append('signatureImage', this.file);
+    // formDataToSubmit.append('elpsId', this.form.get('elpsId').value);
+    // formDataToSubmit.append('firstName', this.form.get('firstName').value);
+    // formDataToSubmit.append('lastName', this.form.get('lastName').value);
+    // formDataToSubmit.append('email', this.form.get('email').value);
+    // formDataToSubmit.append('phoneNo', this.form.get('phoneNo').value);
+    // formDataToSubmit.append('userType', this.form.get('userType').value);
+    // formDataToSubmit.append('userRole', this.form.get('role').value);
+    // formDataToSubmit.append('sbu', this.form.get('sbu').value);
+    // // formDataToSubmit.append('officeId', this.form.get('officeId').value);
+    // // formDataToSubmit.append('branchId', this.form.get('branchId').value);
+    // formDataToSubmit.append('status', this.form.get('status').value);
+    // // formDataToSubmit.append('signatureImage', this.file);
 
-    this.auth.createStaff(formDataToSubmit).subscribe({
+    this.adminService.addUser(this.form.getRawValue()).subscribe({
       next: (res) => {
         if (res.success) {
           this.snackBar.open('Staff was created successfully!', null, {
@@ -159,24 +192,25 @@ export class UserFormComponent implements OnInit {
   updateUser() {
     this.modalService.logCover();
 
-    this.form.controls['elpsId'].setValue(this.selectedUserFromElps.id);
+    // this.form.controls['elpsId'].setValue(this.selectedUserFromElps.id);
 
-    const formDataToSubmit = new FormData();
+    // const formDataToSubmit = new FormData();
 
-    // formDataToSubmit.append('elpsId', this.form.get('elpsId').value);
-    formDataToSubmit.append('id', this.form.get('id').value);
-    formDataToSubmit.append('firstName', this.form.get('firstName').value);
-    formDataToSubmit.append('lastName', this.form.get('lastName').value);
-    formDataToSubmit.append('email', this.form.get('email').value);
-    formDataToSubmit.append('phoneNo', this.form.get('phoneNo').value);
-    formDataToSubmit.append('userType', this.form.get('userType').value);
-    formDataToSubmit.append('userRole', this.form.get('role').value);
-    // formDataToSubmit.append('officeId', this.form.get('officeId').value);
-    // formDataToSubmit.append('branchId', this.form.get('branchId').value);
-    formDataToSubmit.append('status', this.form.get('status').value);
-    // formDataToSubmit.append('signatureImage', this.file);
+    // // formDataToSubmit.append('elpsId', this.form.get('elpsId').value);
+    // formDataToSubmit.append('id', this.form.get('id').value);
+    // formDataToSubmit.append('firstName', this.form.get('firstName').value);
+    // formDataToSubmit.append('lastName', this.form.get('lastName').value);
+    // formDataToSubmit.append('email', this.form.get('email').value);
+    // formDataToSubmit.append('phoneNo', this.form.get('phoneNo').value);
+    // formDataToSubmit.append('userType', this.form.get('userType').value);
+    // formDataToSubmit.append('userRole', this.form.get('role').value);
+    // formDataToSubmit.append('sbu', this.form.get('sbu').value);
+    // // formDataToSubmit.append('officeId', this.form.get('officeId').value);
+    // // formDataToSubmit.append('branchId', this.form.get('branchId').value);
+    // formDataToSubmit.append('status', this.form.get('status').value);
+    // // formDataToSubmit.append('signatureImage', this.file);
 
-    this.auth.updateStaff(formDataToSubmit).subscribe({
+    this.auth.updateStaff(this.form.getRawValue()).subscribe({
       next: (res) => {
         if (res.success) {
           this.snackBar.open('Staff was updated successfully!', null, {
@@ -195,12 +229,16 @@ export class UserFormComponent implements OnInit {
             panelClass: ['error'],
           }
         );
+        this.dialogRef.close();
+
         this.modalService.togCover();
       },
     });
   }
 
-  onClose() {}
+  onClose() {
+    console.log(this.form, this.form.getRawValue());
+  }
 
   onFileChange(event: any) {
     this.file = event.target.files[0];
@@ -235,11 +273,15 @@ export class UserFormComponent implements OnInit {
   }
 
   setFormValues(user: StaffWithName) {
-    this.form.controls['firstName'].setValue(user.firstName);
-    this.form.controls['lastName'].setValue(user.lastName);
+    console.log('user....', user.firstName, user.lastName);
+    // this.form.controls['firstName'].setValue(user.firstName);
+    // this.form.controls['lastName'].setValue(user.lastName);
     this.form.controls['email'].setValue(user.email);
-    this.form.controls['phoneNo'].setValue(user.phoneNo);
-    this.form.controls['userType'].setValue('Staff');
+    this.form.controls['name'].setValue(user.lastName + ', ' + user.firstName);
+    this.form.controls['phonE_NO'].setValue(user.phoneNo);
+    // this.form.controls['userType'].setValue('Staff');
+
+    this.cd;
   }
 }
 
