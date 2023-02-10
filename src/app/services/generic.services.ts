@@ -611,6 +611,7 @@ export class GenericService {
 
   addCurrencyDecimal(event) {
     let e = event.target as HTMLInputElement;
+    if (!e.value) return '';
     let term = parseFloat(e.value.toString().replace(/,+/g, '')).toFixed(2);
 
     let halfone = this.formatNum(term.split('.')[0]);
