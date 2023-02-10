@@ -2600,11 +2600,11 @@ export class SWPHseComponent implements OnInit {
     this.getDoYouHavePreviousYearWasteInventoryReport.valueChanges.subscribe(
       (c: 'YES' | 'NO') => {
         if (c === 'YES') {
-          this.getRemark.disable();
+          this.getReasonForNoEvidenceOfEWDP.disable();
           this.getEvidenceOfEWDPFilename.enable();
         } else {
           this.getEvidenceOfEWDPFilename.disable();
-          this.getRemark.enable();
+          this.getReasonForNoEvidenceOfEWDP.enable();
         }
       }
     );
@@ -2646,7 +2646,7 @@ export class SWPHseComponent implements OnInit {
 
   public get getEvidenceOfTrainingPlanFilename() {
     return this.SafetyCultureTrainingForm.controls[
-      'evidenceOfTrainingPlanFilename'
+      'EvidenceOfTrainingPlanFilename'
     ];
   }
 
@@ -2725,7 +2725,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   public get getGHGApprovalFilename() {
-    return this.GHGManagementPlanForm.controls['gHGApprovalFilename'];
+    return this.GHGManagementPlanForm.controls['GHGApprovalFilename'];
   }
 
   public get getReasonForNoGHG() {
@@ -2737,7 +2737,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   public get getLDRCertificateFilename() {
-    return this.GHGManagementPlanForm.controls['lDRCertificateFilename'];
+    return this.GHGManagementPlanForm.controls['LDRCertificateFilename'];
   }
 
   public get getReasonForNoLDR() {
@@ -3243,6 +3243,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
+    console.log(this.wasteManagementDZForm);
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
 

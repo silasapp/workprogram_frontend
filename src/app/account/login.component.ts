@@ -57,6 +57,12 @@ export class LoginComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       this.genk.isAdmin =
         this.authenticationService.currentUserValue.companyName === 'Admin';
+
+      console.log(
+        'checking....',
+        this.genk.isAdmin,
+        this.authenticationService.currentUserValue
+      );
       this.router.navigate(['/' + this.genk.company, 'dashboard']);
     }
     //alert(this.authenticationService.currentUserValue.companyId);
