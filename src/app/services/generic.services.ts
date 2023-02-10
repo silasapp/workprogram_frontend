@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ApplicationDetails } from '../models/application-details';
 import { CONCESSION_SITUATION } from '../models/step1-concession.model';
@@ -835,6 +836,15 @@ export class GenericService {
     )
       return true;
     return false;
+  }
+
+  removeComma(form: FormGroup) {
+    let controls = Object.values(form.controls);
+    for (let con of controls) {
+      if (!isNaN(con.value.replace(/,/g, '')) && !isNaN(parseInt(con.value.replace(/,/g, '')))) {
+        con.setValue(con.value.replace(/,/g, ''));
+      }
+    }
   }
 }
 

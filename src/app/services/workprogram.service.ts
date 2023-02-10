@@ -3644,6 +3644,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
@@ -3718,15 +3719,17 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_budget_opex`,
+        `${environment.apiUrl}/workprogramme/POST_BUDGET_CAPEX_OPEX`,
         budget,
         { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
