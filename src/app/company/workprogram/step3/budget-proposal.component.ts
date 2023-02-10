@@ -355,7 +355,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     return this.genk.disableForm ? true : null;
   }
 
-  Delete_Budget(id) {
+  Delete_Budget(row) {
     let info = this.budgetProposalBody as budgetProposal;
 
     this.workprogram
@@ -364,14 +364,13 @@ export class SWPBudgetProposalComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        id,
+        row.id,
         'DELETE'
       )
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-          //this.getBudgetData();
-          this.ngOnInit();
+          this.getBudgetData();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -444,7 +443,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       }
     }
     budgetInfo.companyNumber = 0;
-    debugger;
+
     this.workprogram
       .post_BudgetProposal(
         budgetInfo,
@@ -459,7 +458,6 @@ export class SWPBudgetProposalComponent implements OnInit {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
           this.modalService.logNotice('Success', res.message, 'success');
-          this.ngOnInit();
         }
       });
   }
@@ -476,11 +474,11 @@ export class SWPBudgetProposalComponent implements OnInit {
     //this.opexBody.omL_Name= this.genk.OmlName;
     for (let item in this.opexBody) {
       if (item != 'id' && item != 'field_ID') {
-        budgetInfo[item] = this.capexOpexBody[item]?.toString() ?? '';
+        budgetInfo[item] = this.opexBody[item]?.toString() ?? '';
       }
     }
     budgetInfo.companyNumber = 0;
-    debugger;
+
     this.workprogram
       .post_Opex(
         budgetInfo,
