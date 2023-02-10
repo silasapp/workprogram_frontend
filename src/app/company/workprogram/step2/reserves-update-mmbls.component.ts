@@ -1,3 +1,4 @@
+import { object } from '@amcharts/amcharts5';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -413,6 +414,8 @@ export class SWPReserveUpdateComponent implements OnInit {
             new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection(
               res.fiveYearProjection
             );
+            this.ReserveUpdateFiveYearProjectionForm.controls['fiveyear_Projection_Year'].setValue(res.fiveYearProjection.fiveyear_Projection_Year)
+
         }
         if (res.companyAnnualProduction) {
           this.reserveUpdateOilCondensateCompanyAnnualProductionBody =
@@ -510,7 +513,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdatePreceeding() {
     this.isReserveUpdatePreceedingFormSubmitted = true;
     if (this.ReserveUpdatePreceedingForm.invalid) return;
-
+    this.genk.removeComma(this.ReserveUpdatePreceedingForm);
     this.workprogram
       .saveReserveUpdatePreceeding(
         this.ReserveUpdatePreceedingForm.value,
@@ -536,7 +539,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     console.log(this.ReserveUpdateCurrentForm);
     this.isReserveUpdateCurrentFormSubmitted = true;
     if (this.ReserveUpdateCurrentForm.invalid) return;
-
+    this.genk.removeComma(this.ReserveUpdateCurrentForm);
     this.workprogram
       .saveReserveUpdateCurrent(
         this.ReserveUpdateCurrentForm.value,
@@ -562,7 +565,7 @@ export class SWPReserveUpdateComponent implements OnInit {
     debugger;
     this.isReserveUpdateFiveYearProjectionFormSubmitted = false;
     if (this.ReserveUpdateFiveYearProjectionForm.invalid) return;
-
+    this.genk.removeComma(this.ReserveUpdateFiveYearProjectionForm);
     this.workprogram
       .saveReserveUpdateFiveYearPorjection(
         this.ReserveUpdateFiveYearProjectionForm.value,
@@ -594,6 +597,8 @@ export class SWPReserveUpdateComponent implements OnInit {
     )
       return;
 
+      this.genk.removeComma(this.reserveupdateOilCondensateReservesAdditionForm);
+      this.genk.removeComma(this.reserveUpdateOilCondensateReservesDeclineForm);
     forkJoin([
       this.workprogram.saveReserveUpdateOilCondensateCompanyAnnualProduction(
         this.reserveUpdateOilCondensateCompanyAnnualProductionForm.value,
@@ -630,6 +635,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveReplacementRatio() {
     this.isReserveReplacementRatioFormSubmitted = true;
     if (this.reserveReplacementRatioForm.invalid) return;
+    this.genk.removeComma(this.reserveReplacementRatioForm);
 
     this.workprogram
       .saveReserveReplacementRatio(
@@ -655,7 +661,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateDepletionRate() {
     this.isReserveUpdateDepletionRateFormSubmitted = true;
     if (this.reserveUpdateDepletionRateForm.invalid) return;
-
+    this.genk.removeComma(this.reserveUpdateDepletionRateForm);
     this.workprogram
       .saveReserveUpdateDepletionRate(
         this.reserveUpdateDepletionRateForm.value,
@@ -680,7 +686,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   saveReserveUpdateLifeIndex() {
     this.isReserveUpdateLifeIndexFormSubmitted = true;
     if (this.reserveUpdateLifeIndexForm.invalid) return;
-
+    this.genk.removeComma(this.reserveUpdateLifeIndexForm);
     this.workprogram
       .saveReserveUpdateLifeIndex(
         this.reserveUpdateLifeIndexForm.value,
@@ -723,6 +729,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   Submit_planningMinimumRequirement() {
     this.isPlanningMinimumRequirementFormSubmitted = true;
     if (this.planningMinimumRequirementForm.invalid) return;
+    this.genk.removeComma(this.planningMinimumRequirementForm);
 
     this.workprogram
       .post_planningMinimumRequirement(
