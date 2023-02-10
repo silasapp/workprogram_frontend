@@ -40,6 +40,7 @@ export class AppComponent {
     this.genk = gen;
     this.authenticationService = auth;
     this.genk.wpYear = localStorage.getItem('wkpYear');
+    this.genk.wkProposedYear= Number(this.genk.wpYear);
     this.genk.fieldName = localStorage.getItem('fieldName');
     this.genk.OmlName = localStorage.getItem('OmlName');
     this.genk.fieldFullName = localStorage.getItem('fieldFullName');

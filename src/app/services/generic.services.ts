@@ -31,7 +31,7 @@ export class GenericService {
   workprogram = 'workprogram';
   generalReport = 'generalreport';
   empty = ' ';
-  wkProposedYear = new Date().getFullYear();
+  
 
   public disableForm: boolean = true;
   public Concession$ = new BehaviorSubject<IConcession>(
@@ -55,6 +55,7 @@ export class GenericService {
   pageload = this.pageloadcom.asObservable();
   isAdmin = false;
   wpYear: string;
+  wkProposedYear:number;
   terrain: string;
   geologicalLocation: string;
   OmlName: string = '';

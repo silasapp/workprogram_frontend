@@ -3313,21 +3313,21 @@ export class SWPHseComponent implements OnInit {
     if (this.ManagementPositionForm.invalid) return;
 
     const formDataToSubmit: FormData = new FormData();
-
+debugger;
     if (this.PromotionFile)
+      formDataToSubmit.append(
+        this.PromotionNameDoc,
+        this.PromotionFile,
+        this.PromotionNewName
+      );
+debugger;
+    if (this.OrganogramFile)
       formDataToSubmit.append(
         this.OrganogramNameDoc,
         this.OrganogramFile,
-        this.PromotionNewName
+        this.OrganogramNewName
       );
-
-    if (this.PromotionFile)
-      formDataToSubmit.append(
-        this.OrganogramNameDoc,
-        this.OrganogramFile,
-        this.PromotionNewName
-      );
-
+debugger;
     this.workprogram
       .post_HSE_Management_Position(
         formDataToSubmit,
