@@ -27,7 +27,7 @@ export class SWPStrategicPlansComponent implements OnInit {
     {} as STRATEGIC_PLANS_ON_COMPANY_BASES;
 
   strategicData: STRATEGIC_PLANS_ON_COMPANY_BASES[];
-  wkpYear: string;
+  wkpYear: number;
   wkpYearList = [];
   concessionHeld: string;
   concessionHeldList = [];
@@ -54,6 +54,9 @@ export class SWPStrategicPlansComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
+
+    this.wkpYear= Number(this.genk.wpYear);
     this.genk.activeStep = 'STEP4';
     this.strategicplansForm = new FormGroup(
       {
