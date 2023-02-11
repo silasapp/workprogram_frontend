@@ -93,11 +93,12 @@ export class UserFormComponent implements OnInit {
     //   sbU_ID: e.sbU_ID,
 
     this.form = this.formBuilder.group({
-      // elpsId: [this.currentValue ? currentUserId : '', Validators.required],
+      elpsId: [this.currentValue ? currentUserId : '', Validators.required],
       id: [this.currentValue ? this.currentValue.id : ''],
       // firstName: [this.currentValue ? this.currentValue.firstName : ''],
       // lastName: [this.currentValue ? this.currentValue.lastName : ''],
       companY_NAME: ['Admin'],
+      companY_ID: ['companY_ID'],
       name: [this.currentValue ? this.currentValue.name : ''],
       email: [
         this.currentValue ? this.currentValue.email : '',
@@ -111,12 +112,12 @@ export class UserFormComponent implements OnInit {
       //   this.currentValue ? this.currentValue.role : '',
       //   Validators.required,
       // ],
-      rolE_ID: ['', Validators.required],
+      rolE_ID: [0, Validators.required],
       // sbu: [
       //   this.currentValue ? this.currentValue.role : '',
       //   Validators.required,
       // ],
-      sbU_ID: ['', Validators.required],
+      sbU_ID: [0],
       // officeId: [this.currentValue ? this.currentValue.officeId : ''],
       // branchId: [this.currentValue ? this.currentValue.branchId : ''],
       status: [
@@ -273,7 +274,8 @@ export class UserFormComponent implements OnInit {
   }
 
   setFormValues(user: StaffWithName) {
-    console.log('user....', user.firstName, user.lastName);
+    console.log('user....', user.firstName, user.lastName, user.email, user);
+    this.form.controls['elpsId'].setValue(user.id);
     // this.form.controls['firstName'].setValue(user.firstName);
     // this.form.controls['lastName'].setValue(user.lastName);
     this.form.controls['email'].setValue(user.email);
