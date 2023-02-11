@@ -27,6 +27,7 @@ export class AuthenticationService {
   private secretKey = '8080808080805010';
 
   constructor(private http: HttpClient, private modalService: ModalService) {
+    debugger;
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
     );
@@ -70,12 +71,16 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
+
+    // localStorage.removeItem('currentUser');
+    // localStorage.removeItem('token');
+    localStorage.clear();
+
+    console.log('Called logout..', localStorage.getItem('currentUser'));
 
     this.currentUserSubject.next(null);
     this._isLoggedIn = false;
-
+    debugger;
     window.location.assign(`${environment.apiUrl}/auth/log-out`);
   }
 

@@ -9,7 +9,7 @@ export const environment = {
   // apiUrl: 'https://localhost:7129/api',
 
   elpsBase: 'https://elpsdemo.dpr.gov.ng',
-  appid: 'bfbc3f25-be04-440e-9849-ccb609df1be5',
+  appid: 'b2f4707c-1ccf-4ff2-b3ab-551b3c8a0215',
 };
 
 /*

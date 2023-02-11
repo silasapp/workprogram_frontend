@@ -55,8 +55,19 @@ export class LoginComponent implements OnInit {
     this.genk = gen;
     this.authenticationService = auth;
     if (this.authenticationService.currentUserValue) {
-      this.genk.isAdmin =
-        this.authenticationService.currentUserValue.companyName === 'Admin';
+      // this.genk.isAdmin =
+      //   this.authenticationService.currentUserValue.companyName === 'Admin';
+
+      console.log('curren', this.authenticationService.currentUserValue);
+      this.genk.setAdminSubject.next(
+        this.authenticationService.currentUserValue.companyName === 'Admin'
+      );
+
+      console.log(
+        'checking....',
+        this.genk.isAdmin,
+        this.authenticationService.currentUserValue
+      );
       this.router.navigate(['/' + this.genk.company, 'dashboard']);
     }
     //alert(this.authenticationService.currentUserValue.companyId);
@@ -100,7 +111,7 @@ export class LoginComponent implements OnInit {
             this.userId
           )
           .subscribe((user: User) => {
-            console.log('users...', user);
+            debugger;
             if (user) {
               let returnUrl =
                 this.route.snapshot.queryParamMap.get('returnUrl');
