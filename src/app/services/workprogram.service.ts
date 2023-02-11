@@ -2729,6 +2729,7 @@ import {
 import {
   budgetProposal,
   CAPEX,
+  capexOpex,
   OPEX,
 } from '../models/step3-budget-proposal.model';
 import {
@@ -3712,7 +3713,7 @@ export class WorkProgramService {
   }
 
   post_Opex(
-    budget: OPEX,
+    budget: capexOpex,
     year: string,
     omlName: string,
     fieldName: string,
