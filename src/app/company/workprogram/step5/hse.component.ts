@@ -3281,7 +3281,7 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfReInjectionNewName
       );
     }
-
+debugger;
     this.workprogram
       .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
