@@ -3243,6 +3243,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
+    debugger;
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
 
@@ -3280,7 +3281,7 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfReInjectionNewName
       );
     }
-
+debugger;
     this.workprogram
       .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
