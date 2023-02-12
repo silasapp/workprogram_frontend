@@ -7395,7 +7395,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -7463,7 +7463,7 @@
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_HSE_Remediation_Fund(row)"
+                (click)="Delete_HSE_Remediation_Fund(row.id)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_REMEDIATION_FUNDs)"
               >
                 Delete
