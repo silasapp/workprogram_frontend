@@ -1025,6 +1025,13 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   developmentDrillingForm: FormGroup;
   facilitiesDevelopmentForm: FormGroup;
   productionCostForm: FormGroup;
+
+  public isExploratoryActivitiesFormSubmitted = false;
+  public iBudgetActualExpenditureFormSubmitted = false;
+  public isDevelopmentDrillingFormSubmitted = false;
+  public isFacilitiesDevelopmentFormSubmitted = false;
+  public isProductionCostFormSubmitted = false;
+
   budgetBody: budgetActualExpenditure = {} as budgetActualExpenditure;
   exploratoryBody: exploratoryActivities = {} as exploratoryActivities;
   developmentDrillingBody: developmentDrillingActivities =
@@ -1176,6 +1183,231 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     this.genk = gen;
   }
 
+  ngOnInit(): void {
+    this.genk.activeStep = 'STEP3';
+    this.budgetActualExpenditureForm = new FormGroup({
+      budget_for_Direct_Exploration_and_Production_Activities_NGN:
+        new FormControl(
+          this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN,
+          Validators.required
+        ),
+      budget_for_Direct_Exploration_and_Production_Activities_USD:
+        new FormControl(
+          this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD,
+          Validators.required
+        ),
+      budget_for_other_Activities_NGN: new FormControl(
+        this.budgetBody.budget_for_other_Activities_NGN,
+        Validators.required
+      ),
+      budget_for_other_Activities_USD: new FormControl(
+        this.budgetBody.budget_for_other_Activities_USD,
+        Validators.required
+      ),
+      equivalent_Naira_and_Dollar_Component_NGN: new FormControl(
+        this.budgetBody.equivalent_Naira_and_Dollar_Component_NGN,
+        Validators.required
+      ),
+      equivalent_Naira_and_Dollar_Component_USD: new FormControl(
+        this.budgetBody.equivalent_Naira_and_Dollar_Component_USD,
+        Validators.required
+      ),
+    });
+
+    this.exploratoryActivitiesForm = new FormGroup({
+      aCQUISITION_planned: new FormControl(
+        this.exploratoryBody.acquisitioN_planned,
+        Validators.required
+      ),
+      // aCQUISITION_Actual: new FormControl(
+      //   this.exploratoryBody.acquisitioN_Actual,
+      //   Validators.required
+      // ),
+      pROCESSING_planned: new FormControl(
+        this.exploratoryBody.processinG_planned,
+        Validators.required
+      ),
+      // pROCESSING_Actual: new FormControl(
+      //   this.exploratoryBody.processinG_Actual,
+      //   Validators.required
+      // ),
+      rEPROCESSING_planned: new FormControl(
+        this.exploratoryBody.reprocessinG_planned,
+        Validators.required
+      ),
+      // rEPROCESSING_Actual: new FormControl(
+      //   this.exploratoryBody.reprocessinG_Actual,
+      //   Validators.required
+      // ),
+      eXPLORATION_planned: new FormControl(
+        this.exploratoryBody.exploratioN_planned,
+        Validators.required
+      ),
+      // eXPLORATION_Actual: new FormControl(
+      //   this.exploratoryBody.exploratioN_Actual,
+      //   Validators.required
+      // ),
+      aPPRAISAL_planned: new FormControl(
+        this.exploratoryBody.appraisaL_planned,
+        Validators.required
+      ),
+      // aPPRAISAL_Actual: new FormControl(
+      //   this.exploratoryBody.appraisaL_Actual,
+      //   Validators.required
+      // ),
+    });
+    this.developmentDrillingForm = new FormGroup({
+      dEVELOPMENT_planned: new FormControl(
+        this.developmentDrillingBody.developmenT_planned,
+        Validators.required
+      ),
+      dEVELOPMENT_Actual: new FormControl(
+        this.developmentDrillingBody.developmenT_Actual,
+        Validators.required
+      ),
+      wORKOVER_planned: new FormControl(
+        this.developmentDrillingBody.workoveR_planned,
+        Validators.required
+      ),
+      // wORKOVER_Actual: new FormControl(
+      //   this.developmentDrillingBody.workoveR_Actual,
+      //   Validators.required
+      // ),
+      cOMPLETION_planned: new FormControl(
+        this.developmentDrillingBody.completioN_planned,
+        Validators.required
+      ),
+      // cOMPLETION_Actual: new FormControl(
+      //   this.developmentDrillingBody.completioN_Actual,
+      //   Validators.required
+      // ),
+    });
+    this.facilitiesDevelopmentForm = new FormGroup({
+      concepT_planned: new FormControl(
+        this.facilitiesDevelopmentBody.concepT_planned,
+        Validators.required
+      ),
+      // concepT_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.concepT_Actual,
+      //   Validators.required
+      // ),
+      feeD_planned: new FormControl(
+        this.facilitiesDevelopmentBody.feeD_planned,
+        Validators.required
+      ),
+      // feeD_COST_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.feeD_COST_Actual,
+      //   Validators.required
+      // ),
+      detaileD_ENGINEERING_planned: new FormControl(
+        this.facilitiesDevelopmentBody.detaileD_ENGINEERING_planned,
+        Validators.required
+      ),
+      // detaileD_ENGINEERING_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.detaileD_ENGINEERING_Actual,
+      //   Validators.required
+      // ),
+      procuremenT_planned: new FormControl(
+        this.facilitiesDevelopmentBody.procuremenT_planned,
+        Validators.required
+      ),
+      // procuremenT_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.procuremenT_Actual,
+      //   Validators.required
+      // ),
+      constructioN_FABRICATION_planned: new FormControl(
+        this.facilitiesDevelopmentBody.constructioN_FABRICATION_planned,
+        Validators.required
+      ),
+      // constructioN_FABRICATION_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.constructioN_FABRICATION_Actual,
+      //   Validators.required
+      // ),
+      installatioN_planned: new FormControl(
+        this.facilitiesDevelopmentBody.installatioN_planned,
+        Validators.required
+      ),
+      // installatioN_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.installatioN_Actual,
+      //   Validators.required
+      // ),
+      upgradE_MAINTENANCE_planned: new FormControl(
+        this.facilitiesDevelopmentBody.upgradE_MAINTENANCE_planned,
+        Validators.required
+      ),
+      // upgradE_MAINTENANCE_Actual: new FormControl(
+      //   this.facilitiesDevelopmentBody.upgradE_MAINTENANCE_Actual,
+      //   Validators.required
+      // ),
+      decommissioninG_ABANDONMENT: new FormControl(
+        this.facilitiesDevelopmentBody.decommissioninG_ABANDONMENT,
+        Validators.required
+      ),
+    });
+
+    this.productionCostForm = new FormGroup({
+      direcT_COST_planned: new FormControl(
+        this.productionCostBody.direcT_COST_planned,
+        Validators.required
+      ),
+      // direcT_COST_Actual: new FormControl(
+      //   this.productionCostBody.direcT_COST_Actual,
+      //   Validators.required
+      // ),
+      indirecT_COST_planned: new FormControl(
+        this.productionCostBody.indirecT_COST_planned,
+        Validators.required
+      ),
+      // indirecT_COST_Actual: new FormControl(
+      //   this.productionCostBody.indirecT_COST_Actual,
+      //   Validators.required
+      // ),
+    });
+
+    this.genk.Concession$.subscribe((con: IConcession) => {
+      if (!con) {
+        this.genk.disableForm = true;
+        this.cd.markForCheck();
+        return;
+      }
+
+      this.genk.disableForm =
+        this.genk.Fields?.length > 0
+          ? !this.genk.Field.isEditable
+          : !con.isEditable;
+      this.cd.markForCheck();
+    });
+
+    this.getBudgetData();
+  }
+
+  public get eb() {
+    return this.exploratoryActivitiesForm.controls;
+  }
+
+  public get dd() {
+    return this.developmentDrillingForm.controls;
+  }
+
+  public get ba() {
+    return this.budgetActualExpenditureForm.controls;
+  }
+
+  public get fd() {
+    return this.facilitiesDevelopmentForm.controls;
+  }
+
+  public get pc() {
+    return this.productionCostForm.controls;
+  }
+
+  isEditable(group: string): boolean | null {
+    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
+      return null;
+    }
+    return this.genk.disableForm ? true : null;
+  }
+
   getBudgetData() {
     this.workprogram
       .getFormThreeBudget(
@@ -1253,217 +1485,14 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           facilitiesDevelopmentInfo = new facilitiesDevelopmentProject();
         }
 
-        this.budgetBody = budgetInfo;
-        this.exploratoryBody = exploratoryInfo;
-        this.developmentDrillingBody = developmentDrillingInfo;
-        this.facilitiesDevelopmentBody = facilitiesDevelopmentInfo;
-        this.productionCostBody = productionCostInfo;
+        // this.budgetBody = budgetInfo;
+        // this.exploratoryBody = exploratoryInfo;
+        // this.developmentDrillingBody = developmentDrillingInfo;
+        // this.facilitiesDevelopmentBody = facilitiesDevelopmentInfo;
+        // this.productionCostBody = productionCostInfo;
 
         this.cd.markForCheck();
       });
-  }
-
-  ngOnInit(): void {
-    this.genk.activeStep = 'STEP3';
-    this.budgetActualExpenditureForm = new FormGroup({
-      budget_for_Direct_Exploration_and_Production_Activities_NGN:
-        new FormControl(
-          this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_NGN,
-          Validators.required
-        ),
-      budget_for_Direct_Exploration_and_Production_Activities_USD:
-        new FormControl(
-          this.budgetBody.budget_for_Direct_Exploration_and_Production_Activities_USD,
-          Validators.required
-        ),
-      budget_for_other_Activities_NGN: new FormControl(
-        this.budgetBody.budget_for_other_Activities_NGN,
-        Validators.required
-      ),
-      budget_for_other_Activities_USD: new FormControl(
-        this.budgetBody.budget_for_other_Activities_USD,
-        Validators.required
-      ),
-      equivalent_Naira_and_Dollar_Component_NGN: new FormControl(
-        this.budgetBody.equivalent_Naira_and_Dollar_Component_NGN,
-        Validators.required
-      ),
-      equivalent_Naira_and_Dollar_Component_USD: new FormControl(
-        this.budgetBody.equivalent_Naira_and_Dollar_Component_USD,
-        Validators.required
-      ),
-    });
-    this.exploratoryActivitiesForm = new FormGroup({
-      aCQUISITION_planned: new FormControl(
-        this.exploratoryBody.acquisitioN_planned,
-        Validators.required
-      ),
-      aCQUISITION_Actual: new FormControl(
-        this.exploratoryBody.acquisitioN_Actual,
-        Validators.required
-      ),
-      pROCESSING_planned: new FormControl(
-        this.exploratoryBody.processinG_planned,
-        Validators.required
-      ),
-      pROCESSING_Actual: new FormControl(
-        this.exploratoryBody.processinG_Actual,
-        Validators.required
-      ),
-      rEPROCESSING_planned: new FormControl(
-        this.exploratoryBody.reprocessinG_planned,
-        Validators.required
-      ),
-      rEPROCESSING_Actual: new FormControl(
-        this.exploratoryBody.reprocessinG_Actual,
-        Validators.required
-      ),
-      eXPLORATION_planned: new FormControl(
-        this.exploratoryBody.exploratioN_planned,
-        Validators.required
-      ),
-      eXPLORATION_Actual: new FormControl(
-        this.exploratoryBody.exploratioN_Actual,
-        Validators.required
-      ),
-      aPPRAISAL_planned: new FormControl(
-        this.exploratoryBody.appraisaL_planned,
-        Validators.required
-      ),
-      aPPRAISAL_Actual: new FormControl(
-        this.exploratoryBody.appraisaL_Actual,
-        Validators.required
-      ),
-    });
-    this.developmentDrillingForm = new FormGroup({
-      dEVELOPMENT_planned: new FormControl(
-        this.developmentDrillingBody.developmenT_planned,
-        Validators.required
-      ),
-      dEVELOPMENT_Actual: new FormControl(
-        this.developmentDrillingBody.developmenT_Actual,
-        Validators.required
-      ),
-      wORKOVER_planned: new FormControl(
-        this.developmentDrillingBody.workoveR_planned,
-        Validators.required
-      ),
-      wORKOVER_Actual: new FormControl(
-        this.developmentDrillingBody.workoveR_Actual,
-        Validators.required
-      ),
-      cOMPLETION_planned: new FormControl(
-        this.developmentDrillingBody.completioN_planned,
-        Validators.required
-      ),
-      cOMPLETION_Actual: new FormControl(
-        this.developmentDrillingBody.completioN_Actual,
-        Validators.required
-      ),
-    });
-    this.facilitiesDevelopmentForm = new FormGroup({
-      concepT_planned: new FormControl(
-        this.facilitiesDevelopmentBody.concepT_planned,
-        Validators.required
-      ),
-      concepT_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.concepT_Actual,
-        Validators.required
-      ),
-      feeD_planned: new FormControl(
-        this.facilitiesDevelopmentBody.feeD_planned,
-        Validators.required
-      ),
-      feeD_COST_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.feeD_COST_Actual,
-        Validators.required
-      ),
-      detaileD_ENGINEERING_planned: new FormControl(
-        this.facilitiesDevelopmentBody.detaileD_ENGINEERING_planned,
-        Validators.required
-      ),
-      detaileD_ENGINEERING_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.detaileD_ENGINEERING_Actual,
-        Validators.required
-      ),
-      procuremenT_planned: new FormControl(
-        this.facilitiesDevelopmentBody.procuremenT_planned,
-        Validators.required
-      ),
-      procuremenT_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.procuremenT_Actual,
-        Validators.required
-      ),
-      constructioN_FABRICATION_planned: new FormControl(
-        this.facilitiesDevelopmentBody.constructioN_FABRICATION_planned,
-        Validators.required
-      ),
-      constructioN_FABRICATION_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.constructioN_FABRICATION_Actual,
-        Validators.required
-      ),
-      installatioN_planned: new FormControl(
-        this.facilitiesDevelopmentBody.installatioN_planned,
-        Validators.required
-      ),
-      installatioN_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.installatioN_Actual,
-        Validators.required
-      ),
-      upgradE_MAINTENANCE_planned: new FormControl(
-        this.facilitiesDevelopmentBody.upgradE_MAINTENANCE_planned,
-        Validators.required
-      ),
-      upgradE_MAINTENANCE_Actual: new FormControl(
-        this.facilitiesDevelopmentBody.upgradE_MAINTENANCE_Actual,
-        Validators.required
-      ),
-      decommissioninG_ABANDONMENT: new FormControl(
-        this.facilitiesDevelopmentBody.decommissioninG_ABANDONMENT,
-        Validators.required
-      ),
-    });
-    this.productionCostForm = new FormGroup({
-      direcT_COST_planned: new FormControl(
-        this.productionCostBody.direcT_COST_planned,
-        Validators.required
-      ),
-      direcT_COST_Actual: new FormControl(
-        this.productionCostBody.direcT_COST_Actual,
-        Validators.required
-      ),
-      indirecT_COST_planned: new FormControl(
-        this.productionCostBody.indirecT_COST_planned,
-        Validators.required
-      ),
-      indirecT_COST_Actual: new FormControl(
-        this.productionCostBody.indirecT_COST_Actual,
-        Validators.required
-      ),
-    });
-
-    this.genk.Concession$.subscribe((con: IConcession) => {
-      if (!con) {
-        this.genk.disableForm = true;
-        this.cd.markForCheck();
-        return;
-      }
-
-      this.genk.disableForm =
-        this.genk.Fields?.length > 0
-          ? !this.genk.Field.isEditable
-          : !con.isEditable;
-      this.cd.markForCheck();
-    });
-
-    this.getBudgetData();
-  }
-
-  isEditable(group: string): boolean | null {
-    if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
-      return null;
-    }
-    return this.genk.disableForm ? true : null;
   }
 
   Delete_Exploratory(row) {
@@ -1885,7 +1914,9 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   // }
 
   saveExploratory() {
-    debugger;
+    this.isExploratoryActivitiesFormSubmitted = true;
+    if (this.exploratoryActivitiesForm.invalid) return;
+
     let budgetInfo = {} as exploratoryActivities;
     this.exploratoryBody.id = 0;
     //this.exploratoryBody.year_of_WP = this.genk.wpYear;
@@ -1896,7 +1927,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           this.exploratoryBody[item]?.toString() ?? '';
       }
     }
-    debugger;
+
     this.workprogram
       .post_Exploratory(
         budgetInfo,
@@ -1909,6 +1940,11 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isExploratoryActivitiesFormSubmitted = false;
+          this.exploratoryBody = {} as exploratoryActivities;
+          this.exploratoryActivitiesForm = this.updateFormValidity(
+            this.exploratoryActivitiesForm
+          );
           this.getBudgetData();
         },
         error: (error) => {
@@ -1918,11 +1954,14 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
 
   saveDevelopmentDrilling() {
-    debugger;
+    this.isDevelopmentDrillingFormSubmitted = true;
+    this.cd.markForCheck();
+    if (this.developmentDrillingForm.invalid) return;
+
     let budgetInfo = {} as developmentDrillingActivities;
     this.developmentDrillingBody.id = 0;
     //this.developmentDrillingBody.year_of_WP = this.genk.wpYear;
-   // this.developmentDrillingBody.omL_Name = this.genk.OmlName;
+    // this.developmentDrillingBody.omL_Name = this.genk.OmlName;
     for (let item in this.developmentDrillingBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
@@ -1942,6 +1981,11 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isDevelopmentDrillingFormSubmitted = false;
+          this.developmentDrillingBody = {} as developmentDrillingActivities;
+          this.developmentDrillingForm = this.updateFormValidity(
+            this.developmentDrillingForm
+          );
           this.getBudgetData();
         },
         error: (error) => {
@@ -1951,6 +1995,9 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
 
   saveFacilitiesDevelopment() {
+    this.isFacilitiesDevelopmentFormSubmitted = true;
+    if (this.facilitiesDevelopmentForm.invalid) return;
+
     let budgetInfo = {} as facilitiesDevelopmentProject;
     this.facilitiesDevelopmentBody.id = 0;
     this.facilitiesDevelopmentBody.year_of_WP = this.genk.wpYear;
@@ -1971,18 +2018,27 @@ export class SWPBudgetPerformanceComponent implements OnInit {
         '',
         ''
       )
-      .subscribe((res) => {
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
-
-        this.getBudgetData();
+          this.isFacilitiesDevelopmentFormSubmitted = false;
+          this.facilitiesDevelopmentBody = {} as facilitiesDevelopmentProject;
+          this.facilitiesDevelopmentForm = this.updateFormValidity(
+            this.facilitiesDevelopmentForm
+          );
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
   saveProductionCost() {
+    console.log(this.productionCostForm);
+    this.isProductionCostFormSubmitted = true;
+    if (this.productionCostForm.invalid) return;
+
     let budgetInfo = {} as productionCost;
     this.productionCostBody.id = 0;
     this.productionCostBody.year_of_WP = this.genk.wpYear;
@@ -2005,12 +2061,30 @@ export class SWPBudgetPerformanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isProductionCostFormSubmitted = false;
+          this.productionCostBody = {} as productionCost;
+          this.productionCostForm = this.updateFormValidity(
+            this.productionCostForm
+          );
           this.getBudgetData();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
+  }
+
+  updateFormValidity(form: FormGroup) {
+    form.updateValueAndValidity({ onlySelf: true, emitEvent: false });
+
+    for (const control in form.controls) {
+      form.controls[control].setErrors(null);
+      form.controls[control].markAsPristine();
+      form.controls[control].markAsUntouched();
+      // form.controls[control].updateValueAndValidity();
+    }
+
+    return form;
   }
 
   // onSubmit() {

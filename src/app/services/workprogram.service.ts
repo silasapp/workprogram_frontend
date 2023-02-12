@@ -2728,7 +2728,9 @@ import {
 } from '../models/step3-budget-performance.model';
 import {
   budgetProposal,
+  CAPEX,
   capexOpex,
+  OPEX,
 } from '../models/step3-budget-proposal.model';
 import {
   facilitiesProjectPerformance,
@@ -3659,7 +3661,7 @@ export class WorkProgramService {
   }
 
   post_Capex(
-    budget: capexOpex,
+    budget: CAPEX,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3684,6 +3686,21 @@ export class WorkProgramService {
     return this.http
       .get<any>(
         `${environment.apiUrl}/workprogramme/get_form_three_capex`,
+        // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  get_Opex(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/get_form_three_opex`,
         // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
         { params: { year } }
       )
@@ -3764,7 +3781,7 @@ export class WorkProgramService {
   }
 
   post_FacilityProject(
-    budget: facilitiesProjectPerformance,
+    budget: facilitiesProjectPerformance | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -4228,6 +4245,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_management_position`,

@@ -74,6 +74,17 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['actual_Proposed']?.invalid) ||
+              (og['actual_Proposed']?.dirty && og['actual_Proposed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -181,6 +192,18 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['completion_Status']?.invalid) ||
+              (og['completion_Status']?.dirty &&
+                og['completion_Status']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -205,6 +228,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['conceptual']?.invalid) ||
+              (og['conceptual']?.dirty && og['conceptual']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -228,6 +262,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['feed']?.invalid) ||
+              (og['feed']?.dirty && og['feed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -256,6 +301,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['detailed_Engineering']?.invalid) ||
+              (og['detailed_Engineering']?.dirty &&
+                og['detailed_Engineering']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -280,6 +338,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['construction_Commissioning_']?.invalid) ||
+              (og['construction_Commissioning_']?.dirty &&
+                og['construction_Commissioning_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -303,6 +374,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['production_Product_Offtakers']?.invalid) ||
+              (og['production_Product_Offtakers']?.dirty &&
+                og['production_Product_Offtakers']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -331,6 +415,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['challenges']?.invalid) ||
+              (og['challenges']?.dirty && og['challenges']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -354,6 +449,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['project_Timeline']?.invalid) ||
+              (og['project_Timeline']?.dirty && og['project_Timeline']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -384,6 +490,19 @@
               <option value="No">No</option>
             </select>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['approval_License_Permits']?.invalid) ||
+              (og['approval_License_Permits']?.dirty &&
+                og['approval_License_Permits']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -418,6 +537,17 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['new_Technology_']?.invalid) ||
+              (og['new_Technology_']?.dirty && og['new_Technology_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Has it been adopted by NUPRC?</label>
@@ -447,6 +577,18 @@
             </select>
           </div>
         </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['has_it_been_adopted_by_DPR_']?.invalid) ||
+              (og['has_it_been_adopted_by_DPR_']?.dirty &&
+                og['has_it_been_adopted_by_DPR_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Comment</label>
@@ -469,6 +611,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['comment_']?.invalid) ||
+              (og['comment_']?.dirty && og['comment_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -504,6 +657,19 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['planned_ongoing_and_routine_maintenance']?.invalid) ||
+              (og['planned_ongoing_and_routine_maintenance']?.dirty &&
+                og['planned_ongoing_and_routine_maintenance']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Project Stage</label>
@@ -526,6 +692,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['project_Stage']?.invalid) ||
+              (og['project_Stage']?.dirty && og['project_Stage']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -550,6 +727,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['nigerian_Content_Value']?.invalid) ||
+              (og['nigerian_Content_Value']?.dirty &&
+                og['nigerian_Content_Value']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -585,6 +775,20 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isOilAndGasFormSubmitted &&
+                    og['actual_capital_expenditure_Current_year_NGN']
+                      ?.invalid) ||
+                  (og['actual_capital_expenditure_Current_year_NGN']?.dirty &&
+                    og['actual_capital_expenditure_Current_year_NGN']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -610,6 +814,20 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isOilAndGasFormSubmitted &&
+                    og['actual_capital_expenditure_Current_year_USD']
+                      ?.invalid) ||
+                  (og['actual_capital_expenditure_Current_year_USD']?.dirty &&
+                    og['actual_capital_expenditure_Current_year_USD']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
         </div>
@@ -643,6 +861,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isOilAndGasFormSubmitted &&
+                    og['proposed_Capital_Expenditure_NGN']?.invalid) ||
+                  (og['proposed_Capital_Expenditure_NGN']?.dirty &&
+                    og['proposed_Capital_Expenditure_NGN']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -667,6 +898,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isOilAndGasFormSubmitted &&
+                    og['proposed_Capital_Expenditure_USD']?.invalid) ||
+                  (og['proposed_Capital_Expenditure_USD']?.dirty &&
+                    og['proposed_Capital_Expenditure_USD']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -676,6 +920,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="oilAndGasForm.invalid ? 'cursor: default' : ''"
           (click)="saveOilGas()"
           [attr.disabled]="
             isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
@@ -760,6 +1005,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['name']?.invalid) ||
+              (nt['name']?.dirty && nt['name']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -784,6 +1040,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['objective']?.invalid) ||
+              (nt['objective']?.dirty && nt['objective']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -807,6 +1074,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted &&
+                nt['existing_Alternatives']?.invalid) ||
+              (nt['existing_Alternatives']?.dirty &&
+                nt['existing_Alternatives']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -841,6 +1121,16 @@
             </select>
           </div>
         </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['dpR_Consent']?.invalid) ||
+              (nt['dpR_Consent']?.dirty && nt['dpR_Consent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Cost (USD)</label>
@@ -863,6 +1153,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['cost']?.invalid) ||
+              (nt['cost']?.dirty && nt['cost']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -887,6 +1188,17 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['benefits']?.invalid) ||
+              (nt['benefits']?.dirty && nt['benefits']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -915,6 +1227,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['challenges']?.invalid) ||
+              (nt['challenges']?.dirty && nt['challenges']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -939,6 +1262,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isNewTechnologyFormSubmitted && nt['timeline']?.invalid) ||
+              (nt['timeline']?.dirty && nt['timeline']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -948,6 +1282,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="newTechnologyForm.invalid ? 'cursor: default' : ''"
           (click)="saveTechnology()"
           [attr.disabled]="
             isEditable(SBUTABLE.NEW_TECHNOLOGY_AND_CONFORMITY_ASSESSMENTs)
@@ -1066,6 +1401,19 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['areThereEvidenceOfDesignSafetyCaseApproval']?.invalid) ||
+              (fp['areThereEvidenceOfDesignSafetyCaseApproval']?.dirty &&
+                fp['areThereEvidenceOfDesignSafetyCaseApproval']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1101,6 +1449,19 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['evidenceOfDesignSafetyCaseApprovalFilename']?.invalid) ||
+              (fp['evidenceOfDesignSafetyCaseApprovalFilename']?.dirty &&
+                fp['evidenceOfDesignSafetyCaseApprovalFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -1134,6 +1495,19 @@
             </textarea>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['reasonForNoEvidence']?.invalid) ||
+              (fp['reasonForNoEvidence']?.dirty &&
+                fp['reasonForNoEvidence']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1161,6 +1535,18 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['list_of_Projects']?.invalid) ||
+              (fp['list_of_Projects']?.dirty && fp['list_of_Projects']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 0 0">
@@ -1184,6 +1570,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['planned_completion']?.invalid) ||
+              (fp['planned_completion']?.dirty &&
+                fp['planned_completion']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -1209,6 +1608,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isFacilitiesProjectPerformanceFormSubmitted &&
+                fp['actual_completion']?.invalid) ||
+              (fp['actual_completion']?.dirty &&
+                fp['actual_completion']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1218,6 +1630,9 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="
+            facilitiesProjectPerformanceForm.invalid ? 'cursor: default' : ''
+          "
           (click)="saveFacility()"
           [attr.disabled]="isEditable(SBUTABLE.FACILITIES_PROJECT_PERFORMANCEs)"
         >
@@ -1226,26 +1641,26 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isTabVisible_3" class="wptablebox">
+
+  <div *ngIf="facilitiesProjectPerformances.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
-          <tr *ngFor="let h of columnHeader_3">
-            <th *ngFor="let d of h | keyvalue">
-              {{ d.key | titlecase }}
+          <tr>
+            <th *ngFor="let h of facColHeaderDef">
+              {{ h.header }}
             </th>
           </tr>
         </thead>
-        <tbody #myTbody *ngFor="let item of columnValue_3">
-          <tr *ngFor="let y of item | keyvalue">
-            <td *ngFor="let x of y.value | keyvalue">
-              {{ x.value }}
+        <tbody>
+          <tr *ngFor="let row of facilitiesProjectPerformances">
+            <td *ngFor="let colDef of facColHeaderDef">
+              {{ row[colDef.columnDef] }}
             </td>
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_Facility($event)"
-                value="{{ y.value.id }}"
+                (click)="Delete_Facility(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.FACILITIES_PROJECT_PERFORMANCEs)
                 "

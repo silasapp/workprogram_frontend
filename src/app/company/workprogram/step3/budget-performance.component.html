@@ -315,6 +315,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isExploratoryActivitiesFormSubmitted &&
+                    eb['aCQUISITION_planned']?.invalid) ||
+                  (eb['aCQUISITION_planned']?.dirty &&
+                    eb['aCQUISITION_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -371,6 +384,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isExploratoryActivitiesFormSubmitted &&
+                    eb['pROCESSING_planned']?.invalid) ||
+                  (eb['pROCESSING_planned']?.dirty &&
+                    eb['pROCESSING_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -426,6 +452,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isExploratoryActivitiesFormSubmitted &&
+                    eb['rEPROCESSING_planned']?.invalid) ||
+                  (eb['rEPROCESSING_planned']?.dirty &&
+                    eb['rEPROCESSING_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -489,6 +528,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isExploratoryActivitiesFormSubmitted &&
+                    eb['eXPLORATION_planned']?.invalid) ||
+                  (eb['eXPLORATION_planned']?.dirty &&
+                    eb['eXPLORATION_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -545,6 +597,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isExploratoryActivitiesFormSubmitted &&
+                    eb['aPPRAISAL_planned']?.invalid) ||
+                  (eb['aPPRAISAL_planned']?.dirty &&
+                    eb['aPPRAISAL_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -576,6 +641,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="exploratoryActivitiesForm.invalid ? 'cursor: default' : ''"
           (click)="saveExploratory()"
           [attr.disabled]="
             isEditable(SBUTABLE.BUDGET_PERFORMANCE_EXPLORATORY_ACTIVITIEs)
@@ -676,6 +742,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isDevelopmentDrillingFormSubmitted &&
+                    dd['dEVELOPMENT_planned']?.invalid) ||
+                  (dd['dEVELOPMENT_planned']?.dirty &&
+                    dd['dEVELOPMENT_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <div style="width: 98%">
@@ -701,6 +780,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isDevelopmentDrillingFormSubmitted &&
+                    dd['dEVELOPMENT_Actual']?.invalid) ||
+                  (dd['dEVELOPMENT_Actual']?.dirty &&
+                    dd['dEVELOPMENT_Actual']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
         </div>
@@ -735,6 +827,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isDevelopmentDrillingFormSubmitted &&
+                    dd['wORKOVER_planned']?.invalid) ||
+                  (dd['wORKOVER_planned']?.dirty &&
+                    dd['wORKOVER_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -792,6 +897,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isDevelopmentDrillingFormSubmitted &&
+                    dd['cOMPLETION_planned']?.invalid) ||
+                  (dd['cOMPLETION_planned']?.dirty &&
+                    dd['cOMPLETION_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -823,6 +941,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="developmentDrillingForm.invalid ? 'cursor: default' : ''"
           (click)="saveDevelopmentDrilling()"
           [attr.disabled]="
             isEditable(
@@ -875,7 +994,7 @@
   <hr size="10" />
 
   <br />
-  <div [formGroup]="facilitiesDevelopmentForm">
+  <form [formGroup]="facilitiesDevelopmentForm">
     <div
       style="
         text-align: start;
@@ -926,6 +1045,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['concepT_planned']?.invalid) ||
+                  (fd['concepT_planned']?.dirty &&
+                    fd['concepT_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -982,6 +1114,18 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['feeD_planned']?.invalid) ||
+                  (fd['feeD_planned']?.dirty && fd['feeD_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -1040,6 +1184,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['detaileD_ENGINEERING_planned']?.invalid) ||
+                  (fd['detaileD_ENGINEERING_planned']?.dirty &&
+                    fd['detaileD_ENGINEERING_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -1102,6 +1259,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['procuremenT_planned']?.invalid) ||
+                  (fd['procuremenT_planned']?.dirty &&
+                    fd['procuremenT_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -1160,6 +1330,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['constructioN_FABRICATION_planned']?.invalid) ||
+                  (fd['constructioN_FABRICATION_planned']?.dirty &&
+                    fd['constructioN_FABRICATION_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -1217,6 +1400,19 @@
                   "
                 />
               </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['installatioN_planned']?.invalid) ||
+                  (fd['installatioN_planned']?.dirty &&
+                    fd['installatioN_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
 
@@ -1278,6 +1474,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['upgradE_MAINTENANCE_planned']?.invalid) ||
+                  (fd['upgradE_MAINTENANCE_planned']?.dirty &&
+                    fd['upgradE_MAINTENANCE_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -1338,6 +1547,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isFacilitiesDevelopmentFormSubmitted &&
+                    fd['decommissioninG_ABANDONMENT']?.invalid) ||
+                  (fd['decommissioninG_ABANDONMENT']?.dirty &&
+                    fd['decommissioninG_ABANDONMENT']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1349,6 +1571,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="facilitiesDevelopmentForm.invalid ? 'cursor: default' : ''"
           (click)="saveFacilitiesDevelopment()"
           [attr.disabled]="
             isEditable(
@@ -1361,7 +1584,7 @@
       </div>
       <br />
     </div>
-  </div>
+  </form>
   <div *ngIf="facilitiesDevelopments.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
@@ -1443,6 +1666,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isProductionCostFormSubmitted &&
+                    pc['direcT_COST_planned']?.invalid) ||
+                  (pc['direcT_COST_planned']?.dirty &&
+                    pc['direcT_COST_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -1497,6 +1733,19 @@
                 />
               </div>
             </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isProductionCostFormSubmitted &&
+                    pc['indirecT_COST_planned']?.invalid) ||
+                  (pc['indirecT_COST_planned']?.dirty &&
+                    pc['indirecT_COST_planned']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
           </div>
 
           <!-- <div style="width: 98%">
@@ -1528,6 +1777,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="productionCostForm.invalid ? 'cursor: default' : ''"
           (click)="saveProductionCost()"
           [attr.disabled]="
             isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)

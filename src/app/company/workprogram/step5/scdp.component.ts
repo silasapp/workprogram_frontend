@@ -11,6 +11,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL,
   HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION,
@@ -77,6 +78,17 @@ export class SWPScdpComponent implements OnInit {
   SCDP_TrainingSkills_CSR_Form: FormGroup;
   SCDP_TrainingDetails_CSR_Form: FormGroup;
   SCDP_Pictures_CSR_Form: FormGroup;
+
+  public isSCDP_CSR_FormSubmitted = false;
+  public isSCDP_Question_FormSubmitted = false;
+  public isSCDP_MOU_FormSubmitted = false;
+  public isSCDP_CapitalProjects_FormSubmitted = false;
+
+  public isSCDP_Scholarship_CSR_FormSubmitted = false;
+  public isSCDP_Scholarship_FormSubmitted = false;
+  public isSCDP_TrainingSkills_CSR_FormSubmitted = false;
+  public isSCDP_TrainingDetails_CSR_FormSubmitted = false;
+  public isSCDP_Pictures_CSR_FormSubmitted = false;
 
   scdp_csr_Body: HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL =
     {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL;
@@ -673,6 +685,41 @@ export class SWPScdpComponent implements OnInit {
     return this.genk.disableForm ? true : null;
   }
 
+  public get sc() {
+    return this.SCDP_CSR_Form.controls;
+  }
+
+  public get sq() {
+    return this.SCDP_Question_Form.controls;
+  }
+
+  public get sm() {
+    return this.SCDP_MOU_Form.controls;
+  }
+
+  public get sca() {
+    return this.SCDP_CapitalProjects_Form.controls;
+  }
+
+  public get ssc() {
+    return this.SCDP_Scholarship_CSR_Form.controls;
+  }
+  public get ss() {
+    return this.SCDP_Scholarship_Form.controls;
+  }
+
+  public get sts() {
+    return this.SCDP_TrainingSkills_CSR_Form.controls;
+  }
+
+  public get std() {
+    return this.SCDP_TrainingDetails_CSR_Form.controls;
+  }
+
+  public get spc() {
+    return this.SCDP_Pictures_CSR_Form.controls;
+  }
+
   //#region Documents Upload Section
   saveResponderDoc(DeFile: any) {
     this.ResponderFile = <File>DeFile.target.files[0];
@@ -812,6 +859,9 @@ export class SWPScdpComponent implements OnInit {
   //#endregion
 
   SDCP_CSR_Submit() {
+    this.isSCDP_CSR_FormSubmitted = true;
+    if (this.SCDP_CSR_Form.invalid) return;
+
     this.scdp_csr_Body.id = 0;
 
     this.workprogram
@@ -826,9 +876,11 @@ export class SWPScdpComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isSCDP_CSR_FormSubmitted = false;
+          this.scdp_csr_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_PLANNED_AND_ACTUAL;
+          this.SCDP_CSR_Form = updateFormValidity(this.SCDP_CSR_Form);
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -836,6 +888,9 @@ export class SWPScdpComponent implements OnInit {
       });
   }
   SDCP_Question_Submit() {
+    this.isSCDP_Question_FormSubmitted = true;
+    if (this.SCDP_Question_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.scdp_question_Body.id = 0;
     for (const key in this.scdp_question_Body) {
@@ -865,9 +920,11 @@ export class SWPScdpComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-
+          this.isSCDP_Question_FormSubmitted = false;
+          this.scdp_question_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_QUESTION;
+          this.SCDP_Question_Form = updateFormValidity(this.SCDP_Question_Form);
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -876,6 +933,9 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_MOU_Submit() {
+    this.isSCDP_MOU_FormSubmitted = true;
+    if (this.SCDP_MOU_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.scdp_mou_Body.id = 0;
     for (const key in this.scdp_mou_Body) {
@@ -891,10 +951,12 @@ export class SWPScdpComponent implements OnInit {
       .post_SDCP_MOU(formDat, this.genk.wpYear, this.genk.OmlName, '', '', '')
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_MOU_FormSubmitted = false;
+          this.scdp_mou_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_MOU;
+          this.SCDP_MOU_Form = updateFormValidity(this.SCDP_MOU_Form);
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -903,6 +965,9 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Capital_Submit() {
+    this.isSCDP_CapitalProjects_FormSubmitted = true;
+    if (this.SCDP_CapitalProjects_Form.invalid) return;
+
     this.workprogram
       .post_SDCP_Capital(
         this.scdp_capitalprojects_Body,
@@ -915,10 +980,14 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_CapitalProjects_FormSubmitted = false;
+          this.scdp_capitalprojects_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW;
+          this.SCDP_CapitalProjects_Form = updateFormValidity(
+            this.SCDP_CapitalProjects_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -927,6 +996,10 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Scholarship_Submit() {
+    console.log(this.SCDP_Scholarship_Form);
+    this.isSCDP_Scholarship_FormSubmitted = true;
+    if (this.SCDP_Scholarship_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.scdp_scholarship_Body.id = 0;
     for (const key in this.scdp_scholarship_Body) {
@@ -948,10 +1021,14 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_Scholarship_FormSubmitted = false;
+          this.scdp_scholarship_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_SCHOLASHIP_SCHEME;
+          this.SCDP_Scholarship_Form = updateFormValidity(
+            this.SCDP_Scholarship_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -960,6 +1037,10 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Scholarship_CSR_Submit() {
+    console.log(this.SCDP_Scholarship_CSR_Form);
+    this.isSCDP_Scholarship_CSR_FormSubmitted = true;
+    if (this.SCDP_Scholarship_CSR_Form.invalid) return;
+
     this.workprogram
       .post_SDCP_Scholarship_CSR(
         this.scdp_scholarship_csr_Body,
@@ -971,10 +1052,14 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_Scholarship_CSR_FormSubmitted = false;
+          this.scdp_scholarship_csr_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_CSR_NEW_Scholarship;
+          this.SCDP_Scholarship_CSR_Form = updateFormValidity(
+            this.SCDP_Scholarship_CSR_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -982,6 +1067,10 @@ export class SWPScdpComponent implements OnInit {
       });
   }
   SDCP_Training_Skills_CSR_Submit() {
+    console.log(this.SCDP_TrainingSkills_CSR_Form);
+    this.isSCDP_TrainingSkills_CSR_FormSubmitted = true;
+    if (this.SCDP_TrainingSkills_CSR_Form.invalid) return;
+
     this.workprogram
       .post_SDCP_Training_Skills_CSR(
         this.scdp_trainingskills_csr_Body,
@@ -993,17 +1082,26 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_TrainingSkills_CSR_FormSubmitted = false;
+          this.scdp_trainingdetails_csr_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
+          this.SCDP_TrainingSkills_CSR_Form = updateFormValidity(
+            this.SCDP_TrainingSkills_CSR_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
         },
       });
   }
+
   SDCP_Training_Details_CSR_Submit() {
+    console.log(this.SCDP_TrainingDetails_CSR_Form);
+    this.isSCDP_TrainingDetails_CSR_FormSubmitted = true;
+    if (this.SCDP_TrainingDetails_CSR_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.scdp_trainingdetails_csr_Body.id = 0;
     for (const key in this.scdp_trainingdetails_csr_Body) {
@@ -1030,10 +1128,14 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_TrainingDetails_CSR_FormSubmitted = false;
+          this.scdp_trainingdetails_csr_Body =
+            {} as HSE_SUSTAINABLE_DEVELOPMENT_COMMUNITY_PROJECT_PROGRAM_TRAINING_SCHEME;
+          this.SCDP_TrainingDetails_CSR_Form = updateFormValidity(
+            this.SCDP_TrainingDetails_CSR_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');
@@ -1042,6 +1144,9 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Pictures_Submit() {
+    this.isSCDP_Pictures_CSR_FormSubmitted = true;
+    if (this.SCDP_Pictures_CSR_Form.invalid) return;
+
     const formDat: FormData = new FormData();
     this.scdp_pictures_Body.id = 0;
     for (const key in this.scdp_pictures_Body) {
@@ -1068,10 +1173,14 @@ export class SWPScdpComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.messsage, 'success');
-
+          this.modalService.logNotice('Success', res.message, 'success');
+          this.isSCDP_Pictures_CSR_FormSubmitted = false;
+          this.scdp_pictures_Body =
+            {} as PICTURE_UPLOAD_COMMUNITY_DEVELOPMENT_PROJECT;
+          this.SCDP_Pictures_CSR_Form = updateFormValidity(
+            this.SCDP_Pictures_CSR_Form
+          );
           this.getSCDP();
-          this.cd.markForCheck();
         },
         error: (error) => {
           this.modalService.logNotice('Error', error.message, 'error');

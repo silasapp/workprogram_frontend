@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf,
@@ -402,7 +403,13 @@ export class SWPFieldDevelopmentComponent implements OnInit {
           this.getFDP();
           this.modalService.togCover();
           this.modalService.logNotice('Success', res.popText, 'success');
-          this.cd.markForCheck();
+
+          this.isFieldDevelopmeentExcessiveReserveFormSubmitted = false;
+          this.fielddevelopmentexcessivereserveBody =
+            {} as FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf;
+          this.FieldDevelopmeentExcessiveReserveForm = updateFormValidity(
+            this.FieldDevelopmeentExcessiveReserveForm
+          );
         },
         error: (error) => {
           this.modalService.logNotice(

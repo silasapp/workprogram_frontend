@@ -45,7 +45,7 @@
             <select
               class="inpute"
               formControlName="activities"
-              [value]="strategicplansBody.activities"
+              [(ngModel)]="strategicplansBody.activities"
               (change)="changeActivities($event)"
               [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
             >
@@ -131,12 +131,23 @@
             </select>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['activities']?.invalid) ||
+              (a['activities']?.dirty && a['activities']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q1 2022</label>
+        <label class="labelwp">Q1 {{wkpYear+1}}</label>
         <div style="display: flex">
           <div
             style="
@@ -154,10 +165,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_1_Q1']?.invalid) ||
+              (a['n_1_Q1']?.dirty && a['n_1_Q1']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q2 2022</label>
+        <label class="labelwp">Q2 {{wkpYear+1}}</label>
         <div style="display: flex">
           <div
             style="
@@ -175,10 +197,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_1_Q2']?.invalid) ||
+              (a['n_1_Q2']?.dirty && a['n_1_Q2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q3 2022</label>
+        <label class="labelwp">Q3 {{wkpYear+1}}</label>
         <div style="display: flex">
           <div
             style="
@@ -196,10 +229,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_1_Q3']?.invalid) ||
+              (a['n_1_Q3']?.dirty && a['n_1_Q3']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q4 2022</label>
+        <label class="labelwp">Q4 {{wkpYear+1}}</label>
         <div style="display: flex">
           <div
             style="
@@ -217,13 +261,24 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_1_Q4']?.invalid) ||
+              (a['n_1_Q4']?.dirty && a['n_1_Q4']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q1 2023</label>
+        <label class="labelwp">Q1 {{wkpYear+2}}</label>
         <div style="display: flex">
           <div
             style="
@@ -241,10 +296,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_2_Q1']?.invalid) ||
+              (a['n_2_Q1']?.dirty && a['n_2_Q1']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q2 2023</label>
+        <label class="labelwp">Q2 {{wkpYear+2}}</label>
         <div style="display: flex">
           <div
             style="
@@ -262,10 +328,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_2_Q2']?.invalid) ||
+              (a['n_2_Q2']?.dirty && a['n_2_Q2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q3 2023</label>
+        <label class="labelwp">Q3 {{wkpYear+2}}</label>
         <div style="display: flex">
           <div
             style="
@@ -283,10 +360,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_2_Q3']?.invalid) ||
+              (a['n_2_Q3']?.dirty && a['n_2_Q3']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q4 2023</label>
+        <label class="labelwp">Q4 {{wkpYear+2}}</label>
         <div style="display: flex">
           <div
             style="
@@ -304,12 +392,23 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_2_Q4']?.invalid) ||
+              (a['n_2_Q4']?.dirty && a['n_2_Q4']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q1 2024</label>
+        <label class="labelwp">Q1 {{wkpYear+3}}</label>
         <div style="display: flex">
           <div
             style="
@@ -327,10 +426,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_3_Q1']?.invalid) ||
+              (a['n_3_Q1']?.dirty && a['n_3_Q1']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q2 2024</label>
+        <label class="labelwp">Q2 {{wkpYear+3}}</label>
         <div style="display: flex">
           <div
             style="
@@ -348,10 +458,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_3_Q2']?.invalid) ||
+              (a['n_3_Q2']?.dirty && a['n_3_Q2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q3 2024</label>
+        <label class="labelwp">Q3 {{wkpYear+3}}</label>
         <div style="display: flex">
           <div
             style="
@@ -369,10 +490,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_3_Q3']?.invalid) ||
+              (a['n_3_Q3']?.dirty && a['n_3_Q3']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q4 2024</label>
+        <label class="labelwp">Q4 {{wkpYear+3}}</label>
         <div style="display: flex">
           <div
             style="
@@ -390,13 +522,24 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_3_Q4']?.invalid) ||
+              (a['n_3_Q4']?.dirty && a['n_3_Q4']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q1 2025</label>
+        <label class="labelwp">Q1 {{wkpYear+4}}</label>
         <div style="display: flex">
           <div
             style="
@@ -414,10 +557,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_4_Q1']?.invalid) ||
+              (a['n_4_Q1']?.dirty && a['n_4_Q1']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q2 2025</label>
+        <label class="labelwp">Q2 {{wkpYear+4}}</label>
         <div style="display: flex">
           <div
             style="
@@ -435,10 +589,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_4_Q2']?.invalid) ||
+              (a['n_4_Q2']?.dirty && a['n_4_Q2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q3 2025</label>
+        <label class="labelwp">Q3 {{wkpYear+4}}</label>
         <div style="display: flex">
           <div
             style="
@@ -456,10 +621,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_4_Q3']?.invalid) ||
+              (a['n_4_Q3']?.dirty && a['n_4_Q3']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q4 2025</label>
+        <label class="labelwp">Q4 {{wkpYear+4}}</label>
         <div style="display: flex">
           <div
             style="
@@ -477,13 +653,24 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_4_Q4']?.invalid) ||
+              (a['n_4_Q4']?.dirty && a['n_4_Q4']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q1 2026</label>
+        <label class="labelwp">Q1 {{wkpYear+5}}</label>
         <div style="display: flex">
           <div
             style="
@@ -501,10 +688,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_5_Q1']?.invalid) ||
+              (a['n_5_Q1']?.dirty && a['n_5_Q1']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q2 2026</label>
+        <label class="labelwp">Q2 {{wkpYear+5}}</label>
         <div style="display: flex">
           <div
             style="
@@ -522,10 +720,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_5_Q2']?.invalid) ||
+              (a['n_5_Q2']?.dirty && a['n_5_Q2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q3 2026</label>
+        <label class="labelwp">Q3 {{wkpYear+5}}</label>
         <div style="display: flex">
           <div
             style="
@@ -543,10 +752,21 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_5_Q3']?.invalid) ||
+              (a['n_5_Q3']?.dirty && a['n_5_Q3']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin: auto 2% 0">
-        <label class="labelwp">Q4 2026</label>
+        <label class="labelwp">Q4 {{wkpYear+5}}</label>
         <div style="display: flex">
           <div
             style="box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
@@ -563,6 +783,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isStrategicplansFormSubmitted && a['n_5_Q4']?.invalid) ||
+              (a['n_5_Q4']?.dirty && a['n_5_Q4']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
@@ -571,6 +802,7 @@
       <div style="text-align: center">
         <button
           class="submitbtn"
+          [style]="strategicplansForm.invalid ? 'cursor: default' : ''"
           (click)="saveStrategicPlansOnCompanyBases()"
           [attr.disabled]="isEditable(SBUTABLE.STRATEGIC_PLANSs)"
         >

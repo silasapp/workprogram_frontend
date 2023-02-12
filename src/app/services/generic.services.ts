@@ -31,7 +31,6 @@ export class GenericService {
   workprogram = 'workprogram';
   generalReport = 'generalreport';
   empty = ' ';
-  wkProposedYear = new Date().getFullYear();
 
   public disableForm: boolean = true;
   public Concession$ = new BehaviorSubject<IConcession>(
@@ -53,8 +52,10 @@ export class GenericService {
   progress: number;
   private pageloadcom = new Subject<boolean>();
   pageload = this.pageloadcom.asObservable();
-  isAdmin = false;
+  private __isAdmin = false;
+  public setAdminSubject = new BehaviorSubject<boolean>(false);
   wpYear: string;
+  wkProposedYear: number;
   terrain: string;
   geologicalLocation: string;
   OmlName: string = '';
@@ -104,6 +105,10 @@ export class GenericService {
   ];
 
   constructor(private modal: ModalService) {}
+
+  public get isAdmin() {
+    return this.setAdminSubject.getValue();
+  }
 
   public get pageIndex(): number {
     return (this.selectedPage - 1) * this.sizePerPage;
@@ -606,6 +611,7 @@ export class GenericService {
 
   addCurrencyDecimal(event) {
     let e = event.target as HTMLInputElement;
+    if (!e.value) return '';
     let term = parseFloat(e.value.toString().replace(/,+/g, '')).toFixed(2);
 
     let halfone = this.formatNum(term.split('.')[0]);
@@ -841,7 +847,10 @@ export class GenericService {
   removeComma(form: FormGroup) {
     let controls = Object.values(form.controls);
     for (let con of controls) {
-      if (!isNaN(con.value.replace(/,/g, '')) && !isNaN(parseInt(con.value.replace(/,/g, '')))) {
+      if (
+        !isNaN(con.value.replace(/,/g, '')) &&
+        !isNaN(parseInt(con.value.replace(/,/g, '')))
+      ) {
         con.setValue(con.value.replace(/,/g, ''));
       }
     }

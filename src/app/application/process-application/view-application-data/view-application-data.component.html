@@ -111,14 +111,14 @@
     <table class="wptable">
       <thead>
         <tr>
-          <th *ngFor="let h of hdecpColDef">
+          <th *ngFor="let h of hairColDef">
             {{ h.header }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of hseAccidentIncidenceTypes">
-          <td *ngFor="let colDef of hdecpColDef">
+          <td *ngFor="let colDef of hairColDef">
             {{ row[colDef.columnDef] }}
           </td>
         </tr>
@@ -126,7 +126,7 @@
     </table>
   </div>
 
-  <div class="apptable wptablebox" *ngIf="hseAccidentModels.length > 0">
+  <!-- <div class="apptable wptablebox" *ngIf="hseAccidentModels.length > 0">
     <h2>Accident Incidence Model</h2>
     <table class="wptable">
       <thead>
@@ -144,7 +144,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 
   <div class="apptable wptablebox" *ngIf="hseAssetRegisters.length > 0">
     <h2>
@@ -153,14 +153,14 @@
     <table class="wptable">
       <thead>
         <tr>
-          <th *ngFor="let h of hharColDef">
+          <th *ngFor="let h of harColDef">
             {{ h.header }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of hseAssetRegisters">
-          <td *ngFor="let colDef of hharColDef">
+          <td *ngFor="let colDef of harColDef">
             {{ row[colDef.columnDef] }}
           </td>
         </tr>
@@ -173,14 +173,14 @@
     <table class="wptable">
       <thead>
         <tr>
-          <th *ngFor="let h of hharrbiColDef">
+          <th *ngFor="let h of harrbiColDef">
             {{ h.header }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of hseAssetRegisterRBIs">
-          <td *ngFor="let colDef of hharrbiColDef">
+          <td *ngFor="let colDef of harrbiColDef">
             {{ row[colDef.columnDef] }}
           </td>
         </tr>
@@ -222,6 +222,491 @@
       <tbody>
         <tr *ngFor="let row of legalLitigations">
           <td *ngFor="let colDef of hllColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseClimateChanges.length > 0">
+    <h2>Climate Change and Air Quality</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hccaColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of hseClimateChanges">
+          <td *ngFor="let colDef of hccaColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="environmentalComplianceMonitoring.length > 0"
+  >
+    <h2>Environmental Compliance Monitoring</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hpecmColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalComplianceMonitoring">
+          <td *ngFor="let colDef of hpecmColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="environmentalComplianceChemicals.length > 0"
+  >
+    <h2>Environmental Compliance Monitoring(Chemical)</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hpecmnColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalComplianceChemicals">
+          <td *ngFor="let colDef of hpecmnColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="environmentalStudiesFiveYearsSPs.length > 0"
+  >
+    <h2>Environmental Studies Strategic Plans</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hes5yspColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalStudiesFiveYearsSPs">
+          <td *ngFor="let colDef of hes5yspColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="operationsSafetyCases.length > 0">
+    <h2>Operation Safety Case</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hoscColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of operationsSafetyCases">
+          <td *ngFor="let colDef of hoscColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="environmentalManagementPlans.length > 0"
+  >
+    <h2>Environmental Management Plan</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hempColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalManagementPlans">
+          <td *ngFor="let colDef of hempColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseTechnicals.length > 0">
+    <h2>Technical Safety Studies</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of htsColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of hseTechnicals">
+          <td *ngFor="let colDef of htsColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseManagementPositions.length > 0">
+    <h2>HSE Management Position</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hmpColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of hseManagementPositions">
+          <td *ngFor="let colDef of hmpColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="hseSafetyCultureTrainings.length > 0">
+    <h2>Safety Culture and Training</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hsctColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of hseSafetyCultureTrainings">
+          <td *ngFor="let colDef of hsctColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="occupationHealthManagements.length > 0"
+  >
+    <h2>Occupational Health Management Plan</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hohmColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of occupationHealthManagements">
+          <td *ngFor="let colDef of hohmColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="qualityControlDocuments.length > 0">
+    <h2>Quality Control</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hqcdColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of qualityControlDocuments">
+          <td *ngFor="let colDef of hqcdColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="qualityControlDocuments.length > 0">
+    <h2>Quality Control</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hqcdColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of qualityControlDocuments">
+          <td *ngFor="let colDef of hqcdColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="oilSpillReportings.length > 0">
+    <h2>Oil Spill Reporting</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hosrColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of oilSpillReportings">
+          <td *ngFor="let colDef of hosrColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="oilSpillReportings.length > 0">
+    <h2>Oil Spill Reporting</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hosrColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of oilSpillReportings">
+          <td *ngFor="let colDef of hosrColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="environmentalStudiesUpdatedList.length > 0"
+  >
+    <h2>Environmental Studies(Field / Study)</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hesColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalStudiesUpdatedList">
+          <td *ngFor="let colDef of hesColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="environmentalStudies.length > 0">
+    <h2>Environmental Studies</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hesnColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of environmentalStudies">
+          <td *ngFor="let colDef of hesnColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="wasteManagements.length > 0">
+    <h2>Waste Management</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hwmColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of wasteManagements">
+          <td *ngFor="let colDef of hwmColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="wasterManagementFacilities.length > 0"
+  >
+    <h2>Waste Facility</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hwmfColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of wasterManagementFacilities">
+          <td *ngFor="let colDef of hwmfColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="wasterManagementFiles.length > 0">
+    <h2>Waste Management Plan / Decommissioning Submissions</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hwmsColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of wasterManagementFiles">
+          <td *ngFor="let colDef of hwmsColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="producedWaterManagements.length > 0">
+    <h2>Produced Water (Zone)</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hpwmnColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of producedWaterManagements">
+          <td *ngFor="let colDef of hpwmnColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="apptable wptablebox" *ngIf="remediationFunds.length > 0">
+    <h2>Remediation Fund</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hrfColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of remediationFunds">
+          <td *ngFor="let colDef of hrfColDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="apptable wptablebox"
+    *ngIf="effluentMonitoringCompliances.length > 0"
+  >
+    <h2>Effluent Compliance Monitoring/Quarterly Chemical Inventory</h2>
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of hrfColDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of effluentMonitoringCompliances">
+          <td *ngFor="let colDef of hrfColDef">
             {{ row[colDef.columnDef] }}
           </td>
         </tr>

@@ -52,21 +52,22 @@
           </select>
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isLetigationFormSubmitted && l['anyLitigation']?.invalid) ||
+            (l['anyLitigation']?.dirty && l['anyLitigation']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
-    <br/><br />
+    <br /><br />
 
     <div *ngIf="letigationBody.anyLitigation == 'YES'">
       <div style="display: flex; width: 100%; justify-content: space-between">
-
-
-
-
-
-
-
-
-
-
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Year</label>
           <div style="display: flex">
@@ -78,25 +79,28 @@
                 padding: 7px 10px;
               "
             >
-            <select
-            formControlName="year"
-
-          >
-            <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-            <option
-              *ngFor="let Leyear of fiveYearsBehind"
-              [value]="Leyear"
-              [selected]="letigationBody.year === Leyear"
-            >
-              {{ Leyear }}
-            </option>
-          </select>
+              <select formControlName="year">
+                <option disabled>---- Please Select an Option ----</option>
+                <option
+                  *ngFor="let Leyear of fiveYearsBehind$ | async"
+                  [value]="Leyear"
+                >
+                  {{ Leyear }}
+                </option>
+              </select>
             </div>
           </div>
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted && l['year']?.invalid) ||
+                (l['year']?.dirty && l['year']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
-
-
-
 
         <div style="width: 30%; margin: auto 0 0">
           <label class="labelwp">Suit Number</label>
@@ -118,6 +122,16 @@
                 "
               />
             </div>
+          </div>
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted && l['case_Number']?.invalid) ||
+                (l['case_Number']?.dirty && l['case_Number']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -142,9 +156,18 @@
               />
             </div>
           </div>
-        </div>
 
-        
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted && l['names_of_Parties']?.invalid) ||
+                (l['names_of_Parties']?.dirty && l['names_of_Parties']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
+        </div>
       </div>
       <br />
 
@@ -175,6 +198,17 @@
                 <option value="FOREIGN">FOREIGN</option>
               </select>
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted && l['jurisdiction']?.invalid) ||
+                (l['jurisdiction']?.dirty && l['jurisdiction']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <!-- <div style="width: 30%; margin: auto 0 0">
@@ -221,6 +255,19 @@
               ></textarea>
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted &&
+                  l['summary_of_the_case']?.invalid) ||
+                (l['summary_of_the_case']?.dirty &&
+                  l['summary_of_the_case']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%; margin: auto 0 0">
@@ -245,6 +292,19 @@
                 "
               ></textarea>
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted &&
+                  l['any_orders_made_so_far_by_the_court']?.invalid) ||
+                (l['any_orders_made_so_far_by_the_court']?.dirty &&
+                  l['any_orders_made_so_far_by_the_court']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -273,6 +333,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isLetigationFormSubmitted &&
+                  l['potential_outcome']?.invalid) ||
+                (l['potential_outcome']?.dirty &&
+                  l['potential_outcome']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
 
@@ -281,6 +354,7 @@
         <div style="text-align: center">
           <button
             class="submitbtn"
+            [style]="letigationForm.invalid ? 'cursor: default' : ''"
             (click)="saveLitigation()"
             [attr.disabled]="isEditable(SBUTABLE.LEGAL_PROCEEDINGS_LITIGATIONs)"
           >
@@ -300,6 +374,7 @@
       overflow-x: auto;
       box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
     "
+    *ngIf="litigations.length > 0"
   >
     <table #codeTable class="apptable" cellPadding="10px">
       <thead>
@@ -366,6 +441,17 @@
           </select>
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isArbitrationFormSubmitted && a['anyLitigation']?.invalid) ||
+            (a['anyLitigation']?.dirty && a['anyLitigation']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br /><br />
 
@@ -392,6 +478,17 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isArbitrationFormSubmitted && a['case_Number']?.invalid) ||
+                (a['case_Number']?.dirty && a['case_Number']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%; margin: auto 0 0">
@@ -414,6 +511,18 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isArbitrationFormSubmitted &&
+                  a['names_of_Parties']?.invalid) ||
+                (a['names_of_Parties']?.dirty && a['names_of_Parties']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -443,6 +552,17 @@
                 <option value="FOREIGN">FOREIGN</option>
               </select>
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isArbitrationFormSubmitted && a['jurisdiction']?.invalid) ||
+                (a['jurisdiction']?.dirty && a['jurisdiction']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -491,6 +611,19 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isArbitrationFormSubmitted &&
+                  a['summary_of_the_case']?.invalid) ||
+                (a['summary_of_the_case']?.dirty &&
+                  a['summary_of_the_case']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -542,6 +675,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isArbitrationFormSubmitted &&
+                  a['potential_outcome']?.invalid) ||
+                (a['potential_outcome']?.dirty &&
+                  a['potential_outcome']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
 
@@ -550,6 +696,7 @@
         <div style="text-align: center">
           <button
             class="submitbtn"
+            [style]="arbitrationForm.invalid ? 'cursor: default' : ''"
             (click)="saveArbitration()"
             [attr.disabled]="
               isEditable(SBUTABLE.LEGAL_PROCEEDINGS_ARBITRATIONs)
@@ -569,6 +716,7 @@
         overflow-x: auto;
         box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3);
       "
+      *ngIf="arbitrations.length > 0"
     >
       <table #codeTable class="apptable" cellPadding="10px">
         <thead>
