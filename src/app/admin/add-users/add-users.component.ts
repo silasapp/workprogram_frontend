@@ -1,7 +1,10 @@
-import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { forkJoin } from 'rxjs';
+import { IElpsUser, Staff } from 'src/app/models/application-details';
+import { ISystemUser } from 'src/app/models/user';
 import {
   IRole,
   ISBU,
@@ -10,6 +13,7 @@ import { GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { UserFormComponent } from './user-form/user-form.component';
 @Component({
   selector: 'app-add-users',
   templateUrl: './add-users.component.html',
@@ -18,6 +22,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 export class AddUsersComponent implements OnInit {
   public roles: IRole[] = [];
   public sbus: ISBU[] = [];
+  public users: ISystemUser[] = [];
+  public elpsUsers: IElpsUser[] = [];
 
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -62,7 +68,8 @@ export class AddUsersComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private gen: GenericService,
     private dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public snackBar: MatSnackBar
   ) {
     this.genk = gen;
     this.cdr = cd;
@@ -78,8 +85,9 @@ export class AddUsersComponent implements OnInit {
     //this.pagenum = Math.ceil(this.arrayOfObjects.length / this.genk.sizePerPage);
     //this.arrayRows = this.arrayOfObjects.slice(this.pageIndex, (this.pageIndex + this.genk.sizePerPage));
 
-    this.getRoles();
-    this.getSBUs();
+    // this.getRoles();
+    // this.getSBUs();
+    this.getAll();
   }
 
   initForm() {
@@ -94,6 +102,84 @@ export class AddUsersComponent implements OnInit {
       companY_ID: ['', Validators.required],
       rolE_ID: ['', Validators.required],
       sbU_ID: [''],
+    });
+  }
+
+  getAll() {
+    this.modalService.logCover('Loading...', true);
+    forkJoin([
+      this.adminservice.getAllStaff(),
+      this.adminservice.getStaffFromElps(),
+      this.adminservice.getRoles(),
+      this.adminservice.getSBU(),
+      // this.adminHttpService.getOffices(),
+      // this.adminHttpService.getBranches(),
+    ]).subscribe({
+      next: (res) => {
+        if (res[0].responseCode == '00') {
+          this.users = res[0].data.staffList;
+          this.sbus = res[0].data.sbus;
+        }
+
+        if (res[1].statusCode === 0) this.elpsUsers = res[1].data;
+
+        if (res[2]?.roles && res[2].roles.length > 0) this.roles = res[2].roles;
+
+        // if (res[2].success) this.sbus = res[2].data.data;
+
+        // if (res[3].success) this.roles = res[3].data.data;
+
+        // if (res[3].success) this.offices = res[3].data.data;
+
+        // if (res[4].success) this.branches = res[4].data.data;
+
+        // this.progressBar.close();
+        this.modalService.togCover();
+      },
+      error: (error) => {
+        this.snackBar.open(
+          'Something went wrong while retrieving data.',
+          null,
+          {
+            panelClass: ['error'],
+          }
+        );
+
+        // this.progressBar.close();
+        this.modalService.togCover();
+      },
+    });
+  }
+
+  onAddData(event: Event, type: string) {
+    const operationConfiguration = {
+      users: {
+        data: {
+          users: this.users,
+          staffList: this.elpsUsers,
+          roles: this.roles,
+          sbus: this.sbus,
+          // offices: this.offices,
+          // branches: this.branches,
+        },
+        form: UserFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationConfiguration[type].form, {
+      data: {
+        data: operationConfiguration[type].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.modalService.logCover('Loading...', true);
+
+      this.adminservice.getAllStaff().subscribe((res) => {
+        this.users = res.data.data;
+
+        this.modalService.togCover();
+      });
     });
   }
 
@@ -199,7 +285,6 @@ export class AddUsersComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
     this.adminservice.addUser(this.userForm.getRawValue()).subscribe((res) => {
       if (res.statusCode == 200) {
         this.Alert('Success', res.message, 'success');

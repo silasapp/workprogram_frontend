@@ -66,6 +66,9 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   columnValue = [];
   isTabVisible = false;
 
+  public currentACQuaterFull: string;
+  public currentPRQuaterFull: string;
+
   constructor(
     private cd: ChangeDetectorRef,
     private workprogram: WorkProgramService,
@@ -75,8 +78,13 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     private modalService: ModalService
   ) {
     this.genk = gen;
+    this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
+    this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
+
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentACQuater;
+      this.currentACQuaterFull = rel;
+      this.currentPRQuaterFull = rel;
       this.getGeophysical(rel);
     });
     this.cd.markForCheck();
@@ -132,6 +140,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         // ),
         no_of_Folds: new FormControl(this.acquisitionBody.no_of_Folds, [
           Validators.required,
+          Validators.max(100),
+          Validators.min(0),
         ]),
         name_of_Contractor: new FormControl(
           this.acquisitionBody.name_of_Contractor,
@@ -143,7 +153,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         ),
         geo_Record_Length_of_Data: new FormControl(
           this.acquisitionBody.geo_Record_Length_of_Data,
-          [Validators.required]
+          [Validators.required, Validators.max(59), Validators.min(0)]
         ),
         // geo_Completion_Status: new FormControl(
         //   this.acquisitionBody.geo_Completion_Status,
@@ -261,7 +271,6 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   isEditable(group: string): boolean | null {
-    console.log('isE...', group, this.genk.sbU_Tables, this.genk.disableForm);
     if (group && this.genk.sbU_Tables?.find((t) => t == group)) {
       return null;
     }
@@ -425,6 +434,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   changeACQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentACQuater = 1;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       btn.textContent = 'Save Quarter 1';
       this.acquisitionBody = this.quaterACOneData;
       this.cd.markForCheck();
@@ -432,6 +442,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     }
     if (quater === 2) {
       this.currentACQuater = 2;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       btn.textContent = 'Save Quarter 2';
       this.acquisitionBody = this.quaterACTwoData;
       this.cd.markForCheck();
@@ -439,6 +450,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     }
     if (quater === 3) {
       this.currentACQuater = 3;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       this.acquisitionBody = this.quaterACThreeData;
       btn.textContent = 'Save Quarter 3';
       this.cd.markForCheck();
@@ -446,6 +458,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     }
     if (quater === 4) {
       this.currentACQuater = 4;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       this.acquisitionBody = this.quaterACFourData;
       btn.textContent = 'Save Quarter 4';
       this.cd.markForCheck();
@@ -457,24 +470,28 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   changePRQuater(quater: number, btn: HTMLButtonElement) {
     if (quater === 1) {
       this.currentPRQuater = 1;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 1';
       this.processingBody = this.quaterPROneData;
       this.cd.markForCheck();
     }
     if (quater === 2) {
       this.currentPRQuater = 2;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 2';
       this.processingBody = this.quaterPRTwoData;
       this.cd.markForCheck();
     }
     if (quater === 3) {
       this.currentPRQuater = 3;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 3';
       this.processingBody = this.quaterPRThreeData;
       this.cd.markForCheck();
     }
     if (quater === 4) {
       this.currentPRQuater = 4;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 4';
       this.processingBody = this.quaterPRFourData;
       this.cd.markForCheck();
@@ -483,6 +500,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   }
 
   getGeophysical(quaterText: string) {
+    this.modalService.logCover('loading...', true);
     this.workprogram
       .getFormOneGeoPhysical(
         this.genk.OmlName,
@@ -493,9 +511,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         if (res.geoActivitiesAcquisition) {
           this.quaterACOneData = res.geoActivitiesAcquisition.filter(
             (result) => {
-              return result.quater === quaterText;
+              return result.quater === 'QUARTER 1';
             }
           )[0];
+
           this.quaterACOne = this.quaterACOneData ? true : false;
           this.quaterACOneData =
             this.quaterACOneData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
@@ -506,6 +525,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
               return result.quater === 'QUARTER 2';
             }
           )[0];
+
           this.quaterACTwo = this.quaterACTwoData ? true : false;
           this.quaterACTwoData =
             this.quaterACTwoData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
@@ -516,6 +536,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
               return res.quater === 'QUARTER 3';
             }
           )[0];
+
           this.quaterACThree = this.quaterACThreeData ? true : false;
           this.quaterACThreeData =
             this.quaterACThreeData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
@@ -524,14 +545,20 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
             this.quaterACFour = res.quater === 'QUARTER 4' ? true : false;
             return res.quater === 'QUARTER 4';
           })[0];
+
           this.quaterACFour = this.quaterACFourData ? true : false;
           this.quaterACFourData =
             this.quaterACFourData ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
-          this.acquisitionBody = this.quaterACOneData;
+
+          this.acquisitionBody =
+            res.geoActivitiesAcquisition.find(
+              (item) => item.quater === this.currentACQuaterFull
+            ) ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
 
           this.quaterPROneData = res.geoActivitiesProcessing.filter((res) => {
-            return res.quater === quaterText;
+            return res.quater === 'QUARTER 1';
           })[0];
+
           this.quaterPROne = this.quaterPROneData ? true : false;
           this.quaterPROneData =
             this.quaterPROneData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
@@ -540,6 +567,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
             this.quaterPRTwo = res.quater === 'QUARTER 2' ? true : false;
             return res.quater === 'QUARTER 2';
           })[0];
+
           this.quaterPRTwo = this.quaterPRTwoData ? true : false;
           this.quaterPRTwoData =
             this.quaterPRTwoData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
@@ -548,6 +576,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
             this.quaterPRThree = res.quater === 'QUARTER 3' ? true : false;
             return res.quater === 'QUARTER 3';
           })[0];
+
           this.quaterPRThree = this.quaterPRThreeData ? true : false;
           this.quaterPRThreeData =
             this.quaterPRThreeData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
@@ -556,12 +585,17 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
             this.quaterPRFour = res.quater === 'QUARTER 4' ? true : false;
             return res.quater === 'QUARTER 4';
           })[0];
+
           this.quaterPRFour = this.quaterPRFourData ? true : false;
           this.quaterPRFourData =
             this.quaterPRFourData ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
 
-          this.processingBody = this.quaterPROneData;
-          //console.log(this.quaterOneData[0]);
+          this.processingBody =
+            res.geoActivitiesProcessing.find(
+              (item) => item.quater === this.currentPRQuaterFull
+            ) ?? new GEOPHYSICAL_ACTIVITIES_PROCESSING();
+
+          this.modalService.togCover();
           this.cd.markForCheck();
         }
       });
@@ -570,11 +604,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
   saveQuarterAcquisition(btn) {
     this.isAcquisitionSubmitted = true;
-
     if (this.AcquisitionForm.invalid) return;
 
-    let ree = this.currentACQuater;
-    this.acquisitionBody.qUATER = 'QUARTER ' + this.currentACQuater;
+    this.acquisitionBody.qUATER = this.currentACQuaterFull;
+
     this.acquisitionBody.budeget_Allocation_NGN =
       this.acquisitionBody?.budeget_Allocation_NGN.replace(/,/g, '');
     this.acquisitionBody.budeget_Allocation_USD =
@@ -585,6 +618,9 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       this.acquisitionBody
     ) as GEOPHYSICAL_ACTIVITIES_ACQUISITION;
 
+    this.isAcquisitionSubmitted = false;
+    this.AcquisitionForm.reset();
+
     this.workprogram
       .saveQuarterAcquisition(
         sail,
@@ -594,11 +630,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.popText, 'success');
-
+          this.getGeophysical(this.currentACQuaterFull);
           this.moveToNextACQuater(btn);
-
-          this.isAcquisitionSubmitted = false;
+          this.modalService.logNotice('Success', res.popText, 'success');
+          this.cd.markForCheck();
         },
       });
   }
@@ -608,18 +643,21 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     if (label === 'Save Quarter 1') {
       this.currentACQuater = 2;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       btn.textContent = 'Save Quarter 2';
       this.acquisitionBody = this.quaterACTwoData;
     }
     if (label === 'Save Quarter 2') {
       this.currentACQuater = 3;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       btn.textContent = 'Save Quarter 3';
       this.acquisitionBody = this.quaterACThreeData;
     }
     if (label === 'Save Quarter 3') {
       this.currentACQuater = 4;
+      this.currentACQuaterFull = 'QUARTER ' + this.currentACQuater;
       btn.textContent = 'Save Quarter 4';
-      this.acquisitionBody = this.quaterACThreeData;
+      this.acquisitionBody = this.quaterACFourData;
     }
 
     this.cd.markForCheck();
@@ -630,18 +668,21 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     if (label === 'Save Quarter 1') {
       this.currentPRQuater = 2;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 2';
       this.processingBody = this.quaterPRTwoData;
     }
     if (label === 'Save Quarter 2') {
       this.currentPRQuater = 3;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 3';
       this.processingBody = this.quaterPRThreeData;
     }
     if (label === 'Save Quarter 3') {
       this.currentPRQuater = 4;
+      this.currentPRQuaterFull = 'QUARTER ' + this.currentPRQuater;
       btn.textContent = 'Save Quarter 4';
-      this.processingBody = this.quaterPRThreeData;
+      this.processingBody = this.quaterPRFourData;
     }
 
     this.cd.markForCheck();
@@ -652,7 +693,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
 
     if (this.ProcessingForm.invalid) return;
 
-    this.processingBody.qUATER = 'QUARTER ' + this.currentPRQuater;
+    this.processingBody.qUATER = this.currentPRQuaterFull;
     this.processingBody.budeget_Allocation_NGN =
       this.processingBody.budeget_Allocation_NGN.replace(/,/g, '');
     this.processingBody.budeget_Allocation_USD =
@@ -674,6 +715,9 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       this.processingBody
     ) as GEOPHYSICAL_ACTIVITIES_PROCESSING;
 
+    this.isProcessingSubmitted = false;
+    this.ProcessingForm.reset();
+
     this.workprogram
       .saveQuarterProcessing(
         sail,
@@ -683,11 +727,10 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          this.modalService.logNotice('Success', res.popText, 'success');
-
+          this.getGeophysical(this.currentPRQuaterFull);
           this.moveToNextPRQuater(btn);
-
-          this.isProcessingSubmitted = false;
+          this.modalService.logNotice('Success', res.popText, 'success');
+          this.cd.markForCheck();
         },
       });
   }

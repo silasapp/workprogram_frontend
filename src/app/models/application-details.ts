@@ -40,12 +40,20 @@ export class Application {
 }
 
 export class Staff {
+  id: number;
   staff_Name: string;
   staff_Email: string;
   staff_SBU: string;
   staff_Role: string;
   sort: number;
   desk_ID: number;
+  lastName: string;
+  firstName: string;
+  email: string;
+  phoneNo: string;
+  userType: string;
+  role: string;
+  status: string;
 }
 
 export class ApplicationHistory {
@@ -72,4 +80,25 @@ export class DashboardModel {
   allApplicationsCount: number;
   allApprovalsCount: number;
   allProcessingCount: number;
+}
+
+export interface IAuthData {
+  code?: number;
+  companyEmail: string;
+  companyId: string;
+  companyName: string;
+  companyNumber: string;
+  contractType: string;
+  name: string;
+  pass: string;
+  token?: string;
+}
+
+export interface IElpsUser {
+  elpsId: string;
+  email: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  phoneNo: string;
 }

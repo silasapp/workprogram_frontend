@@ -63,6 +63,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CSR_FormSubmitted &&
+                sc['description_of_Projects_Actual']?.invalid) ||
+              (sc['description_of_Projects_Actual']?.dirty &&
+                sc['description_of_Projects_Actual']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin-left: 5%">
@@ -89,11 +102,25 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CSR_FormSubmitted &&
+                sc['description_of_Projects_Planned']?.invalid) ||
+              (sc['description_of_Projects_Planned']?.dirty &&
+                sc['description_of_Projects_Planned']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_CSR_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_CSR_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -173,6 +200,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted &&
+                sq['have_you_submitted_all_MoUs_to_DPR']?.invalid) ||
+              (sq['have_you_submitted_all_MoUs_to_DPR']?.dirty &&
+                sq['have_you_submitted_all_MoUs_to_DPR']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -192,6 +232,17 @@
             [(ngModel)]="scdp_question_Body.if_NO_why"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted && sq['if_NO_why']?.invalid) ||
+              (sq['if_NO_why']?.dirty && sq['if_NO_why']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -219,6 +270,24 @@
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted &&
+                sq[
+                  'do_you_have_an_MOU_with_the_communities_for_all_your_assets'
+                ]?.invalid) ||
+              (sq['do_you_have_an_MOU_with_the_communities_for_all_your_assets']
+                ?.dirty &&
+                sq[
+                  'do_you_have_an_MOU_with_the_communities_for_all_your_assets'
+                ]?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -249,6 +318,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted &&
+                sq['mOUResponderInPlace']?.invalid) ||
+              (sq['mOUResponderInPlace']?.dirty &&
+                sq['mOUResponderInPlace']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Upload evidence of MOU with responders</label>
@@ -268,6 +350,19 @@
             class="inpute"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted &&
+                sq['mOUResponderFilePath']?.invalid) ||
+              (sq['mOUResponderFilePath']?.dirty &&
+                sq['mOUResponderFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -289,12 +384,25 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Question_FormSubmitted &&
+                sq['mOUOSCPFilePath']?.invalid) ||
+              (sq['mOUOSCPFilePath']?.dirty && sq['mOUOSCPFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_Question_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Question_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_MOU_INFORMATIONs)"
@@ -363,6 +471,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted &&
+                sm['type_of_project_excuted']?.invalid) ||
+              (sm['type_of_project_excuted']?.dirty &&
+                sm['type_of_project_excuted']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Project Location</label>
@@ -382,6 +503,17 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted && sm['project_Location']?.invalid) ||
+              (sm['project_Location']?.dirty && sm['project_Location']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Year GMoU was signed</label>
@@ -400,6 +532,19 @@
             [(ngModel)]="scdp_mou_Body.year_GMou_was_signed"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted &&
+                sm['year_GMou_was_signed']?.invalid) ||
+              (sm['year_GMou_was_signed']?.dirty &&
+                sm['year_GMou_was_signed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -424,6 +569,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted &&
+                sm['component_of_project']?.invalid) ||
+              (sm['component_of_project']?.dirty &&
+                sm['component_of_project']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Actual Budget Total ($)</label>
@@ -443,6 +601,19 @@
             [(ngModel)]="scdp_mou_Body.actual_Budget_Total_Dollars"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted &&
+                sm['actual_Budget_Total_Dollars']?.invalid) ||
+              (sm['actual_Budget_Total_Dollars']?.dirty &&
+                sm['actual_Budget_Total_Dollars']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -467,6 +638,18 @@
             <option value="Completed">Completed</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted && sm['status_Of_Project']?.invalid) ||
+              (sm['status_Of_Project']?.dirty &&
+                sm['status_Of_Project']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -490,6 +673,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted &&
+                sm['beneficiary_Community']?.invalid) ||
+              (sm['beneficiary_Community']?.dirty &&
+                sm['beneficiary_Community']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Upload GMoU</label>
@@ -510,11 +706,23 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_MOU_FormSubmitted && sm['gMOUFilePath']?.invalid) ||
+              (sm['gMOUFilePath']?.dirty && sm['gMOUFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_MOU_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_MOU_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_PROJECT_DETAILSs)"
@@ -587,6 +795,18 @@
           <option value="Proposed">Proposed</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSCDP_CapitalProjects_FormSubmitted &&
+              sca['actual_proposed']?.invalid) ||
+            (sca['actual_proposed']?.dirty && sca['actual_proposed']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
@@ -608,6 +828,17 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CapitalProjects_FormSubmitted && sca['cSR_']?.invalid) ||
+              (sca['cSR_']?.dirty && sca['cSR_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Planned Budget Total ($)</label>
@@ -628,6 +859,18 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CapitalProjects_FormSubmitted &&
+                sca['budget_']?.invalid) ||
+              (sca['budget_']?.dirty && sca['budget_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Actual (Budget)</label>
@@ -647,6 +890,18 @@
             [(ngModel)]="scdp_capitalprojects_Body.actual_Spent"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CapitalProjects_FormSubmitted &&
+                sca['actual_Spent']?.invalid) ||
+              (sca['actual_Spent']?.dirty && sca['actual_Spent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -670,6 +925,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CapitalProjects_FormSubmitted &&
+                sca['percentage_Completion_']?.invalid) ||
+              (sca['percentage_Completion_']?.dirty &&
+                sca['percentage_Completion_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Beneficiary Communities</label>
@@ -689,11 +957,25 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_CapitalProjects_FormSubmitted &&
+                sca['beneficiary_Communities']?.invalid) ||
+              (sca['beneficiary_Communities']?.dirty &&
+                sca['beneficiary_Communities']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_CapitalProjects_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Capital_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_CAPITAL_PROJECTSs)"
@@ -762,6 +1044,18 @@
           [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSCDP_Scholarship_CSR_FormSubmitted &&
+              ssc['actual_proposed']?.invalid) ||
+            (ssc['actual_proposed']?.dirty && ssc['actual_proposed']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
@@ -783,6 +1077,17 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted && ssc['cSR_']?.invalid) ||
+              (ssc['cSR_']?.dirty && ssc['cSR_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Planned Budget Total ($)</label>
@@ -803,6 +1108,18 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted &&
+                ssc['budget_']?.invalid) ||
+              (ssc['budget_']?.dirty && ssc['budget_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Actual (Budget)</label>
@@ -822,6 +1139,18 @@
             [(ngModel)]="scdp_scholarship_csr_Body.actual_Spent"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted &&
+                ssc['actual_Spent']?.invalid) ||
+              (ssc['actual_Spent']?.dirty && ssc['actual_Spent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -845,6 +1174,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted &&
+                ssc['percentage_Completion_']?.invalid) ||
+              (ssc['percentage_Completion_']?.dirty &&
+                ssc['percentage_Completion_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Beneficiary (Host) </label>
@@ -863,6 +1205,19 @@
             [(ngModel)]="scdp_scholarship_csr_Body.beneficiary_Communities_host"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted &&
+                ssc['beneficiary_Communities_host']?.invalid) ||
+              (ssc['beneficiary_Communities_host']?.dirty &&
+                ssc['beneficiary_Communities_host']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -885,11 +1240,25 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_CSR_FormSubmitted &&
+                ssc['beneficiary_Communities_National']?.invalid) ||
+              (ssc['beneficiary_Communities_National']?.dirty &&
+                ssc['beneficiary_Communities_National']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_Scholarship_CSR_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Scholarship_CSR_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIPSs)"
@@ -959,6 +1328,18 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['nameOfCommunity']?.invalid) ||
+              (ss['nameOfCommunity']?.dirty && ss['nameOfCommunity']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Year GMoU was signed</label>
@@ -978,6 +1359,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['year_GMou_was_signed']?.invalid) ||
+              (ss['year_GMou_was_signed']?.dirty &&
+                ss['year_GMou_was_signed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Scholarship year</label>
@@ -996,6 +1390,18 @@
             [(ngModel)]="scdp_scholarship_Body.scholarshipYear"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['scholarshipYear']?.invalid) ||
+              (ss['scholarshipYear']?.dirty && ss['scholarshipYear']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1019,6 +1425,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['componentOfScholarship']?.invalid) ||
+              (ss['componentOfScholarship']?.dirty &&
+                ss['componentOfScholarship']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Total Proposed Budget (USD)</label>
@@ -1038,6 +1457,19 @@
             [(ngModel)]="scdp_scholarship_Body.actual_Budget_Total_Dollars"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['actual_Budget_Total_Dollars']?.invalid) ||
+              (ss['actual_Budget_Total_Dollars']?.dirty &&
+                ss['actual_Budget_Total_Dollars']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -1059,11 +1491,24 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_Scholarship_FormSubmitted &&
+                ss['sSUploadFilePath']?.invalid) ||
+              (ss['sSUploadFilePath']?.dirty && ss['sSUploadFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_Scholarship_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Scholarship_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_SCHOLARSHIP_SCHEMESs)"
@@ -1142,6 +1587,18 @@
           <option value="2027">2027</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+              sts['actual_proposed']?.invalid) ||
+            (sts['actual_proposed']?.dirty && sts['actual_proposed']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br />
     <div style="display: flex; width: 100%; justify-content: space-between">
@@ -1165,6 +1622,18 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['cSR_']?.invalid) ||
+              (sts['cSR_']?.dirty && sts['cSR_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Planned (Budget)</label>
@@ -1187,6 +1656,18 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['budget_']?.invalid) ||
+              (sts['budget_']?.dirty && sts['budget_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Actual (Budget)</label>
@@ -1208,6 +1689,18 @@
               isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
             "
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['actual_Spent']?.invalid) ||
+              (sts['actual_Spent']?.dirty && sts['actual_Spent']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1232,6 +1725,19 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['percentage_Completion_']?.invalid) ||
+              (sts['percentage_Completion_']?.dirty &&
+                sts['percentage_Completion_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Beneficiary (Host)</label>
@@ -1254,6 +1760,19 @@
               isEditable(SBUTABLE.SCDP_TRAININGS_AND_SKILL_ACQUISITIONs)
             "
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['beneficiary_Communities_host']?.invalid) ||
+              (sts['beneficiary_Communities_host']?.dirty &&
+                sts['beneficiary_Communities_host']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -1279,6 +1798,19 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingSkills_CSR_FormSubmitted &&
+                sts['beneficiary_Communities_National']?.invalid) ||
+              (sts['beneficiary_Communities_National']?.dirty &&
+                sts['beneficiary_Communities_National']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
@@ -1286,6 +1818,7 @@
 
     <div style="text-align: center">
       <button
+        [style]="SCDP_TrainingSkills_CSR_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Training_Skills_CSR_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -1359,6 +1892,18 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['nameOfCommunity']?.invalid) ||
+              (std['nameOfCommunity']?.dirty && std['nameOfCommunity']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Year GMoU was signed</label>
@@ -1378,6 +1923,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['year_GMou_was_signed']?.invalid) ||
+              (std['year_GMou_was_signed']?.dirty &&
+                std['year_GMou_was_signed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Training year</label>
@@ -1396,6 +1954,18 @@
             [(ngModel)]="scdp_trainingdetails_csr_Body.trainingYear"
             [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['trainingYear']?.invalid) ||
+              (std['trainingYear']?.dirty && std['trainingYear']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1420,6 +1990,19 @@
             [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['componentOfTraining']?.invalid) ||
+              (std['componentOfTraining']?.dirty &&
+                std['componentOfTraining']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Total Proposed Budget (USD)</label>
@@ -1441,6 +2024,19 @@
             "
             [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['actual_Budget_Total_Dollars']?.invalid) ||
+              (std['actual_Budget_Total_Dollars']?.dirty &&
+                std['actual_Budget_Total_Dollars']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -1465,6 +2061,19 @@
             <option value="Completed">Completed</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+                std['statusOfTraining']?.invalid) ||
+              (std['statusOfTraining']?.dirty &&
+                std['statusOfTraining']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -1488,11 +2097,24 @@
           [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSCDP_TrainingDetails_CSR_FormSubmitted &&
+              std['tSUploadFilePath']?.invalid) ||
+            (std['tSUploadFilePath']?.dirty && std['tSUploadFilePath']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_TrainingDetails_CSR_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Training_Details_CSR_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.SCDP_TRAINING_DETAILSs)"
@@ -1566,11 +2188,25 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isSCDP_Pictures_CSR_FormSubmitted &&
+              spc['uploaded_presentation']?.invalid) ||
+            (spc['uploaded_presentation']?.dirty &&
+              spc['uploaded_presentation']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SCDP_Pictures_CSR_Form.invalid ? 'cursor: default' : ''"
         (click)="SDCP_Pictures_Submit()"
         class="submitbtn"
         [attr.disabled]="

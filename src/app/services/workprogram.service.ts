@@ -2728,7 +2728,9 @@ import {
 } from '../models/step3-budget-performance.model';
 import {
   budgetProposal,
+  CAPEX,
   capexOpex,
+  OPEX,
 } from '../models/step3-budget-proposal.model';
 import {
   facilitiesProjectPerformance,
@@ -3061,6 +3063,7 @@ export class WorkProgramService {
       );
   }
   getFormFiveSCDP(omlName, year, fieldName) {
+    console.log('oml...', omlName, year, fieldName);
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_form_five_sdcp`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
@@ -3474,6 +3477,7 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN`,
@@ -3483,6 +3487,7 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
@@ -3556,6 +3561,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
@@ -3578,6 +3584,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
@@ -3600,6 +3607,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
@@ -3637,6 +3645,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
@@ -3652,7 +3661,7 @@ export class WorkProgramService {
   }
 
   post_Capex(
-    budget: capexOpex,
+    budget: CAPEX,
     year: string,
     omlName: string,
     fieldName: string,
@@ -3688,6 +3697,21 @@ export class WorkProgramService {
       );
   }
 
+  get_Opex(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/get_form_three_opex`,
+        // { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
+        { params: { year } }
+      )
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
   post_Opex(
     budget: capexOpex,
     year: string,
@@ -3696,15 +3720,17 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
-        `${environment.apiUrl}/workprogramme/post_budget_opex`,
+        `${environment.apiUrl}/workprogramme/POST_BUDGET_CAPEX_OPEX`,
         budget,
         { params: { year: year, omlName: omlName, fieldName, id, actionToDo } }
       )
       .pipe(
         retry(this.num),
         map((response) => {
+          debugger;
           return response;
         })
       );
@@ -3755,7 +3781,7 @@ export class WorkProgramService {
   }
 
   post_FacilityProject(
-    budget: facilitiesProjectPerformance,
+    budget: facilitiesProjectPerformance | FormData,
     year: string,
     omlName: string,
     fieldName: string,
@@ -4219,6 +4245,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_management_position`,
@@ -4937,8 +4964,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -4995,8 +5020,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5024,8 +5047,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5053,8 +5074,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5082,8 +5101,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5111,8 +5128,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5171,8 +5186,6 @@ export class WorkProgramService {
         {
           params: {
             year: year,
-            omlName: omlName,
-            fieldName: fieldName,
             id,
             actionToDo,
           },
@@ -5246,12 +5259,13 @@ export class WorkProgramService {
   saveInitialWellCompletion(
     conbody: INITIAL_WELL_COMPLETION_JOB1,
     year: string,
-    omlName: string
+    omlName: string,
+    fieldName: string
   ) {
     return this.http.post<any>(
       `${environment.apiUrl}/workprogramme/POST_INITIAL_WELL_COMPLETION_JOB`,
       conbody,
-      { params: { year: year, omlName: omlName } }
+      { params: { year, omlName, fieldName } }
     );
   }
 
@@ -5752,11 +5766,10 @@ export class WorkProgramService {
       );
   }
 
-  getRoyalty(omlName: string, year: string) {
-    console.log('in rol...', omlName, year);
+  getRoyalty(omlName: string, fieldID, year: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_royalty`, {
-        params: { myyear: year, omlName: omlName },
+        params: { myyear: year, omlName: omlName, fieldID: fieldID },
       })
       .pipe(
         retry(this.num),
@@ -5782,6 +5795,19 @@ export class WorkProgramService {
   getReservesUpdate(year: string, omlName: string, fieldName: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/GET_FORM_TWO_RESERVES`, {
+        params: { omlName: omlName, fieldName: fieldName, year: year },
+      })
+      .pipe(
+        retry(this.num),
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  getReservesFiveYearProjection(year: string, omlName: string, fieldName: string) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
       })
       .pipe(

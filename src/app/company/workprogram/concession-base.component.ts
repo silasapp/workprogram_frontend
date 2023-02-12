@@ -129,6 +129,7 @@ export class ConcessionBaseComponent implements OnInit {
           this.genk.Field_List = null;
           this.genk.fieldName = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
           localStorage.removeItem('fieldName');
           localStorage.removeItem('fieldFullName');
 =======
@@ -136,6 +137,10 @@ export class ConcessionBaseComponent implements OnInit {
           localStorage.setItem('fieldName', '');
           localStorage.setItem('fieldFullName', '');
 >>>>>>> a57c04cf5214e9b25e12b225d5447d2adfc21e8e
+=======
+          localStorage.removeItem('fieldName');
+          localStorage.removeItem('fieldFullName');
+>>>>>>> 6eee37dd5e70b505346faa04d915443712853ab2
           this.genk.fieldFullName = '';
           this.modal.logConcessionSituation(this.concessionHeld);
         }
@@ -178,7 +183,7 @@ export class ConcessionBaseComponent implements OnInit {
     this.genk.fieldName = this.field;
 
     const _field = this.genk.Fields?.find(
-      (f: IField) => f.field_ID == +this.field
+      (f: IField) => f.field_ID == + this.field
     );
 
     console.log('filed...', this.genk.Fields, _field, this.field);
@@ -189,6 +194,8 @@ export class ConcessionBaseComponent implements OnInit {
       (x) => x.field_ID == this.genk.fieldName
     )[0].field_Name;
     localStorage.setItem('fieldFullName', this.genk.fieldFullName);
+    localStorage.setItem('fieldName', this.genk.fieldName);
+
     this.modal.logConcessionSituation(this.concessionHeld);
   }
 

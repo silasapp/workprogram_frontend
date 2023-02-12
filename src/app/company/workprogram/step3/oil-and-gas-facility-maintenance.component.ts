@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SBUTABLE } from 'src/app/constants/SBUTABLE';
+import { updateFormValidity } from 'src/app/helpers/updateFormValidity';
 import {
   facilitiesProjectPerformance,
   newTechnologyAndConformityAssessment,
@@ -28,10 +29,15 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   public SBUTABLE = SBUTABLE;
 
   public oilAndGasProjects: oilAndGasFacilityMaintenanceProject[] = [];
+  public facilitiesProjectPerformances: facilitiesProjectPerformance[] = [];
 
   oilAndGasForm: FormGroup;
   newTechnologyForm: FormGroup;
   facilitiesProjectPerformanceForm: FormGroup;
+
+  public isOilAndGasFormSubmitted = false;
+  public isNewTechnologyFormSubmitted = false;
+  public isFacilitiesProjectPerformanceFormSubmitted = false;
 
   oilAndGasBody: oilAndGasFacilityMaintenanceProject =
     {} as oilAndGasFacilityMaintenanceProject;
@@ -102,10 +108,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       header: 'Planned, ongoing and routine maintenance?',
     },
 
-    {
-      columnDef: 'objective_Drivers_',
-      header: 'Objective / Drivers',
-    },
+    // {
+    //   columnDef: 'objective_Drivers_',
+    //   header: 'Objective / Drivers',
+    // },
     {
       columnDef: 'nigerian_Content_Value',
       header: 'Nigerian Content Value',
@@ -114,14 +120,14 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       columnDef: 'new_Technology_',
       header: 'New Technology',
     },
-    {
-      columnDef: 'name',
-      header: 'Name',
-    },
-    {
-      columnDef: 'major_Projects',
-      header: 'Major Projects',
-    },
+    // {
+    //   columnDef: 'name',
+    //   header: 'Name',
+    // },
+    // {
+    //   columnDef: 'major_Projects',
+    //   header: 'Major Projects',
+    // },
     {
       columnDef: 'has_it_been_adopted_by_DPR_',
       header: 'Has it been adopted by NUPRC?',
@@ -152,6 +158,37 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       header: 'Completion Status (%)',
     },
   ];
+
+  facColHeaderDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'areThereEvidenceOfDesignSafetyCaseApproval',
+      header: 'Do you have Evidence of Design Safety Case Approval?',
+    },
+    {
+      columnDef: 'list_of_Projects',
+      header: 'List of Projects',
+    },
+    {
+      columnDef: 'planned_completion',
+      header: 'Planned Completion Status (%)',
+    },
+    {
+      columnDef: 'actual_completion',
+      header: 'Actual Completion Status (%)',
+    },
+    {
+      columnDef: 'evidenceOfDesignSafetyCaseApprovalPath',
+      header: 'Evidence of Design Safety Case Approval',
+    },
+    {
+      columnDef: 'reasonForNoEvidence',
+      header: 'Reason (If no Evidence of Design Safety Case Approval)',
+    },
+  ];
   //#endregion
 
   constructor(
@@ -170,27 +207,27 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   ngOnInit(): void {
     this.genk.activeStep = 'STEP3';
     this.oilAndGasForm = new FormGroup({
-      major_Projects: new FormControl(
-        this.oilAndGasBody.major_Projects,
-        Validators.required
-      ),
-      name: new FormControl(this.oilAndGasBody.name, Validators.required),
-      objective_Drivers_: new FormControl(
-        this.oilAndGasBody.objective_Drivers_,
-        Validators.required
-      ),
+      // major_Projects: new FormControl(
+      //   this.oilAndGasBody.major_Projects,
+      //   Validators.required
+      // ),
+      // name: new FormControl(this.oilAndGasBody.name, Validators.required),
+      // objective_Drivers_: new FormControl(
+      //   this.oilAndGasBody.objective_Drivers_,
+      //   Validators.required
+      // ),
       approval_License_Permits: new FormControl(
         this.oilAndGasBody.approval_License_Permits,
         Validators.required
       ),
-      capeX_Oversight: new FormControl(
-        this.oilAndGasBody.capeX_Oversight,
-        Validators.required
-      ),
-      budget_Performance: new FormControl(
-        this.oilAndGasBody.budget_Performance,
-        Validators.required
-      ),
+      // capeX_Oversight: new FormControl(
+      //   this.oilAndGasBody.capeX_Oversight,
+      //   Validators.required
+      // ),
+      // budget_Performance: new FormControl(
+      //   this.oilAndGasBody.budget_Performance,
+      //   Validators.required
+      // ),
       completion_Status: new FormControl(
         this.oilAndGasBody.completion_Status,
         Validators.required
@@ -220,10 +257,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         this.oilAndGasBody.project_Timeline,
         Validators.required
       ),
-      conformity_Assessment: new FormControl(
-        this.oilAndGasBody.conformity_Assessment,
-        Validators.required
-      ),
+      // conformity_Assessment: new FormControl(
+      //   this.oilAndGasBody.conformity_Assessment,
+      //   Validators.required
+      // ),
       new_Technology_: new FormControl(
         this.oilAndGasBody.new_Technology_,
         Validators.required
@@ -264,10 +301,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         this.oilAndGasBody.nigerian_Content_Value,
         Validators.required
       ),
-      product_Off_takers: new FormControl(
-        this.oilAndGasBody.product_Off_takers,
-        Validators.required
-      ),
+      // product_Off_takers: new FormControl(
+      //   this.oilAndGasBody.product_Off_takers,
+      //   Validators.required
+      // ),
       actual_Proposed: new FormControl(
         this.oilAndGasBody.actual_Proposed,
         Validators.required
@@ -328,6 +365,18 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       ),
     });
 
+    this.getAreThereEvidenceOfDSCAControl.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getReasonForNoEvidence.disable();
+          this.getEvidenceOfDesignSafetyCaseApproval.enable();
+        } else {
+          this.getEvidenceOfDesignSafetyCaseApproval.disable();
+          this.getReasonForNoEvidence.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -343,6 +392,36 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     });
 
     this.getBudgetData();
+  }
+
+  public get og() {
+    return this.oilAndGasForm.controls;
+  }
+
+  public get nt() {
+    return this.newTechnologyForm.controls;
+  }
+
+  public get fp() {
+    return this.facilitiesProjectPerformanceForm.controls;
+  }
+
+  public get getAreThereEvidenceOfDSCAControl() {
+    return this.facilitiesProjectPerformanceForm.controls[
+      'areThereEvidenceOfDesignSafetyCaseApproval'
+    ];
+  }
+
+  public get getEvidenceOfDesignSafetyCaseApproval() {
+    return this.facilitiesProjectPerformanceForm.controls[
+      'evidenceOfDesignSafetyCaseApprovalFilename'
+    ];
+  }
+
+  public get getReasonForNoEvidence() {
+    return this.facilitiesProjectPerformanceForm.controls[
+      'reasonForNoEvidence'
+    ];
   }
 
   isEditable(group: string): boolean | null {
@@ -386,12 +465,13 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
           res.facilitiesProjetPerformance != null &&
           res.facilitiesProjetPerformance.length > 0
         ) {
+          this.facilitiesProjectPerformances = res.facilitiesProjetPerformance;
           facInfo = res
             .facilitiesProjetPerformance[0] as facilitiesProjectPerformance;
         }
-        this.oilAndGasBody = oilInfo;
+        // this.oilAndGasBody = oilInfo;
         this.newTechnologyBody = techInfo;
-        this.facilitiesProjectPerformanceBody = facInfo;
+        // this.facilitiesProjectPerformanceBody = facInfo;
 
         this.cd.markForCheck();
       });
@@ -442,7 +522,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       });
   }
 
-  Delete_Facility(event) {
+  Delete_Facility(row) {
     let info = this
       .facilitiesProjectPerformanceBody as facilitiesProjectPerformance;
     this.workprogram
@@ -451,16 +531,17 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
-        event.target.value,
+        row.id,
         'DELETE'
       )
-      .subscribe((res) => {
-        debugger;
-        if (res.statusCode == 300) {
-          this.modalService.logNotice('Error', res.message, 'error');
-        } else {
+      .subscribe({
+        next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
-        }
+          this.getBudgetData();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error.message, 'error');
+        },
       });
   }
 
@@ -487,6 +568,10 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     return resultArray;
   }
   saveOilGas() {
+    console.log(this.oilAndGasForm);
+    this.isOilAndGasFormSubmitted = true;
+    if (this.oilAndGasForm.invalid) return;
+
     let budgetInfo = {} as oilAndGasFacilityMaintenanceProject;
     this.oilAndGasBody.companyNumber = 0;
     this.oilAndGasBody.id = 0;
@@ -510,6 +595,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isOilAndGasFormSubmitted = false;
+          this.oilAndGasBody = {} as oilAndGasFacilityMaintenanceProject;
+          this.oilAndGasForm = updateFormValidity(this.oilAndGasForm);
           this.getBudgetData();
         },
         error: (error) => {
@@ -519,6 +607,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   }
 
   saveTechnology() {
+    this.isNewTechnologyFormSubmitted = true;
+    if (this.newTechnologyForm.invalid) return;
+
     let budgetInfo = {} as newTechnologyAndConformityAssessment;
     this.newTechnologyBody.companyNumber = 0;
     this.newTechnologyBody.id = 0;
@@ -542,6 +633,9 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isNewTechnologyFormSubmitted = false;
+          this.newTechnologyBody = {} as newTechnologyAndConformityAssessment;
+          this.newTechnologyForm = updateFormValidity(this.newTechnologyForm);
           this.getBudgetData();
         },
         error: (error) => {
@@ -551,23 +645,39 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   }
 
   saveFacility() {
-    debugger;
+    this.isFacilitiesProjectPerformanceFormSubmitted = true;
+    if (this.facilitiesProjectPerformanceForm.invalid) return;
+
     let budgetInfo = {} as facilitiesProjectPerformance;
     this.facilitiesProjectPerformanceBody.companyNumber = 0;
     this.facilitiesProjectPerformanceBody.id = 0;
-    debugger;
     this.facilitiesProjectPerformanceBody.year_of_WP = this.genk.wpYear;
     this.facilitiesProjectPerformanceBody.omL_Name = this.genk.OmlName;
-    debugger;
     for (let item in this.facilitiesProjectPerformanceBody) {
       if (item != 'id' && item != 'field_ID') {
         budgetInfo[this.genk.upperText(item)] =
           this.facilitiesProjectPerformanceBody[item]?.toString() ?? '';
       }
     }
+
+    const formDat: FormData = new FormData();
+    budgetInfo.id = 0;
+    for (const key in budgetInfo) {
+      if (budgetInfo[key]) {
+        formDat.append(key.toString(), budgetInfo[key]);
+      }
+    }
+    if (this.EvidenceOfDesignSafetyCaseApprovalFile) {
+      formDat.append(
+        this.EvidenceOfDesignSafetyCaseApprovalNameDoc,
+        this.EvidenceOfDesignSafetyCaseApprovalFile,
+        this.EvidenceOfDesignSafetyCaseApprovalNewName
+      );
+    }
+
     this.workprogram
       .post_FacilityProject(
-        budgetInfo,
+        formDat,
         this.genk.wpYear,
         this.genk.OmlName,
         this.genk.fieldName,
@@ -577,6 +687,12 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.modalService.logNotice('Success', res.message, 'success');
+          this.isFacilitiesProjectPerformanceFormSubmitted = false;
+          this.facilitiesProjectPerformanceBody =
+            {} as facilitiesProjectPerformance;
+          this.facilitiesProjectPerformanceForm = updateFormValidity(
+            this.facilitiesProjectPerformanceForm
+          );
           this.getBudgetData();
         },
         error: (error) => {

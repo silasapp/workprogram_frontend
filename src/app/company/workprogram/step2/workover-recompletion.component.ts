@@ -35,6 +35,8 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
 
   currentIWQuater = 1;
 
+  public isWorkoverFormSubmitted = false;
+
   constructor(
     private cd: ChangeDetectorRef,
     private gen: GenericService,
@@ -50,10 +52,10 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
     this.genk.activeStep = 'STEP2';
     this.WorkoverForm = new FormGroup(
       {
-        current_year_Actual_Number_data: new FormControl(
-          this.workoverBody.current_year_Actual_Number_data,
-          [Validators.required]
-        ),
+        // current_year_Actual_Number_data: new FormControl(
+        //   this.workoverBody.current_year_Actual_Number_data,
+        //   [Validators.required]
+        // ),
         proposed_year_data: new FormControl(
           this.workoverBody.proposed_year_data,
           [Validators.required]
@@ -114,6 +116,10 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
       return null;
     }
     return this.genk.disableForm ? true : null;
+  }
+
+  public get f() {
+    return this.WorkoverForm.controls;
   }
 
   get quaterIWClassOne() {
@@ -253,6 +259,11 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
           res.workoverRecompletion.filter((res) => {
             return res.quater === 'QUARTER 1';
           })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
+
+        this.quaterIWOneData.proposed_workover_Date = this.genk.formDate(
+          this.quaterIWOneData.proposed_Workover_Date
+        );
+
         this.quaterIWOne = this.quaterIWOneData.omL_Name ? true : false;
 
         this.quaterIWTwoData =
@@ -262,6 +273,10 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
           })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWTwo = this.quaterIWTwoData.omL_Name ? true : false;
 
+        this.quaterIWTwoData.proposed_workover_Date = this.genk.formDate(
+          this.quaterIWTwoData.proposed_Workover_Date
+        );
+
         this.quaterIWThreeData =
           res.workoverRecompletion.filter((res) => {
             this.quaterIWThree = res.quater === 'QUARTER 3' ? true : false;
@@ -269,11 +284,20 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
           })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
         this.quaterIWThree = this.quaterIWThreeData.omL_Name ? true : false;
 
+        this.quaterIWThreeData.proposed_workover_Date = this.genk.formDate(
+          this.quaterIWThreeData.proposed_Workover_Date
+        );
+
         this.quaterIWFourData =
           res.workoverRecompletion.filter((res) => {
             this.quaterIWFour = res.quater === 'QUARTER 4' ? true : false;
             return res.quater === 'QUARTER 4';
           })[0] ?? new WORKOVERS_RECOMPLETION_JOB1();
+
+        this.quaterIWFourData.proposed_workover_Date = this.genk.formDate(
+          this.quaterIWFourData.proposed_Workover_Date
+        );
+
         this.quaterIWFour = this.quaterIWFourData.omL_Name ? true : false;
         this.workoverBody = this.quaterIWOneData;
         this.cd.markForCheck();
@@ -281,6 +305,9 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
   }
 
   submit() {
+    this.isWorkoverFormSubmitted = true;
+    if (this.WorkoverForm.invalid) return;
+
     this.cd.markForCheck();
     this.workoverBody.id = 0;
     this.workoverBody.qUATER = 'QUARTER ' + this.currentIWQuater;
@@ -301,6 +328,11 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
       )
       .subscribe((res) => {
         this.modalService.logNotice('Success', res.popText, 'success');
+        this.isWorkoverFormSubmitted = false;
+        this.WorkoverForm.reset();
+        this.WorkoverForm.updateValueAndValidity();
+        this.getWorkover();
+        this.cd.markForCheck();
       });
   }
 

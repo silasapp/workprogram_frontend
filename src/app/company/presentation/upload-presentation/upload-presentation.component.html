@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <form [formGroup]="uploadPresentationForm" (ngSubmit)="onSubmit()">
     <div class="container">
-      <h1>Upload Presention</h1>
+      <h1>Upload Presentation</h1>
 
       <div class="bg-success">
         <hr size="5" />
@@ -158,6 +158,15 @@
                   src="../../../../assets/images/file-icon.png"
                   height="40px"
                 />
+              </a>
+            </td>
+            <td>
+              <a
+                [href]="row['uploaded_presentation']"
+                class="btn btn-secondary btn-sm submitbtn"
+                download
+              >
+                Download
               </a>
             </td>
             <td>

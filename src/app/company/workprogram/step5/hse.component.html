@@ -64,6 +64,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isManagementPositionFormSubmitted &&
+                mp['promotionLetterFilePath']?.invalid) ||
+              (mp['promotionLetterFilePath']?.dirty &&
+                mp['promotionLetterFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 100%">
@@ -87,11 +100,25 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isManagementPositionFormSubmitted &&
+                mp['organogramrFilePath']?.invalid) ||
+              (mp['organogramrFilePath']?.dirty &&
+                mp['organogramrFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="ManagementPositionForm.invalid ? 'cursor: default' : ''"
         (click)="Hse_Management_Position_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_MANAGEMENT_POSITIONs)"
@@ -163,6 +190,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isTechnicalSafetyFormSubmitted &&
+                  ts['number_of_facilities']?.invalid) ||
+                (ts['number_of_facilities']?.dirty &&
+                  ts['number_of_facilities']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -185,6 +225,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isTechnicalSafetyFormSubmitted &&
+                  ts['facility_location']?.invalid) ||
+                (ts['facility_location']?.dirty &&
+                  ts['facility_location']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -206,6 +259,19 @@
                 [attr.disabled]="isEditable(SBUTABLE.HSE_SAFETY_STUDIES_NEWs)"
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isTechnicalSafetyFormSubmitted &&
+                  ts['type_of_facility']?.invalid) ||
+                (ts['type_of_facility']?.dirty &&
+                  ts['type_of_facility']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -232,6 +298,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isTechnicalSafetyFormSubmitted && ts['study_type']?.invalid) ||
+              (ts['study_type']?.dirty && ts['study_type']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin-top: auto">
@@ -254,12 +331,24 @@
             ></textarea>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isTechnicalSafetyFormSubmitted && ts['remarks']?.invalid) ||
+              (ts['remarks']?.dirty && ts['remarks']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
 
     <br />
     <div style="text-align: center">
       <button
+        [style]="TechnicalSafetyForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_TechnicalSubmit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_SAFETY_STUDIES_NEWs)"
@@ -546,6 +635,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSafetyCultureTrainingFormSubmitted &&
+                sct['AreThereTrainingPlansForHSE']?.invalid) ||
+              (sct['AreThereTrainingPlansForHSE']?.dirty &&
+                sct['AreThereTrainingPlansForHSE']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -575,6 +677,18 @@
             />
           </div>
         </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSafetyCultureTrainingFormSubmitted &&
+                sct['EvidenceOfTrainingPlanFilename']?.invalid) ||
+              (sct['EvidenceOfTrainingPlanFilename']?.dirty &&
+                sct['EvidenceOfTrainingPlanFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -603,6 +717,18 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isSafetyCultureTrainingFormSubmitted &&
+                  sct['remark']?.invalid) ||
+                (sct['remark']?.dirty && sct['remark']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <br />
@@ -634,6 +760,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSafetyCultureTrainingFormSubmitted &&
+                sct['safetyCurrentYearFilename']?.invalid) ||
+              (sct['safetyCurrentYearFilename']?.dirty &&
+                sct['safetyCurrentYearFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 100%">
@@ -661,11 +800,25 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isSafetyCultureTrainingFormSubmitted &&
+                sct['safetyLast2YearsFilename']?.invalid) ||
+              (sct['safetyLast2YearsFilename']?.dirty &&
+                sct['safetyLast2YearsFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="SafetyCultureTrainingForm.invalid ? 'cursor: default' : ''"
         (click)="Hse_Safety_Culture_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_SAFETY_CULTURE_TRAININGs)"
@@ -745,6 +898,17 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted && ocu['DoYouHaveAnOhm']?.invalid) ||
+              (ocu['DoYouHaveAnOhm']?.dirty && ocu['DoYouHaveAnOhm']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -772,6 +936,18 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted &&
+                ocu['OHMplanFileName']?.invalid) ||
+              (ocu['OHMplanFileName']?.dirty && ocu['OHMplanFileName']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin-top: auto">
@@ -795,6 +971,17 @@
               "
             ></textarea>
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted && ocu['ReasonForNoOhm']?.invalid) ||
+              (ocu['ReasonForNoOhm']?.dirty && ocu['ReasonForNoOhm']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -825,6 +1012,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted &&
+                ocu['WasOhmPolicyCommunicatedToStaff']?.invalid) ||
+              (ocu['WasOhmPolicyCommunicatedToStaff']?.dirty &&
+                ocu['WasOhmPolicyCommunicatedToStaff']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -849,6 +1049,19 @@
               isEditable(SBUTABLE.HSE_OCCUPATIONAL_HEALTH_MANAGEMENTs)
             "
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted &&
+                ocu['OHMplanCommunicationFileName']?.invalid) ||
+              (ocu['OHMplanCommunicationFileName']?.dirty &&
+                ocu['OHMplanCommunicationFileName']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -878,11 +1091,25 @@
             ></textarea>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOccupationalFormSubmitted &&
+                ocu['ReasonWhyOhmWasNotCommunicatedToStaff']?.invalid) ||
+              (ocu['ReasonWhyOhmWasNotCommunicatedToStaff']?.dirty &&
+                ocu['ReasonWhyOhmWasNotCommunicatedToStaff']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="OccupationalForm.invalid ? 'cursor: default' : ''"
         (click)="Hse_Occupational_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -959,6 +1186,19 @@
           <option value="No">No</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isQualityControlFormSubmitted &&
+              gc['doyouhaveQualityControl']?.invalid) ||
+            (gc['doyouhaveQualityControl']?.dirty &&
+              gc['doyouhaveQualityControl']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -982,12 +1222,26 @@
           [attr.disabled]="isEditable(SBUTABLE.HSE_QUALITY_CONTROLs)"
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isQualityControlFormSubmitted &&
+              gc['qualityControlFilePath']?.invalid) ||
+            (gc['qualityControlFilePath']?.dirty &&
+              gc['qualityControlFilePath']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br /><br />
     <div class="col-md-5"></div>
     <div class="col-md-4">
       <br />
       <button
+        [style]="QualityControlForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_QualityControl_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_QUALITY_CONTROLs)"
@@ -1063,6 +1317,17 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isClimateChangeFormSubmitted && cc['doyouhaveGHG']?.invalid) ||
+              (cc['doyouhaveGHG']?.dirty && cc['doyouhaveGHG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div class="col-md-4"></div>
       <div class="col-md-4">
@@ -1088,11 +1353,23 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isClimateChangeFormSubmitted && cc['gHGFilePath']?.invalid) ||
+              (cc['gHGFilePath']?.dirty && cc['gHGFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="ClimateChangeForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_Climate_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -1369,6 +1646,17 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted && arp['facility']?.invalid) ||
+            (arp['facility']?.dirty && arp['facility']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4">
       <label class="labelwp">
@@ -1393,6 +1681,18 @@
             )
           "
         />
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['equipment_type']?.invalid) ||
+            (arp['equipment_type']?.dirty && arp['equipment_type']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <div class="col-md-4">
@@ -1419,6 +1719,19 @@
             )
           "
         />
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['equipment_description']?.invalid) ||
+            (arp['equipment_description']?.dirty &&
+              arp['equipment_description']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <br />
@@ -1505,6 +1818,19 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['equipment_Installation_date']?.invalid) ||
+            (arp['equipment_Installation_date']?.dirty &&
+              arp['equipment_Installation_date']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4">
       <br />
@@ -1529,6 +1855,19 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['last_inspection_date']?.invalid) ||
+            (arp['last_inspection_date']?.dirty &&
+              arp['last_inspection_date']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4">
       <br />
@@ -1552,6 +1891,19 @@
             )
           "
         />
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['last_Inspection_Type_Performed']?.invalid) ||
+            (arp['last_Inspection_Type_Performed']?.dirty &&
+              arp['last_Inspection_Type_Performed']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <br />
@@ -1578,6 +1930,19 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['next_Inspection_Date']?.invalid) ||
+            (arp['next_Inspection_Date']?.dirty &&
+              arp['next_Inspection_Date']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <div class="col-md-4">
@@ -1602,6 +1967,19 @@
           "
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['proposed_Inspection_Type']?.invalid) ||
+            (arp['proposed_Inspection_Type']?.dirty &&
+              arp['proposed_Inspection_Type']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4">
       <br />
@@ -1625,6 +2003,18 @@
             )
           "
         ></textarea>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['state_reason']?.invalid) ||
+            (arp['state_reason']?.dirty && arp['state_reason']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <div class="col-md-4">
@@ -1654,6 +2044,19 @@
           <option value="Mild/Okay">Mild/Okay</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['condition_of_Equipment']?.invalid) ||
+            (arp['condition_of_Equipment']?.dirty &&
+              arp['condition_of_Equipment']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-4">
       <br />
@@ -1681,6 +2084,19 @@
           <option value="Fail">Fail</option>
           <option value="Not Applicable">Not Applicable</option>
         </select>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['function_Test_Result']?.invalid) ||
+            (arp['function_Test_Result']?.dirty &&
+              arp['function_Test_Result']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <br />
@@ -1711,6 +2127,19 @@
           <option value="Unstisfactory">Unsatisfactory</option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_Pre_FormSubmitted &&
+              arp['inspection_Report_Review']?.invalid) ||
+            (arp['inspection_Report_Review']?.dirty &&
+              arp['inspection_Report_Review']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <div class="col-md-12"></div>
     <div class="col-md-5"></div>
@@ -1718,6 +2147,7 @@
       <br />
       <br />
       <button
+        [style]="AssetRegister_Pre_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_AssetRegister_PRE_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -1806,6 +2236,17 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted && arr['facility']?.invalid) ||
+              (arr['facility']?.dirty && arr['facility']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">
@@ -1832,6 +2273,18 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['equipment_type']?.invalid) ||
+              (arr['equipment_type']?.dirty && arr['equipment_type']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -1860,6 +2313,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['equipment_description']?.invalid) ||
+              (arr['equipment_description']?.dirty &&
+                arr['equipment_description']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -1960,6 +2426,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['equipment_Installation_date']?.invalid) ||
+              (arr['equipment_Installation_date']?.dirty &&
+                arr['equipment_Installation_date']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -1986,6 +2465,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['last_inspection_date']?.invalid) ||
+              (arr['last_inspection_date']?.dirty &&
+                arr['last_inspection_date']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2010,6 +2502,19 @@
                 )
               "
             />
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isAssetRegister_RBI_FormSubmitted &&
+                  arr['last_Inspection_Type_Performed']?.invalid) ||
+                (arr['last_Inspection_Type_Performed']?.dirty &&
+                  arr['last_Inspection_Type_Performed']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -2042,6 +2547,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['likelihood_of_Failure']?.invalid) ||
+              (arr['likelihood_of_Failure']?.dirty &&
+                arr['likelihood_of_Failure']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2068,6 +2586,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['consequence_of_Failure']?.invalid) ||
+              (arr['consequence_of_Failure']?.dirty &&
+                arr['consequence_of_Failure']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2093,6 +2624,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['maximum_Inspection_numbererval']?.invalid) ||
+              (arr['maximum_Inspection_numbererval']?.dirty &&
+                arr['maximum_Inspection_numbererval']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -2123,6 +2667,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['next_Inspection_Date']?.invalid) ||
+              (arr['next_Inspection_Date']?.dirty &&
+                arr['next_Inspection_Date']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2148,6 +2705,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['proposed_Inspection_Type']?.invalid) ||
+              (arr['proposed_Inspection_Type']?.dirty &&
+                arr['proposed_Inspection_Type']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2172,6 +2742,19 @@
             "
           />
         </div>
+      </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isAssetRegister_RBI_FormSubmitted &&
+              arr['rBI_Assessment_Date']?.invalid) ||
+            (arr['rBI_Assessment_Date']?.dirty &&
+              arr['rBI_Assessment_Date']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
       </div>
     </div>
     <br />
@@ -2203,6 +2786,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['equipment_Inspected_as_and_when_due']?.invalid) ||
+              (arr['equipment_Inspected_as_and_when_due']?.dirty &&
+                arr['equipment_Inspected_as_and_when_due']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -2229,6 +2825,18 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['state_reason']?.invalid) ||
+              (arr['state_reason']?.dirty && arr['state_reason']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -2258,6 +2866,18 @@
             <option value="Fail">Fail</option>
             <option value="Not Applicable">Not Applicable</option>
           </select>
+        </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['condition_of_equipment']?.invalid) ||
+              (arr['condition_of_equipment']?.dirty &&
+                arr['condition_of_equipment']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -2290,6 +2910,19 @@
             <option value="Not Applicable">Not Applicable</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['function_Test_Result']?.invalid) ||
+              (arr['function_Test_Result']?.dirty &&
+                arr['function_Test_Result']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -2317,11 +2950,25 @@
             <option value="Mild/Okay">Mild/Okay</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isAssetRegister_RBI_FormSubmitted &&
+                arr['inspection_Report_Review']?.invalid) ||
+              (arr['inspection_Report_Review']?.dirty &&
+                arr['inspection_Report_Review']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="AssetRegister_RBI_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_AssetRegister_RBI_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -2405,6 +3052,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted &&
+                  os['incident_Oil_Spill_Ref_No']?.invalid) ||
+                (os['incident_Oil_Spill_Ref_No']?.dirty &&
+                  os['incident_Oil_Spill_Ref_No']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -2429,6 +3089,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted &&
+                  os['facility_Equipment']?.invalid) ||
+                (os['facility_Equipment']?.dirty &&
+                  os['facility_Equipment']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -2452,6 +3125,17 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted && os['location']?.invalid) ||
+                (os['location']?.dirty && os['location']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -2482,6 +3166,17 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted && os['lga']?.invalid) ||
+                (os['lga']?.dirty && os['lga']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -2506,6 +3201,17 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted && os['state_']?.invalid) ||
+                (os['state_']?.dirty && os['state_']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -2529,6 +3235,17 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted && os['date_of_Spill']?.invalid) ||
+                (os['date_of_Spill']?.dirty && os['date_of_Spill']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
       </div>
@@ -2559,6 +3276,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted &&
+                  os['type_of_operation_at_spill_site']?.invalid) ||
+                (os['type_of_operation_at_spill_site']?.dirty &&
+                  os['type_of_operation_at_spill_site']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
 
         <div style="width: 30%">
@@ -2582,6 +3312,17 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted && os['cause_of_spill']?.invalid) ||
+                (os['cause_of_spill']?.dirty && os['cause_of_spill']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
 
@@ -2610,6 +3351,19 @@
             </div>
           </div>
           <small #oilSand></small>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isOilSpill_FormSubmitted &&
+                  os['volume_of_spill_bbls']?.invalid) ||
+                (os['volume_of_spill_bbls']?.dirty &&
+                  os['volume_of_spill_bbls']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -2637,10 +3391,24 @@
         </div>
       </div>
       <small #oilSand></small>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isOilSpill_FormSubmitted &&
+              os['volume_recovered_bbls']?.invalid) ||
+            (os['volume_recovered_bbls']?.dirty &&
+              os['volume_recovered_bbls']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="OilSpill_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_OilSpill_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_OIL_SPILL_REPORTING_NEWs)"
@@ -3899,6 +4667,18 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                esu['field_name']?.invalid) ||
+              (esu['field_name']?.dirty && esu['field_name']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%">
@@ -3923,6 +4703,18 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                esu['type_of_study']?.invalid) ||
+              (esu['type_of_study']?.dirty && esu['type_of_study']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp"> Study Title</label>
@@ -3946,6 +4738,18 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                esu['study_title']?.invalid) ||
+              (esu['study_title']?.dirty && esu['study_title']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -3965,7 +4769,7 @@
             <input
               type="text"
               class="inpute"
-              formControlName="study_title"
+              formControlName="current_study_status"
               [(ngModel)]="
                 environmental_studies_updated_Body.current_study_status
               "
@@ -3974,6 +4778,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                esu['current_study_status']?.invalid) ||
+              (esu['current_study_status']?.dirty &&
+                esu['current_study_status']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -4001,12 +4818,28 @@
             <option value="Not Approved">Not Approved</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                esu['dPR_approval_Status']?.invalid) ||
+              (esu['dPR_approval_Status']?.dirty &&
+                esu['dPR_approval_Status']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="
+          Environmental_Studies_Updated_Form.invalid ? 'cursor: default' : ''
+        "
         (click)="HSE_Environmental_Studies_Updated_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)"
@@ -4077,6 +4910,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                ens['any_Environmental_Studies']?.invalid) ||
+              (ens['any_Environmental_Studies']?.dirty &&
+                ens['any_Environmental_Studies']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Select Project Name</label>
@@ -4103,6 +4949,19 @@
             <option value="N/A">N/A</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                ens['if_YES_state_Project_Name']?.invalid) ||
+              (ens['if_YES_state_Project_Name']?.dirty &&
+                ens['if_YES_state_Project_Name']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Status</label>
@@ -4128,6 +4987,18 @@
             <option value="Ongoing">Ongoing</option>
             <option value="N/A">N/A</option>
           </select>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_Updated_FormSubmitted &&
+                ens['status_']?.invalid) ||
+              (ens['status_']?.dirty && ens['status_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -4160,12 +5031,25 @@
           </option>
         </select>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isEnvironmental_Studies_Updated_FormSubmitted &&
+              ens['if_Ongoing']?.invalid) ||
+            (ens['if_Ongoing']?.dirty && ens['if_Ongoing']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="Environmental_Studies_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Environmental_Studies_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)"
@@ -4244,6 +5128,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_FormSubmitted &&
+                wam['do_you_have_Waste_Management_facilities']?.invalid) ||
+              (wam['do_you_have_Waste_Management_facilities']?.dirty &&
+                wam['do_you_have_Waste_Management_facilities']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">If YES, is the facility registered?</label>
@@ -4269,6 +5166,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_FormSubmitted &&
+                wam['if_YES_is_the_facility_registered']?.invalid) ||
+              (wam['if_YES_is_the_facility_registered']?.dirty &&
+                wam['if_YES_is_the_facility_registered']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">
@@ -4293,11 +5203,25 @@
           />
         </div>
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isWaste_Management_FormSubmitted &&
+              wam['if_NO_give_reasons_for_not_being_registered']?.invalid) ||
+            (wam['if_NO_give_reasons_for_not_being_registered']?.dirty &&
+              wam['if_NO_give_reasons_for_not_being_registered']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <br />
     <div style="text-align: center">
       <button
+        [style]="Waste_Management_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Waste_Management_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_NEWs)"
@@ -4372,6 +5296,19 @@
             <option value="TDU">TDU</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_Facility_FormSubmitted &&
+                wmf['type_of_Facility']?.invalid) ||
+              (wmf['type_of_Facility']?.dirty &&
+                wmf['type_of_Facility']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Location</label>
@@ -4392,6 +5329,18 @@
               isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_TYPE_OF_FACILITY_NEWs)
             "
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_Facility_FormSubmitted &&
+                wmf['lOCATION']?.invalid) ||
+              (wmf['lOCATION']?.dirty && wmf['lOCATION']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -4419,11 +5368,27 @@
             <option value="Not Approved">Not Approved</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_Facility_FormSubmitted &&
+                wmf['approved_or_Not_Approve']?.invalid) ||
+              (wmf['approved_or_Not_Approve']?.dirty &&
+                wmf['approved_or_Not_Approve']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <div style="text-align: center">
       <button
+        [style]="
+          Waste_Management_Facility_Form.invalid ? 'cursor: default' : ''
+        "
         (click)="HSE_Waste_Management_Facility_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -4499,6 +5464,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_Files_FormSubmitted &&
+                wmfs['wasteManagementPlanFilePath']?.invalid) ||
+              (wmfs['wasteManagementPlanFilePath']?.dirty &&
+                wmfs['wasteManagementPlanFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp"
@@ -4525,11 +5503,25 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWaste_Management_Files_FormSubmitted &&
+                wmfs['decomCertificateFilePath']?.invalid) ||
+              (wmfs['decomCertificateFilePath']?.dirty &&
+                wmfs['decomCertificateFilePath']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <div style="text-align: center">
       <button
+        [style]="Waste_Management_Files_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Waste_Management_Files_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -4798,6 +5790,19 @@
             <option value="Non-Discharged Zone">Non-Discharged</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWater_Management_FormSubmitted &&
+                wtm['within_which_zone_are_you_operating']?.invalid) ||
+              (wtm['within_which_zone_are_you_operating']?.dirty &&
+                wtm['within_which_zone_are_you_operating']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">How do you handle your produced water?</label>
@@ -4829,6 +5834,19 @@
             </option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWater_Management_FormSubmitted &&
+                wtm['how_do_you_handle_your_produced_water']?.invalid) ||
+              (wtm['how_do_you_handle_your_produced_water']?.dirty &&
+                wtm['how_do_you_handle_your_produced_water']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <label class="labelwp">Export to Terminal with fluid (wet crude)</label>
@@ -4857,12 +5875,26 @@
             </option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isWater_Management_FormSubmitted &&
+                wtm['export_to_Terminal_with_fluid']?.invalid) ||
+              (wtm['export_to_Terminal_with_fluid']?.dirty &&
+                wtm['export_to_Terminal_with_fluid']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="Water_Management_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Water_Management_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -4947,6 +5979,20 @@
             <option value="Non-Producing">Non-Producing</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco['are_you_a_Producing_or_Non_Producing_Company']
+                  ?.invalid) ||
+              (enco['are_you_a_Producing_or_Non_Producing_Company']?.dirty &&
+                enco['are_you_a_Producing_or_Non_Producing_Company']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%">
         <br />
@@ -4973,8 +6019,22 @@
           >
             <option selected disabled>---- Please Select a Option----</option>
             <option value="Yes">Yes</option>
-            <option value="No">No"</option>
+            <option value="No">No</option>
           </select>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco['if_YES_have_you_registered_your_Point_Sources']
+                  ?.invalid) ||
+              (enco['if_YES_have_you_registered_your_Point_Sources']?.dirty &&
+                enco['if_YES_have_you_registered_your_Point_Sources']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
       <div style="width: 30%">
@@ -5000,6 +6060,23 @@
               isEditable(SBUTABLE.HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEWs)
             "
           />
+        </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco[
+                  'if_NO_give_reasons_for_not_registering_your_Point_Sources'
+                ]?.invalid) ||
+              (enco['if_NO_give_reasons_for_not_registering_your_Point_Sources']
+                ?.dirty &&
+                enco[
+                  'if_NO_give_reasons_for_not_registering_your_Point_Sources'
+                ]?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -5034,6 +6111,22 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco['have_you_submitted_your_Environmental_Compliance_Report']
+                  ?.invalid) ||
+              (enco['have_you_submitted_your_Environmental_Compliance_Report']
+                ?.dirty &&
+                enco['have_you_submitted_your_Environmental_Compliance_Report']
+                  ?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <br /><br />
@@ -5057,6 +6150,18 @@
               isEditable(SBUTABLE.HSE_ENVIRONMENTAL_COMPLIANCE_MONITORING_NEWs)
             "
           />
+        </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco['if_NO_Give_reasons_for_non_SUBMISSION']?.invalid) ||
+              (enco['if_NO_Give_reasons_for_non_SUBMISSION']?.dirty &&
+                enco['if_NO_Give_reasons_for_non_SUBMISSION']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -5091,6 +6196,25 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco[
+                  'have_you_submitted_your_Chemical_Usage_Inventorization_Report'
+                ]?.invalid) ||
+              (enco[
+                'have_you_submitted_your_Chemical_Usage_Inventorization_Report'
+              ]?.dirty &&
+                enco[
+                  'have_you_submitted_your_Chemical_Usage_Inventorization_Report'
+                ]?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <br /><br />
@@ -5115,12 +6239,25 @@
             "
           />
         </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_FormSubmitted &&
+                enco['if_NO_Give_reasons_for_non_submission_2']?.invalid) ||
+              (enco['if_NO_Give_reasons_for_non_submission_2']?.dirty &&
+                enco['if_NO_Give_reasons_for_non_submission_2']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="EnvironmentalCompliance_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Environmental_Compliance_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -5195,6 +6332,19 @@
             "
           />
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_Chemical_FormSubmitted &&
+                encc['name_of_Chemical']?.invalid) ||
+              (encc['name_of_Chemical']?.dirty &&
+                encc['name_of_Chemical']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 30%; margin-left: 5%">
@@ -5222,12 +6372,27 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmentalCompliance_Chemical_FormSubmitted &&
+                encc['dPR_Approved']?.invalid) ||
+              (encc['dPR_Approved']?.dirty && encc['dPR_Approved']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="
+          EnvironmentalCompliance_Chemical_Form.invalid ? 'cursor: default' : ''
+        "
         (click)="HSE_Environmental_Compliance_Chemical_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -5317,6 +6482,18 @@
             <option value="2026">2026</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_FiveYrs_FormSubmitted &&
+                esf['yEAR_']?.invalid) ||
+              (esf['yEAR_']?.dirty && esf['yEAR_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <div style="width: 30%; margin-left: 5%">
         <label class="labelwp">Type of Study (EIA or EES)</label>
@@ -5349,12 +6526,28 @@
             <option value="N/A">N/A</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isEnvironmental_Studies_FiveYrs_FormSubmitted &&
+                esf['type_of_Study_IA_or_EES']?.invalid) ||
+              (esf['type_of_Study_IA_or_EES']?.dirty &&
+                esf['type_of_Study_IA_or_EES']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
     <br />
     <div style="text-align: center">
       <button
+        [style]="
+          Environmental_Studies_FiveYrs_Form.invalid ? 'cursor: default' : ''
+        "
         (click)="HSE_Environmental_Studies_Strategic_Plan_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -5549,6 +6742,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['number_of_facilities']?.invalid) ||
+              (osc['number_of_facilities']?.dirty &&
+                osc['number_of_facilities']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -5576,6 +6782,19 @@
             [(ngModel)]="operations_safety_case_body.name_of_facility"
             [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
           />
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['name_of_facility']?.invalid) ||
+              (osc['name_of_facility']?.dirty &&
+                osc['name_of_facility']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -5606,6 +6825,19 @@
               [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['location_of_facility']?.invalid) ||
+              (osc['location_of_facility']?.dirty &&
+                osc['location_of_facility']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -5638,6 +6870,19 @@
               [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['type_of_facility']?.invalid) ||
+              (osc['type_of_facility']?.dirty &&
+                osc['type_of_facility']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
 
@@ -5673,6 +6918,19 @@
             <option value="No">No</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['does_the_facility_have_a_valid_safety_case']?.invalid) ||
+              (osc['does_the_facility_have_a_valid_safety_case']?.dirty &&
+                osc['does_the_facility_have_a_valid_safety_case']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -5699,6 +6957,18 @@
             [(ngModel)]="operations_safety_case_body.reason_if_no_evidence"
             [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
           />
+        </div>
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOperationsSafetyCase_FormSubmitted &&
+                osc['reason_if_no_evidence']?.invalid) ||
+              (osc['reason_if_no_evidence']?.dirty &&
+                osc['reason_if_no_evidence']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -5727,12 +6997,26 @@
           [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
         />
       </div>
+
+      <div class="eroce">
+        <span
+          *ngIf="
+            (isOperationsSafetyCase_FormSubmitted &&
+              osc['evidence_of_Operations_Safety_Case_Approval']?.invalid) ||
+            (osc['evidence_of_Operations_Safety_Case_Approval']?.dirty &&
+              osc['evidence_of_Operations_Safety_Case_Approval']?.invalid)
+          "
+        >
+          This field is required!
+        </span>
+      </div>
     </div>
 
     <br />
 
     <div style="text-align: center">
       <button
+        [style]="OperationsSafetyCase_Form.invalid ? 'cursor: default' : ''"
         (click)="HSE_Operations_Safety_Case_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
@@ -5826,6 +7110,18 @@
               <option value="No">No</option>
             </select>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isenvironmentalManagementPlanFormSubmitted &&
+                  emp['areThereEMP']?.invalid) ||
+                (emp['areThereEMP']?.dirty && emp['areThereEMP']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
       </div>
 
@@ -5850,6 +7146,18 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isenvironmentalManagementPlanFormSubmitted &&
+                emp['facilityType']?.invalid) ||
+              (emp['facilityType']?.dirty && emp['facilityType']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
       </div>
     </div>
@@ -5878,6 +7186,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isenvironmentalManagementPlanFormSubmitted &&
+                emp['facilityLocation']?.invalid) ||
+              (emp['facilityLocation']?.dirty &&
+                emp['facilityLocation']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div style="width: 50%; margin-top: auto">
@@ -5902,6 +7223,18 @@
             ></textarea>
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isenvironmentalManagementPlanFormSubmitted &&
+                emp['remarkIfNoEMP']?.invalid) ||
+              (emp['remarkIfNoEMP']?.dirty && emp['remarkIfNoEMP']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
     </div>
     <br />
@@ -5910,6 +7243,9 @@
     <div>
       <div style="text-align: center">
         <button
+          [style]="
+            environmentalManagementPlanForm.invalid ? 'cursor: default' : ''
+          "
           class="submitbtn"
           (click)="HSE_EMP_Submit()"
           [attr.disabled]="
@@ -5998,6 +7334,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isremediationFundFormSubmitted &&
+                refd['areThereRemediationFund']?.invalid) ||
+              (refd['areThereRemediationFund']?.dirty &&
+                refd['areThereRemediationFund']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6025,6 +7374,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isremediationFundFormSubmitted &&
+                refd['evidenceOfPaymentFilename']?.invalid) ||
+              (refd['evidenceOfPaymentFilename']?.dirty &&
+                refd['evidenceOfPaymentFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6033,7 +7395,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6052,6 +7414,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isremediationFundFormSubmitted &&
+                  refd['reasonForNoRemediation']?.invalid) ||
+                (refd['reasonForNoRemediation']?.dirty &&
+                  refd['reasonForNoRemediation']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
       </div>
@@ -6060,6 +7435,7 @@
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="remediationFundForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_Remediation_Fund_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_REMEDIATION_FUNDs)"
@@ -6087,7 +7463,7 @@
             <td>
               <button
                 class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_HSE_Remediation_Fund(row)"
+                (click)="Delete_HSE_Remediation_Fund(row.id)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_REMEDIATION_FUNDs)"
               >
                 Delete
@@ -6149,6 +7525,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iseffluentMonitoringComplianceFormSubmitted &&
+                emc['areThereEvidentOfSampling']?.invalid) ||
+              (emc['areThereEvidentOfSampling']?.dirty &&
+                emc['areThereEvidentOfSampling']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6182,6 +7571,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iseffluentMonitoringComplianceFormSubmitted &&
+                emc['evidenceOfSamplingFilename']?.invalid) ||
+              (emc['evidenceOfSamplingFilename']?.dirty &&
+                emc['evidenceOfSamplingFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6192,7 +7594,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6215,6 +7617,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (iseffluentMonitoringComplianceFormSubmitted &&
+                  emc['reasonForNoEvidenceSampling']?.invalid) ||
+                (emc['reasonForNoEvidenceSampling']?.dirty &&
+                  emc['reasonForNoEvidenceSampling']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
       </div>
@@ -6223,6 +7638,9 @@
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="
+          effluentMonitoringComplianceForm.invalid ? 'cursor: default' : ''
+        "
         (click)="HSE_Effluent_Monitoring_Submit()"
         class="submitbtn"
         [attr.disabled]="
@@ -6310,6 +7728,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (ispointSourcePermitFormSubmitted &&
+                psp['areTherePointSourcePermit']?.invalid) ||
+              (psp['areTherePointSourcePermit']?.dirty &&
+                psp['areTherePointSourcePermit']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6339,6 +7770,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (ispointSourcePermitFormSubmitted &&
+                psp['evidenceOfPSPFilename']?.invalid) ||
+              (psp['evidenceOfPSPFilename']?.dirty &&
+                psp['evidenceOfPSPFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6347,7 +7791,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6368,6 +7812,18 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (ispointSourcePermitFormSubmitted &&
+                  psp['reasonForNoPSP']?.invalid) ||
+                (psp['reasonForNoPSP']?.dirty && psp['reasonForNoPSP']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
       </div>
@@ -6376,6 +7832,7 @@
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="pointSourcePermitForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_PSP_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_POINT_SOURCE_REGISTRATIONs)"
@@ -6459,6 +7916,18 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isGHGManagementPlanFormSubmitted &&
+                gmp['doYouHaveGHG']?.invalid) ||
+              (gmp['doYouHaveGHG']?.dirty && gmp['doYouHaveGHG']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6486,6 +7955,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isGHGManagementPlanFormSubmitted &&
+                gmp['GHGApprovalFilename']?.invalid) ||
+              (gmp['GHGApprovalFilename']?.dirty &&
+                gmp['GHGApprovalFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6494,7 +7976,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6512,6 +7994,18 @@
                 [attr.disabled]="isEditable(SBUTABLE.HSE_GHG_MANAGEMENT_PLANs)"
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isGHGManagementPlanFormSubmitted &&
+                  gmp['reasonForNoGHG']?.invalid) ||
+                (gmp['reasonForNoGHG']?.dirty && gmp['reasonForNoGHG']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <br />
@@ -6550,6 +8044,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isGHGManagementPlanFormSubmitted &&
+                gmp['doYouHaveLDRCertificate']?.invalid) ||
+              (gmp['doYouHaveLDRCertificate']?.dirty &&
+                gmp['doYouHaveLDRCertificate']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6577,6 +8084,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isGHGManagementPlanFormSubmitted &&
+                gmp['LDRCertificateFilename']?.invalid) ||
+              (gmp['LDRCertificateFilename']?.dirty &&
+                gmp['LDRCertificateFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6585,7 +8105,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6604,6 +8124,18 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isGHGManagementPlanFormSubmitted &&
+                  gmp['reasonForNoLDR']?.invalid) ||
+                (gmp['reasonForNoLDR']?.dirty && gmp['reasonForNoLDR']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
       </div>
@@ -6611,6 +8143,7 @@
     <br /><br />
     <div style="text-align: center">
       <button
+        [style]="GHGManagementPlanForm.invalid ? 'cursor: default' : ''"
         (click)="HSE_GHG_Submit()"
         class="submitbtn"
         [attr.disabled]="isEditable(SBUTABLE.HSE_GHG_MANAGEMENT_PLANs)"
@@ -6696,6 +8229,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isHostCommunitiesDevelopmentFormSubmitted &&
+                hcd['doYouHaveEvidenceOfReg']?.invalid) ||
+              (hcd['doYouHaveEvidenceOfReg']?.dirty &&
+                hcd['doYouHaveEvidenceOfReg']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6727,6 +8273,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isHostCommunitiesDevelopmentFormSubmitted &&
+                hcd['evidenceOfRegTrustFundFilename']?.invalid) ||
+              (hcd['evidenceOfRegTrustFundFilename']?.dirty &&
+                hcd['evidenceOfRegTrustFundFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6735,7 +8294,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6757,6 +8316,19 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isHostCommunitiesDevelopmentFormSubmitted &&
+                  hcd['reasonForNoEvidenceOfRegTF']?.invalid) ||
+                (hcd['reasonForNoEvidenceOfRegTF']?.dirty &&
+                  hcd['reasonForNoEvidenceOfRegTF']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <br />
@@ -6798,6 +8370,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isHostCommunitiesDevelopmentFormSubmitted &&
+                hcd['doYouHaveEvidenceOfPay']?.invalid) ||
+              (hcd['doYouHaveEvidenceOfPay']?.dirty &&
+                hcd['doYouHaveEvidenceOfPay']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -6827,6 +8412,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isHostCommunitiesDevelopmentFormSubmitted &&
+                hcd['evidenceOfPayTrustFundFilename']?.invalid) ||
+              (hcd['evidenceOfPayTrustFundFilename']?.dirty &&
+                hcd['evidenceOfPayTrustFundFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -6835,7 +8433,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -6857,6 +8455,19 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (isHostCommunitiesDevelopmentFormSubmitted &&
+                  hcd['reasonForNoEvidenceOfPayTF']?.invalid) ||
+                (hcd['reasonForNoEvidenceOfPayTF']?.dirty &&
+                  hcd['reasonForNoEvidenceOfPayTF']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <br />
@@ -6888,10 +8499,26 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isHostCommunitiesDevelopmentFormSubmitted &&
+                hcd['uploadCommDevPlanApprovalFilename']?.invalid) ||
+              (hcd['uploadCommDevPlanApprovalFilename']?.dirty &&
+                hcd['uploadCommDevPlanApprovalFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
       <br /><br />
       <div style="text-align: center">
         <button
+          [style]="
+            HostCommunitiesDevelopmentForm.invalid ? 'cursor: default' : ''
+          "
           (click)="HSE_Host_Communities_Dev_Submit()"
           class="submitbtn"
           [attr.disabled]="
@@ -7003,6 +8630,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['wasterContractorNames']?.invalid) ||
+              (wmdz['wasterContractorNames']?.dirty &&
+                wmdz['wasterContractorNames']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -7029,6 +8669,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['wasteServicePermitFilename']?.invalid) ||
+              (wmdz['wasteServicePermitFilename']?.dirty &&
+                wmdz['wasteServicePermitFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
         <br />
       </div>
@@ -7068,6 +8721,19 @@
             <option value="ZERO DISCHARGE ZONE">Zero Discharge Zone</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['produceWaterManagementPlan']?.invalid) ||
+              (wmdz['produceWaterManagementPlan']?.dirty &&
+                wmdz['produceWaterManagementPlan']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -7099,6 +8765,19 @@
               "
             />
           </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['evidenceOfReInjectionPermitFilename']?.invalid) ||
+              (wmdz['evidenceOfReInjectionPermitFilename']?.dirty &&
+                wmdz['evidenceOfReInjectionPermitFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
         </div>
         <br />
       </div>
@@ -7132,6 +8811,19 @@
                 "
               />
             </div>
+          </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (iswasteManagementDZFormSubmitted &&
+                  wmdz['reasonForNoEvidenceOfReInjection']?.invalid) ||
+                (wmdz['reasonForNoEvidenceOfReInjection']?.dirty &&
+                  wmdz['reasonForNoEvidenceOfReInjection']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
           </div>
         </div>
         <br />
@@ -7174,6 +8866,19 @@
             <option value="YES">Yes</option>
           </select>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['doYouHavePreviousYearWasteInventoryReport']?.invalid) ||
+              (wmdz['doYouHavePreviousYearWasteInventoryReport']?.dirty &&
+                wmdz['doYouHavePreviousYearWasteInventoryReport']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
       </div>
 
       <div
@@ -7206,6 +8911,19 @@
             />
           </div>
         </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (iswasteManagementDZFormSubmitted &&
+                wmdz['evidenceOfEWDPFilename']?.invalid) ||
+              (wmdz['evidenceOfEWDPFilename']?.dirty &&
+                wmdz['evidenceOfEWDPFilename']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
         <br />
       </div>
 
@@ -7217,7 +8935,7 @@
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -7238,6 +8956,19 @@
               />
             </div>
           </div>
+
+          <div class="eroce">
+            <span
+              *ngIf="
+                (iswasteManagementDZFormSubmitted &&
+                  wmdz['reasonForNoEvidenceOfEWDP']?.invalid) ||
+                (wmdz['reasonForNoEvidenceOfEWDP']?.dirty &&
+                  wmdz['reasonForNoEvidenceOfEWDP']?.invalid)
+              "
+            >
+              This field is required!
+            </span>
+          </div>
         </div>
         <br />
       </div>
@@ -7245,6 +8976,7 @@
       <br /><br />
       <div style="text-align: center">
         <button
+          [style]="wasteManagementDZForm.invalid ? 'cursor: default' : ''"
           (click)="HSE_Waste_Management_DZ_Submit()"
           class="submitbtn"
           [attr.disabled]="

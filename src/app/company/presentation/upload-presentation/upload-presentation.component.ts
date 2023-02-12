@@ -73,6 +73,16 @@ export class UploadPresentationComponent implements OnInit {
     return this.uploadPresentationForm.controls;
   }
 
+  downloadMyFile(src) {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', src);
+    link.setAttribute('download', `products.csv`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
   getPresentations() {
     this.modalService.logCover('loading', true);
     this.companyService.getPresentations(this.selectedYear).subscribe({

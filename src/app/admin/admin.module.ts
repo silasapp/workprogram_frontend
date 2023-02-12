@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/snack-bar';
+
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { AddConcessionComponent } from './add-concession.component';
@@ -24,9 +31,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { PresentationModule } from '../company/presentation/presentation.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-
-
+import { UserFormComponent } from './add-users/user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -46,8 +51,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    PresentationModule
+    PresentationModule,
+    MatSnackBarModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
+
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+  ],
+
   declarations: [
     AddUsersComponent,
     AddConcessionComponent,
@@ -56,7 +68,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UploadCodeComponent,
     ReportEditorComponent,
     ParameterConfigComponent,
-    DashboardComponent
-  ]
+    DashboardComponent,
+    UserFormComponent,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}
