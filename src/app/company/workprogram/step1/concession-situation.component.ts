@@ -312,7 +312,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         // if (!res.concessionSituation || res.concessionSituation.length === 0)
         //   return;
-
+        res.concessionSituation[0] = this.genk.addCommaBody(res.concessionSituation[0]);
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
         // conInfo.companyName = conInfo.companyName.replace(
@@ -410,6 +410,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     console.log(this.RoyaltyForm);
     this.isRoyaltyFormSubmitted = true;
     if (this.RoyaltyForm.invalid) return;
+    this.genk.removeComma(this.RoyaltyForm);
 
     if (this.RoyaltyForm.invalid) {
       this.cd.markForCheck();
@@ -440,6 +441,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     console.log(this.ConcessionSituationForm);
     this.isConcessionSituationFormSubmitted = true;
     if (this.ConcessionSituationForm.invalid) return;
+    this.genk.removeCommaBody(this.concessionBody);
 
     // if (!this.boolValue) {
     //   this.ConcessionSituationForm.controls[
