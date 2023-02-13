@@ -7453,12 +7453,22 @@
             <th *ngFor="let h of hrfColDef">
               {{ h.header }}
             </th>
+             <th>Evidence of Payment</th>
+            <td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of remediationFunds">
             <td *ngFor="let colDef of hrfColDef">
               {{ row[colDef.columnDef] }}
+            </td>
+           <td>
+              <a [href]="row['evidenceOfPaymentPath']" target="_blank">
+                <img
+                  src="../../../../assets/images/file-icon.png"
+                  height="40px"
+                />
+              </a>
             </td>
             <td>
               <button
@@ -7657,17 +7667,27 @@
       <table class="wptable">
         <thead>
           <tr>
-            <th *ngFor="let h of hrfColDef">
+            <th *ngFor="let h of hefColDef">
               {{ h.header }}
             </th>
+            <th>Evidence of Registration</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of effluentMonitoringCompliances">
-            <td *ngFor="let colDef of hrfColDef">
+            <td *ngFor="let colDef of hefColDef">
               {{ row[colDef.columnDef] }}
             </td>
             <td>
+              <a [href]="row['evidenceOfSamplingPath']" target="_blank">
+                <img
+                  src="../../../../assets/images/file-icon.png"
+                  height="40px"
+                />
+              </a>
+            </td>
+            <td>
+              
               <button
                 class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_HSE_Effluent_Monitoring(row)"
@@ -8989,7 +9009,7 @@
     </div>
   </div>
 
-  <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
+  <!-- <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -9019,7 +9039,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 
   <br /><br />
   <hr size="10" />

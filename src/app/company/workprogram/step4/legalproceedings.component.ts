@@ -75,10 +75,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'jurisdiction',
       header: 'JURISDICTION',
     },
-    {
-      columnDef: 'name_of_Court',
-      header: 'NAME OF COURT',
-    },
+    // {
+    //   columnDef: 'name_of_Court',
+    //   header: 'NAME OF COURT',
+    // },
     {
       columnDef: 'summary_of_the_case',
       header: 'SUMMARY OF CASES',
@@ -98,10 +98,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'year_of_WP',
       header: 'Work Programme Year',
     },
-    {
-      columnDef: 'anyArbitration',
-      header: 'ANY ARBITRATION',
-    },
+    // {
+    //   columnDef: 'anyArbitration',
+    //   header: 'ANY ARBITRATION',
+    // },
     {
       columnDef: 'case_Number',
       header: 'CASE NO.',
@@ -114,18 +114,18 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'jurisdiction',
       header: 'JURISDICTION',
     },
-    {
-      columnDef: 'name_of_Court',
-      header: 'NAME OF COURT',
-    },
+    // {
+    //   columnDef: 'name_of_Court',
+    //   header: 'NAME OF COURT',
+    // },
     {
       columnDef: 'summary_of_the_case',
       header: 'SUMMARY OF CASES',
     },
-    {
-      columnDef: 'any_orders_made_so_far_by_the_court',
-      header: 'ANY ORDERS MADE',
-    },
+    // {
+    //   columnDef: 'any_orders_made_so_far_by_the_court',
+    //   header: 'ANY ORDERS MADE',
+    // },
     {
       columnDef: 'potential_outcome',
       header: 'POTENTIAL OUTCOME',

@@ -214,7 +214,7 @@
           </span>
         </div>
       </div>
-      <div style="width: 30%">
+      <div *ngIf="scdp_question_Body.have_you_submitted_all_MoUs_to_DPR=='No'" style="width: 30%">
         <br />
         <label class="labelwp">If NO, Give Reason</label>
         <div
@@ -733,7 +733,7 @@
   </div>
   <br />
 
-  <div *ngIf="mouProjects.length > 0" class="wptablebox">
+  <div  class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -741,12 +741,21 @@
             <th *ngFor="let h of hmoupColDef">
               {{ h.header }}
             </th>
+            <th>MOU File</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of mouProjects">
             <td *ngFor="let colDef of hmoupColDef">
               {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <a [href]="row['mouUploadFilePath']" target="_blank">
+                <img
+                  src="../../../../assets/images/file-icon.png"
+                  height="40px"
+                />
+              </a>
             </td>
             <td>
               <button

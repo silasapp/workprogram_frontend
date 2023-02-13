@@ -455,13 +455,34 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'areThereRemediationFund',
       header: 'Are there remediation funds?',
     },
-    {
-      columnDef: 'evidenceOfPaymentPath',
-      header: 'Evidence of Payment',
-    },
+    // {
+    //   columnDef: 'evidenceOfPaymentPath',
+    //   header: 'Evidence of Payment',
+    // },
     {
       columnDef: 'reasonForNoRemediation',
       header: 'Reason for no payment',
+    },
+  ];
+
+
+
+  hefColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
+      columnDef: 'areThereEvidentOfSampling',
+      header: 'Do you have Evidence of Sampling Certificate?',
+    },
+    // {
+    //   columnDef: 'evidenceOfPaymentPath',
+    //   header: 'Evidence of Payment',
+    // },
+    {
+      columnDef: 'reasonForNoEvidenceSampling',
+      header: 'Reason',
     },
   ];
 
@@ -4980,9 +5001,11 @@ debugger;
   //#endregion
 
   getHSE() {
+    this.modalService.logCover('loading', true);
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
+        debugger;
         console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
@@ -5128,7 +5151,12 @@ debugger;
         //  this.remediationFundBody = res.hseRemediationFund[0];
           this.remediationFunds=res.hseRemediationFund;
         }
-debugger;
+         if(res?.hseWastManagementDZs){
+           
+          this.wasteManagementDZs = res.hseWastManagementDZs;
+         }
+
+this.modalService.togCover();
         this.cd.markForCheck();
       });
   }
