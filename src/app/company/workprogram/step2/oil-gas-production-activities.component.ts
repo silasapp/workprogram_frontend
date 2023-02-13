@@ -355,10 +355,12 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.fiveYearsValues = [];
     var num: number = 5;
     var i: number;
+    if(this.genk.wkProposedYear!=0 && this.genk.wkProposedYear!=null){
     for (i = 0; i < num; i++) {
       this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
+  }
   }
 
   getGasProduction() {

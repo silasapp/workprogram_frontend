@@ -79,8 +79,8 @@
                     "
                   >
                     <select
-                      formControlName="year"
-                      [(ngModel)]="staffdispositionBody.year"
+                      formControlName="actual_Proposed_Year"
+                      [(ngModel)]="staffdispositionBody.actual_Proposed_Year"
                       [attr.disabled]="
                         isEditable(
                           SBUTABLE.NIGERIA_CONTENT_STAFF_DISPOSITION_TRAINING_FOR_NIGERIANSs
@@ -93,6 +93,7 @@
                       <option
                         *ngFor="let Nayear of fiveYearsBehind$ | async"
                         [value]="Nayear"
+                        [selected]="staffdispositionBody.actual_Proposed_Year=== Nayear"
                       >
                         {{ Nayear }}
                       </option>
@@ -417,45 +418,51 @@
             <div
               style="display: flex; width: 100%; justify-content: space-between"
             >
-              <div style="width: 30%; margin: auto 0 0">
-                <label class="labelwp">Year</label>
-                <div style="display: flex">
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
+            <div style="width: 30%; margin: auto 0 0">
+              <label class="labelwp">Year</label>
+              <div style="display: flex">
+                <div
+                  style="
+                    box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 7px 10px;
+                  "
+                >
+                  <select
+                    formControlName="actual_Proposed_Year"
+                    [(ngModel)]="staffdispositionBody.actual_Proposed_Year"
+                    [attr.disabled]="
+                      isEditable(
+                        SBUTABLE.NIGERIA_CONTENT_STAFF_DISPOSITION_TRAINING_FOR_NIGERIANSs
+                      )
                     "
                   >
-                    <select
-                      formControlName="year"
-                      [(ngModel)]="staffdispositionBody.year"
-                      [attr.disabled]="disableForm ? true : null"
+                    <option disabled>
+                      ---- Please Select an Option ----
+                    </option>
+                    <option
+                      *ngFor="let Nayear of fiveYearsAhead$ | async"
+                      [value]="Nayear"
+                      [selected]="staffdispositionBody.actual_Proposed_Year=== Nayear"
                     >
-                      <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                      <option
-                        *ngFor="let Npyear of fiveYearsAhead"
-                        [value]="Npyear"
-                        [selected]="staffdispositionBody.year === Npyear"
-                      >
-                        {{ Npyear }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isStaffdispositionForm && sd['year']?.invalid) ||
-                      (sd['year']?.dirty && sd['year']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
+                      {{ Nayear }}
+                    </option>
+                  </select>
                 </div>
               </div>
+
+              <div class="eroce">
+                <span
+                  *ngIf="
+                    (isStaffdispositionForm && sd['year']?.invalid) ||
+                    (sd['year']?.dirty && sd['year']?.invalid)
+                  "
+                >
+                  This field is required!
+                </span>
+              </div>
+            </div>
 
               <div style="width: 30%; margin: auto 0 0">
                 <label class="labelwp">No of Expatriate Quota Positions </label>
@@ -1197,7 +1204,7 @@
       </div>
     </div>
 
-    <ng-container *ngIf="isThereSuccessionPlan">
+    <ng-container *ngIf="!isThereSuccessionPlan">
       <div class="menu-container" style="margin-top: 40px">
         <div class="menu-container-control">
           <div
@@ -1251,17 +1258,17 @@
                     "
                   >
                     <select
-                      formControlName="year"
-                      [(ngModel)]="uploadsuccessionplanBody.year"
+                      formControlName="actual_Proposed_Year"
+                      [(ngModel)]="uploadsuccessionplanBody.actual_Proposed_Year"
                       [attr.disabled]="disableForm ? true : null"
                     >
                       <!-- <option selected disabled>---- Please Select an Option ----</option> -->
                       <option
-                        *ngFor="let Ayear of fiveYearsBehind"
-                        [value]="Ayear"
-                        [selected]="uploadsuccessionplanBody.year === Ayear"
+                        *ngFor="let Aayear of fiveYearsBehind"
+                        [value]="Aayear"
+                        [selected]="uploadsuccessionplanBody.actual_Proposed_Year === Aayear"
                       >
-                        {{ Ayear }}
+                        {{ Aayear }}
                       </option>
                     </select>
                   </div>
@@ -1456,210 +1463,209 @@
           *ngIf="activeMenu_SuccessionPlan === 'Proposed Year'"
           style="background-color: white"
         >
-          <div
-            style="
-              display: flex;
-              flex-direction: col;
-              gap: 10px;
-              width: 100%;
-              margin-bottom: 10px;
-              background-color: white;
-              padding: 10px;
-            "
-          >
-            <div style="width: 50%">
-              <div>
-                <div style="width: 100%">
-                  <label class="labelwp">Year</label>
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
-                    "
+        <div
+        style="
+          display: flex;
+          flex-direction: col;
+          gap: 10px;
+          width: 100%;
+          margin-bottom: 10px;
+          background-color: white;
+          padding: 10px;
+        "
+      >
+        <div style="width: 50%">
+          <div>
+            <div style="width: 100%">
+              <label class="labelwp">Year</label>
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <select
+                  formControlName="actual_Proposed_Year"
+                  [(ngModel)]="uploadsuccessionplanBody.actual_Proposed_Year"
+                  [attr.disabled]="disableForm ? true : null"
+                >
+                  <!-- <option selected disabled>---- Please Select an Option ----</option> -->
+                  <option
+                    *ngFor="let Ppyear of fiveYearsAhead"
+                    [value]="Ppyear"
+                    [selected]="uploadsuccessionplanBody.actual_Proposed_Year === Ppyear"
                   >
-                    <select
-                      formControlName="year"
-                      [(ngModel)]="uploadsuccessionplanBody.year"
-                      [attr.disabled]="disableForm ? true : null"
-                    >
-                      <!-- <option selected disabled>---- Please Select an Option ----</option> -->
-                      <option
-                        *ngFor="let Pyear of fiveYearsAhead"
-                        [value]="Pyear"
-                        [selected]="uploadsuccessionplanBody.year === Pyear"
-                      >
-                        {{ Pyear }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isUploadsuccessionForm && su['year']?.invalid) ||
-                      (su['year']?.dirty && su['year']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
-                </div>
+                    {{ Ppyear }}
+                  </option>
+                </select>
               </div>
             </div>
 
-            <div style="width: 50%">
-              <div>
-                <div style="width: 100%">
-                  <label class="labelwp">Name of Expatriate</label>
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="name_"
-                      [(ngModel)]="uploadsuccessionplanBody.name_"
-                      class="inpute"
-                      [attr.disabled]="
-                        isEditable(
-                          SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
-                        )
-                      "
-                    />
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isUploadsuccessionForm && su['name_']?.invalid) ||
-                      (su['name_']?.dirty && su['name_']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
-                </div>
-              </div>
-              <div>
-                <div style="width: 100%">
-                  <label class="labelwp">Nigerian Understudy</label>
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="understudy_"
-                      [(ngModel)]="uploadsuccessionplanBody.understudy_"
-                      class="inpute"
-                      [attr.disabled]="
-                        isEditable(
-                          SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
-                        )
-                      "
-                    />
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isUploadsuccessionForm && su['understudy_']?.invalid) ||
-                      (su['understudy_']?.dirty && su['understudy_']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div style="width: 50%">
-              <div>
-                <div style="width: 100%">
-                  <label class="labelwp">Timeline (Years)</label>
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      formControlName="timeline_"
-                      [(ngModel)]="uploadsuccessionplanBody.timeline_"
-                      class="inpute"
-                      [attr.disabled]="
-                        isEditable(
-                          SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
-                        )
-                      "
-                    />
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isUploadsuccessionForm && su['timeline_']?.invalid) ||
-                      (su['timeline_']?.dirty && su['timeline_']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
-                </div>
-              </div>
-              <div>
-                <div style="width: 100%">
-                  <label class="labelwp">Position Occupied</label>
-                  <div
-                    style="
-                      box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-                      width: 100%;
-                      border-radius: 10px;
-                      padding: 7px 10px;
-                    "
-                  >
-                    <input
-                      type="text"
-                      formControlName="position_Occupied_"
-                      [(ngModel)]="uploadsuccessionplanBody.position_Occupied_"
-                      class="inpute"
-                      [attr.disabled]="
-                        isEditable(
-                          SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
-                        )
-                      "
-                    />
-                  </div>
-                </div>
-
-                <div class="eroce">
-                  <span
-                    *ngIf="
-                      (isUploadsuccessionForm &&
-                        su['position_Occupied_']?.invalid) ||
-                      (su['position_Occupied_']?.dirty &&
-                        su['position_Occupied_']?.invalid)
-                    "
-                  >
-                    This field is required!
-                  </span>
-                </div>
-              </div>
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isUploadsuccessionForm && us['year']?.invalid) ||
+                  (us['year']?.dirty && us['year']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
             </div>
           </div>
+        </div>
+        <div style="width: 50%">
+          <div>
+            <div style="width: 100%">
+              <label class="labelwp">Name of Expatriate</label>
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="name_"
+                  [(ngModel)]="uploadsuccessionplanBody.name_"
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                    )
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isUploadsuccessionForm && us['name_']?.invalid) ||
+                  (us['name_']?.dirty && us['name_']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
+          </div>
+          <div>
+            <div style="width: 100%">
+              <label class="labelwp">Nigerian Understudy</label>
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="understudy_"
+                  [(ngModel)]="uploadsuccessionplanBody.understudy_"
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                    )
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isUploadsuccessionForm && us['understudy_']?.invalid) ||
+                  (us['understudy_']?.dirty && us['understudy_']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 50%">
+          <div>
+            <div style="width: 100%">
+              <label class="labelwp">Timeline (Years)</label>
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  formControlName="timeline_"
+                  [(ngModel)]="uploadsuccessionplanBody.timeline_"
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                    )
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isUploadsuccessionForm && us['timeline_']?.invalid) ||
+                  (us['timeline_']?.dirty && us['timeline_']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
+          </div>
+          <div>
+            <div style="width: 100%">
+              <label class="labelwp">Position Occupied</label>
+              <div
+                style="
+                  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: 7px 10px;
+                "
+              >
+                <input
+                  type="text"
+                  formControlName="position_Occupied_"
+                  [(ngModel)]="uploadsuccessionplanBody.position_Occupied_"
+                  class="inpute"
+                  [attr.disabled]="
+                    isEditable(
+                      SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
+                    )
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="eroce">
+              <span
+                *ngIf="
+                  (isUploadsuccessionForm &&
+                    us['position_Occupied_']?.invalid) ||
+                  (us['position_Occupied_']?.dirty &&
+                    us['position_Occupied_']?.invalid)
+                "
+              >
+                This field is required!
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
           <br />
           <br /><br />
