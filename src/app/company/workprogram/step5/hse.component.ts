@@ -452,16 +452,16 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'areThereEvidentOfSampling',
-      header: 'Do you have Evidence of Sampling Certificate?',
+      columnDef: 'areThereRemediationFund',
+      header: 'Are there remediation funds?',
     },
     {
-      columnDef: 'evidenceOfSamplingPath',
-      header: 'Evidence of Payment of Sampling Certificate',
+      columnDef: 'evidenceOfPaymentPath',
+      header: 'Evidence of Payment',
     },
     {
-      columnDef: 'reasonForNoEvidenceSampling',
-      header: 'Remark',
+      columnDef: 'reasonForNoRemediation',
+      header: 'Reason for no payment',
     },
   ];
 
@@ -3281,7 +3281,7 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfReInjectionNewName
       );
     }
-
+debugger;
     this.workprogram
       .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
@@ -4983,6 +4983,7 @@ debugger;
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
+        debugger;
         console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
@@ -5124,7 +5125,15 @@ debugger;
         if (res?.hseHostCommunities) {
           this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
-
+        if (res?.hseRemediationFund) {
+        //  this.remediationFundBody = res.hseRemediationFund[0];
+          this.remediationFunds=res.hseRemediationFund;
+        }
+         if(res?.hseWastManagementDZs){
+           debugger;
+          this.wasteManagementDZs = res.hseWastManagementDZs;
+         }
+debugger;
         this.cd.markForCheck();
       });
   }
@@ -5245,7 +5254,7 @@ debugger;
       });
   }
 
-  Delete_HSE_Remediation_Fund(row: HSE_REMEDIATION_FUND) {
+  Delete_HSE_Remediation_Fund(id) {
     this.workprogram
       .post_HSE_Remediation_Fund(
         {} as HSE_REMEDIATION_FUND,
@@ -5253,7 +5262,7 @@ debugger;
         this.genk.OmlName,
         this.genk.fieldName,
         'DELETE',
-        row.id
+        id
       )
       .subscribe({
         next: (res) => {
