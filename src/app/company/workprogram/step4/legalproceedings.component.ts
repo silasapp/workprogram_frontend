@@ -295,10 +295,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       .getlegalLitigation(this.genk.wpYear)
       .subscribe((result) => {
         if (result.legalLitigation) {
-          this.litigations = result.legalLitigation;
+          this.litigations = this.genk.addCommaBody(result.legalLitigation);
         }
         if (result.legalArbitration) {
-          this.arbitrations = result.legalArbitration;
+          this.arbitrations = this.genk.addCommaBody(result.legalArbitration);
         }
 
         this.cd.markForCheck();
@@ -310,6 +310,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
     console.log(this.letigationForm);
     this.isLetigationFormSubmitted = true;
     if (this.letigationForm.invalid) return;
+    this.genk.removeCommaBody(this.letigationBody);
 
     this.workprogram
       .saveLegalLitigation(this.letigationBody, this.genk.wpYear)
@@ -331,6 +332,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
     console.log(this.arbitrationForm);
     this.isArbitrationFormSubmitted = true;
     if (this.arbitrationForm.invalid) return;
+    this.genk.removeCommaBody(this.arbitrationBody);
 
     //this.arbitrationBody.anyArbitration = "YES";
     this.workprogram
