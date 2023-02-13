@@ -5040,6 +5040,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new`,

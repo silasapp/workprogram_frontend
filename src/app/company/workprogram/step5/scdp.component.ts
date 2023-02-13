@@ -965,6 +965,7 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Capital_Submit() {
+    debugger;
     this.isSCDP_CapitalProjects_FormSubmitted = true;
     if (this.SCDP_CapitalProjects_Form.invalid) return;
 

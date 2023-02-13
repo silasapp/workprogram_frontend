@@ -4983,6 +4983,7 @@ debugger;
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
+        debugger;
         console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
@@ -5128,6 +5129,10 @@ debugger;
         //  this.remediationFundBody = res.hseRemediationFund[0];
           this.remediationFunds=res.hseRemediationFund;
         }
+         if(res?.hseWastManagementDZs){
+           debugger;
+          this.wasteManagementDZs = res.hseWastManagementDZs;
+         }
 debugger;
         this.cd.markForCheck();
       });
