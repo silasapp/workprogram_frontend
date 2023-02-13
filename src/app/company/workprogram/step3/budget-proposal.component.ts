@@ -239,7 +239,7 @@ export class SWPBudgetProposalComponent implements OnInit {
     //   ),
     // });
 
-    debugger;
+
     this.capexForm = new FormGroup({
       item_Description: new FormControl(
         this.capexBdy.item_Description,
@@ -268,7 +268,7 @@ export class SWPBudgetProposalComponent implements OnInit {
 
     });
 
-    debugger;
+
     this.OpexForm = new FormGroup({
       item_Description: new FormControl(
         this.opexBdy.item_Description,
@@ -353,7 +353,8 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   // getCapexItems() {
-  //   debugger;
+  //
+
   //   this.modalService.logCover('loading', true);
   //   this.workprogram
   //     .get_Capex(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
@@ -403,9 +404,9 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   Delete_Opex(id) {
-    debugger;
-   let info = this.capexOpexBody as capexOpex;
-debugger;
+
+   let info = this.capexOpexBody as capexOpex
+
     this.workprogram
       .post_Opex(
         info,
@@ -448,8 +449,9 @@ debugger;
     return resultArray;
   }
   saveBudgetProposal() {
-    debugger;
+
     let budgetInfo = {} as budgetProposal;
+    this.genk.removeCommaBody(this.budgetProposalBody);
     this.budgetProposalBody.id = 0;
     this.budgetProposalBody.year_of_WP = this.genk.wpYear;
     this.budgetProposalBody.omL_Name = this.genk.OmlName;
@@ -465,7 +467,7 @@ debugger;
       }
     }
     budgetInfo.companyNumber = 0;
-    debugger;
+
     this.workprogram
       .post_BudgetProposal(
         budgetInfo,
@@ -486,8 +488,9 @@ debugger;
   }
 
   saveOpex() {
-    debugger;
+
     let budgetInfo = {} as capexOpex;
+    this.genk.removeCommaBody(this.capexOpexBody);
     //this.opexBody.companyNumber = 0;
     if (this.opexBdy.item_Description != undefined && this.opexBdy.item_Description != null && this.opexBdy.item_Description != "") {
       this.capexOpexBody = this.opexBdy;
@@ -505,7 +508,7 @@ debugger;
     else { return; }
     this.capexOpexBody.id = 0;
     this.capexOpexBody.year_of_WP = this.genk.wpYear;
-    debugger;
+
     this.capexOpexBody.omL_Name = this.genk.OmlName;
     for (let item in this.capexOpexBody) {
       if (item != 'id' && item != 'field_ID') {
@@ -513,7 +516,7 @@ debugger;
       }
     }
     budgetInfo.companyNumber = 0;
-    debugger;
+
     this.workprogram
       .post_Opex(
         budgetInfo,
@@ -528,7 +531,7 @@ debugger;
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
           this.modalService.logNotice('Success', res.message, 'success');
-         
+
           this.capexOpexBody = {} as capexOpex;
           this.capexForm.reset();
           this.OpexForm.reset();

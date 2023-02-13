@@ -330,7 +330,6 @@ export class SWPDrillingOperationsComponent implements OnInit {
   }
 
   changeACQuater(quater: number, btn: HTMLButtonElement) {
-    debugger;
     if (quater === 1) {
       this.currentACQuater = 1;
       btn.textContent = 'Save Quarter 1';
@@ -417,12 +416,11 @@ export class SWPDrillingOperationsComponent implements OnInit {
   //     });
   // }
   getDrilling(quaterText: string) {
-    debugger;
     this.workprogram
       .getDrilling(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         if (res.drillOperationCategoriesWell) {
+          this.genk.addCommaBodyList(res.drillOperationCategoriesWell);
           this.quaterACOneData = res.drillOperationCategoriesWell.filter(
             (res) => {
               return res.quater === 'QUARTER 1';
@@ -606,6 +604,7 @@ export class SWPDrillingOperationsComponent implements OnInit {
     console.log(this.CategoryForm);
     this.isCategoryFormSubmitted = true;
     if (this.CategoryForm.invalid) return;
+    this.genk.removeCommaBody(this.categoryBody);
 
     const formDat: FormData = new FormData();
     this.categoryBody.qUATER = 'QUARTER ' + this.currentACQuater;

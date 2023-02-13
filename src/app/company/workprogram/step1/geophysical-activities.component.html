@@ -210,6 +210,7 @@
               <input
                 formControlName="geo_area_of_coverage"
                 (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
                 [(ngModel)]="acquisitionBody.geo_area_of_coverage"
                 class="inpute"
                 [attr.disabled]="
@@ -246,6 +247,10 @@
                     formControlName="budeget_Allocation_NGN"
                     (keypress)="genk.restrictData($event)"
                     (keyup)="genk.formatCurrency($event)"
+                    (change)="
+                      acquisitionBody.budeget_Allocation_NGN =
+                        genk.addCurrencyDecimal($event)
+                    "
                     [(ngModel)]="acquisitionBody.budeget_Allocation_NGN"
                     class="inpute"
                     [attr.disabled]="
@@ -351,6 +356,7 @@
               <input
                 formControlName="quantum_Planned"
                 (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
                 [(ngModel)]="acquisitionBody.quantum_Planned"
                 class="inpute"
                 [attr.disabled]="
@@ -405,6 +411,7 @@
               <input
                 formControlName="quantum_Approved"
                 (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)"
                 [(ngModel)]="acquisitionBody.quantum_Approved"
                 class="inpute"
                 [attr.disabled]="
@@ -846,6 +853,7 @@
             >
               <input
                 formControlName="processed_Proposed"
+                (keyup)="genk.formatCurrency($event)"
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.processed_Proposed"
                 class="inpute"
@@ -925,6 +933,7 @@
             >
               <input
                 formControlName="reprocessed_Proposed"
+                (keyup)="genk.formatCurrency($event)"
                 (keypress)="genk.restrictData($event)"
                 [(ngModel)]="processingBody.reprocessed_Proposed"
                 class="inpute"
