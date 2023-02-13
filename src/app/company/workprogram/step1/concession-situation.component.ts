@@ -310,9 +310,16 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
+        debugger;
         // if (!res.concessionSituation || res.concessionSituation.length === 0)
         //   return;
-        res.concessionSituation[0] = this.genk.addCommaBody(res.concessionSituation[0]);
+        if (res.concessionSituation[0]) {
+          res.concessionSituation[0] = this.genk.addCommaBody(res.concessionSituation[0]);
+        }
+        if (res.concessionInfo[0]) {
+          res.concessionInfo[0] = this.genk.addCommaBody(res.concessionInfo[0]);
+        }
+
         let conInfo = res.concessionSituation[0] as CONCESSION_SITUATION;
         // conInfo.companyName = conInfo.companyName.toLowerCase();
         // conInfo.companyName = conInfo.companyName.replace(
