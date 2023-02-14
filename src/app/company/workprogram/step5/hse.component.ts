@@ -465,8 +465,6 @@ export class SWPHseComponent implements OnInit {
     },
   ];
 
-
-
   hefColDef = [
     {
       columnDef: 'year_of_WP',
@@ -3079,7 +3077,6 @@ export class SWPHseComponent implements OnInit {
     if (this.TechnicalSafetyForm.invalid) return;
     this.genk.removeCommaBody(this.safetyBody);
 
-
     const formDataToSubmit: FormData = new FormData();
     this.safetyBody.id = 0;
     for (const key in this.safetyBody) {
@@ -3120,7 +3117,6 @@ export class SWPHseComponent implements OnInit {
     this.isremediationFundFormSubmitted = true;
     if (this.remediationFundForm.invalid) return;
     this.genk.removeCommaBody(this.remediationFundBody);
-
 
     const formDataToSubmit: FormData = new FormData();
     this.remediationFundBody.id = 0;
@@ -3500,7 +3496,6 @@ export class SWPHseComponent implements OnInit {
     this.isSafetyCultureTrainingFormSubmitted = true;
     if (this.SafetyCultureTrainingForm.invalid) return;
     this.genk.removeCommaBody(this.safetyCultureBody);
-
 
     const formDat: FormData = new FormData();
     this.safetyCultureBody.id = 0;
@@ -5298,14 +5293,13 @@ export class SWPHseComponent implements OnInit {
           //  this.remediationFundBody = res.hseRemediationFund[0];
           this.remediationFunds = res.hseRemediationFund;
         }
-         if(res?.hseWastManagementDZs){
 
         if (res?.hseWastManagementDZs) {
           debugger;
           this.wasteManagementDZs = res.hseWastManagementDZs;
-         }
+        }
 
-this.modalService.togCover();
+        this.modalService.togCover();
         this.cd.markForCheck();
       });
   }
