@@ -2621,6 +2621,58 @@ export class SWPHseComponent implements OnInit {
       }
     );
 
+    this.getDoYouHaveAnOhm.valueChanges.subscribe((c: 'Yes' | 'No') => {
+      if (c === 'Yes') {
+        this.getReasonForNoOhm.disable();
+        this.getOHMplanFileName.enable();
+      } else {
+        this.getOHMplanFileName.disable();
+        this.getReasonForNoOhm.enable();
+      }
+    });
+
+    this.getWasOhmPolicyCommunicatedToStaff.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getReasonWhyOhmWasNotCommunicatedToStaff.disable();
+          this.getOHMplanCommunicationFileName.enable();
+        } else {
+          this.getOHMplanCommunicationFileName.disable();
+          this.getReasonWhyOhmWasNotCommunicatedToStaff.enable();
+        }
+      }
+    );
+
+    this.getdoyouhaveQualityControl.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getqualityControlFilePath.enable();
+        } else {
+          this.getqualityControlFilePath.disable();
+        }
+      }
+    );
+
+    this.getdoyouhaveGHG.valueChanges.subscribe((c: 'Yes' | 'No') => {
+      if (c === 'Yes') {
+        this.getgHGFilePath.enable();
+      } else {
+        this.getgHGFilePath.disable();
+      }
+    });
+
+    this.getdoes_the_facility_have_a_valid_safety_case.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getreason_if_no_evidence.disable();
+          this.getevidence_of_Operations_Safety_Case_Approval.enable();
+        } else {
+          this.getevidence_of_Operations_Safety_Case_Approval.disable();
+          this.getreason_if_no_evidence.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -2636,6 +2688,64 @@ export class SWPHseComponent implements OnInit {
     });
 
     this.getHSE();
+  }
+
+  public get getdoes_the_facility_have_a_valid_safety_case() {
+    return this.OperationsSafetyCase_Form.controls[
+      'does_the_facility_have_a_valid_safety_case'
+    ];
+  }
+
+  public get getevidence_of_Operations_Safety_Case_Approval() {
+    return this.OperationsSafetyCase_Form.controls[
+      'evidence_of_Operations_Safety_Case_Approval'
+    ];
+  }
+
+  public get getreason_if_no_evidence() {
+    return this.OperationsSafetyCase_Form.controls['reason_if_no_evidence'];
+  }
+
+  public get getdoyouhaveGHG() {
+    return this.ClimateChangeForm.controls['doyouhaveGHG'];
+  }
+
+  public get getgHGFilePath() {
+    return this.ClimateChangeForm.controls['gHGFilePath'];
+  }
+
+  public get getdoyouhaveQualityControl() {
+    return this.QualityControlForm.controls['doyouhaveQualityControl'];
+  }
+
+  public get getqualityControlFilePath() {
+    return this.QualityControlForm.controls['qualityControlFilePath'];
+  }
+
+  public get getWasOhmPolicyCommunicatedToStaff() {
+    return this.OccupationalForm.controls['WasOhmPolicyCommunicatedToStaff'];
+  }
+
+  public get getOHMplanCommunicationFileName() {
+    return this.OccupationalForm.controls['OHMplanCommunicationFileName'];
+  }
+
+  public get getReasonWhyOhmWasNotCommunicatedToStaff() {
+    return this.OccupationalForm.controls[
+      'ReasonWhyOhmWasNotCommunicatedToStaff'
+    ];
+  }
+
+  public get getDoYouHaveAnOhm() {
+    return this.OccupationalForm.controls['DoYouHaveAnOhm'];
+  }
+
+  public get getOHMplanFileName() {
+    return this.OccupationalForm.controls['OHMplanFileName'];
+  }
+
+  public get getReasonForNoOhm() {
+    return this.OccupationalForm.controls['ReasonForNoOhm'];
   }
 
   public get getAreThereTrainingPlansForHSE() {
@@ -3281,7 +3391,7 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfReInjectionNewName
       );
     }
-debugger;
+    debugger;
     this.workprogram
       .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
@@ -3313,21 +3423,21 @@ debugger;
     if (this.ManagementPositionForm.invalid) return;
 
     const formDataToSubmit: FormData = new FormData();
-debugger;
+    debugger;
     if (this.PromotionFile)
       formDataToSubmit.append(
         this.PromotionNameDoc,
         this.PromotionFile,
         this.PromotionNewName
       );
-debugger;
+    debugger;
     if (this.OrganogramFile)
       formDataToSubmit.append(
         this.OrganogramNameDoc,
         this.OrganogramFile,
         this.OrganogramNewName
       );
-debugger;
+    debugger;
     this.workprogram
       .post_HSE_Management_Position(
         formDataToSubmit,
@@ -5126,14 +5236,14 @@ debugger;
           this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
         if (res?.hseRemediationFund) {
-        //  this.remediationFundBody = res.hseRemediationFund[0];
-          this.remediationFunds=res.hseRemediationFund;
+          //  this.remediationFundBody = res.hseRemediationFund[0];
+          this.remediationFunds = res.hseRemediationFund;
         }
-         if(res?.hseWastManagementDZs){
-           debugger;
+        if (res?.hseWastManagementDZs) {
+          debugger;
           this.wasteManagementDZs = res.hseWastManagementDZs;
-         }
-debugger;
+        }
+        debugger;
         this.cd.markForCheck();
       });
   }
