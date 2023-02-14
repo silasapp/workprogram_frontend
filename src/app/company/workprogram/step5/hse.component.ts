@@ -2931,6 +2931,7 @@ export class SWPHseComponent implements OnInit {
   HSE_TechnicalSubmit() {
     this.isTechnicalSafetyFormSubmitted = true;
     if (this.TechnicalSafetyForm.invalid) return;
+    this.genk.removeCommaBody(this.technicalBody);
     // let technicalInfo = {} as HSE_TECHNICAL_SAFETY_CONTROL_STUDIES_NEW;
     // this.technicalBody.companyNumber = 0;
     // this.technicalBody.id = 0;
@@ -2966,6 +2967,8 @@ export class SWPHseComponent implements OnInit {
     console.log(this.TechnicalSafetyForm);
     this.isTechnicalSafetyFormSubmitted = true;
     if (this.TechnicalSafetyForm.invalid) return;
+    this.genk.removeCommaBody(this.safetyBody);
+
 
     const formDataToSubmit: FormData = new FormData();
     this.safetyBody.id = 0;
@@ -3006,6 +3009,8 @@ export class SWPHseComponent implements OnInit {
   HSE_Remediation_Fund_Submit() {
     this.isremediationFundFormSubmitted = true;
     if (this.remediationFundForm.invalid) return;
+    this.genk.removeCommaBody(this.remediationFundBody);
+
 
     const formDataToSubmit: FormData = new FormData();
     this.remediationFundBody.id = 0;
@@ -3050,6 +3055,7 @@ export class SWPHseComponent implements OnInit {
   HSE_Effluent_Monitoring_Submit() {
     this.iseffluentMonitoringComplianceFormSubmitted = true;
     if (this.effluentMonitoringComplianceForm.invalid) return;
+    this.genk.removeCommaBody(this.effluentComplianceMonitoringBody);
 
     const formDataToSubmit: FormData = new FormData();
     this.effluentComplianceMonitoringBody.id = 0;
@@ -3098,6 +3104,7 @@ export class SWPHseComponent implements OnInit {
   HSE_PSP_Submit() {
     this.ispointSourcePermitFormSubmitted = true;
     if (this.pointSourcePermitForm.invalid) return;
+    this.genk.removeCommaBody(this.pointSourcePermitBody);
 
     const formDataToSubmit: FormData = new FormData();
     this.pointSourcePermitBody.id = 0;
@@ -3145,6 +3152,7 @@ export class SWPHseComponent implements OnInit {
   HSE_GHG_Submit() {
     this.isGHGManagementPlanFormSubmitted = true;
     if (this.GHGManagementPlanForm.invalid) return;
+    this.genk.removeCommaBody(this.GHGManagementPlanBody);
 
     const formDataToSubmit: FormData = new FormData();
     this.GHGManagementPlanBody.id = 0;
@@ -3201,6 +3209,7 @@ export class SWPHseComponent implements OnInit {
   HSE_Host_Communities_Dev_Submit() {
     this.isHostCommunitiesDevelopmentFormSubmitted = true;
     if (this.HostCommunitiesDevelopmentForm.invalid) return;
+    this.genk.removeCommaBody(this.HostCommunityDevelopmentBody);
 
     const formDataToSubmit: FormData = new FormData();
     this.HostCommunityDevelopmentBody.id = 0;
@@ -3267,6 +3276,7 @@ export class SWPHseComponent implements OnInit {
     console.log(this.wasteManagementDZForm);
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
+    this.genk.removeCommaBody(this.wasteManagementDZBody);
 
     const formDataToSubmit: FormData = new FormData();
     this.wasteManagementDZBody.id = 0;
@@ -3302,7 +3312,7 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfReInjectionNewName
       );
     }
-debugger;
+
     this.workprogram
       .post_HSE_WASTE_MANAGEMENT_DZ(
         formDataToSubmit,
@@ -3334,21 +3344,21 @@ debugger;
     if (this.ManagementPositionForm.invalid) return;
 
     const formDataToSubmit: FormData = new FormData();
-debugger;
+
     if (this.PromotionFile)
       formDataToSubmit.append(
         this.PromotionNameDoc,
         this.PromotionFile,
         this.PromotionNewName
       );
-debugger;
+
     if (this.OrganogramFile)
       formDataToSubmit.append(
         this.OrganogramNameDoc,
         this.OrganogramFile,
         this.OrganogramNewName
       );
-debugger;
+
     this.workprogram
       .post_HSE_Management_Position(
         formDataToSubmit,
@@ -3379,6 +3389,8 @@ debugger;
     console.log(this.SafetyCultureTrainingForm);
     this.isSafetyCultureTrainingFormSubmitted = true;
     if (this.SafetyCultureTrainingForm.invalid) return;
+    this.genk.removeCommaBody(this.safetyCultureBody);
+
 
     const formDat: FormData = new FormData();
     this.safetyCultureBody.id = 0;
@@ -3439,6 +3451,7 @@ debugger;
   Hse_Occupational_Submit() {
     this.isOccupationalFormSubmitted = true;
     if (this.OccupationalForm.invalid) return;
+    this.genk.removeCommaBody(this.occupationalBody);
 
     const formDat: FormData = new FormData();
     this.occupationalBody.id = 0;
@@ -3480,6 +3493,7 @@ debugger;
   HSE_QualityControl_Submit() {
     this.isQualityControlFormSubmitted = true;
     if (this.QualityControlForm.invalid) return;
+    this.genk.removeCommaBody(this.qualityControlBody);
 
     const formDataToSubmit: FormData = new FormData();
     // this.qualityControlBody.id = 0;
@@ -3520,6 +3534,7 @@ debugger;
   HSE_Climate_Submit() {
     this.isClimateChangeFormSubmitted = true;
     if (this.ClimateChangeForm.invalid) return;
+    this.genk.removeCommaBody(this.climateChangeBody);
 
     const formDataToSubmit: FormData = new FormData();
     // this.climateChangeBody.id = 0;
@@ -3555,6 +3570,7 @@ debugger;
   }
 
   HSE_InspectionMaintenance_Submit() {
+    this.genk.removeCommaBody(this.inspectionMaintenanceBody);
     this.workprogram
       .post_HSE_InspectionMaintenance(
         this.inspectionMaintenanceBody,
@@ -3580,6 +3596,7 @@ debugger;
   HSE_AssetRegister_PRE_Submit() {
     this.isAssetRegister_Pre_FormSubmitted = true;
     if (this.AssetRegister_Pre_Form.invalid) return;
+    this.genk.removeCommaBody(this.asset_PRE_Body);
 
     this.workprogram
       .post_HSE_AssetRegister_PRE(
@@ -3610,6 +3627,7 @@ debugger;
   HSE_AssetRegister_RBI_Submit() {
     this.isAssetRegister_RBI_FormSubmitted = true;
     if (this.AssetRegister_RBI_Form.invalid) return;
+    this.genk.removeCommaBody(this.asset_RBI_Body);
 
     this.workprogram
       .post_HSE_AssetRegister_RBI(
@@ -3641,6 +3659,7 @@ debugger;
     console.log(this.OilSpill_Form);
     this.isOilSpill_FormSubmitted = true;
     if (this.OilSpill_Form.invalid) return;
+    this.genk.removeCommaBody(this.oilSpill_Body);
 
     this.workprogram
       .post_HSE_OilSpill(
@@ -3667,6 +3686,7 @@ debugger;
   }
 
   HSE_CausesOfSpill_Submit() {
+    this.genk.removeCommaBody(this.causesOfSpill_Body);
     this.workprogram
       .post_HSE_Causes_Of_Spill(
         this.causesOfSpill_Body,
@@ -3690,6 +3710,7 @@ debugger;
   }
 
   HSE_Accident_Incidence_Submit() {
+    this.genk.removeCommaBody(this.accident_Body);
     const formDat: FormData = new FormData();
     this.accident_Body.id = 0;
     for (const key in this.accident_Body) {
@@ -3731,6 +3752,7 @@ debugger;
     console.log(this.OperationsSafetyCase_Form);
     this.isOperationsSafetyCase_FormSubmitted = true;
     if (this.OperationsSafetyCase_Form.invalid) return;
+    this.genk.removeCommaBody(this.operations_safety_case_body);
 
     const formDat: FormData = new FormData();
     this.operations_safety_case_body.id = 0;
@@ -3773,6 +3795,7 @@ debugger;
   }
 
   HSE_OSP_Registration_Submit() {
+    this.genk.removeCommaBody(this.osp_Reg_Body);
     this.workprogram
       .post_HSE_OSP_Registrations(
         this.osp_Reg_Body,
@@ -3796,6 +3819,7 @@ debugger;
   }
 
   HSE_Community_Submit() {
+    this.genk.removeCommaBody(this.community_Body);
     this.workprogram
       .post_HSE_Community(
         this.community_Body,
@@ -3822,6 +3846,7 @@ debugger;
     console.log(this.environmentalManagementPlanForm);
     this.isenvironmentalManagementPlanFormSubmitted = true;
     if (this.environmentalManagementPlanForm.invalid) return;
+    this.genk.removeCommaBody(this.environmentalManagementPlanBody);
 
     this.workprogram
       .post_HSE_EMP(
@@ -3849,6 +3874,7 @@ debugger;
   }
 
   HSE_Fatality_Submit() {
+    this.genk.removeCommaBody(this.fatality_Body);
     this.workprogram
       .post_HSE_Fatality(
         this.fatality_Body,
@@ -3872,6 +3898,7 @@ debugger;
   }
 
   HSE_DesignSafety_Submit() {
+    this.genk.removeCommaBody(this.designSafety_Body);
     this.workprogram
       .post_HSE_DesignSafety(
         this.designSafety_Body,
@@ -3897,6 +3924,7 @@ debugger;
   HSE_Environmental_Studies_Updated_Submit() {
     this.isEnvironmental_Studies_Updated_FormSubmitted = true;
     if (this.Environmental_Studies_Updated_Form.invalid) return;
+    this.genk.removeCommaBody(this.environmental_studies_updated_Body);
 
     this.workprogram
       .post_HSE_Environmental_Studies_New_Updated(
@@ -3928,6 +3956,7 @@ debugger;
     console.log(this.Environmental_Studies_Form);
     this.isEnvironmental_Studies_FormSubmitted = true;
     if (this.Environmental_Studies_Form.invalid) return;
+    this.genk.removeCommaBody(this.environmental_studies_Body);
 
     this.workprogram
       .post_HSE_Environmental_Studies_Updated(
@@ -3957,6 +3986,7 @@ debugger;
   HSE_Waste_Management_Submit() {
     this.isWaste_Management_FormSubmitted = true;
     if (this.Waste_Management_Form.invalid) return;
+    this.genk.removeCommaBody(this.waste_Management_Body);
 
     this.workprogram
       .post_HSE_Waste_Management(
@@ -3986,6 +4016,7 @@ debugger;
   HSE_Waste_Management_Facility_Submit() {
     this.isWaste_Management_Facility_FormSubmitted = true;
     if (this.Waste_Management_Facility_Form.invalid) return;
+    this.genk.removeCommaBody(this.waste_ManagementFacility_Body);
 
     this.workprogram
       .post_HSE_Waste_ManagementFacility(
@@ -4017,6 +4048,7 @@ debugger;
     console.log(this.Waste_Management_Files_Form);
     this.isWaste_Management_Files_FormSubmitted = true;
     if (this.Waste_Management_Files_Form.invalid) return;
+    this.genk.removeCommaBody(this.waste_ManagementFiles_Body);
 
     const formDat: FormData = new FormData();
     this.waste_ManagementFiles_Body.id = 0;
@@ -4065,6 +4097,7 @@ debugger;
   }
 
   HSE_Water_Management_Updated_New_Submit() {
+    this.genk.removeCommaBody(this.water_Management_Updated_New_Body);
     this.workprogram
       .post_HSE_Water_Management_New_Updated(
         this.water_Management_Updated_New_Body,
@@ -4090,6 +4123,7 @@ debugger;
   HSE_Water_Management_Submit() {
     this.isWater_Management_FormSubmitted = true;
     if (this.Water_Management_Form.invalid) return;
+    this.genk.removeCommaBody(this.water_Management_Body);
 
     this.workprogram
       .post_HSE_Water_Management(
@@ -4120,6 +4154,7 @@ debugger;
     console.log(this.EnvironmentalCompliance_Form);
     this.isEnvironmentalCompliance_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Form.invalid) return;
+    this.genk.removeCommaBody(this.environmentalCompliance_Body);
 
     this.workprogram
       .post_HSE_Environmental_Compliance(
@@ -4151,6 +4186,7 @@ debugger;
     console.log(this.EnvironmentalCompliance_Chemical_Form);
     this.isEnvironmentalCompliance_Chemical_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Chemical_Form.invalid) return;
+    this.genk.removeCommaBody(this.environmentalComplianceChemical_Body);
 
     this.workprogram
       .post_HSE_Environmental_Chemical_Compliance(
@@ -4182,6 +4218,7 @@ debugger;
     console.log(this.Environmental_Studies_FiveYrs_Form);
     this.isEnvironmental_Studies_FiveYrs_FormSubmitted = true;
     if (this.Environmental_Studies_FiveYrs_Form.invalid) return;
+    this.genk.removeCommaBody(this.environmental_studies_fiveyrs_Body);
 
     this.workprogram
       .post_HSE_Environmental_Studies_Strategic_Plan(
@@ -5152,7 +5189,7 @@ debugger;
           this.remediationFunds=res.hseRemediationFund;
         }
          if(res?.hseWastManagementDZs){
-           
+
           this.wasteManagementDZs = res.hseWastManagementDZs;
          }
 
