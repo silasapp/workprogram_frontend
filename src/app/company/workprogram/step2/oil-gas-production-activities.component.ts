@@ -355,10 +355,12 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.fiveYearsValues = [];
     var num: number = 5;
     var i: number;
+    if(this.genk.wkProposedYear!=0 && this.genk.wkProposedYear!=null){
     for (i = 0; i < num; i++) {
       this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
+  }
   }
 
   getGasProduction() {
@@ -370,16 +372,17 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe((res) => {
         if (res?.gasProductionActivity) {
-          this.gasproductionBody = res?.gasProductionActivity;
+          this.gasproductionBody = this.genk.addCommaBody(res?.gasProductionActivity);
         }
         this.cd.markForCheck();
       });
   }
 
   saveGasProduction() {
-    console.log(this.GasProductionForm);
+    debugger;
     this.isGasProductionFormSubmitted = true;
     if (this.GasProductionForm.invalid) return;
+    this.genk.removeCommaBody(this.gasproductionBody);
 
     this.workprogram
       .saveGasProduction(
@@ -402,7 +405,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe((res) => {
         if (res?.oilCondensateProduction) {
-          this.productionoilBody = res?.oilCondensateProduction;
+          this.productionoilBody = this.genk.addCommaBody(res?.oilCondensateProduction);
         }
 
         if (
@@ -410,7 +413,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           res?.oilCondensateProductionMonthly.length > 0
         ) {
           this.monthlyactivityData = res?.oilCondensateProductionMonthly;
-          this.monthlyactivityBody = res?.oilCondensateProductionMonthly[0];
+          this.monthlyactivityBody = this.genk.addCommaBody(res?.oilCondensateProductionMonthly[0]);
         } else {
           this.monthlyactivityData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity[];
@@ -423,7 +426,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           this.proposedmonthlyData =
             res?.oilCondensateProductionMonthlyProposed;
           this.proposedmonthlyBody =
-            res?.oilCondensateProductionMonthlyProposed[0];
+          this.genk.addCommaBody(res?.oilCondensateProductionMonthlyProposed[0]);
         } else {
           this.proposedmonthlyData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED[];
@@ -434,7 +437,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           res?.oilCondensateFiveYears.length > 0
         ) {
           this.fiveYearData = res?.oilCondensateFiveYears;
-          this.fiveYearForecastBody = res?.oilCondensateFiveYears[0];
+          this.fiveYearForecastBody = this.genk.addCommaBody(res?.oilCondensateFiveYears[0]);
         } else {
           this.fiveYearData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION[];
@@ -449,7 +452,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
 
     this.isOil_ProductionFormSubmitted = true;
     if (this.Oil_ProductionForm.invalid) return;
-
+    this.genk.removeCommaBody(this.productionoilBody);
     this.productionoilBody.id = 0;
     //this.productionoilBody.cost_Barrel =
     //  this.productionoilBody.cost_Barrel.replace(/,/g, '');
@@ -466,6 +469,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveMonthlyActivity() {
+    this.genk.removeCommaBody(this.monthlyactivityBody);
     this.monthlyactivityBody.id = 0;
     this.workprogram
       .saveMonthlyActivity(
@@ -489,6 +493,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     console.log(this.ProposedMonthlyForm);
     this.isProposedMonthlyFormSubmitted = true;
     if (this.ProposedMonthlyForm.invalid) return;
+    this.genk.removeCommaBody(this.proposedmonthlyBody);
 
     this.proposedmonthlyBody.id = 0;
     this.workprogram
@@ -570,6 +575,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     console.log(this.fiveYearForecastForm);
     this.isfiveYearForecastFormSubmitted = true;
     if (this.fiveYearForecastForm.invalid) return;
+    this.genk.removeCommaBody(this.fiveYearForecastBody);
 
     const formDat: FormData = new FormData();
     for (const key in this.fiveYearForecastBody) {

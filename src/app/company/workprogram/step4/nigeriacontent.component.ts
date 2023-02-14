@@ -166,8 +166,6 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       this.getNigeriaContentTraining();
-      // this.getNigeriaContentQuestion();
-      //this.getUploadSuccessionplan();
     });
   }
 
@@ -175,10 +173,10 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk.activeStep = 'STEP4';
     this.staffdispositionForm = new FormGroup(
       {
-        year: new FormControl(this.staffdispositionBody.year, [
-          Validators.required,
-        ]),
-        actual_Proposed_Year: new FormControl(this.activeMenu, [
+        // year: new FormControl(this.staffdispositionBody.year, [
+        //   Validators.required,
+        // ]),
+        actual_Proposed_Year: new FormControl(this.staffdispositionBody.actual_Proposed_Year, [
           Validators.required,
         ]),
         expatriate_quota_positions: new FormControl(
@@ -271,7 +269,7 @@ export class SWPNigeriaContentComponent implements OnInit {
           this.uploadsuccessionplanBody.position_Occupied_,
           [Validators.required]
         ),
-        year: new FormControl(this.uploadsuccessionplanBody.year, [
+        actual_Proposed_Year: new FormControl(this.uploadsuccessionplanBody.actual_Proposed_Year, [
           Validators.required,
         ]),
       },
@@ -296,8 +294,6 @@ export class SWPNigeriaContentComponent implements OnInit {
 
     this.getFiveYearsAhead();
     this.getFiveYearsBehind();
-    // this.getNigeriaContentQuestion();
-    //this.getUploadSuccessionplan();
   }
 
   public get sd() {
@@ -316,11 +312,13 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.fiveYearsAhead = [];
     var num: number = 5;
     var i: number;
+    if(this.genk.wkProposedYear!=0 && this.genk.wkProposedYear!=null){
     for (i = 0; i < num; i++) {
       this.fiveYearsAhead[i] = this.genk.wkProposedYear + i;
+    
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
     }
-
+  }
     this.fiveYearsAhead$.next(this.fiveYearsAhead);
   }
 
@@ -328,12 +326,14 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.fiveYearsBehind = [];
     var num: number = 5;
     var i: number;
+    if(this.genk.wkProposedYear!=0 && this.genk.wkProposedYear!=null){
     for (i = num; i >= 0; i--) {
       this.fiveYearsBehind[num - i] = this.genk.wkProposedYear - i;
       //this.fiveYearsValues.push(++this.genk.wkProposedYear);
-    }
-
+    
+  }
     this.fiveYearsBehind$.next(this.fiveYearsBehind);
+    }
   }
 
   isEditable(group: string): boolean | null {
@@ -438,6 +438,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     console.log(this.staffdispositionForm);
     this.isStaffdispositionForm = true;
     if (this.staffdispositionForm.invalid) return;
+    this.genk.removeCommaBody(this.nigeriacontenttrainingBody);
 
     this.workprogram
       .saveNigeriaContenttraining(
@@ -464,6 +465,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     console.log(this.seniormanagementstaffForm);
     this.isSeniormanagementstaffForm = true;
     if (this.seniormanagementstaffForm.invalid) return;
+    this.genk.removeCommaBody(this.seniormanagementstaffBody);
 
     const model = {
       do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff:
@@ -517,7 +519,9 @@ export class SWPNigeriaContentComponent implements OnInit {
       timeline_: this.uploadsuccessionplanBody.timeline_,
       position_Occupied_: this.uploadsuccessionplanBody.position_Occupied_,
       name_: this.uploadsuccessionplanBody.name_,
+      actual_Proposed_Year:this.uploadsuccessionplanBody.actual_Proposed_Year
     };
+    this.genk.removeCommaBody(model_);
 
     this.workprogram
       .saveNigeriaUploadSuccessionPlan(
@@ -547,7 +551,9 @@ export class SWPNigeriaContentComponent implements OnInit {
   saveAddStaffDisposition() {
     console.log(this.staffdispositionForm);
     this.isStaffdispositionForm = true;
+    debugger;
     if (this.staffdispositionForm.invalid) return;
+
 
     const model_ = {
       actual_Proposed: this.activeMenu,
@@ -559,7 +565,10 @@ export class SWPNigeriaContentComponent implements OnInit {
       expatriate_quota_positions:
         this.staffdispositionBody._expatriate_quota_positions,
       utilized_EQ: this.staffdispositionBody._utilized_EQ,
+      actual_Proposed_Year:this.staffdispositionBody.actual_Proposed_Year
     };
+
+    this.genk.removeCommaBody(model_);
 
     this.workprogram
       .saveAddStaffDisposition(
@@ -671,7 +680,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   setIsThereSuccessionPlan() {
-    this.isThereSuccessionPlan = !this.isThereSuccessionPlan;
+   // this.isThereSuccessionPlan = !this.isThereSuccessionPlan;
     this.cd.markForCheck();
   }
 }

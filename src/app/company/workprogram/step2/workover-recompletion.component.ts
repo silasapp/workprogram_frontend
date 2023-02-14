@@ -307,6 +307,7 @@ export class SWPWorkoverRecompletionComponent implements OnInit {
   submit() {
     this.isWorkoverFormSubmitted = true;
     if (this.WorkoverForm.invalid) return;
+    this.genk.removeCommaBody(this.workoverBody);
 
     this.cd.markForCheck();
     this.workoverBody.id = 0;
