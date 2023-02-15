@@ -80,7 +80,7 @@ export class GenericService {
   
 
   public years:string[] = [] as string[];
-  year = [{ value: '2020' }, { value: '2021' }];
+  //year = [{ value: '2020' }, { value: '2021' }];
 
 
   

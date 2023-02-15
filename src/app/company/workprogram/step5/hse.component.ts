@@ -672,14 +672,14 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'wasOhmPolicyCommunicatedToStaff',
       header: 'Was OHM Policy Communicated to Staff?',
     },
-    {
-      columnDef: 'ohMplanFilePath',
-      header: 'Evidence of submission of OHM plan',
-    },
-    {
-      columnDef: 'ohMplanCommunicationFilePath',
-      header: 'Evidence of communication of OHM plan/policies',
-    },
+    // {
+    //   columnDef: 'ohMplanFilePath',
+    //   header: 'Evidence of submission of OHM plan',
+    // },
+    // {
+    //   columnDef: 'ohMplanCommunicationFilePath',
+    //   header: 'Evidence of communication of OHM plan/policies',
+    // },
     {
       columnDef: 'reasonForNoOhm',
       header: 'Reason for no OHM',
@@ -3584,10 +3584,11 @@ debugger;
   }
 
   Hse_Occupational_Submit() {
+    debugger;
     this.isOccupationalFormSubmitted = true;
     if (this.OccupationalForm.invalid) return;
     this.genk.removeCommaBody(this.occupationalBody);
-
+    debugger;
     const formDat: FormData = new FormData();
     this.occupationalBody.id = 0;
     for (const key in this.occupationalBody) {
@@ -3602,6 +3603,7 @@ debugger;
       formDat.append(this.OHMNameDoc_2, this.OHMFile_2, this.OHMNewName_2);
     }
 
+    debugger;
     this.workprogram
       .post_HSE_Occupational(
         formDat,
@@ -5199,8 +5201,11 @@ debugger;
           this.hseSafetyCultureTrainings = res.hseSafetyCulture;
         }
 
+        debugger;
         if (res?.hseOccupationalHealth) {
+          debugger;
           this.occupationHealthManagements = res.hseOccupationalHealth;
+          debugger;
         }
 
         if (res?.hseQualityControl) {
