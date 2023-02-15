@@ -232,7 +232,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger"
+                class="btn btn-danger btn-sm submitbtn"
                 (click)="Delete_Budget($event)"
                 value="{{ y.value.id }}"
                 [attr.disabled]="isEditable(SBUTABLE.ROYALTYs)"
@@ -973,7 +973,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Development(row)"
                 [attr.disabled]="
                   isEditable(
@@ -1602,7 +1602,7 @@
               {{ row[h.columnDef] }}
             </td>
             <button
-              class="btn btn-danger btn-sm submitbtn"
+              class="btn btn-danger btn-sm"
               (click)="Delete_Facility($event)"
               [attr.disabled]="
                 isEditable(
@@ -1807,7 +1807,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Production(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.BUDGET_PERFORMANCE_PRODUCTION_COSTs)
