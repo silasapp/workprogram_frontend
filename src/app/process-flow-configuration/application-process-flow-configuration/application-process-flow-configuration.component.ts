@@ -13,6 +13,8 @@ import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-pr
 export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
+  public actions: string[] = [];
+  public statuses: string[] = [];
 
   title = 'Concession Reserves for current year(as at 1st January)';
   pagenum = 0;
@@ -32,6 +34,30 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     {
       columnDef: 'sbu',
       header: 'Strategic Business Unit (SBU)',
+    },
+    {
+      columnDef: 'triggeredBySBU',
+      header: 'Triggered By (SBU)',
+    },
+    {
+      columnDef: 'triggeredByRole',
+      header: 'Triggered By (Role)',
+    },
+    {
+      columnDef: 'targetedBySBU',
+      header: 'Target (SBU)',
+    },
+    {
+      columnDef: 'targetedToRole',
+      header: 'Target (Role)',
+    },
+    {
+      columnDef: 'processAction',
+      header: 'Action',
+    },
+    {
+      columnDef: 'processStatus',
+      header: 'Status',
     },
     {
       columnDef: 'sort',
@@ -65,6 +91,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
         data: {
           roles: this.roles,
           sbus: this.sbus,
+          actions: this.actions,
+          statuses: this.statuses,
         },
         form: AddProcessFlowFormComponent,
       },
@@ -89,6 +117,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
           targetData: row,
           roles: this.roles,
           sbus: this.sbus,
+          actions: this.actions,
+          statuses: this.statuses,
         },
         form: AddProcessFlowFormComponent,
       },
@@ -148,6 +178,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
         this.data = res.processes as any[];
         this.roles = res.roles as IRole[];
         this.sbus = res.sbUs as ISBU[];
+        this.actions = res.processActions as string[];
+        this.statuses = res.processStatuses as string[];
 
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
