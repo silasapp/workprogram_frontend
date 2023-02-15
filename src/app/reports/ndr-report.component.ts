@@ -31,7 +31,6 @@ export class NdrReportComponent implements OnInit {
   arrayRows = [];
   data: any[];
   year = [];
-  years=[];
   selectedColumns: any[] = [];
   isTableOpt = false;
   isSpecifyColumns = false;
