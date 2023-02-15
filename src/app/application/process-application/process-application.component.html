@@ -28,7 +28,7 @@
                     [routerLink]="[
                       '/' + genk.application,
                       'view-application-data',
-                      '1'
+                      (applicationDetails$ | async)?.application.id
                     ]"
                     target="_blank"
                   >

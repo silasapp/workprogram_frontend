@@ -41,24 +41,33 @@ export class AddProcessFlowFormComponent implements OnInit {
 
     this.statuses = data.data?.statuses || ['Processing'];
 
+    console.log('target', this.targetData);
+    console.log('sbus', this.sbus);
+    console.log('roles', this.roles);
+    console.log('actions', this.actions);
+    console.log('statues', this.statuses);
+
     if (this.targetData)
       this.form = this.formBuilder.group({
         id: [this.targetData?.id],
         triggeredBySBU: [
-          this.roles.find((r) => r.roleName == this.targetData.role).id,
+          this.sbus.find((s) => s.sbU_Name == this.targetData.triggeredBySBU)
+            .id,
           Validators.required,
         ],
         triggeredByRole: [
-          this.sbus.find((s) => s.sbU_Name == this.targetData.sbu).id,
+          this.roles.find((r) => r.roleName == this.targetData.triggeredByRole)
+            .id,
           Validators.required,
         ],
 
         targetedToSBU: [
-          this.roles.find((r) => r.roleName == this.targetData.role).id,
+          this.sbus.find((s) => s.sbU_Name == this.targetData.targetedToSBU).id,
           Validators.required,
         ],
         targetedToRole: [
-          this.sbus.find((s) => s.sbU_Name == this.targetData.sbu).id,
+          this.roles.find((r) => r.roleName == this.targetData.targetedToRole)
+            .id,
           Validators.required,
         ],
 
@@ -71,7 +80,8 @@ export class AddProcessFlowFormComponent implements OnInit {
           Validators.required,
         ],
       });
-    else
+    else {
+      console.log('called');
       this.form = this.formBuilder.group({
         triggeredBySBU: [Validators.required],
         triggeredByRole: [Validators.required],
@@ -82,6 +92,7 @@ export class AddProcessFlowFormComponent implements OnInit {
         processAction: [Validators.required],
         processStatus: [Validators.required],
       });
+    }
   }
   ngOnInit(): void {}
 
