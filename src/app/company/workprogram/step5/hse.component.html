@@ -920,12 +920,25 @@
             <th *ngFor="let h of hohmColDef">
               {{ h.header }}
             </th>
+            <th>Documents</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of occupationHealthManagements">
             <td *ngFor="let colDef of hohmColDef">
               {{ row[colDef.columnDef] }}
+            </td>
+            <td>
+              <span *ngIf="row['ohMplanCommunicationFilePath']!=null" style="width: 30%;">
+                <a [href]="row['ohMplanCommunicationFilePath']" target="_blank">
+                  <img src="../../../../assets/images/file-icon.png" height="40px" />
+                </a>
+              </span>
+              <span *ngIf="row['ohMplanFilePath']!=null" style="width: 30%;">
+                <a [href]="row['ohMplanFilePath']" target="_blank">
+                  <img src="../../../../assets/images/file-icon.png" height="40px" />
+                </a>
+              </span>
             </td>
             <td>
               <button class="btn btn-danger btn-sm" (click)="Delete_HSE_Occupational(row)" [attr.disabled]="

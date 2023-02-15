@@ -13,7 +13,7 @@
               <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Year of upload</span>
               <select id="time" class="form-select" (change)="fetchdata($event)">
                 <option selected disabled>--Select Year-- </option>
-                <option *ngFor="let val of genk.year" value={{val.value}}>{{val.value}}</option>
+                <option *ngFor="let val of year" value={{val.value}}>{{val.value}}</option>
               </select>
             </div>
           </div>
