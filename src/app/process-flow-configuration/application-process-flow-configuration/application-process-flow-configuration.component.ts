@@ -27,14 +27,14 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   isSpecifyColumns = false;
 
   columns = [
-    {
-      columnDef: 'role',
-      header: 'Role',
-    },
-    {
-      columnDef: 'sbu',
-      header: 'Strategic Business Unit (SBU)',
-    },
+    // {
+    //   columnDef: 'role',
+    //   header: 'Role',
+    // },
+    // {
+    //   columnDef: 'sbu',
+    //   header: 'Strategic Business Unit (SBU)',
+    // },
     {
       columnDef: 'triggeredBySBU',
       header: 'Triggered By (SBU)',
@@ -59,10 +59,10 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
       columnDef: 'processStatus',
       header: 'Status',
     },
-    {
-      columnDef: 'sort',
-      header: 'Sequence',
-    },
+    // {
+    //   columnDef: 'sort',
+    //   header: 'Sequence',
+    // },
   ];
 
   constructor(
