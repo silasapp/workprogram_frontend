@@ -795,21 +795,18 @@
           </td>
           <td>
             <button
-              mat-stroked-button
-              style="margin: 50px; padding: 10px"
-              type="button"
-              class="btn btn-primary"
+             
               (click)="deleteNCT(row)"
               value="{{ row.id }}"
-              style="background-color: white; color: red; border: 2px solid"
-              class="submitbtn"
+              
+              class="btn btn-danger btn-sm"
               [attr.disabled]="
                 isEditable(
                   SBUTABLE.NIGERIA_CONTENT_STAFF_DISPOSITION_TRAINING_FOR_NIGERIANSs
                 )
               "
             >
-              <mat-icon style="font-size: 20px"> border_color</mat-icon>
+              
               <b>Delete</b>
             </button>
           </td>
@@ -1715,21 +1712,18 @@
               </td>
               <td>
                 <button
-                  mat-stroked-button
-                  style="margin: 50px; padding: 10px"
-                  type="button"
-                  class="btn btn-primary"
+                 
                   (click)="deleteSuccessionPlan(row)"
                   value="{{ row.id }}"
-                  style="background-color: white; color: red; border: 2px solid"
-                  class="submitbtn"
+                 
+                  class="btn btn-danger btn-sm"
                   [attr.disabled]="
                     isEditable(
                       SBUTABLE.NIGIERIA_CONTENT_ADD_RECORD_FOR_SUCCESSION_PLANs
                     )
                   "
                 >
-                  <mat-icon style="font-size: 20px"> border_color</mat-icon>
+                
                   <b>Delete</b>
                 </button>
               </td>

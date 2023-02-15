@@ -77,7 +77,13 @@ export class GenericService {
   isStep5 = false;
   activeStep = 'STEP1';
 
+  
+
+  public years:string[] = [] as string[];
   year = [{ value: '2020' }, { value: '2021' }];
+
+
+  
 
   role = [{ value: 'Admin' }, { value: 'Company' }];
 
@@ -170,8 +176,17 @@ export class GenericService {
       } else {
         tr[i].style.display = 'none';
       }
+
+      
+      
+
+
+
+
     }
   }
+
+ 
 
   printData(table: HTMLTableElement) {
     let newWin = window.open('');
