@@ -166,8 +166,6 @@ export class SWPNigeriaContentComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       this.getNigeriaContentTraining();
-      // this.getNigeriaContentQuestion();
-      //this.getUploadSuccessionplan();
     });
   }
 
@@ -296,8 +294,6 @@ export class SWPNigeriaContentComponent implements OnInit {
 
     this.getFiveYearsAhead();
     this.getFiveYearsBehind();
-    // this.getNigeriaContentQuestion();
-    //this.getUploadSuccessionplan();
   }
 
   public get sd() {
@@ -442,6 +438,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     console.log(this.staffdispositionForm);
     this.isStaffdispositionForm = true;
     if (this.staffdispositionForm.invalid) return;
+    this.genk.removeCommaBody(this.nigeriacontenttrainingBody);
 
     this.workprogram
       .saveNigeriaContenttraining(
@@ -468,6 +465,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     console.log(this.seniormanagementstaffForm);
     this.isSeniormanagementstaffForm = true;
     if (this.seniormanagementstaffForm.invalid) return;
+    this.genk.removeCommaBody(this.seniormanagementstaffBody);
 
     const model = {
       do_you_have_a_valid_Expatriate_Quota_for_your_foreign_staff:
@@ -523,6 +521,7 @@ export class SWPNigeriaContentComponent implements OnInit {
       name_: this.uploadsuccessionplanBody.name_,
       actual_Proposed_Year:this.uploadsuccessionplanBody.actual_Proposed_Year
     };
+    this.genk.removeCommaBody(model_);
 
     this.workprogram
       .saveNigeriaUploadSuccessionPlan(
@@ -555,6 +554,7 @@ export class SWPNigeriaContentComponent implements OnInit {
     debugger;
     if (this.staffdispositionForm.invalid) return;
 
+
     const model_ = {
       actual_Proposed: this.activeMenu,
       management_Foriegn: this.staffdispositionBody.management_Foriegn,
@@ -567,6 +567,8 @@ export class SWPNigeriaContentComponent implements OnInit {
       utilized_EQ: this.staffdispositionBody._utilized_EQ,
       actual_Proposed_Year:this.staffdispositionBody.actual_Proposed_Year
     };
+
+    this.genk.removeCommaBody(model_);
 
     this.workprogram
       .saveAddStaffDisposition(

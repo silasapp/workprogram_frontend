@@ -1611,11 +1611,7 @@
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    gasproductionBody.no_of_gas_well_planned =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.no_of_gas_well_planned"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_planned"
                   [attr.disabled]="
                     isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
                   "
@@ -1653,11 +1649,7 @@
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    gasproductionBody.no_of_gas_well_drilled =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.no_of_gas_well_drilled"
+                  [(ngModel)]="gasproductionBody.no_of_gas_well_drilled"
                   [attr.disabled]="
                     isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
                   "
@@ -1765,11 +1757,7 @@
                   class="inpute"
                   (keypress)="genk.restrictData($event)"
                   (keyup)="genk.formatCurrency($event)"
-                  (change)="
-                    gasproductionBody.number_of_gas_wells_completed =
-                      genk.addCurrencyDecimal($event)
-                  "
-                  [value]="gasproductionBody.number_of_gas_wells_completed"
+                  [(ngModel)]="gasproductionBody.number_of_gas_wells_completed"
                   [attr.disabled]="
                     isEditable(SBUTABLE.GAS_PRODUCTION_ACTIVITIESs)
                   "

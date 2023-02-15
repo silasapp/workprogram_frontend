@@ -508,7 +508,11 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
         this.genk.wpYear
       )
       .subscribe((res) => {
+        debugger;
         if (res.geoActivitiesAcquisition) {
+          this.genk.addCommaBodyList(res.geoActivitiesAcquisition);
+          this.genk.addCommaBodyList(res.geoActivitiesProcessing);
+          let xe = res.geoActivitiesAcquisition;
           this.quaterACOneData = res.geoActivitiesAcquisition.filter(
             (result) => {
               return result.quater === 'QUARTER 1';
@@ -554,6 +558,8 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
             res.geoActivitiesAcquisition.find(
               (item) => item.quater === this.currentACQuaterFull
             ) ?? new GEOPHYSICAL_ACTIVITIES_ACQUISITION();
+
+
 
           this.quaterPROneData = res.geoActivitiesProcessing.filter((res) => {
             return res.quater === 'QUARTER 1';
@@ -605,6 +611,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
   saveQuarterAcquisition(btn) {
     this.isAcquisitionSubmitted = true;
     if (this.AcquisitionForm.invalid) return;
+    this.genk.removeCommaBody(this.acquisitionBody);
 
     this.acquisitionBody.qUATER = this.currentACQuaterFull;
 
@@ -692,6 +699,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     this.isProcessingSubmitted = true;
 
     if (this.ProcessingForm.invalid) return;
+    this.genk.removeCommaBody(this.processingBody);
 
     this.processingBody.qUATER = this.currentPRQuaterFull;
     this.processingBody.budeget_Allocation_NGN =

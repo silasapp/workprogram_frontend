@@ -571,6 +571,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     console.log(this.oilAndGasForm);
     this.isOilAndGasFormSubmitted = true;
     if (this.oilAndGasForm.invalid) return;
+    this.genk.removeCommaBody(this.oilAndGasBody);
 
     let budgetInfo = {} as oilAndGasFacilityMaintenanceProject;
     this.oilAndGasBody.companyNumber = 0;
@@ -611,6 +612,8 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     if (this.newTechnologyForm.invalid) return;
 
     let budgetInfo = {} as newTechnologyAndConformityAssessment;
+    this.genk.removeCommaBody(this.newTechnologyBody);
+
     this.newTechnologyBody.companyNumber = 0;
     this.newTechnologyBody.id = 0;
     this.newTechnologyBody.year_of_WP = this.genk.wpYear;
@@ -647,6 +650,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
   saveFacility() {
     this.isFacilitiesProjectPerformanceFormSubmitted = true;
     if (this.facilitiesProjectPerformanceForm.invalid) return;
+    this.genk.removeCommaBody(this.facilitiesProjectPerformanceBody);
 
     let budgetInfo = {} as facilitiesProjectPerformance;
     this.facilitiesProjectPerformanceBody.companyNumber = 0;

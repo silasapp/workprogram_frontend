@@ -88,11 +88,10 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.genk = gen;
     this.modalService.concessionSitu.subscribe((res) => {
       const rel = 'QUARTER ' + this.currentIWQuater;
-      debugger;
+
       this.getInitialCompletion();
       this.cdr = cd;
     });
-    debugger;
     this.ngOnInit();
     this.getInitialCompletion();
     this.cd.markForCheck();
@@ -313,7 +312,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   getInitialCompletion() {
-    debugger;
     this.workprogram
       .getInitialWellCompletion(
         this.genk.wpYear,
@@ -424,7 +422,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
           }
           this.quaterIWFour = this.quaterIWFourData[0]?.omL_Name ? true : false;
           this.cd.markForCheck();
-        }      
+        }
         this.getList(this.currentIWQuater);
         this.cd.markForCheck();
       });
@@ -434,6 +432,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     console.log('tre...', this.InitialForm);
     this.isInitialFormSubmitted = true;
     if (this.InitialForm.invalid) return;
+    this.genk.removeCommaBody(this.initialBody);
 
     this.cd.markForCheck();
     this.initialBody.id = 0;
@@ -487,7 +486,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   getList(quater: number) {
-    debugger;
     if (quater === 1) {
       this._initialBody = this._quaterIWOneData;
       this.proposed_well_number = this._initialBody.length;
@@ -516,6 +514,6 @@ export class SWPInitialWellCompletionComponent implements OnInit {
     this.selectedPage = 1;
     this.assignDataRows();
     this.assignPageNum();
-  
+
   }
 }

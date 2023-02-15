@@ -1612,6 +1612,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
   saveBudgetActualExpenditure() {
     let budgetInfo = {} as budgetActualExpenditure;
+    this.genk.removeCommaBody(this.budgetBody);
     this.budgetBody.id = 0;
     this.budgetBody.year_of_WP = this.genk.wpYear;
     this.budgetBody.oML_Name = this.genk.OmlName;
@@ -1916,6 +1917,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   saveExploratory() {
     this.isExploratoryActivitiesFormSubmitted = true;
     if (this.exploratoryActivitiesForm.invalid) return;
+    this.genk.removeCommaBody(this.exploratoryBody);
 
     let budgetInfo = {} as exploratoryActivities;
     this.exploratoryBody.id = 0;
@@ -1957,6 +1959,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     this.isDevelopmentDrillingFormSubmitted = true;
     this.cd.markForCheck();
     if (this.developmentDrillingForm.invalid) return;
+    this.genk.removeCommaBody(this.developmentDrillingBody);
 
     let budgetInfo = {} as developmentDrillingActivities;
     this.developmentDrillingBody.id = 0;
@@ -1968,7 +1971,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           this.developmentDrillingBody[item]?.toString() ?? '';
       }
     }
-    debugger;
+
     this.workprogram
       .post_Development(
         budgetInfo,
@@ -1997,6 +2000,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   saveFacilitiesDevelopment() {
     this.isFacilitiesDevelopmentFormSubmitted = true;
     if (this.facilitiesDevelopmentForm.invalid) return;
+    this.genk.removeCommaBody(this.facilitiesDevelopmentBody);
 
     let budgetInfo = {} as facilitiesDevelopmentProject;
     this.facilitiesDevelopmentBody.id = 0;
@@ -2008,7 +2012,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
           this.facilitiesDevelopmentBody[item]?.toString() ?? '';
       }
     }
-    debugger;
+
     this.workprogram
       .post_Facility(
         budgetInfo,
@@ -2038,6 +2042,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
     console.log(this.productionCostForm);
     this.isProductionCostFormSubmitted = true;
     if (this.productionCostForm.invalid) return;
+    this.genk.removeCommaBody(this.productionCostBody);
 
     let budgetInfo = {} as productionCost;
     this.productionCostBody.id = 0;
