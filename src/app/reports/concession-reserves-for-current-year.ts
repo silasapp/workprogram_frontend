@@ -32,6 +32,7 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
   data: any[];
   year = [];
   selectedColumns: any[] = [];
+  years:any[]=[];
   isTableOpt = false;
   isSpecifyColumns = false;
 
@@ -263,6 +264,24 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
         this.report.plotDoublePieChart(bechart, sele1, sele2, chartdata);
       }
     }
+  }
+
+
+
+
+  getYears(){
+    debugger;
+    this.years=[];
+    let current_year = (Number)(new Date().getFullYear);
+      let test:number=current_year-5;;
+    
+      do{
+       let  _test =test.toString();
+      this.years.push(_test)
+      test+=1;
+      }
+      while(test<=current_year)
+      
   }
 
   plotDoubleBarChart() {

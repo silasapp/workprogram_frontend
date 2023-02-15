@@ -3974,6 +3974,7 @@ export class WorkProgramService {
     actionToDo,
     id
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_point_source_registration`,
