@@ -67,7 +67,7 @@
             class="basesel"
             (change)="changeConcessionField($event)"
           >
-            <option selected disabled hidden>---Select Field---</option>
+            <option selected disabled>---Select Field---</option>
             <option *ngFor="let list2 of Field_List" [value]="list2.field_ID">
               {{ list2.field_Name }}
             </option>
