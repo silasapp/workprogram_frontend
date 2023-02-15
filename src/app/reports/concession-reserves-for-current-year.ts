@@ -122,12 +122,15 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
+   
   }
 
   ngOnInit() {
     this.data = [];
     this.yearList();
     this.genk.sizePerPage = this.genk.sizeten;
+    this.getYears();
+    this.cd.markForCheck();
   }
 
   public get pageIndex(): number {
@@ -155,6 +158,7 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
         this.assignPageNum();
+
         this.cd.markForCheck();
       });
   }
@@ -272,15 +276,17 @@ export class ConcessionReservesForCurrentYearComponent implements OnInit {
   getYears(){
     debugger;
     this.years=[];
+    debugger;
     let current_year = (Number)(new Date().getFullYear);
       let test:number=current_year-5;;
-    
+    debugger;
       do{
        let  _test =test.toString();
       this.years.push(_test)
       test+=1;
       }
       while(test<=current_year)
+      debugger;
       
   }
 
