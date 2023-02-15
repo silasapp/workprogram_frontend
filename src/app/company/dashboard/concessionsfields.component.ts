@@ -60,6 +60,8 @@ export class ConcessionsfieldsComponent implements OnInit {
   equityBody: EquityDistribution = {} as EquityDistribution;
 
   EquityForm: FormGroup;
+  myConcessionType: string;
+  totalEquityPercent = 0;
 
   columns = [
     //   {
@@ -293,6 +295,7 @@ export class ConcessionsfieldsComponent implements OnInit {
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
+    this.concessionBody.concession_Held = this.myConcessionType + ' ' + this.concessionBody.concession_Held;
 
     for (let item in this.concessionBody) {
       //if (item != 'consession_Id' && item != 'date_of_Expiration') {
@@ -307,7 +310,9 @@ export class ConcessionsfieldsComponent implements OnInit {
     this.adminservice
       .Post_ConcessionDetails(concessionInfo, id, actionToDo)
       .subscribe((res) => {
+        this.totalEquityPercent = 0;
         this.getConcessionFields();
+        this.concessionFieldForm.reset();
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
         } else {
@@ -586,21 +591,32 @@ this.resultconcessionList=[];
 
   addEquity(companyName: string, percentEquity) {
     debugger;
-    if (companyName && percentEquity) {
-      this.equitySubmitted = true;
-    if (this.EquityForm.invalid) {
+    let totalValue = Number(this.totalEquityPercent) + Number(percentEquity);
+    if (Number(percentEquity) <= 100 && totalValue <= 100) {
+      this.totalEquityPercent = Number(this.totalEquityPercent) + Number(percentEquity);
+    }
+
+    this.cd.markForCheck();
+    if (totalValue > 100) {
+      alert('Total Percentage Equity has exceeded 100%');
       this.cd.markForCheck();
       return;
     }
-    if (!this.concessionBody.equity_distribution) {
-      this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
+    if (companyName && percentEquity) {
+      this.equitySubmitted = true;
+
+      if (!this.concessionBody.equity_distribution) {
+        this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      } else {
+        this.concessionBody.equity_distribution = this.concessionBody.equity_distribution + `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      }
+      this.isAddEquity = false;
+      this.cd.markForCheck();
     } else {
-      this.concessionBody.equity_distribution = this.concessionBody.equity_distribution + `${companyName.toUpperCase()} - ${percentEquity}%. `;
+      this.cd.markForCheck();
+      return;
     }
-    this.isAddEquity = false;
-    this.cd.markForCheck();
-    }
-  }
+}
 
   showEquity() {
     if (this.isAddEquity) {
@@ -608,12 +624,26 @@ this.resultconcessionList=[];
       this.cd.markForCheck();
     } else {
       this.isAddEquity = true;
+      this.EquityForm.reset();
       this.cd.markForCheck();
     }
   }
 
   clearEquity() {
     this.concessionBody.equity_distribution = '';
+    this.totalEquityPercent = 0;
+    this.cd.markForCheck();
+  }
+
+
+  // assignConcessionHeld(text: string, event) {
+  //   this.concessionBody.concession_Held = text + ' ' + event.target.value;
+  //   this.cd.markForCheck();
+  // }
+
+  setConcessionType(event) {
+    this.concessionBody.consession_Type = event.target.value;
+    this.myConcessionType = event.target.value;
     this.cd.markForCheck();
   }
 }
