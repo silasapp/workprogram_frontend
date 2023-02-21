@@ -27,6 +27,7 @@ export class StartComponent implements OnInit {
   Field_List = [];
   field: string;
   genk: GenericService;
+  disableTab = true;
 
   constructor(
     private workprogram: WorkProgramService,
@@ -54,6 +55,7 @@ export class StartComponent implements OnInit {
       .subscribe((res) => {
         this.concessionHeldList = res;
         this.genk.OMLList = res;
+        this.disableTab = true;
         this.cd.markForCheck();
       });
   }

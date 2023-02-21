@@ -150,6 +150,24 @@
         Status is required!
       </div>
     </div>
+
+    <!-- <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Tier</label>
+      <select name="tier" formControlName="tier" class="form-control">
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let tier of tiers" [ngValue]="tier">
+          {{ tier }}
+        </option>
+      </select>
+      <div
+        *ngIf="form.get('tier')?.touched && form.get('tier')?.invalid"
+        class="alert alert-danger"
+      >
+        Tier is required!
+      </div>
+    </div> -->
   </form>
 </div>
 <div mat-dialog-actions>

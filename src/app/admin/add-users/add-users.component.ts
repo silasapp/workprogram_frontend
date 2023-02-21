@@ -5,10 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin } from 'rxjs';
 import { IElpsUser, Staff } from 'src/app/models/application-details';
 import { ISystemUser } from 'src/app/models/user';
-import {
-  IRole,
-  ISBU,
-} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { ISBU } from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
@@ -167,6 +165,7 @@ export class AddUsersComponent implements OnInit {
     };
 
     let dialogRef = this.dialog.open(operationConfiguration[type].form, {
+      minWidth: '500px',
       data: {
         data: operationConfiguration[type].data,
       },

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
 import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
@@ -44,7 +45,7 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
       header: 'Triggered By (Role)',
     },
     {
-      columnDef: 'targetedBySBU',
+      columnDef: 'targetedToSBU',
       header: 'Target (SBU)',
     },
     {
@@ -58,6 +59,10 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
     {
       columnDef: 'processStatus',
       header: 'Status',
+    },
+    {
+      columnDef: 'tier',
+      header: 'Tier',
     },
     // {
     //   columnDef: 'sort',
@@ -238,13 +243,13 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   }
 }
 
-export interface IRole {
-  roleName: string;
-  roleId: string;
-  id: number;
-  funcs: any[];
-  description: string;
-}
+// export interface IRole {
+//   roleName: string;
+//   roleId: string;
+//   id: number;
+//   funcs: any[];
+//   description: string;
+// }
 
 export interface ISBU {
   sbU_Name: string;

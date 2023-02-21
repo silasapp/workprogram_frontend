@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, EMPTY } from 'rxjs';
+import { Observable, EMPTY, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import {
@@ -44,12 +44,11 @@ export class ErrorInterceptor implements HttpInterceptor {
           //window.location.reload();
         }
         if (err.status === 400) {
-          debugger;
           const head = 'An error occurred';
           //this.userdat.logYawa(err.error.message, head);
-          return EMPTY;
         }
-        return EMPTY;
+        console.log('loging', err.error);
+        return throwError(() => err.error);
       })
     );
   }

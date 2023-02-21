@@ -17,12 +17,10 @@ import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 
 import { Staff } from 'src/app/models/application-details';
 import { AuthenticationService, ModalService } from 'src/app/services';
-import {
-  IRole,
-  ISBU,
-} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { ISBU } from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
 import { AdminService } from 'src/app/services/admin.service';
 import { ISystemUser } from 'src/app/models/user';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 
 // import { Staff } from 'src/app/admin/settings/all-staff/all-staff.component';
 // import { FieldOffice } from 'src/app/admin/settings/field-zonal-office/field-zonal-office.component';

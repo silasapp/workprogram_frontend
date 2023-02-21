@@ -27,7 +27,6 @@ export class AuthenticationService {
   private secretKey = '8080808080805010';
 
   constructor(private http: HttpClient, private modalService: ModalService) {
-    debugger;
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
     );
@@ -80,7 +79,7 @@ export class AuthenticationService {
 
     this.currentUserSubject.next(null);
     this._isLoggedIn = false;
-    debugger;
+
     window.location.assign(`${environment.apiUrl}/auth/log-out`);
   }
 

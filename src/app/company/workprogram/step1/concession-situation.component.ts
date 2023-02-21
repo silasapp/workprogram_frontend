@@ -94,9 +94,10 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.concessionBody.geological_location,
         //   [Validators.required]
         // ),
-        geological_location: new FormControl(this.concessionBody.geological_location, [
-          Validators.required,
-        ]),
+        geological_location: new FormControl(
+          this.concessionBody.geological_location,
+          [Validators.required]
+        ),
         equity_distribution: new FormControl(
           this.concessionBody.equity_distribution,
           [Validators.required]
@@ -292,7 +293,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   loadTable() {
     this.columnHeader = [];
     this.columnValue = [];
-    debugger;
+
     for (let item1 in this.ConcessionSituationForm.controls) {
       if (item1 != 'comment') {
         this.columnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
@@ -310,11 +311,12 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         // if (!res.concessionSituation || res.concessionSituation.length === 0)
         //   return;
         if (res.concessionSituation[0]) {
-          res.concessionSituation[0] = this.genk.addCommaBody(res.concessionSituation[0]);
+          res.concessionSituation[0] = this.genk.addCommaBody(
+            res.concessionSituation[0]
+          );
         }
         if (res.concessionInfo[0]) {
           res.concessionInfo[0] = this.genk.addCommaBody(res.concessionInfo[0]);

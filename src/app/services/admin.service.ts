@@ -11,6 +11,17 @@ export class AdminService {
 
   constructor(private http: HttpClient, private gen: GenericService) {}
 
+  getStaffSBUAndRole(email: string) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/admin/GET_STAFF_SBU_ROLE`,
+      {
+        params: {
+          email,
+        },
+      }
+    );
+  }
+
   getStaffFromElps() {
     return this.http.get<any>(`${environment.apiUrl}/account/GETELPSSTAFF`);
   }
@@ -406,35 +417,35 @@ export class AdminService {
     return this.http.get<any>(`${environment.apiUrl}/application/getroles`);
   }
 
-  addSBU(name: string, code: string) {
+  addSBU(name: string, code: string, tier: number) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createSBU`,
       {},
-      { params: { name, code } }
+      { params: { name, code, tier } }
     );
   }
 
-  addRole(name: string, description: string) {
+  addRole(name: string, description: string, rank: number) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createRole`,
       {},
-      { params: { name, description } }
+      { params: { name, description, rank } }
     );
   }
 
-  editSBU(id: number, name: string, code: string) {
+  editSBU(id: number, name: string, code: string, tier: number) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/editSBU`,
       {},
-      { params: { id, name, code } }
+      { params: { id, name, code, tier } }
     );
   }
 
-  editRole(id: number, name: string, description: string) {
+  editRole(id: number, name: string, description: string, rank: number) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/editRole`,
       {},
-      { params: { id, name, description } }
+      { params: { id, name, description, rank } }
     );
   }
 

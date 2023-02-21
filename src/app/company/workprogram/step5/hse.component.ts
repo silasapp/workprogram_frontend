@@ -5147,7 +5147,6 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        debugger;
         console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
@@ -5295,7 +5294,6 @@ export class SWPHseComponent implements OnInit {
         }
 
         if (res?.hseWastManagementDZs) {
-          debugger;
           this.wasteManagementDZs = res.hseWastManagementDZs;
         }
 

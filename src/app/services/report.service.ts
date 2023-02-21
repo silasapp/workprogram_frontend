@@ -114,6 +114,18 @@ export class ReportService {
     );
   }
 
+  getStaffDeskBySBUAndRole(sbuID, roleID) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/application/GetStaffDesksBySBUAndRole`,
+      {
+        params: {
+          sbuID,
+          roleID,
+        },
+      }
+    );
+  }
+
   addProcessFlow(model: any) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createProcess`,
@@ -595,7 +607,7 @@ export class ReportService {
       obj[0] = this.baselist[i];
       this.chartArray.push(obj);
 
-      //debugger;
+      //
       valist = [];
       obj = [];
     }
