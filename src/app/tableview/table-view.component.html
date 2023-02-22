@@ -1,0 +1,9 @@
+<div>
+  <label>Enter a Table Name</label><br>
+  <input #inpu type="text" style="width: 60%; padding: 10px 20px;">
+  <br>
+  <br>
+  <button (click)="fetchdata(inpu.value, san)" style="background-color: dodgerblue; color: white; padding: 10px 30px; border: none; border-radius: 10px; margin-left: 10%;">Get Table</button>
+</div>
+
+<span #san></span>

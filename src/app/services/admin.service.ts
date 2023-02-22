@@ -453,4 +453,8 @@ export class AdminService {
       { params: { id } }
     );
   }
+
+  getTable(table: string) {
+    return this.http.get<any>(`${environment.apiUrl}/table/viewTable`, {params: {tableName: table}, responseType: 'blob' as 'json', reportProgress: true, observe: 'events'});
+  }
 }

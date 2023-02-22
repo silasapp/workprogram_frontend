@@ -111,6 +111,12 @@ const routes: Routes = [
         (m) => m.CompanyProfilingModule
       ),
   },
+
+  {
+    path: 'tableview',
+    loadChildren: () =>
+      import('./tableview/table-view.module').then((m) => m.TableModule),
+  },
 ];
 
 @NgModule({
