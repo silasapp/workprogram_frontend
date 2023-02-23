@@ -431,7 +431,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Year']?.invalid) ||
               (rc['company_Reserves_Year']?.dirty &&
                 rc['company_Reserves_Year']?.invalid)
@@ -469,7 +469,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Oil']?.invalid) ||
               (rc['company_Reserves_Oil']?.dirty &&
                 rc['company_Reserves_Oil']?.invalid)
@@ -509,7 +509,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Condensate']?.invalid) ||
               (rc['company_Reserves_Condensate']?.dirty &&
                 rc['company_Reserves_Condensate']?.invalid)
@@ -550,7 +550,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_AG']?.invalid) ||
               (rc['company_Reserves_AG']?.dirty &&
                 rc['company_Reserves_AG']?.invalid)
@@ -588,7 +588,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_NAG']?.invalid) ||
               (rc['company_Reserves_NAG']?.dirty &&
                 rc['company_Reserves_NAG']?.invalid)
@@ -644,10 +644,14 @@
           <select
             class="dropwp"
             formControlName="fiveyear_Projection_Year"
-            [value]="reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year"
+            [value]="
+              reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
+            "
             (change)="changeFiveYearProjection($event)"
-            [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)">
-
+            [attr.disabled]="
+              isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+            "
+          >
             <option selected disabled>---- Select a Year ----</option>
 
             <option
@@ -1685,8 +1689,9 @@
       <div class="eroce">
         <span
           *ngIf="
-            (isReserveUpdateDepletionRateFormSubmitted && rr['oIL']?.invalid) ||
-            (rr['oIL']?.dirty && rr['oIL']?.invalid)
+            (isReserveUpdateDepletionRateFormSubmitted &&
+              rdr['oIL']?.invalid) ||
+            (rdr['oIL']?.dirty && rdr['oIL']?.invalid)
           "
         >
           Oil is required!

@@ -61,20 +61,29 @@ export class SWPReserveUpdateComponent implements OnInit {
 
   public planningMinimumRequirementForm: FormGroup;
 
-  public planningMinimumRequirementBody: PLANNING_MINIMUM_REQUIREMENT ={} as PLANNING_MINIMUM_REQUIREMENT;
+  public planningMinimumRequirementBody: PLANNING_MINIMUM_REQUIREMENT =
+    {} as PLANNING_MINIMUM_REQUIREMENT;
   reserveUpdateLifeIndexBody = new RESERVES_UPDATES_LIFE_INDEX();
   reserveUpdateDepletionRateBody = new RESERVES_UPDATES_DEPLETION_RATE();
   reserveReplacementRatioBody = new POST_RESERVES_REPLACEMENT_RATIO();
-  reserveUpdateOilCondensateReservesDeclineBody = new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE();
-  reserveUpdateOilCondensateReservesAdditionBody = new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_Addition();
-  reserveUpdateOilCondensateCompanyAnnualProductionBody = new RESERVES_UPDATES_OIL_CONDENSATE_Company_Annual_PRODUCTION();
-  statusOfReservesPreceeding = new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE();
-  statusOfReservesCurrent = new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE();
+  reserveUpdateOilCondensateReservesDeclineBody =
+    new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE();
+  reserveUpdateOilCondensateReservesAdditionBody =
+    new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_Addition();
+  reserveUpdateOilCondensateCompanyAnnualProductionBody =
+    new RESERVES_UPDATES_OIL_CONDENSATE_Company_Annual_PRODUCTION();
+  statusOfReservesPreceeding =
+    new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE();
+  statusOfReservesCurrent =
+    new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE();
 
-  reserveupdateBody: RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE = {} as RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE;
-  reserveupdatefiveyearprojectionBody = new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection();
+  reserveupdateBody: RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE =
+    {} as RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE;
+  reserveupdatefiveyearprojectionBody =
+    new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection();
 
-  reservesProjection = new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection();
+  reservesProjection =
+    new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection();
 
   wkpYear: string;
   _wkpYear: number;
@@ -86,7 +95,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   columnHeader = [];
   columnValue = [];
   isTabVisible = false;
-  projectionYear : string;
+  projectionYear: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -400,56 +409,61 @@ export class SWPReserveUpdateComponent implements OnInit {
         if (res.statusOfReservesPreceeding) {
           this.statusOfReservesPreceeding =
             new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE(
-              res.statusOfReservesPreceeding
+              this.genk.addCommaBody(res.statusOfReservesPreceeding)
             );
         }
         if (res.statusOfReservesCurrent) {
           this.statusOfReservesCurrent =
             new RESERVE_UPDATES_OIL_CONDENSATE_STATUS_OF_RESERVE(
-              res.statusOfReservesCurrent
+              this.genk.addCommaBody(res.statusOfReservesCurrent)
             );
         }
         if (res.fiveYearProjection) {
           this.reserveupdatefiveyearprojectionBody =
             new RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection(
-              res.fiveYearProjection
+              this.genk.addCommaBody(res.fiveYearProjection)
             );
-            this.ReserveUpdateFiveYearProjectionForm.controls['fiveyear_Projection_Year'].setValue(res.fiveYearProjection.fiveyear_Projection_Year)
-
+          this.ReserveUpdateFiveYearProjectionForm.controls[
+            'fiveyear_Projection_Year'
+          ].setValue(res.fiveYearProjection.fiveyear_Projection_Year);
         }
         if (res.companyAnnualProduction) {
           this.reserveUpdateOilCondensateCompanyAnnualProductionBody =
             new RESERVES_UPDATES_OIL_CONDENSATE_Company_Annual_PRODUCTION(
-              res.companyAnnualProduction
+              this.genk.addCommaBody(res.companyAnnualProduction)
             );
         }
         if (res.reservesAddition) {
           this.reserveUpdateOilCondensateReservesAdditionBody =
             new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_Addition(
-              res.reservesAddition
+              this.genk.addCommaBody(res.reservesAddition)
             );
         }
         if (res.reservesDecline) {
           this.reserveUpdateOilCondensateReservesDeclineBody =
             new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE(
-              res.reservesDecline
+              this.genk.addCommaBody(res.reservesDecline)
             );
           console.log(
             this.reserveUpdateOilCondensateReservesDeclineBody,
-            res.reservesDecline
+            this.genk.addCommaBody(res.reservesDecline)
           );
         }
         if (res.reservesReplacementRatio) {
           this.reserveReplacementRatioBody =
-            new POST_RESERVES_REPLACEMENT_RATIO(res.reservesReplacementRatio);
+            new POST_RESERVES_REPLACEMENT_RATIO(
+              this.genk.addCommaBody(res.reservesReplacementRatio)
+            );
         }
         if (res.reserveDepletionRate) {
           this.reserveUpdateDepletionRateBody =
-            new RESERVES_UPDATES_DEPLETION_RATE(res.reserveDepletionRate);
+            new RESERVES_UPDATES_DEPLETION_RATE(
+              this.genk.addCommaBody(res.reserveDepletionRate)
+            );
         }
         if (res.reserveLifeIndices) {
           this.reserveUpdateLifeIndexBody = new RESERVES_UPDATES_LIFE_INDEX(
-            res.reserveLifeIndices
+            this.genk.addCommaBody(res.reserveLifeIndices)
           );
         }
         this.cd.markForCheck();
@@ -562,14 +576,15 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   saveReserveUpdateFiveYearProjection() {
-    debugger;
-    this.isReserveUpdateFiveYearProjectionFormSubmitted = false;
+    this.isReserveUpdateFiveYearProjectionFormSubmitted = true;
     if (this.ReserveUpdateFiveYearProjectionForm.invalid) return;
     this.genk.removeComma(this.ReserveUpdateFiveYearProjectionForm);
     this.workprogram
       .saveReserveUpdateFiveYearPorjection(
         this.ReserveUpdateFiveYearProjectionForm.value,
-        this.ReserveUpdateFiveYearProjectionForm.controls['fiveyear_Projection_Year'].value,
+        this.ReserveUpdateFiveYearProjectionForm.controls[
+          'fiveyear_Projection_Year'
+        ].value,
         this.genk.OmlName,
         this.genk.fieldName
       )
@@ -597,8 +612,11 @@ export class SWPReserveUpdateComponent implements OnInit {
     )
       return;
 
-      this.genk.removeComma(this.reserveupdateOilCondensateReservesAdditionForm);
-      this.genk.removeComma(this.reserveUpdateOilCondensateReservesDeclineForm);
+    this.genk.removeComma(this.reserveupdateOilCondensateReservesAdditionForm);
+    this.genk.removeComma(this.reserveUpdateOilCondensateReservesDeclineForm);
+    this.genk.removeComma(
+      this.reserveUpdateOilCondensateCompanyAnnualProductionForm
+    );
     forkJoin([
       this.workprogram.saveReserveUpdateOilCondensateCompanyAnnualProduction(
         this.reserveUpdateOilCondensateCompanyAnnualProductionForm.value,
@@ -755,7 +773,11 @@ export class SWPReserveUpdateComponent implements OnInit {
     this.workprogram
       .getFormFiveSWPR(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        this.planningMinimumRequirementBody = res.data;
+        if (res.data) this.planningMinimumRequirementBody = res.data;
+        else
+          this.planningMinimumRequirementBody =
+            {} as PLANNING_MINIMUM_REQUIREMENT;
+        this.planningMinimumRequirementBody = this.genk.addCommaBody(res.data);
         console.log(this.planningMinimumRequirementBody, res);
         this.cd.markForCheck();
       });
@@ -765,25 +787,38 @@ export class SWPReserveUpdateComponent implements OnInit {
     return null;
   }
 
-
   changeFiveYearProjection(e) {
     let activities = e.target.value;
     this.projectionYear = activities;
-    this.reservesProjection = {} as RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection;
-    this.workprogram.getReservesFiveYearProjection(this.projectionYear, this.genk.OmlName, this.genk.fieldName)
-    .subscribe(res => {
-      debugger;
-      if (res.fiveYearProjection) {
-        this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG = res.fiveYearProjection.fiveyear_Projection_NAG;
-        this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG = res.fiveYearProjection.fiveyear_Projection_AG;
-        this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil = res.fiveYearProjection.fiveyear_Projection_Oil;
-        this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate = res.fiveYearProjection.fiveyear_Projection_Condensate;
-        this.cd.markForCheck();
-      } else {
-        this.reserveupdatefiveyearprojectionBody = {} as RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection;
-        this.cd.markForCheck();
-      }
-    });
+    this.reservesProjection =
+      {} as RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection;
+    this.workprogram
+      .getReservesFiveYearProjection(
+        this.projectionYear,
+        this.genk.OmlName,
+        this.genk.fieldName
+      )
+      .subscribe((res) => {
+        debugger;
+        if (res.fiveYearProjection) {
+          res.fiveYearProjection = this.genk.addCommaBody(
+            res.fiveYearProjection
+          );
+          this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_NAG =
+            res.fiveYearProjection.fiveyear_Projection_NAG;
+          this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_AG =
+            res.fiveYearProjection.fiveyear_Projection_AG;
+          this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_Oil =
+            res.fiveYearProjection.fiveyear_Projection_Oil;
+          this.reserveupdatefiveyearprojectionBody._fiveyear_Projection_Condensate =
+            res.fiveYearProjection.fiveyear_Projection_Condensate;
+          this.cd.markForCheck();
+        } else {
+          this.reserveupdatefiveyearprojectionBody =
+            {} as RESERVE_UPDATES_OIL_CONDENSATE_Five_year_Projection;
+          this.cd.markForCheck();
+        }
+      });
     //this.strategicplansBody = this.strategicData.filter((res) => {return res.activities === activities;})[0] ?? ({} as STRATEGIC_PLANS_ON_COMPANY_BASES);
     //this.strategicplansBody.activities = activities;
     this.cd.markForCheck();

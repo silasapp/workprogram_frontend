@@ -203,7 +203,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
       .getFDP(this.genk.wpYear, this.genk.OmlName, this.genk.fieldName)
       .subscribe((res) => {
         if (res.fdp) {
-          this.fielddevelopmentBody = new FIELD_DEVELOPMENT_PLAN(res.fdp);
+          this.fielddevelopmentBody = new FIELD_DEVELOPMENT_PLAN(this.genk.addCommaBody(res.fdp));
         }
         if (res.fdpExcessiveReserves) {
           this.fielddevelopmentexcessivereserveBody =
@@ -265,7 +265,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   isValidateFDP() {
-    
+
     if (this.fielddevelopmentBody.status === 'Approved') {
       return (
         this.FieldDevelopmentForm.controls[
@@ -276,22 +276,17 @@ export class SWPFieldDevelopmentComponent implements OnInit {
         this.FieldDevelopmentForm.controls['are_they_oil_or_gas_wells']
       );
     } else return this.FieldDevelopmentForm.valid;
-    
+
   }
 
-
-  debugger;
   saveFieldDevelopmentPlan() {
 
-    debugger;
-  
-   
     this.isFieldDevelopmentFormSubmitted = true;
     const formData = new FormData();
     if (this.fielddevelopmentBody.status === 'Approved' || this.fielddevelopmentBody.status === '' || (!this.isNotNullOrUndefined(this.fielddevelopmentBody.status))){
     if (!this.isValidateFDP()) return;
-  
 
+    this.genk.removeComma(this.FieldDevelopmentForm);
     // formData.append(
     //   'id',
     //   this.fielddevelopmentexcessivereserveBody.id.toString()
@@ -352,6 +347,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
     formData.append('status', this.FieldDevelopmentForm.get('status').value);
 
     this.modalService.logCover('Loading....', true);
+
     this.workprogram
       .saveFDP(
         formData as any,
@@ -388,6 +384,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
 
     this.isFieldDevelopmeentExcessiveReserveFormSubmitted = true;
     if (this.FieldDevelopmeentExcessiveReserveForm.invalid) return;
+    this.genk.removeCommaBody(this.fielddevelopmentexcessivereserveBody);
 
     this.modalService.logCover('Loading...', true);
 
@@ -424,10 +421,10 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
-    this.debugger;
     console.log('unit...', this.UnitizationForm);
     this.isUnitizationFormSubmitted = true;
     if (this.UnitizationForm.invalid) return;
+    this.genk.removeCommaBody(this.unitizationBody);
 
     this.workprogram
       .saveUnitization(
@@ -452,6 +449,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   fdpSubmit() {
+    this.genk.removeCommaBody(this.fielddevelopmentBody);
     const formDat: FormData = new FormData();
     for (const key in this.fielddevelopmentBody) {
       if (this.fielddevelopmentBody[key]) {
@@ -479,7 +477,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
 
-  isNotNullOrUndefined<T>(object: T | undefined | null): object is T {  
-    return <T>object !== undefined && <T>object !== null;  
-  } 
+  isNotNullOrUndefined<T>(object: T | undefined | null): object is T {
+    return <T>object !== undefined && <T>object !== null;
+  }
 }

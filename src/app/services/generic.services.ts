@@ -77,7 +77,13 @@ export class GenericService {
   isStep5 = false;
   activeStep = 'STEP1';
 
-  year = [{ value: '2020' }, { value: '2021' }];
+  
+
+  public years:string[] = [] as string[];
+  year = [{ value: '2020' }, { value: '2021' }, { value: '2022' }, { value: '2023' },{ value: '2024' },{ value: '2025' }];
+
+
+  
 
   role = [{ value: 'Admin' }, { value: 'Company' }];
 
@@ -170,8 +176,17 @@ export class GenericService {
       } else {
         tr[i].style.display = 'none';
       }
+
+      
+      
+
+
+
+
     }
   }
+
+ 
 
   printData(table: HTMLTableElement) {
     let newWin = window.open('');
@@ -563,6 +578,43 @@ export class GenericService {
     }
   }
 
+  formatNumber(text: string) {
+      let term = text.replace(/,+/g, '');
+      let halfone = term.split('.')[0];
+      let halftwo = term.split('.')[1];
+      let isDecimal = halftwo ? true : false;
+      if (halfone.length > 3 && halfone.length < 7) {
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      } else if (halfone.length > 6 && halfone.length < 10) {
+        halfone =
+          halfone.slice(0, halfone.length - 6) +
+          ',' +
+          halfone.slice(halfone.length - 6, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      } else if (halfone.length > 9 && halfone.length < 13) {
+        halfone =
+          halfone.slice(0, halfone.length - 9) +
+          ',' +
+          halfone.slice(halfone.length - 9, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 6) +
+          ',' +
+          halfone.slice(halfone.length - 6, halfone.length);
+        halfone =
+          halfone.slice(0, halfone.length - 3) +
+          ',' +
+          halfone.slice(halfone.length - 3, halfone.length);
+      }
+      text = isDecimal ? halfone + '.' + halftwo : halfone;
+      return text;
+  }
+
   pressFormatCurrency(event) {
     if (isFinite(event.key)) {
       let e = event.target as HTMLInputElement;
@@ -617,7 +669,7 @@ export class GenericService {
     let halfone = this.formatNum(term.split('.')[0]);
     let halftwo = term.split('.')[1];
     e.value = halfone + '.' + halftwo;
-    e.value = e.value.toString().replace(/,+/g, '');
+    //e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 
@@ -631,20 +683,20 @@ export class GenericService {
     } else {
       gasMin.textContent = '';
     }
-    e.value = e.value.toString().replace(/,+/g, '');
+    //e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 
   checkMMBBLMin(event, oilMin: HTMLElement) {
     let e = event.target as HTMLInputElement;
     let term = parseFloat(e.value.toString().replace(/,+/g, ''));
-    if (Number(term) < 1000) {
+    if (Number(term) < 10000) {
       oilMin.textContent = 'Value is too low';
       oilMin.style.color = 'orange';
     } else {
       oilMin.textContent = '';
     }
-    e.value = e.value.toString().replace(/,+/g, '');
+    //e.value = e.value.toString().replace(/,+/g, '');
     return e.value;
   }
 
@@ -854,6 +906,40 @@ export class GenericService {
         con.setValue(con.value.replace(/,/g, ''));
       }
     }
+  }
+
+  removeCommaBody(body: any) {
+    let values = Object.values(body) as any[];
+    let keys = Object.keys(body) as any[];
+    for (var i = 0; i < values.length; i++) {
+      if (!isNaN(values[i]?.toString()?.replace(/,/g, '')) && !isNaN(parseInt(values[i]?.toString()?.replace(/,/g, ''))) && (typeof values[i] !== 'number')) {
+        //con.setValue(values[i]?.toString()?.replace(/,/g, ''));
+        body[keys[i]] = values[i]?.toString()?.replace(/,/g, '');
+      }
+    }
+  }
+
+  addCommaBody(body: any) {
+    let values = Object.values(body) as any[];
+    let keys = Object.keys(body) as any[];
+    for (var i = 0; i < values.length; i++) {
+      if (!isNaN(values[i]?.toString()?.replace(/,/g, '')) && !isNaN(parseInt(values[i]?.toString()?.replace(/,/g, ''))) && (typeof values[i] !== 'number')) {
+        body[keys[i]] = this.formatNumber(values[i]);
+      }
+    }
+    return body;
+  }
+
+  addCommaBodyList(data: any[]) {
+  for (let body of data) {
+    let values = Object.values(body) as any[];
+    let keys = Object.keys(body) as any[];
+    for (var i = 0; i < values.length; i++) {
+      if (!isNaN(values[i]?.toString()?.replace(/,/g, '')) && !isNaN(parseInt(values[i]?.toString()?.replace(/,/g, ''))) && (typeof values[i] !== 'number')) {
+        body[keys[i]] = this.formatNumber(values[i]);
+      }
+    }
+  }
   }
 }
 

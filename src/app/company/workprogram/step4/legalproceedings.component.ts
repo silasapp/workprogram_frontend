@@ -75,10 +75,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'jurisdiction',
       header: 'JURISDICTION',
     },
-    {
-      columnDef: 'name_of_Court',
-      header: 'NAME OF COURT',
-    },
+    // {
+    //   columnDef: 'name_of_Court',
+    //   header: 'NAME OF COURT',
+    // },
     {
       columnDef: 'summary_of_the_case',
       header: 'SUMMARY OF CASES',
@@ -98,10 +98,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'year_of_WP',
       header: 'Work Programme Year',
     },
-    {
-      columnDef: 'anyArbitration',
-      header: 'ANY ARBITRATION',
-    },
+    // {
+    //   columnDef: 'anyArbitration',
+    //   header: 'ANY ARBITRATION',
+    // },
     {
       columnDef: 'case_Number',
       header: 'CASE NO.',
@@ -114,18 +114,18 @@ export class SWPLegalProceedingsComponent implements OnInit {
       columnDef: 'jurisdiction',
       header: 'JURISDICTION',
     },
-    {
-      columnDef: 'name_of_Court',
-      header: 'NAME OF COURT',
-    },
+    // {
+    //   columnDef: 'name_of_Court',
+    //   header: 'NAME OF COURT',
+    // },
     {
       columnDef: 'summary_of_the_case',
       header: 'SUMMARY OF CASES',
     },
-    {
-      columnDef: 'any_orders_made_so_far_by_the_court',
-      header: 'ANY ORDERS MADE',
-    },
+    // {
+    //   columnDef: 'any_orders_made_so_far_by_the_court',
+    //   header: 'ANY ORDERS MADE',
+    // },
     {
       columnDef: 'potential_outcome',
       header: 'POTENTIAL OUTCOME',
@@ -295,10 +295,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
       .getlegalLitigation(this.genk.wpYear)
       .subscribe((result) => {
         if (result.legalLitigation) {
-          this.litigations = result.legalLitigation;
+          this.litigations = this.genk.addCommaBody(result.legalLitigation);
         }
         if (result.legalArbitration) {
-          this.arbitrations = result.legalArbitration;
+          this.arbitrations = this.genk.addCommaBody(result.legalArbitration);
         }
 
         this.cd.markForCheck();
@@ -310,6 +310,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
     console.log(this.letigationForm);
     this.isLetigationFormSubmitted = true;
     if (this.letigationForm.invalid) return;
+    this.genk.removeCommaBody(this.letigationBody);
 
     this.workprogram
       .saveLegalLitigation(this.letigationBody, this.genk.wpYear)
@@ -331,6 +332,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
     console.log(this.arbitrationForm);
     this.isArbitrationFormSubmitted = true;
     if (this.arbitrationForm.invalid) return;
+    this.genk.removeCommaBody(this.arbitrationBody);
 
     //this.arbitrationBody.anyArbitration = "YES";
     this.workprogram

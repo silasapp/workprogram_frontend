@@ -190,10 +190,10 @@ export class SWPScdpComponent implements OnInit {
       columnDef: 'status_Of_Project',
       header: 'STATUS OF PROJECT',
     },
-    {
-      columnDef: 'mouUploadFilename',
-      header: 'MOU File',
-    },
+    // {
+    //   columnDef: 'mouUploadFilename',
+    //   header: 'MOU File',
+    // },
   ];
 
   hcpColDef = [
@@ -378,7 +378,7 @@ export class SWPScdpComponent implements OnInit {
     },
     {
       columnDef: 'uploaded_presentation',
-      header: 'attachemnt',
+      header: 'attachment',
     },
   ];
   //#endregion
@@ -442,9 +442,7 @@ export class SWPScdpComponent implements OnInit {
             this.scdp_question_Body.do_you_have_an_MOU_with_the_communities_for_all_your_assets,
             [Validators.required]
           ),
-        if_NO_why: new FormControl(this.scdp_question_Body.if_NO_why, [
-          Validators.required,
-        ]),
+        if_NO_why: new FormControl(this.scdp_question_Body.if_NO_why),
         mOUResponderInPlace: new FormControl(
           this.scdp_question_Body.mOUResponderInPlace,
           [Validators.required]
@@ -965,6 +963,7 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Capital_Submit() {
+    debugger;
     this.isSCDP_CapitalProjects_FormSubmitted = true;
     if (this.SCDP_CapitalProjects_Form.invalid) return;
 
@@ -1201,6 +1200,7 @@ export class SWPScdpComponent implements OnInit {
           this.mouQuestions = res.hseSustainable_Question;
         }
 
+        debugger;
         if (res.hseSustainable_MOU) {
           this.mouProjects = res.hseSustainable_MOU;
         }

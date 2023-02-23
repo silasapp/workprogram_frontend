@@ -57,7 +57,6 @@ export class SWPStrategicPlansComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
 
     this.wkpYear= Number(this.genk.wpYear);
     this.genk.activeStep = 'STEP4';
@@ -162,6 +161,7 @@ export class SWPStrategicPlansComponent implements OnInit {
   getStrategicPlansOnCompanyBases() {
     this.workprogram.getStrategicPlans(this.genk.wpYear).subscribe((result) => {
       if (result.strategicPlans) {
+        this.genk.addCommaBodyList(result.strategicPlans);
         this.strategicData = result.strategicPlans;
 
         if (this.strategicData.length > 0) {
@@ -179,6 +179,7 @@ export class SWPStrategicPlansComponent implements OnInit {
     console.log(this.strategicplansForm);
     this.isStrategicplansFormSubmitted = true;
     if (this.strategicplansForm.invalid) return;
+    this.genk.removeCommaBody(this.strategicplansBody);
 
     //console.log(this.strategicplansBody);
     this.strategicplansBody.activities = this.activities;
