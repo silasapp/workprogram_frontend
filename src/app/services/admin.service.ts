@@ -22,6 +22,13 @@ export class AdminService {
     );
   }
 
+  getStaffsBySBUAndRole(SBU_ID: number, RoleID: number) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/admin/GET_STAFFS_BY_SBU_ROLE`,
+      { params: { SBU_ID, RoleID } }
+    );
+  }
+
   getStaffFromElps() {
     return this.http.get<any>(`${environment.apiUrl}/account/GETELPSSTAFF`);
   }

@@ -10,15 +10,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ManageApplicationsComponent } from './manage-applications/manage-applications.component';
-import { AddProcessFlowFormComponent } from './manage-applications/add-process-flow/add-process-flow-form.component';
+import { MoveApplicationFormComponent } from './manage-applications/move-application/move-application-form.component';
 import { DeleteProcessFlowComponent } from './manage-applications/delete-process-flow-form/delete-process-flow.component';
 import { GetRolenamePipe } from './manage-applications/get-rolename.pipe';
 import { GetNoOfJobsOnDeskPipe } from './manage-applications/get-no-of-jobs-on-desk.pipe';
 import { GetNoOfJobsProcessedPipe } from './manage-applications/get-no-of-jobs-processed.pipe';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     ManageApplicationsComponent,
-    AddProcessFlowFormComponent,
+    MoveApplicationFormComponent,
     DeleteProcessFlowComponent,
     GetRolenamePipe,
     GetNoOfJobsOnDeskPipe,
@@ -37,6 +38,7 @@ import { GetNoOfJobsProcessedPipe } from './manage-applications/get-no-of-jobs-p
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+    MatCheckboxModule,
   ],
 })
 export class AdminManageApplicationsModule {}

@@ -10,7 +10,7 @@ import {
 } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import { ReportService } from 'src/app/services/report.service';
-import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
+import { MoveApplicationFormComponent } from './move-application/move-application-form.component';
 import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-process-flow.component';
 
 @Component({
@@ -21,7 +21,6 @@ import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-pr
 export class ManageApplicationsComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
-  public rejectedApps: IRejectedApp[] = [];
   public data: IDeskStaffApps[][] = [];
   public staffSBUAndRole: { staff: Staff; role: IRole; sbu: ISBU };
   public pagenum = 0;
@@ -109,6 +108,7 @@ export class ManageApplicationsComponent implements OnInit {
   }
 
   groupDeskInfo(data: IDeskStaffApps[]) {
+    this.modalService.logCover('Processing...', true);
     const res: { [id: number]: IDeskStaffApps[] } = {};
 
     data.forEach((d) => {
@@ -120,6 +120,7 @@ export class ManageApplicationsComponent implements OnInit {
       }
     });
 
+    this.modalService.togCover();
     return Object.values(res);
   }
 
@@ -145,11 +146,38 @@ export class ManageApplicationsComponent implements OnInit {
     return (this.selectedPage - 1) * this.genk.sizePerPage;
   }
 
-  editProcessFlow(app: IRejectedApp) {
-    this.router.navigate(
-      ['/', this.genk.company, this.genk.workprogram, 'step1'],
-      { queryParams: { rejectId: app.rejectId, sbU_Tables: app.sbU_Tables } }
-    );
+  // editProcessFlow(app: IRejectedApp) {
+  //   this.router.navigate(
+  //     ['/', this.genk.company, this.genk.workprogram, 'step1'],
+  //     { queryParams: { rejectId: app.rejectId, sbU_Tables: app.sbU_Tables } }
+  //   );
+  // }
+
+  moveApplication(row: IDeskStaffApps) {
+    const operationsConfiguration = {
+      move: {
+        data: {
+          data: row,
+        },
+        form: MoveApplicationFormComponent,
+      },
+    };
+
+    let dialogRef = this.dialog.open(operationsConfiguration['move'].form, {
+      minWidth: 'fit-content',
+      maxHeight: '90vh',
+      data: {
+        data: operationsConfiguration['move'].data,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getStaffDeskBySBUAndRole();
+      this.currentStaffEmailSubject.next(
+        this.auth.currentUserValue.companyEmail
+      );
+      this.cdr.markForCheck();
+    });
   }
 
   assignPageNum() {

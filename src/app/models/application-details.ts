@@ -53,9 +53,9 @@ export class Staff {
   phoneNo: string;
   userType: string;
   role: string;
-  status: string;
+  status: boolean;
 
-  activeStatus: string;
+  activeStatus: boolean;
   adminCompanyInfo_ID: number;
   createdAt: string;
   createdBy: string;
@@ -74,6 +74,8 @@ export class Staff {
   // staff_SBU: number;
   updatedAt: string;
   updatedBy: string;
+
+  status_: any;
 }
 
 export class ApplicationHistory {

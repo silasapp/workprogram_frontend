@@ -168,6 +168,12 @@
           </div>
         </div>
       </form> -->
+      <div class="toggleStaff">
+        <p>Toggle to switch between company users and staffs</p>
+        <mat-slide-toggle [(ngModel)]="isStaffSelected">{{
+          isStaffSelected ? "Staff" : "Company"
+        }}</mat-slide-toggle>
+      </div>
       <div
         style="
           display: flex;

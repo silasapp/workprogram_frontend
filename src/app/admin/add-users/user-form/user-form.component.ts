@@ -169,11 +169,10 @@ export class UserFormComponent implements OnInit {
           this.snackBar.open('Staff was created successfully!', null, {
             panelClass: ['success'],
           });
-
-          this.dialogRef.close();
         }
 
         this.modalService.togCover();
+        this.dialogRef.close();
       },
       error: (error) => {
         this.snackBar.open(

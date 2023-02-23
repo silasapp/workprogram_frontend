@@ -134,6 +134,24 @@ export class ReportService {
     );
   }
 
+  moveApplication(
+    sourceStaffID: number,
+    targetStaffID: number,
+    selectedApps: any[]
+  ) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/moveApplication`,
+      {},
+      {
+        params: {
+          sourceStaffID,
+          targetStaffID,
+          selectedApps: selectedApps,
+        },
+      }
+    );
+  }
+
   editProcessFlow(model: any) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/editProcess`,
