@@ -227,6 +227,42 @@ export class SWPConcessionSituationComponent implements OnInit {
       }
     });
 
+    this.getHas_Signature_Bonus_been_paid.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_sig.disable();
+          this.getHow_Much_Signature_Bonus_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Signature_Bonus_have_been_paid_USD.disable();
+          this.getIf_No_why_sig.enable();
+        }
+      }
+    );
+
+    this.getHas_the_Concession_Rentals_been_paid.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_concession.disable();
+          this.getHow_Much_Concession_Rental_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Concession_Rental_have_been_paid_USD.disable();
+          this.getIf_No_why_concession.enable();
+        }
+      }
+    );
+
+    this.getIs_there_an_application_for_renewal.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_renewal.disable();
+          this.getHow_Much_Renewal_Bonus_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Renewal_Bonus_have_been_paid_USD.disable();
+          this.getIf_No_why_renewal.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       console.log('called....', con);
       if (!con) {
@@ -248,6 +284,54 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.getRoyaltyHeld();
     this.getBoolValue();
     this.cd.markForCheck();
+  }
+
+  public get getIs_there_an_application_for_renewal() {
+    return this.ConcessionSituationForm.controls[
+      'is_there_an_application_for_renewal'
+    ];
+  }
+
+  public get getHow_Much_Renewal_Bonus_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Renewal_Bonus_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_renewal() {
+    return this.ConcessionSituationForm.controls['if_No_why_renewal'];
+  }
+
+  public get getHas_the_Concession_Rentals_been_paid() {
+    return this.ConcessionSituationForm.controls[
+      'has_the_Concession_Rentals_been_paid'
+    ];
+  }
+
+  public get getHow_Much_Concession_Rental_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Concession_Rental_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_concession() {
+    return this.ConcessionSituationForm.controls['if_No_why_concession'];
+  }
+
+  public get getHas_Signature_Bonus_been_paid() {
+    return this.ConcessionSituationForm.controls[
+      'has_Signature_Bonus_been_paid'
+    ];
+  }
+
+  public get getHow_Much_Signature_Bonus_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Signature_Bonus_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_sig() {
+    return this.ConcessionSituationForm.controls['if_No_why_sig'];
   }
 
   public get getDid_you_meet_the_minimum_work_programme() {

@@ -1200,18 +1200,18 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'field_name',
       header: 'Field Name',
     },
-    {
-      columnDef: 'type_of_study',
-      header: 'Type of Study',
-    },
-    {
-      columnDef: 'study_title',
-      header: 'Study Title',
-    },
-    {
-      columnDef: 'current_study_status',
-      header: 'Current Study Status',
-    },
+    // {
+    //   columnDef: 'type_of_study',
+    //   header: 'Type of Study',
+    // },
+    // {
+    //   columnDef: 'study_title',
+    //   header: 'Study Title',
+    // },
+    // {
+    //   columnDef: 'current_study_status',
+    //   header: 'Current Study Status',
+    // },
     {
       columnDef: 'dpR_approval_Status',
       header: 'NUPRC Approval Status',
@@ -2625,7 +2625,6 @@ export class SWPHseComponent implements OnInit {
 
     this.getProduceWaterManagementPlan.valueChanges.subscribe(
       (c: 'ZERO DISCHARGE ZONE' | 'DISCHARGE ZONE') => {
-        debugger;
         if (c === 'ZERO DISCHARGE ZONE') {
           this.getReasonForNoEvidenceOfReInjection.disable();
           this.getEvidenceOfReInjectionPermitFilename.enable();
@@ -2818,9 +2817,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   public get getProduceWaterManagementPlan() {
-    debugger;
     return this.wasteManagementDZForm.controls['produce_Water_Manegent_Plan'];
-    debugger;
   }
 
   public get getEvidenceOfReInjectionPermitFilename() {
@@ -3230,7 +3227,6 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_PSP_Submit() {
-    debugger;
     this.ispointSourcePermitFormSubmitted = true;
     if (this.pointSourcePermitForm.invalid) return;
     this.genk.removeCommaBody(this.pointSourcePermitBody);
@@ -3253,7 +3249,6 @@ export class SWPHseComponent implements OnInit {
       );
     }
 
-    debugger;
     this.workprogram
       .post_HSE_PSP(
         formDataToSubmit,
@@ -3403,14 +3398,13 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
-    debugger;
     console.log(this.wasteManagementDZForm);
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
     this.genk.removeCommaBody(this.wasteManagementDZBody);
 
     const formDataToSubmit: FormData = new FormData();
-    debugger;
+
     this.wasteManagementDZBody.id = 0;
     for (const key in this.wasteManagementDZBody) {
       if (this.wasteManagementDZBody[key]) {
@@ -3420,7 +3414,7 @@ export class SWPHseComponent implements OnInit {
         );
       }
     }
-    debugger;
+
     if (this.EvidenceOfEWDPFile) {
       formDataToSubmit.append(
         this.EvidenceOfEWDPNameDoc,
@@ -3428,7 +3422,6 @@ export class SWPHseComponent implements OnInit {
         this.EvidenceOfEWDPNewName
       );
     }
-    debugger;
 
     if (this.wasteServicePermitFile) {
       formDataToSubmit.append(
@@ -3438,7 +3431,6 @@ export class SWPHseComponent implements OnInit {
       );
     }
 
-    debugger;
     if (this.EvidenceOfReInjectionFile) {
       formDataToSubmit.append(
         this.EvidenceOfReInjectionNameDoc,
@@ -3582,11 +3574,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   Hse_Occupational_Submit() {
-    debugger;
     this.isOccupationalFormSubmitted = true;
     if (this.OccupationalForm.invalid) return;
     this.genk.removeCommaBody(this.occupationalBody);
-    debugger;
+
     const formDat: FormData = new FormData();
     this.occupationalBody.id = 0;
     for (const key in this.occupationalBody) {
@@ -3601,7 +3592,6 @@ export class SWPHseComponent implements OnInit {
       formDat.append(this.OHMNameDoc_2, this.OHMFile_2, this.OHMNewName_2);
     }
 
-    debugger;
     this.workprogram
       .post_HSE_Occupational(
         formDat,
@@ -5175,7 +5165,6 @@ export class SWPHseComponent implements OnInit {
   //#endregion
 
   getHSE() {
-    debugger;
     this.modalService.logCover('loading', true);
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
@@ -5200,11 +5189,8 @@ export class SWPHseComponent implements OnInit {
           this.hseSafetyCultureTrainings = res.hseSafetyCulture;
         }
 
-        debugger;
         if (res?.hseOccupationalHealth) {
-          debugger;
           this.occupationHealthManagements = res.hseOccupationalHealth;
-          debugger;
         }
 
         if (res?.hseQualityControl) {
@@ -5324,11 +5310,9 @@ export class SWPHseComponent implements OnInit {
         if (res?.hseHostCommunities) {
           this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
-        debugger;
+
         if (res?.hsePointSourceRegistrations) {
-          debugger;
           this.pointSourcePermits = res.hsePointSourceRegistrations;
-          debugger;
         }
         if (res?.hseRemediationFund) {
           //  this.remediationFundBody = res.hseRemediationFund[0];
@@ -5337,11 +5321,10 @@ export class SWPHseComponent implements OnInit {
 
         if (res?.hseWastManagementDZs) {
           this.wasteManagementDZs = res.hseWastManagementDZs;
-          debugger;
         }
 
         // if (res?.hseWastManagementDZs) {
-        //   debugger;
+        //
         //   this.wasteManagementDZs = res.hseWastManagementDZs;
         // }
 
