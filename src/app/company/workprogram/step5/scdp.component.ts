@@ -378,7 +378,7 @@ export class SWPScdpComponent implements OnInit {
     },
     {
       columnDef: 'uploaded_presentation',
-      header: 'attachemnt',
+      header: 'attachment',
     },
   ];
   //#endregion

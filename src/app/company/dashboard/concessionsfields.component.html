@@ -202,27 +202,34 @@
         </div>
         <div style="padding: 0 20px;">
           <div>
-            <div class="row mt-5">
-              <div class="col-sm-4">
-                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type </span>
-                <select class="form-select" style="border: solid 1px silver; padding: 8px;" formControlName='consession_Type'
-                  [(ngModel)]="concessionBody.consession_Type">
+            <div style="display: flex;">
+              <div style="margin-right: 20px;">
+                <span style="font-size: 15px; font-weight: 500; color: rgb(34, 56, 56);">Concession Type</span>
+                <select #contype class="form-select" style="border: solid 1px silver; padding: 8px;" formControlName='consession_Type'
+                  [value]="concessionBody.consession_Type" (change)="setConcessionType($event)">
                   <option selected disabled>--Please Select concession type--<option>
                   <option *ngFor="let val of genk.concessiontype" value={{val.value}}>{{val.value}}</option>
                 </select>
               </div>
-              <div class="col-sm-4">
+              <div>
                 <span style="font-size: 15px; color: rgb(34, 56, 56);">Concession Name</span>
-                <input type="text" class="form-control" formControlName="concession_Held"
-                  [(ngModel)]="concessionBody.concession_Held">
+                <div style="display: flex; align-items: center; border: solid 2px grey;  border-radius: 5px; outline: dodgerblue;">
+                  <label *ngIf="contype.value" style="background-color: gainsboro; font-weight: 600; padding: 7px 5px; border-radius: 5px 0 0 5px;">{{contype.value}}</label>
+                <input #conName type="text" (keypress)="genk.restrictData($event)" formControlName="concession_Held"
+                  [(ngModel)]="concessionBody.concession_Held" style="border: none; outline: none; padding: 5px 10px; border-radius: 10px;">
+                </div>
+
               </div>
-              <div class="col-sm-4">
-                <span style="font-size: 15px; color: rgb(34, 56, 56);">Equity Distribution</span>
-                <div style="display: flex; border: solid 1px grey;">
+              <div style="display: flex; margin-left: 20px;">
+                <div>
+                  <span style="font-size: 15px; color: rgb(34, 56, 56);">Equity Distribution</span><br>
+                <div style="display: flex; border: solid 2px grey; border-radius: 5px;">
                   <span class="material-icons" style=" padding: 10px 10px; border-radius: 5px 0 0 5px; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="clearEquity()">delete</span>
                 <input readonly type="text" style="border-radius: 5px; border: none; outline: none;" formControlName="equity_distribution"
                   [(ngModel)]="concessionBody.equity_distribution">
+
                 <span class="material-icons" style="padding: 10px 10px; border-radius: 0 5px 5px 0; font-size:20px; color: dodgerblue; background-color: gainsboro;" (click)="showEquity()">add</span>
+                </div>
                 </div>
               </div>
             </div>

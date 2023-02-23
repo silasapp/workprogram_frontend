@@ -27,7 +27,7 @@ export class HSE_OPERATIONS_SAFETY_CASE {
   location_of_facility: string = '';
   type_of_facility: string = '';
   does_the_facility_have_a_valid_safety_case: string = '';
-  evidence_of_operations_safety_case_approval: string = '';
+  //evidence_of_operations_safety_case_approval: string = '';
   evidence_of_Operations_Safety_Case_Approval: string = '';
   reason_if_no_evidence: string = '';
 }
@@ -102,10 +102,10 @@ export class HSE_POINT_SOURCE_REGISTRATION {
   companY_ID: string = '';
   companyNumber: number = 0;
 
-  areTherePointSourcePermit: string = '';
-  evidenceOfPSPFilename: string = '';
-  evidenceOfPSPPath: string = '';
-  reasonForNoPSP: string = '';
+  are_there_point_source_permit: string = '';
+  evidence_of_PSP_filename: string = '';
+  evidence_of_PSP_path: string = '';
+  reason_for_no_PSP: string = '';
 
   // studyType: string = '';
   // approvalCorrespondencesUploadFileName: string = '';
@@ -178,19 +178,19 @@ export class HSE_WASTE_MANAGEMENT_DISCHARGE_ZONE {
   evidenceOfPayOfPDDCFilename: string = '';
   evidenceOfPayOfPDDCPath: string = '';
 
-  wasterContractorNames: string = '';
-  wasteServicePermitFilename: string = '';
+  waste_Contractor_Names: string = '';
+  waste_Service_Permit_Filename: string = '';
   wasteServicePermitPath: string = '';
 
-  produceWaterManagementPlan: string = '';
-  evidenceOfReInjectionPermitFilename: string = '';
+  produce_Water_Manegent_Plan: string = '';
+  evidence_of_Reinjection_Permit_Filename: string = '';
   evidenceOfReInjectionPermitPath: string = '';
-  reasonForNoEvidenceOfReInjection: string = '';
+  reason_for_No_Evidence_of_Reinjection: string = '';
 
-  doYouHavePreviousYearWasteInventoryReport: string = '';
-  evidenceOfEWDPFilename: string = '';
+  do_You_Have_Previous_Year_Waste_Inventory_Report: string = '';
+  evidence_of_EWD_Filename: string = '';
   evidenceOfEWDPPath: string = '';
-  reasonForNoEvidenceOfEWDP: string = '';
+  reason_for_No_Evidence_of_EWD: string = '';
 
   // studyType: string = '';
   // approvalCorrespondencesUploadFileName: string = '';

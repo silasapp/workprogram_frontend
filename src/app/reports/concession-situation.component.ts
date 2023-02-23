@@ -35,6 +35,7 @@ export class ConcessionSituationComponent implements OnInit {
   selectedColumns: any[] = [];
   isTableOpt = false;
   isSpecifyColumns = false;
+  years=[];
 
   columns = [
     {
@@ -326,10 +327,15 @@ export class ConcessionSituationComponent implements OnInit {
     this.report
       .getYearList('concessionsituationyearlist')
       .subscribe((res: any[]) => {
+        debugger;
         this.year = res;
+        debugger;
+        this.years = this.year;
         this.cd.markForCheck();
       });
   }
+
+
 
   goNext() {
     this.selectedPage++;
