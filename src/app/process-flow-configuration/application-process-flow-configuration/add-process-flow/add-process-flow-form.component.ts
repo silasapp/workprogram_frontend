@@ -5,12 +5,10 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 import { ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
-import {
-  IRole,
-  ISBU,
-} from '../application-process-flow-configuration.component';
+import { ISBU } from '../application-process-flow-configuration.component';
 
 @Component({
   selector: 'app-add-process-flow-form',
@@ -21,6 +19,9 @@ export class AddProcessFlowFormComponent implements OnInit {
   public form: FormGroup;
   public roles: IRole[];
   public sbus: ISBU[];
+  public actions: string[] = [];
+  public statuses: string[] = [];
+  public tiers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   public targetData: any;
 
   constructor(
@@ -35,26 +36,67 @@ export class AddProcessFlowFormComponent implements OnInit {
     this.roles = data.data.roles;
     this.sbus = data.data.sbus;
     this.targetData = data.data?.targetData;
+    this.actions = data.data?.actions || ['Submitted'];
+
+    this.statuses = data.data?.statuses || ['Processing'];
+
+    console.log('target', this.targetData);
+    console.log('sbus', this.sbus);
+    console.log('roles', this.roles);
+    console.log('actions', this.actions);
+    console.log('statues', this.statuses);
 
     if (this.targetData)
       this.form = this.formBuilder.group({
         id: [this.targetData?.id],
-        roleID: [
-          this.roles.find((r) => r.roleName == this.targetData.role).id,
+        triggeredBySBU: [
+          this.sbus.find((s) => s.sbU_Name == this.targetData.triggeredBySBU)
+            .id,
           Validators.required,
         ],
-        sbuID: [
-          this.sbus.find((s) => s.sbU_Name == this.targetData.sbu).id,
+        triggeredByRole: [
+          this.roles.find((r) => r.roleName == this.targetData.triggeredByRole)
+            .id,
           Validators.required,
         ],
-        sort: [this.targetData.sort, Validators.required],
+
+        targetedToSBU: [
+          this.sbus.find((s) => s.sbU_Name == this.targetData.targetedToSBU).id,
+          Validators.required,
+        ],
+        targetedToRole: [
+          this.roles.find((r) => r.roleName == this.targetData.targetedToRole)
+            .id,
+          Validators.required,
+        ],
+
+        processAction: [
+          this.actions.find((a) => a == this.targetData.processAction),
+          Validators.required,
+        ],
+        processStatus: [
+          this.statuses.find((s) => s == this.targetData.processStatus),
+          Validators.required,
+        ],
+        // tier: [
+        //   this.tiers.find((s) => s == this.targetData.tier),
+        //   Validators.required,
+        // ],
       });
-    else
+    else {
+      console.log('called');
       this.form = this.formBuilder.group({
-        roleID: ['', Validators.required],
-        sbuID: ['', Validators.required],
-        sort: ['', Validators.required],
+        triggeredBySBU: [Validators.required],
+        triggeredByRole: [Validators.required],
+
+        targetedToSBU: [Validators.required],
+        targetedToRole: [Validators.required],
+
+        processAction: [Validators.required],
+        processStatus: [Validators.required],
+        // tier: [Validators.required],
       });
+    }
   }
   ngOnInit(): void {}
 

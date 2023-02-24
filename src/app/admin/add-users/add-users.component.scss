@@ -1,3 +1,14 @@
 .create-btn {
   background-color: blueviolet;
 }
+
+.toggleStaff {
+  width: fit-content;
+  border-radius: 10px;
+  margin-top: 2rem;
+  & > p {
+    color: white;
+    background-color: rgb(7, 60, 82);
+    padding: 0.5rem;
+  }
+}

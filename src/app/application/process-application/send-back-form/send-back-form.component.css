@@ -2,3 +2,23 @@
   min-width: 500px;
   min-height: 400px;
 }
+
+.collapsable {
+  height: 0;
+  opacity: 0;
+  transition: all 0.8s linear;
+  -moz-transition: all 0.8s linear; /* Firefox 4 */
+  -webkit-transition: all 0.8s linear; /* Safari and Chrome */
+  -o-transition: all 0.8s linear; /* Opera */
+  -ms-transition: all 0.8s linear; /* Explorer 10 */
+}
+
+.collapse {
+  height: 0;
+  opacity: 0;
+}
+
+.uncollapse {
+  height: fit-content;
+  opacity: 1;
+}

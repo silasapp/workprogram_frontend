@@ -2,12 +2,18 @@
 <div mat-dialog-content class="modal-width">
   <form [formGroup]="form">
     <div>
-      <label style="font-weight: bolder" *ngIf="!isPlanning"
-        >Select Affected Tables Below:
+      <label
+        style="font-weight: bolder; margin-bottom: 1rem; cursor: pointer"
+        *ngIf="!isPlanning"
+        (click)="toggleCollapse()"
+        >Select Affected Tables (click to uncollapse selection list)
       </label>
       <label style="font-weight: bolder" *ngIf="isPlanning">Select SBU: </label>
 
-      <div class="list-of-tables">
+      <div
+        class="list-of-tables collapsable"
+        [ngClass]="{ uncollapse: !isCollapse, collapse: isCollapse }"
+      >
         <mat-selection-list>
           <mat-list-option
             *ngFor="let item of checkItems"

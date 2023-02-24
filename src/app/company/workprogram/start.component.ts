@@ -1,3 +1,4 @@
+import { isNumber } from '@amcharts/amcharts5/.internal/core/util/Type';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -27,6 +28,7 @@ export class StartComponent implements OnInit {
   Field_List = [];
   field: string;
   genk: GenericService;
+  disableTab: boolean = true;
 
   constructor(
     private workprogram: WorkProgramService,
@@ -49,13 +51,23 @@ export class StartComponent implements OnInit {
     this.wkpYear = e.target.value;
     this.genk.wpYear = this.wkpYear;
     localStorage.setItem('wkpYear', this.wkpYear);
+
+    this.setDisableTab(this.wkpYear);
+
     this.workprogram
       .getConcessionHeld(this.auth.currentUserValue.companyId, this.wkpYear)
       .subscribe((res) => {
         this.concessionHeldList = res;
         this.genk.OMLList = res;
+        this.disableTab = true;
         this.cd.markForCheck();
       });
+  }
+
+  setDisableTab(year: string) {
+    if (isNumber(parseInt(year))) this.disableTab = false;
+    else this.disableTab = true;
+    this.cd.markForCheck();
   }
 
   getWPYears() {

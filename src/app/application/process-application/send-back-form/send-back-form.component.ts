@@ -34,6 +34,7 @@ export class SendBackFormComponent implements OnInit {
   public staffList: Staff[];
   public checkItems: SBUTypes[] | SBUSelectTableDetails[] = null;
   public isPlanning: boolean = false;
+  public isCollapse = true;
 
   constructor(
     public dialogRef: MatDialogRef<SendBackFormComponent>,
@@ -72,6 +73,10 @@ export class SendBackFormComponent implements OnInit {
         comment: ['', Validators.required],
       });
     }
+  }
+
+  toggleCollapse() {
+    this.isCollapse = !this.isCollapse;
   }
 
   onClose() {

@@ -53,7 +53,29 @@ export class Staff {
   phoneNo: string;
   userType: string;
   role: string;
-  status: string;
+  status: boolean;
+
+  activeStatus: boolean;
+  adminCompanyInfo_ID: number;
+  createdAt: string;
+  createdBy: string;
+  deleteStatus: string;
+  deletedAt: string;
+  deletedBy: string;
+  // firstName: string;
+  // lastName: string;
+  locationID: string;
+  roleID: number;
+  signatureName: string;
+  signaturePath: string;
+  staffElpsID: string;
+  staffEmail: string;
+  staffID: number;
+  // staff_SBU: number;
+  updatedAt: string;
+  updatedBy: string;
+
+  status_: any;
 }
 
 export class ApplicationHistory {

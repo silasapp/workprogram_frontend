@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -5,10 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin } from 'rxjs';
 import { IElpsUser, Staff } from 'src/app/models/application-details';
 import { ISystemUser } from 'src/app/models/user';
-import {
-  IRole,
-  ISBU,
-} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { ISBU } from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
@@ -17,13 +16,16 @@ import { UserFormComponent } from './user-form/user-form.component';
 @Component({
   selector: 'app-add-users',
   templateUrl: './add-users.component.html',
-  styleUrls: ['../admin.component.scss'],
+  styleUrls: ['../admin.component.scss', './add-users.component.scss'],
 })
 export class AddUsersComponent implements OnInit {
   public roles: IRole[] = [];
   public sbus: ISBU[] = [];
   public users: ISystemUser[] = [];
+  public companies: any[];
   public elpsUsers: IElpsUser[] = [];
+  public _isStaffSelected = false;
+  public staffs: Staff[] = [];
 
   genk: GenericService;
   cdr: ChangeDetectorRef;
@@ -35,7 +37,9 @@ export class AddUsersComponent implements OnInit {
   year = [];
   userForm: FormGroup;
 
-  columns = [
+  public columns;
+
+  columns1 = [
     {
       columnDef: 'company_id',
       header: 'COMPANY CODE',
@@ -62,6 +66,37 @@ export class AddUsersComponent implements OnInit {
     },
   ];
 
+  columns2 = [
+    {
+      columnDef: 'staffID',
+      header: 'STAFF ID',
+    },
+    {
+      columnDef: 'lastName',
+      header: 'LAST NAME',
+    },
+    {
+      columnDef: 'firstName',
+      header: 'FIRST NAME',
+    },
+    {
+      columnDef: 'staffEmail',
+      header: 'EMAIL',
+    },
+    {
+      columnDef: 'staff_SBU',
+      header: 'SBU',
+    },
+    {
+      columnDef: 'staff_Role',
+      header: 'ROLE',
+    },
+    // {
+    //   columnDef: 'activeStatus',
+    //   header: 'STATUS',
+    // },
+  ];
+
   constructor(
     private adminservice: AdminService,
     private modalService: ModalService,
@@ -74,11 +109,14 @@ export class AddUsersComponent implements OnInit {
     this.genk = gen;
     this.cdr = cd;
     this.genk.sizePerPage = this.genk.sizeten;
+
+    this.columns = this.columns1;
   }
 
   ngOnInit() {
     this.data = [];
     this.fetchdata();
+    this.getWPAStaffs();
     this.genk.sizePerPage = this.genk.sizeten;
     this.initForm();
     this.userForm.reset();
@@ -88,6 +126,15 @@ export class AddUsersComponent implements OnInit {
     // this.getRoles();
     // this.getSBUs();
     this.getAll();
+  }
+
+  public set isStaffSelected(value) {
+    this._isStaffSelected = value;
+    this.reAssignData();
+  }
+
+  public get isStaffSelected() {
+    return this._isStaffSelected;
   }
 
   initForm() {
@@ -134,6 +181,7 @@ export class AddUsersComponent implements OnInit {
         // if (res[4].success) this.branches = res[4].data.data;
 
         // this.progressBar.close();
+        this.reAssignData();
         this.modalService.togCover();
       },
       error: (error) => {
@@ -167,6 +215,7 @@ export class AddUsersComponent implements OnInit {
     };
 
     let dialogRef = this.dialog.open(operationConfiguration[type].form, {
+      minWidth: '500px',
       data: {
         data: operationConfiguration[type].data,
       },
@@ -179,7 +228,9 @@ export class AddUsersComponent implements OnInit {
         this.users = res.data.data;
 
         this.modalService.togCover();
+        this.cd.markForCheck();
       });
+      this.cd.markForCheck();
     });
   }
 
@@ -196,6 +247,34 @@ export class AddUsersComponent implements OnInit {
         this.cd.markForCheck();
       },
     });
+  }
+
+  getWPAStaffs() {
+    this.modalService.logCover('loading...', true);
+    this.adminservice.fetch('GET_STAFFS').subscribe({
+      next: (res) => {
+        this.staffs = this.normalizeStaffs(res.data);
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
+      error: (error) => {
+        this.modalService.togCover();
+        this.cd.markForCheck();
+      },
+    });
+  }
+
+  normalizeStaffs(data: { staff: Staff; role: IRole; sbu: ISBU }[]) {
+    const staffs = data.map((d) => {
+      const staff = d.staff;
+      staff.staff_SBU = d.sbu.sbU_Name;
+      staff.staff_Role = d.role.roleName;
+      staff.status = d.staff.activeStatus;
+      staff.status_ =
+        d.staff.activeStatus == true ? 'Activated' : 'Deactivated';
+      return staff;
+    });
+    return staffs;
   }
 
   getSBUs() {
@@ -222,6 +301,19 @@ export class AddUsersComponent implements OnInit {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
   }
 
+  reAssignData() {
+    if (this.isStaffSelected) {
+      this.data = this.staffs;
+      this.columns = this.columns2;
+    } else {
+      this.data = this.companies;
+      this.columns = this.columns1;
+    }
+
+    this.assignDataRows();
+    this.assignPageNum();
+  }
+
   assignDataRows() {
     this.arrayRows = this.data.slice(
       this.pageIndex,
@@ -232,8 +324,8 @@ export class AddUsersComponent implements OnInit {
 
   fetchdata() {
     this.adminservice.fetch('Get_Companies').subscribe((res) => {
-      this.data = res.data;
-      this.assignDataRows();
+      this.companies = res.data;
+      this.reAssignData();
       this.assignPageNum();
       this.cd.markForCheck();
     });

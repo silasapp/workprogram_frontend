@@ -117,6 +117,14 @@ const routes: Routes = [
         (m) => m.CompanyProfilingModule
       ),
   },
+  {
+    path: 'admin-manage-applications',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import(
+        './admin-manage-applications/admin-manage-applications.module'
+      ).then((m) => m.AdminManageApplicationsModule),
+  },
 ];
 
 @NgModule({
