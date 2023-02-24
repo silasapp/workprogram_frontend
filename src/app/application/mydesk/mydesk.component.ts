@@ -27,18 +27,11 @@ export class MydeskComponent implements OnInit {
   columnHeader_Desk = [];
   columnValue_Desk = [];
   router;
+  public data = [];
 
   columns = [
     {
-      columnDef: 'Referenceno',
-      header: 'REFERENCE',
-    },
-    {
-      columnDef: 'Status',
-      header: 'STATUS',
-    },
-    {
-      columnDef: 'Yearofwkp',
+      columnDef: 'yearOfWKP',
       header: 'YEAR',
     },
     {
@@ -46,12 +39,28 @@ export class MydeskComponent implements OnInit {
       header: 'COMPANY NAME',
     },
     {
+      columnDef: 'referenceNo',
+      header: 'REFERENCE',
+    },
+    {
+      columnDef: 'concessionName',
+      header: 'CONCESSION',
+    },
+    {
       columnDef: 'fieldName',
       header: 'FIELD',
     },
     {
-      columnDef: 'oMLName',
-      header: 'OML',
+      columnDef: 'paymentStatus',
+      header: 'PAYMENT STATUS',
+    },
+    // {
+    //   columnDef: 'submittedAt',
+    //   header: 'SUBMISSION DATE',
+    // },
+    {
+      columnDef: 'status',
+      header: 'STATUS',
     },
   ];
   constructor(
@@ -76,60 +85,20 @@ export class MydeskComponent implements OnInit {
       if (res.statusCode == 300) {
         this.modalService.logNotice('Error', res.message, 'error');
       } else {
-        this.getAppsOnMyDesk = res;
-        this.loadTable_Applications(res.data);
+        this.data = res.data;
       }
       this.modalService.togCover();
+      this.cd.markForCheck();
     });
   }
 
-  loadTable_Applications(data) {
-    this.columnHeader = [];
-    this.columnValue = [];
-    data = this.filter(data);
+  Process_Application(row) {
+    const id = row.id;
 
-    var result = Object.entries(data).reduce((acc, [key, value]) => {
-      acc[key] = value == null ? '' : value;
-      return acc;
-    }, {});
-
-    this.columnHeader.push(data[0]);
-    this.columnValue.push(result);
-
-    this.cd.markForCheck();
-  }
-
-  filter(data) {
-    const resultArray = Object.keys(data).map((index) => {
-      let person = data[index];
-      return person;
-    });
-
-    resultArray.forEach((element) => {
-      delete element['approvalRef'];
-      delete element['categoryID'];
-      delete element['companyID'];
-      delete element['concessionID'];
-      delete element['fieldID'];
-      delete element['createdAt'];
-      delete element['currentDesk'];
-      delete element['deleteStatus'];
-      delete element['deletedAt'];
-      delete element['deletedBy'];
-      delete element['submitted'];
-      delete element['updatedAt'];
-    });
-    return resultArray;
-  }
-
-  Process_Application(event) {
-    const year = event.target.value;
-
-    this.workprogram.getProcessApplication(year).subscribe((res) => {
-     // console.log('process', res);
+    this.workprogram.getProcessApplication(id).subscribe((res) => {
       if (res.statusCode === 200) {
         this.genk.applicationDetails = res.data;
-        this.router.navigate(['/application/process-application/' + year]);
+        this.router.navigate(['/application/process-application/' + id]);
       } else this.modalService.logNotice('Error', res.message, 'error');
     });
   }

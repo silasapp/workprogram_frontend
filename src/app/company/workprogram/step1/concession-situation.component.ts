@@ -94,9 +94,10 @@ export class SWPConcessionSituationComponent implements OnInit {
         //   this.concessionBody.geological_location,
         //   [Validators.required]
         // ),
-        geological_location: new FormControl(this.concessionBody.geological_location, [
-          Validators.required,
-        ]),
+        geological_location: new FormControl(
+          this.concessionBody.geological_location,
+          [Validators.required]
+        ),
         equity_distribution: new FormControl(
           this.concessionBody.equity_distribution,
           [Validators.required]
@@ -226,6 +227,42 @@ export class SWPConcessionSituationComponent implements OnInit {
       }
     });
 
+    this.getHas_Signature_Bonus_been_paid.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_sig.disable();
+          this.getHow_Much_Signature_Bonus_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Signature_Bonus_have_been_paid_USD.disable();
+          this.getIf_No_why_sig.enable();
+        }
+      }
+    );
+
+    this.getHas_the_Concession_Rentals_been_paid.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_concession.disable();
+          this.getHow_Much_Concession_Rental_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Concession_Rental_have_been_paid_USD.disable();
+          this.getIf_No_why_concession.enable();
+        }
+      }
+    );
+
+    this.getIs_there_an_application_for_renewal.valueChanges.subscribe(
+      (c: 'YES' | 'NO') => {
+        if (c === 'YES') {
+          this.getIf_No_why_renewal.disable();
+          this.getHow_Much_Renewal_Bonus_have_been_paid_USD.enable();
+        } else {
+          this.getHow_Much_Renewal_Bonus_have_been_paid_USD.disable();
+          this.getIf_No_why_renewal.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
      // console.log('called....', con);
       if (!con) {
@@ -247,6 +284,54 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.getRoyaltyHeld();
     this.getBoolValue();
     this.cd.markForCheck();
+  }
+
+  public get getIs_there_an_application_for_renewal() {
+    return this.ConcessionSituationForm.controls[
+      'is_there_an_application_for_renewal'
+    ];
+  }
+
+  public get getHow_Much_Renewal_Bonus_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Renewal_Bonus_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_renewal() {
+    return this.ConcessionSituationForm.controls['if_No_why_renewal'];
+  }
+
+  public get getHas_the_Concession_Rentals_been_paid() {
+    return this.ConcessionSituationForm.controls[
+      'has_the_Concession_Rentals_been_paid'
+    ];
+  }
+
+  public get getHow_Much_Concession_Rental_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Concession_Rental_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_concession() {
+    return this.ConcessionSituationForm.controls['if_No_why_concession'];
+  }
+
+  public get getHas_Signature_Bonus_been_paid() {
+    return this.ConcessionSituationForm.controls[
+      'has_Signature_Bonus_been_paid'
+    ];
+  }
+
+  public get getHow_Much_Signature_Bonus_have_been_paid_USD() {
+    return this.ConcessionSituationForm.controls[
+      'how_Much_Signature_Bonus_have_been_paid_USD'
+    ];
+  }
+
+  public get getIf_No_why_sig() {
+    return this.ConcessionSituationForm.controls['if_No_why_sig'];
   }
 
   public get getDid_you_meet_the_minimum_work_programme() {
@@ -292,7 +377,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   loadTable() {
     this.columnHeader = [];
     this.columnValue = [];
-    debugger;
+
     for (let item1 in this.ConcessionSituationForm.controls) {
       if (item1 != 'comment') {
         this.columnHeader.push(this.genk.upperText(item1.replace(/_+/g, ' ')));
@@ -310,11 +395,12 @@ export class SWPConcessionSituationComponent implements OnInit {
     this.workprogram
       .getFormOne(this.genk.OmlName, this.genk.fieldName, this.genk.wpYear)
       .subscribe((res) => {
-        debugger;
         // if (!res.concessionSituation || res.concessionSituation.length === 0)
         //   return;
         if (res.concessionSituation[0]) {
-          res.concessionSituation[0] = this.genk.addCommaBody(res.concessionSituation[0]);
+          res.concessionSituation[0] = this.genk.addCommaBody(
+            res.concessionSituation[0]
+          );
         }
         if (res.concessionInfo[0]) {
           res.concessionInfo[0] = this.genk.addCommaBody(res.concessionInfo[0]);

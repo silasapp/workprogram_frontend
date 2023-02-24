@@ -111,7 +111,6 @@ export class LoginComponent implements OnInit {
             this.userId
           )
           .subscribe((user: User) => {
-            debugger;
             if (user) {
               let returnUrl =
                 this.route.snapshot.queryParamMap.get('returnUrl');

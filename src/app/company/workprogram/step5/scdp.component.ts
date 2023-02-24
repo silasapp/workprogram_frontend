@@ -659,6 +659,14 @@ export class SWPScdpComponent implements OnInit {
       {}
     );
 
+    this.getMOUResponderInPlace.valueChanges.subscribe((v: 'Yes' | 'No') => {
+      if (v == 'Yes') {
+        this.getMOUResponderFilePath.enable();
+      } else {
+        this.getMOUResponderFilePath.disable();
+      }
+    });
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -681,6 +689,14 @@ export class SWPScdpComponent implements OnInit {
       return null;
     }
     return this.genk.disableForm ? true : null;
+  }
+
+  public get getMOUResponderFilePath() {
+    return this.SCDP_Question_Form.controls['mOUResponderFilePath'];
+  }
+
+  public get getMOUResponderInPlace() {
+    return this.SCDP_Question_Form.controls['mOUResponderInPlace'];
   }
 
   public get sc() {

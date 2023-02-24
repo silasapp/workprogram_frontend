@@ -44,7 +44,7 @@ export class AppComponent {
     this.genk.fieldName = localStorage.getItem('fieldName');
     this.genk.OmlName = localStorage.getItem('OmlName');
     this.genk.fieldFullName = localStorage.getItem('fieldFullName');
-    debugger;
+
     if (this.authenticationService.currentUserValue) {
       // this.genk.isAdmin =
       //   this.authenticationService.currentUserValue.companyName === 'Admin';

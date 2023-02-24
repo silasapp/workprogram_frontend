@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { ReportService } from 'src/app/services/report.service';
 import { AddProcessFlowFormComponent } from './add-process-flow/add-process-flow-form.component';
@@ -13,6 +14,8 @@ import { DeleteProcessFlowComponent } from './delete-process-flow-form/delete-pr
 export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   public roles: IRole[];
   public sbus: ISBU[];
+  public actions: string[] = [];
+  public statuses: string[] = [];
 
   title = 'Concession Reserves for current year(as at 1st January)';
   pagenum = 0;
@@ -25,18 +28,46 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   isSpecifyColumns = false;
 
   columns = [
+    // {
+    //   columnDef: 'role',
+    //   header: 'Role',
+    // },
+    // {
+    //   columnDef: 'sbu',
+    //   header: 'Strategic Business Unit (SBU)',
+    // },
     {
-      columnDef: 'role',
-      header: 'Role',
+      columnDef: 'triggeredBySBU',
+      header: 'Triggered By (SBU)',
     },
     {
-      columnDef: 'sbu',
-      header: 'Strategic Business Unit (SBU)',
+      columnDef: 'triggeredByRole',
+      header: 'Triggered By (Role)',
     },
     {
-      columnDef: 'sort',
-      header: 'Sequence',
+      columnDef: 'targetedToSBU',
+      header: 'Target (SBU)',
     },
+    {
+      columnDef: 'targetedToRole',
+      header: 'Target (Role)',
+    },
+    {
+      columnDef: 'processAction',
+      header: 'Action',
+    },
+    {
+      columnDef: 'processStatus',
+      header: 'Status',
+    },
+    {
+      columnDef: 'tier',
+      header: 'Tier',
+    },
+    // {
+    //   columnDef: 'sort',
+    //   header: 'Sequence',
+    // },
   ];
 
   constructor(
@@ -65,6 +96,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
         data: {
           roles: this.roles,
           sbus: this.sbus,
+          actions: this.actions,
+          statuses: this.statuses,
         },
         form: AddProcessFlowFormComponent,
       },
@@ -89,6 +122,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
           targetData: row,
           roles: this.roles,
           sbus: this.sbus,
+          actions: this.actions,
+          statuses: this.statuses,
         },
         form: AddProcessFlowFormComponent,
       },
@@ -148,6 +183,8 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
         this.data = res.processes as any[];
         this.roles = res.roles as IRole[];
         this.sbus = res.sbUs as ISBU[];
+        this.actions = res.processActions as string[];
+        this.statuses = res.processStatuses as string[];
 
         if (this.data.length > 0) this.selectedPage = 1;
         this.assignDataRows();
@@ -206,13 +243,13 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
   }
 }
 
-export interface IRole {
-  roleName: string;
-  roleId: string;
-  id: number;
-  funcs: any[];
-  description: string;
-}
+// export interface IRole {
+//   roleName: string;
+//   roleId: string;
+//   id: number;
+//   funcs: any[];
+//   description: string;
+// }
 
 export interface ISBU {
   sbU_Name: string;

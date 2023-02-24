@@ -114,11 +114,41 @@ export class ReportService {
     );
   }
 
+  getStaffDeskBySBUAndRole(sbuID, roleID) {
+    return this.http.get<any>(
+      `${environment.apiUrl}/application/GetStaffDesksBySBUAndRole`,
+      {
+        params: {
+          sbuID,
+          roleID,
+        },
+      }
+    );
+  }
+
   addProcessFlow(model: any) {
     return this.http.post<any>(
       `${environment.apiUrl}/application/createProcess`,
+      model
+      // { params: { ...model } }
+    );
+  }
+
+  moveApplication(
+    sourceStaffID: number,
+    targetStaffID: number,
+    selectedApps: any[]
+  ) {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/moveApplication`,
       {},
-      { params: { ...model } }
+      {
+        params: {
+          sourceStaffID,
+          targetStaffID,
+          selectedApps: selectedApps,
+        },
+      }
     );
   }
 
@@ -223,12 +253,14 @@ export class ReportService {
 
     series.data.setAll(data);
 
-    var legend = chart.children.push(am5.Legend.new(root, {
-      centerX: am5.percent(50),
-      x: am5.percent(50),
-      marginTop: 15,
-      marginBottom: 15
-    }));
+    var legend = chart.children.push(
+      am5.Legend.new(root, {
+        centerX: am5.percent(50),
+        x: am5.percent(50),
+        marginTop: 15,
+        marginBottom: 15,
+      })
+    );
 
     if (data.length < 21) {
       legend.data.setAll(series.dataItems);
@@ -593,7 +625,7 @@ export class ReportService {
       obj[0] = this.baselist[i];
       this.chartArray.push(obj);
 
-      //debugger;
+      //
       valist = [];
       obj = [];
     }

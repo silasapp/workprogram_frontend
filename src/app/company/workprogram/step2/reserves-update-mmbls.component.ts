@@ -799,7 +799,6 @@ export class SWPReserveUpdateComponent implements OnInit {
         this.genk.fieldName
       )
       .subscribe((res) => {
-        debugger;
         if (res.fiveYearProjection) {
           res.fiveYearProjection = this.genk.addCommaBody(
             res.fiveYearProjection

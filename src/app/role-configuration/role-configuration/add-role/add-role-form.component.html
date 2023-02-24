@@ -28,6 +28,22 @@
         Description is required!
       </div>
     </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Rank</label>
+      <input
+        type="number"
+        name="rank"
+        formControlName="rank"
+        class="form-control"
+      />
+      <div
+        *ngIf="form.get('rank')?.touched && form.get('rank')?.invalid"
+        class="alert alert-danger"
+      >
+        Rank is required!
+      </div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions>

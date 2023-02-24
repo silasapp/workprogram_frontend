@@ -399,7 +399,10 @@ export class SWPLegalProceedingsComponent implements OnInit {
           this.cd.markForCheck();
         },
         error: (error) => {
+          console.log('error logn', error);
+          this.modalService.togCover();
           this.modalService.logNotice('Error', error.message, 'error');
+          this.cd.markForCheck();
         },
       });
   }
