@@ -3398,12 +3398,8 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
-<<<<<<< HEAD
     debugger;
     //console.log(this.wasteManagementDZForm);
-=======
-    console.log(this.wasteManagementDZForm);
->>>>>>> eafec9e1a1a9f17bd5caec78be77e49dde1545ff
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
     this.genk.removeCommaBody(this.wasteManagementDZBody);
