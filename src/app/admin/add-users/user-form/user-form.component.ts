@@ -65,7 +65,7 @@ export class UserFormComponent implements OnInit {
     this.usersFromElps = data.data.staffList;
     this.currentValue = data.data?.currentValue;
 
-    console.log(data.data);
+    //console.log(data.data);
 
     let currentUserId: string;
 
@@ -235,7 +235,7 @@ export class UserFormComponent implements OnInit {
   }
 
   onClose() {
-    console.log(this.form, this.form.getRawValue());
+   // console.log(this.form, this.form.getRawValue());
   }
 
   onFileChange(event: any) {

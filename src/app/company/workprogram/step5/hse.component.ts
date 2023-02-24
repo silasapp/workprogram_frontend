@@ -3091,7 +3091,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_SafetySubmit() {
-    console.log(this.TechnicalSafetyForm);
+    //console.log(this.TechnicalSafetyForm);
     this.isTechnicalSafetyFormSubmitted = true;
     if (this.TechnicalSafetyForm.invalid) return;
     this.genk.removeCommaBody(this.safetyBody);
@@ -3398,7 +3398,12 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
+<<<<<<< HEAD
+    debugger;
+    //console.log(this.wasteManagementDZForm);
+=======
     console.log(this.wasteManagementDZForm);
+>>>>>>> eafec9e1a1a9f17bd5caec78be77e49dde1545ff
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
     this.genk.removeCommaBody(this.wasteManagementDZBody);
@@ -3512,7 +3517,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   Hse_Safety_Culture_Submit() {
-    console.log(this.SafetyCultureTrainingForm);
+    //console.log(this.SafetyCultureTrainingForm);
     this.isSafetyCultureTrainingFormSubmitted = true;
     if (this.SafetyCultureTrainingForm.invalid) return;
     this.genk.removeCommaBody(this.safetyCultureBody);
@@ -3781,7 +3786,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_OilSpill_Submit() {
-    console.log(this.OilSpill_Form);
+    //console.log(this.OilSpill_Form);
     this.isOilSpill_FormSubmitted = true;
     if (this.OilSpill_Form.invalid) return;
     this.genk.removeCommaBody(this.oilSpill_Body);
@@ -3874,7 +3879,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Operations_Safety_Case_Submit() {
-    console.log(this.OperationsSafetyCase_Form);
+    //console.log(this.OperationsSafetyCase_Form);
     this.isOperationsSafetyCase_FormSubmitted = true;
     if (this.OperationsSafetyCase_Form.invalid) return;
     this.genk.removeCommaBody(this.operations_safety_case_body);
@@ -3968,7 +3973,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_EMP_Submit() {
-    console.log(this.environmentalManagementPlanForm);
+    //console.log(this.environmentalManagementPlanForm);
     this.isenvironmentalManagementPlanFormSubmitted = true;
     if (this.environmentalManagementPlanForm.invalid) return;
     this.genk.removeCommaBody(this.environmentalManagementPlanBody);
@@ -4078,7 +4083,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Submit() {
-    console.log(this.Environmental_Studies_Form);
+    //console.log(this.Environmental_Studies_Form);
     this.isEnvironmental_Studies_FormSubmitted = true;
     if (this.Environmental_Studies_Form.invalid) return;
     this.genk.removeCommaBody(this.environmental_studies_Body);
@@ -4170,7 +4175,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_Files_Submit() {
-    console.log(this.Waste_Management_Files_Form);
+    //console.log(this.Waste_Management_Files_Form);
     this.isWaste_Management_Files_FormSubmitted = true;
     if (this.Waste_Management_Files_Form.invalid) return;
     this.genk.removeCommaBody(this.waste_ManagementFiles_Body);
@@ -4276,7 +4281,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Submit() {
-    console.log(this.EnvironmentalCompliance_Form);
+    //console.log(this.EnvironmentalCompliance_Form);
     this.isEnvironmentalCompliance_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Form.invalid) return;
     this.genk.removeCommaBody(this.environmentalCompliance_Body);
@@ -4308,7 +4313,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Chemical_Submit() {
-    console.log(this.EnvironmentalCompliance_Chemical_Form);
+    //console.log(this.EnvironmentalCompliance_Chemical_Form);
     this.isEnvironmentalCompliance_Chemical_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Chemical_Form.invalid) return;
     this.genk.removeCommaBody(this.environmentalComplianceChemical_Body);
@@ -4340,7 +4345,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Strategic_Plan_Submit() {
-    console.log(this.Environmental_Studies_FiveYrs_Form);
+    //console.log(this.Environmental_Studies_FiveYrs_Form);
     this.isEnvironmental_Studies_FiveYrs_FormSubmitted = true;
     if (this.Environmental_Studies_FiveYrs_Form.invalid) return;
     this.genk.removeCommaBody(this.environmental_studies_fiveyrs_Body);
@@ -5169,7 +5174,8 @@ export class SWPHseComponent implements OnInit {
     this.workprogram
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
-        console.log('res..', res);
+        debugger;
+        //console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
 
@@ -5707,7 +5713,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   Delete_AssetRegister_RBI(row) {
-    console.log('clicked me....', this.genk.fieldName);
+    //console.log('clicked me....', this.genk.fieldName);
     this.workprogram
       .post_HSE_AssetRegister_RBI(
         null,

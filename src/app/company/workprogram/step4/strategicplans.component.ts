@@ -176,7 +176,7 @@ export class SWPStrategicPlansComponent implements OnInit {
   }
 
   saveStrategicPlansOnCompanyBases() {
-    console.log(this.strategicplansForm);
+    //console.log(this.strategicplansForm);
     this.isStrategicplansFormSubmitted = true;
     if (this.strategicplansForm.invalid) return;
     this.genk.removeCommaBody(this.strategicplansBody);
@@ -206,7 +206,7 @@ export class SWPStrategicPlansComponent implements OnInit {
     this.activities = activities;
     this.strategicplansBody = {} as STRATEGIC_PLANS_ON_COMPANY_BASES;
 
-    console.log(this.strategicplansBody, this.strategicData);
+    //console.log(this.strategicplansBody, this.strategicData);
 
     this.strategicplansBody =
       this.strategicData?.find((res) => {

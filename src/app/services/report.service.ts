@@ -776,7 +776,7 @@ export class ReportService {
         }, 400);
       });
       p.then(function (x) {
-        console.log(x);
+        //console.log(x);
         res(myExport);
       });
     });

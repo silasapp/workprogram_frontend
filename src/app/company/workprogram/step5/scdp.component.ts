@@ -1011,7 +1011,7 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Scholarship_Submit() {
-    console.log(this.SCDP_Scholarship_Form);
+    //console.log(this.SCDP_Scholarship_Form);
     this.isSCDP_Scholarship_FormSubmitted = true;
     if (this.SCDP_Scholarship_Form.invalid) return;
 
@@ -1052,7 +1052,7 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Scholarship_CSR_Submit() {
-    console.log(this.SCDP_Scholarship_CSR_Form);
+    //console.log(this.SCDP_Scholarship_CSR_Form);
     this.isSCDP_Scholarship_CSR_FormSubmitted = true;
     if (this.SCDP_Scholarship_CSR_Form.invalid) return;
 
@@ -1082,7 +1082,7 @@ export class SWPScdpComponent implements OnInit {
       });
   }
   SDCP_Training_Skills_CSR_Submit() {
-    console.log(this.SCDP_TrainingSkills_CSR_Form);
+    //console.log(this.SCDP_TrainingSkills_CSR_Form);
     this.isSCDP_TrainingSkills_CSR_FormSubmitted = true;
     if (this.SCDP_TrainingSkills_CSR_Form.invalid) return;
 
@@ -1113,7 +1113,7 @@ export class SWPScdpComponent implements OnInit {
   }
 
   SDCP_Training_Details_CSR_Submit() {
-    console.log(this.SCDP_TrainingDetails_CSR_Form);
+    //console.log(this.SCDP_TrainingDetails_CSR_Form);
     this.isSCDP_TrainingDetails_CSR_FormSubmitted = true;
     if (this.SCDP_TrainingDetails_CSR_Form.invalid) return;
 
@@ -1209,7 +1209,7 @@ export class SWPScdpComponent implements OnInit {
       .subscribe((res) => {
         if (res.hseSustainable_CSR) {
           this.sustainableCommunityDPCs = res.hseSustainable_CSR;
-          console.log('logging', this.sustainableCommunityDPCs);
+          //console.log('logging', this.sustainableCommunityDPCs);
         }
 
         if (res.hseSustainable_Question) {

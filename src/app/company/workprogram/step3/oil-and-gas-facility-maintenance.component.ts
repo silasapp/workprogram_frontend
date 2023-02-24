@@ -568,7 +568,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     return resultArray;
   }
   saveOilGas() {
-    console.log(this.oilAndGasForm);
+    //console.log(this.oilAndGasForm);
     this.isOilAndGasFormSubmitted = true;
     if (this.oilAndGasForm.invalid) return;
     this.genk.removeCommaBody(this.oilAndGasBody);

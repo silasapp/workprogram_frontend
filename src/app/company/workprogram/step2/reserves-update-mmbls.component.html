@@ -1673,11 +1673,11 @@
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.restrictToPercentage($event)"
             (change)="
-              reserveUpdateDepletionRateBody._oil = genk.checkBSCFMin(
-                $event,
-                oilNaf
-              )
-            "
+            reserveUpdateDepletionRateBody._oil = genk.checkRateMin(
+              $event,
+              oilNaf
+            )
+          "
             [(ngModel)]="reserveUpdateDepletionRateBody._oil"
             [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
@@ -1708,11 +1708,11 @@
             class="inpute"
             style="border-radius: 5px"
             formControlName="cONDENSATE"
-            placeholder="100,000"
+          
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             (change)="
-              reserveUpdateDepletionRateBody._condensate = genk.checkMMBBLMin(
+              reserveUpdateDepletionRateBody._condensate = genk.checkRateMin(
                 $event,
                 oilVax
               )
@@ -1746,12 +1746,12 @@
             type="text"
             class="inpute"
             formControlName="nAG"
-            placeholder="1,000,000"
+            
             style="border-radius: 5px"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             (change)="
-              reserveUpdateDepletionRateBody._nag = genk.checkMMBBLMin(
+              reserveUpdateDepletionRateBody._nag = genk.checkRateMin(
                 $event,
                 gasFox
               )
@@ -1805,7 +1805,7 @@
   <div [formGroup]="reserveUpdateLifeIndexForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">OIL (Barrels)</label>
+        <label class="labelwp">OIL (Years)</label>
         <div style="display: flex">
           <div class="minsec">
             <input
@@ -1969,8 +1969,8 @@
 </div>
 <br /><br />
 
-<div class="whiteback">
-  <div
+<!-- <div class="whiteback"> -->
+  <!-- <div
     style="
       text-align: start;
       font-size: 17px;
@@ -1980,7 +1980,7 @@
     "
   >
     <span>Planning Minimum Requirement</span>
-  </div>
+  </div> -->
   <!-- <div
     style="display: flex; width: 100%; justify-content: start"
     [formGroup]="reserveReplacementRatioForm"
@@ -2029,7 +2029,7 @@
     </div>
   </div> -->
 
-  <div [formGroup]="planningMinimumRequirementForm">
+  <!-- <div [formGroup]="planningMinimumRequirementForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%">
@@ -2124,9 +2124,9 @@
     >
       Add Planning Minimum Requirement
     </button>
-  </div>
-  <hr />
-  <br />
+  </div> -->
+  <!-- <hr />
+  <br /> -->
 
   <!-- <div
     style="
@@ -2350,8 +2350,8 @@
       Update Life Index
     </button>
   </div> -->
-</div>
-<br /><br />
+<!-- </div>
+<br /><br /> -->
 
 <div style="text-align: center">
   <button

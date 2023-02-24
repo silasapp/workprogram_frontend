@@ -444,10 +444,10 @@ export class SWPReserveUpdateComponent implements OnInit {
             new RESERVES_UPDATES_OIL_CONDENSATE_Reserves_DECLINE(
               this.genk.addCommaBody(res.reservesDecline)
             );
-          console.log(
-            this.reserveUpdateOilCondensateReservesDeclineBody,
-            this.genk.addCommaBody(res.reservesDecline)
-          );
+          // console.log(
+          //   this.reserveUpdateOilCondensateReservesDeclineBody,
+          //   this.genk.addCommaBody(res.reservesDecline)
+          // );
         }
         if (res.reservesReplacementRatio) {
           this.reserveReplacementRatioBody =
@@ -550,7 +550,7 @@ export class SWPReserveUpdateComponent implements OnInit {
   }
 
   saveReserveUpdateCurrent() {
-    console.log(this.ReserveUpdateCurrentForm);
+    //console.log(this.ReserveUpdateCurrentForm);
     this.isReserveUpdateCurrentFormSubmitted = true;
     if (this.ReserveUpdateCurrentForm.invalid) return;
     this.genk.removeComma(this.ReserveUpdateCurrentForm);
@@ -778,7 +778,7 @@ export class SWPReserveUpdateComponent implements OnInit {
           this.planningMinimumRequirementBody =
             {} as PLANNING_MINIMUM_REQUIREMENT;
         this.planningMinimumRequirementBody = this.genk.addCommaBody(res.data);
-        console.log(this.planningMinimumRequirementBody, res);
+       // console.log(this.planningMinimumRequirementBody, res);
         this.cd.markForCheck();
       });
   }

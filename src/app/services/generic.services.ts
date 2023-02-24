@@ -494,10 +494,10 @@ export class GenericService {
 
     let res = digits.join('');
 
-    console.log(
-      'tes....',
-      res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
-    );
+    // console.log(
+    //   'tes....',
+    //   res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
+    // );
     return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
   }
 
@@ -697,6 +697,21 @@ export class GenericService {
       oilMin.textContent = '';
     }
     //e.value = e.value.toString().replace(/,+/g, '');
+    return e.value;
+  }
+
+
+  checkRateMin(event, oilMin: HTMLElement) {
+    let e = event.target as HTMLInputElement;
+    let term = parseFloat(e.value.toString().replace(/,+/g, ''));
+    if (Number(term) > 100) {
+      oilMin.textContent = 'Value is too large';
+      oilMin.style.color = 'red';
+
+    e.value = e.value.toString().replace(e.value, ''); debugger;
+    } else {
+      oilMin.textContent = '';
+    }
     return e.value;
   }
 

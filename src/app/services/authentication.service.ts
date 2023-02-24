@@ -75,7 +75,7 @@ export class AuthenticationService {
     // localStorage.removeItem('token');
     localStorage.clear();
 
-    console.log('Called logout..', localStorage.getItem('currentUser'));
+    //console.log('Called logout..', localStorage.getItem('currentUser'));
 
     this.currentUserSubject.next(null);
     this._isLoggedIn = false;

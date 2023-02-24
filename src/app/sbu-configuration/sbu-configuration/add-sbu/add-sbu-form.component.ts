@@ -29,6 +29,10 @@ export class AddSBUFormComponent implements OnInit {
     private adminService: AdminService
   ) {
     this.targetData = data.data?.targetData;
+<<<<<<< HEAD
+    //console.log('test', this.targetData);
+=======
+>>>>>>> eafec9e1a1a9f17bd5caec78be77e49dde1545ff
 
     if (this.targetData)
       this.form = this.formBuilder.group({

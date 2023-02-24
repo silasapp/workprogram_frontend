@@ -264,7 +264,7 @@ export class SWPConcessionSituationComponent implements OnInit {
     );
 
     this.genk.Concession$.subscribe((con: IConcession) => {
-      console.log('called....', con);
+     // console.log('called....', con);
       if (!con) {
         this.genk.disableForm = true;
         this.cd.markForCheck();
@@ -450,7 +450,7 @@ export class SWPConcessionSituationComponent implements OnInit {
           this.concessionBody = conInfo;
           this.genk.concessionData = conInfo;
           this.genk.isStep1 = true;
-          console.log(this.concessionBody.companyName);
+         // console.log(this.concessionBody.companyName);
 
           setTimeout(() => {
             this.loadTable();
@@ -489,7 +489,7 @@ export class SWPConcessionSituationComponent implements OnInit {
       .subscribe((res) => {
         if (res?.royalty) {
           this.royaltyBody = res.royalty as Royalty;
-          console.log(this.royaltyBody.royalty_ID);
+        //  console.log(this.royaltyBody.royalty_ID);
         } else {
           this.royaltyBody = {} as Royalty;
         }
@@ -500,7 +500,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submitroyalty() {
-    console.log(this.RoyaltyForm);
+   // console.log(this.RoyaltyForm);
     this.isRoyaltyFormSubmitted = true;
     if (this.RoyaltyForm.invalid) return;
     this.genk.removeComma(this.RoyaltyForm);
@@ -531,7 +531,7 @@ export class SWPConcessionSituationComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.ConcessionSituationForm);
+   // console.log(this.ConcessionSituationForm);
     this.isConcessionSituationFormSubmitted = true;
     if (this.ConcessionSituationForm.invalid) return;
     this.genk.removeCommaBody(this.concessionBody);

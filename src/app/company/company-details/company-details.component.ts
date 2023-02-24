@@ -43,7 +43,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.getCompanyDetails();
 
     this.companyService.opl().subscribe((res) => {
-      console.log(res.data);
+     // console.log(res.data);
     });
 
     this.initForm();

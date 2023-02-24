@@ -408,7 +408,7 @@ export class SWPNigeriaContentComponent implements OnInit {
             {} as NIGERIA_CONTENT_Upload_Succession_Plan;
         }
 
-        console.log('succession', this.uploadSuccessionPlans);
+        //console.log('succession', this.uploadSuccessionPlans);
         this.cd.markForCheck();
       });
   }
@@ -435,7 +435,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   // }
 
   saveNigeriaContentTraining() {
-    console.log(this.staffdispositionForm);
+    //console.log(this.staffdispositionForm);
     this.isStaffdispositionForm = true;
     if (this.staffdispositionForm.invalid) return;
     this.genk.removeCommaBody(this.nigeriacontenttrainingBody);
@@ -462,7 +462,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveSeniorManagementStaff() {
-    console.log(this.seniormanagementstaffForm);
+    //console.log(this.seniormanagementstaffForm);
     this.isSeniormanagementstaffForm = true;
     if (this.seniormanagementstaffForm.invalid) return;
     this.genk.removeCommaBody(this.seniormanagementstaffBody);
@@ -509,7 +509,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveUploadSuccessionPlan() {
-    console.log(this.uploadsuccessionForm);
+    //console.log(this.uploadsuccessionForm);
     this.isUploadsuccessionForm = true;
     if (this.uploadsuccessionForm.invalid) return;
 
@@ -549,7 +549,7 @@ export class SWPNigeriaContentComponent implements OnInit {
   }
 
   saveAddStaffDisposition() {
-    console.log(this.staffdispositionForm);
+    //console.log(this.staffdispositionForm);
     this.isStaffdispositionForm = true;
     debugger;
     if (this.staffdispositionForm.invalid) return;

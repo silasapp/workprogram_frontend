@@ -170,6 +170,230 @@
     <br />
 
     <div style="display: flex; width: 100%; justify-content: space-between">
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Completion Status (%)</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="number"
+              class="inpute"
+              formControlName="completion_Status"
+              [(ngModel)]="oilAndGasBody.completion_Status"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['completion_Status']?.invalid) ||
+              (og['completion_Status']?.dirty &&
+                og['completion_Status']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Conceptual</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="conceptual"
+              [(ngModel)]="oilAndGasBody.conceptual"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['conceptual']?.invalid) ||
+              (og['conceptual']?.dirty && og['conceptual']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Feed</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="feed"
+              [(ngModel)]="oilAndGasBody.feed"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted && og['feed']?.invalid) ||
+              (og['feed']?.dirty && og['feed']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Detailed Engineering</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="detailed_Engineering"
+              [(ngModel)]="oilAndGasBody.detailed_Engineering"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['detailed_Engineering']?.invalid) ||
+              (og['detailed_Engineering']?.dirty &&
+                og['detailed_Engineering']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Construction / Commissioning</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="construction_Commissioning_"
+              [(ngModel)]="oilAndGasBody.construction_Commissioning_"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['construction_Commissioning_']?.invalid) ||
+              (og['construction_Commissioning_']?.dirty &&
+                og['construction_Commissioning_']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- <div style="width: 30%; margin: auto 0 0">
+        <label class="labelwp">Product Offtakers</label>
+        <div style="display: flex">
+          <div
+            style="
+              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
+              width: 100%;
+              border-radius: 10px;
+              padding: 7px 10px;
+            "
+          >
+            <input
+              type="text"
+              class="inpute"
+              formControlName="production_Product_Offtakers"
+              [(ngModel)]="oilAndGasBody.production_Product_Offtakers"
+              [attr.disabled]="
+                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
+              "
+            />
+          </div>
+        </div>
+
+        <div class="eroce">
+          <span
+            *ngIf="
+              (isOilAndGasFormSubmitted &&
+                og['production_Product_Offtakers']?.invalid) ||
+              (og['production_Product_Offtakers']?.dirty &&
+                og['production_Product_Offtakers']?.invalid)
+            "
+          >
+            This field is required!
+          </span>
+        </div>
+      </div> -->
+    </div>
+    <br />
+
+    <div style="display: flex; width: 100%; justify-content: space-between">
+
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Completion Status (%)</label>
         <div style="display: flex">
@@ -205,194 +429,6 @@
           </span>
         </div>
       </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Conceptual</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="conceptual"
-              [(ngModel)]="oilAndGasBody.conceptual"
-              [attr.disabled]="
-                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
-              "
-            />
-          </div>
-        </div>
-
-        <div class="eroce">
-          <span
-            *ngIf="
-              (isOilAndGasFormSubmitted && og['conceptual']?.invalid) ||
-              (og['conceptual']?.dirty && og['conceptual']?.invalid)
-            "
-          >
-            This field is required!
-          </span>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Feed</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="feed"
-              [(ngModel)]="oilAndGasBody.feed"
-              [attr.disabled]="
-                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
-              "
-            />
-          </div>
-        </div>
-
-        <div class="eroce">
-          <span
-            *ngIf="
-              (isOilAndGasFormSubmitted && og['feed']?.invalid) ||
-              (og['feed']?.dirty && og['feed']?.invalid)
-            "
-          >
-            This field is required!
-          </span>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Detailed Engineering</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="detailed_Engineering"
-              [(ngModel)]="oilAndGasBody.detailed_Engineering"
-              [attr.disabled]="
-                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
-              "
-            />
-          </div>
-        </div>
-
-        <div class="eroce">
-          <span
-            *ngIf="
-              (isOilAndGasFormSubmitted &&
-                og['detailed_Engineering']?.invalid) ||
-              (og['detailed_Engineering']?.dirty &&
-                og['detailed_Engineering']?.invalid)
-            "
-          >
-            This field is required!
-          </span>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Construction / Commissioning</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="construction_Commissioning_"
-              [(ngModel)]="oilAndGasBody.construction_Commissioning_"
-              [attr.disabled]="
-                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
-              "
-            />
-          </div>
-        </div>
-
-        <div class="eroce">
-          <span
-            *ngIf="
-              (isOilAndGasFormSubmitted &&
-                og['construction_Commissioning_']?.invalid) ||
-              (og['construction_Commissioning_']?.dirty &&
-                og['construction_Commissioning_']?.invalid)
-            "
-          >
-            This field is required!
-          </span>
-        </div>
-      </div>
-
-      <div style="width: 30%; margin: auto 0 0">
-        <label class="labelwp">Product Offtakers</label>
-        <div style="display: flex">
-          <div
-            style="
-              box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.3);
-              width: 100%;
-              border-radius: 10px;
-              padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="production_Product_Offtakers"
-              [(ngModel)]="oilAndGasBody.production_Product_Offtakers"
-              [attr.disabled]="
-                isEditable(SBUTABLE.FACILITIES_DMP_FACILITY_DEV_PROJECTSs)
-              "
-            />
-          </div>
-        </div>
-
-        <div class="eroce">
-          <span
-            *ngIf="
-              (isOilAndGasFormSubmitted &&
-                og['production_Product_Offtakers']?.invalid) ||
-              (og['production_Product_Offtakers']?.dirty &&
-                og['production_Product_Offtakers']?.invalid)
-            "
-          >
-            This field is required!
-          </span>
-        </div>
-      </div>
-    </div>
-    <br />
-
-    <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Challenges</label>
         <div style="display: flex">
@@ -463,7 +499,7 @@
         </div>
       </div>
 
-      <div style="width: 30%">
+      <!-- <div style="width: 30%">
         <label class="labelwp">Approval / License / Permits</label>
         <div style="display: flex; width: 100%">
           <div
@@ -504,7 +540,7 @@
             This field is required!
           </span>
         </div>
-      </div>
+      </div> -->
     </div>
     <br />
 
@@ -671,7 +707,7 @@
           </span>
         </div>
       </div>
-      <div style="width: 30%; margin: auto 0 0">
+      <!-- <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp">Project Stage</label>
         <div style="display: flex">
           <div
@@ -704,7 +740,7 @@
             This field is required!
           </span>
         </div>
-      </div>
+      </div> -->
 
       <div style="width: 30%; margin: auto 0 0">
         <label class="labelwp"> Nigerian Content Value</label>

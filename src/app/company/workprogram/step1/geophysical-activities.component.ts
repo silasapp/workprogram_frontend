@@ -243,7 +243,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     );
 
     this.genk.Concession$.subscribe((con: IConcession) => {
-      console.log('deb', con, this.genk.Fields, this.genk.Field);
+    //  console.log('deb', con, this.genk.Fields, this.genk.Field);
       if (!con) {
         this.genk.disableForm = true;
         this.cd.markForCheck();
@@ -255,7 +255,7 @@ export class SWPGeophysicalActivitiesComponent implements OnInit {
     });
 
     this.genk.Field$.subscribe((field: IField) => {
-      console.log('deb', field, this.genk.Fields);
+    //  console.log('deb', field, this.genk.Fields);
       if (!field) {
         this.genk.disableForm = true;
         this.cd.markForCheck();
