@@ -123,7 +123,7 @@ export class RoleConfigurationComponent implements OnInit {
 
   assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    console.log('pagenum', this.pagenum, this.data.length);
+    //console.log('pagenum', this.pagenum, this.data.length);
   }
 
   assignDataRows() {

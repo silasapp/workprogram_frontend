@@ -429,7 +429,7 @@ export class SWPInitialWellCompletionComponent implements OnInit {
   }
 
   submit() {
-    console.log('tre...', this.InitialForm);
+   // console.log('tre...', this.InitialForm);
     this.isInitialFormSubmitted = true;
     if (this.InitialForm.invalid) return;
     this.genk.removeCommaBody(this.initialBody);

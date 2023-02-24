@@ -307,7 +307,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
   }
 
   saveLitigation() {
-    console.log(this.letigationForm);
+    //console.log(this.letigationForm);
     this.isLetigationFormSubmitted = true;
     if (this.letigationForm.invalid) return;
     this.genk.removeCommaBody(this.letigationBody);
@@ -329,7 +329,7 @@ export class SWPLegalProceedingsComponent implements OnInit {
   }
 
   saveArbitration() {
-    console.log(this.arbitrationForm);
+    //console.log(this.arbitrationForm);
     this.isArbitrationFormSubmitted = true;
     if (this.arbitrationForm.invalid) return;
     this.genk.removeCommaBody(this.arbitrationBody);

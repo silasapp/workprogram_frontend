@@ -48,7 +48,7 @@ export class AppComponent {
     if (this.authenticationService.currentUserValue) {
       // this.genk.isAdmin =
       //   this.authenticationService.currentUserValue.companyName === 'Admin';
-      console.log('curren', this.authenticationService.currentUserValue);
+     // console.log('curren', this.authenticationService.currentUserValue);
       this.genk.setAdminSubject.next(
         this.authenticationService.currentUserValue.companyName === 'Admin'
       );

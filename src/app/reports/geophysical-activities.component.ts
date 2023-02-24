@@ -264,7 +264,7 @@ export class GeophysicalActivitiesComponent implements OnInit {
     );
     //let dell = {ME: "sam", joEL: "joEl"};
     //this.genk.lowerJson(dell);
-    console.log(this.arrayRows);
+    //console.log(this.arrayRows);
     this.cd.markForCheck();
   }
 

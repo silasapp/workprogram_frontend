@@ -3063,7 +3063,7 @@ export class WorkProgramService {
       );
   }
   getFormFiveSCDP(omlName, year, fieldName) {
-    console.log('oml...', omlName, year, fieldName);
+    //console.log('oml...', omlName, year, fieldName);
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_form_five_sdcp`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
@@ -3824,7 +3824,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    console.log('conbody', conbody);
+    //console.log('conbody', conbody);
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_technical_safety_control_studies_new`,
@@ -4155,7 +4155,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    console.log('form data', conbody);
+    //console.log('form data', conbody);
     debugger;
     return this.http
       .post<any>(

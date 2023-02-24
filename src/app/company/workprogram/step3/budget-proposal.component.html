@@ -53,6 +53,8 @@
                   type="number"
                   class="inpute"
                   formControlName="budget_for_Direct_Exploration_and_Production_Activities_Naira"
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Naira
                   "
@@ -84,6 +86,8 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_Direct_Exploration_and_Production_Activities_Dollars
                   "
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
                   [attr.disabled]="
                     isEditable(
                       SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
@@ -121,6 +125,8 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Naira
                   "
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
                   [attr.disabled]="
                     isEditable(
                       SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
@@ -150,6 +156,8 @@
                   [(ngModel)]="
                     budgetProposalBody.budget_for_other_Activities_Dollars
                   "
+                  (keypress)="genk.restrictData($event)"
+                  (keyup)="genk.formatCurrency($event)"
                   [attr.disabled]="
                     isEditable(
                       SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
@@ -790,6 +798,44 @@
   </div>
 
 
+  
+<br/>
+<br/>
+
+
+<div *ngIf="budgetCapexComponents.length > 0" class="wptablebox">
+  <div class="apptable">
+    <table class="wptable">
+      <thead>
+        <tr>
+          <th *ngFor="let h of coColHeaderDef">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of budgetCapexComponents">
+          <td *ngFor="let colDef of coColHeaderDef">
+            {{ row[colDef.columnDef] }}
+          </td>
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="Delete_Opex(row.id)"
+              [attr.disabled]="
+                isEditable(
+                  SBUTABLE.BUDGET_PROPOSAL_IN_NAIRA_AND_DOLLAR_COMPONENTs
+                )
+              "
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 
@@ -797,6 +843,8 @@
 
   <hr size="10" />
   <br /><br />
+
+
   <!-- <div [formGroup]="OpexForm">
     <div
       style="
@@ -1146,7 +1194,7 @@
 <br/>
 
 
-<div *ngIf="budgetCapexOpexComponents.length > 0" class="wptablebox">
+<div *ngIf="budgetOpexComponents.length > 0" class="wptablebox">
   <div class="apptable">
     <table class="wptable">
       <thead>
@@ -1157,7 +1205,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of budgetCapexOpexComponents">
+        <tr *ngFor="let row of budgetOpexComponents">
           <td *ngFor="let colDef of coColHeaderDef">
             {{ row[colDef.columnDef] }}
           </td>

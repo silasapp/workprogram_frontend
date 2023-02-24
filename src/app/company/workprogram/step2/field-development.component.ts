@@ -380,7 +380,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveFieldDevelopmentExpectedReserves() {
-    console.log('fdp', this.FieldDevelopmeentExcessiveReserveForm);
+ //   console.log('fdp', this.FieldDevelopmeentExcessiveReserveForm);
 
     this.isFieldDevelopmeentExcessiveReserveFormSubmitted = true;
     if (this.FieldDevelopmeentExcessiveReserveForm.invalid) return;
@@ -421,7 +421,7 @@ export class SWPFieldDevelopmentComponent implements OnInit {
   }
 
   saveUnitization() {
-    console.log('unit...', this.UnitizationForm);
+   // console.log('unit...', this.UnitizationForm);
     this.isUnitizationFormSubmitted = true;
     if (this.UnitizationForm.invalid) return;
     this.genk.removeCommaBody(this.unitizationBody);

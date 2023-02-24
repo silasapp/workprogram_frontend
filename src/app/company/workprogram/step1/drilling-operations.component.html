@@ -373,6 +373,7 @@
                     <input
                       formControlName="core_Depth_Interval"
                       (keypress)="genk.restrictData($event)"
+                                    (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.core_Depth_Interval"
                       class="inpute"
                       [attr.disabled]="
@@ -735,6 +736,7 @@
                       type="text"
                       formControlName="number_of_Days_to_Total_Depth"
                       (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.number_of_Days_to_Total_Depth"
                       class="inpute"
                       [attr.disabled]="
@@ -817,6 +819,8 @@
                     <input
                       formControlName="water_depth"
                       (keypress)="genk.restrictData($event)"
+                      
+                (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.water_depth"
                       class="inpute"
                       [attr.disabled]="
@@ -856,6 +860,7 @@
                     <input
                       formControlName="true_vertical_depth"
                       (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.true_vertical_depth"
                       class="inpute"
                       [attr.disabled]="
@@ -902,6 +907,7 @@
                     <input
                       formControlName="measured_depth"
                       (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.measured_depth"
                       class="inpute"
                       [attr.disabled]="
@@ -943,6 +949,7 @@
                     <input
                       formControlName="depth_refrence"
                       (keypress)="genk.restrictData($event)"
+                      (keyup)="genk.formatCurrency($event)"
                       [(ngModel)]="categoryBody.depth_refrence"
                       class="inpute"
                       [attr.disabled]="

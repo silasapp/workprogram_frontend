@@ -448,7 +448,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveProduction() {
-    console.log('oli...', this.Oil_ProductionForm);
+   // console.log('oli...', this.Oil_ProductionForm);
 
     this.isOil_ProductionFormSubmitted = true;
     if (this.Oil_ProductionForm.invalid) return;
@@ -490,7 +490,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveProposedActivity() {
-    console.log(this.ProposedMonthlyForm);
+    //console.log(this.ProposedMonthlyForm);
     this.isProposedMonthlyFormSubmitted = true;
     if (this.ProposedMonthlyForm.invalid) return;
     this.genk.removeCommaBody(this.proposedmonthlyBody);
@@ -572,7 +572,7 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   }
 
   saveFiveYearForecast() {
-    console.log(this.fiveYearForecastForm);
+    //console.log(this.fiveYearForecastForm);
     this.isfiveYearForecastFormSubmitted = true;
     if (this.fiveYearForecastForm.invalid) return;
     this.genk.removeCommaBody(this.fiveYearForecastBody);

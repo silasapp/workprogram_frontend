@@ -58,16 +58,16 @@ export class LoginComponent implements OnInit {
       // this.genk.isAdmin =
       //   this.authenticationService.currentUserValue.companyName === 'Admin';
 
-      console.log('curren', this.authenticationService.currentUserValue);
+     // console.log('curren', this.authenticationService.currentUserValue);
       this.genk.setAdminSubject.next(
         this.authenticationService.currentUserValue.companyName === 'Admin'
       );
 
-      console.log(
-        'checking....',
-        this.genk.isAdmin,
-        this.authenticationService.currentUserValue
-      );
+      // console.log(
+      //   'checking....',
+      //   this.genk.isAdmin,
+      //   this.authenticationService.currentUserValue
+      // );
       this.router.navigate(['/' + this.genk.company, 'dashboard']);
     }
     //alert(this.authenticationService.currentUserValue.companyId);
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       // this.email = params['email'];
       this.userId = params['id'];
-      console.log('id', this.userId);
+     // console.log('id', this.userId);
       if (!this.auth.isLoggedIn_ && this.userId) {
         this.isLoading$.next(true);
         this.modalService.logCover('loading...', true);
