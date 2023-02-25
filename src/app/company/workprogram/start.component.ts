@@ -59,7 +59,6 @@ export class StartComponent implements OnInit {
       .subscribe((res) => {
         this.concessionHeldList = res;
         this.genk.OMLList = res;
-        this.disableTab = true;
         this.cd.markForCheck();
       });
   }
