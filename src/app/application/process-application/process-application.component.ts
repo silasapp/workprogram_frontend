@@ -61,14 +61,19 @@ export class ProcessApplicationComponent implements OnInit {
   }
 
   getApplicationProcess() {
+    this.modalService.logCover('Loading...', true);
     this.workprogram.getProcessApplication(this.year).subscribe({
       next: (res) => {
         this.applicationDetails = res.data;
         this.applicationDetails$.next(this.applicationDetails);
-        this.genk.appID = this.genk.applicationDetails.application.id;
+        this.genk.appID = this.genk.applicationDetails?.application.id;
+        this.modalService.togCover();
+        this.cd.markForCheck();
       },
       error: (error) => {
+        this.modalService.togCover();
         this.modalService.logNotice('Error', error.message, 'error');
+        this.cd.markForCheck();
       },
     });
   }

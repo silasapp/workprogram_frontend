@@ -55,6 +55,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
   GasProductionForm: FormGroup;
   gasproductionBody: GAS_PRODUCTION_ACTIVITY = {} as GAS_PRODUCTION_ACTIVITY;
 
+  public fiveYearForecasts: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION[] =
+    [];
+
   public isOil_ProductionFormSubmitted = false;
   public isProposedMonthlyFormSubmitted = false;
   public isfiveYearForecastFormSubmitted = false;
@@ -355,12 +358,12 @@ export class OilGasProductionActivitiesComponent implements OnInit {
     this.fiveYearsValues = [];
     var num: number = 5;
     var i: number;
-    if(this.genk.wkProposedYear!=0 && this.genk.wkProposedYear!=null){
-    for (i = 0; i < num; i++) {
-      this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
-      //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+    if (this.genk.wkProposedYear != 0 && this.genk.wkProposedYear != null) {
+      for (i = 0; i < num; i++) {
+        this.fiveYearsValues[i + 1] = this.genk.wkProposedYear + i + 1;
+        //this.fiveYearsValues.push(++this.genk.wkProposedYear);
+      }
     }
-  }
   }
 
   getGasProduction() {
@@ -372,7 +375,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe((res) => {
         if (res?.gasProductionActivity) {
-          this.gasproductionBody = this.genk.addCommaBody(res?.gasProductionActivity);
+          this.gasproductionBody = this.genk.addCommaBody(
+            res?.gasProductionActivity
+          );
         }
         this.cd.markForCheck();
       });
@@ -405,7 +410,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe((res) => {
         if (res?.oilCondensateProduction) {
-          this.productionoilBody = this.genk.addCommaBody(res?.oilCondensateProduction);
+          this.productionoilBody = this.genk.addCommaBody(
+            res?.oilCondensateProduction
+          );
         }
 
         if (
@@ -413,7 +420,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           res?.oilCondensateProductionMonthly.length > 0
         ) {
           this.monthlyactivityData = res?.oilCondensateProductionMonthly;
-          this.monthlyactivityBody = this.genk.addCommaBody(res?.oilCondensateProductionMonthly[0]);
+          this.monthlyactivityBody = this.genk.addCommaBody(
+            res?.oilCondensateProductionMonthly[0]
+          );
         } else {
           this.monthlyactivityData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity[];
@@ -425,8 +434,9 @@ export class OilGasProductionActivitiesComponent implements OnInit {
         ) {
           this.proposedmonthlyData =
             res?.oilCondensateProductionMonthlyProposed;
-          this.proposedmonthlyBody =
-          this.genk.addCommaBody(res?.oilCondensateProductionMonthlyProposed[0]);
+          this.proposedmonthlyBody = this.genk.addCommaBody(
+            res?.oilCondensateProductionMonthlyProposed[0]
+          );
         } else {
           this.proposedmonthlyData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED[];
@@ -436,8 +446,16 @@ export class OilGasProductionActivitiesComponent implements OnInit {
           res?.oilCondensateFiveYears &&
           res?.oilCondensateFiveYears.length > 0
         ) {
-          this.fiveYearData = res?.oilCondensateFiveYears;
-          this.fiveYearForecastBody = this.genk.addCommaBody(res?.oilCondensateFiveYears[0]);
+          // this.fiveYearData = res?.oilCondensateFiveYears;
+          // const year = res?.oilCondensateFiveYears[0];
+
+          // this.fiveYearForecastBody = this.genk.addCommaBody(
+          //   res?.oilCondensateFiveYears[0]
+          // );
+
+          // this.fiveYearForecastBody.year_of_WP = year;
+
+          this.fiveYearForecasts = res?.oilCondensateFiveYears;
         } else {
           this.fiveYearData =
             [] as OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION[];
@@ -600,6 +618,33 @@ export class OilGasProductionActivitiesComponent implements OnInit {
       )
       .subscribe((res) => {
         this.modalService.logNotice('Success', res?.popText, 'success');
+        this.getOilProduction();
+      });
+  }
+
+  DeleteFiveYearForecast(
+    item: OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION
+  ) {
+    this.workprogram
+      .saveFiveYearForecast(
+        null,
+        this.genk.wpYear,
+        this.genk.OmlName,
+        this.genk.fieldName,
+        'DELETE',
+        item.id
+      )
+      .subscribe({
+        next: (res) => {
+          this.modalService.logNotice('Success', res?.popText, 'success');
+          this.getOilProduction();
+          this.cd.markForCheck();
+        },
+        error: (error) => {
+          this.modalService.logNotice('Error', error?.popText, 'error');
+          this.getOilProduction();
+          this.cd.markForCheck();
+        },
       });
   }
 

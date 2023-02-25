@@ -201,7 +201,17 @@
                 og['completion_Status']?.invalid)
             "
           >
-            This field is required!
+            <span *ngIf="og['completion_Status']?.errors?.['required']">
+              This field is required.
+            </span>
+
+            <span *ngIf="og['completion_Status']?.errors?.['max']">
+              Value must be between 0 - 100
+            </span>
+
+            <span *ngIf="og['completion_Status']?.errors?.['min']"
+              >Value must be between 0 - 100</span
+            >
           </span>
         </div>
       </div>
@@ -1618,7 +1628,17 @@
                 fp['actual_completion']?.invalid)
             "
           >
-            This field is required!
+            <span *ngIf="fp['actual_completion']?.errors?.['required']">
+              This field is required.
+            </span>
+
+            <span *ngIf="fp['actual_completion']?.errors?.['max']">
+              Value must be between 0 - 100
+            </span>
+
+            <span *ngIf="fp['actual_completion']?.errors?.['min']"
+              >Value must be between 0 - 100</span
+            >
           </span>
         </div>
       </div>

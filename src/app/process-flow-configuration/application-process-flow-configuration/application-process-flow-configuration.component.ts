@@ -60,10 +60,10 @@ export class ApplicationProcessFlowConfigurationComponent implements OnInit {
       columnDef: 'processStatus',
       header: 'Status',
     },
-    {
-      columnDef: 'tier',
-      header: 'Tier',
-    },
+    // {
+    //   columnDef: 'tier',
+    //   header: 'Tier',
+    // },
     // {
     //   columnDef: 'sort',
     //   header: 'Sequence',

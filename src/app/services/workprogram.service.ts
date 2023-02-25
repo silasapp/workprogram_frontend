@@ -2753,6 +2753,7 @@ import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf,
   GAS_PRODUCTION_ACTIVITY,
+  OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION,
@@ -3452,16 +3453,28 @@ export class WorkProgramService {
   }
 
   saveFiveYearForecast(
-    conbody: FormData,
+    conbody:
+      | FormData
+      | OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION,
     year: string,
     omlName: string,
-    fieldName: string
+    fieldName: string,
+    actionTodo?: string,
+    id?: number
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION`,
         conbody,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo,
+            id,
+          },
+        }
       )
       .pipe(
         retry(this.num),
