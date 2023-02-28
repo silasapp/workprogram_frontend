@@ -4,6 +4,6 @@ export const environment = {
 
    //apiUrl: 'https://localhost:7129/api',
 
-  elpsBase: 'https://elps.nuprc.gov.ng',
-  appid: '817a404d-393d-4d69-97d8-a271bd029eb6',
+  elpsBase: 'https://elpsdemo.dpr.gov.ng',
+  appid: 'bfbc3f25-be04-440e-9849-ccb609df1be5',
 };
