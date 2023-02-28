@@ -33,9 +33,7 @@ export class GenericService {
   empty = ' ';
 
   public disableForm: boolean = true;
-  public Concession$ = new BehaviorSubject<IConcession>(
-    JSON.parse(localStorage.getItem('Concession'))
-  );
+  public Concession$;
   public Concessions$ = new Subject<IConcession[]>();
   public Concessions: IConcession[] = [];
   public OMLList: IConcession[] = [];

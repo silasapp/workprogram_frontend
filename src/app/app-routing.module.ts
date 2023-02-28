@@ -33,7 +33,7 @@ const routes: Routes = [
     path:'video-guide',
     component: VideoGuideComponent
     },
-    
+
   {
     path: 'company',
     component: CompanyComponent,
@@ -116,6 +116,11 @@ const routes: Routes = [
       import('./company-profiling/company-profiling.module').then(
         (m) => m.CompanyProfilingModule
       ),
+  },
+  {
+    path: 'tableview',
+    loadChildren: () =>
+      import('./tableview/table-view.module').then((m) => m.TableModule),
   },
   {
     path: 'admin-manage-applications',

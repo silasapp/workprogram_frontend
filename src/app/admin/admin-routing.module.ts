@@ -46,7 +46,7 @@ const routes: Routes = [
     path: 'parameter_config',
     component: ParameterConfigComponent
   }
-  
+
 ];
 
 @NgModule({

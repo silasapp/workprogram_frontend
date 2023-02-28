@@ -367,6 +367,7 @@ export class ConcessionsfieldsComponent implements OnInit {
           this.loadTable_Field(res.data);
         }
         this.togAddField();
+        this.fieldForm.reset();
       });
   }
 
