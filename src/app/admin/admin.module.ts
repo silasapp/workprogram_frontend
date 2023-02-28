@@ -7,6 +7,7 @@ import {
 } from '@angular/material/snack-bar';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddUsersComponent } from './add-users/add-users.component';
@@ -53,6 +54,7 @@ import { UserFormComponent } from './add-users/user-form/user-form.component';
     MatRadioModule,
     PresentationModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
 

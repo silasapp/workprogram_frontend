@@ -2,8 +2,12 @@
 <div mat-dialog-content class="modal-width">
   <form [formGroup]="form">
     <div class="fomr-group" style="margin-bottom: 10px">
-      <label>Role</label>
-      <select name="roleID" formControlName="roleID" class="form-control">
+      <label>Triggered By(Role)</label>
+      <select
+        name="triggeredByRole"
+        formControlName="triggeredByRole"
+        class="form-control"
+      >
         <option value="none" selected disabled hidden>
           --Select from options --
         </option>
@@ -12,16 +16,23 @@
         </option>
       </select>
       <div
-        *ngIf="form.get('roleID')?.touched && form.get('roleID')?.invalid"
+        *ngIf="
+          form.get('triggeredByRole')?.touched &&
+          form.get('triggeredByRole')?.invalid
+        "
         class="alert alert-danger"
       >
-        Role is required!
+        Triggered By (Role) is required!
       </div>
     </div>
 
     <div class="fomr-group" style="margin-bottom: 10px">
-      <label>Strategic Business Unit(SBU)</label>
-      <select name="sbuID" formControlName="sbuID" class="form-control">
+      <label>Triggered By(SBU)</label>
+      <select
+        name="triggeredBySBU"
+        formControlName="triggeredBySBU"
+        class="form-control"
+      >
         <option value="none" selected disabled hidden>
           --Select from options --
         </option>
@@ -30,28 +41,133 @@
         </option>
       </select>
       <div
-        *ngIf="form.get('sbuID')?.touched && form.get('sbuID')?.invalid"
+        *ngIf="
+          form.get('triggeredBySBU')?.touched &&
+          form.get('triggeredBySBU')?.invalid
+        "
         class="alert alert-danger"
       >
-        Role is required!
+        Triggered By(SBU) is required!
       </div>
     </div>
 
     <div class="fomr-group" style="margin-bottom: 10px">
-      <label>Sequence Number</label>
-      <input
-        type="number"
-        name="sort"
-        formControlName="sort"
+      <label>Target(Role)</label>
+      <select
+        name="targetedToRole"
+        formControlName="targetedToRole"
         class="form-control"
-      />
+      >
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let role of roles" [ngValue]="role.id">
+          {{ role.roleId }}
+        </option>
+      </select>
       <div
-        *ngIf="form.get('sort')?.touched && form.get('sort')?.invalid"
+        *ngIf="
+          form.get('targetedToRole')?.touched &&
+          form.get('targetedToRole')?.invalid
+        "
         class="alert alert-danger"
       >
-        Sequence number is required!
+        Target(Role) is required!
       </div>
     </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Target(SBU)</label>
+      <select
+        name="targetedToSBU"
+        formControlName="targetedToSBU"
+        class="form-control"
+      >
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let sbu of sbus" [ngValue]="sbu.id">
+          {{ sbu.sbU_Name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          form.get('targetedToSBU')?.touched &&
+          form.get('targetedToSBU')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Target(SBU) is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Action</label>
+      <select
+        name="processAction"
+        formControlName="processAction"
+        class="form-control"
+      >
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let action of actions" [ngValue]="action">
+          {{ action }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          form.get('processAction')?.touched &&
+          form.get('processAction')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Action is required!
+      </div>
+    </div>
+
+    <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Status</label>
+      <select
+        name="processStatus"
+        formControlName="processStatus"
+        class="form-control"
+      >
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let status of statuses" [ngValue]="status">
+          {{ status }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          form.get('processStatus')?.touched &&
+          form.get('processStatus')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Status is required!
+      </div>
+    </div>
+
+    <!-- <div class="fomr-group" style="margin-bottom: 10px">
+      <label>Tier</label>
+      <select name="tier" formControlName="tier" class="form-control">
+        <option value="none" selected disabled hidden>
+          --Select from options --
+        </option>
+        <option *ngFor="let tier of tiers" [ngValue]="tier">
+          {{ tier }}
+        </option>
+      </select>
+      <div
+        *ngIf="form.get('tier')?.touched && form.get('tier')?.invalid"
+        class="alert alert-danger"
+      >
+        Tier is required!
+      </div>
+    </div> -->
   </form>
 </div>
 <div mat-dialog-actions>

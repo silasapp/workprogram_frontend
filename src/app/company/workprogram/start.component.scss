@@ -1,13 +1,16 @@
 .tabsname {
   font-weight: 500;
   color: darkslategrey;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .topname {
-  font-size: 22px; font-weight: 400;
+  font-size: 22px;
+  font-weight: 400;
   color: rgb(14, 64, 105);
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .widthtab {
@@ -20,6 +23,10 @@
 
 .righttab {
   display: flex;
+}
+
+.disableClick {
+  pointer-events: none;
 }
 
 .good {

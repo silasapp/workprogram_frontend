@@ -2753,6 +2753,7 @@ import {
   FIELD_DEVELOPMENT_PLAN,
   FIELD_DEVELOPMENT_PLAN_EXCESSIVE_RESERf,
   GAS_PRODUCTION_ACTIVITY,
+  OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activities_PROPOSED,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_monthly_Activity,
   OIL_CONDENSATE_PRODUCTION_ACTIVITIES_UNITIZATION,
@@ -3063,7 +3064,7 @@ export class WorkProgramService {
       );
   }
   getFormFiveSCDP(omlName, year, fieldName) {
-    console.log('oml...', omlName, year, fieldName);
+    //console.log('oml...', omlName, year, fieldName);
     return this.http
       .get<any>(`${environment.apiUrl}/workprogramme/get_form_five_sdcp`, {
         params: { omlName: omlName, fieldName: fieldName, year: year },
@@ -3452,16 +3453,28 @@ export class WorkProgramService {
   }
 
   saveFiveYearForecast(
-    conbody: FormData,
+    conbody:
+      | FormData
+      | OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION,
     year: string,
     omlName: string,
-    fieldName: string
+    fieldName: string,
+    actionTodo?: string,
+    id?: number
   ) {
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_OIL_CONDENSATE_PRODUCTION_ACTIVITIES_FIVE_YEAR_PROJECTION`,
         conbody,
-        { params: { omlName: omlName, fieldName: fieldName, year: year } }
+        {
+          params: {
+            omlName: omlName,
+            fieldName: fieldName,
+            year: year,
+            actionTodo,
+            id,
+          },
+        }
       )
       .pipe(
         retry(this.num),
@@ -3477,7 +3490,6 @@ export class WorkProgramService {
     omlName: string,
     fieldName: string
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_FIELD_DEVELOPMENT_PLAN`,
@@ -3487,7 +3499,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -3561,7 +3572,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_exploratory_activity`,
@@ -3584,7 +3594,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_development_drilling_activity`,
@@ -3607,7 +3616,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_performance_facilities_development_project`,
@@ -3645,7 +3653,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_budget_proposal_in_naira_and_dollar_component`,
@@ -3720,7 +3727,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/POST_BUDGET_CAPEX_OPEX`,
@@ -3730,7 +3736,6 @@ export class WorkProgramService {
       .pipe(
         retry(this.num),
         map((response) => {
-          debugger;
           return response;
         })
       );
@@ -3824,7 +3829,7 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    console.log('conbody', conbody);
+    //console.log('conbody', conbody);
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_technical_safety_control_studies_new`,
@@ -3974,6 +3979,7 @@ export class WorkProgramService {
     actionToDo,
     id
   ) {
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_point_source_registration`,
@@ -4154,8 +4160,8 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    console.log('form data', conbody);
-
+    //console.log('form data', conbody);
+    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_occupational_health_management`,
@@ -4245,7 +4251,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_management_position`,
@@ -5040,7 +5045,6 @@ export class WorkProgramService {
     id,
     actionToDo
   ) {
-    debugger;
     return this.http
       .post<any>(
         `${environment.apiUrl}/workprogramme/post_hse_sustainable_development_community_project_program_csr_new`,
@@ -5201,16 +5205,13 @@ export class WorkProgramService {
   }
 
   post_WorkProgram(year: string, omlName: string, fieldName) {
-    return this.http
-      .post<any>(`${environment.apiUrl}/application/submitapplication`, null, {
+    return this.http.post<any>(
+      `${environment.apiUrl}/application/submitapplication`,
+      null,
+      {
         params: { year: year, omlName: omlName, fieldName: fieldName },
-      })
-      .pipe(
-        retry(this.num),
-        map((response) => {
-          return response;
-        })
-      );
+      }
+    );
   }
   post_WorkProgramINT(data: any, year: string, concessionID, fieldID) {
     return this.http
@@ -5806,11 +5807,18 @@ export class WorkProgramService {
       );
   }
 
-  getReservesFiveYearProjection(year: string, omlName: string, fieldName: string) {
+  getReservesFiveYearProjection(
+    year: string,
+    omlName: string,
+    fieldName: string
+  ) {
     return this.http
-      .get<any>(`${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`, {
-        params: { omlName: omlName, fieldName: fieldName, year: year },
-      })
+      .get<any>(
+        `${environment.apiUrl}/workprogramme/GET_RESERVES_UPDATES_OIL_CONDENSATE_Fiveyear_Projection`,
+        {
+          params: { omlName: omlName, fieldName: fieldName, year: year },
+        }
+      )
       .pipe(
         retry(this.num),
         map((response) => {

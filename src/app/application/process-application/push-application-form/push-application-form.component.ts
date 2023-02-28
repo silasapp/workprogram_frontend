@@ -57,6 +57,8 @@ export class PushApplicationFormComponent implements OnInit {
   pushApplication() {
     const selectedapps = [];
     selectedapps.push(this.appDetails.application.id as unknown as string);
+
+    this.modalService.logCover('Pushing application...', true);
     this.appService
       .pushApplication(
         this.appDetails.staff[0].desk_ID,
@@ -67,12 +69,14 @@ export class PushApplicationFormComponent implements OnInit {
         next: (res) => {
           this.dialogRef.close();
           this.modalService.logNotice(res.message, 'Success', 'success');
+          this.modalService.togCover();
           this.route.navigate(['/application/mydesk']);
           this.cd.markForCheck();
         },
         error: (error) => {
           this.dialogRef.close();
           this.modalService.logNotice(error.message, 'Error', 'error');
+          this.modalService.togCover();
           this.route.navigate(['/application/mydesk']);
           this.cd.markForCheck();
         },

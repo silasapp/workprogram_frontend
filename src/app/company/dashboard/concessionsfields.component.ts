@@ -19,7 +19,7 @@ import { EquityDistribution } from 'src/app/models/step1-concession.model';
   styleUrls: [
     './concessionsfields.component.scss',
     '../../reports/ndr-report.component.scss',
-    '../workprogram/board.component.scss'
+    '../workprogram/board.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -189,8 +189,12 @@ export class ConcessionsfieldsComponent implements OnInit {
 
     this.EquityForm = new FormGroup(
       {
-        companyOne: new FormControl(this.equityBody.companyOne, [Validators.required]),
-        equityOne: new FormControl(this.equityBody.equityOne, [Validators.required])
+        companyOne: new FormControl(this.equityBody.companyOne, [
+          Validators.required,
+        ]),
+        equityOne: new FormControl(this.equityBody.equityOne, [
+          Validators.required,
+        ]),
       },
       {}
     );
@@ -200,7 +204,7 @@ export class ConcessionsfieldsComponent implements OnInit {
 
   get eqt() {
     return this.EquityForm.controls;
-   }
+  }
 
   getConcessionFields() {
     this.adminservice.getCompanyConcessions().subscribe((res) => {
@@ -295,7 +299,8 @@ export class ConcessionsfieldsComponent implements OnInit {
     let concessionInfo = {} as ConcessionDetails;
     let actionToDo = '';
     let id = '';
-    this.concessionBody.concession_Held = this.myConcessionType + ' ' + this.concessionBody.concession_Held;
+    this.concessionBody.concession_Held =
+      this.myConcessionType + ' ' + this.concessionBody.concession_Held;
 
     for (let item in this.concessionBody) {
       //if (item != 'consession_Id' && item != 'date_of_Expiration') {
@@ -331,7 +336,8 @@ export class ConcessionsfieldsComponent implements OnInit {
 
     for (let item in this.fieldBody) {
       if (item != 'field_ID') {
-        fieldInfo[this.genk.upperText(item)] = this.fieldBody[item]?.toString() ?? '';
+        fieldInfo[this.genk.upperText(item)] =
+          this.fieldBody[item]?.toString() ?? '';
       } else {
         id = this.fieldBody[item]?.toString();
       }
@@ -351,7 +357,8 @@ export class ConcessionsfieldsComponent implements OnInit {
 
     fieldInfo['Concession_Id'] = dell[0].consession_Id;
 
-    this.adminservice.Post_FieldDetails(fieldInfo, id, actionToDo)
+    this.adminservice
+      .Post_FieldDetails(fieldInfo, id, actionToDo)
       .subscribe((res) => {
         if (res.statusCode == 300) {
           this.modalService.logNotice('Error', res.message, 'error');
@@ -540,25 +547,28 @@ export class ConcessionsfieldsComponent implements OnInit {
         delete element['emaiL_REMARK'];
     });
 
-debugger;
-this.resultconcessionList=[];
-    for(var counter in this.allConcessionsData){
-     var fieldConces= this.allConcessionsData[counter];
-      if((fieldConces.toUpperCase().includes('OML') || fieldConces.toUpperCase().includes('PML'))&&(!this.resultconcessionList.includes(fieldConces))){
+    debugger;
+    this.resultconcessionList = [];
+    for (var counter in this.allConcessionsData) {
+      var fieldConces = this.allConcessionsData[counter];
+      if (
+        (fieldConces.toUpperCase().includes('OML') ||
+          fieldConces.toUpperCase().includes('PML')) &&
+        !this.resultconcessionList.includes(fieldConces)
+      ) {
         this.resultconcessionList.push(fieldConces);
       }
     }
 
-//resultArray.filter(s => s.includes('OML') || s.includes('PML'))
-//this.resultconcessionList= this.allConcessions.filter(this.isOMLorPML)
+    //resultArray.filter(s => s.includes('OML') || s.includes('PML'))
+    //this.resultconcessionList= this.allConcessions.filter(this.isOMLorPML)
     return resultArray;
   }
 
-
   isOMLorPML(element, index, array) {
-    if (element.toUpperCase() == "OML" || element.toUpperCase() == "PML") return element;
+    if (element.toUpperCase() == 'OML' || element.toUpperCase() == 'PML')
+      return element;
   }
-
 
   Alert(title: string, text: string, icon: any) {
     Swal.fire({
@@ -594,7 +604,8 @@ this.resultconcessionList=[];
     debugger;
     let totalValue = Number(this.totalEquityPercent) + Number(percentEquity);
     if (Number(percentEquity) <= 100 && totalValue <= 100) {
-      this.totalEquityPercent = Number(this.totalEquityPercent) + Number(percentEquity);
+      this.totalEquityPercent =
+        Number(this.totalEquityPercent) + Number(percentEquity);
     }
 
     this.cd.markForCheck();
@@ -609,7 +620,9 @@ this.resultconcessionList=[];
       if (!this.concessionBody.equity_distribution) {
         this.concessionBody.equity_distribution = `${companyName.toUpperCase()} - ${percentEquity}%. `;
       } else {
-        this.concessionBody.equity_distribution = this.concessionBody.equity_distribution + `${companyName.toUpperCase()} - ${percentEquity}%. `;
+        this.concessionBody.equity_distribution =
+          this.concessionBody.equity_distribution +
+          `${companyName.toUpperCase()} - ${percentEquity}%. `;
       }
       this.isAddEquity = false;
       this.cd.markForCheck();
@@ -617,7 +630,7 @@ this.resultconcessionList=[];
       this.cd.markForCheck();
       return;
     }
-}
+  }
 
   showEquity() {
     if (this.isAddEquity) {
@@ -635,7 +648,6 @@ this.resultconcessionList=[];
     this.totalEquityPercent = 0;
     this.cd.markForCheck();
   }
-
 
   // assignConcessionHeld(text: string, event) {
   //   this.concessionBody.concession_Held = text + ' ' + event.target.value;

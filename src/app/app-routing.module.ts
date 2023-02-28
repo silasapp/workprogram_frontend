@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
 import { ApplicationComponent } from './application/application.component';
 import { GeneralReportComponent } from './general-report/general-report.component';
+import { VideoGuideComponent } from './video-guide/video-guide.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./account/account.module').then((m) => m.AccountModule),
   },
+  {
+    path:'video-guide',
+    component: VideoGuideComponent
+    },
+
   {
     path: 'company',
     component: CompanyComponent,
@@ -111,11 +117,18 @@ const routes: Routes = [
         (m) => m.CompanyProfilingModule
       ),
   },
-
   {
     path: 'tableview',
     loadChildren: () =>
       import('./tableview/table-view.module').then((m) => m.TableModule),
+  },
+  {
+    path: 'admin-manage-applications',
+    component: CompanyComponent,
+    loadChildren: () =>
+      import(
+        './admin-manage-applications/admin-manage-applications.module'
+      ).then((m) => m.AdminManageApplicationsModule),
   },
 ];
 

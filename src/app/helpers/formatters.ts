@@ -11,9 +11,9 @@ export const formatNumFromStr = (num: string) => {
 
   let res = digits.join('');
 
-  console.log(
-    'tes....',
-    res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
-  );
+  // console.log(
+  //   'tes....',
+  //   res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
+  // );
   return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
 };

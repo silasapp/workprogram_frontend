@@ -228,10 +228,11 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       //   this.oilAndGasBody.budget_Performance,
       //   Validators.required
       // ),
-      completion_Status: new FormControl(
-        this.oilAndGasBody.completion_Status,
-        Validators.required
-      ),
+      completion_Status: new FormControl(this.oilAndGasBody.completion_Status, [
+        Validators.required,
+        Validators.max(100),
+        Validators.min(0),
+      ]),
       conceptual: new FormControl(
         this.oilAndGasBody.conceptual,
         Validators.required
@@ -349,7 +350,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
       ),
       actual_completion: new FormControl(
         this.facilitiesProjectPerformanceBody.actual_completion,
-        Validators.required
+        [Validators.required, Validators.max(100), Validators.min(0)]
       ),
       areThereEvidenceOfDesignSafetyCaseApproval: new FormControl(
         this.facilitiesProjectPerformanceBody.areThereEvidenceOfDesignSafetyCaseApproval,
@@ -568,7 +569,7 @@ export class SWPOilAndGasFacilityMaintenanceComponent implements OnInit {
     return resultArray;
   }
   saveOilGas() {
-    console.log(this.oilAndGasForm);
+    //console.log(this.oilAndGasForm);
     this.isOilAndGasFormSubmitted = true;
     if (this.oilAndGasForm.invalid) return;
     this.genk.removeCommaBody(this.oilAndGasBody);

@@ -75,7 +75,13 @@ export class GenericService {
   isStep5 = false;
   activeStep = 'STEP1';
 
-  year = [{ value: '2020' }, { value: '2021' }];
+  
+
+  public years:string[] = [] as string[];
+  year = [{ value: '2020' }, { value: '2021' }, { value: '2022' }, { value: '2023' },{ value: '2024' },{ value: '2025' }];
+
+
+  
 
   role = [{ value: 'Admin' }, { value: 'Company' }];
 
@@ -168,8 +174,17 @@ export class GenericService {
       } else {
         tr[i].style.display = 'none';
       }
+
+      
+      
+
+
+
+
     }
   }
+
+ 
 
   printData(table: HTMLTableElement) {
     let newWin = window.open('');
@@ -477,10 +492,10 @@ export class GenericService {
 
     let res = digits.join('');
 
-    console.log(
-      'tes....',
-      res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
-    );
+    // console.log(
+    //   'tes....',
+    //   res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res
+    // );
     return res[res.length - 1] === ',' ? res.substring(0, res.length - 1) : res;
   }
 
@@ -680,6 +695,21 @@ export class GenericService {
       oilMin.textContent = '';
     }
     //e.value = e.value.toString().replace(/,+/g, '');
+    return e.value;
+  }
+
+
+  checkRateMin(event, oilMin: HTMLElement) {
+    let e = event.target as HTMLInputElement;
+    let term = parseFloat(e.value.toString().replace(/,+/g, ''));
+    if (Number(term) > 100) {
+      oilMin.textContent = 'Value is too large';
+      oilMin.style.color = 'red';
+
+    e.value = e.value.toString().replace(e.value, ''); debugger;
+    } else {
+      oilMin.textContent = '';
+    }
     return e.value;
   }
 

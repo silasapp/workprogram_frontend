@@ -1,0 +1,163 @@
+<div id="info-block">
+  <div class="page-title">
+    <h1>MANAGE APPLICATIONS ON STAFF DESKS</h1>
+  </div>
+  <section class="file-marker">
+    <div class="controls">
+      <div style="margin-left: 10px" class="inpdiv">
+        <input
+          #myInput
+          (keyup)="genk.searchTable(myInput, myTbody)"
+          type="text"
+          placeholder="Search Table"
+          class="search"
+        />
+      </div>
+      <div style="width: 225px" class="inpdiv">
+        <select id="time" class="form-select inpute" (change)="resize($event)">
+          <option *ngFor="let val of genk.entries" [value]="val.value">
+            {{ val.text }}
+          </option>
+        </select>
+      </div>
+
+      <div style="display: flex">
+        <button
+          (click)="genk.printData(myTable)"
+          class="rebtn"
+          style="background-color: rgb(9, 96, 127)"
+        >
+          <mat-icon style="font-size: 20px">print</mat-icon> Print
+        </button>
+        <button
+          (click)="genk.tableToCSVReport(myTable)"
+          class="rebtn"
+          style="margin: 0 20px; background-color: teal"
+        >
+          <mat-icon style="font-size: 20px">file_download</mat-icon> Excel
+        </button>
+        <button
+          (click)="genk.copyTable(myTable)"
+          class="rebtn"
+          style="
+            background-color: whitesmoke;
+            color: darkslategrey;
+            font-weight: 500;
+          "
+        >
+          <mat-icon style="font-size: 20px">content_copy</mat-icon> Copy
+        </button>
+      </div>
+    </div>
+
+    <div #divTable class="table-wrapper">
+      <table #myTable class="apptable" cellPadding="10">
+        <thead>
+          <!-- <tr>
+            <th *ngFor="let h of columns" style="position: sticky; top: 0">
+              {{ h.header }}
+            </th>
+          </tr> -->
+          <tr>
+            <th style="position: sticky; top: 0">DESK ID</th>
+            <th style="position: sticky; top: 0">STAFF NAME</th>
+            <th style="position: sticky; top: 0">STAFF ROLE</th>
+            <th style="position: sticky; top: 0">NO. OF APPS. ON DESK</th>
+            <th style="position: sticky; top: 0">NO. OF APPS. PROCESSED</th>
+          </tr>
+        </thead>
+        <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+          <!-- <tr *ngFor="let row of arrayRows">
+            <td *ngFor="let h of columns">
+              {{ row[h.columnDef] }}
+            </td>
+
+            <button
+              (click)="editProcessFlow(row)"
+              mat-mini-fab
+              color="primary"
+              style="margin: 10px"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </tr> -->
+
+          <tr *ngFor="let d of data">
+            <td>{{ d[0].desk.deskID }}</td>
+            <td>{{ d[0].staff.lastName }}, {{ d[0].staff.firstName }}</td>
+            <td>{{ d[0].staff.roleID | getRolename : roles }}</td>
+            <td>
+              {{ d[0].desk.deskID | getNoOfJobsOnDesk : d }}
+            </td>
+            <td>{{ d[0].desk.deskID | getNoOfJobsProcessed : d }}</td>
+
+            <button
+              (click)="moveApplication(d)"
+              color="accent"
+              mat-raised-button
+              style="height: 2.5rem; margin: 0.8rem"
+            >
+              Move Application
+            </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginator-wrapper">
+      <div class="paginator">
+        <button
+          (click)="firstPage()"
+          mat-mini-fab
+          style="background-color: grey"
+          [disabled]="selectedPage < 2"
+        >
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button
+          [disabled]="selectedPage < 2"
+          style="margin: 0 10px"
+          (click)="goPrev()"
+          mat-raised-button
+        >
+          Prev
+        </button>
+        <div style="font-weight: 600; color: rgb(84, 92, 92)">
+          Page
+          <input
+            style="
+              width: 40px;
+              padding: 5px 0 5px 10px;
+              border: solid 3px dodgerblue;
+              outline: dodgerblue;
+            "
+            #pageInput
+            type="text"
+            [value]="selectedPage"
+            (keyup)="genk.preventInput(pageInput); cdr.markForCheck()"
+            (change)="changePage(pageInput.value)"
+          />
+          of {{ pagenum }}
+        </div>
+
+        <button
+          [disabled]="selectedPage >= pagenum"
+          style="margin: 0 10px"
+          color="primary"
+          (click)="goNext()"
+          mat-raised-button
+        >
+          Next
+        </button>
+        <button
+          [disabled]="selectedPage >= pagenum"
+          (click)="lastPage()"
+          mat-mini-fab
+          color="primary"
+        >
+          <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

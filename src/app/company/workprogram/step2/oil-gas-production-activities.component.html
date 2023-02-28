@@ -1058,11 +1058,11 @@
                 border-radius: 20px;
               "
             >
+              <!-- (change)="changeFiveYearProjection($event)" -->
               <select
                 class="dropwp"
                 formControlName="fiveyear_Timeline"
-                [value]="fiveYearForecastBody.fiveyear_Timeline"
-                (change)="changeFiveYearProjection($event)"
+                [(ngModel)]="fiveYearForecastBody.fiveyear_Timeline"
                 [attr.disabled]="
                   isEditable(SBUTABLE.FIVE_YEAR_PRODUCTION_FORECASTs)
                 "
@@ -1373,6 +1373,38 @@
       </div>
       <br />
       <br />
+
+      <div *ngIf="fiveYearForecasts.length > 0" class="wptablebox">
+        <div class="apptable">
+          <table class="wptable">
+            <thead>
+              <tr>
+                <th *ngFor="let h of fyvccolumn">
+                  {{ h.header }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of fiveYearForecasts">
+                <td *ngFor="let colDef of fyvccolumn">
+                  {{ row[colDef.columnDef] }}
+                </td>
+                <td>
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="DeleteFiveYearForecast(row)"
+                    [attr.disabled]="
+                      isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
+                    "
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div

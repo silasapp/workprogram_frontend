@@ -431,7 +431,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Year']?.invalid) ||
               (rc['company_Reserves_Year']?.dirty &&
                 rc['company_Reserves_Year']?.invalid)
@@ -469,7 +469,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Oil']?.invalid) ||
               (rc['company_Reserves_Oil']?.dirty &&
                 rc['company_Reserves_Oil']?.invalid)
@@ -509,7 +509,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_Condensate']?.invalid) ||
               (rc['company_Reserves_Condensate']?.dirty &&
                 rc['company_Reserves_Condensate']?.invalid)
@@ -550,7 +550,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_AG']?.invalid) ||
               (rc['company_Reserves_AG']?.dirty &&
                 rc['company_Reserves_AG']?.invalid)
@@ -588,7 +588,7 @@
         <div class="eroce">
           <span
             *ngIf="
-              (isReserveUpdatePreceedingFormSubmitted &&
+              (isReserveUpdateCurrentFormSubmitted &&
                 rc['company_Reserves_NAG']?.invalid) ||
               (rc['company_Reserves_NAG']?.dirty &&
                 rc['company_Reserves_NAG']?.invalid)
@@ -644,10 +644,14 @@
           <select
             class="dropwp"
             formControlName="fiveyear_Projection_Year"
-            [value]="reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year"
+            [value]="
+              reserveupdatefiveyearprojectionBody.fiveyear_Projection_Year
+            "
             (change)="changeFiveYearProjection($event)"
-            [attr.disabled]="isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)">
-
+            [attr.disabled]="
+              isEditable(SBUTABLE.FIVE_YEAR_RESERVES_PROJECTIONs)
+            "
+          >
             <option selected disabled>---- Select a Year ----</option>
 
             <option
@@ -1669,11 +1673,11 @@
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.restrictToPercentage($event)"
             (change)="
-              reserveUpdateDepletionRateBody._oil = genk.checkBSCFMin(
-                $event,
-                oilNaf
-              )
-            "
+            reserveUpdateDepletionRateBody._oil = genk.checkRateMin(
+              $event,
+              oilNaf
+            )
+          "
             [(ngModel)]="reserveUpdateDepletionRateBody._oil"
             [attr.disabled]="isEditable(SBUTABLE.DEPLETION_RATEs)"
           />
@@ -1685,8 +1689,9 @@
       <div class="eroce">
         <span
           *ngIf="
-            (isReserveUpdateDepletionRateFormSubmitted && rr['oIL']?.invalid) ||
-            (rr['oIL']?.dirty && rr['oIL']?.invalid)
+            (isReserveUpdateDepletionRateFormSubmitted &&
+              rdr['oIL']?.invalid) ||
+            (rdr['oIL']?.dirty && rdr['oIL']?.invalid)
           "
         >
           Oil is required!
@@ -1703,11 +1708,11 @@
             class="inpute"
             style="border-radius: 5px"
             formControlName="cONDENSATE"
-            placeholder="100,000"
+          
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             (change)="
-              reserveUpdateDepletionRateBody._condensate = genk.checkMMBBLMin(
+              reserveUpdateDepletionRateBody._condensate = genk.checkRateMin(
                 $event,
                 oilVax
               )
@@ -1741,12 +1746,12 @@
             type="text"
             class="inpute"
             formControlName="nAG"
-            placeholder="1,000,000"
+            
             style="border-radius: 5px"
             (keypress)="genk.restrictData($event)"
             (keyup)="genk.formatCurrency($event)"
             (change)="
-              reserveUpdateDepletionRateBody._nag = genk.checkMMBBLMin(
+              reserveUpdateDepletionRateBody._nag = genk.checkRateMin(
                 $event,
                 gasFox
               )
@@ -1800,7 +1805,7 @@
   <div [formGroup]="reserveUpdateLifeIndexForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">OIL (Barrels)</label>
+        <label class="labelwp">OIL (Years)</label>
         <div style="display: flex">
           <div class="minsec">
             <input
@@ -1964,8 +1969,8 @@
 </div>
 <br /><br />
 
-<div class="whiteback">
-  <div
+<!-- <div class="whiteback"> -->
+  <!-- <div
     style="
       text-align: start;
       font-size: 17px;
@@ -1975,7 +1980,7 @@
     "
   >
     <span>Planning Minimum Requirement</span>
-  </div>
+  </div> -->
   <!-- <div
     style="display: flex; width: 100%; justify-content: start"
     [formGroup]="reserveReplacementRatioForm"
@@ -2024,7 +2029,7 @@
     </div>
   </div> -->
 
-  <div [formGroup]="planningMinimumRequirementForm">
+  <!-- <div [formGroup]="planningMinimumRequirementForm">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="display: flex; width: 100%; justify-content: space-between">
         <div style="width: 30%">
@@ -2119,9 +2124,9 @@
     >
       Add Planning Minimum Requirement
     </button>
-  </div>
-  <hr />
-  <br />
+  </div> -->
+  <!-- <hr />
+  <br /> -->
 
   <!-- <div
     style="
@@ -2345,8 +2350,8 @@
       Update Life Index
     </button>
   </div> -->
-</div>
-<br /><br />
+<!-- </div>
+<br /><br /> -->
 
 <div style="text-align: center">
   <button

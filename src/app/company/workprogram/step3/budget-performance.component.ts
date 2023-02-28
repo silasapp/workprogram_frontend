@@ -2039,7 +2039,7 @@ export class SWPBudgetPerformanceComponent implements OnInit {
   }
 
   saveProductionCost() {
-    console.log(this.productionCostForm);
+   // console.log(this.productionCostForm);
     this.isProductionCostFormSubmitted = true;
     if (this.productionCostForm.invalid) return;
     this.genk.removeCommaBody(this.productionCostBody);

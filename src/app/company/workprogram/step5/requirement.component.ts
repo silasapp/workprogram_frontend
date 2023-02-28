@@ -123,11 +123,11 @@ export class SWPRequirementComponent implements OnInit {
         this.minimumRequirementBody = res[1].data;
       }
 
-      console.log(
-        'res',
-        this.planningMinimumRequirementBody,
-        this.minimumRequirementBody
-      );
+      // console.log(
+      //   'res',
+      //   this.planningMinimumRequirementBody,
+      //   this.minimumRequirementBody
+      // );
       this.cd.markForCheck();
     });
   }

@@ -5,7 +5,7 @@
         {{ title }}
       </div>
 
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div style="margin: 1% 1% 1% 1%">
           <div>
             <div class="row mt-5">
@@ -167,13 +167,20 @@
             </button>
           </div>
         </div>
-      </form>
+      </form> -->
+      <div class="toggleStaff">
+        <p>Toggle to switch between company users and staffs</p>
+        <mat-slide-toggle [(ngModel)]="isStaffSelected">{{
+          isStaffSelected ? "Staff" : "Company"
+        }}</mat-slide-toggle>
+      </div>
       <div
         style="
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 5px;
+          margin-top: 2rem;
           padding: 0 20px 0 0;
         "
       >

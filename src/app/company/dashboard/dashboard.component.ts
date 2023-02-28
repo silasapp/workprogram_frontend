@@ -190,7 +190,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getDashboardStuff() {
-    console.log('in get dahs');
+    //console.log('in get dahs');
 
     this.adminservice.getDashboardStuff().subscribe((res) => {
       console.log('dashbaord', res);

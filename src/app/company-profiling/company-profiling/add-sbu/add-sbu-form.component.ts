@@ -5,10 +5,10 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { ISBU } from 'src/app/sbu-configuration/sbu-configuration/sbu-configuration.component';
 import { ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import { ReportService } from 'src/app/services/report.service';
-import { IRole, ISBU } from '../company-profiling.component';
 
 @Component({
   selector: 'app-add-sbu-form',
@@ -17,7 +17,7 @@ import { IRole, ISBU } from '../company-profiling.component';
 })
 export class AddSBUFormComponent implements OnInit {
   public form: FormGroup;
-  public targetData: any;
+  public targetData: ISBU;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -29,18 +29,20 @@ export class AddSBUFormComponent implements OnInit {
     private adminService: AdminService
   ) {
     this.targetData = data.data?.targetData;
-    console.log('test', this.targetData);
+    //console.log('test', this.targetData);
 
     if (this.targetData)
       this.form = this.formBuilder.group({
         id: [this.targetData?.id],
         name: [[this.targetData?.sbU_Name], Validators.required],
         code: [[this.targetData?.sbU_Code], Validators.required],
+        tier: [[this.targetData?.tier], Validators.required],
       });
     else
       this.form = this.formBuilder.group({
         name: ['', Validators.required],
         code: ['', Validators.required],
+        tier: ['', Validators.required],
       });
   }
   ngOnInit(): void {}
@@ -52,8 +54,9 @@ export class AddSBUFormComponent implements OnInit {
   addSBU() {
     const code = this.form.get('code').value;
     const name = this.form.get('name').value;
+    const tier = this.form.get('tier').value;
 
-    this.adminService.addSBU(name, code).subscribe({
+    this.adminService.addSBU(name, code, tier).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
@@ -71,8 +74,9 @@ export class AddSBUFormComponent implements OnInit {
     const id = this.form.get('id').value;
     const code = this.form.get('code').value;
     const name = this.form.get('name').value;
+    const tier = this.form.get('tier').value;
 
-    this.adminService.editSBU(id, name, code).subscribe({
+    this.adminService.editSBU(id, name, code, tier).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
