@@ -1,6 +1,6 @@
 <div class="overlapbox" style="width: 100%">
   <img
-    style="height: 40vh; width: 100%; filter: blur(1px)"
+    style="height: 60vh; width: 100%; filter: blur(1px)"
     src="assets/workprogramimage.jpg"
   />
   <div
@@ -8,56 +8,120 @@
     style="padding-top: 5%; background-color: rgb(0, 0, 0, 0.5); height: 100%"
   >
     <div style="text-align: center">
-      <span style="font-size: 80px; font-weight: 900; color: white"
+      <span style="font-size: 50px; font-weight: 900; color: white"
         >Welcome </span
       ><br /><br />
-      <span style="font-size: 50px; font-weight: 900; color: rgb(227, 222, 222)"
+      <span style="font-size: 30px; font-weight: 900; color: rgb(227, 222, 222)"
         >Submit Work Programme</span
       >
     </div>
     <br /><br />
 
-    <div
-      [formGroup]="boardForm"
-      style="
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 80px;
-      "
-    >
-      <select
-        formControlName="year"
-        style="
-          padding: 15px;
-          font-size: 18px;
-          width: 50%;
-          border: solid 2px white;
-          border-radius: 15px;
-          background-color: rgb(0, 0, 0, 0.2);
-          color: white;
-          width: min(600px, 100%);
-        "
-        (change)="changeWPYear($event)"
-      >
-        <option
-          style="background-color: rgb(0, 0, 0, 0.7)"
-          selected
-          disabled
-          hidden
-        >
-          Select Year to submit Work programme (Current Year is
-          <b>{{ currentYear }}</b
-          >)
-        </option>
-        <option
-          style="background-color: rgb(0, 0, 0, 0.7)"
-          *ngFor="let list of wkpYearList"
-        >
+
+
+    <!-- <div style="width: 100%;">
+      <select style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white;" (change)="changeWPYear($event)">
+      <option style="background-color: rgb(0, 0, 0, 0.7)" selected disabled hidden>
+        Select Year (Current Year is
+        <b>{{ currentYear }}</b>)
+      </option>
+      <option style="background-color: rgb(0, 0, 0, 0.7)" *ngFor="let list of wkpYearList">
+        {{ list }}
+      </option>
+    </select>
+    </div>
+    <div style="width: 100%;">
+      <select (change)="changeConcessionHeld($event)" style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white">
+        <option selected disabled hidden style="background-color: rgb(0, 0, 0, 0.7)">--Select Concession--</option>
+        <option *ngFor="let list of concessionHeldList" style="background-color: rgb(0, 0, 0, 0.7)">
           {{ list }}
         </option>
       </select>
+    </div> -->
+    <!-- <div style="color: white; border: solid 3px red;">
+      <h5 style="color: red;">{{lowt}}</h5>
+      <div *ngFor="let list of Field_List">
+        <label>{{ list}}</label><br>
+      </div>
+    </div> -->
+    <!-- <div style="width: 100%;">
+      <select (change)="changeConcessionField($event)" style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white;">
+        <option selected disabled hidden style="background-color: rgb(0, 0, 0, 0.7)">----Select a Field----</option>
+        <option *ngFor="let list of Field_List" style="background-color: rgb(0, 0, 0, 0.7)">
+          {{ list.field_Name}}
+        </option>
+      </select>
+    </div> -->
+
+
+
+
+
+    <div [formGroup]="boardForm" style="padding-left: 20%; margin-bottom: 10%;">
+      <div style="display: flex; align-items: center; width: 100%; margin-bottom: 20px;">
+        <div style="color: white; font-weight: 800; text-align: end; margin-right: 20px; width: 20%;">
+          <span>YEAR: </span>
+        </div>
+        <div style="width: 100%;">
+          <select style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white;"
+        (change)="changeWPYear($event)">
+          <option style="background-color: rgb(0, 0, 0, 0.7)" selected disabled hidden>
+            Select Year (Current Year is
+            <b>{{ currentYear }}</b>)
+          </option>
+          <option style="background-color: rgb(0, 0, 0, 0.7)" *ngFor="let list of wkpYearList">
+            {{ list }}
+          </option>
+        </select>
+        <div class="eroce">
+          <label>{{yearError}}</label>
+        </div>
+        </div>
+      </div>
+
+      <div style="display: flex; width: 100%;margin-bottom: 20px; align-items: center;">
+        <div style="color: white; font-weight: 800; text-align: end; width: 20%; margin-right: 20px;">
+          <span>CONCESSION(S) HELD: </span>
+        </div>
+
+        <div style="width: 100%;">
+          <select (change)="changeConcessionHeld($event)" style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white">
+            <option selected disabled hidden style="background-color: rgb(0, 0, 0, 0.7)">--Select Concession--</option>
+            <option *ngFor="let list of concessionHeldList" style="background-color: rgb(0, 0, 0, 0.7)">
+              {{ list }}
+            </option>
+          </select>
+          <div class="eroce">
+            <label>{{concessionError}}</label>
+          </div>
+        </div>
+      </div>
+
+
+
+          <div *ngIf="Field_List.length" style="display: flex; align-items: center">
+            <div style="color: white; font-weight: 800; text-align: end; width: 20%; margin-right: 20px;">
+              <span>FIELD:</span>
+            </div>
+            <div style="width: 100%;">
+              <select (change)="changeConcessionField($event)" style="padding: 15px;font-size: 18px;width: 50%;border: solid 2px white;border-radius: 15px;background-color: rgb(0, 0, 0, 0.2);color: white;">
+                <option selected disabled style="background-color: rgb(0, 0, 0, 0.7)">----Select a Field----</option>
+                <option *ngFor="let list2 of Field_List" [value]="list2.field_ID" style="background-color: rgb(0, 0, 0, 0.7)">
+                  {{ list2.field_Name}}
+                </option>
+              </select>
+              <div class="eroce">
+                <label>{{fieldError}}</label>
+              </div>
+            </div>
+          </div>
+
     </div>
+
+
+
+
+
 
     <div
       style="
@@ -71,7 +135,7 @@
     >
       <div
         class="righttab"
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step1']"
+        (click)="navigateToStep('/' + genk.company, genk.workprogram, 'step1')"
       >
         <div class="widthtab">
           <div style="padding: 20px">
@@ -102,11 +166,7 @@
               </div>
             </div>
           </div>
-          <!-- <div style="margin-bottom: auto; border: solid 2px red; padding: 5%;">
-            <div>
-              <span class="material-icons pending">priority_high</span>
-            </div>
-          </div> -->
+
           <br />
           <div
             style="
@@ -118,7 +178,7 @@
               align-items: center;
             "
           >
-            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+
             <small>Submit on Concession basis</small>
           </div>
         </div>
@@ -126,7 +186,7 @@
 
       <div
         class="righttab"
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step2']"
+        (click)="navigateToStep('/' + genk.company, genk.workprogram, 'step2')"
       >
         <div class="widthtab">
           <div style="padding: 20px">
@@ -157,11 +217,7 @@
               <span>Reserves Update</span><br />
             </div>
           </div>
-          <!-- <div>
-            <div >
-              <span class="material-icons good">done</span>
-            </div>
-          </div> -->
+
           <br />
           <div
             style="
@@ -173,7 +229,7 @@
               align-items: center;
             "
           >
-            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+
             <small>Submit on Concession basis</small>
           </div>
         </div>
@@ -181,7 +237,7 @@
 
       <div
         class="righttab"
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step3']"
+        (click)="navigateToStep('/' + genk.company, genk.workprogram, 'step3')"
       >
         <div class="widthtab">
           <div style="padding: 20px; height: 84%">
@@ -223,7 +279,7 @@
               align-items: center;
             "
           >
-            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+
             <small>Submit on Concession basis</small>
           </div>
         </div>
@@ -231,7 +287,7 @@
 
       <div
         class="righttab"
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step4']"
+        (click)="navigateToStep('/' + genk.company, genk.workprogram, 'step4')"
       >
         <div class="widthtab">
           <div style="padding: 20px; height: 84%">
@@ -258,7 +314,7 @@
               <div class="tabsname">
                 <span>Health, Safety and Environment</span><br />
                 <span>Strategic Capital Development Plan </span><br />
-                <!-- <span>Extra Requirement</span> -->
+
               </div>
             </div>
           </div>
@@ -273,7 +329,7 @@
               align-items: center;
             "
           >
-            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
+
             <small style="font-size: 11px"
               >Submit on Concession & Company basis</small
             >
@@ -283,16 +339,12 @@
 
       <div
         class="righttab"
-        [routerLink]="['/' + genk.company, genk.workprogram, 'step5']"
+        (click)="navigateToStep('/' + genk.company, genk.workprogram, 'step5')"
       >
         <div class="widthtab">
           <div style="padding: 20px; height: 84%">
             <div style="margin-bottom: 15px">
-              <span
-                class="material-icons"
-                style="font-size: 40px; color: rgb(161, 56, 32)"
-                >animation</span
-              >
+              <span class="material-icons" style="font-size: 40px; color: rgb(161, 56, 32)">animation</span>
             </div>
             <div style="margin-bottom: 5px">
               <span
@@ -325,7 +377,6 @@
               align-items: center;
             "
           >
-            <!-- <span class="material-icons" style="font-size: 16px">settings</span> -->
             <small>Submit on Company basis</small>
           </div>
         </div>

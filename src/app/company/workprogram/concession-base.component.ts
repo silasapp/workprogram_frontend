@@ -106,7 +106,7 @@ export class ConcessionBaseComponent implements OnInit {
       (o: IConcession) => o.con == this.genk.OmlName
     );
 
-    this.genk.Concession$.next(concession);
+    //this.genk.Concession$.next(concession);
     localStorage.setItem('Concession', JSON.stringify(concession));
 
     localStorage.setItem('OmlName', this.genk.OmlName);
