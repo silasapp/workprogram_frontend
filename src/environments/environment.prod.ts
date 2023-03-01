@@ -1,9 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://workprogramtest.azurewebsites.net/api',
+  apiUrl: 'https://workprogrambackend.azurewebsites.net/api',
+  //production: true, apiUrl: 'https://localhost:7129/api',
 
-   //apiUrl: 'https://localhost:7129/api',
-
-  elpsBase: 'https://elpsdemo.dpr.gov.ng',
-  appid: 'bfbc3f25-be04-440e-9849-ccb609df1be5',
+  elpsBase: 'https://elps.nuprc.gov.ng',
+  appid: '817a404d-393d-4d69-97d8-a271bd029eb6',
 };
