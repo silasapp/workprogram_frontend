@@ -7,10 +7,12 @@ import {
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import Swal from 'sweetalert2';
 import {
   AuthenticationService,
   GenericService,
+  IConcession,
   ModalService,
 } from './services';
 
@@ -30,6 +32,7 @@ export class AppComponent {
   coverModal = false;
   color: ThemePalette = 'accent';
   mode: ProgressSpinnerMode = 'indeterminate';
+  me: string;
 
   constructor(
     private auth: AuthenticationService,
@@ -45,10 +48,16 @@ export class AppComponent {
     this.genk.OmlName = localStorage.getItem('OmlName');
     this.genk.fieldFullName = localStorage.getItem('fieldFullName');
     debugger;
+    //this.me = ;
+    this.genk.Concession$ = new BehaviorSubject<IConcession>(
+      localStorage.getItem('Concession') != 'undefined' ? JSON.parse(localStorage.getItem('Concession')) : ''
+    );
+    debugger;
+
     if (this.authenticationService.currentUserValue) {
       // this.genk.isAdmin =
       //   this.authenticationService.currentUserValue.companyName === 'Admin';
-      console.log('curren', this.authenticationService.currentUserValue);
+     // console.log('curren', this.authenticationService.currentUserValue);
       this.genk.setAdminSubject.next(
         this.authenticationService.currentUserValue.companyName === 'Admin'
       );

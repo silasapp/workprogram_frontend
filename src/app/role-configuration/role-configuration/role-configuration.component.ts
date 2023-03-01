@@ -35,6 +35,10 @@ export class RoleConfigurationComponent implements OnInit {
       columnDef: 'description',
       header: 'DESCRIPTION',
     },
+    {
+      columnDef: 'rank',
+      header: 'RANK',
+    },
   ];
 
   constructor(
@@ -77,7 +81,7 @@ export class RoleConfigurationComponent implements OnInit {
     });
   }
 
-  editSBU(row) {
+  editSBU(row: IRole) {
     const operationsConfiguration = {
       process: {
         data: {
@@ -123,7 +127,7 @@ export class RoleConfigurationComponent implements OnInit {
 
   assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    console.log('pagenum', this.pagenum, this.data.length);
+    //console.log('pagenum', this.pagenum, this.data.length);
   }
 
   assignDataRows() {
@@ -198,11 +202,12 @@ export class RoleConfigurationComponent implements OnInit {
 }
 
 export interface IRole {
+  id: number;
   roleName: string;
   roleId: string;
-  id: number;
-  funcs: any[];
   description: string;
+  rank: number;
+  funcs: any[];
 }
 
 export interface ISBU {

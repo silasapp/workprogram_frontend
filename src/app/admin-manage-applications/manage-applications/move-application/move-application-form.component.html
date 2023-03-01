@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Approve Application</h1>
+<div class="container">
+  <!-- table-wrapper -->
+  <div #divTable class="" style="margin: 0 !important">
+    <table #myTable class="apptable" cellPadding="10">
+      <thead>
+        <tr>
+          <th *ngFor="let h of columns" style="position: sticky; top: 0">
+            {{ h.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody #myTbody style="box-shadow: 4px 4px 12px 2px rgb(0, 0, 0, 0.3)">
+        <tr *ngFor="let row of currentStaffInfo">
+          <td *ngFor="let h of columns">
+            {{ row.application[h.columnDef] }}
+          </td>
+          <mat-checkbox
+            class="example-margin"
+            (click)="onCheckBox(row.application)"
+          ></mat-checkbox>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div mat-dialog-content class="modal-width">
+    <form [formGroup]="form">
+      <div class="fomr-group" style="margin-bottom: 10px">
+        <label>Target Staff</label>
+        <select
+          name="targetStaffID"
+          formControlName="targetStaffID"
+          class="form-control"
+        >
+          <option value="none" selected disabled hidden>
+            --Select from options --
+          </option>
+          <option
+            *ngFor="let staff of targetStaffs"
+            [ngValue]="staff.staffID"
+            class="option"
+          >
+            {{ staff.firstName }}, {{ staff.lastName }}
+          </option>
+        </select>
+        <div
+          *ngIf="
+            form.get('targetStaffID')?.touched &&
+            form.get('targetStaffID')?.invalid
+          "
+          class="alert alert-danger"
+        >
+          Target Staff is required!
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="form.invalid"
+    (click)="moveApplication()"
+  >
+    Add
+  </button>
+</div>

@@ -452,8 +452,27 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
+      columnDef: 'are_there_point_source_permit',
+      header: 'Do you have Point Source Permit?',
+    },
+    // {
+    //   columnDef: 'evidenceOfPaymentPath',
+    //   header: 'Evidence of Payment',
+    // },
+    {
+      columnDef: 'reason_for_no_PSP',
+      header: 'Reason for no point source permit',
+    },
+  ];
+
+  hrefColDef = [
+    {
+      columnDef: 'year_of_WP',
+      header: 'Work Programme Year',
+    },
+    {
       columnDef: 'areThereRemediationFund',
-      header: 'Are there remediation funds?',
+      header: 'Is there any Evidence of Remediation Fund?',
     },
     // {
     //   columnDef: 'evidenceOfPaymentPath',
@@ -461,11 +480,9 @@ export class SWPHseComponent implements OnInit {
     // },
     {
       columnDef: 'reasonForNoRemediation',
-      header: 'Reason for no payment',
+      header: 'Reason for no remediation fund',
     },
   ];
-
-
 
   hefColDef = [
     {
@@ -559,36 +576,36 @@ export class SWPHseComponent implements OnInit {
       header: 'Work Programme Year',
     },
     {
-      columnDef: 'wasterContractorNames',
+      columnDef: 'waste_Contractor_Names',
       header: "Waste Contractor's Names",
     },
+    // {
+    //   columnDef: 'wasteServicePermitPath',
+    //   header: "Waste Contractor's Service Permit",
+    // },
     {
-      columnDef: 'wasteServicePermitPath',
-      header: "Waste Contractor's Service Permit",
+      columnDef: 'produce_Water_Manegent_Plan',
+      header: 'Produced Water Management Plan',
     },
+    // {
+    //   columnDef: 'evidenceOfReInjectionPermitFilename',
+    //   header: 'Upload Evidence of Re-injection Permit',
+    // },
     {
-      columnDef: 'produceWaterManagementPlan',
-      header: 'What type of Produced Water Management Plan do you have?',
-    },
-    {
-      columnDef: 'evidenceOfReInjectionPermitFilename',
-      header: 'Upload Evidence of Re-injection Permit',
-    },
-    {
-      columnDef: 'reasonForNoEvidenceOfReInjection',
+      columnDef: 'reason_for_No_Evidence_of_Reinjection',
       header: 'Reaons For No Evidence of Re-Injection Permit',
     },
     {
-      columnDef: 'doYouHavePreviousYearWasteInventoryReport',
+      columnDef: 'do_You_Have_Previous_Year_Waste_Inventory_Report',
       header: 'Do you have the previous year Waste Inventory Report?',
     },
 
+    // {
+    //   columnDef: 'evidenceOfEWDPPath',
+    //   header: 'Upload Evidence of EWDP Permit',
+    // },
     {
-      columnDef: 'evidenceOfEWDPPath',
-      header: 'Upload Evidence of EWDP Permit',
-    },
-    {
-      columnDef: 'reasonForNoEvidenceOfEWDP',
+      columnDef: 'reason_for_No_Evidence_of_EWD',
       header: 'Reason For No Evidence of EWDP',
     },
   ];
@@ -654,14 +671,14 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'wasOhmPolicyCommunicatedToStaff',
       header: 'Was OHM Policy Communicated to Staff?',
     },
-    {
-      columnDef: 'ohMplanFilePath',
-      header: 'Evidence of submission of OHM plan',
-    },
-    {
-      columnDef: 'ohMplanCommunicationFilePath',
-      header: 'Evidence of communication of OHM plan/policies',
-    },
+    // {
+    //   columnDef: 'ohMplanFilePath',
+    //   header: 'Evidence of submission of OHM plan',
+    // },
+    // {
+    //   columnDef: 'ohMplanCommunicationFilePath',
+    //   header: 'Evidence of communication of OHM plan/policies',
+    // },
     {
       columnDef: 'reasonForNoOhm',
       header: 'Reason for no OHM',
@@ -1183,18 +1200,18 @@ export class SWPHseComponent implements OnInit {
       columnDef: 'field_name',
       header: 'Field Name',
     },
-    {
-      columnDef: 'type_of_study',
-      header: 'Type of Study',
-    },
-    {
-      columnDef: 'study_title',
-      header: 'Study Title',
-    },
-    {
-      columnDef: 'current_study_status',
-      header: 'Current Study Status',
-    },
+    // {
+    //   columnDef: 'type_of_study',
+    //   header: 'Type of Study',
+    // },
+    // {
+    //   columnDef: 'study_title',
+    //   header: 'Study Title',
+    // },
+    // {
+    //   columnDef: 'current_study_status',
+    //   header: 'Current Study Status',
+    // },
     {
       columnDef: 'dpR_approval_Status',
       header: 'NUPRC Approval Status',
@@ -2302,35 +2319,35 @@ export class SWPHseComponent implements OnInit {
       {}
     );
 
-    this.OperationsSafetyCase_Form = new FormGroup(
-      {
-        number_of_facilities: new FormControl(
-          this.operations_safety_case_body.number_of_facilities,
-          [Validators.required]
-        ),
-        name_of_facility: new FormControl(
-          this.operations_safety_case_body.name_of_facility,
-          [Validators.required]
-        ),
-        location_of_facility: new FormControl(
-          this.operations_safety_case_body.location_of_facility,
-          [Validators.required]
-        ),
-        type_of_facility: new FormControl(
-          this.operations_safety_case_body.type_of_facility,
-          [Validators.required]
-        ),
-        does_the_facility_have_a_valid_safety_case: new FormControl(
-          this.operations_safety_case_body.does_the_facility_have_a_valid_safety_case,
-          [Validators.required]
-        ),
-        reason_if_no_evidence: new FormControl(
-          this.operations_safety_case_body.reason_if_no_evidence,
-          [Validators.required]
-        ),
-      },
-      {}
-    );
+    // this.OperationsSafetyCase_Form = new FormGroup(
+    //   {
+    //     number_of_facilities: new FormControl(
+    //       this.operations_safety_case_body.number_of_facilities,
+    //       [Validators.required]
+    //     ),
+    //     name_of_facility: new FormControl(
+    //       this.operations_safety_case_body.name_of_facility,
+    //       [Validators.required]
+    //     ),
+    //     location_of_facility: new FormControl(
+    //       this.operations_safety_case_body.location_of_facility,
+    //       [Validators.required]
+    //     ),
+    //     type_of_facility: new FormControl(
+    //       this.operations_safety_case_body.type_of_facility,
+    //       [Validators.required]
+    //     ),
+    //     does_the_facility_have_a_valid_safety_case: new FormControl(
+    //       this.operations_safety_case_body.does_the_facility_have_a_valid_safety_case,
+    //       [Validators.required]
+    //     ),
+    //     reason_if_no_evidence: new FormControl(
+    //       this.operations_safety_case_body.reason_if_no_evidence,
+    //       [Validators.required]
+    //     ),
+    //   },
+    //   {}
+    // );
 
     this.environmentalManagementPlanForm = new FormGroup(
       {
@@ -2392,16 +2409,16 @@ export class SWPHseComponent implements OnInit {
 
     this.pointSourcePermitForm = new FormGroup(
       {
-        areTherePointSourcePermit: new FormControl(
-          this.pointSourcePermitBody.areTherePointSourcePermit,
+        are_there_point_source_permit: new FormControl(
+          this.pointSourcePermitBody.are_there_point_source_permit,
           [Validators.required]
         ),
-        evidenceOfPSPFilename: new FormControl(
-          this.pointSourcePermitBody.evidenceOfPSPFilename,
+        evidence_of_PSP_filename: new FormControl(
+          this.pointSourcePermitBody.evidence_of_PSP_filename,
           [Validators.required]
         ),
-        reasonForNoPSP: new FormControl(
-          this.pointSourcePermitBody.reasonForNoPSP,
+        reason_for_no_PSP: new FormControl(
+          this.pointSourcePermitBody.reason_for_no_PSP,
           [Validators.required]
         ),
       },
@@ -2479,37 +2496,37 @@ export class SWPHseComponent implements OnInit {
         //   this.wasteManagementDZBody.evidenceOfPayOfPDDCFilename,
         //   [Validators.required]
         // ),
-        wasterContractorNames: new FormControl(
-          this.wasteManagementDZBody.wasterContractorNames,
+        waste_Contractor_Names: new FormControl(
+          this.wasteManagementDZBody.waste_Contractor_Names,
           [Validators.required]
         ),
-        wasteServicePermitFilename: new FormControl(
-          this.wasteManagementDZBody.wasteServicePermitFilename,
+        waste_Service_Permit_Filename: new FormControl(
+          this.wasteManagementDZBody.waste_Service_Permit_Filename,
           [Validators.required]
         ),
-        produceWaterManagementPlan: new FormControl(
-          this.wasteManagementDZBody.produceWaterManagementPlan,
+        produce_Water_Manegent_Plan: new FormControl(
+          this.wasteManagementDZBody.produce_Water_Manegent_Plan,
           [Validators.required]
         ),
 
-        evidenceOfReInjectionPermitFilename: new FormControl(
-          this.wasteManagementDZBody.evidenceOfReInjectionPermitFilename,
+        evidence_of_Reinjection_Permit_Filename: new FormControl(
+          this.wasteManagementDZBody.evidence_of_Reinjection_Permit_Filename,
           [Validators.required]
         ),
-        reasonForNoEvidenceOfReInjection: new FormControl(
-          this.wasteManagementDZBody.reasonForNoEvidenceOfReInjection,
+        reason_for_No_Evidence_of_Reinjection: new FormControl(
+          this.wasteManagementDZBody.reason_for_No_Evidence_of_Reinjection,
           [Validators.required]
         ),
-        doYouHavePreviousYearWasteInventoryReport: new FormControl(
-          this.wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport,
+        do_You_Have_Previous_Year_Waste_Inventory_Report: new FormControl(
+          this.wasteManagementDZBody.do_You_Have_Previous_Year_Waste_Inventory_Report,
           [Validators.required]
         ),
-        evidenceOfEWDPFilename: new FormControl(
-          this.wasteManagementDZBody.evidenceOfEWDPFilename,
+        evidence_of_EWD_Filename: new FormControl(
+          this.wasteManagementDZBody.evidence_of_EWD_Filename,
           [Validators.required]
         ),
-        reasonForNoEvidenceOfEWDP: new FormControl(
-          this.wasteManagementDZBody.reasonForNoEvidenceOfEWDP,
+        reason_for_No_Evidence_of_EWD: new FormControl(
+          this.wasteManagementDZBody.reason_for_No_Evidence_of_EWD,
           [Validators.required]
         ),
       },
@@ -2642,6 +2659,58 @@ export class SWPHseComponent implements OnInit {
       }
     );
 
+    this.getDoYouHaveAnOhm.valueChanges.subscribe((c: 'Yes' | 'No') => {
+      if (c === 'Yes') {
+        this.getReasonForNoOhm.disable();
+        this.getOHMplanFileName.enable();
+      } else {
+        this.getOHMplanFileName.disable();
+        this.getReasonForNoOhm.enable();
+      }
+    });
+
+    this.getWasOhmPolicyCommunicatedToStaff.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getReasonWhyOhmWasNotCommunicatedToStaff.disable();
+          this.getOHMplanCommunicationFileName.enable();
+        } else {
+          this.getOHMplanCommunicationFileName.disable();
+          this.getReasonWhyOhmWasNotCommunicatedToStaff.enable();
+        }
+      }
+    );
+
+    this.getdoyouhaveQualityControl.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getqualityControlFilePath.enable();
+        } else {
+          this.getqualityControlFilePath.disable();
+        }
+      }
+    );
+
+    this.getdoyouhaveGHG.valueChanges.subscribe((c: 'Yes' | 'No') => {
+      if (c === 'Yes') {
+        this.getgHGFilePath.enable();
+      } else {
+        this.getgHGFilePath.disable();
+      }
+    });
+
+    this.getdoes_the_facility_have_a_valid_safety_case.valueChanges.subscribe(
+      (c: 'Yes' | 'No') => {
+        if (c === 'Yes') {
+          this.getreason_if_no_evidence.disable();
+          this.getevidence_of_Operations_Safety_Case_Approval.enable();
+        } else {
+          this.getevidence_of_Operations_Safety_Case_Approval.disable();
+          this.getreason_if_no_evidence.enable();
+        }
+      }
+    );
+
     this.genk.Concession$.subscribe((con: IConcession) => {
       if (!con) {
         this.genk.disableForm = true;
@@ -2657,6 +2726,64 @@ export class SWPHseComponent implements OnInit {
     });
 
     this.getHSE();
+  }
+
+  public get getdoes_the_facility_have_a_valid_safety_case() {
+    return this.OperationsSafetyCase_Form.controls[
+      'does_the_facility_have_a_valid_safety_case'
+    ];
+  }
+
+  public get getevidence_of_Operations_Safety_Case_Approval() {
+    return this.OperationsSafetyCase_Form.controls[
+      'evidence_of_Operations_Safety_Case_Approval'
+    ];
+  }
+
+  public get getreason_if_no_evidence() {
+    return this.OperationsSafetyCase_Form.controls['reason_if_no_evidence'];
+  }
+
+  public get getdoyouhaveGHG() {
+    return this.ClimateChangeForm.controls['doyouhaveGHG'];
+  }
+
+  public get getgHGFilePath() {
+    return this.ClimateChangeForm.controls['gHGFilePath'];
+  }
+
+  public get getdoyouhaveQualityControl() {
+    return this.QualityControlForm.controls['doyouhaveQualityControl'];
+  }
+
+  public get getqualityControlFilePath() {
+    return this.QualityControlForm.controls['qualityControlFilePath'];
+  }
+
+  public get getWasOhmPolicyCommunicatedToStaff() {
+    return this.OccupationalForm.controls['WasOhmPolicyCommunicatedToStaff'];
+  }
+
+  public get getOHMplanCommunicationFileName() {
+    return this.OccupationalForm.controls['OHMplanCommunicationFileName'];
+  }
+
+  public get getReasonWhyOhmWasNotCommunicatedToStaff() {
+    return this.OccupationalForm.controls[
+      'ReasonWhyOhmWasNotCommunicatedToStaff'
+    ];
+  }
+
+  public get getDoYouHaveAnOhm() {
+    return this.OccupationalForm.controls['DoYouHaveAnOhm'];
+  }
+
+  public get getOHMplanFileName() {
+    return this.OccupationalForm.controls['OHMplanFileName'];
+  }
+
+  public get getReasonForNoOhm() {
+    return this.OccupationalForm.controls['ReasonForNoOhm'];
   }
 
   public get getAreThereTrainingPlansForHSE() {
@@ -2677,31 +2804,31 @@ export class SWPHseComponent implements OnInit {
 
   public get getDoYouHavePreviousYearWasteInventoryReport() {
     return this.wasteManagementDZForm.controls[
-      'doYouHavePreviousYearWasteInventoryReport'
+      'do_You_Have_Previous_Year_Waste_Inventory_Report'
     ];
   }
 
   public get getEvidenceOfEWDPFilename() {
-    return this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'];
+    return this.wasteManagementDZForm.controls['evidence_of_EWD_Filename'];
   }
 
   public get getReasonForNoEvidenceOfEWDP() {
-    return this.wasteManagementDZForm.controls['reasonForNoEvidenceOfEWDP'];
+    return this.wasteManagementDZForm.controls['reason_for_No_Evidence_of_EWD'];
   }
 
   public get getProduceWaterManagementPlan() {
-    return this.wasteManagementDZForm.controls['produceWaterManagementPlan'];
+    return this.wasteManagementDZForm.controls['produce_Water_Manegent_Plan'];
   }
 
   public get getEvidenceOfReInjectionPermitFilename() {
     return this.wasteManagementDZForm.controls[
-      'evidenceOfReInjectionPermitFilename'
+      'evidence_of_Reinjection_Permit_Filename'
     ];
   }
 
   public get getReasonForNoEvidenceOfReInjection() {
     return this.wasteManagementDZForm.controls[
-      'reasonForNoEvidenceOfReInjection'
+      'reason_for_No_Evidence_of_Reinjection'
     ];
   }
 
@@ -2766,15 +2893,15 @@ export class SWPHseComponent implements OnInit {
   }
 
   public get getAreTherePointSourcePermit() {
-    return this.pointSourcePermitForm.controls['areTherePointSourcePermit'];
+    return this.pointSourcePermitForm.controls['are_there_point_source_permit'];
   }
 
   public get getEvidenceOfPSPFilename() {
-    return this.pointSourcePermitForm.controls['evidenceOfPSPFilename'];
+    return this.pointSourcePermitForm.controls['evidence_of_PSP_filename'];
   }
 
   public get getReasonForNoPSP() {
-    return this.pointSourcePermitForm.controls['reasonForNoPSP'];
+    return this.pointSourcePermitForm.controls['reason_for_no_PSP'];
   }
 
   public get getAreThereEvidentOfSampling() {
@@ -2964,11 +3091,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_SafetySubmit() {
-    console.log(this.TechnicalSafetyForm);
+    //console.log(this.TechnicalSafetyForm);
     this.isTechnicalSafetyFormSubmitted = true;
     if (this.TechnicalSafetyForm.invalid) return;
     this.genk.removeCommaBody(this.safetyBody);
-
 
     const formDataToSubmit: FormData = new FormData();
     this.safetyBody.id = 0;
@@ -3010,7 +3136,6 @@ export class SWPHseComponent implements OnInit {
     this.isremediationFundFormSubmitted = true;
     if (this.remediationFundForm.invalid) return;
     this.genk.removeCommaBody(this.remediationFundBody);
-
 
     const formDataToSubmit: FormData = new FormData();
     this.remediationFundBody.id = 0;
@@ -3273,12 +3398,14 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_DZ_Submit() {
-    console.log(this.wasteManagementDZForm);
+    debugger;
+    //console.log(this.wasteManagementDZForm);
     this.iswasteManagementDZFormSubmitted = true;
     if (this.wasteManagementDZForm.invalid) return;
     this.genk.removeCommaBody(this.wasteManagementDZBody);
 
     const formDataToSubmit: FormData = new FormData();
+
     this.wasteManagementDZBody.id = 0;
     for (const key in this.wasteManagementDZBody) {
       if (this.wasteManagementDZBody[key]) {
@@ -3289,10 +3416,10 @@ export class SWPHseComponent implements OnInit {
       }
     }
 
-    if (this.EvidenceOfPDDCFile) {
+    if (this.EvidenceOfEWDPFile) {
       formDataToSubmit.append(
-        this.EvidenceOfPDDCNameDoc,
-        this.EvidenceOfPDDCFile,
+        this.EvidenceOfEWDPNameDoc,
+        this.EvidenceOfEWDPFile,
         this.EvidenceOfEWDPNewName
       );
     }
@@ -3386,11 +3513,10 @@ export class SWPHseComponent implements OnInit {
   }
 
   Hse_Safety_Culture_Submit() {
-    console.log(this.SafetyCultureTrainingForm);
+    //console.log(this.SafetyCultureTrainingForm);
     this.isSafetyCultureTrainingFormSubmitted = true;
     if (this.SafetyCultureTrainingForm.invalid) return;
     this.genk.removeCommaBody(this.safetyCultureBody);
-
 
     const formDat: FormData = new FormData();
     this.safetyCultureBody.id = 0;
@@ -3656,7 +3782,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_OilSpill_Submit() {
-    console.log(this.OilSpill_Form);
+    //console.log(this.OilSpill_Form);
     this.isOilSpill_FormSubmitted = true;
     if (this.OilSpill_Form.invalid) return;
     this.genk.removeCommaBody(this.oilSpill_Body);
@@ -3749,7 +3875,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Operations_Safety_Case_Submit() {
-    console.log(this.OperationsSafetyCase_Form);
+    //console.log(this.OperationsSafetyCase_Form);
     this.isOperationsSafetyCase_FormSubmitted = true;
     if (this.OperationsSafetyCase_Form.invalid) return;
     this.genk.removeCommaBody(this.operations_safety_case_body);
@@ -3843,7 +3969,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_EMP_Submit() {
-    console.log(this.environmentalManagementPlanForm);
+    //console.log(this.environmentalManagementPlanForm);
     this.isenvironmentalManagementPlanFormSubmitted = true;
     if (this.environmentalManagementPlanForm.invalid) return;
     this.genk.removeCommaBody(this.environmentalManagementPlanBody);
@@ -3953,7 +4079,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Submit() {
-    console.log(this.Environmental_Studies_Form);
+    //console.log(this.Environmental_Studies_Form);
     this.isEnvironmental_Studies_FormSubmitted = true;
     if (this.Environmental_Studies_Form.invalid) return;
     this.genk.removeCommaBody(this.environmental_studies_Body);
@@ -4045,7 +4171,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Waste_Management_Files_Submit() {
-    console.log(this.Waste_Management_Files_Form);
+    //console.log(this.Waste_Management_Files_Form);
     this.isWaste_Management_Files_FormSubmitted = true;
     if (this.Waste_Management_Files_Form.invalid) return;
     this.genk.removeCommaBody(this.waste_ManagementFiles_Body);
@@ -4151,7 +4277,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Submit() {
-    console.log(this.EnvironmentalCompliance_Form);
+    //console.log(this.EnvironmentalCompliance_Form);
     this.isEnvironmentalCompliance_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Form.invalid) return;
     this.genk.removeCommaBody(this.environmentalCompliance_Body);
@@ -4183,7 +4309,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Compliance_Chemical_Submit() {
-    console.log(this.EnvironmentalCompliance_Chemical_Form);
+    //console.log(this.EnvironmentalCompliance_Chemical_Form);
     this.isEnvironmentalCompliance_Chemical_FormSubmitted = true;
     if (this.EnvironmentalCompliance_Chemical_Form.invalid) return;
     this.genk.removeCommaBody(this.environmentalComplianceChemical_Body);
@@ -4215,7 +4341,7 @@ export class SWPHseComponent implements OnInit {
   }
 
   HSE_Environmental_Studies_Strategic_Plan_Submit() {
-    console.log(this.Environmental_Studies_FiveYrs_Form);
+    //console.log(this.Environmental_Studies_FiveYrs_Form);
     this.isEnvironmental_Studies_FiveYrs_FormSubmitted = true;
     if (this.Environmental_Studies_FiveYrs_Form.invalid) return;
     this.genk.removeCommaBody(this.environmental_studies_fiveyrs_Body);
@@ -4453,13 +4579,15 @@ export class SWPHseComponent implements OnInit {
       this.EvidenceOfEWDPFile.size < 1 ||
       this.EvidenceOfEWDPFile.size > 1024 * 1024 * 50
     ) {
-      this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'].setErrors({
-        incorrect: true,
-      });
+      this.wasteManagementDZForm.controls['evidence_of_EWD_Filename'].setErrors(
+        {
+          incorrect: true,
+        }
+      );
       this.EvidenceOfEWDPFile = null;
       return;
     } else {
-      this.wasteManagementDZForm.controls['evidenceOfEWDPFilename'].setErrors(
+      this.wasteManagementDZForm.controls['evidence_of_EWD_Filename'].setErrors(
         null
       );
     }
@@ -4634,7 +4762,7 @@ export class SWPHseComponent implements OnInit {
       this.EvidenceOfReInjectionFile.size > 1024 * 1024 * 50
     ) {
       this.wasteManagementDZForm.controls[
-        'evidenceOfReInjectionPermitFilename'
+        'evidence_of_Reinjection_Permit_Filename'
       ].setErrors({
         incorrect: true,
       });
@@ -4642,7 +4770,7 @@ export class SWPHseComponent implements OnInit {
       return;
     } else {
       this.wasteManagementDZForm.controls[
-        'evidenceOfReInjectionPermitFilename'
+        'evidence_of_Reinjection_Permit_Filename'
       ].setErrors(null);
     }
     this.EvidenceOfReInjectionNewName = this.gen.getExpDoc(
@@ -4665,7 +4793,7 @@ export class SWPHseComponent implements OnInit {
       this.wasteServicePermitFile.size > 1024 * 1024 * 50
     ) {
       this.wasteManagementDZForm.controls[
-        'wasteServicePermitFilename'
+        'waste_Service_Permit_Filename'
       ].setErrors({
         incorrect: true,
       });
@@ -4673,7 +4801,7 @@ export class SWPHseComponent implements OnInit {
       return;
     } else {
       this.wasteManagementDZForm.controls[
-        'wasteServicePermitFilename'
+        'waste_Service_Permit_Filename'
       ].setErrors(null);
     }
     this.wasteServicePermitNewName = this.gen.getExpDoc(
@@ -5043,7 +5171,7 @@ export class SWPHseComponent implements OnInit {
       .getFormFiveHSE(this.genk.OmlName, this.genk.wpYear, this.genk.fieldName)
       .subscribe((res) => {
         debugger;
-        console.log('res..', res);
+        //console.log('res..', res);
         let eMS_Files_Info = this
           .eMS_Files_Body as HSE_ENVIRONMENTAL_MANAGEMENT_SYSTEM;
 
@@ -5184,16 +5312,25 @@ export class SWPHseComponent implements OnInit {
         if (res?.hseHostCommunities) {
           this.HostCommunitiesDevelopments = res.hseHostCommunities;
         }
-        if (res?.hseRemediationFund) {
-        //  this.remediationFundBody = res.hseRemediationFund[0];
-          this.remediationFunds=res.hseRemediationFund;
+
+        if (res?.hsePointSourceRegistrations) {
+          this.pointSourcePermits = res.hsePointSourceRegistrations;
         }
-         if(res?.hseWastManagementDZs){
+        if (res?.hseRemediationFund) {
+          //  this.remediationFundBody = res.hseRemediationFund[0];
+          this.remediationFunds = res.hseRemediationFund;
+        }
 
+        if (res?.hseWastManagementDZs) {
           this.wasteManagementDZs = res.hseWastManagementDZs;
-         }
+        }
 
-this.modalService.togCover();
+        // if (res?.hseWastManagementDZs) {
+        //
+        //   this.wasteManagementDZs = res.hseWastManagementDZs;
+        // }
+
+        this.modalService.togCover();
         this.cd.markForCheck();
       });
   }
@@ -5354,7 +5491,7 @@ this.modalService.togCover();
       });
   }
 
-  Delete_HSE_Point_Source_Permit(row: HSE_POINT_SOURCE_REGISTRATION) {
+  Delete_HSE_Point_Source_Permit(id: number) {
     this.workprogram
       .post_HSE_PSP(
         {} as HSE_POINT_SOURCE_REGISTRATION,
@@ -5362,7 +5499,7 @@ this.modalService.togCover();
         this.genk.OmlName,
         this.genk.fieldName,
         'DELETE',
-        row.id
+        id
       )
       .subscribe({
         next: (res) => {
@@ -5572,7 +5709,7 @@ this.modalService.togCover();
   }
 
   Delete_AssetRegister_RBI(row) {
-    console.log('clicked me....', this.genk.fieldName);
+    //console.log('clicked me....', this.genk.fieldName);
     this.workprogram
       .post_HSE_AssetRegister_RBI(
         null,

@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
+import { ISBU } from 'src/app/sbu-configuration/sbu-configuration/sbu-configuration.component';
 import { GenericService, ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
 import { AddSBUFormComponent } from './add-sbu/add-sbu-form.component';
@@ -120,7 +122,7 @@ export class CompanyProfilingComponent implements OnInit {
 
   assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    console.log('pagenum', this.pagenum, this.data.length);
+    //console.log('pagenum', this.pagenum, this.data.length);
   }
 
   assignDataRows() {
@@ -194,16 +196,16 @@ export class CompanyProfilingComponent implements OnInit {
   }
 }
 
-export interface IRole {
-  roleName: string;
-  roleId: string;
-  id: number;
-  funcs: any[];
-  description: string;
-}
+// export interface IRole {
+//   roleName: string;
+//   roleId: string;
+//   id: number;
+//   funcs: any[];
+//   description: string;
+// }
 
-export interface ISBU {
-  sbU_Name: string;
-  sbU_Code: string;
-  id: number;
-}
+// export interface ISBU {
+//   sbU_Name: string;
+//   sbU_Code: string;
+//   id: number;
+// }

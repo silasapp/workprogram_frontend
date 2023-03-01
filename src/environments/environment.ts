@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
- //apiUrl: 'https://workprogrambackend.azurewebsites.net/api',
+  // apiUrl: 'https://workprogramtest.azurewebsites.net/api',
 
   apiUrl: 'https://localhost:7129/api',
 
   elpsBase: 'https://elpsdemo.dpr.gov.ng',
-  appid: 'b2f4707c-1ccf-4ff2-b3ab-551b3c8a0215',
+  // appid: 'b2f4707c-1ccf-4ff2-b3ab-551b3c8a0215', //Normal workprogram
+
+  appid: '40402b0a-70de-426f-9793-981c498fbbeb',
 };
 
 /*

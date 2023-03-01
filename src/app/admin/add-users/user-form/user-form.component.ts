@@ -17,12 +17,10 @@ import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 
 import { Staff } from 'src/app/models/application-details';
 import { AuthenticationService, ModalService } from 'src/app/services';
-import {
-  IRole,
-  ISBU,
-} from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
+import { ISBU } from 'src/app/process-flow-configuration/application-process-flow-configuration/application-process-flow-configuration.component';
 import { AdminService } from 'src/app/services/admin.service';
 import { ISystemUser } from 'src/app/models/user';
+import { IRole } from 'src/app/role-configuration/role-configuration/role-configuration.component';
 
 // import { Staff } from 'src/app/admin/settings/all-staff/all-staff.component';
 // import { FieldOffice } from 'src/app/admin/settings/field-zonal-office/field-zonal-office.component';
@@ -67,7 +65,7 @@ export class UserFormComponent implements OnInit {
     this.usersFromElps = data.data.staffList;
     this.currentValue = data.data?.currentValue;
 
-    console.log(data.data);
+    //console.log(data.data);
 
     let currentUserId: string;
 
@@ -171,11 +169,10 @@ export class UserFormComponent implements OnInit {
           this.snackBar.open('Staff was created successfully!', null, {
             panelClass: ['success'],
           });
-
-          this.dialogRef.close();
         }
 
         this.modalService.togCover();
+        this.dialogRef.close();
       },
       error: (error) => {
         this.snackBar.open(
@@ -238,7 +235,7 @@ export class UserFormComponent implements OnInit {
   }
 
   onClose() {
-    console.log(this.form, this.form.getRawValue());
+   // console.log(this.form, this.form.getRawValue());
   }
 
   onFileChange(event: any) {

@@ -33,6 +33,10 @@ export class SBUConfigurationComponent implements OnInit {
       columnDef: 'sbU_Name',
       header: 'SBU NAME',
     },
+    {
+      columnDef: 'tier',
+      header: 'TIER',
+    },
   ];
 
   constructor(
@@ -75,7 +79,7 @@ export class SBUConfigurationComponent implements OnInit {
     });
   }
 
-  editSBU(row) {
+  editSBU(row: ISBU) {
     const operationsConfiguration = {
       process: {
         data: {
@@ -121,7 +125,7 @@ export class SBUConfigurationComponent implements OnInit {
 
   assignPageNum() {
     this.pagenum = Math.ceil(this.data.length / this.genk.sizePerPage);
-    console.log('pagenum', this.pagenum, this.data.length);
+    //console.log('pagenum', this.pagenum, this.data.length);
   }
 
   assignDataRows() {
@@ -204,7 +208,8 @@ export interface IRole {
 }
 
 export interface ISBU {
+  id: number;
   sbU_Name: string;
   sbU_Code: string;
-  id: number;
+  tier: number;
 }

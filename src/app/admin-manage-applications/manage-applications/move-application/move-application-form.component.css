@@ -1,0 +1,21 @@
+.modal-width {
+  min-width: 300px;
+  min-height: 400px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+option {
+  height: 1rem;
+  padding: 5px;
+}

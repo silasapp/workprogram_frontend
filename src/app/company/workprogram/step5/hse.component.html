@@ -146,7 +146,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Management(row)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_MANAGEMENT_POSITIONs)"
               >
@@ -375,7 +375,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Technical(row)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_SAFETY_STUDIES_NEWs)"
               >
@@ -845,7 +845,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_SafetyCulture(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_SAFETY_CULTURE_TRAININGs)
@@ -1130,6 +1130,7 @@
             <th *ngFor="let h of hohmColDef">
               {{ h.header }}
             </th>
+            <th>Documents</th>
           </tr>
         </thead>
         <tbody>
@@ -1138,8 +1139,29 @@
               {{ row[colDef.columnDef] }}
             </td>
             <td>
+              <span
+                *ngIf="row['ohMplanCommunicationFilePath'] != null"
+                style="width: 30%"
+              >
+                <a [href]="row['ohMplanCommunicationFilePath']" target="_blank">
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+              <span *ngIf="row['ohMplanFilePath'] != null" style="width: 30%">
+                <a [href]="row['ohMplanFilePath']" target="_blank">
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+            </td>
+            <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Occupational(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_OCCUPATIONAL_HEALTH_MANAGEMENTs)
@@ -1269,7 +1291,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Quality(row)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_QUALITY_CONTROLs)"
               >
@@ -1399,7 +1421,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Climate(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_CLIMATE_CHANGE_AND_AIR_QUALITies)
@@ -2179,7 +2201,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_AssetRegister_PRE(row)"
                 [attr.disabled]="
                   isEditable(
@@ -3000,7 +3022,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_AssetRegister_RBI(row)"
                 [attr.disabled]="
                   isEditable(
@@ -3436,7 +3458,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_OilSpill(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_OIL_SPILL_REPORTING_NEWs)
@@ -4681,118 +4703,91 @@
         </div>
       </div>
 
-      <div style="width: 30%">
+      <!-- <div style="width: 30%">
         <label class="labelwp">Type of Study</label>
         <div style="width: 100%">
-          <div
-            style="
+          <div style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               border-radius: 20px;
               padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="type_of_study"
-              [(ngModel)]="environmental_studies_updated_Body.type_of_study"
-              [attr.disabled]="
+            ">
+            <input type="text" class="inpute" formControlName="type_of_study"
+              [(ngModel)]="environmental_studies_updated_Body.type_of_study" [attr.disabled]="
                 isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
-              "
-            />
+              " />
           </div>
         </div>
 
         <div class="eroce">
-          <span
-            *ngIf="
+          <span *ngIf="
               (isEnvironmental_Studies_Updated_FormSubmitted &&
                 esu['type_of_study']?.invalid) ||
               (esu['type_of_study']?.dirty && esu['type_of_study']?.invalid)
-            "
-          >
+            ">
             This field is required!
           </span>
         </div>
-      </div>
-      <div style="width: 30%">
+      </div> -->
+
+      <!-- <div style="width: 30%">
         <label class="labelwp"> Study Title</label>
         <div style="width: 100%">
-          <div
-            style="
+          <div style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               border-radius: 20px;
               padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="study_title"
-              [(ngModel)]="environmental_studies_updated_Body.study_title"
-              [attr.disabled]="
+            ">
+            <input type="text" class="inpute" formControlName="study_title"
+              [(ngModel)]="environmental_studies_updated_Body.study_title" [attr.disabled]="
                 isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
-              "
-            />
+              " />
           </div>
         </div>
 
         <div class="eroce">
-          <span
-            *ngIf="
+          <span *ngIf="
               (isEnvironmental_Studies_Updated_FormSubmitted &&
                 esu['study_title']?.invalid) ||
               (esu['study_title']?.dirty && esu['study_title']?.invalid)
-            "
-          >
+            ">
             This field is required!
           </span>
         </div>
-      </div>
+      </div> -->
     </div>
     <br />
 
     <div style="display: flex; width: 100%">
-      <div style="width: 30%">
+      <!-- <div style="width: 30%">
         <label class="labelwp">Current Study Status</label>
         <div style="width: 100%">
-          <div
-            style="
+          <div style="
               box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
               width: 100%;
               border-radius: 20px;
               padding: 7px 10px;
-            "
-          >
-            <input
-              type="text"
-              class="inpute"
-              formControlName="current_study_status"
-              [(ngModel)]="
+            ">
+            <input type="text" class="inpute" formControlName="current_study_status" [(ngModel)]="
                 environmental_studies_updated_Body.current_study_status
-              "
-              [attr.disabled]="
+              " [attr.disabled]="
                 isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
-              "
-            />
+              " />
           </div>
         </div>
 
         <div class="eroce">
-          <span
-            *ngIf="
+          <span *ngIf="
               (isEnvironmental_Studies_Updated_FormSubmitted &&
                 esu['current_study_status']?.invalid) ||
               (esu['current_study_status']?.dirty &&
                 esu['current_study_status']?.invalid)
-            "
-          >
+            ">
             This field is required!
           </span>
         </div>
-      </div>
+      </div> -->
 
       <div style="width: 30%">
         <label class="labelwp">NUPRC Approval status</label>
@@ -4867,7 +4862,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_ESU(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
@@ -4887,7 +4882,7 @@
   <div [formGroup]="Environmental_Studies_Form">
     <div style="display: flex; width: 100%; justify-content: space-between">
       <div style="width: 30%">
-        <label class="labelwp">Any Environmental Studies?</label>
+        <label class="labelwp">Any Environmental Studies in place?</label>
         <div
           style="
             box-shadow: 1px 1px 4px 1px rgb(0, 0, 0, 0.3);
@@ -4944,8 +4939,22 @@
             "
           >
             <option selected disabled>---- Please Select Category ----</option>
-            <option value="EES">EES</option>
-            <option value="EIA">EIA</option>
+            <option value="Environmental Evaluation Study">
+              Environmental Evaluation Study
+            </option>
+            <option value="Environmental Impact Assessment">
+              Environmental Impact Assessment
+            </option>
+            <option value="Ecological Seabed Survey">
+              Ecological Seabed Survey
+            </option>
+            <option value="Baseline Study">Baseline Study</option>
+            <option value="Environmental baseline study">
+              Environmental baseline study
+            </option>
+            <option value="Post Impact Assessment study">
+              Post Impact Assessment study
+            </option>
             <option value="N/A">N/A</option>
           </select>
         </div>
@@ -5077,7 +5086,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_ES(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_ENVIRONMENTAL_STUDIES_NEWs)
@@ -5249,7 +5258,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Waste_Management(row)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_NEWs)"
               >
@@ -5418,7 +5427,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Waste_Management_Facility(row)"
                 [attr.disabled]="
                   isEditable(
@@ -5551,7 +5560,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Waste_Management_Files(row)"
                 [attr.disabled]="
                   isEditable(
@@ -5924,7 +5933,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_Water_Management(row)"
                 [attr.disabled]="
                   isEditable(
@@ -6287,7 +6296,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_EC(row)"
                 [attr.disabled]="
                   isEditable(
@@ -6424,7 +6433,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_EC_C(row)"
                 [attr.disabled]="
                   isEditable(
@@ -6579,7 +6588,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_ESS_Plan(row)"
                 [attr.disabled]="
                   isEditable(
@@ -6992,6 +7001,9 @@
           type="file"
           formControlName="evidence_of_Operations_Safety_Case_Approval"
           accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+          [value]="
+            operations_safety_case_body.evidence_of_Operations_Safety_Case_Approval
+          "
           (change)="saveOperationalSafetyApproval($event)"
           class="inpute"
           [attr.disabled]="isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)"
@@ -7045,7 +7057,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_OperationsSafetyCase(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_OPERATIONS_SAFETY_CASE)
@@ -7275,7 +7287,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_EMP(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_ENVIRONMENTAL_MANAGEMENT_PLANs)
@@ -7450,19 +7462,19 @@
       <table class="wptable">
         <thead>
           <tr>
-            <th *ngFor="let h of hrfColDef">
+            <th *ngFor="let h of hrefColDef">
               {{ h.header }}
             </th>
-             <th>Evidence of Payment</th>
-            <td>
+            <th>Evidence of Payment</th>
+            <td></td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let row of remediationFunds">
-            <td *ngFor="let colDef of hrfColDef">
+            <td *ngFor="let colDef of hrefColDef">
               {{ row[colDef.columnDef] }}
             </td>
-           <td>
+            <td>
               <a [href]="row['evidenceOfPaymentPath']" target="_blank">
                 <img
                   src="../../../../assets/images/file-icon.png"
@@ -7472,7 +7484,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Remediation_Fund(row.id)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_REMEDIATION_FUNDs)"
               >
@@ -7657,7 +7669,7 @@
           isEditable(SBUTABLE.HSE_EFFLUENT_COMPLIANCE_MONITORINGs)
         "
       >
-        Add Effluent Monitoring Complicance
+        Add Effluent Monitoring Compliance
       </button>
     </div>
   </div>
@@ -7679,7 +7691,11 @@
               {{ row[colDef.columnDef] }}
             </td>
             <td>
-              <a [href]="row['evidenceOfSamplingPath']" target="_blank">
+              <a
+                *ngIf="row['evidenceOfSamplingPath'] != null"
+                [href]="row['evidenceOfSamplingPath']"
+                target="_blank"
+              >
                 <img
                   src="../../../../assets/images/file-icon.png"
                   height="40px"
@@ -7687,9 +7703,8 @@
               </a>
             </td>
             <td>
-              
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Effluent_Monitoring(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_EFFLUENT_COMPLIANCE_MONITORINGs)
@@ -7738,8 +7753,8 @@
         >
           <select
             class="dropwp"
-            formControlName="areTherePointSourcePermit"
-            [(ngModel)]="pointSourcePermitBody.areTherePointSourcePermit"
+            formControlName="are_there_point_source_permit"
+            [(ngModel)]="pointSourcePermitBody.are_there_point_source_permit"
             [attr.disabled]="
               isEditable(SBUTABLE.HSE_POINT_SOURCE_REGISTRATIONs)
             "
@@ -7753,9 +7768,9 @@
           <span
             *ngIf="
               (ispointSourcePermitFormSubmitted &&
-                psp['areTherePointSourcePermit']?.invalid) ||
-              (psp['areTherePointSourcePermit']?.dirty &&
-                psp['areTherePointSourcePermit']?.invalid)
+                psp['are_there_point_source_permit']?.invalid) ||
+              (psp['are_there_point_source_permit']?.dirty &&
+                psp['are_there_point_source_permit']?.invalid)
             "
           >
             This field is required!
@@ -7764,7 +7779,7 @@
       </div>
 
       <div
-        *ngIf="pointSourcePermitBody.areTherePointSourcePermit == 'YES'"
+        *ngIf="pointSourcePermitBody.are_there_point_source_permit == 'YES'"
         style="padding-top: 20px"
       >
         <label class="labelwp">Upload Evidence of Registration</label>
@@ -7780,7 +7795,8 @@
           >
             <input
               type="file"
-              formControlName="evidenceOfPSPFilename"
+              formControlName="evidence_of_PSP_filename"
+              [value]="pointSourcePermitBody.evidence_of_PSP_filename"
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfPSP($event)"
               class="inpute"
@@ -7795,9 +7811,9 @@
           <span
             *ngIf="
               (ispointSourcePermitFormSubmitted &&
-                psp['evidenceOfPSPFilename']?.invalid) ||
-              (psp['evidenceOfPSPFilename']?.dirty &&
-                psp['evidenceOfPSPFilename']?.invalid)
+                psp['evidence_of_PSP_filename']?.invalid) ||
+              (psp['evidence_of_PSP_filename']?.dirty &&
+                psp['evidence_of_PSP_filename']?.invalid)
             "
           >
             This field is required!
@@ -7807,7 +7823,7 @@
       </div>
 
       <div
-        *ngIf="pointSourcePermitBody.areTherePointSourcePermit !== 'YES'"
+        *ngIf="pointSourcePermitBody.are_there_point_source_permit !== 'YES'"
         style="padding-top: 20px"
       >
         <div class="col-md-4">
@@ -7823,8 +7839,8 @@
             >
               <input
                 type="text"
-                formControlName="reasonForNoPSP"
-                [(ngModel)]="pointSourcePermitBody.reasonForNoPSP"
+                formControlName="reason_for_no_PSP"
+                [(ngModel)]="pointSourcePermitBody.reason_for_no_PSP"
                 class="inpute"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_POINT_SOURCE_REGISTRATIONs)
@@ -7837,8 +7853,9 @@
             <span
               *ngIf="
                 (ispointSourcePermitFormSubmitted &&
-                  psp['reasonForNoPSP']?.invalid) ||
-                (psp['reasonForNoPSP']?.dirty && psp['reasonForNoPSP']?.invalid)
+                  psp['reason_for_no_PSP']?.invalid) ||
+                (psp['reason_for_no_PSP']?.dirty &&
+                  psp['reason_for_no_PSP']?.invalid)
               "
             >
               This field is required!
@@ -7870,6 +7887,7 @@
             <th *ngFor="let h of hrfColDef">
               {{ h.header }}
             </th>
+            <th>Upload Evidence of Registration</th>
           </tr>
         </thead>
         <tbody>
@@ -7878,9 +7896,22 @@
               {{ row[colDef.columnDef] }}
             </td>
             <td>
+              <span
+                *ngIf="row['evidence_of_PSP_path'] != null"
+                style="width: 30%"
+              >
+                <a [href]="row['evidence_of_PSP_path']" target="_blank">
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+            </td>
+            <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
-                (click)="Delete_HSE_Point_Source_Permit(row)"
+                class="btn btn-danger btn-sm"
+                (click)="Delete_HSE_Point_Source_Permit(row.id)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_POINT_SOURCE_REGISTRATIONs)
                 "
@@ -8190,7 +8221,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_GHG(row)"
                 [attr.disabled]="isEditable(SBUTABLE.HSE_GHG_MANAGEMENT_PLANs)"
               >
@@ -8568,7 +8599,7 @@
             </td>
             <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Host_Communities_Dev(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_HOST_COMMUNITIES_DEVELOPMENTs)
@@ -8641,8 +8672,8 @@
           >
             <input
               type="text"
-              formControlName="wasterContractorNames"
-              [(ngModel)]="wasteManagementDZBody.wasterContractorNames"
+              formControlName="waste_Contractor_Names"
+              [(ngModel)]="wasteManagementDZBody.waste_Contractor_Names"
               class="inpute"
               [attr.disabled]="
                 isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
@@ -8655,9 +8686,9 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['wasterContractorNames']?.invalid) ||
-              (wmdz['wasterContractorNames']?.dirty &&
-                wmdz['wasterContractorNames']?.invalid)
+                wmdz['waste_Contractor_Names']?.invalid) ||
+              (wmdz['waste_Contractor_Names']?.dirty &&
+                wmdz['waste_Contractor_Names']?.invalid)
             "
           >
             This field is required!
@@ -8680,8 +8711,9 @@
           >
             <input
               type="file"
-              formControlName="wasteServicePermitFilename"
+              formControlName="waste_Service_Permit_Filename"
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              [value]="wasteManagementDZBody.waste_Service_Permit_Filename"
               (change)="saveWasteServicePermit($event)"
               class="inpute"
               [attr.disabled]="
@@ -8695,9 +8727,9 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['wasteServicePermitFilename']?.invalid) ||
-              (wmdz['wasteServicePermitFilename']?.dirty &&
-                wmdz['wasteServicePermitFilename']?.invalid)
+                wmdz['waste_Service_Permit_Filename']?.invalid) ||
+              (wmdz['waste_Service_Permit_Filename']?.dirty &&
+                wmdz['waste_Service_Permit_Filename']?.invalid)
             "
           >
             This field is required!
@@ -8731,8 +8763,8 @@
         >
           <select
             class="dropwp"
-            formControlName="produceWaterManagementPlan"
-            [(ngModel)]="wasteManagementDZBody.produceWaterManagementPlan"
+            formControlName="produce_Water_Manegent_Plan"
+            [(ngModel)]="wasteManagementDZBody.produce_Water_Manegent_Plan"
             [attr.disabled]="
               isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
             "
@@ -8746,9 +8778,9 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['produceWaterManagementPlan']?.invalid) ||
-              (wmdz['produceWaterManagementPlan']?.dirty &&
-                wmdz['produceWaterManagementPlan']?.invalid)
+                wmdz['produce_Water_Manegent_Plan']?.invalid) ||
+              (wmdz['produce_Water_Manegent_Plan']?.dirty &&
+                wmdz['produce_Water_Manegent_Plan']?.invalid)
             "
           >
             This field is required!
@@ -8758,7 +8790,7 @@
 
       <div
         *ngIf="
-          wasteManagementDZBody.produceWaterManagementPlan ==
+          wasteManagementDZBody.produce_Water_Manegent_Plan ==
           'ZERO DISCHARGE ZONE'
         "
         style="padding-top: 20px"
@@ -8776,9 +8808,12 @@
           >
             <input
               type="file"
-              formControlName="evidenceOfReInjectionPermitFilename"
+              formControlName="evidence_of_Reinjection_Permit_Filename"
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
               (change)="saveEvidenceOfReInjection($event)"
+              [value]="
+                wasteManagementDZBody.evidence_of_Reinjection_Permit_Filename
+              "
               class="inpute"
               [attr.disabled]="
                 isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
@@ -8791,9 +8826,9 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['evidenceOfReInjectionPermitFilename']?.invalid) ||
-              (wmdz['evidenceOfReInjectionPermitFilename']?.dirty &&
-                wmdz['evidenceOfReInjectionPermitFilename']?.invalid)
+                wmdz['evidence_of_Reinjection_Permit_Filename']?.invalid) ||
+              (wmdz['evidence_of_Reinjection_Permit_Filename']?.dirty &&
+                wmdz['evidence_of_Reinjection_Permit_Filename']?.invalid)
             "
           >
             This field is required!
@@ -8804,12 +8839,12 @@
 
       <div
         *ngIf="
-          wasteManagementDZBody.produceWaterManagementPlan === 'DISCHARGE ZONE'
+          wasteManagementDZBody.produce_Water_Manegent_Plan === 'DISCHARGE ZONE'
         "
         style="padding-top: 20px"
       >
         <div class="col-md-4">
-          <label class="labelwp">Remark</label>
+          <label class="labelwp">Reason</label>
           <div style="display: flex">
             <div
               style="
@@ -8821,9 +8856,9 @@
             >
               <input
                 type="text"
-                formControlName="reasonForNoEvidenceOfReInjection"
+                formControlName="reason_for_No_Evidence_of_Reinjection"
                 [(ngModel)]="
-                  wasteManagementDZBody.reasonForNoEvidenceOfReInjection
+                  wasteManagementDZBody.reason_for_No_Evidence_of_Reinjection
                 "
                 class="inpute"
                 [attr.disabled]="
@@ -8837,9 +8872,9 @@
             <span
               *ngIf="
                 (iswasteManagementDZFormSubmitted &&
-                  wmdz['reasonForNoEvidenceOfReInjection']?.invalid) ||
-                (wmdz['reasonForNoEvidenceOfReInjection']?.dirty &&
-                  wmdz['reasonForNoEvidenceOfReInjection']?.invalid)
+                  wmdz['reason_for_No_Evidence_of_Reinjection']?.invalid) ||
+                (wmdz['reason_for_No_Evidence_of_Reinjection']?.dirty &&
+                  wmdz['reason_for_No_Evidence_of_Reinjection']?.invalid)
               "
             >
               This field is required!
@@ -8874,9 +8909,9 @@
         >
           <select
             class="dropwp"
-            formControlName="doYouHavePreviousYearWasteInventoryReport"
+            formControlName="do_You_Have_Previous_Year_Waste_Inventory_Report"
             [(ngModel)]="
-              wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport
+              wasteManagementDZBody.do_You_Have_Previous_Year_Waste_Inventory_Report
             "
             [attr.disabled]="
               isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
@@ -8891,9 +8926,12 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['doYouHavePreviousYearWasteInventoryReport']?.invalid) ||
-              (wmdz['doYouHavePreviousYearWasteInventoryReport']?.dirty &&
-                wmdz['doYouHavePreviousYearWasteInventoryReport']?.invalid)
+                wmdz['do_You_Have_Previous_Year_Waste_Inventory_Report']
+                  ?.invalid) ||
+              (wmdz['do_You_Have_Previous_Year_Waste_Inventory_Report']
+                ?.dirty &&
+                wmdz['do_You_Have_Previous_Year_Waste_Inventory_Report']
+                  ?.invalid)
             "
           >
             This field is required!
@@ -8903,7 +8941,7 @@
 
       <div
         *ngIf="
-          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport ===
+          wasteManagementDZBody.do_You_Have_Previous_Year_Waste_Inventory_Report ===
           'YES'
         "
         style="padding-top: 20px"
@@ -8921,8 +8959,9 @@
           >
             <input
               type="file"
-              formControlName="evidenceOfEWDPFilename"
+              formControlName="evidence_of_EWD_Filename"
               accept=".pdf, .doc, .docx, .rtf, .htm, .html, .txt, .xlsx"
+              [value]="wasteManagementDZBody.evidence_of_EWD_Filename"
               (change)="saveEvidenceOfEWDP($event)"
               class="inpute"
               [attr.disabled]="
@@ -8936,9 +8975,9 @@
           <span
             *ngIf="
               (iswasteManagementDZFormSubmitted &&
-                wmdz['evidenceOfEWDPFilename']?.invalid) ||
-              (wmdz['evidenceOfEWDPFilename']?.dirty &&
-                wmdz['evidenceOfEWDPFilename']?.invalid)
+                wmdz['evidence_of_EWD_Filename']?.invalid) ||
+              (wmdz['evidence_of_EWD_Filename']?.dirty &&
+                wmdz['evidence_of_EWD_Filename']?.invalid)
             "
           >
             This field is required!
@@ -8949,7 +8988,7 @@
 
       <div
         *ngIf="
-          wasteManagementDZBody.doYouHavePreviousYearWasteInventoryReport !==
+          wasteManagementDZBody.do_You_Have_Previous_Year_Waste_Inventory_Report !==
           'YES'
         "
         style="padding-top: 20px"
@@ -8967,8 +9006,10 @@
             >
               <input
                 type="text"
-                formControlName="reasonForNoEvidenceOfEWDP"
-                [(ngModel)]="wasteManagementDZBody.reasonForNoEvidenceOfEWDP"
+                formControlName="reason_for_No_Evidence_of_EWD"
+                [(ngModel)]="
+                  wasteManagementDZBody.reason_for_No_Evidence_of_EWD
+                "
                 class="inpute"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
@@ -8981,9 +9022,9 @@
             <span
               *ngIf="
                 (iswasteManagementDZFormSubmitted &&
-                  wmdz['reasonForNoEvidenceOfEWDP']?.invalid) ||
-                (wmdz['reasonForNoEvidenceOfEWDP']?.dirty &&
-                  wmdz['reasonForNoEvidenceOfEWDP']?.invalid)
+                  wmdz['reason_for_No_Evidence_of_EWD']?.invalid) ||
+                (wmdz['reason_for_No_Evidence_of_EWD']?.dirty &&
+                  wmdz['reason_for_No_Evidence_of_EWD']?.invalid)
               "
             >
               This field is required!
@@ -9009,7 +9050,7 @@
     </div>
   </div>
 
-  <!-- <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
+  <div *ngIf="wasteManagementDZs.length > 0" class="wptablebox">
     <div class="apptable">
       <table class="wptable">
         <thead>
@@ -9017,6 +9058,7 @@
             <th *ngFor="let h of hwmdzColDef">
               {{ h.header }}
             </th>
+            <th>Documents</th>
           </tr>
         </thead>
         <tbody>
@@ -9025,8 +9067,46 @@
               {{ row[colDef.columnDef] }}
             </td>
             <td>
+              <span
+                *ngIf="row['waste_Service_Permit_Path'] != null"
+                style="width: 30%"
+              >
+                <a [href]="row['waste_Service_Permit_Path']" target="_blank">
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+              <span
+                *ngIf="row['evidence_of_Reinjection_Permit_Path'] != null"
+                style="width: 30%"
+              >
+                <a
+                  [href]="row['evidence_of_Reinjection_Permit_Path']"
+                  target="_blank"
+                >
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+              <span
+                *ngIf="row['evidence_of_EWD_Path'] != null"
+                style="width: 30%"
+              >
+                <a [href]="row['evidence_of_EWD_Path']" target="_blank">
+                  <img
+                    src="../../../../assets/images/file-icon.png"
+                    height="40px"
+                  />
+                </a>
+              </span>
+            </td>
+            <td>
               <button
-                class="btn btn-danger btn-sm submitbtn"
+                class="btn btn-danger btn-sm"
                 (click)="Delete_HSE_Waste_Management_DZ(row)"
                 [attr.disabled]="
                   isEditable(SBUTABLE.HSE_WASTE_MANAGEMENT_DISCHARGE_ZONEs)
@@ -9039,7 +9119,7 @@
         </tbody>
       </table>
     </div>
-  </div> -->
+  </div>
 
   <br /><br />
   <hr size="10" />

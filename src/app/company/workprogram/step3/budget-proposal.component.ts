@@ -31,6 +31,8 @@ export class SWPBudgetProposalComponent implements OnInit {
 
   public budgetProposalComponents: budgetProposal[] = [];
   public budgetCapexOpexComponents: capexOpex[] = [];
+  public budgetCapexComponents: capexOpex[] = [];
+  public budgetOpexComponents: capexOpex[] = [];
 
   // public capexBody = {} as CAPEX;
   // public opexBody = {} as OPEX;
@@ -315,6 +317,7 @@ export class SWPBudgetProposalComponent implements OnInit {
   }
 
   getBudgetData() {
+    this.modalService.logCover('loading', true);
     this.workprogram
       .getFormThreeBudget_2(
         this.genk.OmlName,
@@ -323,7 +326,7 @@ export class SWPBudgetProposalComponent implements OnInit {
       )
       //this.workprogram.getFormThreeBudget_2(this.genk.wpYear)
       .subscribe((res) => {
-        console.log('ress....', res);
+      //  console.log('ress....', res);
 
         let budgetInfo = this.budgetProposalBody as budgetProposal;
         let capexInfo = this.capexOpexBody as capexOpex;
@@ -342,12 +345,27 @@ export class SWPBudgetProposalComponent implements OnInit {
 
         if (res.budgetCapexOpex != null && res.budgetCapexOpex.length > 0) {
           //capexInfo = res.budgetCapexOpex[0] as capexOpex;
+          debugger
           this.budgetCapexOpexComponents = res.budgetCapexOpex as capexOpex[];
-          this.genk.isStep3 = true;
+          
+
+         
+          this.budgetCapexComponents = this.budgetCapexOpexComponents.filter((res)=>{
+           return res.item_Type==='Capex';
+          }) ?? ({} as capexOpex[]);
+
+          this.budgetOpexComponents = res.budgetCapexOpex.filter((res)=>{
+           return res.item_Type==='Opex';
+          }) ?? ({} as capexOpex[]);
+
+
+            this.genk.isStep3 = true;
         }
 
         this.budgetProposalBody = budgetInfo;
         this.capexOpexBody = {} as capexOpex;
+        this.modalService.togCover();
+
         this.cd.markForCheck();
       });
   }
@@ -405,7 +423,7 @@ export class SWPBudgetProposalComponent implements OnInit {
 
   Delete_Opex(id) {
 
-   let info = this.capexOpexBody as capexOpex
+    let info = this.capexOpexBody as capexOpex
 
     this.workprogram
       .post_Opex(

@@ -61,7 +61,7 @@ return this.fb.group({
 onSubmit(){
   this.pss.updateCompanyRep(this.repsForm.getRawValue(), this.id).subscribe(
     (res) =>{
-      console.log(res)
+      //console.log(res)
     }
 
   )

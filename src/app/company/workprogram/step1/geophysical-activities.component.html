@@ -384,6 +384,7 @@
               <input
                 formControlName="quantum"
                 (keypress)="genk.restrictData($event)"
+                (keyup)="genk.formatCurrency($event)" 
                 [(ngModel)]="acquisitionBody.quantum"
                 class="inpute"
                 [attr.disabled]="

@@ -194,6 +194,11 @@
               [attr.disabled]="isEditable(SBUTABLE.FIELD_DEVELOPMENT_PLANs)"
             />
           </div>
+          <span *ngIf="fielddevelopmentBody.uploaded_approved_FDP_Document!=null" style="width: 30%;">
+            <a [href]="fielddevelopmentBody.uploaded_approved_FDP_Document" target="_blank">
+              <img src="../../../../assets/images/file-icon.png" height="40px" />
+            </a>
+          </span>
         </div>
 
         <div class="eroce">

@@ -7,6 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { ModalService } from 'src/app/services';
 import { AdminService } from 'src/app/services/admin.service';
+import { IRole } from '../role-configuration.component';
 
 @Component({
   selector: 'app-add-role-form',
@@ -15,7 +16,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AddRoleFormComponent implements OnInit {
   public form: FormGroup;
-  public targetData: any;
+  public targetData: IRole;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,13 +32,15 @@ export class AddRoleFormComponent implements OnInit {
     if (this.targetData)
       this.form = this.formBuilder.group({
         id: [this.targetData?.id],
-        name: [[this.targetData?.sbU_Name], Validators.required],
-        description: [[this.targetData?.sbU_Code], Validators.required],
+        name: [[this.targetData?.roleName], Validators.required],
+        description: [[this.targetData?.description], Validators.required],
+        rank: [[this.targetData?.rank], Validators.required],
       });
     else
       this.form = this.formBuilder.group({
         name: ['', Validators.required],
         description: ['', Validators.required],
+        rank: ['', Validators.required],
       });
   }
   ngOnInit(): void {}
@@ -47,10 +50,11 @@ export class AddRoleFormComponent implements OnInit {
   }
 
   addRole() {
-    const description = this.form.get('description').value;
-    const name = this.form.get('name').value;
+    const description = this.form.get('description').value as string;
+    const name = this.form.get('name').value as string;
+    const rank = this.form.get('rank').value as number;
 
-    this.adminService.addRole(name, description).subscribe({
+    this.adminService.addRole(name, description, rank).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
@@ -65,11 +69,12 @@ export class AddRoleFormComponent implements OnInit {
   }
 
   editRole() {
-    const id = this.form.get('id').value;
-    const description = this.form.get('description').value;
-    const name = this.form.get('name').value;
+    const id = this.form.get('id').value as number;
+    const description = this.form.get('description').value as string;
+    const name = this.form.get('name').value as string;
+    const rank = this.form.get('rank').value as number;
 
-    this.adminService.editRole(id, name, description).subscribe({
+    this.adminService.editRole(id, name, description, rank).subscribe({
       next: (res) => {
         this.dialogRef.close();
         this.modalService.logNotice(res.message, 'Success', 'success');
