@@ -625,6 +625,7 @@ export class ConcessionsfieldsComponent implements OnInit {
           `${companyName.toUpperCase()} - ${percentEquity}%. `;
       }
       this.isAddEquity = false;
+      this.EquityForm.reset();
       this.cd.markForCheck();
     } else {
       this.cd.markForCheck();

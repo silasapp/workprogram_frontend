@@ -75,13 +75,13 @@ export class GenericService {
   isStep5 = false;
   activeStep = 'STEP1';
 
-  
+
 
   public years:string[] = [] as string[];
   year = [{ value: '2020' }, { value: '2021' }, { value: '2022' }, { value: '2023' },{ value: '2024' },{ value: '2025' }];
 
 
-  
+
 
   role = [{ value: 'Admin' }, { value: 'Company' }];
 
@@ -175,8 +175,8 @@ export class GenericService {
         tr[i].style.display = 'none';
       }
 
-      
-      
+
+
 
 
 
@@ -184,7 +184,7 @@ export class GenericService {
     }
   }
 
- 
+
 
   printData(table: HTMLTableElement) {
     let newWin = window.open('');
@@ -953,6 +953,10 @@ export class GenericService {
       }
     }
   }
+  }
+
+  getSize(value: number) {
+    return value >= 1024 ? ((value / 1024).toFixed(2) + 'MB') : (value + 'KB');
   }
 }
 
